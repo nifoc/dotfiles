@@ -1,0 +1,20 @@
+add_newline = true
+
+[battery]
+disabled = true
+
+[cmd_duration]
+disabled = false
+min_time = 2
+
+[golang]
+disabled = true
+
+[package]
+disabled = true
+
+[python]
+disabled = true
+
+[ruby]
+disabled = false

@@ -1,0 +1,64 @@
+{
+  "diagnostic.enable": true,
+  "diagnostic.displayByAle": true,
+  "codeLens.enable": true,
+  "suggest.autoTrigger": "always",
+  "suggest.noselect": true,
+  "suggest.minTriggerInputLength": 3,
+  "suggest.enablePreview": true,
+  "suggest.preferCompleteThanJumpPlaceholder": true,
+  "coc.preferences.colorSupport": false,
+  "git.command": "/usr/local/bin/git",
+  "git.enableGutters": true,
+  "git.addedSign.text": "",
+  "git.addedSign.hlGroup": "GitGutterAdd",
+  "git.changedSign.text": "",
+  "git.changedSign.hlGroup": "GitGutterChange",
+  "git.removedSign.text": "",
+  "git.removedSign.hlGroup": "GitGutterDelete",
+  "git.topRemovedSign.text": "",
+  "git.topRemovedSign.hlGroup": "GitGutterDelete",
+  "git.changeRemovedSign.text": "",
+  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+  "git.branchCharacter": "",
+  "languageserver": {
+    "elixir_ls": {
+      "command": "languageserver-elixir",
+      "settings": {
+        "elixirLS": {
+          "dialyzerEnabled": false
+        }
+      },
+      "rootPatterns": [
+        "mix.exs",
+        "mix.lock",
+        ".formatter.exs",
+        ".git/"
+      ],
+      "filetypes": [
+        "elixir",
+        "eelixir"
+      ]
+    },
+    "erlang_ls": {
+      "command": "languageserver-erlang",
+      "args": [
+        "--transport",
+        "stdio",
+        "--verbose"
+      ],
+      "rootPatterns": [
+        "rebar.config",
+        "rebar.lock",
+        ".git/"
+      ],
+      "filetypes": [
+        "erlang"
+      ]
+    }
+  },
+  "snippets.priority": 93,
+  "tabnine.priority": 92,
+  "coc.source.tag.priority": 91,
+  "yank.priority": 91
+}

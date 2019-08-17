@@ -1,0 +1,1 @@
+KERL_CONFIGURE_OPTIONS="--enable-hipe --with-dynamic-trace=dtrace --with-wx --with-ssl=/usr/local/opt/openssl"
