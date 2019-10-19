@@ -43,6 +43,7 @@ set showtabline=2
 set signcolumn=auto:3
 set wildoptions=pum
 set nomodeline
+set nostartofline
 
 set incsearch
 set grepprg=rg\ --vimgrep\ --no-heading
@@ -78,15 +79,16 @@ set diffopt=filler,internal,algorithm:histogram,indent-heuristic
 
 colorscheme gruvbox
 
+hi! NifocFloatBorder guifg=#3d3d3d guibg=#282828
+
 set number relativenumber
 
 augroup numbertoggle
   autocmd!
-  autocmd BufEnter,BufWinEnter * if DisableLineStyle() | setlocal nonumber norelativenumber | endif
-  autocmd FileType qf setlocal nonumber norelativenumber
+  autocmd BufEnter,BufWinEnter * if nifoc#line_style#check_disable() | setlocal nonumber norelativenumber | endif
   autocmd TermOpen * setlocal nonumber norelativenumber
-  autocmd BufEnter,InsertLeave * if UpdateLineStyle() | setlocal relativenumber | endif
-  autocmd BufLeave,InsertEnter * if UpdateLineStyle() | setlocal norelativenumber | endif
+  autocmd BufEnter,InsertLeave * if nifoc#line_style#check_toggle() | setlocal relativenumber | endif
+  autocmd BufLeave,InsertEnter * if nifoc#line_style#check_toggle() | setlocal norelativenumber | endif
 augroup end
 
 if has('conceal')
@@ -132,27 +134,6 @@ if has('persistent_undo')
 endif
 
 "
-" filetypes
-"
-augroup filetypes
-  autocmd!
-  autocmd bufread,bufnewfile *.rdoc setlocal filetype=rdoc
-  autocmd FileType make setlocal noexpandtab shiftwidth=2 softtabstop=0
-  autocmd bufread,bufnewfile *.tsv setlocal noexpandtab shiftwidth=2 softtabstop=0
-  autocmd FileType json setlocal conceallevel=0
-  autocmd FileType qf nnoremap <buffer> <silent> <esc> :q!<CR>
-  autocmd FileType qf nnoremap <buffer> <silent> q :q!<CR>
-augroup end
-
-"
-" spell check
-"
-augroup spell_check
-  autocmd!
-  autocmd FileType elixir,markdown,pandoc,rdoc setlocal spell
-augroup end
-
-"
 " clipboard
 "
 let g:clipboard = {
@@ -186,7 +167,7 @@ let g:yoinkIncludeDeleteOperations = 1
 " vim-matchup
 let g:matchup_matchparen_deferred = 1
 let g:matchup_matchparen_offscreen = {
-  \  'method': 'status_manual'
+  \  'method': 'popup'
   \ }
 
 " coc
@@ -196,35 +177,21 @@ let g:coc_snippet_prev = '<S-Tab>'
 highlight CocHighlightText guifg=none guibg=none gui=underline
 
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-augroup coc_actions
-  autocmd!
-  autocmd CursorHold * if <SID>HighlightSynStack() == 1 | silent call CocActionAsync('highlight') | endif
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
+autocmd CursorHold * if nifoc#highlight_word#check() | silent call CocActionAsync('highlight') | endif
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
 " NERDTree
 let g:NERDTreeShowHidden = 1
 
-augroup nerdtree_actions
-  autocmd!
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-augroup end
-
 " fzf
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
-" let $FZF_PREVIEW_COMMAND = 'bat --theme="base16" --style=numbers,changes --color always {}'
 let $FZF_PREVIEW_COMMAND = 'highlight --base16 --style=gruvbox-dark-medium -O truecolor -l --force {}'
+let $FZF_DEFAULT_OPTS = '--layout=reverse'
 
-if (finddir('.git', ';') != '')
-  let g:fzf_custom_file_list = 'git ls-files -co --exclude-standard | uniq'
-else
-  let g:fzf_custom_file_list = 'rg --files --hidden --follow --glob "!.git/*"'
-endif
+let g:fzf_custom_file_list = 'rg --files --hidden --follow --glob "!.git/*"'
 
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+let g:fzf_layout = { 'window': 'call nifoc#fzf#floating_window()' }
 let g:fzf_buffers_jump = 1
-
-source ~/.config/nvim/fzf.vim
 
 " vim-rooter
 let g:rooter_change_directory_for_non_project_files = 'current'
@@ -252,6 +219,16 @@ else
   let g:gen_tags#gtags_auto_update = 0
 endif
 
+" context_filetype
+if !exists('g:context_filetype#same_filetypes')
+  let g:context_filetype#filetypes = {}
+endif
+
+let g:context_filetype#filetypes.svelte = [
+  \ {'filetype' : 'javascript', 'start' : '<script>', 'end' : '</script>'},
+  \ {'filetype' : 'css', 'start' : '<style>', 'end' : '</style>'},
+  \ ]
+
 " ale
 let g:ale_virtualtext_cursor = 1
 
@@ -270,7 +247,7 @@ let g:ale_linters = {
 
 let g:ale_fixers = {
   \ 'elixir': ['mix_format'],
-  \ 'javascript': ['prettier'],
+  \ 'javascript': ['prettier', 'eslint'],
   \ 'json': ['fixjson'],
   \ 'ruby': ['rubocop'],
   \ 'sh': ['shfmt'],
@@ -286,11 +263,7 @@ let g:ale_lint_on_insert_leave = 1
 " asyncrun
 let g:asyncrun_status = 'stopped'
 
-augroup asyncrun_actions
-  autocmd!
-  autocmd User AsyncRunStop call <SID>MaybeOpenAsyncRunList()
-  autocmd BufWinLeave * call <SID>UpdateAsyncRunStatus()
-augroup end
+autocmd User AsyncRunStop call nifoc#asyncrun#maybe_open()
 
 " vim-test
 let test#strategy = "asyncrun"
@@ -308,16 +281,17 @@ end
 let g:indentLine_bufTypeExclude = ['help', 'terminal']
 let g:indentLine_fileTypeExclude = ['json']
 
+let g:indentLine_faster = 1
+
 " vista.vim
-let g:vista_default_executive = 'coc'
+let g:vista_default_executive = 'ctags'
 let g:vista_executive_for = {
-      \ 'elixir': 'coc'
+      \ 'elixir': 'coc',
+      \ 'javascript': 'coc',
+      \ 'ruby': 'coc'
       \ }
-let g:vista_icon_indent = ["\uF0DA".' ', ""]
 
 let g:vista#renderer#enable_icon = 1
-
-let g:vista_fzf_preview = ['right:50%']
 
 " git-messenger
 let g:git_messenger_no_default_mappings = v:true
@@ -332,15 +306,6 @@ let g:webdevicons_enable_ctrlp = 0
 let g:webdevicons_enable_flagship_statusline = 0
 let g:webdevicons_enable_denite = 0
 let g:WebDevIconsOS = 'Darwin'
-
-" neoterm
-let g:neoterm_default_mod = 'belowright'
-let g:neoterm_autoinsert = 1
-let g:neoterm_size = 20
-let g:neoterm_autoscroll = 1
-
-" vim-pandoc
-let g:pandoc#modules#disabled = ["formatting", "folding", "keyboard", "completion"]
 
 " lightline
 source ~/.config/nvim/lightline.vim
@@ -421,9 +386,11 @@ nnoremap <silent> <CR> :noh<CR><CR>
 let mapleader = " "
 set timeoutlen=500
 
-nnoremap <silent> <leader>o :call FzfSmartFileList()<CR>
+nnoremap <silent> <leader>o :call nifoc#fzf#smart_file_list()<CR>
 nnoremap <silent> <leader>t :Vista finder<CR>
-nnoremap <leader>s :Rg<Space>
+nmap <leader>s <Plug>RgRawSearch
+vmap <leader>s <Plug>RgRawVisualSelection
+nmap <leader>* <Plug>RgRawWordUnderCursor
 nnoremap <silent> <leader>/ :History/<CR>
 nnoremap <silent> <leader>l :BLines<CR>
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
@@ -431,18 +398,18 @@ nnoremap <silent> <leader>g :IndentGuidesToggle<CR>
 nnoremap <silent> <leader>d :Dash<CR>
 nnoremap <silent> <leader>v :Vista!!<CR>
 nnoremap <silent> <leader>a :AT<CR>
-nnoremap <silent> <leader>r :<c-u>exec v:count.'Ttoggle'<CR>
+nnoremap <silent> <leader>r :Repl<CR>
 nnoremap <silent> <leader>aa :A<CR>
 nnoremap <silent> <leader>as :AS<CR>
 nnoremap <silent> <leader>av :AV<CR>
-nnoremap <silent> <leader>tt :Ttoggle<CR>
 nnoremap <silent> <leader>ut :UndotreeToggle<CR>
-nnoremap <silent> <leader>js :call <SID>ToggleAsyncRunList()<CR>
+nnoremap <silent> <leader>js :call nifoc#asyncrun#toggle()<CR>
 nnoremap <silent> <leader>jc :AsyncStop()<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gh :Gbrowse<CR>
+nmap <silent> <leader>gm :GitMessenger<CR>
 
 " macOS
 if has('gui_running')
@@ -495,7 +462,7 @@ nmap <leader>tn :TestNearest<CR>
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>CheckBackSpace() ? "\<TAB>" :
+      \ nifoc#coc#check_backspace() ? "\<TAB>" :
       \ coc#refresh()
 
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
@@ -509,117 +476,14 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
-nmap <silent> <leader>gm :GitMessenger<CR>
+nnoremap <silent> K :call nifoc#coc#show_documentation()<CR>
+
+nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>ac <Plug>(coc-codeaction)
+nmap <leader>qf <Plug>(coc-fix-current)
 
 " Bubbling Text
 nmap <C-u> [e
 nmap <C-d> ]e
 vmap <C-u> [egv
 vmap <C-d> ]egv
-
-" Erlang
-augroup erlang_mapping
-  autocmd!
-  autocmd FileType erlang abbr <= =<
-augroup END
-
-"
-" Custom Functions
-"
-function! TrimWhiteSpace()
-  %s/\s\+$//e
-endfunction
-
-function! SynStack()
-  return map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunction
-
-function! DisableLineStyle()
-  if &buftype ==# 'terminal' || &buftype ==# 'nofile' || &buftype ==# 'quickfix'
-    return v:true
-  else
-    return v:false
-  end
-endfunction
-
-function! UpdateLineStyle()
-  if DisableLineStyle()
-    return v:false
-  else 
-    let blacklist = [
-          \ 'vista', 'nerdtree', 'startify', 'tagbar', 'fzf', 'vim-plug',
-          \ 'netrw', 'ctrlsf', 'qf', 'nofile'
-          \ ]
-    return empty(&filetype) || index(blacklist, &filetype) == -1
-  endif
-endfunction
-
-function! s:CheckBackSpace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-function! s:ShowDocumentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocActionAsync('doHover')
-  endif
-endfunction
-
-function! s:HighlightSynStack()
-  let search = getreg('/')
-  let cword = expand('<cword>')
-
-  if match(cword, search) == -1
-    let stack = SynStack()
-
-    if index(stack, 'elixirId') >= 0 || index(stack, 'elixirAlias') >= 0 || index(stack, 'elixirAtom') >= 0 || index(stack, 'elixirString') >= 0
-      return 1
-    else
-      return 0
-    endif
-  else
-    return 0
-  endif
-endfunction
-
-function s:ToggleAsyncRunList() abort
-  let l:asyncrun_status = get(g:, 'asyncrun_status', 'stopped')
-
-  if l:asyncrun_status !=# 'running' && l:asyncrun_status !=# 'failure'
-    let g:asyncrun_status = 'stopped'
-    doautocmd User AsyncRunUpdate
-  endif
-
-  call asyncrun#quickfix_toggle(20)
-endfunction
-
-function s:MaybeOpenAsyncRunList() abort
-  let l:asyncrun_status = get(g:, 'asyncrun_status', 'stopped')
-
-  if l:asyncrun_status ==# 'failure'
-    call asyncrun#quickfix_toggle(20, 1)
-  else
-    return 0
-  endif
-endfunction
-
-function s:UpdateAsyncRunStatus() abort
-  if &buftype ==# 'quickfix'
-    let l:asyncrun_status = get(g:, 'asyncrun_status', 'stopped')
-
-    if l:asyncrun_status !=# 'running'
-      let g:asyncrun_status = 'stopped'
-      doautocmd User AsyncRunUpdate
-    endif
-  endif
-
-  return 0
-endfunction
-
-augroup custom_functions
-  autocmd!
-  autocmd BufWritePre *.coffee,*.erl,*.ex,*.exs,*.hs,*.js,*.js.erb,*.ls,*.ls.erb,*.purs,*.rb,*.scss,*.ts call TrimWhiteSpace()
-augroup END

@@ -4,7 +4,6 @@
   "codeLens.enable": true,
   "suggest.autoTrigger": "always",
   "suggest.noselect": true,
-  "suggest.minTriggerInputLength": 3,
   "suggest.enablePreview": true,
   "suggest.preferCompleteThanJumpPlaceholder": true,
   "coc.preferences.colorSupport": false,
@@ -38,22 +37,6 @@
       "filetypes": [
         "elixir",
         "eelixir"
-      ]
-    },
-    "erlang_ls": {
-      "command": "languageserver-erlang",
-      "args": [
-        "--transport",
-        "stdio",
-        "--verbose"
-      ],
-      "rootPatterns": [
-        "rebar.config",
-        "rebar.lock",
-        ".git/"
-      ],
-      "filetypes": [
-        "erlang"
       ]
     }
   },

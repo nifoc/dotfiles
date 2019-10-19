@@ -1,5 +1,8 @@
 add_newline = true
 
+[aws]
+disabled = true
+
 [battery]
 disabled = true
 
@@ -7,8 +10,20 @@ disabled = true
 disabled = false
 min_time = 2
 
+[dotnet]
+disabled = true
+
 [golang]
 disabled = true
+
+[kubernetes]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[nodejs]
+disabled = false
 
 [package]
 disabled = true

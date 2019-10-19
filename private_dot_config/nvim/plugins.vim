@@ -4,27 +4,23 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'jesseleite/vim-agriculture'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'jsfaint/gen_tags.vim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ryanoasis/vim-devicons'
+Plug 'Shougo/context_filetype.vim'
 
 " Languages
-Plug 'elixir-editors/vim-elixir', { 'for': ['elixir', 'eelixir'] }
-Plug 'vim-erlang/vim-erlang-runtime', { 'for': 'erlang' }
-Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'eruby'] }
-Plug 'rust-lang/rust.vim'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'dag/vim-fish', { 'for': 'fish' }
+Plug 'sheerun/vim-polyglot'
 
 " Utils
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/git-messenger.vim', { 'on': 'GitMessenger' }
 Plug 'w0rp/ale'
-Plug 'kassio/neoterm'
 Plug 'Yggdroot/indentLine'
-Plug 'RRethy/vim-hexokinase'
+Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto'] }
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " Autocomplete
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
