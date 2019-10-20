@@ -1,10 +1,10 @@
-function! LightlineMode()
+function! nifoc#lightline#mode()
   return &filetype ==# 'denite' ? 'Denite' :
        \ &filetype ==# 'vim-plug' ? 'Plug' :
        \ lightline#mode()
 endfunction
 
-function! LightlineTabFilename(n) abort
+function! nifoc#lightline#tab_filename(n) abort
   let buflist = tabpagebuflist(a:n)
   let winnr = tabpagewinnr(a:n)
   let _ = expand('#'.buflist[winnr - 1].':t')
@@ -14,20 +14,20 @@ function! LightlineTabFilename(n) abort
        \ _
 endfunction
 
-function! LightlineFiletype()
+function! nifoc#lightline#filetype()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
 endfunction
 
-function! LightlineFileformat()
+function! nifoc#lightline#fileformat()
   return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
 
-function! LightlineTabModified(n) abort
+function! nifoc#lightline#tab_modified(n) abort
   let winnr = tabpagewinnr(a:n)
   return gettabwinvar(a:n, winnr, '&modified') ? "\uF8EA" : gettabwinvar(a:n, winnr, '&modifiable') ? '' : "\uF8ED"
 endfunction
 
-function! LightlineTabNum(n) abort
+function! nifoc#lightline#tab_num(n) abort
   let l:number_map = get(g:, 'lightline_tab_num_map', {})
   let l:number = a:n
   let l:result = ''
@@ -40,26 +40,26 @@ function! LightlineTabNum(n) abort
   return l:result
 endfunction
 
-function! LightlineNearestMethodOrFunction() abort
+function! nifoc#lightline#nearest_method_or_function() abort
   let l:fn = get(b:, 'vista_nearest_method_or_function', '')
   return strlen(l:fn) > 0 ? "\uf794 ".l:fn : ''
 endfunction
 
-function! LightlineAleWarnings() abort
+function! nifoc#lightline#ale_warnings() abort
   let l:counts = ale#statusline#Count(bufnr(''))
   let l:all_errors = l:counts.error + l:counts.style_error
   let l:all_non_errors = l:counts.total - l:all_errors
   return l:all_non_errors == 0 ? '' : printf("\uF071".' %d', all_non_errors)
 endfunction
 
-function! LightlineAleErrors() abort
+function! nifoc#lightline#ale_errors() abort
   let l:counts = ale#statusline#Count(bufnr(''))
   let l:all_errors = l:counts.error + l:counts.style_error
   let l:all_non_errors = l:counts.total - l:all_errors
   return l:all_errors == 0 ? '' : printf("\uF00D".' %d', all_errors)
 endfunction
 
-function! LightlineAleOK() abort
+function! nifoc#lightline#ale_ok() abort
   if ale#engine#IsCheckingBuffer(bufnr(''))
     return "\uF6D7"
   else
@@ -70,17 +70,17 @@ function! LightlineAleOK() abort
   endif
 endfunction
 
-function! LightlineAleFixer() abort
+function! nifoc#lightline#ale_fixer() abort
   let l:all_fixers = get(g:, 'ale_fixers', {})
   let l:fixer_ft = get(l:all_fixers, &filetype, [])
   return len(l:fixer_ft) > 0 ? "\uF77B" : ''
 endfunction
 
-function! LightlineSpellcheckEnabled() abort
+function! nifoc#lightline#spellcheck_enabled() abort
   return &spell == 0 ? '' : "\uFB92"
 endfunction
 
-function! LightlineGit() abort
+function! nifoc#lightline#git() abort
   let l:status = get(b:, 'coc_git_status', '')
 
   if strlen(l:status) > 0
@@ -95,7 +95,7 @@ function! LightlineGit() abort
   endif
 endfunction
 
-function! LightlineAsyncRunStatus() abort
+function! nifoc#lightline#asyncrun_status() abort
   let l:asyncrun_status = get(g:, 'asyncrun_status', 'stopped')
   let l:asyncrun_code = get(g:, 'asyncrun_code', '1')
 
@@ -109,17 +109,3 @@ function! LightlineAsyncRunStatus() abort
     return ''
   endif
 endfunction
-
-augroup LightLineHooks
-  autocmd!
-  autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-  autocmd User ALEFixPre call lightline#update()
-  autocmd User ALEFixPost call lightline#update()
-  autocmd User ALELintPre call lightline#update()
-  autocmd User ALELintPost call lightline#update()
-  autocmd User CocDiagnosticChange call lightline#update()
-  autocmd User AsyncRunPre call lightline#update()
-  autocmd User AsyncRunStart call lightline#update()
-  autocmd User AsyncRunStop call lightline#update()
-  autocmd User AsyncRunUpdate call lightline#update()
-augroup end

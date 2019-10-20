@@ -66,7 +66,11 @@ set splitbelow
 set splitright
 
 set autoread
-autocmd cursorhold,cursorholdi,focusgained,bufenter * checktime
+
+augroup nifoc_checktime
+  autocmd!
+  autocmd CursorHold,CursorHoldI,FocusGained,BufEnter * checktime
+augroup end
 
 "set shell=/usr/local/bin/fish
 set shell=/bin/sh
@@ -83,7 +87,7 @@ hi! NifocFloatBorder guifg=#3d3d3d guibg=#282828
 
 set number relativenumber
 
-augroup numbertoggle
+augroup nifoc_numbertoggle
   autocmd!
   autocmd BufEnter,BufWinEnter * if nifoc#line_style#check_disable() | setlocal nonumber norelativenumber | endif
   autocmd TermOpen * setlocal nonumber norelativenumber
@@ -176,9 +180,11 @@ let g:coc_snippet_prev = '<S-Tab>'
 
 highlight CocHighlightText guifg=none guibg=none gui=underline
 
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-autocmd CursorHold * if nifoc#highlight_word#check() | silent call CocActionAsync('highlight') | endif
-autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup nifoc_coc
+  autocmd!
+  autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
 
 " NERDTree
 let g:NERDTreeShowHidden = 1
@@ -263,7 +269,10 @@ let g:ale_lint_on_insert_leave = 1
 " asyncrun
 let g:asyncrun_status = 'stopped'
 
-autocmd User AsyncRunStop call nifoc#asyncrun#maybe_open()
+augroup nifoc_asyncrun
+  autocmd!
+  autocmd User AsyncRunStop call nifoc#asyncrun#maybe_open()
+augroup end
 
 " vim-test
 let test#strategy = "asyncrun"
@@ -308,8 +317,6 @@ let g:webdevicons_enable_denite = 0
 let g:WebDevIconsOS = 'Darwin'
 
 " lightline
-source ~/.config/nvim/lightline.vim
-
 let g:lightline = {
       \ 'colorscheme': g:colors_name,
       \ 'active': {
@@ -333,19 +340,19 @@ let g:lightline = {
           \ 'percent': '%2p%% ☰',
       \ },
       \ 'component_function': {
-          \ 'mode': 'LightlineMode',
-          \ 'filetype': 'LightlineFiletype',
-          \ 'fileformat': 'LightlineFileformat',
-          \ 'git': 'LightlineGit',
-          \ 'method': 'LightlineNearestMethodOrFunction',
-          \ 'formatter': 'LightlineAleFixer',
-          \ 'spellcheck': 'LightlineSpellcheckEnabled',
-          \ 'async_run': 'LightlineAsyncRunStatus',
+          \ 'mode': 'nifoc#lightline#mode',
+          \ 'filetype': 'nifoc#lightline#filetype',
+          \ 'fileformat': 'nifoc#lightline#fileformat',
+          \ 'git': 'nifoc#lightline#git',
+          \ 'method': 'nifoc#lightline#nearest_method_or_function',
+          \ 'formatter': 'nifoc#lightline#ale_fixer',
+          \ 'spellcheck': 'nifoc#lightline#spellcheck_enabled',
+          \ 'async_run': 'nifoc#lightline#asyncrun_status',
       \ },
       \ 'component_expand': {
-          \ 'linter_warnings': 'LightlineAleWarnings',
-          \ 'linter_errors': 'LightlineAleErrors',
-          \ 'linter_ok': 'LightlineAleOK',
+          \ 'linter_warnings': 'nifoc#lightline#ale_warnings',
+          \ 'linter_errors': 'nifoc#lightline#ale_errors',
+          \ 'linter_ok': 'nifoc#lightline#ale_ok',
       \ },
       \ 'component_type': {
           \ 'readonly': 'error',
@@ -353,15 +360,29 @@ let g:lightline = {
           \ 'linter_errors': 'error',
       \ },
       \ 'tab_component_function': {
-          \ 'tabnum': 'LightlineTabNum',
-          \ 'filename': 'LightlineTabFilename',
-          \ 'modified': 'LightlineTabModified',
+          \ 'tabnum': 'nifoc#lightline#tab_num',
+          \ 'filename': 'nifoc#lightline#tab_filename',
+          \ 'modified': 'nifoc#lightline#tab_modified',
       \ },
     \ }
 
 let g:lightline_tab_num_map = {
   \ 0: '🄌', 1: '➊', 2: '➋', 3: '➌', 4: '➍',
   \ 5: '➎', 6: '➏', 7: '➐', 8: '➑', 9: '➒'}
+
+augroup nifoc_lightline
+  autocmd!
+  autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+  autocmd User ALEFixPre call lightline#update()
+  autocmd User ALEFixPost call lightline#update()
+  autocmd User ALELintPre call lightline#update()
+  autocmd User ALELintPost call lightline#update()
+  autocmd User CocDiagnosticChange call lightline#update()
+  autocmd User AsyncRunPre call lightline#update()
+  autocmd User AsyncRunStart call lightline#update()
+  autocmd User AsyncRunStop call lightline#update()
+  autocmd User AsyncRunUpdate call lightline#update()
+augroup end
 
 " vim-projectionist
 let g:projectionist_heuristics = {
