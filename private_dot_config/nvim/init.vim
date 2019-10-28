@@ -300,7 +300,10 @@ let g:vista_executive_for = {
       \ 'ruby': 'coc'
       \ }
 
+let g:vista_icon_indent = ["\uF0DA ", ""]
 let g:vista#renderer#enable_icon = 1
+
+let g:vista_echo_cursor_strategy = 'floating_win'
 
 " git-messenger
 let g:git_messenger_no_default_mappings = v:true
