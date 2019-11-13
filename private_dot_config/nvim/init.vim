@@ -163,7 +163,7 @@ set clipboard=unnamedplus
 let g:python3_host_prog = '/usr/local/bin/python3'
 let g:python_host_prog = '/usr/local/bin/python2.7'
 let g:ruby_host_prog = '~/.asdf/shims/neovim-ruby-host'
-let g:node_host_prog = '~/.asdf/installs/nodejs/10.15.0/.npm/bin/neovim-node-host'
+let g:node_host_prog = '~/.asdf/installs/nodejs/13.1.0/.npm/bin/neovim-node-host'
 
 " vim-yoink
 let g:yoinkIncludeDeleteOperations = 1
@@ -185,9 +185,6 @@ augroup nifoc_coc
   autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-" NERDTree
-let g:NERDTreeShowHidden = 1
 
 " fzf
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
@@ -319,6 +316,9 @@ let g:webdevicons_enable_flagship_statusline = 0
 let g:webdevicons_enable_denite = 0
 let g:WebDevIconsOS = 'Darwin'
 
+" vim-hexokinase
+let g:Hexokinase_ftEnabled = ['css', 'html', 'svelte', 'vim']
+
 " lightline
 let g:lightline = {
       \ 'colorscheme': g:colors_name,
@@ -381,6 +381,7 @@ augroup nifoc_lightline
   autocmd User ALELintPre call lightline#update()
   autocmd User ALELintPost call lightline#update()
   autocmd User CocDiagnosticChange call lightline#update()
+  autocmd User CocGitStatusChange call lightline#update()
   autocmd User AsyncRunPre call lightline#update()
   autocmd User AsyncRunStart call lightline#update()
   autocmd User AsyncRunStop call lightline#update()
@@ -417,7 +418,7 @@ vmap <leader>s <Plug>RgRawVisualSelection
 nmap <leader>* <Plug>RgRawWordUnderCursor
 nnoremap <silent> <leader>/ :History/<CR>
 nnoremap <silent> <leader>l :BLines<CR>
-nnoremap <silent> <leader>n :NERDTreeToggle<CR>
+nnoremap <silent> <leader>n :CocCommand explorer<CR>
 nnoremap <silent> <leader>g :IndentGuidesToggle<CR>
 nnoremap <silent> <leader>d :Dash<CR>
 nnoremap <silent> <leader>v :Vista!!<CR>

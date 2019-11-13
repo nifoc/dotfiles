@@ -1,26 +1,26 @@
-function! nifoc#highlight_word#syn_stack()
+function! nifoc#highlight_word#syn_stack() abort
   return map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunction
 
-function! nifoc#highlight_word#syn_attr()
-  let stack = synstack(line("."), col("."))
+function! nifoc#highlight_word#syn_attr() abort
+  let l:stack = synstack(line("."), col("."))
 
   if len(stack) > 0
-    return synIDattr(stack[-1], "name")
+    return synIDattr(l:stack[-1], "name")
   else
     return ''
   endif
 endfunction
 
-function! nifoc#highlight_word#check()
-  let search = getreg('/')
-  let cword = expand('<cword>')
+function! nifoc#highlight_word#check() abort
+  let l:search = getreg('/')
+  let l:cword = expand('<cword>')
 
-  if match(cword, search) == -1
-    let attr = nifoc#highlight_word#syn_attr()
-    let groups = get(b:, 'syntack_highlight', [])
+  if match(l:cword, l:search) == -1
+    let l:attr = nifoc#highlight_word#syn_attr()
+    let l:groups = get(b:, 'syntack_highlight', [])
 
-    if index(groups, attr) >= 0
+    if index(l:groups, l:attr) >= 0
       return v:true
     else
       return v:false

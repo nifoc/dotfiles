@@ -1,7 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " Files
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'jesseleite/vim-agriculture'

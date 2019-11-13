@@ -1,5 +1,5 @@
-function! nifoc#whitespace#trim()
-  let saved_view = winsaveview()
+function! nifoc#whitespace#trim() abort
+  let l:saved_view = winsaveview()
   keeppatterns %s/\s\+$//e
-  call winrestview(saved_view)
+  call winrestview(l:saved_view)
 endfunction

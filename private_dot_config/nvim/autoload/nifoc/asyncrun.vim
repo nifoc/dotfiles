@@ -1,7 +1,7 @@
 function nifoc#asyncrun#toggle() abort
-  let asyncrun_status = get(g:, 'asyncrun_status', 'stopped')
+  let l:asyncrun_status = get(g:, 'asyncrun_status', 'stopped')
 
-  if asyncrun_status !=# 'running' && asyncrun_status !=# 'failure'
+  if l:asyncrun_status isnot# 'running' && l:asyncrun_status isnot# 'failure'
     let g:asyncrun_status = 'stopped'
     doautocmd User AsyncRunUpdate
   endif
@@ -10,18 +10,18 @@ function nifoc#asyncrun#toggle() abort
 endfunction
 
 function nifoc#asyncrun#maybe_open() abort
-  let asyncrun_status = get(g:, 'asyncrun_status', 'stopped')
+  let l:asyncrun_status = get(g:, 'asyncrun_status', 'stopped')
 
-  if asyncrun_status ==# 'failure'
+  if l:asyncrun_status is# 'failure'
     call asyncrun#quickfix_toggle(20, 1)
   endif
 endfunction
 
 function nifoc#asyncrun#update_status() abort
-    let asyncrun_status = get(g:, 'asyncrun_status', 'stopped')
+  let l:asyncrun_status = get(g:, 'asyncrun_status', 'stopped')
 
-    if asyncrun_status !=# 'running'
-      let g:asyncrun_status = 'stopped'
-      doautocmd User AsyncRunUpdate
-    endif
+  if l:asyncrun_status isnot# 'running'
+    let g:asyncrun_status = 'stopped'
+    doautocmd User AsyncRunUpdate
+  endif
 endfunction
