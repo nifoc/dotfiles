@@ -1,0 +1,45 @@
+[user]
+	name = Daniel Kempkens
+	email = daniel+git@kempkens.io
+[color]
+	ui = auto
+[pull]
+	rebase = true
+[push]
+	default = simple
+[core]
+	editor = nvim
+	whitespace = trailing-space,space-before-tab
+	autocrlf = input
+	excludesfile = /Users/daniel/.config/git/ignore
+[apply]
+  whitespace = fix
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[diff]
+	tool = Kaleidoscope
+	indentheuristic = true
+	algorithm = histogram
+[difftool]
+	prompt = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[mergetool]
+	prompt = false
+	keepBackup = true
+[merge]
+	tool = Kaleidoscope
+[rerere]
+	enabled = true
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[gpg]
+	program = /usr/local/MacGPG2/bin/gpg2
+[protocol]
+	version = 2

@@ -1,4 +1,5 @@
 setlocal spell
+setlocal colorcolumn=122
 
 augroup nifoc_elixir
   autocmd! * <buffer>

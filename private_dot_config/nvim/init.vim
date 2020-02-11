@@ -187,11 +187,11 @@ augroup nifoc_coc
 augroup end
 
 " fzf
-let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*" --color never'
 let $FZF_PREVIEW_COMMAND = 'highlight --base16 --style=gruvbox-dark-medium -O truecolor -l --force {}'
 let $FZF_DEFAULT_OPTS = '--layout=reverse'
 
-let g:fzf_custom_file_list = 'rg --files --hidden --follow --glob "!.git/*"'
+let g:fzf_custom_file_list = 'rg --files --hidden --follow --glob "!.git/*" --color never'
 
 let g:fzf_layout = { 'window': 'call nifoc#fzf#floating_window()' }
 let g:fzf_buffers_jump = 1
@@ -306,7 +306,7 @@ let g:vista_echo_cursor_strategy = 'floating_win'
 let g:git_messenger_no_default_mappings = v:true
 
 " devicons
-let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable_nerdtree = 0
 let g:webdevicons_enable_unite = 0
 let g:webdevicons_enable_vimfiler = 0
 let g:webdevicons_enable_airline_tabline = 0

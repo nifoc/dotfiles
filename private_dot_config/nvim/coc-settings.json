@@ -48,6 +48,20 @@
         "elixir",
         "eelixir"
       ]
+    },
+    "erlang_ls": {
+      "command": "languageserver-erlang",
+      "args": [
+        "--transport",
+        "stdio"
+      ],
+      "initializationOptions": {},
+      "rootPatterns": [
+        ".git/"
+      ],
+      "filetypes": [
+        "erlang"
+      ]
     }
   },
   "snippets.priority": 93,

@@ -1,7 +1,9 @@
 function! nifoc#fzf#floating_window() abort
   let s:opening_win = win_getid()
   let s:opening_cursorline = nvim_win_get_option(s:opening_win, 'cursorline')
+  let s:opening_colorcolumn = nvim_win_get_option(s:opening_win, 'colorcolumn')
   call nvim_win_set_option(s:opening_win, 'cursorline', v:false)
+  call nvim_win_set_option(s:opening_win, 'colorcolumn', '')
 
   " Center
   let l:height = winheight(0) - 20
@@ -49,7 +51,7 @@ function! nifoc#fzf#floating_window() abort
   let l:win = nvim_open_win(l:buf, v:true, l:opts)
   call nvim_win_set_option(win, 'winblend', 5)
 
-  autocmd BufUnload <buffer> call s:OnUnload()
+  autocmd BufWipeout <buffer> call s:OnUnload()
 
   return l:win
 endfunction
@@ -62,16 +64,11 @@ endfunction
 function! nifoc#fzf#file_list(cmd) abort
   let s:file_list = []
 
-  let s:fzf_opts = fzf#wrap({})
-  let s:Sink = s:fzf_opts['sink*']
-  let s:fzf_opts['sink*'] = function('s:EditDeviconPrependedFiles')
-  let l:head_lines = winheight(0) - 22
-  let s:fzf_opts.options .= ' -m --preview "highlight --base16 --style=gruvbox-dark-medium -O truecolor -l -j 2 --line-range=1-' . l:head_lines . ' --force {2..-1}"'
-
   let l:callbacks = {
     \ 'on_stdout': function('s:OnEvent'),
     \ 'on_exit': function('s:OnExit')
     \ }
+
   call jobstart(a:cmd.' | devicon-lookup', l:callbacks)
 endfunction
 
@@ -97,11 +94,20 @@ function! s:OnEvent(job_id, data, event) abort
 endfunction
 
 function! s:OnExit(job_id, data, event) abort
-  let s:fzf_opts.source = s:file_list
-  call fzf#run(s:fzf_opts)
+  let l:head_lines = winheight(0) - 22
+
+  let l:fzf_opts = fzf#wrap({
+    \ 'source': s:file_list,
+    \ })
+  let s:Sink = l:fzf_opts['sink*']
+  let l:fzf_opts['sink*'] = function('s:EditDeviconPrependedFiles')
+  let l:fzf_opts.options .= ' -m --preview "highlight --base16 --style=gruvbox-dark-medium -O truecolor -l -j 2 --line-range=1-' . l:head_lines . ' --force {2..-1}"'
+
+  call fzf#run(l:fzf_opts)
 endfunction
 
 function! s:OnUnload()
   call nvim_win_close(s:fzf_border_win, v:true)
   call nvim_win_set_option(s:opening_win, 'cursorline', s:opening_cursorline)
+  call nvim_win_set_option(s:opening_win, 'colorcolumn', s:opening_colorcolumn)
 endfunction
