@@ -9,8 +9,6 @@ set hidden
 "
 " Themes (Setup)
 "
-let &t_Cs = "\e[4:3m"
-let &t_Ce = "\e[4:0m"
 
 " gruvbox
 let g:gruvbox_bold = 1
@@ -163,7 +161,7 @@ set clipboard=unnamedplus
 let g:python3_host_prog = '/usr/local/bin/python3'
 let g:python_host_prog = '/usr/local/bin/python2.7'
 let g:ruby_host_prog = '~/.asdf/shims/neovim-ruby-host'
-let g:node_host_prog = '~/.asdf/installs/nodejs/13.1.0/.npm/bin/neovim-node-host'
+let g:node_host_prog = '~/.asdf/installs/nodejs/13.12.0/.npm/bin/neovim-node-host'
 
 " vim-yoink
 let g:yoinkIncludeDeleteOperations = 1
@@ -195,6 +193,8 @@ let g:fzf_custom_file_list = 'rg --files --hidden --follow --glob "!.git/*" --co
 
 let g:fzf_layout = { 'window': 'call nifoc#fzf#floating_window()' }
 let g:fzf_buffers_jump = 1
+
+command! -nargs=* -bang RgLiveSearch call nifoc#fzf#rg_live(<q-args>, <bang>0)
 
 " vim-rooter
 let g:rooter_change_directory_for_non_project_files = 'current'
@@ -414,6 +414,7 @@ set timeoutlen=500
 nnoremap <silent> <leader>o :call nifoc#fzf#smart_file_list()<CR>
 nnoremap <silent> <leader>t :Vista finder<CR>
 nmap <leader>s <Plug>RgRawSearch
+nmap <leader>S :RgLiveSearch<CR>
 vmap <leader>s <Plug>RgRawVisualSelection
 nmap <leader>* <Plug>RgRawWordUnderCursor
 nnoremap <silent> <leader>/ :History/<CR>

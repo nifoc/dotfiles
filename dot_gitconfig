@@ -9,6 +9,7 @@
 	default = simple
 [core]
 	editor = nvim
+	pager = delta --dark --theme="gruvbox"
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
 	excludesfile = /Users/daniel/.config/git/ignore

@@ -7,6 +7,8 @@
   "suggest.enablePreview": true,
   "suggest.preferCompleteThanJumpPlaceholder": true,
   "coc.preferences.colorSupport": false,
+  "coc.preferences.messageLevel": "warning",
+  "coc.preferences.jumpCommand": "vsplit",
   "git.command": "/usr/local/bin/git",
   "git.enableGlobalStatus": false,
   "git.enableGutters": true,
@@ -30,25 +32,8 @@
   "explorer.file.column.git.icon.deleted": "",
   "explorer.file.column.git.icon.renamed": "",
   "explorer.file.column.git.icon.ignored": "",
+  "elixir.pathToElixirLS": "~/bin/languageserver-elixir",
   "languageserver": {
-    "elixir_ls": {
-      "command": "languageserver-elixir",
-      "settings": {
-        "elixirLS": {
-          "dialyzerEnabled": false
-        }
-      },
-      "rootPatterns": [
-        "mix.exs",
-        "mix.lock",
-        ".formatter.exs",
-        ".git/"
-      ],
-      "filetypes": [
-        "elixir",
-        "eelixir"
-      ]
-    },
     "erlang_ls": {
       "command": "languageserver-erlang",
       "args": [
@@ -57,6 +42,8 @@
       ],
       "initializationOptions": {},
       "rootPatterns": [
+        "rebar.config",
+        "rebar.lock",
         ".git/"
       ],
       "filetypes": [
