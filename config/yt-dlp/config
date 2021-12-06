@@ -1,0 +1,21 @@
+# Add metadata and other things to the video
+--add-metadata
+--embed-subs
+#--embed-thumbnail
+--xattrs
+
+# Prefer best mp4 video
+-f 'bestvideo+bestaudio/best'
+
+# Subtitles
+--write-sub
+--sub-format best
+--sub-lang en,de
+
+# Download using aria2
+#--external-downloader aria2c
+#--external-downloader-args "-j 8 -s 8 -x 8 -k 1M --file-allocation none"
+
+# Other
+--no-overwrites
+--no-call-home
