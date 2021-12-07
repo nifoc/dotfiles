@@ -13,7 +13,6 @@
 
     ./programs/jq.nix
 
-    # ./config/nvim.nix
     ./config/yt-dlp.nix
   ];
 
@@ -31,7 +30,6 @@
       gallery-dl
       hexyl
       hyperfine
-      # neovim-nightly
       nix-prefetch-github
       parallel
       procs
