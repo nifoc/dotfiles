@@ -8,6 +8,10 @@ in
     enable = true;
     package = pkgs.neovim-nightly;
 
+    withNodeJs = false;
+    withRuby = false;
+    withPython3 = false;
+
     extraConfig = ''
       lua require('nix_init')
     '';
