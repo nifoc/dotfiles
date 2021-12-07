@@ -1,9 +1,9 @@
-lewis6991/impatient.nvim
 antoinemadec/FixCursorHold.nvim
 delphinus/vim-auto-cursorline
 folke/which-key.nvim
 svermeulen/vim-yoink
 svermeulen/vim-cutlass
+svermeulen/vim-subversive
 Mofiqul/dracula.nvim
 nvim-treesitter/nvim-treesitter
 nvim-treesitter/playground

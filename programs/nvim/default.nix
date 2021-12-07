@@ -37,7 +37,6 @@ in
 
     plugins = with customPlugins; [
       # Fixes
-      impatient-nvim
       FixCursorHold-nvim
       vim-auto-cursorline
 
@@ -50,6 +49,7 @@ in
       which-key-nvim
       { plugin = vim-yoink; optional = true; }
       { plugin = vim-cutlass; optional = true; }
+      { plugin = vim-subversive; optional = true; }
 
       # Themes
       dracula-nvim

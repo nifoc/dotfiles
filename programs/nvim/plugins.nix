@@ -1,18 +1,6 @@
 # This file has been auto-generated
 { pkgs, ... }:
 {
-  impatient-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "impatient.nvim";
-    version = "282b99b";
-    src = pkgs.fetchFromGitHub {
-      owner = "lewis6991";
-      repo = "impatient.nvim";
-      rev = "282b99b817d61e6c6860addf5629b641925a937a";
-      sha256 = "RtXtmtfpPAtZuDSn/eKaX12w1BybqUeWoKVGV2yEMCM=";
-      fetchSubmodules = false;
-    };
-    meta.homepage = "https://github.com/lewis6991/impatient.nvim";
-  };
   FixCursorHold-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "FixCursorHold.nvim";
     version = "0e4e22d";
@@ -72,6 +60,18 @@
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/svermeulen/vim-cutlass";
+  };
+  vim-subversive = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "vim-subversive";
+    version = "5695f97";
+    src = pkgs.fetchFromGitHub {
+      owner = "svermeulen";
+      repo = "vim-subversive";
+      rev = "5695f97fc803767bf657a5e512daec19dd1fd786";
+      sha256 = "+OIkKMwZsW6h5LCkI1mBspFUkCtqIX5RXdiLN+bbelI=";
+      fetchSubmodules = false;
+    };
+    meta.homepage = "https://github.com/svermeulen/vim-subversive";
   };
   dracula-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "dracula.nvim";
