@@ -48,9 +48,10 @@ in
 
       # Keybindings
       which-key-nvim
+      { plugin = vim-yoink; optional = true; }
+      { plugin = vim-cutlass; optional = true; }
 
       # Themes
-      tokyonight-nvim
       dracula-nvim
 
       # Syntax

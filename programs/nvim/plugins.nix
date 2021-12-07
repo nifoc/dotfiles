@@ -49,17 +49,29 @@
     };
     meta.homepage = "https://github.com/folke/which-key.nvim";
   };
-  tokyonight-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "tokyonight.nvim";
-    version = "b3a829d";
+  vim-yoink = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "vim-yoink";
+    version = "89ed693";
     src = pkgs.fetchFromGitHub {
-      owner = "folke";
-      repo = "tokyonight.nvim";
-      rev = "b3a829d2ba6344b5364fda71b5b7501f707d1bdf";
-      sha256 = "n00mEFtTbN8XAmlOcjtToagaUqROJ8Id4E4kAPXpEVk=";
+      owner = "svermeulen";
+      repo = "vim-yoink";
+      rev = "89ed6934679fdbc3c20f552b50b1f869f624cd22";
+      sha256 = "ekGKOYzmdaMqAun/3fRGlhA7bLKuhzsXsEcFNukgFWU=";
       fetchSubmodules = false;
     };
-    meta.homepage = "https://github.com/folke/tokyonight.nvim";
+    meta.homepage = "https://github.com/svermeulen/vim-yoink";
+  };
+  vim-cutlass = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "vim-cutlass";
+    version = "7afd649";
+    src = pkgs.fetchFromGitHub {
+      owner = "svermeulen";
+      repo = "vim-cutlass";
+      rev = "7afd649415541634c8ce317fafbc31cd19d57589";
+      sha256 = "j5W9q905ApDf3fvCIS4UwyHYnEZu5Ictn+6JkV/xjig=";
+      fetchSubmodules = false;
+    };
+    meta.homepage = "https://github.com/svermeulen/vim-cutlass";
   };
   dracula-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "dracula.nvim";
@@ -123,12 +135,12 @@
   };
   plenary-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "plenary.nvim";
-    version = "c2bb2d8";
+    version = "e6267f7";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-lua";
       repo = "plenary.nvim";
-      rev = "c2bb2d8fd5b44bfc6aad3a5463c84576a98dd4a9";
-      sha256 = "ZcQEmGOMU5m17CERIBCqpRgQBHbEpP4h52l7gdCXmok=";
+      rev = "e6267f79481064eee53950571f53cbaafb08417d";
+      sha256 = "c8su4sB4g+tFJjITzZ/Obu3qyTVTVl5UfGGINxk+7Ag=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/nvim-lua/plenary.nvim";
@@ -196,12 +208,12 @@
   };
   lsp-trouble-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "lsp-trouble.nvim";
-    version = "4a45782";
+    version = "7d9cfcc";
     src = pkgs.fetchFromGitHub {
       owner = "folke";
       repo = "lsp-trouble.nvim";
-      rev = "4a45782db943f95500b61ffce187bf4cada954ae";
-      sha256 = "qkJkMPxmUVytymwgXI8BW3OPMZcGRT9pSA4LzXhOlZg=";
+      rev = "7d9cfccf9549a555bd45aebc38226daab373483c";
+      sha256 = "cmOsQBloK116GYtXbKTQ08Zjc4reZE1ygHQS5IMUviw=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/folke/lsp-trouble.nvim";
@@ -232,12 +244,12 @@
   };
   nvim-cmp = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-cmp";
-    version = "edc2a50";
+    version = "af07ff9";
     src = pkgs.fetchFromGitHub {
       owner = "hrsh7th";
       repo = "nvim-cmp";
-      rev = "edc2a503ee33e2a62e94a2257e9e3bbd50fa6feb";
-      sha256 = "5/ZvonFG65i+bBKAdlgD0+zI87BgIaEGFwocsPkbmS0=";
+      rev = "af07ff9b7973e95eff9e0275e13fe0350281208b";
+      sha256 = "8+cm+N6FYFOu/BBornCVf5cwUY2F4u6roUU8ECdkLSM=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/hrsh7th/nvim-cmp";
@@ -508,24 +520,24 @@
   };
   gitsigns-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "gitsigns.nvim";
-    version = "5eb87a0";
+    version = "6bad541";
     src = pkgs.fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "5eb87a0b05914d3763277ebe257bd5bafcdde8cd";
-      sha256 = "jT01Opd/PEqXs80ZLCRqVcs0H28df+rNNp3n5wZ7lQk=";
+      rev = "6bad541a403ceabf4ce777c5c9d2ec2ac99b0ed3";
+      sha256 = "AeaF06XZOG4+LrO4TvpWKb3d45OQFrr0120LCWZIsQo=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/lewis6991/gitsigns.nvim";
   };
   spellsitter-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "spellsitter.nvim";
-    version = "3b378cf";
+    version = "d4c58c2";
     src = pkgs.fetchFromGitHub {
       owner = "lewis6991";
       repo = "spellsitter.nvim";
-      rev = "3b378cfb74dcdd159f52d6506401915f65c51fd5";
-      sha256 = "oFx5/IU3T8iHQY6lFnMBynyU8btQgn9cXyOR53C5E0o=";
+      rev = "d4c58c2f8f199fcaff5465cd86d1ee85e10dad83";
+      sha256 = "hebxL4HzfsH1TZr3dBfdUdZm5NiWw02WaYIMlSdnX3I=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/lewis6991/spellsitter.nvim";

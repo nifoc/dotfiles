@@ -27,6 +27,7 @@ require('nifoc.config.cursorline')
 
 -- Keybindings
 require('nifoc.config.whichkey')
+require('nifoc.config.yoink')
 
 -- Syntax
 require('nifoc.config.treesitter')

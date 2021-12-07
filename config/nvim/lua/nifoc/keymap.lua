@@ -128,9 +128,13 @@ function M.setup()
   vim.api.nvim_set_keymap('i', '<S-Left>', '<C-o>^', {noremap = true})
   vim.api.nvim_set_keymap('i', '<S-Right>', '<C-o>$', {noremap = true})
 
-  vim.api.nvim_set_keymap('v', 'p', '"_dP', {noremap = true})
-  vim.api.nvim_set_keymap('n', 'd', '"_d', {noremap = true})
-  vim.api.nvim_set_keymap('v', 'd', '"_d', {noremap = true})
+  -- vim-yoink
+  vim.api.nvim_set_keymap('n', 'p', '<Plug>(YoinkPaste_p)')
+  vim.api.nvim_set_keymap('n', 'P', '<Plug>(YoinkPaste_P)')
+  vim.api.nvim_set_keymap('n', 'gp', '<Plug>(YoinkPaste_gp)')
+  vim.api.nvim_set_keymap('n', 'gP', '<Plug>(YoinkPaste_gP)')
+  vim.api.nvim_set_keymap('n', 'y', '<Plug>(YoinkYankPreserveCursorPosition)')
+  vim.api.nvim_set_keymap('x', 'y', '<Plug>(YoinkYankPreserveCursorPosition)')
 
   vim.api.nvim_set_keymap('n', '<C-t>', '<cmd>lua require("FTerm").toggle()<CR>', {noremap = true, silent = true})
   vim.api.nvim_set_keymap('t', '<C-t>', '<C-\\><C-n><cmd>lua require("FTerm").toggle()<CR>', {noremap = true, silent = true})
