@@ -1,8 +1,5 @@
 local ns = require('nifoc.utils.statusline')
 
---local theme_config = require('tokyonight.config')
---local theme_colors = require('tokyonight.colors').setup(theme_config)
-
 require('lualine').setup {
   options = {
     theme = 'dracula-nvim',
@@ -20,9 +17,6 @@ require('lualine').setup {
       {
         'diagnostics',
         sources = {'nvim_lsp'},
-        --color_error = {fg =theme_colors.error},
-        --color_warn = {fg = theme_colors.warning},
-        --color_info = {fg = theme_colors.info},
         symbols = {error = ' ', warn = ' ', info = ' '}
       },
     },
