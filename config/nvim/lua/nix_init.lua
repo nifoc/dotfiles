@@ -1,5 +1,4 @@
 -- Preamble
-pcall(require, 'impatient')
 vim.cmd('syntax enable')
 vim.cmd('filetype plugin indent on')
 vim.opt.compatible = false
