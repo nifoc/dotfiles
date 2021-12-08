@@ -316,12 +316,12 @@
   };
   cmp-buffer = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "cmp-buffer";
-    version = "a706dc6";
+    version = "a0fe524";
     src = pkgs.fetchFromGitHub {
       owner = "hrsh7th";
       repo = "cmp-buffer";
-      rev = "a706dc69c49110038fe570e5c9c33d6d4f67015b";
-      sha256 = "FdWs15eTad4igwN5F5+CKxSMQi9eX07BXjM/HgTIURc=";
+      rev = "a0fe52489ff6e235d62407f8fa72aef80222040a";
+      sha256 = "FYAb3Wv9wbaxvv7PXi4ko4mqmsRo2V7yM42Ci+3ST0w=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/hrsh7th/cmp-buffer";
@@ -388,12 +388,12 @@
   };
   Comment-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "Comment.nvim";
-    version = "00aff9f";
+    version = "c24626e";
     src = pkgs.fetchFromGitHub {
       owner = "numToStr";
       repo = "Comment.nvim";
-      rev = "00aff9f0fb75328c686a8484cd090ad72c355cb1";
-      sha256 = "l84IFDOiqfPBdWxKbp51JJZZG6iTv/uBHtV5vFHU+gc=";
+      rev = "c24626e8344d3cc43be9eff4139e18a70a76940d";
+      sha256 = "y4KOhaSCyBmxOYnQevMO1de/SzhIYkZa0M0d6hGYdNQ=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/numToStr/Comment.nvim";
