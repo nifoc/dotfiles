@@ -65,6 +65,17 @@
         format = "\\[[$symbol($version)]($style)\\]";
       };
 
+      status = {
+        disabled = false;
+        symbol = " ";
+        success_symbol = " ";
+        not_executable_symbol = " ";
+        not_found_symbol = " ";
+        sigint_symbol = " ";
+        signal_symbol = " ";
+        map_symbol = true;
+      };
+
       time = {
         format = "\\[[$time]($style)\\]";
       };
