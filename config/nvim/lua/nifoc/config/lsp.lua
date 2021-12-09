@@ -35,6 +35,11 @@ local function custom_attach(client, bufnr)
   vim.api.nvim_command('doautocmd <nomodeline> User NifocLspAttached')
 end
 
+local function custom_attach_no_format(client, bufnr)
+  client.resolved_capabilities.document_formatting = false
+  custom_attach(client, bufnr)
+end
+
 -- Setup
 
 vim.cmd('sign define LspDiagnosticsSignError text= texthl=LspDiagnosticsSignError linehl= numhl=')
@@ -91,16 +96,11 @@ end
 
 -- Default configuration without formatting
 
-local default_servers_no_formatting = {
-  'tsserver'
-}
+local default_servers_no_formatting = {}
 
 for _, name in ipairs(default_servers_no_formatting) do
   lsp[name].setup(vim.tbl_extend('force', default_config, {
-    on_attach = function(client, bufnr)
-      client.resolved_capabilities.document_formatting = false
-      custom_attach(client, bufnr)
-    end,
+    on_attach = custom_attach_no_format,
   }))
 end
 
@@ -108,6 +108,11 @@ end
 
 lsp.elixirls.setup(vim.tbl_extend('force', default_config, {
   cmd = { 'elixir-ls' },
+}))
+
+lsp.tsserver.setup(vim.tbl_extend('force', default_config, {
+  cmd = { 'typescript-language-server', '--stdio', '--tsserver-path', 'tsserver'},
+  on_attach = custom_attach_no_format,
 }))
 
 lsp.jsonls.setup(vim.tbl_extend('force', default_config, {
