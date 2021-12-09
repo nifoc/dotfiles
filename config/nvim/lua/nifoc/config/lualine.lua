@@ -16,7 +16,7 @@ require('lualine').setup {
       'b:gitsigns_status',
       {
         'diagnostics',
-        sources = {'nvim_lsp'},
+        sources = {'nvim_diagnostic'},
         symbols = {error = ' ', warn = ' ', info = ' '}
       },
     },
