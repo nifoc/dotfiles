@@ -3,5 +3,5 @@ require('trouble').setup {
     previous = "<Up>",
     next = "<Down>",
   },
-  use_lsp_diagnostic_signs = true
+  use_diagnostic_signs = true
 }
