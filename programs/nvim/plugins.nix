@@ -147,12 +147,12 @@
   };
   telescope-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "telescope.nvim";
-    version = "914da77";
+    version = "5f37fbf";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "914da77bb7528e72be602c0de7dbb0952839f06f";
-      sha256 = "fJvou1jy+aLyhzd3AUTz9/Zb10cPoedM5IFmiNY1hww=";
+      rev = "5f37fbfa837dfee7ecd30f388b271f4a71c0a9e0";
+      sha256 = "IaMmO1z02jSHuqYiMdGDOOmgi9kmw8fEHnUjQhRLyRo=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/nvim-telescope/telescope.nvim";
@@ -184,12 +184,12 @@
   };
   nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-lspconfig";
-    version = "22b21bc";
+    version = "9e18d29";
     src = pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "22b21bc000a8320675ea10f4f50f1bbd48d09ff2";
-      sha256 = "9SrA6rsrpjVZC2OuEaC1faYXqpT8rrDsZ4Sqz60D7Y4=";
+      rev = "9e18d297f8deb90a398460a62c7c551f9e0b834c";
+      sha256 = "hicmJT2t32zcyVf7e7Q6rEV0SAQB3S0Qt40kgk+HCiM=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/neovim/nvim-lspconfig";
@@ -208,12 +208,12 @@
   };
   lsp-trouble-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "lsp-trouble.nvim";
-    version = "7d9cfcc";
+    version = "b5353dd";
     src = pkgs.fetchFromGitHub {
       owner = "folke";
       repo = "lsp-trouble.nvim";
-      rev = "7d9cfccf9549a555bd45aebc38226daab373483c";
-      sha256 = "cmOsQBloK116GYtXbKTQ08Zjc4reZE1ygHQS5IMUviw=";
+      rev = "b5353ddcd09bd7e93d6f934149d25792d455a8fb";
+      sha256 = "VMT6g8dKG3/XvmPMtyHkInADr+ePdDZIyttPL6m+kNQ=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/folke/lsp-trouble.nvim";
@@ -448,12 +448,12 @@
   };
   lualine-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "lualine.nvim";
-    version = "4231b63";
+    version = "3a17e2d";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-lualine";
       repo = "lualine.nvim";
-      rev = "4231b63196a0dcc94e62e914d2b768ef31b5beb7";
-      sha256 = "iT80W0nOIe4TyfeH09BH9hHPIthCUuGPAtUVk/d5NbA=";
+      rev = "3a17e2dbca8accbd3733b4fb076f01e00a456ba4";
+      sha256 = "4FwvSwkbtlsuCSHdThS7DHdS8fuz4EoC2xmv3xHmUfw=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/nvim-lualine/lualine.nvim";
@@ -520,24 +520,24 @@
   };
   gitsigns-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "gitsigns.nvim";
-    version = "caf51af";
+    version = "aaf6804";
     src = pkgs.fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "caf51af051cdca33a85edd3baba06fcc33df70e4";
-      sha256 = "bT4ro5DvVVUyaB1p4nNGxNEnNOT8wYlENduFXcCVpg0=";
+      rev = "aaf680472187798d5945e39179b540bd3bf80341";
+      sha256 = "ag/OKNUvGSJtcUt8TZS3CRAMViBVPRZD09YJqnFMY2g=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/lewis6991/gitsigns.nvim";
   };
   spellsitter-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "spellsitter.nvim";
-    version = "9d3f74d";
+    version = "504e897";
     src = pkgs.fetchFromGitHub {
       owner = "lewis6991";
       repo = "spellsitter.nvim";
-      rev = "9d3f74dccf242193c8f8c576a5a2b4665cb8a07f";
-      sha256 = "qd3ECHkWIAmK3dweTYomw/7ekENi4YHa6l9LSJujofU=";
+      rev = "504e89725ec68b163f1a59294031a43b950836dc";
+      sha256 = "t9MR8Zpp+prEsTj4S1f1Zzf5KtPNSqW2Fl3GbvDLUrA=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/lewis6991/spellsitter.nvim";
