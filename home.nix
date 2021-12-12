@@ -4,6 +4,7 @@
   imports = [
     ./programs/fish.nix
     ./programs/starship.nix
+    ./config/kitty.nix
 
     ./programs/nvim
 
