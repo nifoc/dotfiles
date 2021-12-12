@@ -37,6 +37,7 @@
       ripgrep
       rtmpdump
       tokei
+      wget
       yt-dlp
     ];
   };
