@@ -33,10 +33,24 @@
       la = "exa --long --all --group --header --group-directories-first --sort=type --icons";
       lg = "exa --long --all --group --header --git";
       lt = "exa --long --all --group --header --tree --level ";
+      ytdl = "ytdl_with_options";
+      ytdl_mp4 = "ytdl_with_options -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]'";
+      yti = "ytdl_with_options -F";
       upa = "nix flake update ~/.config/nixpkgs -v";
       upp = "nix flake update ./ -v";
       upn = "$HOME/.config/nixpkgs/programs/nvim/update-plugins.sh";
       ucl = "nix-collect-garbage -d && nix-store --gc && nix-store --optimise -v";
+    };
+
+    functions = {
+      wget-browser = ''
+        set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
+        wget -U "$user_agent" $argv
+      '';
+
+      ytdl_with_options = ''
+        yt-dlp --config-location "$HOME/.config/yt-dlp/config" --download-archive "$HOME/.config/youtube-dl/archive" $argv
+      '';
     };
 
     shellInit = ''
