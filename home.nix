@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -40,6 +40,12 @@
       wget
       yt-dlp
     ];
+
+    activation = {
+      reportChanges = lib.hm.dag.entryAnywhere ''
+        nix store diff-closures $oldGenPath $newGenPath
+      '';
+    };
   };
 
   programs = {
