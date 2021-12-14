@@ -17,6 +17,7 @@ in
     '';
 
     extraPackages = with pkgs; [
+      nodejs-16_x
       tree-sitter
 
       # LSP
