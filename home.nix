@@ -23,6 +23,7 @@
       arp-scan
       atomicparsley
       cachix
+      cliclick
       dogdns
       exa
       fd

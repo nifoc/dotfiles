@@ -8,6 +8,8 @@
     };
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    nifoc-overlay.url = "github:nifoc/nix-overlay";
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
@@ -21,11 +23,13 @@
         configuration = { config, pkgs, ... }:
           let
             overlay-neovim = inputs.neovim-nightly-overlay.overlay;
+            overlay-nifoc = inputs.nifoc-overlay.overlay;
           in
           {
             nixpkgs = {
               overlays = [
                 overlay-neovim
+                overlay-nifoc
               ];
 
               config = {
