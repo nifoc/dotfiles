@@ -15,7 +15,7 @@ nvim-telescope/telescope-fzf-native.nvim/make
 ahmedkhalf/project.nvim
 neovim/nvim-lspconfig
 kyazdani42/nvim-web-devicons
-folke/lsp-trouble.nvim
+folke/trouble.nvim
 onsails/lspkind-nvim
 nvim-lua/lsp-status.nvim
 hrsh7th/nvim-cmp
@@ -36,7 +36,7 @@ blackCauldron7/surround.nvim
 andymass/vim-matchup
 mbbill/undotree
 nvim-lualine/lualine.nvim
-akinsho/nvim-bufferline.lua
+akinsho/bufferline.nvim
 kyazdani42/nvim-tree.lua
 lukas-reineke/indent-blankline.nvim
 lukas-reineke/virt-column.nvim

@@ -1,11 +1,16 @@
 #!/usr/bin/env nix-shell
 #!nix-shell update-shell.nix -i bash
 
+set -euo pipefail
+
 script_dir="$(dirname "$(realpath "$0")")"
 plugins="${script_dir}/plugins.txt"
 nix_new_file="${script_dir}/plugins_new.nix"
 nix_file="${script_dir}/plugins.nix"
 
+github_auth="$(cat "${script_dir}/github.auth")"
+
+rm -f "$nix_new_file"
 echo '# This file has been auto-generated' >"$nix_new_file"
 echo '{ pkgs, ... }:' >>"$nix_new_file"
 
@@ -13,16 +18,25 @@ echo "{" >>"$nix_new_file"
 while IFS='' read -r LINE || [ -n "${LINE}" ]; do
   owner="$(echo "$LINE" | cut -d'/' -f1)"
   repo="$(echo "$LINE" | cut -d'/' -f2)"
+
+  echo "Updating ${owner}/${repo} ..."
+
   build="$(echo "$LINE" | cut -d'/' -f3)"
   name="$(echo "$repo" | tr [.] '-')"
   src="$(nix-prefetch-github --nix --no-fetch-submodules "$owner" "$repo" 2>/dev/null | tail -n +4)"
   rev="$(echo "$src" | grep rev | cut -d '"' -f 2)"
+  commit_info="$(curl -u "$github_auth" --silent "https://api.github.com/repos/${owner}/${repo}/commits/${rev}")"
+  commit_date="$(echo "$commit_info" | jq -r '.commit.committer.date')"
 
-  echo "Updating ${owner}/${repo} ..."
+  if [[ "$commit_date" == "null" ]]; then
+    commit_date="$(echo "$commit_info" | jq -r '.commit.author.date')"
+  fi
+
+  version="$(date -d "$commit_date" "+%s")"
 
   echo "${name} = pkgs.vimUtils.buildVimPluginFrom2Nix {" >>"$nix_new_file"
   echo "pname = \"${repo}\";" >>"$nix_new_file"
-  echo "version = \"${rev:0:7}\";" >>"$nix_new_file"
+  echo "version = \"${version}\";" >>"$nix_new_file"
   echo "src = ${src};" >>"$nix_new_file"
 
   if [ -n "$build" ]; then

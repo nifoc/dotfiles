@@ -68,7 +68,7 @@ in
 
       # LSP
       nvim-lspconfig
-      lsp-trouble-nvim
+      trouble-nvim
       lspkind-nvim
       lsp-status-nvim
       vim-illuminate
@@ -100,7 +100,7 @@ in
       # UI
       undotree
       lualine-nvim
-      nvim-bufferline-lua
+      bufferline-nvim
       nvim-tree-lua
       indent-blankline-nvim
       virt-column-nvim
