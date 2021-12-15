@@ -62,6 +62,16 @@
         set -gx PATH "$HOME/bin" $PATH
       end
 
+      for app_path in \
+        "/Applications/Little Snitch.app/Contents/Components" \
+        "/Applications/Wireshark.app/Contents/MacOS" \
+        "/usr/local/MacGPG2/bin"
+        
+        if test -d "$app_path"
+          set -gx PATH $PATH "$app_path"
+        end
+      end
+
       # Vendor Configuration
       if test -d "$HOME/.nix-profile/share/fish/vendor_conf.d"
         for vendor_conf in $HOME/.nix-profile/share/fish/vendor_conf.d/*.fish
