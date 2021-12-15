@@ -1,7 +1,11 @@
 #!/usr/bin/env nix-shell
 #!nix-shell update-shell.nix -i bash
 
-set -euo pipefail
+set -eEuo pipefail
+
+current_command='none'
+trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
+trap 'code=$?; if [ "$code" -ne "0" ]; then echo "\"${last_command}\" command ended with exit code $code."; fi' EXIT
 
 script_dir="$(dirname "$(realpath "$0")")"
 plugins="${script_dir}/plugins.txt"
@@ -51,9 +55,15 @@ echo "}" >>"$nix_new_file"
 nixpkgs-fmt "$nix_new_file"
 
 if test -f "$nix_file"; then
+  set +eo pipefail
   diff -U 2 "$nix_file" "$nix_new_file" | bat --paging=never -ldiff
+  set -eo pipefail
+
   mv "$nix_new_file" "$nix_file"
 else
   mv "$nix_new_file" "$nix_file"
+
+  set +eo pipefail
   bat --paging=never "$nix_file"
+  set -eo pipefail
 fi
