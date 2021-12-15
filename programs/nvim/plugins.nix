@@ -208,12 +208,12 @@
   };
   trouble-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "trouble.nvim";
-    version = "1639469027";
+    version = "1639606855";
     src = pkgs.fetchFromGitHub {
       owner = "folke";
       repo = "trouble.nvim";
-      rev = "405f4750d22d050ee682e4a21c2869cff328f4a7";
-      sha256 = "i3me5JncQIFWGdOMx1I+j3yuSadvSNGWfq3WTniPzrc=";
+      rev = "aae12e7b23b3a2b8337ec5b1d6b7b4317aa3929b";
+      sha256 = "6oCmwQJi7Jdwt1fuXZjBwJXfV5TImrCGAeI8VZa/jIM=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/folke/trouble.nvim";
