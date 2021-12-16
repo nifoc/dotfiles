@@ -13,6 +13,7 @@ in
     withPython3 = false;
 
     extraConfig = ''
+      lua require('impatient')
       lua require('nix_init')
     '';
 
@@ -38,6 +39,7 @@ in
 
     plugins = with customPlugins; [
       # Fixes
+      impatient-nvim
       FixCursorHold-nvim
       vim-auto-cursorline
 

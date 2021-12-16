@@ -1,6 +1,18 @@
 # This file has been auto-generated
 { pkgs, ... }:
 {
+  impatient-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "impatient.nvim";
+    version = "1636462849";
+    src = pkgs.fetchFromGitHub {
+      owner = "lewis6991";
+      repo = "impatient.nvim";
+      rev = "282b99b817d61e6c6860addf5629b641925a937a";
+      sha256 = "RtXtmtfpPAtZuDSn/eKaX12w1BybqUeWoKVGV2yEMCM=";
+      fetchSubmodules = false;
+    };
+    meta.homepage = "https://github.com/lewis6991/impatient.nvim";
+  };
   FixCursorHold-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "FixCursorHold.nvim";
     version = "1635853855";
@@ -75,12 +87,12 @@
   };
   dracula-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "dracula.nvim";
-    version = "1638432616";
+    version = "1639669370";
     src = pkgs.fetchFromGitHub {
       owner = "Mofiqul";
       repo = "dracula.nvim";
-      rev = "aa9d195ab856b1c8e9d3afca0768cdc2d992a4a7";
-      sha256 = "qRwhrXwpcasr8JC2W7oBiKLsywUzYgSDL8n9rAeQWkk=";
+      rev = "af0de845997cb7464f816766ee2f291998594829";
+      sha256 = "U7D8Onc7aONIQX6AjKHxBakLlzJl9nMPumoR4s68J3c=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/Mofiqul/dracula.nvim";
@@ -268,12 +280,12 @@
   };
   LuaSnip = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "LuaSnip";
-    version = "1639652018";
+    version = "1639684208";
     src = pkgs.fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "64175a11fc6e8ba81b8f2c6fc93c307f1f34fd43";
-      sha256 = "GE82M7ZB4znYFqQ58ii793RFprU+b4gLW8FB7ooR6AA=";
+      rev = "19ee75526c93fe32facb6bd0e116052280a12929";
+      sha256 = "df0/jUn/SkOwbdgBDFawIGYJLNCC+K840EN0uJIsKW0=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/L3MON4D3/LuaSnip";

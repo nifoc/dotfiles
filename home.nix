@@ -43,7 +43,11 @@
     ];
 
     activation = {
-      reportChanges = lib.hm.dag.entryAnywhere ''
+      cleanAppCaches = lib.hm.dag.entryAfter [ "onFilesChange" "installPackages" "copyFonts" ] ''
+        nvim -c 'try | execute "LuaCacheClear" | catch /.*/ | echo "LuaCacheClear not found" | endtry | q' --headless 2> /dev/null
+      '';
+
+      reportChanges = lib.hm.dag.entryAfter [ "onFilesChange" "installPackages" "copyFonts" ] ''
         nix store diff-closures $oldGenPath $newGenPath
       '';
     };
