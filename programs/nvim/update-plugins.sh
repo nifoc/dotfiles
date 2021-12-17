@@ -14,6 +14,11 @@ nix_file="${script_dir}/plugins.nix"
 
 github_auth="$(cat "${script_dir}/github.auth")"
 
+if [ -z "$github_auth" ]; then
+  echo "Please supply GitHub API credentials"
+  exit 1
+fi
+
 rm -f "$nix_new_file"
 echo '# This file has been auto-generated' >"$nix_new_file"
 echo '{ pkgs, ... }:' >>"$nix_new_file"
