@@ -44,7 +44,11 @@
 
     activation = {
       cleanAppCaches = lib.hm.dag.entryAfter [ "onFilesChange" "installPackages" "copyFonts" ] ''
-        nvim -c 'try | execute "LuaCacheClear" | catch /.*/ | echo "LuaCacheClear not found" | endtry | q' --headless 2> /dev/null
+        echo -n "Running LuaCacheClear: "
+        nvim -c 'try | execute "LuaCacheClear" | echo "Done" | catch /.*/ | echo "Command not found" | endtry | q' --headless
+        printf '\nRemoving luacache file: '
+        rm -f "$HOME/.cache/nvim/luacache"
+        echo "Done"
       '';
 
       reportChanges = lib.hm.dag.entryAfter [ "onFilesChange" "installPackages" "copyFonts" ] ''
