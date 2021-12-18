@@ -1,7 +1,8 @@
 { pkgs ? import <nixpkgs> { } }:
+with pkgs;
 
-pkgs.mkShell {
-  packages = with pkgs; [
+mkShell {
+  packages = [
     bat
     curl
     jq
