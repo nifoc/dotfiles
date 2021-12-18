@@ -1,37 +1,18 @@
 local lsp = require('lspconfig')
 local lsp_status = require('lsp-status')
 local illuminate = require('illuminate')
-local keymap = require('nifoc.keymap')
-
-local function enable_lsp_fixer(_)
-  vim.cmd [[
-    augroup nifoc_lsp_formatting
-      autocmd! * <buffer>
-      autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
-    augroup end
-  ]]
-end
+local diagnostic_utils = require('nifoc.utils.diagnostic')
 
 local function custom_attach(client, bufnr)
   -- Plugin attachments
   lsp_status.on_attach(client)
-  keymap.lsp_attach(client, bufnr)
 
   if client.resolved_capabilities.document_highlight then
     illuminate.on_attach(client)
   end
 
-  if vim.b.nifoc_lsp_enabled == nil then
-    vim.api.nvim_buf_set_var(bufnr, 'nifoc_lsp_enabled', 1)
-    vim.cmd("setlocal omnifunc=v:lua.vim.lsp.omnifunc")
-  end
-
-  if client.resolved_capabilities.document_formatting and vim.b.nifoc_fixer_enabled == nil then
-    vim.api.nvim_buf_set_var(bufnr, 'nifoc_fixer_enabled', 1)
-
-    enable_lsp_fixer(client)
-  end
-
+  diagnostic_utils.maybe_enable_lsp(client, bufnr)
+  diagnostic_utils.maybe_enable_fixer(client, bufnr)
   vim.api.nvim_command('doautocmd <nomodeline> User NifocLspAttached')
 end
 
@@ -42,22 +23,19 @@ end
 
 -- Setup
 
-vim.cmd('sign define LspDiagnosticsSignError text= texthl=LspDiagnosticsSignError linehl= numhl=')
-vim.cmd('sign define LspDiagnosticsSignWarning text= texthl=LspDiagnosticsSignWarning linehl= numhl=')
-vim.cmd('sign define LspDiagnosticsSignInformation text= texthl=LspDiagnosticsSignInformation linehl= numhl=')
-vim.cmd('sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=')
+vim.cmd('sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=')
+vim.cmd('sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=')
+vim.cmd('sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=')
+vim.cmd('sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=')
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    virtual_text = {
-      prefix = '■ ',
-      spacing = 4,
-    },
-    signs = false,
-    update_in_insert = false,
-  }
-)
+vim.diagnostic.config({
+  underline = true,
+  virtual_text = {
+    source = 'if_many',
+  },
+  signs = false,
+  update_in_insert = false,
+})
 
 lsp_status.register_progress()
 

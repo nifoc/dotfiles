@@ -154,11 +154,11 @@ function M.lsp_attach(client, bufnr)
       d = {
         name = "diagnostics",
         d = {
-          "<cmd>LspTroubleToggle lsp_document_diagnostics<CR>",
+          "<cmd>TroubleToggle document_diagnostics<CR>",
           "Document Diagnostics"
         },
         w = {
-          "<cmd>LspTroubleToggle lsp_workspace_diagnostics<CR>",
+          "<cmd>TroubleToggle workspace_diagnostics<CR>",
           "Workspace Diagnostics"
         },
       },
@@ -172,11 +172,11 @@ function M.lsp_attach(client, bufnr)
       f = {
         name = "find",
         r = {
-          "<cmd>LspTroubleToggle lsp_references<CR>",
+          "<cmd>TroubleToggle lsp_references<CR>",
           "References"
         },
         d = {
-          "<cmd>LspTroubleToggle lsp_definitions<CR>",
+          "<cmd>TroubleToggle lsp_definitions<CR>",
           "Definitions"
         },
       },
