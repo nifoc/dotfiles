@@ -31,9 +31,11 @@ in
       taplo-lsp
 
       # LSP Tools
+      ansible-lint
       hadolint
       shellcheck
       shfmt
+      statix
     ];
 
     plugins = with customPlugins; [

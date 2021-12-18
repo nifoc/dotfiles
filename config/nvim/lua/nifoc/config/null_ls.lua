@@ -4,11 +4,17 @@ local diagnostic_utils = require('nifoc.utils.diagnostic')
 
 null_ls.setup({
   sources = {
-    builtins.diagnostics.credo,
     builtins.formatting.fish_indent,
+    builtins.formatting.shfmt.with({extra_args = { '-i', '2' }}),
+
+    builtins.diagnostics.ansiblelint,
+    builtins.diagnostics.credo,
     builtins.diagnostics.hadolint,
     builtins.diagnostics.shellcheck.with({extra_args = { '-f', 'gcc', '-x' }}),
-    builtins.formatting.shfmt.with({extra_args = { '-i', '2' }}),
+    builtins.diagnostics.statix,
+
+    builtins.code_actions.shellcheck,
+    builtins.code_actions.statix,
   },
 
   on_attach = function(client, bufnr)
