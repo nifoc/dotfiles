@@ -79,10 +79,10 @@ local default_config = {
 }
 
 local default_servers = {
-  'angularls',
   'bashls',
   'cssls',
   'dockerls',
+  'eslint',
   'html',
   'rnix',
   'sqls',
@@ -152,38 +152,4 @@ lsp.sumneko_lua.setup(vim.tbl_extend('force', default_config, {
       telemetry = {enable = false},
     },
   },
-}))
-
--- Try to start efm as the last language server
-
-lsp.efm.setup(vim.tbl_extend('force', default_config, {
-  cmd = {
-    'efm-langserver',
-    '-c',
-    vim.fn.globpath('~', '.config/nvim/efm.yml'),
-  },
-  filetypes = {
-    'dockerfile',
-    'elixir',
-    'fish',
-    'javascript',
-    'sh',
-  },
-  on_attach = function(client, bufnr)
-    local disable_formatter_ft = { 'dockerfile', 'elixir' }
-    local slow_ft = {}
-
-    if vim.tbl_contains(disable_formatter_ft, vim.bo.filetype) then
-      client.resolved_capabilities.document_formatting = false
-    end
-
-    if vim.tbl_contains(slow_ft, vim.bo.filetype) then
-      client.resolved_capabilities.text_document_did_change = vim.lsp.protocol.TextDocumentSyncKind.None
-    end
-
-    client.resolved_capabilities.document_symbol = false
-    client.resolved_capabilities.workspace_symbol = false
-
-    custom_attach(client, bufnr)
-  end,
 }))

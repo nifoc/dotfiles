@@ -15,6 +15,7 @@ nvim-telescope/telescope.nvim
 nvim-telescope/telescope-fzf-native.nvim/make
 ahmedkhalf/project.nvim
 neovim/nvim-lspconfig
+jose-elias-alvarez/null-ls.nvim
 kyazdani42/nvim-web-devicons
 folke/trouble.nvim
 onsails/lspkind-nvim

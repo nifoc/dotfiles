@@ -22,7 +22,6 @@ in
       tree-sitter
 
       # LSP
-      efm-langserver
       nodePackages.bash-language-server
       nodePackages.dockerfile-language-server-nodejs
       nodePackages.vscode-langservers-extracted
@@ -70,6 +69,7 @@ in
 
       # LSP
       nvim-lspconfig
+      null-ls-nvim
       trouble-nvim
       lspkind-nvim
       lsp-status-nvim
