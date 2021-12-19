@@ -86,6 +86,10 @@ function M.setup()
         function() require('gitsigns').blame_line() end,
         "Blame Line"
       },
+      c = {
+        function() _G.__fterm_lazygit() end,
+        "lazygit"
+      },
     },
     d = {
       name = "debug",
