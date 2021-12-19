@@ -48,29 +48,6 @@ function M.filetype()
   end
 end
 
-function M.diagnostics_status()
-  if buffer_has_lsp() then
-    local status = require('lsp-status').diagnostics()
-    local errors, warnings, info, hints = status.errors, status.warnings, status.info, status.hints
-    local status_txt = {}
-
-    if errors > 0 then table.insert(status_txt, ' ' .. errors) end
-    if warnings > 0 then table.insert(status_txt, ' ' .. warnings) end
-    if info > 0 then table.insert(status_txt, ' ' .. info) end
-    if hints > 0 then table.insert(status_txt, ' ' .. hints) end
-
-    local formatted_status = table.concat(status_txt, ' ')
-
-    if formatted_status:len() > 0 then
-      return formatted_status
-    else
-      return ''
-    end
-  else
-    return ''
-  end
-end
-
 function M.gitsigns_formatter(status)
   local added, changed, removed = status.added, status.changed, status.removed
   local result = {}

@@ -3,6 +3,8 @@ local builtins = null_ls.builtins
 local diagnostic_utils = require('nifoc.utils.diagnostic')
 
 null_ls.setup({
+  debounce = 700,
+
   sources = {
     builtins.formatting.fish_indent,
     builtins.formatting.shfmt.with({extra_args = { '-i', '2' }}),

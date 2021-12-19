@@ -38,6 +38,7 @@ require('nifoc.config.project')
 require('nifoc.config.todo_comments')
 
 -- LSP
+require('nifoc.config.diagnostic')
 require('nifoc.config.lsp')
 require('nifoc.config.null_ls')
 require('nifoc.config.lsp_trouble')
