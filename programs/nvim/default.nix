@@ -80,6 +80,7 @@ in
       # cmp
       nvim-cmp
       cmp-nvim-lsp
+      cmp-nvim-lsp-signature-help
       LuaSnip
       cmp_luasnip
       cmp-nvim-lua

@@ -208,12 +208,12 @@
   };
   null-ls-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "null-ls.nvim";
-    version = "1639855372";
+    version = "1639941585";
     src = pkgs.fetchFromGitHub {
       owner = "jose-elias-alvarez";
       repo = "null-ls.nvim";
-      rev = "b9a1db1990e6c7e27cfe5f6b0a7fbae47dc63849";
-      sha256 = "tv1IAfrWe7lJGOY25WnxgKPhgxpGQ1OwaDs6pIbuagA=";
+      rev = "80e1c2942f70bfdf16886a64692f274ef7356010";
+      sha256 = "QUXOLIeqH6zhNrUCm8J4ZoWkPOjaXdg+a+aCy9Gq690=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/jose-elias-alvarez/null-ls.nvim";
@@ -289,6 +289,18 @@
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/hrsh7th/cmp-nvim-lsp";
+  };
+  cmp-nvim-lsp-signature-help = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "cmp-nvim-lsp-signature-help";
+    version = "1638538406";
+    src = pkgs.fetchFromGitHub {
+      owner = "hrsh7th";
+      repo = "cmp-nvim-lsp-signature-help";
+      rev = "daa6a0c2484915e855e60eeff586860c68e59d83";
+      sha256 = "oNOZ3UxQA55SIg5cDR9Ot2lAr8fdth1+KUMj+AZumko=";
+      fetchSubmodules = false;
+    };
+    meta.homepage = "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help";
   };
   LuaSnip = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "LuaSnip";
@@ -424,12 +436,12 @@
   };
   nvim-treesitter-textobjects = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter-textobjects";
-    version = "1639306833";
+    version = "1639943238";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "9516c7df283f7197c3f73a4ce9b3c79aab4576b3";
-      sha256 = "3yRZFFNx8LBRuYvBlbMtbK2rtDpgXPmTQMI7FsoMBHQ=";
+      rev = "c4be3a42715dd44ea9465662ad7e3b010f6acf47";
+      sha256 = "xz9H8vb4fHBmpeLeUqluP1jS0DnIIhaafIV+NLE1WWY=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects";
