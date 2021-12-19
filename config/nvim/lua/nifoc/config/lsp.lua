@@ -13,7 +13,6 @@ local function custom_attach(client, bufnr)
 
   diagnostic_utils.maybe_enable_lsp(client, bufnr)
   diagnostic_utils.maybe_enable_fixer(client, bufnr)
-  vim.api.nvim_command('doautocmd <nomodeline> User NifocLspAttached')
 end
 
 local function custom_attach_no_format(client, bufnr)
