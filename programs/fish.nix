@@ -36,7 +36,7 @@
       ytdl = "ytdl_with_options";
       ytdl_mp4 = "ytdl_with_options -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]'";
       yti = "ytdl_with_options -F";
-      upa = "nix-channel --update nixpkgs && nix flake update ~/.config/nixpkgs -v";
+      upa = "nix flake update ~/.config/nixpkgs -v";
       upp = "nix flake update ./ -v";
       upn = "$HOME/.config/nixpkgs/programs/nvim/update-plugins.sh";
       ucl = "nix-collect-garbage -d && nix-store --gc && nix-store --optimise -v";
@@ -54,6 +54,10 @@
     };
 
     shellInit = ''
+      if test -e "$HOME/.cache/fish/nix_path_value"
+        set -gx NIX_PATH (cat "$HOME/.cache/fish/nix_path_value")
+      end
+
       if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
         fenv source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
       end

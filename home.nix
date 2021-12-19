@@ -43,7 +43,16 @@
     ];
 
     activation = {
-      cleanAppCaches = lib.hm.dag.entryAfter [ "onFilesChange" "installPackages" "copyFonts" ] ''
+      updateAppCaches = lib.hm.dag.entryAfter [ "onFilesChange" "installPackages" "copyFonts" ] ''
+        # nixpkgs
+        echo "Calculating new NIX_PATH value ..."
+        mkdir -p "$HOME/.cache/fish"
+        nix flake metadata ~/.config/nixpkgs --json 2>/dev/null | \
+          jq -r '.locks.nodes.nixpkgs.locked | "\(.type):\(.owner)/\(.repo)/\(.rev)"' | \
+          xargs -I {} nix flake metadata {} --json | \
+          jq -r '. | "nixpkgs=\(.path)"' >"$HOME/.cache/fish/nix_path_value"
+
+        # neovim
         echo -n "Running LuaCacheClear: "
         nvim -c 'try | execute "LuaCacheClear" | echo "Done" | catch /.*/ | echo "Command not found" | endtry | q' --headless
         printf '\nRemoving luacache file: '
