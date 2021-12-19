@@ -159,12 +159,12 @@
   };
   telescope-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "telescope.nvim";
-    version = "1639163304";
+    version = "1639936550";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "5f37fbfa837dfee7ecd30f388b271f4a71c0a9e0";
-      sha256 = "IaMmO1z02jSHuqYiMdGDOOmgi9kmw8fEHnUjQhRLyRo=";
+      rev = "9aaaa0c5f3eb665b51bbcafda084de4b0952fef0";
+      sha256 = "HXitazIvM9vlaw0ABXQQQVotrbNsoAIBzg8ctocp9Ik=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/nvim-telescope/telescope.nvim";
@@ -388,12 +388,12 @@
   };
   nvim-autopairs = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-autopairs";
-    version = "1639190949";
+    version = "1639867007";
     src = pkgs.fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-autopairs";
-      rev = "04cd1779f81e9d50d5a116c5dccd054b275bd191";
-      sha256 = "bWHyRvfAsXSPifSgSDXO8ZVIR7A+Sua69Tf5Gw6ke64=";
+      rev = "94a4fa4b9ffec88ecd742fb077a66bf8cb9c4bf1";
+      sha256 = "zsECvnL5xTKztTU0RD0WkAbEb5/P9/LdJZLErfjDHo0=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/windwp/nvim-autopairs";
@@ -556,12 +556,12 @@
   };
   spellsitter-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "spellsitter.nvim";
-    version = "1639590554";
+    version = "1639870357";
     src = pkgs.fetchFromGitHub {
       owner = "lewis6991";
       repo = "spellsitter.nvim";
-      rev = "2cb4700ed6853c6bfeffadafc3afb43cc45cd09d";
-      sha256 = "Yspj1MDWS/CvxPvWDrUryjfo3jMVhMQQzNp2e3KYf/8=";
+      rev = "d2e280aa3a3e239b12e24d96863d48744a76d764";
+      sha256 = "WDK1d2LzKBMy6rTx0L4hgn2RvEYKvFxm0X8nnY4FyyE=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/lewis6991/spellsitter.nvim";
