@@ -59,9 +59,12 @@
         printf '\nRemoving luacache file: '
         rm -f "$HOME/.cache/nvim/luacache"
         echo "Done"
+        echo 'Running TSUpdateSync ...'
+        nvim -c 'try | execute "TSUpdateSync" | echo "Done" | catch /.*/ | echo "Command not found" | endtry | q' --headless
+        printf '\n'
       '';
 
-      reportChanges = lib.hm.dag.entryAfter [ "onFilesChange" "installPackages" "copyFonts" ] ''
+      reportChanges = lib.hm.dag.entryAfter [ "updateAppCaches" ] ''
         nix store diff-closures $oldGenPath $newGenPath
       '';
     };
