@@ -24,6 +24,7 @@ in
       # LSP
       nodePackages.bash-language-server
       nodePackages.dockerfile-language-server-nodejs
+      nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.yaml-language-server
       rnix-lsp
@@ -31,7 +32,6 @@ in
       taplo-lsp
 
       # LSP Tools
-      ansible-lint
       hadolint
       shellcheck
       shfmt

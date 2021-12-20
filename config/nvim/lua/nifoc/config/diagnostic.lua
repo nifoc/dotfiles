@@ -1,7 +1,7 @@
 vim.diagnostic.config({
   underline = true,
   virtual_text = {
-    source = 'if_many',
+    source = false,
   },
   signs = false,
   update_in_insert = false,

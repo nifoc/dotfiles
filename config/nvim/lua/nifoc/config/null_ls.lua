@@ -9,7 +9,6 @@ null_ls.setup({
     builtins.formatting.fish_indent,
     builtins.formatting.shfmt.with({extra_args = { '-i', '2' }}),
 
-    builtins.diagnostics.ansiblelint,
     builtins.diagnostics.credo,
     builtins.diagnostics.hadolint,
     builtins.diagnostics.shellcheck.with({extra_args = { '-f', 'gcc', '-x' }}),
