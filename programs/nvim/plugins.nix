@@ -99,12 +99,12 @@
   };
   nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "1639992650";
+    version = "1640020605";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "2752160771c679a7d92a4664de133d7750ab5448";
-      sha256 = "LXxYT9QCkm0lKDyTPJwswZ5c0IpcIGMxhauVH/ESNiY=";
+      rev = "881cb5b8f2260c1e3b9e2d68ac459d81c1dff57b";
+      sha256 = "cRS8mulMpKtoFkX/P8ZzwAkgC+P4xHcfxvC8Ppa6yUQ=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter";
@@ -208,24 +208,24 @@
   };
   null-ls-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "null-ls.nvim";
-    version = "1639941585";
+    version = "1640008862";
     src = pkgs.fetchFromGitHub {
       owner = "jose-elias-alvarez";
       repo = "null-ls.nvim";
-      rev = "80e1c2942f70bfdf16886a64692f274ef7356010";
-      sha256 = "QUXOLIeqH6zhNrUCm8J4ZoWkPOjaXdg+a+aCy9Gq690=";
+      rev = "28d581cc488b6cb981199107c0a8074d4e136da8";
+      sha256 = "g/RUusOk2Y5RjdrFpy3yckWUIpegdf3XElhi/V3RZC0=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/jose-elias-alvarez/null-ls.nvim";
   };
   nvim-web-devicons = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-web-devicons";
-    version = "1639689176";
+    version = "1640033101";
     src = pkgs.fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
-      rev = "218658d091a824bbf121acaafd58293e2f970eb1";
-      sha256 = "UuIAWIbj8+v4HQm0XR7tstgeDfcXj+HHX4KmuUMr/Wo=";
+      rev = "ac71ca88b1136e1ecb2aefef4948130f31aa40d1";
+      sha256 = "DWbUhVTIhKYw+39rEHxUhDE7hRm3CtYMzfRDFj0j9Lk=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/kyazdani42/nvim-web-devicons";
@@ -304,12 +304,12 @@
   };
   LuaSnip = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "LuaSnip";
-    version = "1639780167";
+    version = "1640020933";
     src = pkgs.fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "6bcd3bb65ebb3e82afb460587590a80350eba1a1";
-      sha256 = "Vov0jpRpUkubfFmh93pC13pa7a/97e8zy2nsT0rUjE4=";
+      rev = "3e4da0cfea0a2f0b4749369bc7ed247c1412a854";
+      sha256 = "/fpfOhq+rPQPICG+5rjt927N0MrULZbnMHVR7dvIC3U=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/L3MON4D3/LuaSnip";
@@ -436,12 +436,12 @@
   };
   nvim-treesitter-textobjects = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter-textobjects";
-    version = "1639954216";
+    version = "1640009961";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "a9b7d9beeaae07e87aeb78765cfa53e1c5eae1f6";
-      sha256 = "WSBs8Kj4LF89Fe/SMKtTeQD5jck4v6vck3Imx2xCF0c=";
+      rev = "669a07b1bc94e425cbb5c9a89ae470a5c71474c5";
+      sha256 = "+JiI3JgL7i8aAvGUau2xlHsWWF1AU36xXGmc8ssy784=";
       fetchSubmodules = false;
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects";
