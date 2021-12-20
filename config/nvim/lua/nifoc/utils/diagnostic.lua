@@ -3,9 +3,7 @@ local M = {}
 local keymap = require('nifoc.keymap')
 
 function M.maybe_enable_lsp(client, bufnr)
-  local nifoc_lsp_enabled = vim.api.nvim_buf_get_var(bufnr, 'nifoc_lsp_enabled')
-
-  if nifoc_lsp_enabled == nil then
+  if vim.b.nifoc_lsp_enabled == nil then
     vim.api.nvim_buf_set_var(bufnr, 'nifoc_lsp_enabled', 1)
 
     keymap.lsp_attach(client, bufnr)
@@ -13,9 +11,7 @@ function M.maybe_enable_lsp(client, bufnr)
 end
 
 function M.maybe_enable_fixer(client, bufnr)
-  local nifoc_fixer_enabled = vim.api.nvim_buf_get_var(bufnr, 'nifoc_fixer_enabled')
-
-  if client.resolved_capabilities.document_formatting and nifoc_fixer_enabled == nil then
+  if client.resolved_capabilities.document_formatting and vim.b.nifoc_fixer_enabled == nil then
     vim.api.nvim_buf_set_var(bufnr, 'nifoc_fixer_enabled', 1)
 
     vim.cmd [[
