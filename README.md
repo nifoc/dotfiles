@@ -20,3 +20,8 @@ home-manager switch --flake ~/.config/nixpkgs/#$USER
 
 sudo cachix use nix-community
 ```
+
+## Overlays
+
+* [neovim-nightly-overlay](https://github.com/nix-community/neovim-nightly-overlay)
+* [nifoc-overlay](https://github.com/nifoc/nix-overlay)
