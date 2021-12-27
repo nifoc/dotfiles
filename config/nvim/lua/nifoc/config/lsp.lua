@@ -50,6 +50,7 @@ local default_servers = {
   'bashls',
   'cssls',
   'dockerls',
+  'erlangls',
   'eslint',
   'html',
   'rnix',

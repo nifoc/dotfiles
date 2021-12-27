@@ -13,8 +13,7 @@
 --sub-lang en,de
 
 # Download using aria2
-#--external-downloader aria2c
-#--external-downloader-args "-j 8 -s 8 -x 8 -k 1M --file-allocation none"
+--downloader aria2c
 
 # Other
 --no-overwrites
