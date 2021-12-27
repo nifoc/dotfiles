@@ -21,7 +21,7 @@
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
     homeConfigurations = {
       daniel = home-manager.lib.homeManagerConfiguration {
-        system = "x86_64-darwin";
+        system = "aarch64-darwin";
         homeDirectory = "/Users/daniel";
         username = "daniel";
         stateVersion = "21.11";

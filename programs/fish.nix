@@ -54,6 +54,9 @@
     };
 
     shellInit = ''
+      # Disable greeting
+      set fish_greeting
+
       if test -e "$HOME/.cache/fish/nix_path_value"
         set -gx NIX_PATH (cat "$HOME/.cache/fish/nix_path_value")
       end
@@ -77,12 +80,13 @@
       end
 
       # Vendor Configuration
-      if test -d "$HOME/.nix-profile/share/fish/vendor_conf.d"
-        for vendor_conf in $HOME/.nix-profile/share/fish/vendor_conf.d/*.fish
+      for vendor_conf in \
+        "$HOME/.nix-profile/share/fish/vendor_conf.d/direnv.fish"
+        
+        if test -f "$vendor_conf"
           source "$vendor_conf"
         end
       end
-
 
       # Custom Scripts
       if test -d "$HOME/.config/fish/custom-scripts"
