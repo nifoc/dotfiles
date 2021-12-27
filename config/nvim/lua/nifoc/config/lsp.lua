@@ -97,11 +97,7 @@ lsp.solargraph.setup(vim.tbl_extend('force', default_config, {
 }))
 
 lsp.sumneko_lua.setup(vim.tbl_extend('force', default_config, {
-  cmd = {
-    vim.fn.globpath('~', 'Code/LSP/lua/bin/macOS/lua-language-server'),
-    '-E',
-    vim.fn.globpath('~', 'Code/LSP/lua/main.lua')
-  },
+  cmd = { 'lua-language-server' },
   root_dir =  lsp.util.root_pattern("init.vim", "init.lua", ".git") or vim.loop.os_homedir(),
   settings = {
     Lua = {
