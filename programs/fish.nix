@@ -37,12 +37,19 @@
       ytdl_mp4 = "ytdl_with_options -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]'";
       yti = "ytdl_with_options -F";
       upa = "nix flake update ~/.config/nixpkgs -v";
-      upp = "nix flake update ./ -v";
       upn = "$HOME/.config/nixpkgs/programs/nvim/update-plugins.sh";
       ucl = "nix-collect-garbage -d && nix-store --gc && nix-store --optimise -v";
     };
 
     functions = {
+      upp = ''
+        if rg --quiet '^use flake$' .envrc
+          nix flake update ./ -v
+        else
+          nix flake update (rg --no-line-number --color never '^use flake' .envrc | cut -d ' ' -f 3 | xargs -I {} sh -c 'echo {}') -v
+        end
+      '';
+
       wget-browser = ''
         set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
         wget -U "$user_agent" $argv
