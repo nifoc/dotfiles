@@ -35,11 +35,14 @@
       hyperfine
       nix-prefetch-github
       parallel
+      podman
       procs
+      qemu
       ripgrep
       rtmpdump
       tokei
       wget
+      xz
       yt-dlp
     ];
 
