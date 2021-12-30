@@ -67,5 +67,5 @@ in
     };
   };
 
-  xdg.configFile."${config-work-nedeco}".source = ../config/git/config-work-nedeco;
+  home.file."${config-work-nedeco}".source = ../config/git/config-work-nedeco;
 }
