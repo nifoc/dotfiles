@@ -3,6 +3,8 @@
 let
   customPlugins = import ./plugins.nix { inherit pkgs; };
 
+  nvim-spell-directory = "${config.xdg.configHome}/nvim/spell";
+
   nvim-spell-de-utf8-dictionary = builtins.fetchurl {
     url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl";
     sha256 = "73c7107ea339856cdbe921deb92a45939c4de6eb9c07261da1b9dd19f683a3d1";
@@ -135,6 +137,6 @@ in
     recursive = true;
   };
 
-  home.file."${config.xdg.configHome}/nvim/spell/de.utf-8.spl".source = nvim-spell-de-utf8-dictionary;
-  home.file."${config.xdg.configHome}/nvim/spell/de.utf-8.sug".source = nvim-spell-de-utf8-suggestions;
+  home.file."${nvim-spell-directory}/de.utf-8.spl".source = nvim-spell-de-utf8-dictionary;
+  home.file."${nvim-spell-directory}/de.utf-8.sug".source = nvim-spell-de-utf8-suggestions;
 }
