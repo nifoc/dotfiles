@@ -1,3 +1,8 @@
+{ config, ... }:
+
+let
+  config-work-nedeco = "${config.xdg.configHome}/git/config-work-nedeco";
+in
 {
   programs.git = {
     enable = true;
@@ -50,8 +55,17 @@
       ".DS_Store"
     ];
 
+    includes = [
+      {
+        path = "${config-work-nedeco}";
+        condition = "gitdir:~/Code/Work/";
+      }
+    ];
+
     delta.options = {
       theme = "Dracula";
     };
   };
+
+  xdg.configFile."${config-work-nedeco}".source = ../config/git/config-work-nedeco;
 }
