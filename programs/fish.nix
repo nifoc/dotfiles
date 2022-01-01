@@ -62,7 +62,7 @@
       '';
 
       ytdl_with_options = ''
-        yt-dlp --config-location "$HOME/.config/yt-dlp/config" --download-archive "$HOME/.config/youtube-dl/archive" $argv
+        yt-dlp --config-location "$HOME/.config/yt-dlp/config" --download-archive "$HOME/.config/yt-dlp/archive" $argv
       '';
     };
 
