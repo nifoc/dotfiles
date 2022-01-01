@@ -2,6 +2,7 @@
 
 let
   config-work-nedeco = "${config.xdg.configHome}/git/config-work-nedeco";
+  config-work-wdw = "${config.xdg.configHome}/git/config-work-wdw";
 in
 {
   programs.git = {
@@ -60,6 +61,11 @@ in
         path = "${config-work-nedeco}";
         condition = "gitdir:~/Code/Work/";
       }
+
+      {
+        path = "${config-work-wdw}";
+        condition = "gitdir:~/Code/Work/WDW/";
+      }
     ];
 
     delta.options = {
@@ -68,4 +74,5 @@ in
   };
 
   home.file."${config-work-nedeco}".source = ../config/git/config-work-nedeco;
+  home.file."${config-work-wdw}".source = ../config/git/config-work-wdw;
 }
