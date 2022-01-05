@@ -15,9 +15,9 @@
 
     ./programs/jq.nix
 
-    ./config/yt-dlp.nix
+    ./programs/scripts.nix
 
-    ./bins
+    ./config/yt-dlp.nix
   ];
 
   home = {
