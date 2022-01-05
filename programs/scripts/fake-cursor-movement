@@ -1,0 +1,7 @@
+#!/bin/sh
+
+while true; do
+  cliclick -r m:0,0
+  printf '.'
+  sleep 30
+done
