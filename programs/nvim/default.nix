@@ -25,11 +25,14 @@ in
     withPython3 = false;
 
     extraConfig = ''
+      let $CC = '${pkgs.clang}/bin/cc'
+
       lua require('impatient')
       lua require('nix_init')
     '';
 
     extraPackages = with pkgs; [
+      clang
       nodejs-16_x
       tree-sitter
 
