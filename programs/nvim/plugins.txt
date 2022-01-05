@@ -1,7 +1,7 @@
 lewis6991/impatient.nvim
 antoinemadec/FixCursorHold.nvim
 delphinus/vim-auto-cursorline
-folke/which-key.nvim
+zeertzjq/which-key.nvim/patch-1
 svermeulen/vim-yoink
 svermeulen/vim-cutlass
 svermeulen/vim-subversive
@@ -12,7 +12,7 @@ martinda/Jenkinsfile-vim-syntax
 nvim-lua/popup.nvim
 nvim-lua/plenary.nvim
 nvim-telescope/telescope.nvim
-nvim-telescope/telescope-fzf-native.nvim/make
+nvim-telescope/telescope-fzf-native.nvim//make
 ahmedkhalf/project.nvim
 neovim/nvim-lspconfig
 jose-elias-alvarez/null-ls.nvim

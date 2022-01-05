@@ -30,9 +30,16 @@ while IFS='' read -r LINE || [ -n "${LINE}" ]; do
 
   echo "Updating ${owner}/${repo} ..."
 
-  build="$(echo "$LINE" | cut -d'/' -f3)"
+  branch="$(echo "$LINE" | cut -d'/' -f3)"
+  build="$(echo "$LINE" | cut -d'/' -f4)"
   name="$(echo "$repo" | tr [.] '-')"
-  src="$(nix-prefetch-github --nix --no-fetch-submodules "$owner" "$repo" 2>/dev/null | tail -n +4)"
+
+  if [ -z "$branch" ]; then
+    src="$(nix-prefetch-github --nix --no-fetch-submodules "$owner" "$repo" 2>/dev/null | tail -n +4)"
+  else
+    src="$(nix-prefetch-github --nix --no-fetch-submodules --rev "$branch" "$owner" "$repo" 2>/dev/null | tail -n +4)"
+  fi
+
   rev="$(echo "$src" | grep rev | cut -d '"' -f 2)"
   commit_info="$(curl -u "$github_auth" --silent "https://api.github.com/repos/${owner}/${repo}/commits/${rev}")"
   commit_date="$(echo "$commit_info" | jq -r '.commit.committer.date')"
