@@ -53,11 +53,7 @@
       updateAppCaches = lib.hm.dag.entryAfter [ "onFilesChange" "installPackages" "copyFonts" ] ''
         # nixpkgs
         echo "Calculating new NIX_PATH value ..."
-        mkdir -p "$HOME/.cache/fish"
-        nix flake metadata ~/.config/nixpkgs --json 2>/dev/null | \
-          jq -r '.locks.nodes.nixpkgs.locked | "\(.type):\(.owner)/\(.repo)/\(.rev)"' | \
-          xargs -I {} nix flake metadata {} --json | \
-          jq -r '. | "nixpkgs=\(.path)"' >"$HOME/.cache/fish/nix_path_value"
+        "$HOME/.bin/calculate-nix-path"
 
         # neovim
         echo -n "Running LuaCacheClear: "
