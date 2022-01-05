@@ -16,6 +16,8 @@
     ./programs/jq.nix
 
     ./config/yt-dlp.nix
+
+    ./bins
   ];
 
   home = {
@@ -40,6 +42,7 @@
       qemu
       ripgrep
       rtmpdump
+      streamlink
       tokei
       wget
       xz

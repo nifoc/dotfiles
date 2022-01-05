@@ -78,8 +78,8 @@
         fenv source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
       end
 
-      if test -d "$HOME/bin"
-        set -gx PATH "$HOME/bin" $PATH
+      if test -d "$HOME/.bin"
+        set -gx PATH "$HOME/.bin" $PATH
       end
 
       for app_path in \
