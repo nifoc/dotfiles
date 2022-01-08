@@ -4,6 +4,7 @@
   imports = [
     ./programs/fish.nix
     ./programs/starship.nix
+    ./programs/direnv.nix
     ./config/kitty.nix
 
     ./programs/nvim
@@ -74,11 +75,6 @@
 
   programs = {
     home-manager.enable = true;
-
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
 
     zoxide.enable = true;
   };
