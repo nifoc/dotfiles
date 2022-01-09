@@ -1,0 +1,52 @@
+project() {
+  local cmd=$1
+  log_status "project $*"
+  shift
+
+  export PROJECT_DIR=$PWD
+
+  "project_$cmd" "$@"
+}
+
+# Languages
+
+project_erlang() {
+  export ERL_AFLAGS="-kernel shell_history enabled"
+
+  export REBAR_GLOBAL_CONFIG_DIR=$(direnv_layout_dir)/rebar
+  export REBAR_CACHE_DIR=$(direnv_layout_dir)/rebar
+}
+
+project_elixir()  {
+  project_erlang
+
+  export MIX_HOME=$(direnv_layout_dir)/mix
+  export HEX_HOME=$(direnv_layout_dir)/hex
+
+  PATH_add $MIX_HOME/bin
+  PATH_add $HEX_HOME/bin
+}
+
+project_node() {
+  export NODE_PATH=$(direnv_layout_dir)/node
+  export NPM_CONFIG_PREFIX=$(direnv_layout_dir)/npm/config
+  export NPM_CONFIG_CACHE=$(direnv_layout_dir)/npm/cache
+  export NPM_CONFIG_DEVDIR=$(direnv_layout_dir)/npm/dev
+
+  PATH_add $NODE_PATH/bin
+  PATH_add node_modules/.bin
+}
+
+project_ruby() {
+  export GEM_HOME=$(direnv_layout_dir)/gem
+  export BUNDLE_USER_HOME=$(direnv_layout_dir)/bundle
+
+  PATH_add $GEM_HOME/bin
+}
+
+# Frameworks
+
+project_rails() {
+  project_ruby
+  project_node
+}
