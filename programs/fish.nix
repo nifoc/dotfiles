@@ -24,6 +24,36 @@
           sha256 = "vdqYlEyYvlPVgTkwXbE8GVZo0UBBT88JyMSWYykhfx4=";
         };
       }
+
+      {
+        name = "fzf-fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "PatrickF1";
+          repo = "fzf.fish";
+          rev = "v.7.4";
+          sha256 = "dngAKzyD+lmqmxsCSOMViyCgA/+Ve35gLtPS+Lgs8Pc=";
+        };
+      }
+
+      {
+        name = "autopair-fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "jorgebucaran";
+          repo = "autopair.fish";
+          rev = "1.0.3";
+          sha256 = "l6WJ2kjDO/TnU9FSigjxk5xFp90xl68gDfggkE/wrlM=";
+        };
+      }
+
+      {
+        name = "colored_man_pages";
+        src = pkgs.fetchFromGitHub {
+          owner = "PatrickF1";
+          repo = "colored_man_pages.fish";
+          rev = "8c4965b9be9433d12ba50c28452cab8c71c59a50";
+          sha256 = "jhvC9wTU/mUwEaKeepsUEJsvVuCiO/opcp09SzkItV8=";
+        };
+      }
     ];
 
     shellAliases = {
@@ -39,7 +69,7 @@
       yti = "ytdl_with_options -F";
       upa = "nix flake update ~/.config/nixpkgs -v";
       upn = "$HOME/.config/nixpkgs/programs/nvim/update-plugins.sh";
-      ucl = "nix-collect-garbage -d && nix-store --gc && nix-store --optimise -v && calculate-nix-path";
+      ucl = "nix-collect-garbage -d && nix-store --gc && calculate-nix-path";
     };
 
     functions = {
@@ -86,7 +116,7 @@
         "/Applications/Little Snitch.app/Contents/Components" \
         "/Applications/Wireshark.app/Contents/MacOS" \
         "/usr/local/MacGPG2/bin"
-        
+
         if test -d "$app_path"
           set -gx PATH $PATH "$app_path"
         end
@@ -95,7 +125,7 @@
       # Vendor Configuration
       for vendor_conf in \
         "$HOME/.nix-profile/share/fish/vendor_conf.d/direnv.fish"
-        
+
         if test -f "$vendor_conf"
           source "$vendor_conf"
         end
