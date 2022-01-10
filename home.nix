@@ -18,6 +18,8 @@
 
     ./programs/scripts.nix
 
+    ./config/ssh.nix
+
     ./config/yt-dlp.nix
   ];
 
