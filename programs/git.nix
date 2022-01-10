@@ -53,6 +53,7 @@ in
     ignores = [
       "*~"
       "*.swp"
+      ".direnv/"
       ".DS_Store"
     ];
 
