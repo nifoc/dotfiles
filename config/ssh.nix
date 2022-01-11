@@ -51,8 +51,14 @@
         compression = true;
       };
 
+      "router" = {
+        hostname = "10.0.0.1";
+        port = 22;
+        user = "root";
+      };
+
       "nas" = {
-        host = "10.0.0.100";
+        hostname = "10.0.0.100";
         port = 22;
         user = "daniel";
         identitiesOnly = true;
@@ -60,5 +66,9 @@
         compression = true;
       };
     };
+
+    includes = [
+      "~/.ssh/config_work"
+    ];
   };
 }
