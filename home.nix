@@ -39,6 +39,7 @@
       hexyl
       hyperfine
       nix-prefetch-github
+      nvd
       parallel
       podman
       procs
@@ -70,7 +71,7 @@
       '';
 
       reportChanges = lib.hm.dag.entryAfter [ "updateAppCaches" ] ''
-        nix store diff-closures $oldGenPath $newGenPath
+        nvd diff $oldGenPath $newGenPath
       '';
     };
   };
