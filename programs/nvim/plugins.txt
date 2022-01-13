@@ -1,7 +1,7 @@
 lewis6991/impatient.nvim
 antoinemadec/FixCursorHold.nvim
 delphinus/vim-auto-cursorline
-zeertzjq/which-key.nvim/patch-1
+folke/which-key.nvim
 svermeulen/vim-yoink
 svermeulen/vim-cutlass
 svermeulen/vim-subversive

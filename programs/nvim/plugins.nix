@@ -36,14 +36,14 @@
   };
   which-key-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "which-key.nvim";
-    version = "1641261425";
+    version = "1642056136";
     src = pkgs.fetchFromGitHub {
-      owner = "zeertzjq";
+      owner = "folke";
       repo = "which-key.nvim";
-      rev = "7815ae48927420f49e3826ae4c98d2d467c9fe7f";
+      rev = "387fd676d3f9b419d38890820f6e262dc0fadb46";
       sha256 = "vumqkTgHN6PJgeiyq9oFqm4uw2NUzzu6/1pHS/uxH/0=";
     };
-    meta.homepage = "https://github.com/zeertzjq/which-key.nvim";
+    meta.homepage = "https://github.com/folke/which-key.nvim";
   };
   vim-yoink = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "vim-yoink";
@@ -91,12 +91,12 @@
   };
   nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "1641985822";
+    version = "1642063443";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "ed6143940c37c5c18625d46c071563a3b4338e72";
-      sha256 = "ElTicxqMS+XQKJfltii1JPwUdtXhY882WTwZWeh+wbQ=";
+      rev = "31fe7ee4f982f814a5694cc613c0f597aeff03b2";
+      sha256 = "5a7DH+9LcDUz9/MThJakR9QCu9HU/SGmTOlLnfunZ/E=";
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter";
   };
@@ -279,12 +279,12 @@
   };
   LuaSnip = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "LuaSnip";
-    version = "1641990211";
+    version = "1642061750";
     src = pkgs.fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "79662d8bb61bbee6af88bf559d9ed41c28eb5b88";
-      sha256 = "PmHFcJzVN/YTAkwjHYX0NDShSaqUFz9fSEYNgoWdm40=";
+      rev = "0150d5c8931dc33c709e50720a251da9376daf98";
+      sha256 = "c2B4q9yaoB2M4DJv4po3rIhcd0lvfa/lr6UFcjJp5ak=";
     };
     meta.homepage = "https://github.com/L3MON4D3/LuaSnip";
   };
@@ -444,12 +444,12 @@
   };
   lualine-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "lualine.nvim";
-    version = "1641745819";
+    version = "1642005344";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-lualine";
       repo = "lualine.nvim";
-      rev = "bc5c2f5658821f98e55013eb3bec9d540c420470";
-      sha256 = "iUAttj7s62WQZHFBP7GecojBvXRaTT9Aeg61VOh+OgY=";
+      rev = "70691ae350fdbe1f15758e3b8e2973742a7967a9";
+      sha256 = "3tQuUKhdyMQbdxZ5I76qaa1c2jlHwOzLMTz5KA7Ssgk=";
     };
     meta.homepage = "https://github.com/nvim-lualine/lualine.nvim";
   };
