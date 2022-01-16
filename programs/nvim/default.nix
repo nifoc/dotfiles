@@ -25,7 +25,8 @@ in
     withPython3 = false;
 
     extraConfig = ''
-      let $CC = '${pkgs.clang}/bin/cc'
+      let $CC = '${pkgs.clang}/bin/clang'
+      let $CXX = '${pkgs.clang}/bin/clang++'
 
       lua require('impatient')
       lua require('nix_init')

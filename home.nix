@@ -60,12 +60,12 @@
         "$HOME/.bin/calculate-nix-path"
 
         # neovim
-        echo -n "Running LuaCacheClear: "
-        nvim -c 'try | execute "LuaCacheClear" | echo "Done" | catch /.*/ | echo "Command not found" | endtry | q' --headless
-        printf '\nRemoving luacache file: '
+        echo -n 'Removing luacache file: '
         rm -f "$HOME/.cache/nvim/luacache"
-        echo "Done"
-        echo 'Running TSUpdateSync ...'
+        echo 'Done'
+        echo -n 'Running LuaCacheClear: '
+        nvim -c 'try | execute "LuaCacheClear" | echo "Done" | catch /.*/ | echo "Command not found" | endtry | q' --headless
+        printf '\nRunning TSUpdateSync ... '
         nvim -c 'try | execute "TSUpdateSync" | echo "Done" | catch /.*/ | echo "Command not found" | endtry | q' --headless
         printf '\n'
       '';
