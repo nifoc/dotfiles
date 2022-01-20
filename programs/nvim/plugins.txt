@@ -6,7 +6,6 @@ svermeulen/vim-yoink
 svermeulen/vim-cutlass
 svermeulen/vim-subversive
 Mofiqul/dracula.nvim
-nvim-treesitter/nvim-treesitter
 nvim-treesitter/playground
 martinda/Jenkinsfile-vim-syntax
 nvim-lua/popup.nvim

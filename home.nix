@@ -65,8 +65,6 @@
         echo 'Done'
         echo -n 'Running LuaCacheClear: '
         nvim -c 'try | execute "LuaCacheClear" | echo "Done" | catch /.*/ | echo "Command not found" | endtry | q' --headless
-        printf '\nRunning TSUpdateSync ... '
-        nvim -c 'try | execute "TSUpdateSync" | echo "Done" | catch /.*/ | echo "Command not found" | endtry | q' --headless
         printf '\n'
       '';
 

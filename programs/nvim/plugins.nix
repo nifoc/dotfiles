@@ -3,12 +3,12 @@
 {
   impatient-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "impatient.nvim";
-    version = "1640506679";
+    version = "1642507082";
     src = pkgs.fetchFromGitHub {
       owner = "lewis6991";
       repo = "impatient.nvim";
-      rev = "3ea9abedb6941995b05fdad654d9cfd51c38a31f";
-      sha256 = "M33tmUHmwM2ukAsJzD5QSSh4Ewl9z6vg7jLzc96AaBk=";
+      rev = "4df4e9360975a8be6e7a7270466fedfd1adcc5b6";
+      sha256 = "0CkM5JdSroilHkOIO/roLnrBbBjcPxe6AR1eqifJUSA=";
     };
     meta.homepage = "https://github.com/lewis6991/impatient.nvim";
   };
@@ -36,12 +36,12 @@
   };
   which-key-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "which-key.nvim";
-    version = "1642056136";
+    version = "1642619077";
     src = pkgs.fetchFromGitHub {
       owner = "folke";
       repo = "which-key.nvim";
-      rev = "387fd676d3f9b419d38890820f6e262dc0fadb46";
-      sha256 = "vumqkTgHN6PJgeiyq9oFqm4uw2NUzzu6/1pHS/uxH/0=";
+      rev = "28d2bd129575b5e9ebddd88506601290bb2bb221";
+      sha256 = "bz41c/zenRVVIkwtHHIi8wF/LZn2JEkFc6tkPv/BYY4=";
     };
     meta.homepage = "https://github.com/folke/which-key.nvim";
   };
@@ -89,17 +89,6 @@
     };
     meta.homepage = "https://github.com/Mofiqul/dracula.nvim";
   };
-  nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "nvim-treesitter";
-    version = "1642349814";
-    src = pkgs.fetchFromGitHub {
-      owner = "nvim-treesitter";
-      repo = "nvim-treesitter";
-      rev = "dada29a1e5ab458f3493e9e1175fe29a3aa341fb";
-      sha256 = "a6yEtIlyygfg9LEJadgyTmMG7qWsWXlwaGRSrcu/mX4=";
-    };
-    meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter";
-  };
   playground = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "playground";
     version = "1631739633";
@@ -146,12 +135,12 @@
   };
   telescope-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "telescope.nvim";
-    version = "1642348491";
+    version = "1642489815";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "c1b9dab30030820999145ee6292fce7dc092c4fe";
-      sha256 = "xT/jBDodKXmXUiPBOTp4+n9ac9wp2rlaOu1xec8rNhg=";
+      rev = "0011b1148d3975600f5a9f0be8058cdaac4e30d9";
+      sha256 = "0W3nHrNsunTarlLBKeZuH1zVaEyFzu2npStkfouCLIk=";
     };
     meta.homepage = "https://github.com/nvim-telescope/telescope.nvim";
   };
@@ -169,45 +158,45 @@
   };
   project-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "project.nvim";
-    version = "1636215460";
+    version = "1642582804";
     src = pkgs.fetchFromGitHub {
       owner = "ahmedkhalf";
       repo = "project.nvim";
-      rev = "71d0e23dcfc43cfd6bb2a97dc5a7de1ab47a6538";
-      sha256 = "RUPbmMPfa1lT2fIslC9vZR3e23IkOyPpYnWDytxkvUs=";
+      rev = "cef52b8da07648b750d7f1e8fb93f12cb9482988";
+      sha256 = "BrseGCUZV689EbeLAme2PBeWOerwDV3lGaRTihS4l+M=";
     };
     meta.homepage = "https://github.com/ahmedkhalf/project.nvim";
   };
   nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-lspconfig";
-    version = "1642267151";
+    version = "1642685354";
     src = pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "89eda6c9ba3ded27ecd38dfcee811c11c91eae05";
-      sha256 = "NA705It5vYlXIHDXNa7Pg2ZarNss4b6cNedSydl0VX0=";
+      rev = "58f260a603fc73ff537569ff2e81510554e54e38";
+      sha256 = "Gch5CGQbPDAKrFM3frK5gDWAaTiI8l3b4oEmCoyD+dg=";
     };
     meta.homepage = "https://github.com/neovim/nvim-lspconfig";
   };
   null-ls-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "null-ls.nvim";
-    version = "1642350939";
+    version = "1642623035";
     src = pkgs.fetchFromGitHub {
       owner = "jose-elias-alvarez";
       repo = "null-ls.nvim";
-      rev = "069f60f63914c678ddbe09b2c0b898ea4228e4fb";
-      sha256 = "tl5+wcjfclq+HoxPoLPMwMGwxFlAlMOQYN2raaOAjwU=";
+      rev = "4d45075678db7442f4d78287efd11b08bd414bcd";
+      sha256 = "dxHUzTeLAIrwGSbmCb4aRDhvascOtIZUR78xxgzwIGs=";
     };
     meta.homepage = "https://github.com/jose-elias-alvarez/null-ls.nvim";
   };
   nvim-web-devicons = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-web-devicons";
-    version = "1640033101";
+    version = "1642530817";
     src = pkgs.fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
-      rev = "ac71ca88b1136e1ecb2aefef4948130f31aa40d1";
-      sha256 = "DWbUhVTIhKYw+39rEHxUhDE7hRm3CtYMzfRDFj0j9Lk=";
+      rev = "634e26818f2bea9161b7efa76735746838971824";
+      sha256 = "3zigwYJrw3gocsF2WqHMBS4cFkTyj78StiSP3o9S0N0=";
     };
     meta.homepage = "https://github.com/kyazdani42/nvim-web-devicons";
   };
@@ -246,12 +235,12 @@
   };
   nvim-cmp = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-cmp";
-    version = "1642262453";
+    version = "1642667165";
     src = pkgs.fetchFromGitHub {
       owner = "hrsh7th";
       repo = "nvim-cmp";
-      rev = "a54064d940ee3a34f94d596602fc958eb5c2bfcb";
-      sha256 = "bjdlhS8VLZbcg9bMVhdDzb1mgRoAe4YMpNH/dlNYb08=";
+      rev = "1797f9e1acd2e0b5b4b6805928aebc1dcc0ecbff";
+      sha256 = "YYi/5ed4efAuimzCYITDcnoT6+kVPKgXWBd7H/WgUYg=";
     };
     meta.homepage = "https://github.com/hrsh7th/nvim-cmp";
   };
@@ -312,12 +301,12 @@
   };
   cmp-path = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "cmp-path";
-    version = "1640869280";
+    version = "1642430705";
     src = pkgs.fetchFromGitHub {
       owner = "hrsh7th";
       repo = "cmp-path";
-      rev = "4d58224e315426e5ac4c5b218ca86cab85f80c79";
-      sha256 = "d82E/Vl4a/WGAVKWuPYXjZO/jVo+7aKp05JaRoA6dgU=";
+      rev = "c5230cb439df9547294678d0f1c1465ad7989e5f";
+      sha256 = "qKPYOW+Nid3CdFJfeU1JVb9zaDZAk2F/WQ4ddjNDRnk=";
     };
     meta.homepage = "https://github.com/hrsh7th/cmp-path";
   };
@@ -400,12 +389,12 @@
   };
   nvim-treesitter-textobjects = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter-textobjects";
-    version = "1641756003";
+    version = "1642552023";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "99600641de75419f7729698acf9dc3d79117ff70";
-      sha256 = "U7io/9F9Se9bLGHDHwnm6PisCZKjs4FzrsBTkBoVXHg=";
+      rev = "c2e643b5db31e90f034c5412f38913523090378e";
+      sha256 = "rLTGeaiZwltEBdcTeztyyxuArMEfAbaKR884o5GEXHs=";
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects";
   };
@@ -422,12 +411,12 @@
   };
   vim-matchup = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "vim-matchup";
-    version = "1641663154";
+    version = "1642550757";
     src = pkgs.fetchFromGitHub {
       owner = "andymass";
       repo = "vim-matchup";
-      rev = "0981e4d5e0ad25688362b875269499ce6de36101";
-      sha256 = "iD3xd3Zuc387FlDyhk6KbL7GFvUW4cFG1TX3GJ9AwRM=";
+      rev = "43483d27bc7abdd8f7c8c71f4d0bbf56d62e0461";
+      sha256 = "ZoMycEo29MkVo/5lZwj1pY6DJW7UMqAUgpoVym0cxV8=";
     };
     meta.homepage = "https://github.com/andymass/vim-matchup";
   };
@@ -510,12 +499,12 @@
   };
   gitsigns-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "gitsigns.nvim";
-    version = "1642235414";
+    version = "1642699957";
     src = pkgs.fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "f4648dcc055a10573f36e83343592824155ab466";
-      sha256 = "/vdH8rdEvCY5xj2ZwjNZsX1oWXq1Xuqu0B96mjjGsNU=";
+      rev = "ddffc618ea9e11ae57129549e0eccf832cb8b37d";
+      sha256 = "6w+qUFLYO5J2dcXYE85mvlpajHcuzNEvEIlEBOgde1Y=";
     };
     meta.homepage = "https://github.com/lewis6991/gitsigns.nvim";
   };
@@ -576,12 +565,12 @@
   };
   todo-comments-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "todo-comments.nvim";
-    version = "1639214028";
+    version = "1642601933";
     src = pkgs.fetchFromGitHub {
       owner = "folke";
       repo = "todo-comments.nvim";
-      rev = "672cd22bd15928434374ac52d0cf38dd250231df";
-      sha256 = "16damc7E0J9dXTIe4pSWrbPoobZDRh1FQ1XyFzJvnoE=";
+      rev = "98b1ebf198836bdc226c0562b9f906584e6c400e";
+      sha256 = "8uj5TxO9XZlSCB4lVRbKRc1IlUEKcBf/4bDviwuxEgs=";
     };
     meta.homepage = "https://github.com/folke/todo-comments.nvim";
   };

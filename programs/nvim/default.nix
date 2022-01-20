@@ -25,15 +25,11 @@ in
     withPython3 = false;
 
     extraConfig = ''
-      let $CC = '${pkgs.clang}/bin/clang'
-      let $CXX = '${pkgs.clang}/bin/clang++'
-
       lua require('impatient')
       lua require('nix_init')
     '';
 
     extraPackages = with pkgs; [
-      clang
       nodejs-16_x
       tree-sitter
 
@@ -76,7 +72,30 @@ in
       dracula-nvim
 
       # Syntax
-      nvim-treesitter
+      (pkgs.vimPlugins.nvim-treesitter.withPlugins (
+        plugins: with plugins; [
+          tree-sitter-bash
+          tree-sitter-comment
+          tree-sitter-css
+          tree-sitter-dockerfile
+          tree-sitter-elixir
+          tree-sitter-erlang
+          tree-sitter-fish
+          tree-sitter-java
+          tree-sitter-javascript
+          tree-sitter-json
+          tree-sitter-make
+          tree-sitter-nix
+          tree-sitter-query
+          tree-sitter-regex
+          tree-sitter-ruby
+          tree-sitter-svelte
+          tree-sitter-toml
+          tree-sitter-typescript
+          tree-sitter-vim
+          tree-sitter-yaml
+        ]
+      ))
       playground
       Jenkinsfile-vim-syntax
 
