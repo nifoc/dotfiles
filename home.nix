@@ -36,6 +36,7 @@
       ffmpeg
       fzf
       gallery-dl
+      gvproxy
       hexyl
       hyperfine
       nix-prefetch-github
