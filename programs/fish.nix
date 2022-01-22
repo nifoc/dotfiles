@@ -26,6 +26,16 @@
       }
 
       {
+        name = "ssh-agent-macos";
+        src = pkgs.fetchFromGitHub {
+          owner = "nifoc";
+          repo = "ssh-agent-macos.fish";
+          rev = "5967f1168d344ee4bc642e7b70d4f2f962c6703b";
+          sha256 = "NAupeiNZ6aqukpqg5mz+K2hgLWcJTGx3Acw4BurA/I0=";
+        };
+      }
+
+      {
         name = "fzf-fish";
         src = pkgs.fetchFromGitHub {
           owner = "PatrickF1";
@@ -111,25 +121,6 @@
 
       if test -d "$HOME/.bin"
         set -gx PATH "$HOME/.bin" $PATH
-      end
-
-      for app_path in \
-        "/Applications/Little Snitch.app/Contents/Components" \
-        "/Applications/Wireshark.app/Contents/MacOS" \
-        "/usr/local/MacGPG2/bin"
-
-        if test -d "$app_path"
-          set -gx PATH $PATH "$app_path"
-        end
-      end
-
-      # Vendor Configuration
-      for vendor_conf in \
-        "$HOME/.nix-profile/share/fish/vendor_conf.d/direnv.fish"
-
-        if test -f "$vendor_conf"
-          source "$vendor_conf"
-        end
       end
 
       # Custom Scripts
