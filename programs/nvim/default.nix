@@ -46,6 +46,7 @@ in
 
       # LSP Tools
       hadolint
+      selene
       shellcheck
       shfmt
       statix

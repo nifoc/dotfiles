@@ -11,6 +11,7 @@ null_ls.setup({
 
     builtins.diagnostics.credo,
     builtins.diagnostics.hadolint,
+    builtins.diagnostics.selene,
     builtins.diagnostics.shellcheck.with({extra_args = { '-f', 'gcc', '-x' }}),
     builtins.diagnostics.statix,
 
