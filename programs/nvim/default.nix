@@ -25,11 +25,17 @@ in
     withPython3 = false;
 
     extraConfig = ''
+      " Move these paths to the end of $PATH to prevent triggering the XCode CLI popup
+      let xcode_paths = ":/usr/bin:/bin:/usr/sbin:/sbin"
+      let $PATH = substitute($PATH, xcode_paths, "", "") . xcode_paths
+
       lua require('impatient')
       lua require('nix_init')
     '';
 
     extraPackages = with pkgs; [
+      gcc
+      gnumake
       nodejs-16_x
       tree-sitter
 
@@ -73,30 +79,7 @@ in
       dracula-nvim
 
       # Syntax
-      (pkgs.vimPlugins.nvim-treesitter.withPlugins (
-        plugins: with plugins; [
-          tree-sitter-bash
-          tree-sitter-comment
-          tree-sitter-css
-          tree-sitter-dockerfile
-          tree-sitter-elixir
-          tree-sitter-erlang
-          tree-sitter-fish
-          tree-sitter-java
-          tree-sitter-javascript
-          tree-sitter-json
-          tree-sitter-make
-          tree-sitter-nix
-          tree-sitter-query
-          tree-sitter-regex
-          tree-sitter-ruby
-          tree-sitter-svelte
-          tree-sitter-toml
-          tree-sitter-typescript
-          tree-sitter-vim
-          tree-sitter-yaml
-        ]
-      ))
+      nvim-treesitter
       playground
       Jenkinsfile-vim-syntax
 

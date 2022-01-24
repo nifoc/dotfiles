@@ -18,7 +18,7 @@ treesitter.define_modules {
 }
 
 treesitter_config.setup {
-  ensure_installed = false,
+  ensure_installed = 'maintained',
   highlight = {
     enable = true,
   },

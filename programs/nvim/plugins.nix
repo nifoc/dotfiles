@@ -89,6 +89,17 @@
     };
     meta.homepage = "https://github.com/Mofiqul/dracula.nvim";
   };
+  nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "nvim-treesitter";
+    version = "1642974138";
+    src = pkgs.fetchFromGitHub {
+      owner = "nvim-treesitter";
+      repo = "nvim-treesitter";
+      rev = "3f8829cfb8753c0939246602e213791d8ee5ad2c";
+      sha256 = "IJJ4x/zRaCLX9Z2TKmkyySDx8JtQYvJ/ecFXwhBOy9c=";
+    };
+    meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter";
+  };
   playground = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "playground";
     version = "1631739633";
