@@ -1,3 +1,8 @@
+{ config, ... }:
+
+let
+  signers-directory = "${config.home.homeDirectory}/.ssh/allowed_signers";
+in
 {
   programs.ssh = {
     enable = true;
@@ -70,5 +75,10 @@
     includes = [
       "~/.ssh/config_work"
     ];
+  };
+
+  home.file."${signers-directory}" = {
+    source = ../config/ssh/allowed_signers;
+    recursive = true;
   };
 }

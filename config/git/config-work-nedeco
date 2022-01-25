@@ -1,3 +1,16 @@
 [user]
-	email = "d.kempkens@nedeco.de"
-	name = "Daniel Kempkens"
+  email = "d.kempkens@nedeco.de"
+  name = "Daniel Kempkens"
+  signingKey = "~/.ssh/nedeco_gitlab.pub"
+
+[commit]
+  gpgsign = true
+
+[tag]
+  gpgsign = true
+
+[gpg]
+  format = "ssh"
+
+[gpg "ssh"]
+  allowedSignersFile = "~/.ssh/allowed_signers/work-nedeco"
