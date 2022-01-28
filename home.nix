@@ -36,6 +36,7 @@
       ffmpeg
       fzf
       gallery-dl
+      glow
       gvproxy
       hexyl
       hyperfine
