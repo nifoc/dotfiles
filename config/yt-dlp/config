@@ -14,6 +14,7 @@
 
 # Download using aria2
 --downloader aria2c
+--downloader-args "aria2c:--max-download-limit=6M --min-split-size=1M --max-connection-per-server=4 --split=4"
 
 # Other
 --no-overwrites
