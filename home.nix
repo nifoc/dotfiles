@@ -30,6 +30,7 @@
       atomicparsley
       cachix
       cliclick
+      curlFull
       dogdns
       exa
       fd
