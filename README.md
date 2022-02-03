@@ -1,6 +1,6 @@
 ## Installation
 
-⚠️ I have switched to a combination of `nix-darwin` and `home-manager`. The installation instructions below only do not work that setup.
+⚠️ I have switched to a combination of `nix-darwin` and `home-manager`. The installation instructions below do not work that setup.
 
 ```bash
 # nix
