@@ -36,6 +36,7 @@ in
     extraPackages = with pkgs; [
       gcc
       gnumake
+      git
       nodejs-16_x
       tree-sitter
 

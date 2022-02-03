@@ -1,5 +1,7 @@
 ## Installation
 
+⚠️ I have switched to a combination of `nix-darwin` and `home-manager`. The installation instructions below only do not work that setup.
+
 ```bash
 # nix
 sh <(curl -L https://nixos.org/nix/install)

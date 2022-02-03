@@ -67,7 +67,7 @@
     ];
 
     shellAliases = {
-      hmsw = "home-manager switch --flake ~/.config/nixpkgs/#$USER";
+      drsw = "nix-darwin-switch";
       j = "z";
       ji = "zi";
       la = "exa --long --all --group --header --group-directories-first --sort=type --icons";
@@ -80,7 +80,7 @@
       yti = "ytdl_with_options -F";
       upa = "nix flake update ~/.config/nixpkgs -v";
       upn = "$HOME/.config/nixpkgs/programs/nvim/update-plugins.sh";
-      ucl = "nix-collect-garbage -d && nix-store --gc && calculate-nix-path";
+      ucl = "nix-collect-garbage -d && nix-store --gc";
     };
 
     functions = {
@@ -111,12 +111,9 @@
       # Disable greeting
       set fish_greeting
 
-      if test -e "$HOME/.cache/fish/nix_path_value"
-        set -gx NIX_PATH (cat "$HOME/.cache/fish/nix_path_value")
-      end
-
-      if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-        fenv source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+      if [ -z "$__NIX_DARWIN_SET_ENVIRONMENT_DONE" ]
+        set __nifoc_nix_darwin_set_env (cat /run/current-system/etc/bashrc | grep '-set-environment' | cut -d '.' -f 2)
+        fenv source "$__nifoc_nix_darwin_set_env"
       end
 
       if test -d "$HOME/.bin"

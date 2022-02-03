@@ -1,8 +1,0 @@
-#!/bin/sh
-
-mkdir -p "$HOME/.cache/fish"
-
-nix flake metadata "$HOME/.config/nixpkgs" --json 2>/dev/null | \
-  jq -r '.locks.nodes.nixpkgs.locked | "\(.type):\(.owner)/\(.repo)/\(.rev)"' | \
-  xargs -I {} nix flake metadata {} --json | \
-  jq -r '. | "nixpkgs=\(.path)"' >"$HOME/.cache/fish/nix_path_value"

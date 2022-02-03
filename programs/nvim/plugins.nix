@@ -91,12 +91,12 @@
   };
   nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "1643811536";
+    version = "1643912584";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "c9b11ac70c24a3854998c9a92c94759b1d1b52ef";
-      sha256 = "AbLilgMrkzUs/fjshFettSmrdISjBF6nqHVngoynaH8=";
+      rev = "3cfbde4db05dc9f3f38fcee212849799bb6f2e54";
+      sha256 = "HQ9NLHhOQPB6Xcj9G6UqDAWiB0LuDs0iZzRhfyD0XKo=";
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter";
   };
@@ -191,12 +191,12 @@
   };
   null-ls-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "null-ls.nvim";
-    version = "1643322091";
+    version = "1643829703";
     src = pkgs.fetchFromGitHub {
       owner = "jose-elias-alvarez";
       repo = "null-ls.nvim";
-      rev = "2ae4a5e2e2b35716c44c104ef1afa35ecb40c444";
-      sha256 = "55NdHFFmuyoU0ELNnYXvhPGH1iVhyaXkm3zgkNmwO/g=";
+      rev = "b8bedca6786e975216c073bbd72eb3e76f78e21b";
+      sha256 = "WTE78hReuJToqo5ndgPuCe1oTGIoPAdggT9RDnGsruw=";
     };
     meta.homepage = "https://github.com/jose-elias-alvarez/null-ls.nvim";
   };
@@ -312,12 +312,12 @@
   };
   cmp-path = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "cmp-path";
-    version = "1642430705";
+    version = "1643823794";
     src = pkgs.fetchFromGitHub {
       owner = "hrsh7th";
       repo = "cmp-path";
-      rev = "c5230cb439df9547294678d0f1c1465ad7989e5f";
-      sha256 = "qKPYOW+Nid3CdFJfeU1JVb9zaDZAk2F/WQ4ddjNDRnk=";
+      rev = "466b6b8270f7ba89abd59f402c73f63c7331ff6e";
+      sha256 = "xYzTpqVKpBBnajqqRRzAXlHAC13VGK1D9mFr3bntepY=";
     };
     meta.homepage = "https://github.com/hrsh7th/cmp-path";
   };
@@ -433,12 +433,12 @@
   };
   undotree = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "undotree";
-    version = "1640333528";
+    version = "1643910486";
     src = pkgs.fetchFromGitHub {
       owner = "mbbill";
       repo = "undotree";
-      rev = "c4984fc6dcc6c4e190f2f8cd5fffb65b0aaa51d2";
-      sha256 = "3x01yjy4j7y/SjsUxnI2xOGQxo7GdZsCsBQyqOhK6pk=";
+      rev = "8a01863a8204b2382ec341d0203c4e9665212221";
+      sha256 = "43Yco/5Q2t8lVRQbgeXLpygXga0cKmLfdjvCPCsPDGo=";
     };
     meta.homepage = "https://github.com/mbbill/undotree";
   };
@@ -532,12 +532,12 @@
   };
   nvim-notify = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-notify";
-    version = "1643665769";
+    version = "1643832273";
     src = pkgs.fetchFromGitHub {
       owner = "rcarriga";
       repo = "nvim-notify";
-      rev = "83ebb5971eaecc0b2c70fb4ed540e87cbf50af6a";
-      sha256 = "fGW87jNWO3j1r6cU8OKTb0ggPJQFJXPDDAGAg4ZTdyY=";
+      rev = "d6f880728da487d0ac4f957835c46b3f2af91fca";
+      sha256 = "vI/R92pY+qXaRrg62bcwsdNS1vLpwxrZEj3pO++jdzc=";
     };
     meta.homepage = "https://github.com/rcarriga/nvim-notify";
   };
