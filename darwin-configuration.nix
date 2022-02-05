@@ -22,7 +22,13 @@
     '';
   };
 
-  users.nix.configureBuildUsers = true;
+  users = {
+    nix.configureBuildUsers = true;
+
+    users.daniel = {
+      home = "/Users/daniel";
+    };
+  };
 
   environment = {
     darwinConfig = "$HOME/.config/nixpkgs/darwin-configuration.nix";

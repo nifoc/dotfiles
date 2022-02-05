@@ -24,7 +24,7 @@
   ];
 
   home = {
-    stateVersion = "21.11";
+    stateVersion = "22.05";
 
     packages = with pkgs; [
       aria2
@@ -82,8 +82,6 @@
   };
 
   programs = {
-    home-manager.enable = true;
-
     zoxide.enable = true;
   };
 }
