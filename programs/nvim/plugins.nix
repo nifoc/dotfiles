@@ -91,12 +91,12 @@
   };
   nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "1643912584";
+    version = "1644085754";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "3cfbde4db05dc9f3f38fcee212849799bb6f2e54";
-      sha256 = "HQ9NLHhOQPB6Xcj9G6UqDAWiB0LuDs0iZzRhfyD0XKo=";
+      rev = "a62971e0efcbe025693ccfaf688b62d185fd50da";
+      sha256 = "yQTK1aP8Os75x87GM44zdkm7AcnmB+4J7xvdFAHv6X8=";
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter";
   };
@@ -191,12 +191,12 @@
   };
   null-ls-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "null-ls.nvim";
-    version = "1643829703";
+    version = "1644081644";
     src = pkgs.fetchFromGitHub {
       owner = "jose-elias-alvarez";
       repo = "null-ls.nvim";
-      rev = "b8bedca6786e975216c073bbd72eb3e76f78e21b";
-      sha256 = "WTE78hReuJToqo5ndgPuCe1oTGIoPAdggT9RDnGsruw=";
+      rev = "e8a666829a3d803844f24daa4932e4f5fe76cbeb";
+      sha256 = "6Yihy95bf9eGsKIPEdbBPhacK25dy/NFHlJg/mNL1EY=";
     };
     meta.homepage = "https://github.com/jose-elias-alvarez/null-ls.nvim";
   };
@@ -224,12 +224,12 @@
   };
   lspkind-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "lspkind-nvim";
-    version = "1640888751";
+    version = "1644054955";
     src = pkgs.fetchFromGitHub {
       owner = "onsails";
       repo = "lspkind-nvim";
-      rev = "f0d1552890e384f15b47ea88bd1b8a077cddc24a";
-      sha256 = "oAA4Q4FC+7fbBw8CwGrqP05PD+q5035vurYzMQLk03I=";
+      rev = "93e98a0c900327ce7e9be1cbf24aebbe7170e375";
+      sha256 = "0103K5lnzWCyuT/qwiBUo5PJ7lUX7fo+zNeEnQClI7A=";
     };
     meta.homepage = "https://github.com/onsails/lspkind-nvim";
   };
@@ -246,12 +246,12 @@
   };
   nvim-cmp = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-cmp";
-    version = "1643797525";
+    version = "1644037206";
     src = pkgs.fetchFromGitHub {
       owner = "hrsh7th";
       repo = "nvim-cmp";
-      rev = "de69c657ebbb2fa1ed918b97f27733b801ee639c";
-      sha256 = "Vz1Tt7KI/EkDH+3OPb6y2uDUeml0TH5zmd937lv6vYw=";
+      rev = "a7fea2ca9f29869c75c3e2ccb683e7740868ba8b";
+      sha256 = "i3lJCquBHpHJ5Mt7hCwcT3ZfVAoAiwkg4NslSXQdXKA=";
     };
     meta.homepage = "https://github.com/hrsh7th/nvim-cmp";
   };
@@ -279,12 +279,12 @@
   };
   LuaSnip = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "LuaSnip";
-    version = "1643400059";
+    version = "1644067635";
     src = pkgs.fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "35322c97b041542f95c85e87a8215892ea4137d5";
-      sha256 = "PCp+akGP2zzHd1eQBidEbSrz8Jbib5muuYp4qLTs3iw=";
+      rev = "35397b9d1466d80e3b6460256595c20010b89823";
+      sha256 = "TEvv49zBxBfB6cjCeL1vZfbF8jzdWKjFpeX2pba6y38=";
     };
     meta.homepage = "https://github.com/L3MON4D3/LuaSnip";
   };
@@ -400,12 +400,12 @@
   };
   nvim-treesitter-textobjects = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter-textobjects";
-    version = "1643238217";
+    version = "1643979227";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "f107174097df7ec29dfeb573ebc2ede8a1f0a067";
-      sha256 = "WPa1HXnDE9zwX70HSx4LRwsw1dOqWCfz08rNQhBk3KI=";
+      rev = "438d2cfa3922a58ef828803d6ca9c944b4b4c996";
+      sha256 = "KFQTlqR4+f2EVAnf7gXIWXyytfQMXkOCDZ+AgU22zFM=";
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects";
   };
@@ -422,12 +422,12 @@
   };
   vim-matchup = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "vim-matchup";
-    version = "1643247497";
+    version = "1643939378";
     src = pkgs.fetchFromGitHub {
       owner = "andymass";
       repo = "vim-matchup";
-      rev = "07196cfb15070cb8f7f71f8ef4dfbebfc5e83304";
-      sha256 = "QGJtkRi2+RpApRLXJYPkvs0ypwwmqg87Tw/Mg3e13fw=";
+      rev = "0fd7055cc23109f3dbb65aadee664c663a4d5f94";
+      sha256 = "aFkcYF5wLbHOfN4dJ7GTmFwHez8tqx1fjC7yLsqSKXA=";
     };
     meta.homepage = "https://github.com/andymass/vim-matchup";
   };
@@ -466,12 +466,12 @@
   };
   nvim-tree-lua = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-tree.lua";
-    version = "1643703429";
+    version = "1644082928";
     src = pkgs.fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-tree.lua";
-      rev = "99d65afd6ef05cc57f835451126e5c44db03cef1";
-      sha256 = "8cFFyXfwyJDbmzaw0o7EYz2JveY7qmyDjuq0Pxy1PHE=";
+      rev = "1fe29f8eef4d81536b74dd3dcb23c837f66b10a5";
+      sha256 = "VTTY1DbKvzo5VNTUFCM4i7EvD0xTcFj4q6lfhxddV/k=";
     };
     meta.homepage = "https://github.com/kyazdani42/nvim-tree.lua";
   };
