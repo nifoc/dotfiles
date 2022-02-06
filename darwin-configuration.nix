@@ -1,6 +1,11 @@
 { pkgs, lib, ... }:
 
 {
+  imports = [
+    ./system/defaults.nix
+    ./system/fonts.nix
+  ];
+
   nix = {
     binaryCaches = [
       "https://nix-community.cachix.org"
@@ -36,12 +41,5 @@
 
   services = {
     nix-daemon.enable = true;
-  };
-
-  fonts = {
-    enableFontDir = true;
-    fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    ];
   };
 }
