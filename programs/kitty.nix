@@ -1,10 +1,12 @@
+{ pkgs, ... }:
+
 {
   programs.kitty = {
     enable = true;
 
     settings = {
       # Shell
-      shell = "/etc/profiles/per-user/daniel/bin/fish --interactive";
+      shell = "${pkgs.fish}/bin/fish --interactive";
       shell_integration = "no-cursor";
 
       # Theme/Layout
