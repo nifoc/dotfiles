@@ -80,7 +80,7 @@
       yti = "ytdl_with_options -F";
       upa = "nix flake update ~/.config/nixpkgs -v";
       upn = "$HOME/.config/nixpkgs/programs/nvim/update-plugins.sh";
-      ucl = "nix-collect-garbage -d && nix-store --gc";
+      ucl = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
     };
 
     functions = {
