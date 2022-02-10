@@ -30,8 +30,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "nifoc";
           repo = "ssh-agent-macos.fish";
-          rev = "5967f1168d344ee4bc642e7b70d4f2f962c6703b";
-          sha256 = "NAupeiNZ6aqukpqg5mz+K2hgLWcJTGx3Acw4BurA/I0=";
+          rev = "a9dde730a462b3b327cabf1a56a643a12b0aea3d";
+          sha256 = "e0YrQzcgkHvFiYuXluS+TZ/hjDneK33xcWbo7sjXWNA=";
         };
       }
 
