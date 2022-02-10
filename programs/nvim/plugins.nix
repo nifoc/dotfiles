@@ -91,12 +91,12 @@
   };
   nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "1644438900";
+    version = "1644480948";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "4990db79a87f49e56a3a1bb8507926ebd52ec4cc";
-      sha256 = "e6NBIf/P5VCpCrIP5N7Mgo49Na1yEk1KDeoNtsK8XDA=";
+      rev = "b291c749230d14566ff2b13a36c98efda2a50196";
+      sha256 = "wgtw0/4Q+UwLkuhggpsvP07GCYlpFku9yDmvD9fgt/4=";
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter";
   };
@@ -466,12 +466,12 @@
   };
   nvim-tree-lua = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-tree.lua";
-    version = "1644437167";
+    version = "1644479765";
     src = pkgs.fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-tree.lua";
-      rev = "4ec8c9f36451686ccb34da50e9d210e2cce2af8c";
-      sha256 = "mH3lp0Fec1O5E9MkDE0W7SFNWKVjK8nm1VuHDc8DZ9E=";
+      rev = "da59247db9013dd48d2aa8086982f90ac9ef05c2";
+      sha256 = "P72apXH5C4mTFPzn9rtlxCEX3YG68h8PePNoIX3/NJY=";
     };
     meta.homepage = "https://github.com/kyazdani42/nvim-tree.lua";
   };
