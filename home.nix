@@ -43,6 +43,7 @@
       gvproxy
       hexyl
       hyperfine
+      lnav
       nix-prefetch-github
       nvd
       parallel
