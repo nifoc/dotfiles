@@ -39,6 +39,7 @@ in
       git
       nodejs-16_x
       tree-sitter
+      ripgrep
 
       # LSP
       nodePackages.bash-language-server
