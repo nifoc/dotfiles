@@ -119,7 +119,7 @@ function M.setup()
   wk.register(leader, {prefix = "<leader>", noremap = false, silent = true})
 
   -- Other mappings
-  vim.api.nvim_set_keymap('n', '<CR>', ':noh<CR><CR>', {noremap = true, silent = true})
+  vim.api.nvim_set_keymap('n', '<CR>', ':nohlsearch<CR><CR>', {noremap = true, silent = true})
 
   vim.api.nvim_set_keymap('i', '<CR>', 'v:lua.nifoc_keymap_cr_complete()', {noremap = true, expr = true, silent = true})
 
