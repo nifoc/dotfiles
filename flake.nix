@@ -17,6 +17,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zig = {
+      url = "github:arqv/zig-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nifoc-overlay = {
       url = "github:nifoc/nix-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,11 +31,13 @@
   outputs = inputs@{ self, nixpkgs, darwin, home-manager, ... }:
     let
       overlay-neovim = inputs.neovim-nightly-overlay.overlay;
+      overlay-zig = final: prev: { zigpkgs = inputs.zig.packages.${prev.system}; };
       overlay-nifoc = inputs.nifoc-overlay.overlay;
 
       nixpkgsConfig = {
         overlays = [
           overlay-neovim
+          overlay-zig
           overlay-nifoc
         ];
 

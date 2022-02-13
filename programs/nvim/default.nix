@@ -86,7 +86,7 @@ in
 
       # Telescope
       telescope-nvim
-      telescope-fzf-native-nvim
+      telescope-zf-native-nvim
       project-nvim
       todo-comments-nvim
 

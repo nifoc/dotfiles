@@ -33,7 +33,7 @@ telescope.setup {
   },
 }
 
-telescope.load_extension('fzf')
+telescope.load_extension("zf-native")
 
 vim.cmd('augroup nifoc_telescope')
   vim.cmd('autocmd!')

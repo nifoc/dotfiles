@@ -1,0 +1,169 @@
+[
+  {
+    "src": "lewis6991/impatient.nvim"
+  },
+  {
+    "src": "antoinemadec/FixCursorHold.nvim"
+  },
+  {
+    "src": "delphinus/vim-auto-cursorline"
+  },
+  {
+    "src": "folke/which-key.nvim"
+  },
+  {
+    "src": "svermeulen/vim-yoink"
+  },
+  {
+    "src": "svermeulen/vim-cutlass"
+  },
+  {
+    "src": "svermeulen/vim-subversive"
+  },
+  {
+    "src": "Mofiqul/dracula.nvim"
+  },
+  {
+    "src": "nvim-treesitter/nvim-treesitter"
+  },
+  {
+    "src": "nvim-treesitter/playground"
+  },
+  {
+    "src": "martinda/Jenkinsfile-vim-syntax"
+  },
+  {
+    "src": "nvim-lua/popup.nvim"
+  },
+  {
+    "src": "nvim-lua/plenary.nvim"
+  },
+  {
+    "src": "nvim-telescope/telescope.nvim"
+  },
+  {
+    "src": "natecraddock/telescope-zf-native.nvim",
+    "nativeBuildInputs": [
+      "just",
+      "zigpkgs.\"0.9.0\""
+    ],
+    "buildPhase": "just clean\nXDG_CACHE_HOME=./xdg_cache just build\nmv lib/libzf.so lib/libzf-osx-arm64.so\nrm -rf ./xdg_cache"
+  },
+  {
+    "src": "ahmedkhalf/project.nvim"
+  },
+  {
+    "src": "neovim/nvim-lspconfig"
+  },
+  {
+    "src": "jose-elias-alvarez/null-ls.nvim"
+  },
+  {
+    "src": "kyazdani42/nvim-web-devicons"
+  },
+  {
+    "src": "folke/trouble.nvim"
+  },
+  {
+    "src": "onsails/lspkind-nvim"
+  },
+  {
+    "src": "nvim-lua/lsp-status.nvim"
+  },
+  {
+    "src": "hrsh7th/nvim-cmp"
+  },
+  {
+    "src": "hrsh7th/cmp-nvim-lsp"
+  },
+  {
+    "src": "hrsh7th/cmp-nvim-lsp-signature-help"
+  },
+  {
+    "src": "L3MON4D3/LuaSnip"
+  },
+  {
+    "src": "saadparwaiz1/cmp_luasnip"
+  },
+  {
+    "src": "hrsh7th/cmp-nvim-lua"
+  },
+  {
+    "src": "hrsh7th/cmp-path"
+  },
+  {
+    "src": "hrsh7th/cmp-buffer"
+  },
+  {
+    "src": "ray-x/cmp-treesitter"
+  },
+  {
+    "src": "hrsh7th/cmp-cmdline"
+  },
+  {
+    "src": "hrsh7th/cmp-nvim-lsp-document-symbol"
+  },
+  {
+    "src": "windwp/nvim-autopairs"
+  },
+  {
+    "src": "windwp/nvim-ts-autotag"
+  },
+  {
+    "src": "numToStr/Comment.nvim"
+  },
+  {
+    "src": "nvim-treesitter/nvim-treesitter-textobjects"
+  },
+  {
+    "src": "blackCauldron7/surround.nvim"
+  },
+  {
+    "src": "andymass/vim-matchup"
+  },
+  {
+    "src": "mbbill/undotree"
+  },
+  {
+    "src": "nvim-lualine/lualine.nvim"
+  },
+  {
+    "src": "akinsho/bufferline.nvim"
+  },
+  {
+    "src": "kyazdani42/nvim-tree.lua"
+  },
+  {
+    "src": "lukas-reineke/indent-blankline.nvim"
+  },
+  {
+    "src": "lukas-reineke/virt-column.nvim"
+  },
+  {
+    "src": "norcalli/nvim-colorizer.lua"
+  },
+  {
+    "src": "lewis6991/gitsigns.nvim"
+  },
+  {
+    "src": "lewis6991/spellsitter.nvim"
+  },
+  {
+    "src": "rcarriga/nvim-notify"
+  },
+  {
+    "src": "LumaKernel/nvim-visual-eof.lua"
+  },
+  {
+    "src": "RRethy/vim-illuminate"
+  },
+  {
+    "src": "numToStr/FTerm.nvim"
+  },
+  {
+    "src": "folke/todo-comments.nvim"
+  },
+  {
+    "src": "editorconfig/editorconfig-vim"
+  }
+]
