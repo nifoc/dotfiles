@@ -175,10 +175,10 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nifoc-overlay": "nifoc-overlay",
         "nixpkgs": "nixpkgs",
-        "zig": "zig"
+        "zig-overlay": "zig-overlay"
       }
     },
-    "zig": {
+    "zig-overlay": {
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nixpkgs": [
