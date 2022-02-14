@@ -75,6 +75,7 @@ in
       { plugin = vim-yoink; optional = true; }
       { plugin = vim-cutlass; optional = true; }
       { plugin = vim-subversive; optional = true; }
+      lightspeed-nvim
 
       # Themes
       dracula-nvim
@@ -121,7 +122,7 @@ in
 
       # Textobjects
       nvim-treesitter-textobjects
-      surround-nvim
+      vim-surround
 
       # UI
       undotree

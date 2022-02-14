@@ -28,6 +28,7 @@ require('nifoc.config.cursorline')
 -- Keybindings
 require('nifoc.config.whichkey')
 require('nifoc.config.yoink')
+require('nifoc.config.lightspeed')
 
 -- Syntax
 require('nifoc.config.treesitter')
@@ -56,7 +57,6 @@ require('nifoc.config.matchup')
 require('nifoc.config.comments')
 
 -- Textobjects
-require('surround').setup({})
 
 -- UI
 require('nifoc.config.lualine')

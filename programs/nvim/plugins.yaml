@@ -1,0 +1,86 @@
+# Fixes
+- src: lewis6991/impatient.nvim
+- src: antoinemadec/FixCursorHold.nvim
+- src: delphinus/vim-auto-cursorline
+
+# Utils
+- src: nvim-lua/popup.nvim
+- src: nvim-lua/plenary.nvim
+- src: kyazdani42/nvim-web-devicons
+
+# Keybindings
+- src: folke/which-key.nvim
+- src: svermeulen/vim-yoink
+- src: svermeulen/vim-cutlass
+- src: svermeulen/vim-subversive
+- src: ggandor/lightspeed.nvim
+
+# Themes
+- src: Mofiqul/dracula.nvim
+
+# Syntax
+- src: nvim-treesitter/nvim-treesitter
+- src: nvim-treesitter/playground
+- src: martinda/Jenkinsfile-vim-syntax
+
+# Telescope
+- src: nvim-telescope/telescope.nvim
+- src: natecraddock/telescope-zf-native.nvim
+  nativeBuildInputs:
+  - just
+  - zigpkgs."0.9.0"
+  buildPhase: |-
+    just clean
+    XDG_CACHE_HOME=./xdg_cache just build
+    mv lib/libzf.so lib/libzf-osx-arm64.so
+    rm -rf ./xdg_cache
+- src: ahmedkhalf/project.nvim
+- src: folke/todo-comments.nvim
+
+# # LSP
+- src: neovim/nvim-lspconfig
+- src: jose-elias-alvarez/null-ls.nvim
+- src: folke/trouble.nvim
+- src: onsails/lspkind-nvim
+- src: nvim-lua/lsp-status.nvim
+- src: RRethy/vim-illuminate
+
+# cmp
+- src: hrsh7th/nvim-cmp
+- src: hrsh7th/cmp-nvim-lsp
+- src: hrsh7th/cmp-nvim-lsp-signature-help
+- src: L3MON4D3/LuaSnip
+- src: saadparwaiz1/cmp_luasnip
+- src: hrsh7th/cmp-nvim-lua
+- src: hrsh7th/cmp-path
+- src: hrsh7th/cmp-buffer
+- src: ray-x/cmp-treesitter
+- src: hrsh7th/cmp-cmdline
+- src: hrsh7th/cmp-nvim-lsp-document-symbol
+
+# Pairs
+- src: windwp/nvim-autopairs
+- src: windwp/nvim-ts-autotag
+
+# Comments
+- src: numToStr/Comment.nvim
+
+# Textobjects
+- src: nvim-treesitter/nvim-treesitter-textobjects
+- src: tpope/vim-surround
+
+# UI
+- src: andymass/vim-matchup
+- src: mbbill/undotree
+- src: nvim-lualine/lualine.nvim
+- src: akinsho/bufferline.nvim
+- src: kyazdani42/nvim-tree.lua
+- src: lukas-reineke/indent-blankline.nvim
+- src: lukas-reineke/virt-column.nvim
+- src: norcalli/nvim-colorizer.lua
+- src: lewis6991/gitsigns.nvim
+- src: lewis6991/spellsitter.nvim
+- src: rcarriga/nvim-notify
+- src: LumaKernel/nvim-visual-eof.lua
+- src: numToStr/FTerm.nvim
+- src: editorconfig/editorconfig-vim

@@ -8,7 +8,7 @@ trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 trap 'code=$?; if [ "$code" -ne "0" ]; then echo "\"${last_command}\" command ended with exit code $code."; fi' EXIT
 
 script_dir="$(dirname "$(realpath "$0")")"
-plugins_json="${script_dir}/plugins.json"
+plugins="${script_dir}/plugins.yaml"
 nix_new_file="${script_dir}/plugins_new.nix"
 nix_file="${script_dir}/plugins.nix"
 
@@ -19,7 +19,8 @@ if [ -z "$github_auth" ]; then
   exit 1
 fi
 
-readarray -t plugin_array <<<"$(jq -c '.[]' "$plugins_json")"
+plugins_json="$(dasel -r yaml -w json . <"$plugins")"
+readarray -t plugin_array <<<"$(echo "$plugins_json" | jq -c '.[]')"
 
 rm -f "$nix_new_file"
 echo '# This file has been auto-generated' >"$nix_new_file"
@@ -27,7 +28,7 @@ echo '{ pkgs, ... }:' >>"$nix_new_file"
 
 echo "{" >>"$nix_new_file"
 for plugin in "${plugin_array[@]}"; do
-  raw_src="$(echo "$plugin" | jq -r '.src')"
+  raw_src="$(echo "$plugin" | dasel -r json --plain '.src')"
   owner="$(echo "$raw_src" | cut -d'/' -f1)"
   repo="$(echo "$raw_src" | cut -d'/' -f2)"
 
@@ -44,10 +45,10 @@ for plugin in "${plugin_array[@]}"; do
 
   rev="$(echo "$src" | grep rev | cut -d '"' -f 2)"
   commit_info="$(curl -u "$github_auth" --silent "https://api.github.com/repos/${owner}/${repo}/commits/${rev}")"
-  commit_date="$(echo "$commit_info" | jq -r '.commit.committer.date')"
+  commit_date="$(echo "$commit_info" | dasel -r json --plain '.commit.committer.date')"
 
   if [[ "$commit_date" == "null" ]]; then
-    commit_date="$(echo "$commit_info" | jq -r '.commit.author.date')"
+    commit_date="$(echo "$commit_info" | dasel -r json --plain '.commit.author.date')"
   fi
 
   version="$(date -d "$commit_date" "+%s")"
