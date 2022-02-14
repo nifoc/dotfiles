@@ -33,6 +33,7 @@
       cachix
       cliclick
       curlFull
+      dasel
       dogdns
       exa
       fd
