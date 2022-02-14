@@ -99,12 +99,12 @@
   };
   nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "1644769494";
+    version = "1644822547";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "f7e9caa65d6a9a2b6fd413267f78f484590aec40";
-      sha256 = "jJKZmvg5OE2wdEbCaqNL5G8Qgm59qEBDMSc7qRBfY6c=";
+      rev = "3e99302082489b36480e3b1eeceed763331e790f";
+      sha256 = "/dzx5L7H5pEdp14AmLz/yoPOgEh2yEVw5fosezsEEHk=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter";
@@ -274,12 +274,12 @@
   };
   nvim-cmp = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-cmp";
-    version = "1644759142";
+    version = "1644812796";
     src = pkgs.fetchFromGitHub {
       owner = "hrsh7th";
       repo = "nvim-cmp";
-      rev = "2d8f40b297973fc06bd8e5e2ef89d6cd97e2e0a4";
-      sha256 = "WTSAo0alVmRRcscbYfJ652W8k3qMhJpL61Ch/zSdJcA=";
+      rev = "ba47440a97710d0f4f63eea2bc196fe17297e4ae";
+      sha256 = "Hsa0qjIYQCJ8cuQUCW3t4sIfIdrRBzd3ztRSqs/wgGw=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/hrsh7th/nvim-cmp";
@@ -298,12 +298,12 @@
   };
   cmp-nvim-lsp-signature-help = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "cmp-nvim-lsp-signature-help";
-    version = "1644403680";
+    version = "1644810297";
     src = pkgs.fetchFromGitHub {
       owner = "hrsh7th";
       repo = "cmp-nvim-lsp-signature-help";
-      rev = "3f486a300c7f7296719c0705117afe24e3985766";
-      sha256 = "uv9/ny9lwn1lxqkyrP8DHCkMJg4lDd0jmj5VL5YPwUM=";
+      rev = "7d6473ee5379a659e10abef4f5766a87ca41ec96";
+      sha256 = "NhZXA3w9Olz3BYMsrbb0pYyZBbRFeuE8fz4WQrxahuU=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help";
@@ -406,12 +406,12 @@
   };
   nvim-autopairs = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-autopairs";
-    version = "1644695342";
+    version = "1644824771";
     src = pkgs.fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-autopairs";
-      rev = "64c2656664f1c509f4185c64e388dd70fb3c358e";
-      sha256 = "hOoPzvB/tYSc/e3Aux30wX5XjmrwYoRWoMegajyM+D0=";
+      rev = "784398a8f184431fd4329f20b0e4f52e87707bbd";
+      sha256 = "iPYA4lWBMnTnZfe9rXyd6V2glXB3zDqnEij6WbAKjZE=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/windwp/nvim-autopairs";
@@ -430,12 +430,12 @@
   };
   Comment-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "Comment.nvim";
-    version = "1644507218";
+    version = "1644815244";
     src = pkgs.fetchFromGitHub {
       owner = "numToStr";
       repo = "Comment.nvim";
-      rev = "84648f1d2d1c69b693437c9b0b12e84f526c3671";
-      sha256 = "TdHVVeXS/LOKYlYmN7mzJLyqzD1qLzChy48BhQMg1Hs=";
+      rev = "1738ae5f67d1a76ce487edba5f3d79b8e80dd03b";
+      sha256 = "/nfvcqIpvTQ8DuM5XJKua1XEM3QZp9s3ki3mlNGSkoQ=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/numToStr/Comment.nvim";
@@ -466,12 +466,12 @@
   };
   vim-matchup = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "vim-matchup";
-    version = "1644628016";
+    version = "1644785793";
     src = pkgs.fetchFromGitHub {
       owner = "andymass";
       repo = "vim-matchup";
-      rev = "2acaf94271c24dfae4281b831945aabd19eaffa8";
-      sha256 = "WqZvyYchT5nkHh99TH1hIv/z7/+IDNlaTv6NdlSPJPk=";
+      rev = "71739b54228eaa79344b02d46a61d88c2be1b234";
+      sha256 = "9lfz8E2NjdEgE84xC4PH/tRvdzEAPTtNEiGziCd88Sc=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/andymass/vim-matchup";
