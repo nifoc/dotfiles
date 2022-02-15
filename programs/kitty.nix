@@ -21,9 +21,11 @@
       # UX
       kitty_mod = "cmd";
       cursor_blink_interval = 0;
+      macos_custom_beam_cursor = true;
       disable_ligatures = "cursor";
       enable_audio_bell = false;
       visual_bell_duration = 0;
+      bell_on_tab = "\" \"";
 
       # Mouse
       detect_urls = false;
