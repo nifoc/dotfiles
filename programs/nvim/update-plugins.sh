@@ -38,9 +38,9 @@ for plugin in "${plugin_array[@]}"; do
   name="$(echo "$repo" | tr [.] '-')"
 
   if [ -z "$branch" ]; then
-    src="$(nix-prefetch-github --nix --fetch-submodules "$owner" "$repo" 2>/dev/null | tail -n +4)"
+    src="$(nix-prefetch-github --nix --fetch-submodules --no-deep-clone "$owner" "$repo" 2>/dev/null | tail -n +4)"
   else
-    src="$(nix-prefetch-github --nix --fetch-submodules --rev "$branch" "$owner" "$repo" 2>/dev/null | tail -n +4)"
+    src="$(nix-prefetch-github --nix --fetch-submodules --no-deep-clone --rev "$branch" "$owner" "$repo" 2>/dev/null | tail -n +4)"
   fi
 
   rev="$(echo "$src" | grep rev | cut -d '"' -f 2)"
