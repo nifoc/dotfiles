@@ -5,7 +5,13 @@
     enableFontDir = true;
 
     fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      (nerdfonts.override {
+        fonts = [
+          "FiraCode"
+          "JetBrainsMono"
+          "VictorMono"
+        ];
+      })
     ];
   };
 }

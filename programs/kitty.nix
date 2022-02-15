@@ -21,6 +21,7 @@
       # UX
       kitty_mod = "cmd";
       cursor_blink_interval = 0;
+      disable_ligatures = "cursor";
       enable_audio_bell = false;
       visual_bell_duration = 0;
 
