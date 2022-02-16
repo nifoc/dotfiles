@@ -68,6 +68,11 @@
 
     shellAliases = {
       drsw = "nix-darwin-switch";
+      upa = "nix flake update ~/.config/nixpkgs -v && upn";
+      upn = "$HOME/.config/nixpkgs/programs/nvim/update-plugins.sh";
+      ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
+      nsr = "sudo nix-store --verify --check-contents --repair";
+
       j = "z";
       ji = "zi";
       la = "exa --long --all --group --header --group-directories-first --sort=type --icons";
@@ -78,9 +83,6 @@
       ytdl = "ytdl_with_options";
       ytdl_mp4 = "ytdl_with_options -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]'";
       yti = "ytdl_with_options -F";
-      upa = "nix flake update ~/.config/nixpkgs -v";
-      upn = "$HOME/.config/nixpkgs/programs/nvim/update-plugins.sh";
-      ucl = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
     };
 
     functions = {
