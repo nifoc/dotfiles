@@ -21,6 +21,7 @@
 
     extraOptions = ''
       experimental-features = nix-command flakes
+      extra-platforms = x86_64-darwin
       keep-derivations = true
       keep-outputs = true
       auto-optimise-store = true

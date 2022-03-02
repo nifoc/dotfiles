@@ -36,6 +36,16 @@
       }
 
       {
+        name = "done-fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "nifoc";
+          repo = "done";
+          rev = "2f4e94d8306224f63cd12fb992318985a83d51a8";
+          sha256 = "Pq8HEISGjpCTXBIyukcLUK8r1hJ3/QXAklRCesm4nQ0=";
+        };
+      }
+
+      {
         name = "fzf-fish";
         src = pkgs.fetchFromGitHub {
           owner = "PatrickF1";
@@ -128,6 +138,9 @@
           source "$custom_script"
         end
       end
+
+      # Plugin: done
+      set -g __done_min_cmd_duration 10000
     '';
 
     interactiveShellInit = ''

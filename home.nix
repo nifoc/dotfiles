@@ -10,7 +10,6 @@
     ./programs/nvim
 
     ./programs/git.nix
-    ./programs/lazygit.nix
 
     ./programs/bat.nix
 

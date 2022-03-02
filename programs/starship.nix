@@ -1,6 +1,9 @@
+{ pkgs, ... }:
+
 {
   programs.starship = {
     enable = true;
+    package = pkgs.pkgs-x86.starship;
     enableFishIntegration = true;
 
     settings = {
