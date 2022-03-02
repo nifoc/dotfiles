@@ -65,7 +65,6 @@ in
       # Fixes
       impatient-nvim
       FixCursorHold-nvim
-      vim-auto-cursorline
 
       # Utils
       popup-nvim
@@ -98,6 +97,7 @@ in
       null-ls-nvim
       trouble-nvim
       lspkind-nvim
+      virtual-types-nvim
       lsp-status-nvim
       vim-illuminate
 
@@ -133,7 +133,7 @@ in
       nvim-tree-lua
       indent-blankline-nvim
       virt-column-nvim
-      nvim-colorizer-lua
+      neogit
       gitsigns-nvim
       spellsitter-nvim
       nvim-notify

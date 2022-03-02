@@ -1,7 +1,6 @@
 # Fixes
 - src: lewis6991/impatient.nvim
 - src: antoinemadec/FixCursorHold.nvim
-- src: delphinus/vim-auto-cursorline
 
 # Utils
 - src: nvim-lua/popup.nvim
@@ -42,6 +41,7 @@
 - src: jose-elias-alvarez/null-ls.nvim
 - src: folke/trouble.nvim
 - src: onsails/lspkind-nvim
+- src: jubnzv/virtual-types.nvim
 - src: nvim-lua/lsp-status.nvim
 - src: RRethy/vim-illuminate
 
@@ -77,7 +77,7 @@
 - src: kyazdani42/nvim-tree.lua
 - src: lukas-reineke/indent-blankline.nvim
 - src: lukas-reineke/virt-column.nvim
-- src: norcalli/nvim-colorizer.lua
+- src: TimUntersberger/neogit
 - src: lewis6991/gitsigns.nvim
 - src: lewis6991/spellsitter.nvim
 - src: rcarriga/nvim-notify

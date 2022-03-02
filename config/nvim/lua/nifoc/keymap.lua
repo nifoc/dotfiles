@@ -1,19 +1,15 @@
 local wk = require('which-key')
+
 local npairs = require('nvim-autopairs')
 
 local telescope = require('telescope')
 local telescope_builtin = require('telescope.builtin')
 local telescope_themes = require('telescope.themes')
 
--- Global key function
-_G.nifoc_keymap_cr_complete = function()
-  return npairs.autopairs_cr()
-end
-
 local M = {}
 
 function M.setup()
-  vim.api.nvim_set_keymap('n', '<space>', '<nop>', {noremap = true})
+  vim.keymap.set('n', '<space>', '<nop>', {noremap = true})
   vim.g.mapleader = ' '
   vim.opt.timeoutlen = 500
 
@@ -86,9 +82,21 @@ function M.setup()
         function() require('gitsigns').blame_line() end,
         "Blame Line"
       },
+      n = {
+        "<cmd>Neogit<CR>",
+        "Neogit"
+      },
       c = {
-        function() _G.__fterm_lazygit() end,
-        "lazygit"
+        "<cmd>Neogit commit<CR>",
+        "Commit"
+      },
+      p = {
+        "<cmd>Neogit pull<CR>",
+        "Pull"
+      },
+      P = {
+        "<cmd>Neogit push<CR>",
+        "Push"
       },
     },
     d = {
@@ -98,6 +106,10 @@ function M.setup()
         i = {
           "<cmd>LspInfo<CR>",
           "Info"
+        },
+        n = {
+          "<cmd>NullLsInfo<CR>",
+          "null-ls Info"
         },
         r = {
           "<cmd>LspRestart<CR>",
@@ -119,28 +131,27 @@ function M.setup()
   wk.register(leader, {prefix = "<leader>", noremap = false, silent = true})
 
   -- Other mappings
-  vim.api.nvim_set_keymap('n', '<CR>', ':nohlsearch<CR><CR>', {noremap = true, silent = true})
+  vim.keymap.set('n', '<CR>', ':nohlsearch<CR><CR>', {noremap = true, silent = true})
+  vim.keymap.set('i', '<CR>', npairs.autopairs_cr, {noremap = true, expr = true, silent = true})
 
-  vim.api.nvim_set_keymap('i', '<CR>', 'v:lua.nifoc_keymap_cr_complete()', {noremap = true, expr = true, silent = true})
-
-  vim.api.nvim_set_keymap('n', '<A-Left>', 'b', {noremap = true})
-  vim.api.nvim_set_keymap('n', '<A-Right>', 'w', {noremap = true})
-  vim.api.nvim_set_keymap('n', '<S-Left>', '^', {noremap = true})
-  vim.api.nvim_set_keymap('n', '<S-Right>', '$', {noremap = true})
-  vim.api.nvim_set_keymap('i', '<A-Left>', '<C-o>b', {noremap = true})
-  vim.api.nvim_set_keymap('i', '<A-Right>', '<C-o>w', {noremap = true})
-  vim.api.nvim_set_keymap('i', '<S-Left>', '<C-o>^', {noremap = true})
-  vim.api.nvim_set_keymap('i', '<S-Right>', '<C-o>$', {noremap = true})
+  vim.keymap.set('n', '<A-Left>', 'b', {noremap = true})
+  vim.keymap.set('n', '<A-Right>', 'w', {noremap = true})
+  vim.keymap.set('n', '<S-Left>', '^', {noremap = true})
+  vim.keymap.set('n', '<S-Right>', '$', {noremap = true})
+  vim.keymap.set('i', '<A-Left>', '<C-o>b', {noremap = true})
+  vim.keymap.set('i', '<A-Right>', '<C-o>w', {noremap = true})
+  vim.keymap.set('i', '<S-Left>', '<C-o>^', {noremap = true})
+  vim.keymap.set('i', '<S-Right>', '<C-o>$', {noremap = true})
 
   -- vim-yoink
-  vim.api.nvim_set_keymap('n', 'p', '<Plug>(YoinkPaste_p)', {noremap = false})
-  vim.api.nvim_set_keymap('n', 'P', '<Plug>(YoinkPaste_P)', {noremap = false})
-  vim.api.nvim_set_keymap('x', 'p', '<Plug>(SubversiveSubstitute)', {noremap = false})
-  vim.api.nvim_set_keymap('x', 'P', '<Plug>(SubversiveSubstitute)', {noremap = false})
-  vim.api.nvim_set_keymap('n', 'gp', '<Plug>(YoinkPaste_gp)', {noremap = false})
-  vim.api.nvim_set_keymap('n', 'gP', '<Plug>(YoinkPaste_gP)', {noremap = false})
-  vim.api.nvim_set_keymap('n', 'y', '<Plug>(YoinkYankPreserveCursorPosition)', {noremap = false})
-  vim.api.nvim_set_keymap('x', 'y', '<Plug>(YoinkYankPreserveCursorPosition)', {noremap = false})
+  vim.keymap.set('n', 'p', '<Plug>(YoinkPaste_p)')
+  vim.keymap.set('n', 'P', '<Plug>(YoinkPaste_P)')
+  vim.keymap.set('x', 'p', '<Plug>(SubversiveSubstitute)')
+  vim.keymap.set('x', 'P', '<Plug>(SubversiveSubstitute)')
+  vim.keymap.set('n', 'gp', '<Plug>(YoinkPaste_gp)')
+  vim.keymap.set('n', 'gP', '<Plug>(YoinkPaste_gP)')
+  vim.keymap.set('n', 'y', '<Plug>(YoinkYankPreserveCursorPosition)')
+  vim.keymap.set('x', 'y', '<Plug>(YoinkYankPreserveCursorPosition)')
 
   vim.api.nvim_set_keymap('n', '<C-t>', '<cmd>lua require("FTerm").toggle()<CR>', {noremap = true, silent = true})
   vim.api.nvim_set_keymap('t', '<C-t>', '<C-\\><C-n><cmd>lua require("FTerm").toggle()<CR>', {noremap = true, silent = true})

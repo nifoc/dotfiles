@@ -1,6 +1,5 @@
 local lsp = require('lspconfig')
 local lsp_status = require('lsp-status')
-local illuminate = require('illuminate')
 local diagnostic_utils = require('nifoc.utils.diagnostic')
 
 local function custom_attach(client, bufnr)
@@ -8,7 +7,11 @@ local function custom_attach(client, bufnr)
   lsp_status.on_attach(client)
 
   if client.resolved_capabilities.document_highlight then
-    illuminate.on_attach(client)
+    require('illuminate').on_attach(client)
+  end
+
+  if client.resolved_capabilities.code_lens then
+    require('virtualtypes').on_attach(client, bufnr)
   end
 
   diagnostic_utils.maybe_enable_lsp(client, bufnr)
@@ -118,3 +121,33 @@ lsp.sumneko_lua.setup(vim.tbl_extend('force', default_config, {
     },
   },
 }))
+
+-- Custom handlers
+vim.lsp.handlers['window/showMessage'] = function(_, result, ctx, _)
+  local client_id = ctx.client_id
+  local client = vim.lsp.get_client_by_id(client_id)
+  local client_name = client and client.name or string.format("id=%d", client_id)
+
+  if not client then
+    local error_msg = "LSP client has shut down after sending the message"
+
+    vim.notify(error_msg, "error", {
+      title = 'LSP | ' .. client_name,
+      timeout = 10000,
+    })
+  else
+    local message_type = result.type
+    local message_type_name = ({
+      'ERROR',
+      'WARN',
+      'INFO',
+      'DEBUG',
+    })[message_type]
+    local message = result.message
+
+    vim.notify(message, message_type_name, {
+      title = 'LSP | ' .. client_name,
+      timeout = 10000,
+    })
+  end
+end

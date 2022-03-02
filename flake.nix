@@ -30,12 +30,14 @@
 
   outputs = inputs@{ self, nixpkgs, darwin, home-manager, ... }:
     let
+      overlay-x86 = final: prev: { pkgs-x86 = import inputs.nixpkgs { system = "x86_64-darwin"; }; };
       overlay-neovim = inputs.neovim-nightly-overlay.overlay;
       overlay-zig = final: prev: { zigpkgs = inputs.zig-overlay.packages.${prev.system}; };
       overlay-nifoc = inputs.nifoc-overlay.overlay;
 
       nixpkgsConfig = {
         overlays = [
+          overlay-x86
           overlay-neovim
           overlay-zig
           overlay-nifoc

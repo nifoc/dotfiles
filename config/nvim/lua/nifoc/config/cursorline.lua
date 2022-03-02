@@ -1,5 +1,5 @@
 vim.cmd('augroup nifoc_cusorline')
   vim.cmd('autocmd!')
   vim.cmd('autocmd FileType TelescopePrompt setlocal nocursorline')
-  vim.cmd('autocmd FileType NvimTree let b:auto_cursorline_disabled = 1')
+  vim.cmd('autocmd FileType NvimTree setlocal nocursorline')
 vim.cmd('augroup end')

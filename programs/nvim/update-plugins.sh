@@ -53,16 +53,20 @@ for plugin in "${plugin_array[@]}"; do
 
   version="$(date -d "$commit_date" "+%s")"
 
-  echo "${name} = pkgs.vimUtils.buildVimPluginFrom2Nix {" >>"$nix_new_file"
-  echo "pname = \"${repo}\";" >>"$nix_new_file"
-  echo "version = \"${version}\";" >>"$nix_new_file"
-  echo "src = ${src};" >>"$nix_new_file"
+  {
+    echo "${name} = pkgs.vimUtils.buildVimPluginFrom2Nix {"
+    echo "pname = \"${repo}\";"
+    echo "version = \"${version}\";"
+    echo "src = ${src};"
+  } >>"$nix_new_file"
 
   build_inputs="$(echo "$plugin" | jq -r '.nativeBuildInputs // empty' | jq -r @sh)"
   if [ -n "$build_inputs" ]; then
-    echo -n "nativeBuildInputs = with pkgs; [" >>"$nix_new_file"
-    echo -n "$build_inputs" | tr -d "'" >>"$nix_new_file"
-    echo '];' >>"$nix_new_file"
+    {
+      echo -n "nativeBuildInputs = with pkgs; ["
+      echo -n "$build_inputs" | tr -d "'"
+      echo '];'
+    } >>"$nix_new_file"
   fi
 
   build_phase="$(echo "$plugin" | jq -r '.buildPhase // empty')"
@@ -70,8 +74,10 @@ for plugin in "${plugin_array[@]}"; do
     printf "buildPhase = ''\n%s\n'';\n" "$build_phase" >>"$nix_new_file"
   fi
 
-  echo "meta.homepage = \"https://github.com/${owner}/${repo}\";" >>"$nix_new_file"
-  echo '};' >>"$nix_new_file"
+  {
+    echo "meta.homepage = \"https://github.com/${owner}/${repo}\";"
+    echo '};'
+  } >>"$nix_new_file"
 done
 echo "}" >>"$nix_new_file"
 
@@ -79,7 +85,11 @@ nixpkgs-fmt "$nix_new_file"
 
 if test -f "$nix_file"; then
   set +eo pipefail
-  diff -U 2 "$nix_file" "$nix_new_file" | bat --paging=never -ldiff
+  if [ "$TERM" = "xterm-kitty" ]; then
+    kitty +kitten diff "$nix_file" "$nix_new_file"
+  else
+    diff -U 2 "$nix_file" "$nix_new_file" | bat --paging=never -ldiff
+  fi
   set -eo pipefail
 
   mv "$nix_new_file" "$nix_file"
