@@ -27,7 +27,7 @@
 - src: natecraddock/telescope-zf-native.nvim
   nativeBuildInputs:
   - just
-  - zigpkgs."0.9.0"
+  - zigpkgs."0.9.1"
   buildPhase: |-
     just clean
     XDG_CACHE_HOME=./xdg_cache just build

@@ -1,6 +1,7 @@
 local wk = require('which-key')
 
 local npairs = require('nvim-autopairs')
+local fterm = require("FTerm")
 
 local telescope = require('telescope')
 local telescope_builtin = require('telescope.builtin')
@@ -153,8 +154,8 @@ function M.setup()
   vim.keymap.set('n', 'y', '<Plug>(YoinkYankPreserveCursorPosition)')
   vim.keymap.set('x', 'y', '<Plug>(YoinkYankPreserveCursorPosition)')
 
-  vim.api.nvim_set_keymap('n', '<C-t>', '<cmd>lua require("FTerm").toggle()<CR>', {noremap = true, silent = true})
-  vim.api.nvim_set_keymap('t', '<C-t>', '<C-\\><C-n><cmd>lua require("FTerm").toggle()<CR>', {noremap = true, silent = true})
+  vim.keymap.set('n', '<C-t>', fterm.toggle, {noremap = true, silent = true})
+  vim.keymap.set('t', '<C-t>', '<C-\\><C-n><cmd>lua require("FTerm").toggle()<CR>', {noremap = true, silent = true})
 end
 
 function M.lsp_attach(client, bufnr)

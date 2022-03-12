@@ -24,7 +24,7 @@ vim.g.nvim_tree_show_icons = {
   files = 1,
 }
 
-vim.cmd('augroup nifoc_nvim_tree_telescope')
-  vim.cmd('autocmd!')
-  vim.cmd('autocmd User TelescopeFindPre NvimTreeClose')
-vim.cmd('augroup end')
+-- Autocmds
+local augroup_nifoc_tree = vim.api.nvim_create_augroup("NifocTree", { clear = true })
+
+vim.api.nvim_create_autocmd("User", { pattern = "TelescopeFindPre", command = 'NvimTreeClose', group = augroup_nifoc_tree })

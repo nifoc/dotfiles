@@ -22,9 +22,6 @@ vim.g.loaded_perl_provider = 0
 
 -- Require Plugin Configuration
 
--- Fixes
-require('nifoc.config.cursorline')
-
 -- Keybindings
 require('nifoc.config.whichkey')
 require('nifoc.config.yoink')

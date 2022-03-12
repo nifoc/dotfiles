@@ -35,7 +35,19 @@ telescope.setup {
 
 telescope.load_extension("zf-native")
 
-vim.cmd('augroup nifoc_telescope')
-  vim.cmd('autocmd!')
-  vim.cmd('autocmd User TelescopePreviewerLoaded let w:is_telescope=v:true')
-vim.cmd('augroup end')
+-- Autocmds
+local augroup_nifoc_telescope = vim.api.nvim_create_augroup("NifocTelescope", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", { pattern = "TelescopePrompt", callback = function()
+  vim.opt_local.cursorline = false
+end, group = augroup_nifoc_telescope })
+
+vim.api.nvim_create_autocmd("User" , { pattern = "TelescopePreviewerLoaded", command = "let w:is_telescope=v:true", group = augroup_nifoc_telescope })
+
+vim.api.nvim_create_autocmd("BufWinEnter" , { callback = function()
+  if vim.w.is_telescope then
+    vim.opt_local.number = true
+    vim.opt_local.relativenumber = false
+    vim.opt_local.wrap = true
+  end
+end, group = augroup_nifoc_telescope })

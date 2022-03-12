@@ -4,10 +4,10 @@ local diagnostic_utils = require('nifoc.utils.diagnostic')
 
 local function custom_attach(client, bufnr)
   -- Plugin attachments
-  lsp_status.on_attach(client)
+  lsp_status.on_attach(client, bufnr)
 
   if client.resolved_capabilities.document_highlight then
-    require('illuminate').on_attach(client)
+    require('illuminate').on_attach(client, bufnr)
   end
 
   if client.resolved_capabilities.code_lens then

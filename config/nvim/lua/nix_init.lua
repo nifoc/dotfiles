@@ -64,7 +64,8 @@ vim.opt.shortmess:append('c')
 vim.opt.shortmess:remove('S')
 
 vim.opt.termguicolors = true
-vim.cmd('set mouse=a mousemodel=popup_setpos')
+vim.opt.mouse = 'a'
+vim.opt.mousemodel = 'popup_setpos'
 
 -- Plugins
 require('nifoc.config.themes')
@@ -94,21 +95,27 @@ vim.g.clipboard = {
   cache_enabled = 0,
 }
 
-vim.cmd('set clipboard+=unnamedplus')
+vim.opt.clipboard:prepend('unnamedplus')
 
 -- Keymap
 require('nifoc.keymap').setup()
 
 -- Autocmds
-vim.cmd('augroup nifoc_numbertoggle')
-  vim.cmd('autocmd!')
-  vim.cmd("autocmd BufEnter,BufWinEnter * lua require('nifoc.utils.line_style').maybe_set_special_style()")
-  vim.cmd('autocmd TermOpen * setlocal nonumber norelativenumber')
-  vim.cmd("autocmd BufEnter,InsertLeave * lua require('nifoc.utils.line_style').maybe_set_relativenumber(true)")
-  vim.cmd("autocmd BufLeave,InsertEnter * lua require('nifoc.utils.line_style').maybe_set_relativenumber(false)")
-vim.cmd('augroup end')
+local augroup_nifoc_init = vim.api.nvim_create_augroup("NifocInit", { clear = true })
 
-vim.cmd('augroup nifoc_yank')
-  vim.cmd('autocmd!')
-  vim.cmd('autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=500}')
-vim.cmd('augroup end')
+vim.api.nvim_create_autocmd("InsertEnter", { callback = function()
+  require('nifoc.utils.line_style').maybe_set_relativenumber(false)
+end, group = augroup_nifoc_init })
+
+vim.api.nvim_create_autocmd("InsertLeave", { callback = function()
+  require('nifoc.utils.line_style').maybe_set_relativenumber(true)
+end, group = augroup_nifoc_init })
+
+vim.api.nvim_create_autocmd("TermOpen", { callback = function()
+  vim.opt_local.number = false
+  vim.opt_local.relativenumber = false
+end, group = augroup_nifoc_init })
+
+vim.api.nvim_create_autocmd("TextYankPost", { callback = function()
+  vim.highlight.on_yank{higroup="IncSearch", timeout=500}
+end, group = augroup_nifoc_init })

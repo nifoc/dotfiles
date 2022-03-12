@@ -31,8 +31,10 @@ in
         let $PATH = substitute($PATH, xcode_path, ":", "") . substitute(xcode_path, ":$", "", "")
       endfor
 
-      lua require('impatient')
-      lua require('nix_init')
+      lua << EOF
+        require('impatient')
+        require('nix_init')
+      EOF
     '';
 
     extraPackages = with pkgs; [
