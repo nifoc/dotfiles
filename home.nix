@@ -40,7 +40,6 @@
       fzf
       gallery-dl
       glow
-      gvproxy
       hexyl
       hyperfine
       lnav
