@@ -24,16 +24,14 @@ telescope.setup {
   },
 
   extensions = {
-    fzf = {
-      fuzzy = true,
-      override_generic_sorter = true,
-      override_file_sorter = true,
-      case_mode = 'smart_case',
-    }
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {}
+    },
   },
 }
 
 telescope.load_extension("zf-native")
+telescope.load_extension("ui-select")
 
 -- Autocmds
 local augroup_nifoc_telescope = vim.api.nvim_create_augroup("NifocTelescope", { clear = true })

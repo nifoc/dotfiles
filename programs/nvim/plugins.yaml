@@ -33,6 +33,7 @@
     XDG_CACHE_HOME=./xdg_cache just build
     mv lib/libzf.so lib/libzf-osx-arm64.so
     rm -rf ./xdg_cache
+- src: nvim-telescope/telescope-ui-select.nvim
 - src: ahmedkhalf/project.nvim
 - src: folke/todo-comments.nvim
 

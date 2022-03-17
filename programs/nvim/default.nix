@@ -91,6 +91,7 @@ in
       # Telescope
       telescope-nvim
       telescope-zf-native-nvim
+      telescope-ui-select-nvim
       project-nvim
       todo-comments-nvim
 
