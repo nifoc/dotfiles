@@ -12,9 +12,7 @@ in
     hashKnownHosts = true;
     serverAliveInterval = 60;
     extraConfig = ''
-      IgnoreUnknown UseKeychain,AddKeysToAgent
-      UseKeychain yes
-      AddKeysToAgent yes
+      IdentityAgent ~/.ssh/1password.sock
       UpdateHostKeys ask
       VerifyHostKeyDNS yes
     '';
@@ -25,8 +23,8 @@ in
       "git.app.nedeco.de" = {
         port = 22;
         user = "git";
+        identityFile = "~/.ssh/nedeco_gitlab.pub";
         identitiesOnly = true;
-        identityFile = "~/.ssh/nedeco_gitlab";
         compression = true;
       };
 
@@ -34,8 +32,8 @@ in
         host = "10.0.90.*";
         port = 22;
         user = "root";
+        identityFile = "~/.ssh/nedeco.pub";
         identitiesOnly = true;
-        identityFile = "~/.ssh/nedeco";
       };
 
       # Private
@@ -43,8 +41,8 @@ in
       "github.com" = {
         port = 22;
         user = "git";
+        identityFile = "~/.ssh/GitHub.pub";
         identitiesOnly = true;
-        identityFile = "~/.ssh/GitHub";
         compression = true;
       };
 
@@ -66,8 +64,8 @@ in
         hostname = "10.0.0.100";
         port = 22;
         user = "daniel";
+        identityFile = "~/.ssh/NAS.pub";
         identitiesOnly = true;
-        identityFile = "~/.ssh/freenas";
         compression = true;
       };
     };

@@ -26,16 +26,6 @@
       }
 
       {
-        name = "ssh-agent-macos";
-        src = pkgs.fetchFromGitHub {
-          owner = "nifoc";
-          repo = "ssh-agent-macos.fish";
-          rev = "a9dde730a462b3b327cabf1a56a643a12b0aea3d";
-          sha256 = "e0YrQzcgkHvFiYuXluS+TZ/hjDneK33xcWbo7sjXWNA=";
-        };
-      }
-
-      {
         name = "done-fish";
         src = pkgs.fetchFromGitHub {
           owner = "nifoc";
