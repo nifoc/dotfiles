@@ -26,6 +26,7 @@
     stateVersion = "22.05";
 
     packages = with pkgs; [
+      agilebits-op
       aria2
       arp-scan
       atomicparsley

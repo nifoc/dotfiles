@@ -2,10 +2,9 @@ local ns = require('nifoc.utils.statusline')
 
 require('lualine').setup {
   options = {
+    globalstatus = true,
     theme = 'dracula-nvim',
-    -- section_separators = {'', ''},
     section_separators = '',
-    -- component_separators = {'', ''},
     component_separators = '|',
     icons_enabled = true,
   },

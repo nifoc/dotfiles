@@ -87,7 +87,7 @@
 
     functions = {
       upp = ''
-        if rg --quiet '^use flake$' ./.envrc
+        if not test -f ./.envrc; or rg --quiet '^use flake$' ./.envrc
           nix flake update ./ -v
         else
           nix flake update (rg --no-line-number --color never '^use flake' ./.envrc | cut -d ' ' -f 3 | xargs -I {} sh -c 'echo {}') -v
@@ -112,6 +112,9 @@
     shellInit = ''
       # Disable greeting
       set fish_greeting
+
+      # 1PW SSH Agent
+      set -gx SSH_AUTH_SOCK "$HOME/.ssh/1password.sock"
 
       if [ -z "$__NIX_DARWIN_SET_ENVIRONMENT_DONE" ]
         set __nifoc_nix_darwin_set_env (cat /run/current-system/etc/bashrc | grep '-set-environment' | cut -d '.' -f 2)

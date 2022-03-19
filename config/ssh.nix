@@ -12,7 +12,6 @@ in
     hashKnownHosts = true;
     serverAliveInterval = 60;
     extraConfig = ''
-      IdentityAgent ~/.ssh/1password.sock
       UpdateHostKeys ask
       VerifyHostKeyDNS yes
     '';
@@ -49,8 +48,8 @@ in
       "gitlab.com" = {
         port = 22;
         user = "git";
+        identityFile = "~/.ssh/GitLab.pub";
         identitiesOnly = true;
-        identityFile = "~/.ssh/GitLab";
         compression = true;
       };
 
