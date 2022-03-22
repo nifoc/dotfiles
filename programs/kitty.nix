@@ -35,18 +35,11 @@
       scrollback_pager_history_size = 2;
     };
 
+    theme = "Dracula";
+
     font = {
       name = "JetBrainsMono Nerd Font";
       size = 13;
     };
-
-    extraConfig = ''
-      include dracula.conf
-    '';
-  };
-
-  xdg.configFile.kitty = {
-    source = ../config/kitty;
-    recursive = true;
   };
 }
