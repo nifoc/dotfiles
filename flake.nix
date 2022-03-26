@@ -34,6 +34,7 @@
       overlay-neovim = inputs.neovim-nightly-overlay.overlay;
       overlay-zig = final: prev: { zigpkgs = inputs.zig-overlay.packages.${prev.system}; };
       overlay-nifoc = inputs.nifoc-overlay.overlay;
+      overlay-patches = import ./overlay-patches.nix;
 
       nixpkgsConfig = {
         overlays = [
@@ -41,6 +42,7 @@
           overlay-neovim
           overlay-zig
           overlay-nifoc
+          overlay-patches
         ];
 
         config = {

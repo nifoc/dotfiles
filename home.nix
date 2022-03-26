@@ -64,13 +64,13 @@
     };
 
     activation = {
-      updateAppCaches = lib.hm.dag.entryAfter [ "onFilesChange" "installPackages" "copyFonts" ] ''
+      updateAppCaches = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         # neovim
         echo -n 'Removing luacache file: '
         rm -f "$HOME/.cache/nvim/luacache"
         echo 'Done'
 
-        nvim_bin="/etc/profiles/per-user/$USER/bin/nvim"
+        nvim_bin="$newGenPath/home-path/bin/nvim"
         if [ -e "$nvim_bin" ]; then
           echo -n 'Running LuaCacheClear: '
           $nvim_bin -c 'try | execute "LuaCacheClear" | echo "Done" | catch /.*/ | echo "Command not found" | endtry | q' --headless
