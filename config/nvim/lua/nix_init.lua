@@ -53,9 +53,6 @@ vim.opt.spelllang = {'en', 'de'}
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.opt.conceallevel = 2
-vim.opt.concealcursor = 'niv'
-
 -- See: https://github.com/antoinemadec/FixCursorHold.nvim
 vim.opt.updatetime = 750
 vim.g.cursorhold_updatetime = 100

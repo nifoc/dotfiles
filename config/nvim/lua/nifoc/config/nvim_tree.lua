@@ -1,6 +1,5 @@
 require('nvim-tree').setup {
   open_on_setup = false,
-  auto_close = true,
 
   update_cwd = true,
   update_focused_file = {
