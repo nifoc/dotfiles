@@ -1,3 +1,7 @@
+-- Lua filetype detection
+vim.g.did_load_filetypes = 1
+vim.g.do_filetype_lua = 1
+
 -- Disable some built-in plugins
 vim.g.loaded_matchit = 1
 vim.g.loaded_matchparen = 1
@@ -25,7 +29,7 @@ vim.g.loaded_perl_provider = 0
 -- Keybindings
 require('nifoc.config.whichkey')
 require('nifoc.config.yoink')
-require('nifoc.config.lightspeed')
+require('nifoc.config.leap')
 
 -- Syntax
 require('nifoc.config.treesitter')

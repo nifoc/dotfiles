@@ -12,7 +12,7 @@
 - src: svermeulen/vim-yoink
 - src: svermeulen/vim-cutlass
 - src: svermeulen/vim-subversive
-- src: ggandor/lightspeed.nvim
+- src: ggandor/leap.nvim
 
 # Themes
 - src: Mofiqul/dracula.nvim
