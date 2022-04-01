@@ -8,7 +8,6 @@ in
   programs.git = {
     enable = true;
     lfs.enable = true;
-    delta.enable = true;
 
     userName = "Daniel Kempkens";
     userEmail = "daniel+git@kempkens.io";
@@ -33,8 +32,7 @@ in
       };
 
       diff = {
-        indentheuristic = true;
-        algorithm = "histogram";
+        external = "difft";
       };
 
       apply = {
@@ -68,10 +66,6 @@ in
         condition = "gitdir:~/Code/Work/WDW/";
       }
     ];
-
-    delta.options = {
-      theme = "Dracula";
-    };
   };
 
   home.file."${config-work-nedeco}".source = ../config/git/config-work-nedeco;
