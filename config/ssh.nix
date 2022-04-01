@@ -63,7 +63,7 @@ in
         hostname = "10.0.0.100";
         port = 22;
         user = "daniel";
-        identityFile = "~/.ssh/NAS.pub";
+        identityFile = "~/.ssh/LAN.pub";
         identitiesOnly = true;
         compression = true;
       };
@@ -73,6 +73,8 @@ in
       "~/.ssh/config_work"
     ];
   };
+
+  home.sessionVariables.SSH_AUTH_SOCK = "${config.home.homeDirectory}/.ssh/1password.sock";
 
   home.file."${signers-directory}" = {
     source = ../config/ssh/allowed_signers;

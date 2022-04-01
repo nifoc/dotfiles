@@ -34,6 +34,7 @@
       cliclick
       curlFull
       dasel
+      difftastic
       dogdns
       exa
       fd
@@ -58,10 +59,6 @@
       xz
       yt-dlp
     ];
-
-    sessionVariables = {
-      TERMINFO_DIRS = "${pkgs.kitty.terminfo.outPath}/share/terminfo";
-    };
 
     activation = {
       updateAppCaches = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

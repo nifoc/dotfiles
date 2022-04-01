@@ -78,7 +78,7 @@ in
       { plugin = vim-yoink; optional = true; }
       { plugin = vim-cutlass; optional = true; }
       { plugin = vim-subversive; optional = true; }
-      lightspeed-nvim
+      leap-nvim
 
       # Themes
       dracula-nvim
@@ -153,4 +153,6 @@ in
 
   home.file."${nvim-spell-directory}/de.utf-8.spl".source = nvim-spell-de-utf8-dictionary;
   home.file."${nvim-spell-directory}/de.utf-8.sug".source = nvim-spell-de-utf8-suggestions;
+
+  home.sessionVariables.EDITOR = "nvim";
 }
