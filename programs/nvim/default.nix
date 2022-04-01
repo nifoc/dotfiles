@@ -4,16 +4,6 @@ let
   customPlugins = import ./plugins.nix { inherit pkgs; };
 
   nvim-spell-directory = "${config.xdg.configHome}/nvim/spell";
-
-  nvim-spell-de-utf8-dictionary = builtins.fetchurl {
-    url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl";
-    sha256 = "73c7107ea339856cdbe921deb92a45939c4de6eb9c07261da1b9dd19f683a3d1";
-  };
-
-  nvim-spell-de-utf8-suggestions = builtins.fetchurl {
-    url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.sug";
-    sha256 = "13d0ecf92863d89ef60cd4a8a5eb2a5a13a0e8f9ba8d1c6abe47aba85714a948";
-  };
 in
 {
   programs.neovim = {
@@ -63,10 +53,9 @@ in
       statix
     ];
 
-    plugins = with customPlugins; [
+    plugins = (with customPlugins; [
       # Fixes
       impatient-nvim
-      FixCursorHold-nvim
 
       # Utils
       popup-nvim
@@ -86,7 +75,6 @@ in
       # Syntax
       nvim-treesitter
       playground
-      Jenkinsfile-vim-syntax
 
       # Telescope
       telescope-nvim
@@ -127,10 +115,8 @@ in
 
       # Textobjects
       nvim-treesitter-textobjects
-      vim-surround
 
       # UI
-      undotree
       lualine-nvim
       bufferline-nvim
       nvim-tree-lua
@@ -142,8 +128,16 @@ in
       nvim-notify
       nvim-visual-eof-lua
       FTerm-nvim
-      editorconfig-vim
-    ];
+    ]) ++ (with pkgs.vimPlugins; [
+      # Fixes
+      FixCursorHold-nvim
+
+      # Textobjects
+      vim-surround
+
+      # UI
+      undotree
+    ]);
   };
 
   xdg.configFile.nvim = {
@@ -151,8 +145,15 @@ in
     recursive = true;
   };
 
-  home.file."${nvim-spell-directory}/de.utf-8.spl".source = nvim-spell-de-utf8-dictionary;
-  home.file."${nvim-spell-directory}/de.utf-8.sug".source = nvim-spell-de-utf8-suggestions;
+  home.file."${nvim-spell-directory}/de.utf-8.spl".source = builtins.fetchurl {
+    url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl";
+    sha256 = "73c7107ea339856cdbe921deb92a45939c4de6eb9c07261da1b9dd19f683a3d1";
+  };
+
+  home.file."${nvim-spell-directory}/de.utf-8.sug".source = builtins.fetchurl {
+    url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.sug";
+    sha256 = "13d0ecf92863d89ef60cd4a8a5eb2a5a13a0e8f9ba8d1c6abe47aba85714a948";
+  };
 
   home.sessionVariables.EDITOR = "nvim";
 }

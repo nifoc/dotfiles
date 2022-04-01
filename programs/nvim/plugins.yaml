@@ -1,6 +1,5 @@
 # Fixes
 - src: lewis6991/impatient.nvim
-- src: antoinemadec/FixCursorHold.nvim
 
 # Utils
 - src: nvim-lua/popup.nvim
@@ -20,7 +19,6 @@
 # Syntax
 - src: nvim-treesitter/nvim-treesitter
 - src: nvim-treesitter/playground
-- src: martinda/Jenkinsfile-vim-syntax
 
 # Telescope
 - src: nvim-telescope/telescope.nvim
@@ -68,11 +66,9 @@
 
 # Textobjects
 - src: nvim-treesitter/nvim-treesitter-textobjects
-- src: tpope/vim-surround
 
 # UI
 - src: andymass/vim-matchup
-- src: mbbill/undotree
 - src: nvim-lualine/lualine.nvim
 - src: akinsho/bufferline.nvim
 - src: kyazdani42/nvim-tree.lua
@@ -84,4 +80,3 @@
 - src: rcarriga/nvim-notify
 - src: LumaKernel/nvim-visual-eof.lua
 - src: numToStr/FTerm.nvim
-- src: editorconfig/editorconfig-vim
