@@ -9,6 +9,10 @@ in
     enable = true;
     lfs.enable = true;
 
+    difftastic = {
+      enable = true;
+    };
+
     userName = "Daniel Kempkens";
     userEmail = "daniel+git@kempkens.io";
 
@@ -29,10 +33,6 @@ in
 
       push = {
         default = "simple";
-      };
-
-      diff = {
-        external = "difft";
       };
 
       apply = {

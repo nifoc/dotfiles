@@ -34,7 +34,6 @@
       cliclick
       curlFull
       dasel
-      difftastic
       dogdns
       exa
       fd
