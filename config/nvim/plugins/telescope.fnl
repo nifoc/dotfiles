@@ -12,6 +12,7 @@
                                ; Mappings
                                :mappings {:i {:<esc> actions.close}}}
                     :extensions {:ui-select [(themes.get_dropdown {})]}})
+  (telescope.load_extension :ui-select)
   (let [augroup (vim.api.nvim_create_augroup :NifocTelescope {:clear true})
         aucmd vim.api.nvim_create_autocmd]
     (aucmd :FileType {:pattern :TelescopePrompt

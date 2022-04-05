@@ -65,10 +65,7 @@ in
       # Keybindings
       {
         plugin = legendary-nvim;
-        config = ''
-          (let [legendary (require :legendary)]
-            (legendary.setup))
-        '';
+        config = builtins.readFile ../../config/nvim/plugins/legendary.fnl;
         type = "fennel";
       }
 
