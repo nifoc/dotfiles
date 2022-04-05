@@ -1,0 +1,119 @@
+(let [o vim.opt
+      g vim.g]
+  ;; Preamble
+  (vim.cmd "syntax enable")
+  (vim.cmd "filetype plugin indent on")
+  (set o.compatible false)
+  (set o.hidden true)
+  (set o.shell :/bin/sh)
+  ;; Various Options
+  (set o.encoding :utf-8)
+  (set o.autoread true)
+  (set o.spelllang [:en :de])
+  (set o.showmode false)
+  (set o.modeline false)
+  (set o.ruler false)
+  (set o.ttyfast true)
+  (set o.lazyredraw true)
+  (set o.cursorline true)
+  (set o.list true)
+  (set o.listchars {:tab "»·"
+                    :trail "·"
+                    :nbsp "·"
+                    :precedes "←"
+                    :extends "→"})
+  (set o.showbreak "↪ ")
+  (set o.backspace [:indent :eol :start])
+  (set o.showtabline 2)
+  (set o.signcolumn "yes:1")
+  (set o.wildoptions :pum)
+  (set o.completeopt [:menu :menuone :noselect])
+  (set o.startofline false)
+  (set o.synmaxcol 300)
+  (set o.viewoptions [:cursor :folds :slash :unix])
+  (set o.foldenable false)
+  ;; Search
+  (set o.incsearch true)
+  (set o.grepprg "rg --vimgrep --no-heading")
+  (set o.grepformat "%f:%l:%c:%m,%f:%l:%m")
+  (set o.inccommand :nosplit)
+  ;; Wrap
+  (set o.wrap true)
+  (set o.tabstop 2)
+  (set o.shiftwidth 2)
+  (set o.softtabstop 2)
+  (set o.expandtab true)
+  ;; Splits
+  (set o.splitbelow true)
+  (set o.splitright true)
+  ;; Diff
+  (set o.diffopt [:filler :internal "algorithm:histogram" :indent-heuristic])
+  ;; UI
+  (set o.number true)
+  (set o.relativenumber true)
+  (set o.conceallevel 2)
+  (set o.concealcursor :nc)
+  (set o.updatetime 750)
+  (set g.cursorhold_updatetime 100) ; https://github.com/antoinemadec/FixCursorHold.nvim
+  (o.shortmess:append :c)
+  (o.shortmess:remove :S)
+  (set o.termguicolors true)
+  (set o.mouse :a)
+  (set o.mousemodel :popup_setpos)
+  ;; Backups
+  (set o.backup false)
+  (set o.swapfile false)
+  (set o.undofile true)
+  (set o.undodir (.. (os.getenv :HOME) :/.local/share/nvim/undo//))
+  ;; Clipboard
+  (set g.clipboard {:name :pbcopy
+                    :copy {:+ :pbcopy :* :pbcopy}
+                    :paste {:+ :pbpaste :* :pbpaste}
+                    :cache_enabled 0})
+  (o.clipboard:prepend :unnamedplus)
+  ;; Plugins
+  (set g.did_load_filetypes 1) ; Lua filetype detection
+  (set g.do_filetype_lua 1)
+  (set g.loaded_python_provider 0) ; Disable built-in providers
+  (set g.loaded_python3_provider 0)
+  (set g.loaded_ruby_provider 0)
+  (set g.loaded_node_provider 0)
+  (set g.loaded_perl_provider 0)
+  (set g.loaded_matchit 1) ; Disable built-in plugins
+  (set g.loaded_matchparen 1)
+  (set g.loaded_gzip 1)
+  (set g.loaded_rrhelper 1)
+  (set g.loaded_tarPlugin 1)
+  (set g.loaded_zipPlugin 1)
+  (set g.loaded_netrwPlugin 1)
+  (set g.loaded_netrwFileHandlers 1)
+  (set g.loaded_netrwSettings 1)
+  (set g.loaded_2html_plugin 1)
+  (set g.loaded_vimballPlugin 1)
+  (set g.loaded_getscriptPlugin 1)
+  (set g.loaded_logipat 1)
+  (set g.loaded_tutor_mode_plugin 1)
+  (let [diagnostics (require :nifoc.diagnostic)]
+    (diagnostics.setup))
+  (require :configuration.plugins)
+  ;; Theme
+  (set o.background :dark)
+  (vim.cmd "colorscheme dracula")
+  ;; Keymap
+  (let [keymap (require :nifoc.keymap)]
+    (keymap.setup))
+  ;; Autocmds
+  (let [augroup (vim.api.nvim_create_augroup :NifocInit {:clear true})
+        aucmd vim.api.nvim_create_autocmd
+        ls (require :nifoc.line-style)]
+    (aucmd :InsertEnter {:callback #(ls.maybe-set-relativenumber false)
+                         :group augroup})
+    (aucmd :InsertLeave {:callback #(ls.maybe-set-relativenumber true)
+                         :group augroup})
+    (aucmd :TermOpen {:callback (fn []
+                                  (vim.opt_local.number false)
+                                  (vim.opt_local.relativenumber false))
+                      :group augroup})
+    (aucmd :TextYankPost {:callback #(vim.highlight.on_yank {:higroup :IncSearch
+                                                             :timeout 500})
+                          :group augroup})))

@@ -23,7 +23,7 @@ in
 
       lua << EOF
         require('impatient')
-        require('nix_init')
+        require('configuration.init')
       EOF
     '';
 
@@ -48,6 +48,7 @@ in
 
       # LSP Tools
       hadolint
+      fnlfmt
       shellcheck
       shfmt
       statix
@@ -60,40 +61,88 @@ in
       # Utils
       popup-nvim
       plenary-nvim
-      nvim-web-devicons
 
       # Keybindings
-      which-key-nvim
-      { plugin = vim-yoink; optional = true; }
+      {
+        plugin = legendary-nvim;
+        config = ''
+          (let [legendary (require :legendary)]
+            (legendary.setup))
+        '';
+        type = "fennel";
+      }
+
+      {
+        plugin = vim-yoink;
+        optional = true;
+        config = builtins.readFile ../../config/nvim/plugins/yoink.fnl;
+        type = "fennel";
+      }
+
       { plugin = vim-cutlass; optional = true; }
       { plugin = vim-subversive; optional = true; }
-      leap-nvim
+
+      {
+        plugin = leap-nvim;
+        config = ''
+          (let [leap (require :leap)]
+            (leap.set_default_keymaps))
+        '';
+        type = "fennel";
+      }
 
       # Themes
-      dracula-nvim
+      {
+        plugin = dracula-nvim;
+        config = ''
+          (let [g vim.g]
+            (set g.dracula_show_end_of_buffer false))
+        '';
+        type = "fennel";
+      }
 
       # Syntax
-      nvim-treesitter
+      {
+        plugin = nvim-treesitter;
+        config = builtins.readFile ../../config/nvim/plugins/treesitter.fnl;
+        type = "fennel";
+      }
+
+      nvim-ts-rainbow
       playground
 
       # Telescope
-      telescope-nvim
+      {
+        plugin = telescope-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/telescope.fnl;
+        type = "fennel";
+      }
+
       telescope-zf-native-nvim
       telescope-ui-select-nvim
-      project-nvim
-      todo-comments-nvim
 
       # LSP
-      nvim-lspconfig
-      null-ls-nvim
-      trouble-nvim
-      lspkind-nvim
+      {
+        plugin = nvim-lspconfig;
+        config = builtins.readFile ../../config/nvim/plugins/lsp.fnl;
+        type = "fennel";
+      }
+
+      {
+        plugin = null-ls-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/null-ls.fnl;
+        type = "fennel";
+      }
+
       virtual-types-nvim
-      lsp-status-nvim
-      vim-illuminate
 
       # cmp
-      nvim-cmp
+      {
+        plugin = nvim-cmp;
+        config = builtins.readFile ../../config/nvim/plugins/cmp.fnl;
+        type = "fennel";
+      }
+
       cmp-nvim-lsp
       cmp-nvim-lsp-signature-help
       LuaSnip
@@ -106,42 +155,189 @@ in
       cmp-nvim-lsp-document-symbol
 
       # Pairs
-      nvim-autopairs
-      nvim-ts-autotag
-      vim-matchup
+      {
+        plugin = nvim-autopairs;
+        config = builtins.readFile ../../config/nvim/plugins/autopairs.fnl;
+        type = "fennel";
+      }
 
-      # Comments
-      Comment-nvim
+      {
+        plugin = nvim-ts-autotag;
+        config = ''
+          (let [ts-autotag (require :nvim-ts-autotag)]
+            (ts-autotag.setup))
+        '';
+        type = "fennel";
+      }
+
+      {
+        plugin = vim-matchup;
+        config = builtins.readFile ../../config/nvim/plugins/matchup.fnl;
+        type = "fennel";
+      }
 
       # Textobjects
       nvim-treesitter-textobjects
 
       # UI
-      lualine-nvim
-      bufferline-nvim
-      nvim-tree-lua
-      indent-blankline-nvim
-      virt-column-nvim
-      neogit
-      gitsigns-nvim
-      spellsitter-nvim
-      nvim-notify
-      nvim-visual-eof-lua
-      FTerm-nvim
+      {
+        plugin = lualine-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/lualine.fnl;
+        type = "fennel";
+      }
+
+      {
+        plugin = bufferline-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/bufferline.fnl;
+        type = "fennel";
+      }
+
+      {
+        plugin = indent-blankline-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/indent_line.fnl;
+        type = "fennel";
+      }
+
+      {
+        plugin = virt-column-nvim;
+        config = ''
+          (let [virt-column (require :virt-column)]
+            (virt-column.setup))
+        '';
+        type = "fennel";
+      }
+
+      {
+        plugin = neogit;
+        config = builtins.readFile ../../config/nvim/plugins/neogit.fnl;
+        type = "fennel";
+      }
+
+      {
+        plugin = gitsigns-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/gitsigns.fnl;
+        type = "fennel";
+      }
+
+      {
+        plugin = spellsitter-nvim;
+        config = ''
+          (let [spellsitter (require :spellsitter)]
+            (spellsitter.setup))
+        '';
+        type = "fennel";
+      }
+
+      {
+        plugin = nvim-notify;
+        config = "(set vim.notify (require :notify))";
+        type = "fennel";
+      }
+
+      {
+        plugin = nvim-visual-eof-lua;
+        config = builtins.readFile ../../config/nvim/plugins/visual-eof.fnl;
+        type = "fennel";
+      }
     ]) ++ (with pkgs.vimPlugins; [
       # Fixes
       FixCursorHold-nvim
+
+      # Utils
+      nvim-web-devicons
+
+      # Telescope
+      {
+        plugin = project-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/project.fnl;
+        type = "fennel";
+      }
+
+      {
+        plugin = todo-comments-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/todo-comments.fnl;
+        type = "fennel";
+      }
+
+      # LSP
+      {
+        plugin = trouble-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/trouble.fnl;
+        type = "fennel";
+      }
+
+      lspkind-nvim
+      lsp-status-nvim
+
+      {
+        plugin = vim-illuminate;
+        config = builtins.readFile ../../config/nvim/plugins/illuminate.fnl;
+        type = "fennel";
+      }
+
+      # Comments
+      {
+        plugin = comment-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/comment.fnl;
+        type = "fennel";
+      }
 
       # Textobjects
       vim-surround
 
       # UI
       undotree
+
+      {
+        plugin = FTerm-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/fterm.fnl;
+        type = "fennel";
+      }
     ]);
   };
 
-  xdg.configFile.nvim = {
-    source = ../../config/nvim;
+  xdg.configFile."nvim/lua" = {
+    source = pkgs.runCommandLocal "nvim-fennel-files"
+      {
+        nativeBuildInputs = [ pkgs.fennel pkgs.stylua ];
+      } ''
+      mkdir -p $out/configuration
+      mkdir -p $out/nifoc/utils
+
+      fennel --use-bit-lib --compile "${../../config/nvim/init.fnl}" > "$out/configuration/init.lua"
+
+      cat <<EOF >>plugins.fnl
+      ${config.programs.neovim.generatedConfigs.fennel}
+      nil
+      EOF
+
+      fennel --use-bit-lib --compile "./plugins.fnl" > "$out/configuration/plugins.lua"
+
+      nifoc_store_path="${../../config/nvim/nifoc}"
+      nifoc_store_lua="$(find "$nifoc_store_path" -type f -name '*.lua')"
+      nifoc_store_fnl="$(find "$nifoc_store_path" -type f -name '*.fnl')"
+
+      for luafile in $nifoc_store_lua; do
+        file_out_path="$(echo "$luafile" | sed "s|$nifoc_store_path/||")"
+
+        echo "Copying $luafile ..."
+        cat "$luafile" > "$out/nifoc/$file_out_path"
+      done
+
+      for fnlfile in $nifoc_store_fnl; do
+        file_out_path="$(echo "$fnlfile" | sed "s|$nifoc_store_path/||" | sed "s/.fnl$/.lua/")"
+
+        echo "Compiling $fnlfile ..."
+        fennel --use-bit-lib --compile "$fnlfile" > "$out/nifoc/$file_out_path"
+      done
+
+      stylua $out/
+    '';
+    recursive = true;
+  };
+
+  xdg.configFile."nvim/after" = {
+    source = ../../config/nvim/after;
     recursive = true;
   };
 
