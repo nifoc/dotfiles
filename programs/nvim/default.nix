@@ -296,48 +296,55 @@ in
     ]);
   };
 
-  xdg.configFile."nvim/lua" = {
+  xdg.configFile."nvim" = {
     source = pkgs.runCommandLocal "nvim-fennel-files"
       {
         nativeBuildInputs = [ pkgs.fennel pkgs.stylua ];
       } ''
-      mkdir -p $out/configuration
-      mkdir -p $out/nifoc/utils
+      mkdir -p $out/lua/configuration
+      mkdir -p $out/lua/nifoc/utils
+      mkdir -p $out/after/ftplugin
 
-      fennel --use-bit-lib --compile "${../../config/nvim/init.fnl}" > "$out/configuration/init.lua"
+      fennel="fennel --use-bit-lib --compile"
+      config_store_path="${../../config/nvim}"
 
-      cat <<EOF >>plugins.fnl
-      ${config.programs.neovim.generatedConfigs.fennel}
-      nil
-      EOF
+      # Init
+      $fennel "$config_store_path/init.fnl" > "$out/lua/configuration/init.lua"
 
-      fennel --use-bit-lib --compile "./plugins.fnl" > "$out/configuration/plugins.lua"
-
-      nifoc_store_path="${../../config/nvim/nifoc}"
-      nifoc_store_lua="$(find "$nifoc_store_path" -type f -name '*.lua')"
+      # Utils
+      nifoc_store_path="$config_store_path/nifoc"
       nifoc_store_fnl="$(find "$nifoc_store_path" -type f -name '*.fnl')"
-
-      for luafile in $nifoc_store_lua; do
-        file_out_path="$(echo "$luafile" | sed "s|$nifoc_store_path/||")"
-
-        echo "Copying $luafile ..."
-        cat "$luafile" > "$out/nifoc/$file_out_path"
-      done
 
       for fnlfile in $nifoc_store_fnl; do
         file_out_path="$(echo "$fnlfile" | sed "s|$nifoc_store_path/||" | sed "s/.fnl$/.lua/")"
 
         echo "Compiling $fnlfile ..."
-        fennel --use-bit-lib --compile "$fnlfile" > "$out/nifoc/$file_out_path"
+        $fennel "$fnlfile" > "$out/lua/nifoc/$file_out_path"
       done
 
-      stylua $out/
-    '';
-    recursive = true;
-  };
+      # Plugins
+      cat <<EOF >>plugins.fnl
+      ${config.programs.neovim.generatedConfigs.fennel}
+      nil
+      EOF
 
-  xdg.configFile."nvim/after" = {
-    source = ../../config/nvim/after;
+      $fennel "./plugins.fnl" > "$out/lua/configuration/plugins.lua"
+
+      # After
+      after_store_path="$config_store_path/after"
+      after_store_fnl="$(find "$after_store_path" -type f -name '*.fnl')"
+
+      for fnlfile in $after_store_fnl; do
+        file_out_path="$(echo "$fnlfile" | sed "s|$after_store_path/||" | sed "s/.fnl$/.lua/")"
+
+        echo "Compiling $fnlfile ..."
+        $fennel "$fnlfile" > "$out/after/$file_out_path"
+      done
+
+      cp -r "$after_store_path/queries" "$out/after/"
+
+      stylua "$out/"
+    '';
     recursive = true;
   };
 
