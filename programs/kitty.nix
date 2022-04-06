@@ -6,7 +6,7 @@
 
     settings = {
       # Shell
-      shell = "${pkgs.fish}/bin/fish --interactive";
+      shell = "${pkgs.fish.outPath}/bin/fish --interactive";
       shell_integration = "no-cursor";
 
       # Theme/Layout
