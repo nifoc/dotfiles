@@ -1,7 +1,8 @@
 (let [mod {}
       cmd vim.cmd
       api vim.api
-      keymap (require :nifoc.keymap)]
+      keymap (require :nifoc.keymap)
+      lsp-format (require :lsp-format)]
   (fn mod.setup []
     (vim.diagnostic.config {:underline true
                             :virtual_text {:source false}
@@ -21,9 +22,6 @@
     (when (and client.resolved_capabilities.document_formatting
                (= vim.b.nifoc_fixer_enabled nil))
       (api.nvim_buf_set_var bufnr :nifoc_fixer_enabled 1)
-      (api.nvim_create_autocmd :BufWritePre
-                               {:callback #(vim.lsp.buf.formatting_sync nil
-                                                                        1000)
-                                :buffer bufnr})))
+      (lsp-format.on_attach client bufnr)))
 
   mod)

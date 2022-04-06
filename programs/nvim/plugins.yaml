@@ -37,6 +37,7 @@
 - src: neovim/nvim-lspconfig
 - src: jose-elias-alvarez/null-ls.nvim
 - src: jubnzv/virtual-types.nvim
+- src: lukas-reineke/lsp-format.nvim
 
 # cmp
 - src: hrsh7th/nvim-cmp

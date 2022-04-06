@@ -133,6 +133,15 @@ in
 
       virtual-types-nvim
 
+      {
+        plugin = lsp-format-nvim;
+        config = ''
+          (let [lsp-format (require :lsp-format)]
+            (lsp-format.setup))
+        '';
+        type = "fennel";
+      }
+
       # cmp
       {
         plugin = nvim-cmp;
