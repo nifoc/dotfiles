@@ -1,6 +1,7 @@
 { config, ... }:
 
 let
+  auth-socket = "${config.home.homeDirectory}/.ssh/1password.sock";
   signers-directory = "${config.home.homeDirectory}/.ssh/allowed_signers";
 in
 {
@@ -12,6 +13,7 @@ in
     hashKnownHosts = true;
     serverAliveInterval = 60;
     extraConfig = ''
+      IdentityAgent "${auth-socket}"
       UpdateHostKeys ask
       VerifyHostKeyDNS yes
     '';
@@ -74,7 +76,7 @@ in
     ];
   };
 
-  home.sessionVariables.SSH_AUTH_SOCK = "${config.home.homeDirectory}/.ssh/1password.sock";
+  home.sessionVariables.SSH_AUTH_SOCK = "${auth-socket}";
 
   home.file."${signers-directory}" = {
     source = ../config/ssh/allowed_signers;
