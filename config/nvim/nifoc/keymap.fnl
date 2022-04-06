@@ -63,6 +63,13 @@
                                         {:description "Neogit Pull"})
                              (map-entry :<leader>vP "<cmd>Neogit push<CR>"
                                         {:description "Neogit Push"})
+                             ;; Legendary
+                             (map-entry :<leader>lk #(legendary.find :keymaps)
+                                        {:description "Legendary Keymaps"})
+                             (map-entry :<leader>lc #(legendary.find :commands)
+                                        {:description "Legendary Commands"})
+                             (map-entry :<leader>la #(legendary.find :autocmds)
+                                        {:description "Legendary Autocmds"})
                              ;; Debug
                              (map-entry :<leader>dli :<cmd>LspInfo<CR>
                                         {:description "LSP Info"})
@@ -127,6 +134,9 @@
                                          :opts {:buffer bufnr}})
                              (map-entry :K vim.lsp.buf.hover
                                         {:description "Show Documentation"
+                                         :opts {:buffer bufnr}})
+                             (map-entry :F :<cmd>Format<CR>
+                                        {:description "Format Buffer"
                                          :opts {:buffer bufnr}})]))
 
   mod)
