@@ -39,12 +39,12 @@
   };
   legendary-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "legendary.nvim";
-    version = "1649095494";
+    version = "1649269941";
     src = pkgs.fetchFromGitHub {
       owner = "mrjones2014";
       repo = "legendary.nvim";
-      rev = "c70d8cd627c26f169c839e4b089c0b4dc53fbe13";
-      sha256 = "R+KRaflot80sRG8glKDWQ/clLvkXeKpt1NnF5Qvca6g=";
+      rev = "a9a769e28e355ef8e72767181c33681d4b28acfd";
+      sha256 = "B+i6Ix8ZA8OTgpZ5oKHq+hHNhlhA3fkdrNRg14Mg7MA=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/mrjones2014/legendary.nvim";
@@ -87,12 +87,12 @@
   };
   leap-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "leap.nvim";
-    version = "1648991969";
+    version = "1649262387";
     src = pkgs.fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "e14aff7302fc825732a8a56c5299c356ff3a39cc";
-      sha256 = "hAZJ+9I+f622VFYC4ntuk1SssUK2Kr7/9OZVcrzM6eA=";
+      rev = "36c4037c5e02d02bf9e49dbb822ada3035c41c35";
+      sha256 = "T7r9kqGCMlAgUdCS9WJfBR63i2lkuQ2N0unIgBBz2QE=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/ggandor/leap.nvim";
@@ -111,12 +111,12 @@
   };
   nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "1649228392";
+    version = "1649273291";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "99625b59b50f820adec52516b34bc6426f5ab614";
-      sha256 = "8nDtP4x2aVdzW2jNiN9z2/ZI56+NA2l6IhdGmOnl+dA=";
+      rev = "717fef738bd67b644e70d84182e9b285bf64f810";
+      sha256 = "kjO3Nwpy+SH3cFE+M4y5HC1HMTRq8uSh8IrkLwWXo1A=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter";
@@ -430,12 +430,12 @@
   };
   bufferline-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "bufferline.nvim";
-    version = "1648834632";
+    version = "1649273008";
     src = pkgs.fetchFromGitHub {
       owner = "akinsho";
       repo = "bufferline.nvim";
-      rev = "004cd5734fb21e39d48c1fb1469fa63e2797880b";
-      sha256 = "EMP7zqZH/E19OPQHoEZVz1rWhluqu5GAnybPW4lNJuc=";
+      rev = "50e1bfe6f2c474c0a6e8171606b001f3b17ddeb2";
+      sha256 = "s6LbKkiAgvJiI+zUWAroB7Wyjq2vPDRoyEO9sQHcED8=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/akinsho/bufferline.nvim";
