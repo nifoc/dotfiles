@@ -1,19 +1,12 @@
 (let [o vim.opt
       g vim.g]
   ;; Preamble
-  (vim.cmd "syntax enable")
-  (vim.cmd "filetype plugin indent on")
-  (set o.compatible false)
-  (set o.hidden true)
   (set o.shell :/bin/sh)
   ;; Various Options
-  (set o.encoding :utf-8)
-  (set o.autoread true)
   (set o.spelllang [:en :de])
   (set o.showmode false)
   (set o.modeline false)
   (set o.ruler false)
-  (set o.ttyfast true)
   (set o.lazyredraw true)
   (set o.cursorline true)
   (set o.list true)
@@ -26,7 +19,6 @@
   (set o.backspace [:indent :eol :start])
   (set o.showtabline 2)
   (set o.signcolumn "yes:1")
-  (set o.wildoptions :pum)
   (set o.completeopt [:menu :menuone :noselect])
   (set o.startofline false)
   (set o.synmaxcol 300)
