@@ -23,6 +23,9 @@
                       :show_filename false
                       :diagnostics false})
   (lsp-status.register_progress)
+  ;; Custom handler
+  (tset vim.lsp.handlers "textDocument/hover" (vim.lsp.with vim.lsp.handlers.hover {:border "rounded"}))
+  (tset vim.lsp.handlers "textDocument/signatureHelp" (vim.lsp.with vim.lsp.handlers.signature_help {:border "rounded"}))
   ;; Servers
   (let [default-capabilities (vim.lsp.protocol.make_client_capabilities)
         capabilities (vim.tbl_extend :keep
@@ -30,6 +33,7 @@
                                      lsp-status.capabilities)
         flags {:allow_incremental_sync true :debounce_text_changes 700}
         default-config {:on_attach custom-attach : capabilities : flags}
+        default-config-no-format {:on_attach custom-attach-no-format : capabilities : flags}
         default-servers [:bashls
                          :cssls
                          :dockerls
@@ -45,7 +49,7 @@
       ((. lsp name :setup) default-config))
     ;; Custom
     (lsp.elixirls.setup (->> {:cmd [:elixir-ls]}
-                             (vim.tbl_extend :force default-config)))
+                             (vim.tbl_extend :force default-config-no-format)))
     (lsp.tsserver.setup (->> {:cmd [:typescript-language-server
                                     :--stdio
                                     :--tsserver-path

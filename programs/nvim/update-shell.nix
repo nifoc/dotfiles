@@ -6,6 +6,7 @@ mkShell {
     bat
     curl
     dasel
+    difftastic
     jq
     nix-prefetch-github
     nixpkgs-fmt

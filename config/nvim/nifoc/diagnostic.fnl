@@ -19,8 +19,7 @@
       (keymap.lsp-attach client bufnr)))
 
   (fn mod.maybe-enable-fixer [client bufnr]
-    (when (and client.resolved_capabilities.document_formatting
-               (= vim.b.nifoc_fixer_enabled nil))
+    (when client.resolved_capabilities.document_formatting
       (api.nvim_buf_set_var bufnr :nifoc_fixer_enabled 1)
       (lsp-format.on_attach client bufnr)))
 

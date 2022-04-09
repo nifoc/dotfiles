@@ -85,11 +85,7 @@ nixpkgs-fmt "$nix_new_file"
 
 if test -f "$nix_file"; then
   set +eo pipefail
-  if [ "$TERM" = "xterm-kitty" ]; then
-    kitty +kitten diff "$nix_file" "$nix_new_file"
-  else
-    diff -U 2 "$nix_file" "$nix_new_file" | bat --paging=never -ldiff
-  fi
+  difft "$nix_file" "$nix_new_file"
   set -eo pipefail
 
   mv "$nix_new_file" "$nix_file"

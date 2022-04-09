@@ -47,6 +47,7 @@ in
       taplo-lsp
 
       # LSP Tools
+      deadnix
       hadolint
       fnlfmt
       shellcheck
@@ -151,8 +152,8 @@ in
 
       cmp-nvim-lsp
       cmp-nvim-lsp-signature-help
-      LuaSnip
-      cmp_luasnip
+      nvim-snippy
+      cmp-snippy
       cmp-nvim-lua
       cmp-path
       cmp-buffer

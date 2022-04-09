@@ -5,10 +5,13 @@
                   :sources [; Formatting
                             builtins.formatting.fish_indent
                             builtins.formatting.fnlfmt
+                            builtins.formatting.mix
                             (builtins.formatting.shfmt.with {:extra_args [:-i
                                                                           :2]})
                             ; Diagnostics
                             builtins.diagnostics.credo
+                            builtins.diagnostics.deadnix
+                            builtins.diagnostics.fish
                             builtins.diagnostics.hadolint
                             (builtins.diagnostics.shellcheck.with {:extra_args [:-f
                                                                                 :gcc
