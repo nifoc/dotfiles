@@ -106,7 +106,4 @@
     (aucmd :TermOpen {:callback (fn []
                                   (vim.opt_local.number false)
                                   (vim.opt_local.relativenumber false))
-                      :group augroup})
-    (aucmd :TextYankPost {:callback #(vim.highlight.on_yank {:higroup :IncSearch
-                                                             :timeout 500})
-                          :group augroup})))
+                      :group augroup})))

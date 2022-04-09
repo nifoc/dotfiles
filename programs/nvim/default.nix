@@ -71,14 +71,22 @@ in
       }
 
       {
-        plugin = vim-yoink;
-        optional = true;
-        config = builtins.readFile ../../config/nvim/plugins/yoink.fnl;
+        plugin = yanky-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/yanky.fnl;
         type = "fennel";
       }
 
-      { plugin = vim-cutlass; optional = true; }
-      { plugin = vim-subversive; optional = true; }
+      {
+        plugin = cutlass-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/cutlass.fnl;
+        type = "fennel";
+      }
+
+      {
+        plugin = substitute-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/substitute.fnl;
+        type = "fennel";
+      }
 
       {
         plugin = leap-nvim;

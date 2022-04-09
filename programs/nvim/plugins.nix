@@ -49,41 +49,41 @@
     };
     meta.homepage = "https://github.com/mrjones2014/legendary.nvim";
   };
-  vim-yoink = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "vim-yoink";
-    version = "1631699595";
+  yanky-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "yanky.nvim";
+    version = "1649274039";
     src = pkgs.fetchFromGitHub {
-      owner = "svermeulen";
-      repo = "vim-yoink";
-      rev = "89ed6934679fdbc3c20f552b50b1f869f624cd22";
-      sha256 = "ekGKOYzmdaMqAun/3fRGlhA7bLKuhzsXsEcFNukgFWU=";
+      owner = "gbprod";
+      repo = "yanky.nvim";
+      rev = "1c96ef6d44f6d2a8a034f4eb242ddaa015674d1c";
+      sha256 = "D4UuAdiQVW/kgIMdNkfso8UvSJGkN1tIkAbEilxreXM=";
       fetchSubmodules = true;
     };
-    meta.homepage = "https://github.com/svermeulen/vim-yoink";
+    meta.homepage = "https://github.com/gbprod/yanky.nvim";
   };
-  vim-cutlass = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "vim-cutlass";
-    version = "1583100466";
+  cutlass-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "cutlass.nvim";
+    version = "1647531286";
     src = pkgs.fetchFromGitHub {
-      owner = "svermeulen";
-      repo = "vim-cutlass";
-      rev = "7afd649415541634c8ce317fafbc31cd19d57589";
-      sha256 = "j5W9q905ApDf3fvCIS4UwyHYnEZu5Ictn+6JkV/xjig=";
+      owner = "gbprod";
+      repo = "cutlass.nvim";
+      rev = "b46773268e66ecd371d0b32f17f7a85242475649";
+      sha256 = "M9Q4wWHv4exOWvp05bierAkzUNlArNGmKendciiiJnA=";
       fetchSubmodules = true;
     };
-    meta.homepage = "https://github.com/svermeulen/vim-cutlass";
+    meta.homepage = "https://github.com/gbprod/cutlass.nvim";
   };
-  vim-subversive = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "vim-subversive";
-    version = "1643202309";
+  substitute-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "substitute.nvim";
+    version = "1649272848";
     src = pkgs.fetchFromGitHub {
-      owner = "svermeulen";
-      repo = "vim-subversive";
-      rev = "6286cda3f9222bfd490fe34a00a2d8cd4925adec";
-      sha256 = "V+WHNtR1L2SXtlPaojqcgW4giRY1QrMzvmB+3FvuTtM=";
+      owner = "gbprod";
+      repo = "substitute.nvim";
+      rev = "66379e99812ce5f46aa4810c05460c87b7b40aac";
+      sha256 = "B0CSMKwRMISfeLJHZuPsiu51BENyZC8I/HhisH+W3Nk=";
       fetchSubmodules = true;
     };
-    meta.homepage = "https://github.com/svermeulen/vim-subversive";
+    meta.homepage = "https://github.com/gbprod/substitute.nvim";
   };
   leap-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "leap.nvim";

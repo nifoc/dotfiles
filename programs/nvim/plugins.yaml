@@ -7,9 +7,9 @@
 
 # Keybindings
 - src: mrjones2014/legendary.nvim
-- src: svermeulen/vim-yoink
-- src: svermeulen/vim-cutlass
-- src: svermeulen/vim-subversive
+- src: gbprod/yanky.nvim
+- src: gbprod/cutlass.nvim
+- src: gbprod/substitute.nvim
 - src: ggandor/leap.nvim
 
 # Themes
