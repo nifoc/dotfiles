@@ -1,7 +1,7 @@
 (let [visual-eof (require :visual-eof)]
   (visual-eof.setup {:text_EOL "↵"
                      :text_NOEOL "✗↵"
-                     :ft_ng [:git.* :LspTrouble :netrw :TelescopePrompt]
+                     :ft_ng [:git.* :netrw :TelescopePrompt]
                      :buf_filter (lambda [bufnr]
                                    (let [disable_buftypes [:terminal :nofile]
                                          buftype (vim.api.nvim_buf_get_option bufnr

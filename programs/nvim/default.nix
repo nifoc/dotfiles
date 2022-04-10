@@ -100,10 +100,7 @@ in
       # Themes
       {
         plugin = dracula-nvim;
-        config = ''
-          (let [g vim.g]
-            (set g.dracula_show_end_of_buffer false))
-        '';
+        config = builtins.readFile ../../config/nvim/plugins/dracula.fnl;
         type = "fennel";
       }
 
@@ -275,12 +272,6 @@ in
       }
 
       # LSP
-      {
-        plugin = trouble-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/trouble.fnl;
-        type = "fennel";
-      }
-
       lspkind-nvim
       lsp-status-nvim
 

@@ -8,12 +8,12 @@
                   :sections {; Left
                              :lualine_a [:mode]
                              :lualine_b ["b:gitsigns_status"
-                                         [:diagnostics
-                                          {:sources [:nvim_diagnostic]
-                                           :symbols {:error " "
-                                                     :warn " "
-                                                     :info " "
-                                                     :hint " "}}]]
+                                         {1 :diagnostics
+                                          :sources [:nvim_diagnostic]
+                                          :symbols {:error " "
+                                                    :warn " "
+                                                    :info " "
+                                                    :hint " "}}]
                              :lualine_c [ns.current-function]
                              ; Right
                              :lualine_x [:filetype

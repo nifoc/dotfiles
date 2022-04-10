@@ -5,13 +5,15 @@
       lsp-format (require :lsp-format)]
   (fn mod.setup []
     (vim.diagnostic.config {:underline true
-                            :virtual_text {:source false}
-                            :signs false
-                            :update_in_insert false})
-    (cmd "sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticSignError")
-    (cmd "sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticSignWarn")
-    (cmd "sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticSignInfo")
-    (cmd "sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticSignHint"))
+                            :virtual_text false
+                            :signs true
+                            :float {:border :rounded}
+                            :update_in_insert false
+                            :severity_sort true})
+    (cmd "sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticSignError")
+    (cmd "sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticSignWarn")
+    (cmd "sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticSignInfo")
+    (cmd "sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticSignHint"))
 
   (fn mod.maybe-enable-lsp [client bufnr]
     (when (= vim.b.nifoc_lsp_enabled nil)

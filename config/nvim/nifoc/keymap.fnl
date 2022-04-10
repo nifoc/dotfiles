@@ -115,24 +115,22 @@
                                         #(telescope-builtin.lsp_document_symbols telescope-dropdown)
                                         {:description "LSP Document Symbols"
                                          :opts {:buffer bufnr}})
-                             (map-entry :<leader>ldd
-                                        "<cmd>TroubleToggle document_diagnostics<CR>"
+                             (map-entry :<leader>ld
+                                        #(telescope-builtin.diagnostics (vim.tbl_extend :keep
+                                                                                        telescope-ivy
+                                                                                        {:bufnr 0}))
                                         {:description "LSP Document Diagnostics"
-                                         :opts {:buffer bufnr}})
-                             (map-entry :<leader>ldw
-                                        "<cmd>TroubleToggle workspace_diagnostics<CR>"
-                                        {:description "LSP Workspace Diagnostics"
                                          :opts {:buffer bufnr}})
                              (map-entry :<leader>lca
                                         #(telescope-builtin.lsp_code_actions telescope-dropdown)
                                         {:description "LSP Code Action"
                                          :opts {:buffer bufnr}})
                              (map-entry :<leader>lfr
-                                        "<cmd>TroubleToggle lsp_references<CR>"
+                                        #(telescope-builtin.lsp_references telescope-dropdown)
                                         {:description "Find References"
                                          :opts {:buffer bufnr}})
                              (map-entry :<leader>lfd
-                                        "<cmd>TroubleToggle lsp_definitions<CR>"
+                                        #(telescope-builtin.lsp_definitions telescope-dropdown)
                                         {:description "Find Definitions"
                                          :opts {:buffer bufnr}})
                              (map-entry :K vim.lsp.buf.hover
