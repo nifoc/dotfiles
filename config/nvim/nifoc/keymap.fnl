@@ -133,6 +133,10 @@
                                         #(telescope-builtin.lsp_definitions telescope-dropdown)
                                         {:description "Find Definitions"
                                          :opts {:buffer bufnr}})
+                             (map-entry :<leader>lfi
+                                        #(telescope-builtin.lsp_implementations telescope-dropdown)
+                                        {:description "Find Implementations"
+                                         :opts {:buffer bufnr}})
                              (map-entry :K vim.lsp.buf.hover
                                         {:description "Show Documentation"
                                          :opts {:buffer bufnr}})
