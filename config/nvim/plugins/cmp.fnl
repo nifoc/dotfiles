@@ -44,14 +44,14 @@
                         :<CR> (cmp.mapping.confirm {:select true})}
               :completion {:keyword_length 2
                            :completeopt "menu,menuone,noinsert"}
-              :documentation {:border ["╭"
-                                       "─"
-                                       "╮"
-                                       "│"
-                                       "╯"
-                                       "─"
-                                       "╰"
-                                       "│"]}
+              :window {:documentation {:border ["╭"
+                                                "─"
+                                                "╮"
+                                                "│"
+                                                "╯"
+                                                "─"
+                                                "╰"
+                                                "│"]}}
               :snippet {:expand #(snippy.expand_snippet $1.body)}
               :formatting {:format (lspkind.cmp_format)}})
   (cmp.setup.cmdline "/"

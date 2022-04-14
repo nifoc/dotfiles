@@ -3,7 +3,6 @@
 {
   programs.starship = {
     enable = true;
-    package = pkgs.pkgs-x86.starship;
     enableFishIntegration = true;
 
     settings = {
@@ -71,7 +70,7 @@
       status = {
         disabled = false;
         symbol = " ";
-        success_symbol = " ";
+        success_symbol = "";
         not_executable_symbol = " ";
         not_found_symbol = " ";
         sigint_symbol = " ";

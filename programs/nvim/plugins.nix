@@ -27,24 +27,24 @@
   };
   plenary-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "plenary.nvim";
-    version = "1649570981";
+    version = "1649874581";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-lua";
       repo = "plenary.nvim";
-      rev = "13f99594c14a379ed6f24a3d6ac9efa18c64f7de";
-      sha256 = "O+EAkn4Ph85hawm6oVG2s7tRfc25ryeBTxl0v7P4Nj8=";
+      rev = "78dde9bc25af3e657eb829058bf179739f7e8e69";
+      sha256 = "2pMJwzJ9NCY+pjkBiynOOOz+n3eeB5I917NWIzKpsws=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/nvim-lua/plenary.nvim";
   };
   legendary-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "legendary.nvim";
-    version = "1649329860";
+    version = "1649845250";
     src = pkgs.fetchFromGitHub {
       owner = "mrjones2014";
       repo = "legendary.nvim";
-      rev = "26d64dc04cc974eacc5dafe5dd3cb5c8e10ee1e3";
-      sha256 = "ddVSsDICZ0AYWdKQi8baWxyff2pnzBBM312yIwKxG0o=";
+      rev = "5b8c1611185265357cdba451aae4ad0730aee413";
+      sha256 = "NbZD14fqhedNjYyLueyk0Qso63ddRoEDU2RsHl9ISVw=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/mrjones2014/legendary.nvim";
@@ -87,12 +87,12 @@
   };
   leap-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "leap.nvim";
-    version = "1649451840";
+    version = "1649931691";
     src = pkgs.fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "b0e30cc1905a40ea8759286bc14061ce585ccbb4";
-      sha256 = "7JzXUlmwn7hDFS38/3MzNnPZ44SkUkIMGpOHM8heos8=";
+      rev = "bfdcae6daf34bd49be8d24bbbff35beee31450cd";
+      sha256 = "Wdyzd6DDJt8b3Eg5s9tHFA9sIYrBh2KkSZwjq83h9iE=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/ggandor/leap.nvim";
@@ -111,24 +111,24 @@
   };
   nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "1649593151";
+    version = "1649930540";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "d79b169af574dbe53556a5ad7aa3443d9ec4f69a";
-      sha256 = "PbFSD+/PSHaJ6NDhcwVYPSOAkuBDsJNO6bwO3Sz0eek=";
+      rev = "94f19cad29ba172b2efa8011f98b50519145f0f9";
+      sha256 = "3C1LNgC0Ke6OB/cKOqz+qtzxYiR01qLa5zgoDbh0EiU=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter";
   };
   nvim-ts-rainbow = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-ts-rainbow";
-    version = "1649434846";
+    version = "1649705695";
     src = pkgs.fetchFromGitHub {
       owner = "p00f";
       repo = "nvim-ts-rainbow";
-      rev = "5ad21bffe98f0b42d8225553d1a800b05f9f1eee";
-      sha256 = "69MdMizzy7BYpsXcPmyZlGP0zAWvAVnLK3w0AEy71ws=";
+      rev = "ee433343a698cdf804389db30f96b88d138de18c";
+      sha256 = "fw6E6x4Z8Ek/nE5kMGlH0rvlKbdFi8HLVBWXM30Tc6o=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/p00f/nvim-ts-rainbow";
@@ -238,12 +238,12 @@
   };
   nvim-cmp = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-cmp";
-    version = "1649429970";
+    version = "1649936528";
     src = pkgs.fetchFromGitHub {
       owner = "hrsh7th";
       repo = "nvim-cmp";
-      rev = "3192a0c57837c1ec5bf298e4f3ec984c7d2d60c0";
-      sha256 = "IhFrjPZ2w6bEgGIS2jljlUvYsvmOPdjcK0m6+lsP/oQ=";
+      rev = "b5433f901ebffc9e01b82ae13da9a92d49569205";
+      sha256 = "icxMwVgLQOwROWi39JqDCTQ4Ei583H21zV58j18yow4=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/hrsh7th/nvim-cmp";
@@ -274,12 +274,12 @@
   };
   nvim-snippy = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-snippy";
-    version = "1649459870";
+    version = "1649802147";
     src = pkgs.fetchFromGitHub {
       owner = "dcampos";
       repo = "nvim-snippy";
-      rev = "ce55224f5b9a9eba8c21ac7d66aeb75b2d071bcf";
-      sha256 = "kjstrRqU1xyY0HOXmD6EcOQP0FZtsh/zbb6pdjYSCU0=";
+      rev = "4dd4f1146248c0986d3fa6e22e6a31f591b903e9";
+      sha256 = "5Rids2bDRaK1EfRglCnhfKxCgZJl3qBStglq6jbPPn0=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/dcampos/nvim-snippy";
@@ -370,12 +370,12 @@
   };
   nvim-autopairs = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-autopairs";
-    version = "1648883443";
+    version = "1649893462";
     src = pkgs.fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-autopairs";
-      rev = "06535b1f1aefc98df464d180efa693bb696736c4";
-      sha256 = "5OPDNjaCo9O1FnTddkHJLrbIAEg5gFwdKkzocdU2MYo=";
+      rev = "38d486a1c47ae2722a78cf569008de0a64f4b153";
+      sha256 = "u/8JiOyc8SIUALHoHtXwEgyK6usTWIDl2pjNiNgZamI=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/windwp/nvim-autopairs";
@@ -394,12 +394,12 @@
   };
   nvim-treesitter-textobjects = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter-textobjects";
-    version = "1649462894";
+    version = "1649745697";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "f85c66102f91da02569af0937601ee40c7a19dbd";
-      sha256 = "RNEyiieaAFHhyj1UmmQTqST/1UyEubJ/V8FnQKFVAKE=";
+      rev = "8af3045c2703248b58d8ee3ee3b18399525bd5d6";
+      sha256 = "ytUiBTIyVsvqg4xs/PFdpdMVo0uYrdalb5SjoeRpLS8=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects";
@@ -418,36 +418,36 @@
   };
   lualine-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "lualine.nvim";
-    version = "1648799169";
+    version = "1649911319";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-lualine";
       repo = "lualine.nvim";
-      rev = "c8e5a69085e89c2bac6bd01c74fcb98f9ffa5cdc";
-      sha256 = "dbFLK65ln2J4Mt8vu8UkMZqQpkD5r7DeRRK8PsPnTiw=";
+      rev = "63f74ac06978cead7cd0cbbb65c80bcda2eede41";
+      sha256 = "2b4/ttQWmFwxHraZHCCZchy9/1wTsawh5URPFu9qa+U=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/nvim-lualine/lualine.nvim";
   };
   bufferline-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "bufferline.nvim";
-    version = "1649576767";
+    version = "1649665549";
     src = pkgs.fetchFromGitHub {
       owner = "akinsho";
       repo = "bufferline.nvim";
-      rev = "cb35cc938da4b3f057f8da1d622a4f0429a0f583";
-      sha256 = "l9SCoKyi58TbkUyBNSv5BW8HhBx18B9wszs6Mh/uOQ0=";
+      rev = "bb3ac3053f65f03b997b4f21ef37f4e7249389c3";
+      sha256 = "7Mjw/Kb2jFkG/TGQ8TNBflypFyo88A7jcxou31X5pR8=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/akinsho/bufferline.nvim";
   };
   indent-blankline-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "indent-blankline.nvim";
-    version = "1649321070";
+    version = "1649663069";
     src = pkgs.fetchFromGitHub {
       owner = "lukas-reineke";
       repo = "indent-blankline.nvim";
-      rev = "cd5b800ed9545a944fc3b5bd55ef12da90944e7e";
-      sha256 = "9ZNVudcHQC2Xg0DlTaMeysCFlGoWA0XnBAlCJlUtWgk=";
+      rev = "db7d3ad34e020f1cc30e06bab9dd4e98ebde5643";
+      sha256 = "d0Celb62TSecMJGb5MckQk5JerurXxFdH5Y0Jf/3o64=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/lukas-reineke/indent-blankline.nvim";
@@ -466,24 +466,24 @@
   };
   neogit = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "neogit";
-    version = "1647890579";
+    version = "1649870230";
     src = pkgs.fetchFromGitHub {
       owner = "TimUntersberger";
       repo = "neogit";
-      rev = "9987421e0724ce704d0035f50a7080c677a85d71";
-      sha256 = "rtIFaAFYj77Qd5BJptozIwCcD2gazqLh8iQRNGBcS5M=";
+      rev = "c8dd268091ffcbcb673de59c5b37ff26a2eb24ed";
+      sha256 = "wYFp30yBTJ52lEDtK2u33TwLdEgeaeXXCKFXd+kuvig=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/TimUntersberger/neogit";
   };
   gitsigns-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "gitsigns.nvim";
-    version = "1649584323";
+    version = "1649940374";
     src = pkgs.fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "4a68d2a3733f322201a624f682d1bad2228882aa";
-      sha256 = "Oa9HlxrfgtS3FyDvhylzHBDJzA3XemN2TcUZZK3Dm6Y=";
+      rev = "a6a772dd3a68bcdca0700480c52600938e0cc233";
+      sha256 = "INDTZdv1oQv+iqBcfyuBe1edNveeWRDGmdvQOlB1uiY=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/lewis6991/gitsigns.nvim";
@@ -502,12 +502,12 @@
   };
   nvim-notify = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-notify";
-    version = "1649584778";
+    version = "1649711168";
     src = pkgs.fetchFromGitHub {
       owner = "rcarriga";
       repo = "nvim-notify";
-      rev = "0d02acfc63aea85f010f976f211abb3a81984f92";
-      sha256 = "nbav9Lqg8Wy/I2ki6ezwfCqNo9WE6+HXhiAS3/dTm+g=";
+      rev = "96559369b391856a9a14a9be06be8ae5524589f4";
+      sha256 = "p/oyIHkgbtmJlDligCohhdh0KN4+A9dHjmOrvlsuzP0=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/rcarriga/nvim-notify";

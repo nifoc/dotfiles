@@ -68,6 +68,8 @@ in
     ];
   };
 
+  home.sessionVariables.GIT_CEILING_DIRECTORIES = "/Users";
+
   home.file."${config-work-nedeco}".source = ../config/git/config-work-nedeco;
   home.file."${config-work-wdw}".source = ../config/git/config-work-wdw;
 }
