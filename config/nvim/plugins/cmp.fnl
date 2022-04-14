@@ -27,21 +27,21 @@
                                            [{:name :treesitter}
                                             {:name :buffer}
                                             {:name :path}])
-              :mapping {:<C-e> (cmp.mapping {:i (cmp.mapping.abort)
-                                             :c (cmp.mapping.close)})
-                        :<Tab> (cmp.mapping {:c #(if (cmp.visible)
-                                                     (cmp.select_next_item {:behavior cmp.SelectBehavior.Insert})
-                                                     (cmp.complete))
-                                             :i map-tab
-                                             :s map-tab})
-                        :<S-Tab> (cmp.mapping {:c #(if (cmp.visible)
-                                                       (cmp.select_prev_item {:behavior cmp.SelectBehavior.Insert})
-                                                       (cmp.complete))
-                                               :i map-stab
-                                               :s map-stab})
-                        :<C-Space> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert
-                                                         :select true})
-                        :<CR> (cmp.mapping.confirm {:select true})}
+              :mapping (cmp.mapping.preset.insert {:<C-e> (cmp.mapping {:i (cmp.mapping.abort)
+                                                                        :c (cmp.mapping.close)})
+                                                   :<Tab> (cmp.mapping {:c #(if (cmp.visible)
+                                                                                (cmp.select_next_item {:behavior cmp.SelectBehavior.Insert})
+                                                                                (cmp.complete))
+                                                                        :i map-tab
+                                                                        :s map-tab})
+                                                   :<S-Tab> (cmp.mapping {:c #(if (cmp.visible)
+                                                                                  (cmp.select_prev_item {:behavior cmp.SelectBehavior.Insert})
+                                                                                  (cmp.complete))
+                                                                          :i map-stab
+                                                                          :s map-stab})
+                                                   :<C-Space> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert
+                                                                                    :select true})
+                                                   :<CR> (cmp.mapping.confirm {:select true})})
               :completion {:keyword_length 2
                            :completeopt "menu,menuone,noinsert"}
               :window {:documentation {:border ["╭"
@@ -52,12 +52,15 @@
                                                 "─"
                                                 "╰"
                                                 "│"]}}
-              :snippet {:expand #(snippy.expand_snippet $1.body)}
+              :snippet {:expand (fn [args]
+                                  (snippy.expand_snippet args.body))}
               :formatting {:format (lspkind.cmp_format)}})
   (cmp.setup.cmdline "/"
                      {:sources (cmp.config.sources [{:name :nvim_lsp_document_symbol}]
-                                                   [{:name :buffer}])})
+                                                   [{:name :buffer}])
+                      :mapping (cmp.mapping.preset.cmdline)})
   (cmp.setup.cmdline ":"
                      {:sources (cmp.config.sources [{:name :path}]
-                                                   [{:name :cmdline}])})
+                                                   [{:name :cmdline}])
+                      :mapping (cmp.mapping.preset.cmdline)})
   (cmp.event:on :confirm_done (npairs.on_confirm_done {:map_char {:tex ""}})))
