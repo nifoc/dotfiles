@@ -83,6 +83,10 @@
       ytdl = "ytdl_with_options";
       ytdl_mp4 = "ytdl_with_options -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]'";
       yti = "ytdl_with_options -F";
+
+      mysqld-direnv-init = "mysql_install_db --user $USER --datadir=$PWD/.direnv/mysql/data --auth-root-authentication-method=normal";
+      mysqld-direnv = "mysqld --datadir=$PWD/.direnv/mysql/data --bind-address=127.0.0.1 --socket=$PWD/.direnv/mysql/mysqld.sock --gdb";
+      redis-direnv = "redis-server --dir $PWD/.direnv/redis --bind 127.0.0.1";
     };
 
     functions = {

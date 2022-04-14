@@ -34,6 +34,8 @@ project_node() {
   export NPM_CONFIG_CACHE=$(direnv_layout_dir)/npm/cache
   export NPM_CONFIG_DEVDIR=$(direnv_layout_dir)/npm/dev
 
+  export YARN_ENABLE_TELEMETRY=false
+
   PATH_add $NODE_PATH/bin
   PATH_add node_modules/.bin
 }
