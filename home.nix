@@ -17,9 +17,9 @@
 
     ./programs/scripts.nix
 
-    ./config/ssh.nix
+    ./programs/ssh.nix
 
-    ./config/yt-dlp.nix
+    ./programs/yt-dlp.nix
   ];
 
   home = {
@@ -56,7 +56,6 @@
       tokei
       wget
       xz
-      yt-dlp
     ];
 
     activation = {

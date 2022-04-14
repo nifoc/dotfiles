@@ -1,10 +1,12 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 let
   auth-socket = "${config.home.homeDirectory}/.ssh/1password.sock";
   signers-directory = "${config.home.homeDirectory}/.ssh/allowed_signers";
 in
 {
+  home.packages = [ pkgs.openssh ];
+
   programs.ssh = {
     enable = true;
 
