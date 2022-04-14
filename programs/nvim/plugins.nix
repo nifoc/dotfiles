@@ -39,12 +39,12 @@
   };
   legendary-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "legendary.nvim";
-    version = "1649845250";
+    version = "1649956876";
     src = pkgs.fetchFromGitHub {
       owner = "mrjones2014";
       repo = "legendary.nvim";
-      rev = "5b8c1611185265357cdba451aae4ad0730aee413";
-      sha256 = "NbZD14fqhedNjYyLueyk0Qso63ddRoEDU2RsHl9ISVw=";
+      rev = "170ecf60b417907bade27e30e3f628c389ab3fe2";
+      sha256 = "bhTuZWYSLEawA9C9TMYAfuP3+53+sCmIC0OFj6IaxdQ=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/mrjones2014/legendary.nvim";
@@ -111,12 +111,12 @@
   };
   nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "1649930540";
+    version = "1649961252";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "94f19cad29ba172b2efa8011f98b50519145f0f9";
-      sha256 = "3C1LNgC0Ke6OB/cKOqz+qtzxYiR01qLa5zgoDbh0EiU=";
+      rev = "0fc170120a5ca69164f6bd4da3b26fd01aa41592";
+      sha256 = "DnPov+oOJwINpqyvqvtemwhRyfQTn45I+kLtn20KhVU=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter";
@@ -430,12 +430,12 @@
   };
   bufferline-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "bufferline.nvim";
-    version = "1649665549";
+    version = "1649951114";
     src = pkgs.fetchFromGitHub {
       owner = "akinsho";
       repo = "bufferline.nvim";
-      rev = "bb3ac3053f65f03b997b4f21ef37f4e7249389c3";
-      sha256 = "7Mjw/Kb2jFkG/TGQ8TNBflypFyo88A7jcxou31X5pR8=";
+      rev = "7634b89bb513dffb70e0a41a060a94239d6db2db";
+      sha256 = "6fLoUTr4VerdJjfk/jJM9njVkTuwsqTUwIn3piBd4sE=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/akinsho/bufferline.nvim";
@@ -478,12 +478,12 @@
   };
   gitsigns-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "gitsigns.nvim";
-    version = "1649940374";
+    version = "1649949249";
     src = pkgs.fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "a6a772dd3a68bcdca0700480c52600938e0cc233";
-      sha256 = "INDTZdv1oQv+iqBcfyuBe1edNveeWRDGmdvQOlB1uiY=";
+      rev = "dd60a8845d0e701321c6352376e38c68d3693a0b";
+      sha256 = "JNzYxUOi9rEnJZabfWBGb4kIXQaUYKAbP+SD7/+GaD4=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/lewis6991/gitsigns.nvim";
