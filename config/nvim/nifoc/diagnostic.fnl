@@ -7,7 +7,7 @@
     (vim.diagnostic.config {:underline true
                             :virtual_text false
                             :signs true
-                            :float {:border :rounded}
+                            :float {:border :rounded :source true}
                             :update_in_insert false
                             :severity_sort true})
     (cmd "sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticSignError")
