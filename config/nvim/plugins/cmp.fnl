@@ -1,5 +1,5 @@
 (let [cmp (require :cmp)
-      snippy (require :snippy)
+      luasnip (require :luasnip)
       lspkind (require :lspkind)
       npairs (require :nvim-autopairs.completion.cmp)]
   (fn has-words-before? []
@@ -12,17 +12,17 @@
 
   (fn map-tab [fallback]
     (if (cmp.visible) (cmp.select_next_item)
-        (snippy.can_expand_or_advance) (snippy.expand_or_advance)
+        (luasnip.expand_or_jumpable) (luasnip.expand_or_jump)
         (has-words-before?) (cmp.complete)
         (fallback)))
 
   (fn map-stab [fallback]
     (if (cmp.visible) (cmp.select_prev_item)
-        (snippy.can_jump -1) (snippy.previous)
+        (luasnip.jumpable -1) (luasnip.jump -1)
         (fallback)))
 
   (cmp.setup {:sources (cmp.config.sources [{:name :nvim_lsp}
-                                            {:name :snippy}
+                                            {:name :luasnip}
                                             {:name :nvim_lua}]
                                            [{:name :treesitter}
                                             {:name :buffer}
@@ -53,7 +53,7 @@
                                                 "╰"
                                                 "│"]}}
               :snippet {:expand (fn [args]
-                                  (snippy.expand_snippet args.body))}
+                                  (luasnip.lsp_expand args.body))}
               :formatting {:format (lspkind.cmp_format)}})
   (cmp.setup.cmdline "/"
                      {:sources (cmp.config.sources [{:name :nvim_lsp_document_symbol}]

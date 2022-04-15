@@ -148,6 +148,13 @@ in
         type = "fennel";
       }
 
+      # Snippets
+      {
+        plugin = LuaSnip;
+        config = builtins.readFile ../../config/nvim/plugins/luasnip.fnl;
+        type = "fennel";
+      }
+
       # cmp
       {
         plugin = nvim-cmp;
@@ -157,8 +164,7 @@ in
 
       cmp-nvim-lsp
       cmp-nvim-lsp-signature-help
-      nvim-snippy
-      cmp-snippy
+      cmp_luasnip
       cmp-nvim-lua
       cmp-path
       cmp-buffer
@@ -288,6 +294,9 @@ in
         type = "fennel";
       }
 
+      # Snippets
+      friendly-snippets
+
       # Textobjects
       vim-surround
 
@@ -303,7 +312,7 @@ in
   };
 
   xdg.configFile."nvim" = {
-    source = pkgs.runCommandLocal "nvim-fennel-files"
+    source = pkgs.runCommand "nvim-fennel-files"
       {
         nativeBuildInputs = [ pkgs.fennel pkgs.stylua ];
       } ''
