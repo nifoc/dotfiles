@@ -39,12 +39,12 @@
   };
   legendary-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "legendary.nvim";
-    version = "1650043687";
+    version = "1650060314";
     src = pkgs.fetchFromGitHub {
       owner = "mrjones2014";
       repo = "legendary.nvim";
-      rev = "8ab6ba601a5ff2baa54e44d3e81bd31413bf63d6";
-      sha256 = "EWewlioREzNJ9gvueqjlorrLM3dIy3Ex1vEBNUuS66Q=";
+      rev = "460ce7c6408fb11690423d363e72e9fdbfb557b9";
+      sha256 = "0dOJ5T5g71NUK4dEMRTLZ3571iHywfd2h5kcV2AqouY=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/mrjones2014/legendary.nvim";
@@ -87,12 +87,12 @@
   };
   leap-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "leap.nvim";
-    version = "1649931691";
+    version = "1650142695";
     src = pkgs.fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "bfdcae6daf34bd49be8d24bbbff35beee31450cd";
-      sha256 = "Wdyzd6DDJt8b3Eg5s9tHFA9sIYrBh2KkSZwjq83h9iE=";
+      rev = "3d008846d9b33f9601b361d1a4941b0b3a67e756";
+      sha256 = "b7wmfCX1ZGdpH+HIT9PHf532Hg61TIpmKz30O1FjPOg=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/ggandor/leap.nvim";
@@ -111,12 +111,12 @@
   };
   nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "1650041891";
+    version = "1650144199";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "d9cc414e693b6421c8e0d79835e7d30d835338bd";
-      sha256 = "TuaQ/zeKvfIr7cRQfiEBWuUyo45/Qdj49CnOthAhrGA=";
+      rev = "4542402e34568eb607059e3ff6a3594aaca850fd";
+      sha256 = "PXxc9pr4/ymCj3fokV9VloFncS/u5sBNwo0Mkm5Jw44=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter";
@@ -202,12 +202,12 @@
   };
   null-ls-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "null-ls.nvim";
-    version = "1649615103";
+    version = "1650144148";
     src = pkgs.fetchFromGitHub {
       owner = "jose-elias-alvarez";
       repo = "null-ls.nvim";
-      rev = "82be4bf6ee7b1c2605758b06d918c9dcf6f8e3f2";
-      sha256 = "txR7LcvRNX3suwwhSVEC3kp56QYMQTBZhHA/PAnWubE=";
+      rev = "a887bd6c1bb992ccf48e673b40e061c3e816204f";
+      sha256 = "gbo5sMd+mT/U1nQYAci2pdYNEOg/qFrpVfv6gVawLtY=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/jose-elias-alvarez/null-ls.nvim";
@@ -394,12 +394,12 @@
   };
   nvim-treesitter-textobjects = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter-textobjects";
-    version = "1649745697";
+    version = "1650062917";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "8af3045c2703248b58d8ee3ee3b18399525bd5d6";
-      sha256 = "ytUiBTIyVsvqg4xs/PFdpdMVo0uYrdalb5SjoeRpLS8=";
+      rev = "29c5e9effe53f19f250e3a88d1427b35031bc90d";
+      sha256 = "bIsie9TkSk7LMMQq98StmViXPaZBWS60i5xd7EB7dyU=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects";
@@ -430,12 +430,12 @@
   };
   bufferline-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "bufferline.nvim";
-    version = "1649951114";
+    version = "1650105928";
     src = pkgs.fetchFromGitHub {
       owner = "akinsho";
       repo = "bufferline.nvim";
-      rev = "7634b89bb513dffb70e0a41a060a94239d6db2db";
-      sha256 = "6fLoUTr4VerdJjfk/jJM9njVkTuwsqTUwIn3piBd4sE=";
+      rev = "0a83c615a8ab49718d9b4cdc60127003307829b2";
+      sha256 = "RhAaRFGDoHZAr8SLgbtLtuQ2J9z5hbvMH14FDhHOLXU=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/akinsho/bufferline.nvim";
@@ -478,12 +478,12 @@
   };
   gitsigns-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "gitsigns.nvim";
-    version = "1650039181";
+    version = "1650054200";
     src = pkgs.fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "e899189c362d856b9229aaa339a48549dd0cef39";
-      sha256 = "xf47/cEsWk6sYPRHc7Y9MCH4OKLN8I7Y9pEBbQYDwj8=";
+      rev = "9e0cc25cbe399e0d1732ae1177dd537c462a40d1";
+      sha256 = "p/zFJNQ5kvJJgt995B6SJ3LyJqwmOlu0Bjcl+djlwvw=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/lewis6991/gitsigns.nvim";

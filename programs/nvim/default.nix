@@ -98,11 +98,7 @@ in
       }
 
       # Themes
-      {
-        plugin = dracula-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/dracula.fnl;
-        type = "fennel";
-      }
+      dracula-nvim
 
       # Syntax
       {

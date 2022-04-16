@@ -64,6 +64,9 @@
                     :paste {:+ :pbpaste :* :pbpaste}
                     :cache_enabled 0})
   (o.clipboard:prepend :unnamedplus)
+  ;; Theme
+  (let [theme (require :nifoc.theme)]
+    (theme.setup))
   ;; Plugins
   (set g.did_load_filetypes 1) ; Lua filetype detection
   (set g.do_filetype_lua 1)
@@ -86,12 +89,9 @@
   (set g.loaded_getscriptPlugin 1)
   (set g.loaded_logipat 1)
   (set g.loaded_tutor_mode_plugin 1)
-  (let [diagnostics (require :nifoc.diagnostic)]
-    (diagnostics.setup))
+  (let [diagnostic (require :nifoc.diagnostic)]
+    (diagnostic.setup))
   (require :configuration.plugins)
-  ;; Theme
-  (set o.background :dark)
-  (vim.cmd "colorscheme dracula")
   ;; Keymap
   (let [keymap (require :nifoc.keymap)]
     (keymap.setup))
