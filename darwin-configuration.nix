@@ -1,5 +1,3 @@
-{ pkgs, lib, ... }:
-
 {
   imports = [
     ./system/defaults.nix
