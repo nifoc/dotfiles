@@ -25,7 +25,7 @@
                                     :buffer bufnr})))
 
   (fn mod.maybe-enable-fixer [client bufnr]
-    (when client.resolved_capabilities.document_formatting
+    (when client.server_capabilities.documentFormattingProvider
       (api.nvim_buf_set_var bufnr :nifoc_fixer_enabled 1)
       (lsp-format.on_attach client bufnr)))
 

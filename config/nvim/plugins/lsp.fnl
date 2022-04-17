@@ -5,17 +5,17 @@
       cmp (require :cmp_nvim_lsp)
       diagnostic (require :nifoc.diagnostic)]
   (fn custom-attach [client bufnr]
-    (when client.resolved_capabilities.document_symbol
+    (when client.server_capabilities.documentSymbolProvider
       (lsp_status.on_attach client bufnr))
-    (when client.resolved_capabilities.document_highlight
+    (when client.server_capabilities.documentHighlightProvider
       (illuminate.on_attach client bufnr))
-    (when client.resolved_capabilities.code_lens
+    (when client.server_capabilities.codeLensProvider
       (virtual-types.on_attach client bufnr))
     (diagnostic.maybe-enable-lsp client bufnr)
     (diagnostic.maybe-enable-fixer client bufnr))
 
   (fn custom-attach-no-format [client bufnr]
-    (set client.resolved_capabilities.document_formatting false)
+    (set client.server_capabilities.documentFormattingProvider false)
     (custom-attach client bufnr))
 
   ;; Setup
