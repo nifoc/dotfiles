@@ -300,8 +300,8 @@ in
       undotree
 
       {
-        plugin = FTerm-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/fterm.fnl;
+        plugin = toggleterm-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/toggleterm.fnl;
         type = "fennel";
       }
     ]);

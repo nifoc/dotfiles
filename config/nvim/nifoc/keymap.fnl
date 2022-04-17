@@ -9,8 +9,7 @@
       telescope-ivy (telescope-themes.get_ivy)
       telescope-dropdown (telescope-themes.get_dropdown)
       npairs (require :nvim-autopairs)
-      gitsigns (require :gitsigns)
-      fterm (require :FTerm)]
+      gitsigns (require :gitsigns)]
   (fn map-entry [key cmd opts]
     (vim.tbl_extend :keep {1 key 2 cmd} opts))
 
@@ -105,10 +104,7 @@
     (keymap.set :x :gp "<Plug>(YankyGPutAfter)")
     (keymap.set :x :gP "<Plug>(YankyGPutBefore)")
     (keymap.set :n :y "<Plug>(YankyYank)")
-    (keymap.set :x :y "<Plug>(YankyYank)")
-    (keymap.set :n :<C-t> fterm.toggle {:noremap true :silent true})
-    (keymap.set :t :<C-t> "<C-\\><C-n><cmd>lua require(\"FTerm\").toggle()<CR>"
-                {:noremap true :silent true}))
+    (keymap.set :x :y "<Plug>(YankyYank)"))
 
   (fn mod.lsp-attach [client bufnr]
     (legendary.bind_keymaps [(map-entry :<leader>t

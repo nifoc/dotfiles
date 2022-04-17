@@ -102,8 +102,4 @@
     (aucmd :InsertEnter {:callback #(ls.maybe-set-relativenumber false)
                          :group augroup})
     (aucmd :InsertLeave {:callback #(ls.maybe-set-relativenumber true)
-                         :group augroup})
-    (aucmd :TermOpen {:callback (fn []
-                                  (vim.opt_local.number false)
-                                  (vim.opt_local.relativenumber false))
-                      :group augroup})))
+                         :group augroup})))
