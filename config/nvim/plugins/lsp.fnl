@@ -6,7 +6,7 @@
       diagnostic (require :nifoc.diagnostic)]
   (fn custom-attach [client bufnr]
     (when client.server_capabilities.documentSymbolProvider
-      (lsp_status.on_attach client bufnr))
+      (lsp-status.on_attach client bufnr))
     (when client.server_capabilities.documentHighlightProvider
       (illuminate.on_attach client bufnr))
     (when client.server_capabilities.codeLensProvider
@@ -16,6 +16,7 @@
 
   (fn custom-attach-no-format [client bufnr]
     (set client.server_capabilities.documentFormattingProvider false)
+    (set client.server_capabilities.documentRangeFormattingProvider false)
     (custom-attach client bufnr))
 
   ;; Setup

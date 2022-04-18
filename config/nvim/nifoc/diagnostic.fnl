@@ -19,12 +19,14 @@
     (when (= vim.b.nifoc_lsp_enabled nil)
       (api.nvim_buf_set_var bufnr :nifoc_lsp_enabled 1)
       (keymap.lsp-attach client bufnr)
-      (vim.api.nvim_create_autocmd [:CursorHold :CursorHoldI]
-                                   {:callback #(vim.diagnostic.open_float nil
-                                                                          {:focus false})
-                                    :buffer bufnr})))
+      (api.nvim_create_autocmd [:CursorHold :CursorHoldI]
+                               {:callback #(vim.diagnostic.open_float nil
+                                                                      {:focus false})
+                                :buffer bufnr})))
 
   (fn mod.maybe-enable-fixer [client bufnr]
+    (when client.server_capabilities.documentRangeFormattingProvider
+      (api.nvim_buf_set_option bufnr :formatexpr "v:lua.vim.lsp.formatexpr()"))
     (when client.server_capabilities.documentFormattingProvider
       (api.nvim_buf_set_var bufnr :nifoc_fixer_enabled 1)
       (lsp-format.on_attach client bufnr)))
