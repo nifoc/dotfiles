@@ -49,6 +49,7 @@ in
       # LSP Tools
       deadnix
       hadolint
+      fennel
       fnlfmt
       shellcheck
       shfmt

@@ -5,7 +5,7 @@
   (fn mod.setup []
     (let [augroup (vim.api.nvim_create_augroup :NifocFormatting {:clear true})
           aucmd vim.api.nvim_create_autocmd]
-      (aucmd :BufWritePre {:callback #(mod.maybe-format-buffer) :group augroup})))
+      (aucmd :BufWritePre {:callback mod.maybe-format-buffer :group augroup})))
 
   (fn mod.maybe-enable-lsp [client bufnr]
     (when client.server_capabilities.documentRangeFormattingProvider
