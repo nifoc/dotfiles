@@ -127,20 +127,12 @@ in
         type = "fennel";
       }
 
-      {
-        plugin = null-ls-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/null-ls.fnl;
-        type = "fennel";
-      }
-
       virtual-types-nvim
 
+      # Linter
       {
-        plugin = lsp-format-nvim;
-        config = ''
-          (let [lsp-format (require :lsp-format)]
-            (lsp-format.setup))
-        '';
+        plugin = nvim-lint;
+        config = builtins.readFile ../../config/nvim/plugins/nvim-lint.fnl;
         type = "fennel";
       }
 
@@ -280,6 +272,13 @@ in
       {
         plugin = vim-illuminate;
         config = builtins.readFile ../../config/nvim/plugins/illuminate.fnl;
+        type = "fennel";
+      }
+
+      # Formatting
+      {
+        plugin = neoformat;
+        config = builtins.readFile ../../config/nvim/plugins/neoformat.fnl;
         type = "fennel";
       }
 

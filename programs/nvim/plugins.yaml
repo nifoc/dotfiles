@@ -33,11 +33,12 @@
     rm -rf ./xdg_cache
 - src: nvim-telescope/telescope-ui-select.nvim
 
-# # LSP
+# LSP
 - src: neovim/nvim-lspconfig
-- src: jose-elias-alvarez/null-ls.nvim
 - src: jubnzv/virtual-types.nvim
-- src: lukas-reineke/lsp-format.nvim
+
+# Linter
+- src: mfussenegger/nvim-lint
 
 # Snippets
 - src: L3MON4D3/LuaSnip

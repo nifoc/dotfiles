@@ -49,7 +49,8 @@
     (if (and (buffer-not-empty?) vim.wo.spell) "ﮒ" ""))
 
   (fn mod.fixer-enabled? []
-    (if (buffer-variable-exists? :nifoc_fixer_enabled) "" ""))
+    (if (or (buffer-variable-exists? :nifoc_lsp_formatter_enabled)
+            (not= (vim.opt_local.formatprg:get) "")) "" ""))
 
   (fn mod.treesitter-enabled? []
     (if (buffer-variable-exists? :nifoc_treesitter_enabled) "" ""))
@@ -58,3 +59,4 @@
     (if (buffer-variable-exists? :nifoc_lsp_enabled) "" ""))
 
   mod)
+

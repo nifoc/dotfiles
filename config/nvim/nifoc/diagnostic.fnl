@@ -1,8 +1,7 @@
 (let [mod {}
       cmd vim.cmd
       api vim.api
-      keymap (require :nifoc.keymap)
-      lsp-format (require :lsp-format)]
+      keymap (require :nifoc.keymap)]
   (fn mod.setup []
     (vim.diagnostic.config {:underline true
                             :virtual_text false
@@ -23,12 +22,5 @@
                                {:callback #(vim.diagnostic.open_float nil
                                                                       {:focus false})
                                 :buffer bufnr})))
-
-  (fn mod.maybe-enable-fixer [client bufnr]
-    (when client.server_capabilities.documentRangeFormattingProvider
-      (api.nvim_buf_set_option bufnr :formatexpr "v:lua.vim.lsp.formatexpr()"))
-    (when client.server_capabilities.documentFormattingProvider
-      (api.nvim_buf_set_var bufnr :nifoc_fixer_enabled 1)
-      (lsp-format.on_attach client bufnr)))
 
   mod)

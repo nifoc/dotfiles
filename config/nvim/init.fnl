@@ -89,8 +89,10 @@
   (set g.loaded_getscriptPlugin 1)
   (set g.loaded_logipat 1)
   (set g.loaded_tutor_mode_plugin 1)
-  (let [diagnostic (require :nifoc.diagnostic)]
-    (diagnostic.setup))
+  (let [diagnostic (require :nifoc.diagnostic)
+        formatting (require :nifoc.formatting)]
+    (diagnostic.setup)
+    (formatting.setup))
   (require :configuration.plugins)
   ;; Keymap
   (let [keymap (require :nifoc.keymap)]

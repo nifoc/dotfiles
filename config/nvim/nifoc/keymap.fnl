@@ -73,8 +73,6 @@
                              ;; Debug
                              (map-entry :<leader>dli :<cmd>LspInfo<CR>
                                         {:description "LSP Info"})
-                             (map-entry :<leader>dln :<cmd>NullLsInfo<CR>
-                                        {:description "null-ls Info"})
                              (map-entry :<leader>dlr :<cmd>LspRestart<CR>
                                         {:description "LSP Restart"})
                              (map-entry :<leader>dt
@@ -141,3 +139,4 @@
                                          :opts {:buffer bufnr}})]))
 
   mod)
+
