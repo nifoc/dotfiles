@@ -39,12 +39,12 @@
   };
   legendary-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "legendary.nvim";
-    version = "1650298950";
+    version = "1650395874";
     src = pkgs.fetchFromGitHub {
       owner = "mrjones2014";
       repo = "legendary.nvim";
-      rev = "dc71769e2fe1465962df273a7d7e7d66117bc3c9";
-      sha256 = "KypbOQUKystQTkzuL/Yahmd85vfE5qucCgoWr7cHPQ4=";
+      rev = "77b7bc365c2470aff48b7398eb940e8c88789af3";
+      sha256 = "YQVmnrOXmy/3DKA5VrmewRGob19zZUocTuVJUDTmrnM=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/mrjones2014/legendary.nvim";
@@ -87,12 +87,12 @@
   };
   leap-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "leap.nvim";
-    version = "1650203656";
+    version = "1650369149";
     src = pkgs.fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "d2c3dd9c51e4b6b5c8d981465b197bee070c8029";
-      sha256 = "nJy71JCMjS4WTa7FAyHyZPo02oM8UEQbABpHDTB8oSo=";
+      rev = "4e4ce2bba4fa6c30fc9e8999e71dcc67386732b0";
+      sha256 = "TG5tAzr+erpTHiaL/VaJC4rMOcqY7abzhpN5lNsFnCs=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/ggandor/leap.nvim";
@@ -111,12 +111,12 @@
   };
   nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "1650354015";
+    version = "1650378521";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "6f6cb20692049eb610d3210816869da8aba0a6e8";
-      sha256 = "aH52YKr57eevBRT6t4pGe9UFIMn9/R2XhEnzKuXDZ3k=";
+      rev = "62fa8f77c43ed3a4ac2bbdfa4327f6b4a835bbea";
+      sha256 = "GZgU5rdNYUQSsrQablM8n7ZjOCbK3h0J6lwUlfT6ADM=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter";
@@ -394,12 +394,12 @@
   };
   vim-matchup = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "vim-matchup";
-    version = "1650317917";
+    version = "1650385199";
     src = pkgs.fetchFromGitHub {
       owner = "andymass";
       repo = "vim-matchup";
-      rev = "8727de1b4311c0ad62682f724fa19fce6ec4dad3";
-      sha256 = "3oKc9M853+KOw3Bc5jOG2SO96B7XKoFENCSPR22yEGs=";
+      rev = "bb04f9fa64b96bd3d6c4c146c6f9c55a69587fac";
+      sha256 = "GB5QEYAEHfxHcQW7G9wGeSkhbStOGn4w6FfgsZvuL/M=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/andymass/vim-matchup";
@@ -466,12 +466,12 @@
   };
   gitsigns-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "gitsigns.nvim";
-    version = "1650366768";
+    version = "1650381932";
     src = pkgs.fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "6527d8c847d1cf11bbf646ac00b1cc2c4ac41c74";
-      sha256 = "wDTkFVif4cel0zqAYx78pceQYMJMBpBmlT2pGDUvI8o=";
+      rev = "498abfa13dd749be963bc87a5b37da0d3e42a50e";
+      sha256 = "+2mRED2gumFlgKJRYNt+Ex/ZgmMg25ANKaY++7C9ooU=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/lewis6991/gitsigns.nvim";
