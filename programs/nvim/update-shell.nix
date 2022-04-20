@@ -8,7 +8,7 @@ mkShell {
     dasel
     difftastic
     jq
-    nix-prefetch-github
+    nix-prefetch
     nixpkgs-fmt
   ];
 }

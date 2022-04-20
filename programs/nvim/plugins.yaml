@@ -23,6 +23,7 @@
 # Telescope
 - src: nvim-telescope/telescope.nvim
 - src: natecraddock/telescope-zf-native.nvim
+  fetchSubmodules: true
   nativeBuildInputs:
   - just
   - zigpkgs."0.9.1"

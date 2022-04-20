@@ -36,11 +36,18 @@ for plugin in "${plugin_array[@]}"; do
 
   branch="$(echo "$plugin" | jq -r '.branch // empty')"
   name="$(echo "$repo" | tr [.] '-')"
+  fetch_submodules="$(echo "$plugin" | jq -r '.fetchSubmodules // empty')"
+
+  if [ "$fetch_submodules" == "true" ]; then
+    nix_submodules="--fetchSubmodules"
+  else
+    nix_submodules=""
+  fi
 
   if [ -z "$branch" ]; then
-    src="$(nix-prefetch-github --nix --fetch-submodules --no-deep-clone "$owner" "$repo" 2>/dev/null | tail -n +4)"
+    src="$(nix-prefetch --output nix --silent fetchFromGitHub $nix_submodules --owner "$owner" --repo "$repo")"
   else
-    src="$(nix-prefetch-github --nix --fetch-submodules --no-deep-clone --rev "$branch" "$owner" "$repo" 2>/dev/null | tail -n +4)"
+    src="$(nix-prefetch --output nix --silent fetchFromGitHub $nix_submodules --owner "$owner" --repo "$repo" --rev "$branch")"
   fi
 
   rev="$(echo "$src" | grep rev | cut -d '"' -f 2)"
@@ -51,13 +58,13 @@ for plugin in "${plugin_array[@]}"; do
     commit_date="$(echo "$commit_info" | dasel -r json --plain '.commit.author.date')"
   fi
 
-  version="$(date -d "$commit_date" "+%s")"
+  version="$(date -d "$commit_date" "+%Y-%m-%d")"
 
   {
     echo "${name} = pkgs.vimUtils.buildVimPluginFrom2Nix {"
     echo "pname = \"${repo}\";"
     echo "version = \"${version}\";"
-    echo "src = ${src};"
+    echo "src = pkgs.fetchFromGitHub ${src};"
   } >>"$nix_new_file"
 
   build_inputs="$(echo "$plugin" | jq -r '.nativeBuildInputs // empty' | jq -r @sh)"
@@ -74,10 +81,7 @@ for plugin in "${plugin_array[@]}"; do
     printf "buildPhase = ''\n%s\n'';\n" "$build_phase" >>"$nix_new_file"
   fi
 
-  {
-    echo "meta.homepage = \"https://github.com/${owner}/${repo}\";"
-    echo '};'
-  } >>"$nix_new_file"
+  echo '};' >>"$nix_new_file"
 done
 echo "}" >>"$nix_new_file"
 

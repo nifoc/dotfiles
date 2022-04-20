@@ -44,7 +44,7 @@
       hexyl
       hyperfine
       lnav
-      nix-prefetch-github
+      nix-prefetch
       nvd
       parallel
       podman
