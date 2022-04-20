@@ -87,12 +87,12 @@
   };
   leap-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "leap.nvim";
-    version = "1650369149";
+    version = "1650440510";
     src = pkgs.fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "4e4ce2bba4fa6c30fc9e8999e71dcc67386732b0";
-      sha256 = "TG5tAzr+erpTHiaL/VaJC4rMOcqY7abzhpN5lNsFnCs=";
+      rev = "2a7965c6ec3f5de9efde92dcec0c53f12c84732a";
+      sha256 = "VBhzMxYkUQfFFVgUM+ZDtgGoEFQRvcdWX8oH7h54+E8=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/ggandor/leap.nvim";
@@ -238,12 +238,12 @@
   };
   nvim-cmp = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-cmp";
-    version = "1650365016";
+    version = "1650428497";
     src = pkgs.fetchFromGitHub {
       owner = "hrsh7th";
       repo = "nvim-cmp";
-      rev = "07132dc597e94a8b6df75efce9784a581f55742c";
-      sha256 = "9wPv8mXax2fr1L6TeiFOSK7ZdXNg1v/1eRj00OFDw1Y=";
+      rev = "f51dc68e1bb170fc49c2d7e13eb45e5ec83f5ee9";
+      sha256 = "U5lDWtslhZuDZBgzSijFmOlNShP+geVJw3FIxKIfxYU=";
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/hrsh7th/nvim-cmp";

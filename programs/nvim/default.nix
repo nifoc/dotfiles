@@ -49,12 +49,14 @@ in
       # LSP Tools
       deadnix
       hadolint
-      fennel
+      fennel-luajit
       fnlfmt
       shellcheck
       shfmt
       statix
     ];
+
+    extraLuaPackages = with pkgs.luajitPackages; [ readline ];
 
     plugins = (with customPlugins; [
       # Fixes
@@ -310,7 +312,7 @@ in
   xdg.configFile."nvim" = {
     source = pkgs.runCommand "nvim-fennel-files"
       {
-        nativeBuildInputs = [ pkgs.fennel pkgs.stylua ];
+        nativeBuildInputs = with pkgs; [ fennel-luajit stylua ];
       } ''
       mkdir -p $out/lua/configuration
       mkdir -p $out/lua/nifoc/utils

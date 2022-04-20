@@ -9,7 +9,8 @@
       telescope-ivy (telescope-themes.get_ivy)
       telescope-dropdown (telescope-themes.get_dropdown)
       npairs (require :nvim-autopairs)
-      gitsigns (require :gitsigns)]
+      gitsigns (require :gitsigns)
+      repl (require :nifoc.repl)]
   (fn map-entry [key cmd opts]
     (vim.tbl_extend :keep {1 key 2 cmd} opts))
 
@@ -27,6 +28,10 @@
                                         {:description "New File"})
                              (map-entry :<leader>ut :<cmd>UndotreeToggle<CR>
                                         {:description "Toggle Undotree"})
+                             (map-entry :<leader>c repl.toggle-shell
+                                        {:description "Toggle Shell"})
+                             (map-entry :<leader>r repl.toggle-repl
+                                        {:description "Toggle REPL"})
                              ;; Buffer
                              (map-entry :<leader>bl
                                         #(telescope-builtin.buffers telescope-dropdown)
@@ -112,7 +117,7 @@
                              (map-entry :<leader>ld
                                         #(telescope-builtin.diagnostics (vim.tbl_extend :keep
                                                                                         telescope-ivy
-                                                                                        {:bufnr 0}))
+                                                                                        {: bufnr}))
                                         {:description "LSP Document Diagnostics"
                                          :opts {:buffer bufnr}})
                              (map-entry :<leader>lca
@@ -137,6 +142,14 @@
                              (map-entry :F :<cmd>Format<CR>
                                         {:description "Format Buffer"
                                          :opts {:buffer bufnr}})]))
+
+  (fn mod.terminal-open [bufnr]
+    (let [map-opts {:noremap true :buffer bufnr}]
+      (keymap.set :t :<esc> "<C-\\><C-n>" map-opts)
+      (keymap.set :t :<C-h> "<C-\\><C-n><C-W>h" map-opts)
+      (keymap.set :t :<C-j> "<C-\\><C-n><C-W>j" map-opts)
+      (keymap.set :t :<C-k> "<C-\\><C-n><C-W>k" map-opts)
+      (keymap.set :t :<C-l> "<C-\\><C-n><C-W>l" map-opts)))
 
   mod)
 
