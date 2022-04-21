@@ -4,11 +4,10 @@ with pkgs;
 mkShell {
   packages = [
     bat
-    curl
     dasel
     difftastic
     jq
-    nix-prefetch
+    nix-prefetch-git
     nixpkgs-fmt
   ];
 }

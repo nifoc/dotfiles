@@ -122,6 +122,7 @@ in
 
       telescope-zf-native-nvim
       telescope-ui-select-nvim
+      telescope-toggleterm-nvim
 
       # LSP
       {

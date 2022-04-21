@@ -33,6 +33,7 @@
     mv lib/libzf.so lib/libzf-osx-arm64.so
     rm -rf ./xdg_cache
 - src: nvim-telescope/telescope-ui-select.nvim
+- src: "https://git.sr.ht/~havi/telescope-toggleterm.nvim"
 
 # LSP
 - src: neovim/nvim-lspconfig
