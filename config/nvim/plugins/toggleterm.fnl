@@ -10,6 +10,8 @@
                                   (set vim.opt_local.number false)
                                   (set vim.opt_local.relativenumber false)
                                   (set vim.opt_local.cursorline false)
+                                  (vim.api.nvim_buf_set_var opts.buf
+                                                            :toggle_line_style 0)
                                   (keymap.terminal-open opts.buf))
                       :group augroup})))
 

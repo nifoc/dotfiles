@@ -6,6 +6,7 @@
       telescope-builtin (require :telescope.builtin)
       telescope-themes (require :telescope.themes)
       telescope-nifoc (require :nifoc.telescope)
+      telescope-toggleterm (require :telescope-toggleterm)
       telescope-ivy (telescope-themes.get_ivy)
       telescope-dropdown (telescope-themes.get_dropdown)
       npairs (require :nvim-autopairs)
@@ -30,6 +31,9 @@
                                         {:description "Toggle Undotree"})
                              (map-entry :<leader>c repl.toggle-shell
                                         {:description "Toggle Shell"})
+                             (map-entry :<leader>cs
+                                        #(telescope-toggleterm.open telescope-dropdown)
+                                        {:description "Select Terminal"})
                              (map-entry :<leader>r repl.toggle-repl
                                         {:description "Toggle REPL"})
                              ;; Buffer
