@@ -1,6 +1,7 @@
 (let [lint (require :lint)
       augroup (vim.api.nvim_create_augroup :NifocLint {:clear true})
       aucmd vim.api.nvim_create_autocmd]
+  ;; Custom Linters
   (set lint.linters.deadnix
        {:cmd :deadnix
         :stdin false
@@ -19,6 +20,10 @@
                                         :source :deadnix
                                         :message result.message})
                                      findings.results))))})
+  ;; Linter Options
+  (let [fennel (require :lint.linters.fennel)]
+    (set fennel.globals [:vim]))
+  ;; Configure Linters per FT
   (set lint.linters_by_ft {:dockerfile [:hadolint]
                            :elixir [:credo]
                            :fennel [:fennel]
