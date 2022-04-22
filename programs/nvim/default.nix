@@ -131,8 +131,6 @@ in
         type = "fennel";
       }
 
-      virtual-types-nvim
-
       # Linter
       {
         plugin = nvim-lint;

@@ -37,7 +37,6 @@
 
 # LSP
 - src: neovim/nvim-lspconfig
-- src: jubnzv/virtual-types.nvim
 
 # Linter
 - src: mfussenegger/nvim-lint

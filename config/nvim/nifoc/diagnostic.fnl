@@ -18,9 +18,17 @@
     (when (= vim.b.nifoc_lsp_enabled nil)
       (api.nvim_buf_set_var bufnr :nifoc_lsp_enabled 1)
       (keymap.lsp-attach client bufnr)
-      (api.nvim_create_autocmd [:CursorHold :CursorHoldI]
-                               {:callback #(vim.diagnostic.open_float nil
-                                                                      {:focus false})
-                                :buffer bufnr})))
+      (let [augroup (vim.api.nvim_create_augroup :NifocDiagnostic {:clear true})
+            aucmd vim.api.nvim_create_autocmd]
+        (aucmd [:CursorHold :CursorHoldI]
+               {:callback (fn []
+                            (vim.diagnostic.open_float nil {:focus false})
+                            (vim.lsp.codelens.refresh))
+                :buffer bufnr
+                :group augroup})
+        (aucmd :InsertLeave {:callback #(vim.lsp.codelens.refresh)
+                             :buffer bufnr
+                             :group augroup}))))
 
   mod)
+

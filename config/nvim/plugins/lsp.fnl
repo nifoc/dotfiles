@@ -1,7 +1,6 @@
 (let [lsp (require :lspconfig)
       lsp-status (require :lsp-status)
       illuminate (require :illuminate)
-      virtual-types (require :virtualtypes)
       cmp (require :cmp_nvim_lsp)
       diagnostic (require :nifoc.diagnostic)
       formatting (require :nifoc.formatting)]
@@ -10,8 +9,6 @@
       (lsp-status.on_attach client bufnr))
     (when client.server_capabilities.documentHighlightProvider
       (illuminate.on_attach client bufnr))
-    (when client.server_capabilities.codeLensProvider
-      (virtual-types.on_attach client bufnr))
     (diagnostic.maybe-enable-lsp client bufnr)
     (formatting.maybe-enable-lsp client bufnr))
 
@@ -76,3 +73,4 @@
                                                   :diagnostics {:globals [:vim]}
                                                   :telemetry {:enable false}}}}
                                 (vim.tbl_extend :force default-config)))))
+
