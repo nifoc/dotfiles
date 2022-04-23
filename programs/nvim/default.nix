@@ -68,12 +68,6 @@ in
 
       # Keybindings
       {
-        plugin = legendary-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/legendary.fnl;
-        type = "fennel";
-      }
-
-      {
         plugin = yanky-nvim;
         config = builtins.readFile ../../config/nvim/plugins/yanky.fnl;
         type = "fennel";

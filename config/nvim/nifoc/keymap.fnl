@@ -1,6 +1,5 @@
 (let [mod {}
       keymap vim.keymap
-      legendary (require :legendary)
       substitute (require :substitute)
       telescope (require :telescope)
       telescope-builtin (require :telescope.builtin)
@@ -11,7 +10,8 @@
       telescope-dropdown (telescope-themes.get_dropdown)
       npairs (require :nvim-autopairs)
       gitsigns (require :gitsigns)
-      repl (require :nifoc.repl)]
+      repl (require :nifoc.repl)
+      formatting (require :nifoc.formatting)]
   (fn map-entry [key cmd opts]
     (vim.tbl_extend :keep {1 key 2 cmd} opts))
 
@@ -19,89 +19,63 @@
     (keymap.set :n :<space> :<nop> {:noremap true})
     (set vim.g.mapleader " ")
     (set vim.opt.timeoutlen 500)
-    (legendary.bind_keymaps [(map-entry :<leader>o
-                                        telescope-nifoc.project-files
-                                        {:description "Find Files"})
-                             (map-entry :<leader>s
-                                        #(telescope-builtin.live_grep telescope-ivy)
-                                        {:description "Live Grep"})
-                             (map-entry :<leader>fn :<cmd>enew<CR>
-                                        {:description "New File"})
-                             (map-entry :<leader>ut :<cmd>UndotreeToggle<CR>
-                                        {:description "Toggle Undotree"})
-                             (map-entry :<leader>c repl.toggle-shell
-                                        {:description "Toggle Shell"})
-                             (map-entry :<leader>cs
-                                        #(telescope-toggleterm.open telescope-dropdown)
-                                        {:description "Select Terminal"})
-                             (map-entry :<leader>r repl.toggle-repl
-                                        {:description "Toggle REPL"})
-                             ;; Buffer
-                             (map-entry :<leader>bl
-                                        #(telescope-builtin.buffers telescope-dropdown)
-                                        {:description "List Buffers"})
-                             (map-entry :<leader>bn
-                                        :<cmd>BufferLineCycleNext<CR>
-                                        {:description "Next Buffer"})
-                             (map-entry :<leader>bp
-                                        :<cmd>BufferLineCyclePrev<CR>
-                                        {:description "Previous Buffer"})
-                             (map-entry :<leader>bf
-                                        #(telescope-builtin.current_buffer_fuzzy_find telescope-dropdown)
-                                        {:description "Find In Buffer"})
-                             (map-entry :<leader>bt
-                                        #(telescope-builtin.treesitter telescope-dropdown)
-                                        {:description "Find Via Treesitter"})
-                             ;; Project
-                             (map-entry :<leader>pt :<cmd>TodoTelescope<CR>
-                                        {:description "TODO Comments"})
-                             ;; VCS
-                             (map-entry :<leader>vs
-                                        #(telescope-builtin.git_status telescope-ivy)
-                                        {:description "VCS Status"})
-                             (map-entry :<leader>vb
-                                        #(telescope-builtin.git_branches telescope-dropdown)
-                                        {:description "List VCS Branches"})
-                             (map-entry :<leader>vl gitsigns.blame_line
-                                        {:description "Blame Line"})
-                             (map-entry :<leader>vn :<cmd>Neogit<CR>
-                                        {:description "Open Neogit"})
-                             (map-entry :<leader>vc "<cmd>Neogit commit<CR>"
-                                        {:description "Neogit Commit"})
-                             (map-entry :<leader>vp "<cmd>Neogit pull<CR>"
-                                        {:description "Neogit Pull"})
-                             (map-entry :<leader>vP "<cmd>Neogit push<CR>"
-                                        {:description "Neogit Push"})
-                             ;; Legendary
-                             (map-entry :<leader>lk #(legendary.find :keymaps)
-                                        {:description "Legendary Keymaps"})
-                             (map-entry :<leader>lc #(legendary.find :commands)
-                                        {:description "Legendary Commands"})
-                             (map-entry :<leader>la #(legendary.find :autocmds)
-                                        {:description "Legendary Autocmds"})
-                             ;; Debug
-                             (map-entry :<leader>dli :<cmd>LspInfo<CR>
-                                        {:description "LSP Info"})
-                             (map-entry :<leader>dlr :<cmd>LspRestart<CR>
-                                        {:description "LSP Restart"})
-                             (map-entry :<leader>dt
-                                        :<cmd>TSPlaygroundToggle<CR>
-                                        {:description "Toggle Treetsitter Playground"})
-                             (map-entry :<leader>dn
-                                        telescope.extensions.notify.notify
-                                        {:description "Display Notifications"})])
+    ;; Leader Mappings
+    (keymap.set :n :<leader>o telescope-nifoc.project-files
+                {:desc "Find Files"})
+    (keymap.set :n :<leader>s #(telescope-builtin.live_grep telescope-ivy)
+                {:desc "Live Grep"})
+    (keymap.set :n :<leader>fn :<cmd>enew<CR> {:desc "New File"})
+    (keymap.set :n :<leader>ut :<cmd>UndotreeToggle<CR>
+                {:desc "Toggle Undotree"})
+    (keymap.set :n :<leader>c repl.toggle-shell {:desc "Toggle Shell"})
+    (keymap.set :n :<leader>cs #(telescope-toggleterm.open telescope-dropdown)
+                {:desc "Select Terminal"})
+    (keymap.set :n :<leader>r repl.toggle-repl {:desc "Toggle REPL"})
+    (keymap.set :n :<leader>bl #(telescope-builtin.buffers telescope-dropdown)
+                {:desc "List Buffers"})
+    (keymap.set :n :<leader>bn :<cmd>BufferLineCycleNext<CR>
+                {:desc "Next Buffer"})
+    (keymap.set :n :<leader>bp :<cmd>BufferLineCyclePrev<CR>
+                {:desc "Previous Buffer"})
+    (keymap.set :n :<leader>bf
+                #(telescope-builtin.current_buffer_fuzzy_find telescope-dropdown)
+                {:desc "Find In Buffer"})
+    (keymap.set :n :<leader>bt
+                #(telescope-builtin.treesitter telescope-dropdown)
+                {:desc "Find via Treesitter"})
+    (keymap.set :n :<leader>pt :<cmd>TodoTelescope<CR> {:desc "TODO Comments"})
+    (keymap.set :n :<leader>vs #(telescope-builtin.git_status telescope-ivy)
+                {:desc "VCS Status"})
+    (keymap.set :n :<leader>vb
+                #(telescope-builtin.git_branches telescope-dropdown)
+                {:desc "List VCS Branches"})
+    (keymap.set :n :<leader>vl gitsigns.blame_line {:desc "Blame Line"})
+    (keymap.set :n :<leader>vn :<cmd>Neogit<CR> {:desc "Open Neogit"})
+    (keymap.set :n :<leader>vc "<cmd>Neogit commit<CR>" {:desc "Neogit Commit"})
+    (keymap.set :n :<leader>vp "<cmd>Neogit pull<CR>" {:desc "Neogit Pull"})
+    (keymap.set :n :<leader>vP "<cmd>Neogit push<CR>" {:desc "Neogit Push"})
+    (keymap.set :n :<leader>lk telescope-builtin.keymaps
+                {:desc "Show Keymappings"})
+    (keymap.set :n :<leader>ld #(telescope-builtin.diagnostics telescope-ivy)
+                {:desc "Show Diagnostics"})
+    (keymap.set :n :<leader>dli :<cmd>LspInfo<CR> {:desc "LSP Info"})
+    (keymap.set :n :<leader>dlr :<cmd>LspRestart<CR> {:desc "Restart LSP"})
+    (keymap.set :n :<leader>dt :<cmd>TSPlaygroundToggle<CR>
+                {:desc "Toggle Treetsitter Playground"})
+    (keymap.set :n :<leader>dn telescope.extensions.notify.notify
+                {:desc "Display Notifications"})
     ;; Other Mappings
-    (keymap.set :n :<CR> ":nohlsearch<CR><CR>" {:noremap true :silent true})
-    (keymap.set :i :<CR> npairs.autopairs_cr
-                {:noremap true :expr true :silent true})
-    (keymap.set :n :<A-Left> :b {:noremap true})
-    (keymap.set :n :<A-Right> :w {:noremap true})
-    (keymap.set :n :<S-Left> "^" {:noremap true})
-    (keymap.set :n :<S-Right> "$" {:noremap true})
-    (keymap.set :i :<A-Left> :<C-o>b {:noremap true})
-    (keymap.set :i :<A-Right> :<C-o>w {:noremap true})
-    (keymap.set :i :<S-Left> :<C-o>^ {:noremap true})
-    (keymap.set :i :<S-Right> :<C-o>$ {:noremap true})
+    (keymap.set :n :<CR> ":nohlsearch<CR><CR>" {:silent true})
+    (keymap.set :i :<CR> npairs.autopairs_cr {:expr true :silent true})
+    (keymap.set :n :F formatting.maybe-format-buffer {:desc "Format Buffer"})
+    (keymap.set :n :<A-Left> :b)
+    (keymap.set :n :<A-Right> :w)
+    (keymap.set :n :<S-Left> "^")
+    (keymap.set :n :<S-Right> "$")
+    (keymap.set :i :<A-Left> :<C-o>b)
+    (keymap.set :i :<A-Right> :<C-o>w)
+    (keymap.set :i :<S-Left> :<C-o>^)
+    (keymap.set :i :<S-Right> :<C-o>$)
     (keymap.set :n :p "<Plug>(YankyPutAfter)")
     (keymap.set :n :P "<Plug>(YankyPutBefore)")
     (keymap.set :x :p substitute.visual)
@@ -114,41 +88,26 @@
     (keymap.set :x :y "<Plug>(YankyYank)"))
 
   (fn mod.lsp-attach [client bufnr]
-    (legendary.bind_keymaps [(map-entry :<leader>t
-                                        #(telescope-builtin.lsp_document_symbols telescope-dropdown)
-                                        {:description "LSP Document Symbols"
-                                         :opts {:buffer bufnr}})
-                             (map-entry :<leader>ld
-                                        #(telescope-builtin.diagnostics (vim.tbl_extend :keep
-                                                                                        telescope-ivy
-                                                                                        {: bufnr}))
-                                        {:description "LSP Document Diagnostics"
-                                         :opts {:buffer bufnr}})
-                             (map-entry :<leader>lca
-                                        #(telescope-builtin.lsp_code_actions telescope-dropdown)
-                                        {:description "LSP Code Action"
-                                         :opts {:buffer bufnr}})
-                             (map-entry :<leader>lfr
-                                        #(telescope-builtin.lsp_references telescope-dropdown)
-                                        {:description "Find References"
-                                         :opts {:buffer bufnr}})
-                             (map-entry :<leader>lfd
-                                        #(telescope-builtin.lsp_definitions telescope-dropdown)
-                                        {:description "Find Definitions"
-                                         :opts {:buffer bufnr}})
-                             (map-entry :<leader>lfi
-                                        #(telescope-builtin.lsp_implementations telescope-dropdown)
-                                        {:description "Find Implementations"
-                                         :opts {:buffer bufnr}})
-                             (map-entry :K vim.lsp.buf.hover
-                                        {:description "Show Documentation"
-                                         :opts {:buffer bufnr}})
-                             (map-entry :F :<cmd>Format<CR>
-                                        {:description "Format Buffer"
-                                         :opts {:buffer bufnr}})]))
+    (keymap.set :n :<leader>t
+                #(telescope-builtin.lsp_document_symbols telescope-dropdown)
+                {:buffer bufnr :desc "LSP Document Symbols"})
+    (keymap.set :n :<leader>lca
+                #(telescope-builtin.lsp_code_actions telescope-dropdown)
+                {:buffer bufnr :desc "LSP Code Action"})
+    (keymap.set :n :<leader>lfr
+                #(telescope-builtin.lsp_references telescope-dropdown)
+                {:buffer bufnr :desc "Find References"})
+    (keymap.set :n :<leader>lfd
+                #(telescope-builtin.lsp_definitions telescope-dropdown)
+                {:buffer bufnr :desc "Find Definitions"})
+    (keymap.set :n :<leader>lfi
+                #(telescope-builtin.lsp_implementations telescope-dropdown)
+                {:buffer bufnr :desc "Find Implementations"})
+    (keymap.set :n :K vim.lsp.buf.hover
+                {:buffer bufnr :desc "Show Documentation"}))
 
   (fn mod.terminal-open [bufnr]
-    (let [map-opts {:noremap true :buffer bufnr}]
+    (let [map-opts {:buffer bufnr}]
       (keymap.set :t :<esc> "<C-\\><C-n>" map-opts)
       (keymap.set :t :<C-h> "<C-\\><C-n><C-W>h" map-opts)
       (keymap.set :t :<C-j> "<C-\\><C-n><C-W>j" map-opts)

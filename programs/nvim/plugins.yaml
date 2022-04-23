@@ -6,7 +6,6 @@
 - src: nvim-lua/plenary.nvim
 
 # Keybindings
-- src: mrjones2014/legendary.nvim
 - src: gbprod/yanky.nvim
 - src: gbprod/cutlass.nvim
 - src: gbprod/substitute.nvim
