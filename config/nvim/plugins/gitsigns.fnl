@@ -23,4 +23,6 @@
                    :numhl false
                    :linehl false
                    :status_formatter ns.gitsigns-formatter
-                   :diff_opts {:internal true}}))
+                   :diff_opts {:internal true}
+                   :preview_config {:border :rounded}}))
+
