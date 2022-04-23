@@ -18,7 +18,7 @@
   (fn mod.setup []
     (keymap.set :n :<space> :<nop> {:noremap true})
     (set vim.g.mapleader " ")
-    (set vim.opt.timeoutlen 500)
+    (set vim.opt.timeoutlen 400)
     ;; Leader Mappings
     (keymap.set :n :<leader>o telescope-nifoc.project-files
                 {:desc "Find Files"})
@@ -91,6 +91,9 @@
     (keymap.set :n :<leader>t
                 #(telescope-builtin.lsp_document_symbols telescope-dropdown)
                 {:buffer bufnr :desc "LSP Document Symbols"})
+    (keymap.set :n :<leader>tw
+                #(telescope-builtin.lsp_dynamic_workspace_symbols telescope-dropdown)
+                {:buffer bufnr :desc "LSP Workspace Symbols"})
     (keymap.set :n :<leader>lca
                 #(telescope-builtin.lsp_code_actions telescope-dropdown)
                 {:buffer bufnr :desc "LSP Code Action"})

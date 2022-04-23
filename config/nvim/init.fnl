@@ -46,7 +46,7 @@
   (set o.relativenumber true)
   (set o.conceallevel 2)
   (set o.concealcursor :nc)
-  (set o.updatetime 750)
+  (set o.updatetime 2000)
   (set g.cursorhold_updatetime 100) ; https://github.com/antoinemadec/FixCursorHold.nvim
   (o.shortmess:append :c)
   (o.shortmess:remove :S)
@@ -105,3 +105,4 @@
                          :group augroup})
     (aucmd :InsertLeave {:callback #(ls.maybe-set-relativenumber true)
                          :group augroup})))
+
