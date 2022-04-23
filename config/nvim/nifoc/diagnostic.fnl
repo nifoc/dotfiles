@@ -2,6 +2,10 @@
       cmd vim.cmd
       api vim.api
       keymap (require :nifoc.keymap)]
+  (fn maybe-refresh-codelens [client]
+    (when client.server_capabilities.codeLensProvider
+      (vim.lsp.codelens.refresh)))
+
   (fn mod.setup []
     (vim.diagnostic.config {:underline true
                             :virtual_text false
@@ -23,10 +27,10 @@
         (aucmd [:CursorHold :CursorHoldI]
                {:callback (fn []
                             (vim.diagnostic.open_float nil {:focus false})
-                            (vim.lsp.codelens.refresh))
+                            (maybe-refresh-codelens client))
                 :buffer bufnr
                 :group augroup})
-        (aucmd :InsertLeave {:callback #(vim.lsp.codelens.refresh)
+        (aucmd :InsertLeave {:callback #(maybe-refresh-codelens client)
                              :buffer bufnr
                              :group augroup}))))
 
