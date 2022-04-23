@@ -37,18 +37,17 @@ for plugin in "${plugin_array[@]}"; do
   name="$(echo "$repo" | tr [.] '-')"
   fetch_submodules="$(echo "$plugin" | jq -r '.fetchSubmodules // empty')"
 
+  nix_prefetch_flags="--quiet"
+
   if [ "$fetch_submodules" == "true" ]; then
-    nix_submodules="--fetch-submodules"
-  else
-    nix_submodules=""
+    nix_prefetch_flags+=" --fetch-submodules"
   fi
 
-  if [ -z "$branch" ]; then
-    src_json="$(nix-prefetch-git --quiet $nix_submodules "$clone_src")"
-  else
-    src_json="$(nix-prefetch-git --quiet $nix_submodules --rev "$branch" "$clone_src")"
+  if [ -n "$branch" ]; then
+    nix_prefetch_flags+=" --rev $branch"
   fi
 
+  src_json="$(nix-prefetch-git $nix_prefetch_flags "$clone_src")"
   src="{
     owner = \"${owner}\";
     repo = \"${repo}\";
