@@ -44,17 +44,18 @@
                                                    :<CR> (cmp.mapping.confirm {:select true})})
               :completion {:keyword_length 2
                            :completeopt "menu,menuone,noinsert"}
-              :window {:documentation {:border ["╭"
-                                                "─"
-                                                "╮"
-                                                "│"
-                                                "╯"
-                                                "─"
-                                                "╰"
-                                                "│"]}}
+              :window {:documentation (cmp.config.window.bordered {:border :rounded})}
               :snippet {:expand (fn [args]
                                   (luasnip.lsp_expand args.body))}
-              :formatting {:format (lspkind.cmp_format)}})
+              :formatting {:format (lspkind.cmp_format {:mode :symbol_text
+                                                        :menu {:buffer "[Buffer]"
+                                                               :cmdline "[Cmd]"
+                                                               :luasnip "[LuaSnip]"
+                                                               :nvim_lsp "[LSP]"
+                                                               :nvim_lsp_document_symbol "[Symbol]"
+                                                               :nvim_lua "[Lua]"
+                                                               :path "[Path]"
+                                                               :treesitter "[Treesitter]"}})}})
   (cmp.setup.cmdline "/"
                      {:sources (cmp.config.sources [{:name :nvim_lsp_document_symbol}]
                                                    [{:name :buffer}])
@@ -64,3 +65,4 @@
                                                    [{:name :cmdline}])
                       :mapping (cmp.mapping.preset.cmdline)})
   (cmp.event:on :confirm_done (npairs.on_confirm_done {:map_char {:tex ""}})))
+

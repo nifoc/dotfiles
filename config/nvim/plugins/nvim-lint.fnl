@@ -32,7 +32,7 @@
 
   (fn setup-linting [opts]
     (lint.try_lint)
-    (aucmd [:BufWritePost :InsertLeave]
+    (aucmd [:BufWinEnter :BufWritePost :InsertLeave]
            {:callback #(lint.try_lint) :buffer opts.buf :group augroup}))
 
   (each [ft _ (pairs lint.linters_by_ft)]
