@@ -31,7 +31,8 @@
                            :sh [:shellcheck]})
 
   (fn setup-linting [opts]
-    (aucmd [:BufWritePost :BufEnter :InsertLeave]
+    (lint.try_lint)
+    (aucmd [:BufWritePost :InsertLeave]
            {:callback #(lint.try_lint) :buffer opts.buf :group augroup}))
 
   (each [ft _ (pairs lint.linters_by_ft)]
