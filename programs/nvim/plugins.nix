@@ -91,23 +91,23 @@
   };
   nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2022-04-23";
+    version = "2022-04-24";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "909b5d26fddad5043e354046571e7c7353b53b61";
-      sha256 = "1x1b7r73g41nqra4bar0k8alzawzc81xxcgj9cw05r3504imvnf4";
+      rev = "91f912f2d17d1e2048cccca537d78f48753d7458";
+      sha256 = "1jpmr41mknd01pwbjmyix1b2amm27jxpdbb2afaqh2yf5k7v1nsy";
       fetchSubmodules = false;
     };
   };
   nvim-ts-rainbow = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-ts-rainbow";
-    version = "2022-04-17";
+    version = "2022-04-24";
     src = pkgs.fetchFromGitHub {
       owner = "p00f";
       repo = "nvim-ts-rainbow";
-      rev = "04284dc97eac0d0ecfea68e10be824d1a6585de0";
-      sha256 = "1i8i58m1r1322wvs8jl0nzs6lgqw78ibkp5hah07kgi2ynzr3dj3";
+      rev = "a7767e2a1761078abb97f6516e45c56147e0952e";
+      sha256 = "0ms95gxvydzf078y8mp2xqinm9bbk750nqc3ayyi26ipqba6f13x";
       fetchSubmodules = false;
     };
   };
@@ -362,12 +362,12 @@
   };
   lualine-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "lualine.nvim";
-    version = "2022-04-18";
+    version = "2022-04-24";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-lualine";
       repo = "lualine.nvim";
-      rev = "18a07f790ed7ed1f11d1b130c02782e9dfd8dd7d";
-      sha256 = "09bfj2g7jn693xwi5f3zk90p4vg6jpijr1y8pl5k4hjbrg8nb68k";
+      rev = "de2c4beaf50552647273b5eaa33095e90a6d00a0";
+      sha256 = "0whcwy5xmkmmj7lb4w9g31rm6clx1pcnng3q22hcwyvrlxbkk263";
       fetchSubmodules = false;
     };
   };

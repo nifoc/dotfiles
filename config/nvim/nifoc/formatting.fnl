@@ -15,13 +15,13 @@
 
   (fn mod.maybe-format-buffer []
     (let [formatprg (vim.opt_local.formatprg:get)
-          formatprg-exe (-> formatprg (vim.split " " {:trimempty true}) (. 1))
-          neoformat (.. "Neoformat " formatprg-exe)]
+          formatprg-exe (-> formatprg (vim.split " " {:trimempty true}) (. 1))]
       (if (= b.nifoc_lsp_formatter_enabled 1)
           (vim.lsp.buf.formatting_sync nil 1000)
           (not= formatprg-exe nil)
-          (cmd (.. "try | undojoin | " neoformat " | catch /E790/ | " neoformat
-                   " | endtry")))))
+          (let [neoformat (.. "Neoformat " formatprg-exe)]
+            (cmd (.. "try | undojoin | " neoformat " | catch /E790/ | "
+                     neoformat " | endtry"))))))
 
   mod)
 
