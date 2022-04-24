@@ -46,7 +46,7 @@ in
       sumneko-lua-language-server
       taplo-lsp
 
-      # LSP Tools
+      # Diagnostic Tools
       deadnix
       hadolint
       fennel-luajit
@@ -55,8 +55,6 @@ in
       shfmt
       statix
     ];
-
-    extraLuaPackages = with pkgs.luajitPackages; [ readline ];
 
     plugins = (with customPlugins; [
       # Fixes
