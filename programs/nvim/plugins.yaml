@@ -68,6 +68,7 @@
 - src: akinsho/bufferline.nvim
 - src: lukas-reineke/indent-blankline.nvim
 - src: lukas-reineke/virt-column.nvim
+- src: axieax/urlview.nvim
 - src: TimUntersberger/neogit
 - src: lewis6991/gitsigns.nvim
 - src: lewis6991/spellsitter.nvim
