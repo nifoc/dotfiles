@@ -53,6 +53,7 @@
       ripgrep
       rtmpdump
       streamlink
+      socat
       tokei
       wget
       xz
