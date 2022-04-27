@@ -208,6 +208,12 @@ in
       }
 
       {
+        plugin = urlview-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/urlview.fnl;
+        type = "fennel";
+      }
+
+      {
         plugin = neogit;
         config = builtins.readFile ../../config/nvim/plugins/neogit.fnl;
         type = "fennel";
