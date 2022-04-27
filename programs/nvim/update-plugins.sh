@@ -24,6 +24,7 @@ for plugin in "${plugin_array[@]}"; do
   raw_src="$(echo "$plugin" | dasel -r json --plain '.src')"
   owner="$(echo "$raw_src" | awk -F'/' '{ print $(NF-1) }')"
   repo="$(echo "$raw_src" | awk -F'/' '{ print $(NF) }')"
+  name="$(echo "$repo" | tr [.] '-')"
 
   echo "Updating ${owner}/${repo} ..."
 
@@ -33,18 +34,16 @@ for plugin in "${plugin_array[@]}"; do
     clone_src="https://github.com/${owner}/${repo}.git"
   fi
 
-  branch="$(echo "$plugin" | jq -r '.branch // empty')"
-  name="$(echo "$repo" | tr [.] '-')"
-  fetch_submodules="$(echo "$plugin" | jq -r '.fetchSubmodules // empty')"
-
   nix_prefetch_flags="--quiet"
 
+  fetch_submodules="$(echo "$plugin" | jq -r '.fetchSubmodules // empty')"
   if [ "$fetch_submodules" == "true" ]; then
     nix_prefetch_flags+=" --fetch-submodules"
   fi
 
-  if [ -n "$branch" ]; then
-    nix_prefetch_flags+=" --rev $branch"
+  rev="$(echo "$plugin" | jq -r '.rev // empty')"
+  if [ -n "$rev" ]; then
+    nix_prefetch_flags+=" --rev $rev"
   fi
 
   src_json="$(nix-prefetch-git $nix_prefetch_flags "$clone_src")"
