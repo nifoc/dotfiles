@@ -5,23 +5,25 @@
     enable = true;
 
     plugins = [
+      # https://github.com/oh-my-fish/plugin-foreign-env
       {
         name = "foreign-env";
         src = pkgs.fetchFromGitHub {
           owner = "oh-my-fish";
           repo = "plugin-foreign-env";
-          rev = "dddd9213272a0ab848d474d0cbde12ad034e65bc";
-          sha256 = "00xqlyl3lffc5l0viin1nyp819wf81fncqyz87jx8ljjdhilmgbs";
+          rev = "b3dd471bcc885b597c3922e4de836e06415e52dd";
+          sha256 = "sha256-3h03WQrBZmTXZLkQh1oVyhv6zlyYsSDS7HTHr+7WjY8=";
         };
       }
 
+      # https://github.com/dracula/fish
       {
         name = "dracula";
         src = pkgs.fetchFromGitHub {
           owner = "dracula";
           repo = "fish";
-          rev = "28db361b55bb49dbfd7a679ebec9140be8c2d593";
-          sha256 = "vdqYlEyYvlPVgTkwXbE8GVZo0UBBT88JyMSWYykhfx4=";
+          rev = "62b109f12faab5604f341e8b83460881f94b1550";
+          sha256 = "sha256-0TlKq2ur2I6Bv7pu7JObrJxV0NbQhydmCuUs6ZdDU1I=";
         };
       }
 
@@ -35,16 +37,18 @@
         };
       }
 
+      # https://github.com/PatrickF1/fzf.fish/releases
       {
         name = "fzf-fish";
         src = pkgs.fetchFromGitHub {
           owner = "PatrickF1";
           repo = "fzf.fish";
-          rev = "v.7.4";
-          sha256 = "dngAKzyD+lmqmxsCSOMViyCgA/+Ve35gLtPS+Lgs8Pc=";
+          rev = "v8.3";
+          sha256 = "sha256-eSNUqvKXTxcuvICxo8BmVWL1ESXQuU7VhOl7aONrhwM=";
         };
       }
 
+      # https://github.com/jorgebucaran/autopair.fish/releases
       {
         name = "autopair-fish";
         src = pkgs.fetchFromGitHub {
@@ -55,13 +59,14 @@
         };
       }
 
+      # https://github.com/PatrickF1/colored_man_pages.fish
       {
         name = "colored_man_pages";
         src = pkgs.fetchFromGitHub {
           owner = "PatrickF1";
           repo = "colored_man_pages.fish";
-          rev = "8c4965b9be9433d12ba50c28452cab8c71c59a50";
-          sha256 = "jhvC9wTU/mUwEaKeepsUEJsvVuCiO/opcp09SzkItV8=";
+          rev = "4d1766530e3d378b4d273e0fd2700d454f5f54ef";
+          sha256 = "sha256-hDfyUQpiC5JskdCWOkUUv1CxeVLHNn/o5N2SZhgzvT4=";
         };
       }
     ];
