@@ -1,11 +1,12 @@
 (let [lint (require :lint)
+      diagnostic (require :nifoc.diagnostic)
       augroup (vim.api.nvim_create_augroup :NifocLint {:clear true})
       aucmd vim.api.nvim_create_autocmd]
   ;; Custom Linters
   (set lint.linters.deadnix
        {:cmd :deadnix
-        :stdin false
-        :args [:--output-format :json]
+        :stdin true
+        :args [:--output-format :json :/dev/stdin]
         :stream :stdout
         :ignore_exitcode false
         :parser (fn [output]
@@ -27,14 +28,22 @@
   (set lint.linters_by_ft {:dockerfile [:hadolint]
                            :elixir [:credo]
                            :fennel [:fennel]
+                           :fish [:fish]
                            :nix [:deadnix :nix :statix]
                            :sh [:shellcheck]})
 
   (fn setup-linting [opts]
+    (diagnostic.maybe-enable-diagnostics opts.buf)
     (lint.try_lint)
     (aucmd [:BufWinEnter :BufWritePost :InsertLeave]
-           {:callback #(lint.try_lint) :buffer opts.buf :group augroup}))
+           {:callback #(lint.try_lint)
+            :buffer opts.buf
+            :group augroup
+            :desc "Run Linter"}))
 
   (each [ft _ (pairs lint.linters_by_ft)]
-    (aucmd :FileType {:pattern ft :callback setup-linting :group augroup})))
+    (aucmd :FileType {:pattern ft
+                      :callback setup-linting
+                      :group augroup
+                      :desc "Setup Linter"})))
 
