@@ -84,7 +84,7 @@
       lg = "exa --long --all --group --header --git";
       lt = "exa --long --all --group --header --tree --level ";
       docker = "podman";
-      sshfb = "env TERM=xterm-256color /usr/bin/ssh";
+      s = "kitty +kitten ssh";
       ytdl = "ytdl_with_options";
       ytdl_mp4 = "ytdl_with_options -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]'";
       yti = "ytdl_with_options -F";
@@ -144,7 +144,7 @@
 
     interactiveShellInit = ''
       if [ "$TERM" = "xterm-kitty" ]
-        alias ssh "kitty +kitten ssh"
+        alias ssh "env TERM=xterm-256color ssh"
       end
     '';
   };
