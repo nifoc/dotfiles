@@ -61,3 +61,4 @@
                             :autotag {:enable true}
                             :playground {:enable true}
                             :nifoc_hooks {:enable true}}))
+

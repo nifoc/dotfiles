@@ -42,8 +42,8 @@
       (table.concat result " ")))
 
   (fn mod.current-function []
-    (let [fun vim.b.lsp_current_function]
-      (if (and (not= fun nil) (> (fun:len) 0)) (.. " " fun) "")))
+    (let [ctx vim.b.nifoc_lsp_current_context]
+      (if (and (not= ctx nil) (> (ctx:len) 0)) ctx "")))
 
   (fn mod.spell-enabled? []
     (if (and (buffer-not-empty?) vim.wo.spell) "ﮒ" ""))

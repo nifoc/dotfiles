@@ -1,14 +1,13 @@
 (let [lsp (require :lspconfig)
-      lsp-status (require :lsp-status)
       illuminate (require :illuminate)
       cmp (require :cmp_nvim_lsp)
+      nifoc-lsp (require :nifoc.lsp)
       diagnostic (require :nifoc.diagnostic)
       formatting (require :nifoc.formatting)]
   (fn custom-attach [client bufnr]
-    (when client.server_capabilities.documentSymbolProvider
-      (lsp-status.on_attach client bufnr))
     (when client.server_capabilities.documentHighlightProvider
       (illuminate.on_attach client bufnr))
+    (nifoc-lsp.on-attach client bufnr)
     (diagnostic.maybe-enable-lsp client bufnr)
     (formatting.maybe-enable-lsp client bufnr))
 
@@ -17,11 +16,6 @@
     (set client.server_capabilities.documentRangeFormattingProvider false)
     (custom-attach client bufnr))
 
-  ;; Setup
-  (lsp-status.config {:current_function true
-                      :show_filename false
-                      :diagnostics false})
-  (lsp-status.register_progress)
   ;; Custom handler
   (tset vim.lsp.handlers :textDocument/hover
         (vim.lsp.with vim.lsp.handlers.hover {:border :rounded}))
@@ -29,9 +23,7 @@
         (vim.lsp.with vim.lsp.handlers.signature_help {:border :rounded}))
   ;; Servers
   (let [default-capabilities (vim.lsp.protocol.make_client_capabilities)
-        capabilities (vim.tbl_extend :keep
-                                     (cmp.update_capabilities default-capabilities)
-                                     lsp-status.capabilities)
+        capabilities (cmp.update_capabilities default-capabilities)
         flags {:allow_incremental_sync true :debounce_text_changes 700}
         default-config {:on_attach custom-attach : capabilities : flags}
         default-config-no-format {:on_attach custom-attach-no-format

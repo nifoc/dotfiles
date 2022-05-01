@@ -8,9 +8,12 @@
                                                     :--hidden
                                                     :-L
                                                     :-g
-                                                    :!.git/*]})
+                                                    :!.git/*
+                                                    :-g
+                                                    :!node_modules/*]})
           ok? (pcall builtin.git_files git-opts)]
       (when (not ok?)
         (builtin.find_files find-opts))))
 
   mod)
+

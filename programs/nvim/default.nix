@@ -267,7 +267,6 @@ in
 
       # LSP
       lspkind-nvim
-      lsp-status-nvim
 
       {
         plugin = vim-illuminate;

@@ -23,6 +23,7 @@
 
   (cmp.setup {:sources (cmp.config.sources [{:name :nvim_lsp}
                                             {:name :luasnip}
+                                            {:name :nvim_lsp_signature_help}
                                             {:name :nvim_lua}]
                                            [{:name :treesitter}
                                             {:name :buffer}
@@ -53,6 +54,7 @@
                                                                :luasnip "[LuaSnip]"
                                                                :nvim_lsp "[LSP]"
                                                                :nvim_lsp_document_symbol "[Symbol]"
+                                                               :nvim_lsp_signature_help "[param]"
                                                                :nvim_lua "[Lua]"
                                                                :path "[Path]"
                                                                :treesitter "[Treesitter]"}})}})
