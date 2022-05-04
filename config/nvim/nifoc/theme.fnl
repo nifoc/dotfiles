@@ -5,14 +5,27 @@
       dracula (require :dracula)
       dracula-colors (dracula.colors)
       highlight (partial vim.api.nvim_set_hl 0)]
+  (fn highlight-link [src dst]
+    (let [cmd-str (.. "highlight link " src " " dst)]
+      (cmd cmd-str)))
+
   (fn mod.setup []
     (set g.dracula_show_end_of_buffer false)
     (set g.dracula_italic_comment true)
     (set o.background :dark)
     (cmd "colorscheme dracula")
+    ;; vim-matchup
     (highlight :MatchParen {:fg dracula-colors.orange :bold true :italic true})
     (highlight :MatchWord {:italic true})
-    (cmd "highlight link MatchupVirtualText Comment"))
+    (highlight-link :MatchupVirtualText :Comment)
+    ;; nvim-ts-rainbow
+    (highlight :rainbowcol1 {:fg dracula-colors.bright_red})
+    (highlight :rainbowcol2 {:fg dracula-colors.bright_yellow})
+    (highlight :rainbowcol3 {:fg dracula-colors.bright_blue})
+    (highlight :rainbowcol4 {:fg dracula-colors.bright_green})
+    (highlight :rainbowcol5 {:fg dracula-colors.bright_magenta})
+    (highlight :rainbowcol6 {:fg dracula-colors.bright_cyan})
+    (highlight :rainbowcol7 {:fg dracula-colors.bright_white}))
 
   mod)
 
