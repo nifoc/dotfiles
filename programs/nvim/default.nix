@@ -31,13 +31,14 @@ in
       gcc
       gnumake
       git
-      nodejs-16_x
+      nodejs
       tree-sitter
       ripgrep
 
       # LSP
       nodePackages.bash-language-server
       nodePackages.dockerfile-language-server-nodejs
+      nodePackages.svelte-language-server
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.yaml-language-server
@@ -236,7 +237,7 @@ in
 
       {
         plugin = nvim-notify;
-        config = "(set vim.notify (require :notify))";
+        config = builtins.readFile ../../config/nvim/plugins/notify.fnl;
         type = "fennel";
       }
 
