@@ -1,5 +1,4 @@
-(let [gitsigns (require :gitsigns)
-      ns (require :nifoc.statusline)]
+(let [gitsigns (require :gitsigns)]
   (gitsigns.setup {:signs {:add {:hl :GitSignsAdd
                                  :text "│"
                                  :numhl :GitSignsAddNr
@@ -22,7 +21,6 @@
                                           :linehl :GitSignsChangeLn}}
                    :numhl false
                    :linehl false
-                   :status_formatter ns.gitsigns-formatter
                    :diff_opts {:internal true}
                    :preview_config {:border :rounded}}))
 

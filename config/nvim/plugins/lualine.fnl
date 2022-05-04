@@ -7,7 +7,11 @@
                             :icons_enabled true}
                   :sections {; Left
                              :lualine_a [:mode]
-                             :lualine_b ["b:gitsigns_status"
+                             :lualine_b [{1 :diff
+                                          :source ns.gitsigns-diff-source
+                                          :symbols {:added " "
+                                                    :modified " "
+                                                    :removed " "}}
                                          {1 :diagnostics
                                           :sources [:nvim_diagnostic]
                                           :symbols {:error " "
@@ -23,3 +27,4 @@
                                          ns.spell-enabled?]
                              :lualine_y [ns.current-line-percent]
                              :lualine_z [ns.line-column]}}))
+

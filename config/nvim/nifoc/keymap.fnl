@@ -11,7 +11,8 @@
       npairs (require :nvim-autopairs)
       gitsigns (require :gitsigns)
       repl (require :nifoc.repl)
-      formatting (require :nifoc.formatting)]
+      formatting (require :nifoc.formatting)
+      nifoc-lsp (require :nifoc.lsp)]
   (fn map-entry [key cmd opts]
     (vim.tbl_extend :keep {1 key 2 cmd} opts))
 
@@ -108,7 +109,9 @@
                 #(telescope-builtin.lsp_implementations telescope-dropdown)
                 {:buffer bufnr :desc "Find Implementations"})
     (keymap.set :n :K vim.lsp.buf.hover
-                {:buffer bufnr :desc "Show Documentation"}))
+                {:buffer bufnr :desc "Show Documentation"})
+    (keymap.set :n :<leader>ddsc nifoc-lsp.symbols-under-cursor
+                {:buffer bufnr :desc "Document Symbols Under Cursor"}))
 
   (fn mod.terminal-open [bufnr]
     (let [map-opts {:buffer bufnr}]

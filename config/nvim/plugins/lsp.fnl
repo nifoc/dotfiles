@@ -21,6 +21,7 @@
         (vim.lsp.with vim.lsp.handlers.hover {:border :rounded}))
   (tset vim.lsp.handlers :textDocument/signatureHelp
         (vim.lsp.with vim.lsp.handlers.signature_help {:border :rounded}))
+  (nifoc-lsp.register-progress-handler)
   ;; Servers
   (let [default-capabilities (vim.lsp.protocol.make_client_capabilities)
         capabilities (cmp.update_capabilities default-capabilities)
@@ -37,6 +38,7 @@
                          :html
                          :rnix
                          :sqls
+                         :svelte
                          :taplo
                          :yamlls]]
     ;; Default

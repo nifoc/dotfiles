@@ -31,15 +31,10 @@
                               (.. ftype " " icon))
           "no ft")))
 
-  (fn mod.gitsigns-formatter [status]
-    (let [{: added : changed : removed} status
-          result {}]
-      (maybe-insert-git-status "%%#GitSignsStatuslineAdd# %s" added result)
-      (maybe-insert-git-status "%%#GitSignsStatuslineChange# %s" changed
-                               result)
-      (maybe-insert-git-status "%%#GitSignsStatuslineDelete# %s" removed
-                               result)
-      (table.concat result " ")))
+  (fn mod.gitsigns-diff-source []
+    (let [signs vim.b.gitsigns_status_dict]
+      (when signs
+        {:added signs.added :modified signs.changed :removed signs.removed})))
 
   (fn mod.current-function []
     (let [ctx vim.b.nifoc_lsp_current_context]
