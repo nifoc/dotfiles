@@ -53,5 +53,10 @@
   (fn mod.lsp-enabled? []
     (if (buffer-variable-exists? :nifoc_lsp_enabled) "" ""))
 
+  (fn mod.extension-telescope []
+    {:filetypes [:TelescopePrompt]
+     :sections {:lualine_a [(fn []
+                              :Telescope)]}})
+
   mod)
 

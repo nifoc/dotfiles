@@ -26,5 +26,6 @@
                                          ns.fixer-enabled?
                                          ns.spell-enabled?]
                              :lualine_y [ns.current-line-percent]
-                             :lualine_z [ns.line-column]}}))
+                             :lualine_z [ns.line-column]}
+                  :extensions [:toggleterm (ns.extension-telescope)]}))
 

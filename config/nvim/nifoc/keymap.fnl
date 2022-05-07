@@ -13,9 +13,6 @@
       repl (require :nifoc.repl)
       formatting (require :nifoc.formatting)
       nifoc-lsp (require :nifoc.lsp)]
-  (fn map-entry [key cmd opts]
-    (vim.tbl_extend :keep {1 key 2 cmd} opts))
-
   (fn mod.setup []
     (keymap.set :n :<space> :<nop> {:noremap true})
     (set vim.g.mapleader " ")
