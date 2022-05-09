@@ -1,5 +1,6 @@
 (let [mod {}
-      current-function-symbols {:Class " "
+      current-function-symbols {:Array "ﴳ "
+                                :Class " "
                                 :Enum "ﴳ "
                                 :Function " "
                                 :Interface " "
