@@ -5,8 +5,8 @@
   ;; Custom Linters
   (set lint.linters.deadnix
        {:cmd :deadnix
-        :stdin true
-        :args [:--output-format :json :/dev/stdin]
+        :stdin false
+        :args [:--output-format :json]
         :stream :stdout
         :ignore_exitcode false
         :parser (fn [output]
