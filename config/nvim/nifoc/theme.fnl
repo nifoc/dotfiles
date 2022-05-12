@@ -1,19 +1,15 @@
+(import-macros {: colorscheme : highlight : highlight-link} :../macros/cmd)
+
 (let [mod {}
       o vim.opt
       g vim.g
-      cmd vim.cmd
       dracula (require :dracula)
-      dracula-colors (dracula.colors)
-      highlight (partial vim.api.nvim_set_hl 0)]
-  (fn highlight-link [src dst]
-    (let [cmd-str (.. "highlight link " src " " dst)]
-      (cmd cmd-str)))
-
+      dracula-colors (dracula.colors)]
   (fn mod.setup []
     (set g.dracula_show_end_of_buffer false)
     (set g.dracula_italic_comment true)
     (set o.background :dark)
-    (cmd "colorscheme dracula")
+    (colorscheme :dracula)
     ;; vim-matchup
     (highlight :MatchParen {:fg dracula-colors.orange :bold true :italic true})
     (highlight :MatchWord {:italic true})

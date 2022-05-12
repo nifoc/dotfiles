@@ -315,10 +315,16 @@ in
       mkdir -p $out/lua/nifoc/utils
       mkdir -p $out/after/ftplugin
 
-      fennel="fennel --use-bit-lib --compile"
       config_store_path="${../../config/nvim}"
+      fennel="fennel --use-bit-lib --compile"
+
+      echo "Using fennel command: $fennel"
+
+      # Change PWD to config directory
+      cd "$config_store_path"
 
       # Init
+      echo "Compiling init.fnl ..."
       $fennel "$config_store_path/init.fnl" > "$out/lua/configuration/init.lua"
 
       # Utils
@@ -332,14 +338,6 @@ in
         $fennel "$fnlfile" > "$out/lua/nifoc/$file_out_path"
       done
 
-      # Plugins
-      cat <<EOF >>plugins.fnl
-      ${config.programs.neovim.generatedConfigs.fennel}
-      nil
-      EOF
-
-      $fennel "./plugins.fnl" > "$out/lua/configuration/plugins.lua"
-
       # After
       after_store_path="$config_store_path/after"
       after_store_fnl="$(find "$after_store_path" -type f -name '*.fnl')"
@@ -351,6 +349,17 @@ in
         $fennel "$fnlfile" > "$out/after/$file_out_path"
       done
 
+      # Plugins
+      echo "Compiling plugin configuration ..."
+      {
+      cat <<EOF
+      ${config.programs.neovim.generatedConfigs.fennel}
+      nil
+      EOF
+      } | $fennel - > "$out/lua/configuration/plugins.lua"
+
+      # Other
+      echo "Copying tree-sitter queries ..."
       cp -r "$after_store_path/queries" "$out/after/"
 
       stylua "$out/"
