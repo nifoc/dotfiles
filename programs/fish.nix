@@ -65,8 +65,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "PatrickF1";
           repo = "colored_man_pages.fish";
-          rev = "4d1766530e3d378b4d273e0fd2700d454f5f54ef";
-          sha256 = "sha256-hDfyUQpiC5JskdCWOkUUv1CxeVLHNn/o5N2SZhgzvT4=";
+          rev = "f885c2507128b70d6c41b043070a8f399988bc7a";
+          sha256 = "sha256-ii9gdBPlC1/P1N9xJzqomrkyDqIdTg+iCg0mwNVq2EU=";
         };
       }
     ];
