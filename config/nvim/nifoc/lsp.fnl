@@ -77,9 +77,11 @@
             (let [current-context (.. (. current-function-symbols sym.kind)
                                       sym.text)]
               (table.insert context-levels current-context))))))
-    (set-bufvar ctx.bufnr :nifoc_lsp_current_context
-                (table.concat context-levels "  "))
-    (vim.api.nvim_command :redrawstatus))
+    (let [current-context vim.b.nifoc_lsp_current_context
+          new-context (table.concat context-levels "  ")]
+      (when (not= current-context new-context)
+        (set-bufvar ctx.bufnr :nifoc_lsp_current_context new-context)
+        (vim.api.nvim_cmd {:cmd :redrawstatus} []))))
 
   (fn update-current-context [bufnr]
     (let [params {:textDocument (vim.lsp.util.make_text_document_params bufnr)}]
@@ -161,7 +163,7 @@
                            handle-symbols-under-cursor)))
 
   (fn mod.on-attach [client bufnr]
-    (when client.server_capabilities.documentSymbolProvider
+    (when (client.supports_method :textDocument/documentSymbol)
       (aucmd [:CursorHold]
              {:callback #(update-current-context bufnr)
               :buffer bufnr

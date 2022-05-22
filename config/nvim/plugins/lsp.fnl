@@ -5,7 +5,7 @@
       diagnostic (require :nifoc.diagnostic)
       formatting (require :nifoc.formatting)]
   (fn custom-attach [client bufnr]
-    (when client.server_capabilities.documentHighlightProvider
+    (when (client.supports_method :textDocument/documentHighlight)
       (illuminate.on_attach client bufnr))
     (nifoc-lsp.on-attach client bufnr)
     (diagnostic.maybe-enable-lsp client bufnr)

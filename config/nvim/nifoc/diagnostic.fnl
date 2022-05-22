@@ -5,7 +5,7 @@
       augroup (vim.api.nvim_create_augroup :NifocDiagnostic {:clear true})
       aucmd vim.api.nvim_create_autocmd]
   (fn maybe-refresh-codelens [client]
-    (when client.server_capabilities.codeLensProvider
+    (when (client.supports_method :textDocument/codeLens)
       (vim.lsp.codelens.refresh)))
 
   (fn mod.setup []

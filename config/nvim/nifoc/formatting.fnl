@@ -22,9 +22,9 @@
     (set-bufvar 0 :nifoc_formatter_disabled 1))
 
   (fn mod.maybe-enable-lsp [client bufnr]
-    (when client.server_capabilities.documentRangeFormattingProvider
+    (when (client.supports_method :textDocument/rangeFormatting)
       (api.nvim_buf_set_option bufnr :formatexpr "v:lua.vim.lsp.formatexpr()"))
-    (when client.server_capabilities.documentFormattingProvider
+    (when (client.supports_method :textDocument/formatting)
       (set-bufvar bufnr :nifoc_lsp_formatter_enabled 1)))
 
   (fn mod.maybe-format-buffer []
