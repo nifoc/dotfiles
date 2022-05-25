@@ -182,8 +182,8 @@ in
 
       # UI
       {
-        plugin = lualine-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/lualine.fnl;
+        plugin = heirline-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/heirline.fnl;
         type = "fennel";
       }
 

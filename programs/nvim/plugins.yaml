@@ -58,12 +58,13 @@
 # Pairs
 - src: windwp/nvim-autopairs
 - src: windwp/nvim-ts-autotag
+- src: andymass/vim-matchup
 
 # Textobjects
 - src: nvim-treesitter/nvim-treesitter-textobjects
 
 # UI
-- src: andymass/vim-matchup
+- src: rebelot/heirline.nvim
 - src: nvim-lualine/lualine.nvim
 - src: akinsho/bufferline.nvim
 - src: lukas-reineke/indent-blankline.nvim
