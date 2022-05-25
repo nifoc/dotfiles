@@ -128,8 +128,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "328232e090004274f2c830fdaad9a2bda8ba2e60";
-      sha256 = "1lnl87b3bp31340ilp12dwr4gimxj8vajjf6nhqabd0w54r7g243";
+      rev = "cd9e6aaee01624c1a5423a783e7fd5bc8fc955c5";
+      sha256 = "1qvf0z2q0dz0nbvicz1vhd3684vx7nandxnz7246wncm2l5k26xr";
       fetchSubmodules = false;
     };
   };
