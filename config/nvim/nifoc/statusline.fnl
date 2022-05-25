@@ -125,8 +125,18 @@
                                  (let [ft vim.bo.filetype]
                                    (if (> (ft:len) 0) ft "no ft")))
                      :hl {:fg colors.white}})
+  (set mod.encoding {:provider (fn []
+                                 (let [vim-enc (if (not= vim.bo.fenc nil)
+                                                   vim.bo.fenc
+                                                   vim.o.enc)
+                                       enc (if (> (vim-enc:len) 0) vim-enc
+                                               "no enc")]
+                                   (.. enc " ")))
+                     :hl {:fg colors.white}})
   (set mod.filetype-block
-       (heirline-utils.insert mod.filetype-block mod.file-icon mod.filetype))
+       (heirline-utils.insert mod.filetype-block mod.file-icon mod.filetype
+                              {:provider " | " :hl {:fg colors.white}}
+                              mod.encoding))
   ;; git
   (set mod.git {:condition heirline-conditions.is_git_repo
                 :init (fn [self]
@@ -209,29 +219,26 @@
                         ctx)))
         :hl {:fg colors.white}})
   ;; Buffer Options
-  (set mod.buffer-options {:init (fn [self]
-                                   (set self.has-options?
-                                        (or (buffer-variable-exists? :nifoc_lsp_enabled)
-                                            (buffer-variable-exists? :nifoc_treesitter_enabled)
-                                            vim.wo.spell)))
-                           :hl {:fg colors.black :bg colors.orange}
-                           1 {:condition (fn [self]
-                                           self.has-options?)
-                              :provider " "}
-                           2 {:provider (fn []
-                                          (when (buffer-variable-exists? :nifoc_lsp_enabled)
-                                            " "))}
-                           3 {:provider (fn []
-                                          (when (or (buffer-variable-exists? :nifoc_lsp_formatter_enabled)
-                                                    (not= (vim.opt_local.formatprg:get)
-                                                          ""))
-                                            " "))}
-                           4 {:provider (fn []
-                                          (when (buffer-variable-exists? :nifoc_treesitter_enabled)
-                                            " "))}
-                           5 {:provider (fn []
-                                          (when vim.wo.spell
-                                            "暈"))}})
+  (set mod.buffer-options
+       {:static {:format {:dos "" :unix "" :mac ""}}
+        :hl {:fg colors.black :bg colors.orange}
+        1 {:provider " "}
+        2 {:provider (fn []
+                       (when (buffer-variable-exists? :nifoc_lsp_enabled)
+                         " "))}
+        3 {:provider (fn []
+                       (when (or (buffer-variable-exists? :nifoc_lsp_formatter_enabled)
+                                 (not= (vim.opt_local.formatprg:get) ""))
+                         " "))}
+        4 {:provider (fn []
+                       (when (buffer-variable-exists? :nifoc_treesitter_enabled)
+                         " "))}
+        5 {:provider (fn []
+                       (when vim.wo.spell
+                         "暈"))}
+        6 {:provider (fn [self]
+                       (let [f vim.bo.fileformat]
+                         (.. (. self :format f) " ")))}})
   ;; Position
   (set mod.position
        {:init (fn [self]
