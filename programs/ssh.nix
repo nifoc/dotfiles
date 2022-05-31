@@ -39,6 +39,13 @@ in
         identitiesOnly = true;
       };
 
+      "msc.nedeco.local" = {
+        port = 22;
+        user = "root";
+        identityFile = "~/.ssh/nedeco.pub";
+        identitiesOnly = true;
+      };
+
       # Private
 
       "github.com" = {

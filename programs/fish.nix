@@ -91,6 +91,8 @@
 
       mysqld-direnv-init = "mysql_install_db --user $USER --datadir=$PWD/.direnv/mysql/data --auth-root-authentication-method=normal";
       mysqld-direnv = "mysqld --datadir=$PWD/.direnv/mysql/data --bind-address=127.0.0.1 --socket=$PWD/.direnv/mysql/mysqld.sock --gdb";
+      postgres-direnv-init = "initdb --username $USER --pgdata $PWD/.direnv/postgres/data --auth trust";
+      postgres-direnv = "postgres -D $PWD/.direnv/postgres/data";
       redis-direnv = "redis-server --dir $PWD/.direnv/redis --bind 127.0.0.1";
     };
 

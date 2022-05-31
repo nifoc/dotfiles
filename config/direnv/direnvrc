@@ -40,6 +40,11 @@ project_node() {
   PATH_add node_modules/.bin
 }
 
+project_python() {
+  export POETRY_HOME=$(direnv_layout_dir)/poetry/data
+  export POETRY_CACHE_DIR=$(direnv_layout_dir)/poetry/cache
+}
+
 project_ruby() {
   export GEM_HOME=$(direnv_layout_dir)/gem
   export BUNDLE_USER_HOME=$(direnv_layout_dir)/bundle
