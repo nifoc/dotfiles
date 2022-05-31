@@ -8,5 +8,8 @@
   (fn mod.highlight-link [src dst]
     `(vim.api.nvim_cmd {:cmd :highlight :args [:link ,src ,dst]} []))
 
+  (fn mod.deferred_cmd [args delay]
+    `(vim.defer_fn #(vim.api.nvim_cmd ,args []) ,delay))
+
   mod)
 

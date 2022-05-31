@@ -1,10 +1,15 @@
+(import-macros {: deferred_cmd} :../macros/cmd)
+
 (let [mod {}
       api vim.api
       heirline-utils (require :heirline.utils)
       heirline-conditions (require :heirline.conditions)
       web-devicons (require :nvim-web-devicons)
       dracula (require :dracula)
-      colors (dracula.colors)]
+      colors (dracula.colors)
+      formatting (require :nifoc.formatting)
+      nifoc-treesitter (require :nifoc.treesitter)
+      neogit (require :neogit)]
   (fn buffer-variable-exists? [key]
     (not= (. vim :b key) nil))
 
@@ -99,8 +104,7 @@
                                        :t {:fg colors.black
                                            :bg colors.purple
                                            :bold true}}}
-                    :provider (fn [self]
-                                (.. " " (. self :mode-names self.mode) " "))
+                    :provider #(.. " " (. $1 :mode-names $1.mode) " ")
                     :hl (fn [self]
                           (let [short-mode (self.mode:sub 1 1)]
                             (. self :mode-hl short-mode)))})
@@ -148,12 +152,11 @@
                           (set self.has-changes?
                                (or (> self.git-added 0) (> self.git-removed 0)
                                    (> self.git-changed 0)))))
-                1 {:provider (fn [self]
-                               (.. "  " self.git-head " "))
-                   :hl {:fg colors.black :bg colors.orange :bold true}}
-                2 {:condition (fn [self]
-                                self.has-changes?)
-                   :provider " "}
+                1 {:provider #(.. "  " $1.git-head " ")
+                   :hl {:fg colors.black :bg colors.orange :bold true}
+                   :on_click {:name :heirline_git_branch
+                              :callback #(neogit.open {:kind :split})}}
+                2 {:condition #$1.has-changes? :provider " "}
                 3 {:provider (fn [self]
                                (let [spacer (if (or (> self.git-removed 0)
                                                     (> self.git-changed 0))
@@ -223,19 +226,13 @@
        {:static {:format {:dos "" :unix "" :mac ""}}
         :hl {:fg colors.black :bg colors.orange}
         1 {:provider " "}
-        2 {:provider (fn []
-                       (when (buffer-variable-exists? :nifoc_lsp_enabled)
-                         " "))}
-        3 {:provider (fn []
-                       (when (or (buffer-variable-exists? :nifoc_lsp_formatter_enabled)
-                                 (not= (vim.opt_local.formatprg:get) ""))
-                         " "))}
-        4 {:provider (fn []
-                       (when (buffer-variable-exists? :nifoc_treesitter_enabled)
-                         " "))}
-        5 {:provider (fn []
-                       (when vim.wo.spell
-                         "暈"))}
+        2 {:condition #(buffer-variable-exists? :nifoc_lsp_enabled)
+           :provider " "
+           :on_click {:name :heirline_buffer_options_lsp
+                      :callback #(deferred_cmd {:cmd :LspInfo} 200)}}
+        3 {:condition #(formatting.active?) :provider " "}
+        4 {:condition #(nifoc-treesitter.active?) :provider " "}
+        5 {:condition #vim.wo.spell :provider "暈"}
         6 {:provider (fn [self]
                        (let [f vim.bo.fileformat]
                          (.. (. self :format f) " ")))}})

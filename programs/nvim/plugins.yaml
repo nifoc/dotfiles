@@ -4,6 +4,7 @@
 # Utils
 - src: nvim-lua/popup.nvim
 - src: nvim-lua/plenary.nvim
+- src: kyazdani42/nvim-web-devicons
 
 # Keybindings
 - src: gbprod/yanky.nvim
@@ -36,12 +37,18 @@
 
 # LSP
 - src: neovim/nvim-lspconfig
+- src: onsails/lspkind.nvim
+- src: RRethy/vim-illuminate
 
 # Linter
 - src: mfussenegger/nvim-lint
 
+# Comments
+- src: numtostr/comment.nvim
+
 # Snippets
 - src: L3MON4D3/LuaSnip
+- src: rafamadriz/friendly-snippets
 
 # cmp
 - src: hrsh7th/nvim-cmp
@@ -55,6 +62,9 @@
 - src: hrsh7th/cmp-cmdline
 - src: hrsh7th/cmp-nvim-lsp-document-symbol
 
+# Formatting
+- src: sbdchd/neoformat
+
 # Pairs
 - src: windwp/nvim-autopairs
 - src: windwp/nvim-ts-autotag
@@ -65,10 +75,10 @@
 
 # UI
 - src: rebelot/heirline.nvim
-- src: nvim-lualine/lualine.nvim
 - src: akinsho/bufferline.nvim
 - src: lukas-reineke/indent-blankline.nvim
 - src: lukas-reineke/virt-column.nvim
+- src: akinsho/toggleterm.nvim
 - src: axieax/urlview.nvim
 - src: TimUntersberger/neogit
 - src: lewis6991/gitsigns.nvim

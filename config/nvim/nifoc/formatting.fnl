@@ -21,6 +21,12 @@
   (fn mod.disable-for-buffer []
     (set-bufvar 0 :nifoc_formatter_disabled 1))
 
+  (fn mod.active? []
+    (if (= b.nifoc_formatter_disabled 1) false
+        (= b.nifoc_lsp_formatter_enabled 1) true
+        (not= (vim.opt_local.formatprg:get) "") true
+        false))
+
   (fn mod.maybe-enable-lsp [client bufnr]
     (when (client.supports_method :textDocument/rangeFormatting)
       (api.nvim_buf_set_option bufnr :formatexpr "v:lua.vim.lsp.formatexpr()"))

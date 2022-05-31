@@ -46,6 +46,11 @@ for plugin in "${plugin_array[@]}"; do
     nix_prefetch_flags+=" --rev $rev"
   fi
 
+  branch="$(echo "$plugin" | jq -r '.branch // empty')"
+  if [ -n "$branch" ]; then
+    nix_prefetch_flags+=" --branch-name $branch"
+  fi
+
   src_json="$(nix-prefetch-git $nix_prefetch_flags "$clone_src")"
   src="{
     owner = \"${owner}\";

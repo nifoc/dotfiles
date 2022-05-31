@@ -64,6 +64,7 @@ in
       # Utils
       popup-nvim
       plenary-nvim
+      nvim-web-devicons
 
       # Keybindings
       {
@@ -124,10 +125,25 @@ in
         type = "fennel";
       }
 
+      lspkind-nvim
+
+      {
+        plugin = vim-illuminate;
+        config = builtins.readFile ../../config/nvim/plugins/illuminate.fnl;
+        type = "fennel";
+      }
+
       # Linter
       {
         plugin = nvim-lint;
         config = builtins.readFile ../../config/nvim/plugins/nvim-lint.fnl;
+        type = "fennel";
+      }
+
+      # Comments
+      {
+        plugin = comment-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/comment.fnl;
         type = "fennel";
       }
 
@@ -137,6 +153,8 @@ in
         config = builtins.readFile ../../config/nvim/plugins/luasnip.fnl;
         type = "fennel";
       }
+
+      friendly-snippets
 
       # cmp
       {
@@ -154,6 +172,13 @@ in
       cmp-treesitter
       cmp-cmdline
       cmp-nvim-lsp-document-symbol
+
+      # Formatting
+      {
+        plugin = neoformat;
+        config = builtins.readFile ../../config/nvim/plugins/neoformat.fnl;
+        type = "fennel";
+      }
 
       # Pairs
       {
@@ -209,6 +234,12 @@ in
       }
 
       {
+        plugin = toggleterm-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/toggleterm.fnl;
+        type = "fennel";
+      }
+
+      {
         plugin = urlview-nvim;
         config = builtins.readFile ../../config/nvim/plugins/urlview.fnl;
         type = "fennel";
@@ -250,9 +281,6 @@ in
       # Fixes
       FixCursorHold-nvim
 
-      # Utils
-      nvim-web-devicons
-
       # Telescope
       {
         plugin = project-nvim;
@@ -266,43 +294,11 @@ in
         type = "fennel";
       }
 
-      # LSP
-      lspkind-nvim
-
-      {
-        plugin = vim-illuminate;
-        config = builtins.readFile ../../config/nvim/plugins/illuminate.fnl;
-        type = "fennel";
-      }
-
-      # Formatting
-      {
-        plugin = neoformat;
-        config = builtins.readFile ../../config/nvim/plugins/neoformat.fnl;
-        type = "fennel";
-      }
-
-      # Comments
-      {
-        plugin = comment-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/comment.fnl;
-        type = "fennel";
-      }
-
-      # Snippets
-      friendly-snippets
-
       # Textobjects
       vim-surround
 
       # UI
       undotree
-
-      {
-        plugin = toggleterm-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/toggleterm.fnl;
-        type = "fennel";
-      }
     ]);
   };
 

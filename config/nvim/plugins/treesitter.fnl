@@ -1,7 +1,7 @@
 (let [treesitter (require :nvim-treesitter)
       treesitter-config (require :nvim-treesitter.configs)
       treesitter-parsers (require :nvim-treesitter.parsers)
-      set-bufvar vim.api.nvim_buf_set_var
+      nifoc-treesitter (require :nifoc.treesitter)
       install-parsers [:bash
                        :comment
                        :css
@@ -32,16 +32,7 @@
                        :vim
                        :yaml]
       rainbow-parsers [:fennel]]
-  (treesitter.define_modules {:nifoc_hooks {:enable false
-                                            :attach (lambda [bufnr]
-                                                      (set-bufvar bufnr
-                                                                  :nifoc_treesitter_enabled
-                                                                  1))
-                                            :detach (lambda [bufnr]
-                                                      (set-bufvar bufnr
-                                                                  :nifoc_treesitter_enabled
-                                                                  0))
-                                            :is_supported #true}})
+  (nifoc-treesitter.setup)
   (treesitter-config.setup {:ensure_installed install-parsers
                             :sync_install true
                             :highlight {:enable true}
