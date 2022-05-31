@@ -48,7 +48,6 @@
       nvd
       parallel
       podman
-      procs
       qemu
       ripgrep
       rtmpdump
