@@ -16,7 +16,7 @@
 - src: Mofiqul/dracula.nvim
 
 # Syntax
-- src: nvim-treesitter/nvim-treesitter
+# - src: nvim-treesitter/nvim-treesitter
 - src: p00f/nvim-ts-rainbow
 - src: nvim-treesitter/playground
 
@@ -32,6 +32,8 @@
     XDG_CACHE_HOME=./xdg_cache just build
     mv lib/libzf.so lib/libzf-osx-arm64.so
     rm -rf ./xdg_cache
+- src: ahmedkhalf/project.nvim
+- src: folke/todo-comments.nvim
 - src: nvim-telescope/telescope-ui-select.nvim
 - src: "https://git.sr.ht/~havi/telescope-toggleterm.nvim"
 
