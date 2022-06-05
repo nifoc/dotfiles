@@ -26,10 +26,24 @@
   (set mod.space {:provider " "})
   (set mod.spacer {:provider " " :hl {:fg colors.bg :bg colors.bg}})
   (set mod.push-right {:provider "%="})
+
+  (fn mod.insert-left-unless-empty [item left]
+    {:after (fn [self]
+              (if (and (not= self.stl nil) (> (length self.stl) 0))
+                  (set self.stl (.. left self.stl))))
+     1 item})
+
+  (fn mod.insert-right-unless-empty [item right]
+    {:after (fn [self]
+              (if (and (not= self.stl nil) (> (length self.stl) 0))
+                  (set self.stl (.. self.stl right))))
+     1 item})
+
   ;; Mode
   (set mod.vi-mode {:init (fn [self]
                             (let [mode (. (api.nvim_get_mode) :mode)]
                               (set self.mode mode)))
+                    :update :ModeChanged
                     :static {:mode-names {:n :NORMAL
                                           :no :O-PENDING
                                           :nov :O-PENDING
@@ -148,30 +162,20 @@
                           (set self.git-head git-status.head)
                           (set self.git-added (or git-status.added 0))
                           (set self.git-removed (or git-status.removed 0))
-                          (set self.git-changed (or git-status.changed 0))
-                          (set self.has-changes?
-                               (or (> self.git-added 0) (> self.git-removed 0)
-                                   (> self.git-changed 0)))))
+                          (set self.git-changed (or git-status.changed 0))))
                 1 {:provider #(.. "  " $1.git-head " ")
                    :hl {:fg colors.black :bg colors.orange :bold true}
                    :on_click {:name :heirline_git_branch
                               :callback #(neogit.open {:kind :split})}}
-                2 {:condition #$1.has-changes? :provider " "}
+                2 {:provider " "}
                 3 {:provider (fn [self]
-                               (let [spacer (if (or (> self.git-removed 0)
-                                                    (> self.git-changed 0))
-                                                " " "")]
-                                 (when (> self.git-added 0)
-                                   (.. " " self.git-added spacer))))
+                               (.. " " self.git-added " "))
                    :hl {:fg colors.bright_green}}
                 4 {:provider (fn [self]
-                               (let [spacer (if (> self.git-changed 0) " " "")]
-                                 (when (> self.git-removed 0)
-                                   (.. " " self.git-removed spacer))))
+                               (.. " " self.git-removed " "))
                    :hl {:fg colors.bright_red}}
                 5 {:provider (fn [self]
-                               (when (> self.git-changed 0)
-                                 (.. " " self.git-changed)))
+                               (.. " " self.git-changed))
                    :hl {:fg colors.cyan}}})
   ;; Diagnostics
   (set mod.diagnostics {:condition heirline-conditions.has_diagnostics
@@ -189,6 +193,7 @@
                                   (set self.hints
                                        (length (d.get 0
                                                       {:severity d.severity.HINT})))))
+                        :update [:DiagnosticChanged :BufEnter]
                         1 {:provider (fn [self]
                                        (let [spacer (if (or (> self.warnings 0)
                                                             (> self.info 0)

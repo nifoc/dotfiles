@@ -4,9 +4,10 @@
       ns (require :nifoc.statusline)]
   (local default-statusline [;; Left
                              ns.vi-mode
-                             (utils.surround [" " ""] nil ns.git)
-                             (utils.surround [" " ""] nil ns.diagnostics)
-                             (utils.surround [" " ""] nil ns.current-function)
+                             (ns.insert-left-unless-empty ns.git " ")
+                             (ns.insert-left-unless-empty ns.diagnostics " ")
+                             (ns.insert-left-unless-empty ns.current-function
+                                                          " ")
                              ;; Right
                              ns.push-right
                              ns.filetype-block
