@@ -6,13 +6,11 @@
                        :comment
                        :css
                        :dockerfile
-                       :eex
                        :elixir
                        :erlang
                        :fennel
                        :fish
                        :heex
-                       :help
                        :html
                        :http
                        :javascript
@@ -33,7 +31,7 @@
                        :yaml]
       rainbow-parsers [:fennel]]
   (nifoc-treesitter.setup)
-  (treesitter-config.setup {:ensure_installed install-parsers
+  (treesitter-config.setup {:ensure_installed []
                             :sync_install true
                             :highlight {:enable true}
                             :indent {:enable true}
