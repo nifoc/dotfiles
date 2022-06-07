@@ -18,6 +18,7 @@
                        :json
                        :lua
                        :make
+                       :markdown
                        :nix
                        :query
                        :regex
