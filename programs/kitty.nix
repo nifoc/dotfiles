@@ -34,8 +34,8 @@
       active_tab_background = "#282A36";
       active_tab_font_style = "normal";
       tab_bar_min_tabs = 2;
-      tab_title_template = "\" {index}: {title[:30]}{fmt.fg._FF5555}{activity_symbol}\"";
-      active_tab_title_template = "\" {index}: {title[:30]}\"";
+      tab_title_template = "\"{fmt.bold} {fmt.nobold}{index}: {title[:30]}{fmt.fg._FF5555}{activity_symbol}\"";
+      active_tab_title_template = "\"{fmt.bold} {fmt.nobold}{index}: {fmt.italic}{title[:30]}{fmt.noitalic}{fmt.fg._FF5555}{activity_symbol}\"";
 
       # UX
       kitty_mod = "cmd";
