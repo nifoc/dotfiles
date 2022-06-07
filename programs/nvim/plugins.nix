@@ -241,12 +241,12 @@
   };
   comment-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "comment.nvim";
-    version = "2022-05-30";
+    version = "2022-06-07";
     src = pkgs.fetchFromGitHub {
       owner = "numtostr";
       repo = "comment.nvim";
-      rev = "bdf9ca64dcf4cc3c411aaeee4cfba59398d02aa8";
-      sha256 = "138lp4qk2hj0w58mhl8b40rxn5ybihmxcaaj0sqm0xcgg2fiim05";
+      rev = "3c69bab36569d5d0321351ec956fc43a8d409fb0";
+      sha256 = "0wfhj4i1ycwsdmpkk9jcfmq141mqlf40sl4ymqd0zqrwzb8yz5m5";
       fetchSubmodules = false;
     };
   };
