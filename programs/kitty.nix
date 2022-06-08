@@ -7,7 +7,7 @@
     settings = {
       # Shell
       shell = "${pkgs.fish.outPath}/bin/fish --interactive";
-      shell_integration = "no-cursor";
+      shell_integration = "enabled";
 
       # Theme/Layout
       window_border_width = "1.0";
@@ -23,7 +23,7 @@
       tab_separator = "\"  \"";
       tab_fade = "0 0 0 0";
       tab_activity_symbol = "\" ●\"";
-      bell_on_tab = false;
+      bell_on_tab = "\" ●\"";
       tab_bar_edge = "bottom";
       tab_bar_background = "#282A36";
       tab_bar_margin_height = "0.0 0.0";
@@ -34,20 +34,21 @@
       active_tab_background = "#282A36";
       active_tab_font_style = "normal";
       tab_bar_min_tabs = 2;
-      tab_title_template = "\"{fmt.bold} {fmt.nobold}{index}: {title[:30]}{fmt.fg._FF5555}{activity_symbol}\"";
-      active_tab_title_template = "\"{fmt.bold} {fmt.nobold}{index}: {fmt.italic}{title[:30]}{fmt.noitalic}{fmt.fg._FF5555}{activity_symbol}\"";
+      tab_title_template = "\"{fmt.bold} {fmt.nobold}{index}: {title[:30]}{fmt.fg._FFB86C}{bell_symbol}{fmt.fg._FF5555}{activity_symbol}\"";
+      active_tab_title_template = "\"{fmt.bold} {fmt.nobold}{index}: {fmt.italic}{title[:30]}{fmt.noitalic}{fmt.fg._FFB86C}{bell_symbol}{fmt.fg._FF5555}{activity_symbol}\"";
 
       # UX
       kitty_mod = "cmd";
-      cursor_blink_interval = 0;
-      macos_custom_beam_cursor = true;
+      cursor_blink_interval = -1;
+      cursor_stop_blinking_after = "15.0";
+      cursor_beam_thickness = "1.5";
       disable_ligatures = "cursor";
       enable_audio_bell = false;
       visual_bell_duration = 0;
 
       # Mouse
       detect_urls = false;
-      allow_hyperlinks = false;
+      allow_hyperlinks = "ask";
 
       # Scrollback
       scrollback_pager_history_size = 2;
