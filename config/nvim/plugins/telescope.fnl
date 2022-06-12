@@ -10,7 +10,16 @@
                                :layout_strategy :horizontal
                                :layout_config {:horizontal {:preview_width 0.5}}
                                ; Mappings
-                               :mappings {:i {:<esc> actions.close}}}
+                               :mappings {:i {:<esc> actions.close}}
+                               ; Arguments
+                               :vimgrep_arguments [:rg
+                                                   :--color=never
+                                                   :--no-heading
+                                                   :--with-filename
+                                                   :--line-number
+                                                   :--column
+                                                   :--smart-case
+                                                   :--trim]}
                     :extensions {:ui-select [(themes.get_dropdown {})]}})
   (telescope.load_extension :ui-select)
   (telescope.load_extension :toggleterm)

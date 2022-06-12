@@ -19,8 +19,7 @@
     (set vim.g.mapleader " ")
     (set vim.opt.timeoutlen 400)
     ;; Leader Mappings
-    (keymap.set :n :<leader>o telescope-nifoc.project-files
-                {:desc "Find Files"})
+    (keymap.set :n :<leader>o telescope-nifoc.find-files {:desc "Find Files"})
     (keymap.set :n :<leader>s #(telescope-builtin.live_grep telescope-ivy)
                 {:desc "Live Grep"})
     (keymap.set :n :<leader>fn :<cmd>enew<CR> {:desc "New File"})
