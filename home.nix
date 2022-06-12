@@ -34,7 +34,6 @@
       cliclick
       curlFull
       dasel
-      dogdns
       exa
       fd
       ffmpeg
@@ -48,6 +47,7 @@
       nvd
       parallel
       podman
+      q
       qemu
       ripgrep
       rtmpdump
