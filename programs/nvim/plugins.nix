@@ -197,12 +197,12 @@
   };
   nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-lspconfig";
-    version = "2022-06-12";
+    version = "2022-06-13";
     src = pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "86f9c29b4091bcc1cccb47e8208c470c4edf2ab1";
-      sha256 = "1b2iqfnva7bh1bvc24qdhissg6k62d4vd3ax3zajn5m60wy7j754";
+      rev = "650ce7156ca7935e02934eef45b392957ea402e8";
+      sha256 = "1wh9140hc239n3s3bgid1pja80pqg6k112gl4l7j9hxn9496ml0k";
       fetchSubmodules = false;
     };
   };
@@ -439,12 +439,12 @@
   };
   heirline-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "heirline.nvim";
-    version = "2022-06-11";
+    version = "2022-06-13";
     src = pkgs.fetchFromGitHub {
       owner = "rebelot";
       repo = "heirline.nvim";
-      rev = "efbf99c48d03f456b19680a46f0e21acd6df5188";
-      sha256 = "1w6cn89s8z818iff6l240qz3g7b34hdpiazpbi2j86hcgzsgcpp4";
+      rev = "9528fff53c9cc17776f0b5f4b90223771fb1a1cd";
+      sha256 = "1kk1dfskjflqznby8kgy20fqc4ss2khcbzhjzksmqg4q09l0bgjn";
       fetchSubmodules = false;
     };
   };
