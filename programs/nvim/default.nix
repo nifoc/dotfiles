@@ -31,6 +31,7 @@ in
       git
       nodejs
       tree-sitter
+      fd
       ripgrep
 
       # LSP

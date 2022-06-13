@@ -5,7 +5,7 @@
                                :prompt_prefix " "
                                :selection_caret " "
                                :set_env {:COLORTERM :truecolor}
-                               :path_display [:smart :absolute]
+                               :path_display [:truncate :absolute]
                                ; Layout
                                :layout_strategy :horizontal
                                :layout_config {:horizontal {:preview_width 0.5}}
