@@ -124,12 +124,12 @@
   };
   telescope-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "telescope.nvim";
-    version = "2022-06-12";
+    version = "2022-06-13";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "e2a77a54a35642dd95310effe2bf4e36fff3af26";
-      sha256 = "1nmi4hpjjlb2ghyqglfmwdzyj25kf82291h9bxm7im3f86xr61gb";
+      rev = "3d304a9a55f1b142b874c319138152003f192c4c";
+      sha256 = "0mvh8z6nh99ijh7vbp4f17qy783x2mwblmg89s8rsw71yiprx297";
       fetchSubmodules = false;
     };
   };
@@ -252,12 +252,12 @@
   };
   LuaSnip = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "LuaSnip";
-    version = "2022-05-28";
+    version = "2022-06-13";
     src = pkgs.fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "52f4aed58db32a3a03211d31d2b12c0495c45580";
-      sha256 = "0drc847m55xwiha1wa2ykd5cwynmvd5ik2sys9v727fb4fbqmpa0";
+      rev = "79b2019c68a2ff5ae4d732d50746c901dd45603a";
+      sha256 = "1mlzjccs8yp6xiffk05xrrqms8d3hmyyr31wysvmssv8jspy32k5";
       fetchSubmodules = false;
     };
   };
