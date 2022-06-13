@@ -13,6 +13,8 @@
 
     ./programs/bat.nix
 
+    ./programs/fzf.nix
+
     ./programs/jq.nix
 
     ./programs/scripts.nix
@@ -37,7 +39,6 @@
       exa
       fd
       ffmpeg
-      fzf
       gallery-dl
       glow
       hexyl
