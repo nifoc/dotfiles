@@ -53,6 +53,7 @@
   (set o.termguicolors true)
   (set o.mouse :a)
   (set o.mousemodel :popup_setpos)
+  (set o.cmdheight 0)
   ;; Backups
   (set o.backup false)
   (set o.swapfile false)
