@@ -124,12 +124,12 @@
   };
   telescope-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "telescope.nvim";
-    version = "2022-06-13";
+    version = "2022-06-15";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "3d304a9a55f1b142b874c319138152003f192c4c";
-      sha256 = "0mvh8z6nh99ijh7vbp4f17qy783x2mwblmg89s8rsw71yiprx297";
+      rev = "d96eaa914aab6cfc4adccb34af421bdd496468b0";
+      sha256 = "0iwml8wk3mk1j8pff11w0fg0x7hihnz6d5wq1ki57fasycwd90a0";
       fetchSubmodules = false;
     };
   };
