@@ -503,6 +503,17 @@
       fetchSubmodules = false;
     };
   };
+  diffview-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "diffview.nvim";
+    version = "2022-06-12";
+    src = pkgs.fetchFromGitHub {
+      owner = "sindrets";
+      repo = "diffview.nvim";
+      rev = "03deb5d379e3b2c2eb4111d7c65d8ee04b77028a";
+      sha256 = "0fxh55lgc17awjd7msvhlkv7wgj8nksg1ag0m5lgsgp25vhz0y6h";
+      fetchSubmodules = false;
+    };
+  };
   neogit = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "neogit";
     version = "2022-06-09";

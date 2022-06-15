@@ -2,4 +2,6 @@
   (neogit.setup {:signs {; [ CLOSED, OPENED ]
                          :section ["" ""]
                          :item ["" ""]
-                         :hunk ["" ""]}}))
+                         :hunk ["" ""]}
+                 :integrations {:diffview true}}))
+
