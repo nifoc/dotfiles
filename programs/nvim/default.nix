@@ -54,6 +54,7 @@ in
       shellcheck
       shfmt
       statix
+      vale
     ];
 
     plugins = (with customPlugins; [
