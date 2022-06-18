@@ -3,6 +3,8 @@
       themes (require :telescope.themes)]
   (fn mod.find-files []
     (let [find-opts (themes.get_ivy {:find_command [:fd
+                                                    :--type
+                                                    :file
                                                     :--hidden
                                                     :--ignore-vcs
                                                     :-L
