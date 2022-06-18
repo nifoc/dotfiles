@@ -44,6 +44,7 @@
       hexyl
       hyperfine
       lnav
+      mtr
       nix-prefetch
       nvd
       parallel
