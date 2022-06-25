@@ -56,6 +56,7 @@
       streamlink
       socat
       tokei
+      viddy
       wget
       xz
     ];
