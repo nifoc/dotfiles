@@ -13,6 +13,10 @@
                                :mappings {:i {:<esc> actions.close}}
                                ; Arguments
                                :vimgrep_arguments [:rg
+                                                   :--hidden
+                                                   :--ignore-vcs
+                                                   :-g
+                                                   :!.git/*
                                                    :--color=never
                                                    :--no-heading
                                                    :--with-filename
