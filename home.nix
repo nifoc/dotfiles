@@ -17,6 +17,8 @@
 
     ./programs/jq.nix
 
+    ./programs/podman.nix
+
     ./programs/scripts.nix
 
     ./programs/ssh.nix
@@ -48,9 +50,7 @@
       nix-prefetch
       nvd
       parallel
-      podman
       q
-      qemu
       ripgrep
       rtmpdump
       streamlink
