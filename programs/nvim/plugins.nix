@@ -47,12 +47,12 @@
   };
   yanky-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "yanky.nvim";
-    version = "2022-05-14";
+    version = "2022-06-27";
     src = pkgs.fetchFromGitHub {
       owner = "gbprod";
       repo = "yanky.nvim";
-      rev = "cb656868828f772ce807fe61fd3476dfa8cab1b7";
-      sha256 = "03kzlij00bnqxmc362wip6f5ak8b83wdbqxx570ndpwjlybrn3m8";
+      rev = "521b94dda9d09a0d8047a2033d41ddd19dd285f5";
+      sha256 = "0ia6qdmqnxrgb04r7cn5cz6jpdds6rld4d0viq8s62izj9pd6dg3";
       fetchSubmodules = false;
     };
   };
@@ -428,12 +428,12 @@
   };
   nvim-treesitter-textobjects = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter-textobjects";
-    version = "2022-06-26";
+    version = "2022-06-27";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "b9cb9fa5739bd4a2130a51134ad8716ee6a5828f";
-      sha256 = "0by5gjf2l2wzxrlglh95g1rikbcxky0qjhaiz1nakn3zawz0bg0a";
+      rev = "d416dc94768d1d52de8193e72569484e6cf64d01";
+      sha256 = "1m9yd650wr4vln8rkki5jj9gxhk8znlc9p4vfq2jywqkrsab3sm3";
       fetchSubmodules = false;
     };
   };
