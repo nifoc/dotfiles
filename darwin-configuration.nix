@@ -36,6 +36,10 @@
 
   environment = {
     darwinConfig = "$HOME/.config/nixpkgs/darwin-configuration.nix";
+
+    variables = {
+      EDITOR = "nvim";
+    };
   };
 
   services = {
