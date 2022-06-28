@@ -1,9 +1,10 @@
 { pkgs, config, ... }:
 
 {
-  home.packages = [
-    pkgs.podman
-    pkgs.qemu
+  home.packages = with pkgs; [
+    podman
+    qemu
+    skopeo
   ];
 
   xdg.configFile."containers/containers.conf.d/nix.conf".text = ''
