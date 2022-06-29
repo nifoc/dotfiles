@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.fish = {
@@ -83,7 +83,6 @@
       la = "exa --long --all --group --header --group-directories-first --sort=type --icons";
       lg = "exa --long --all --group --header --git";
       lt = "exa --long --all --group --header --tree --level ";
-      docker = "podman";
       s = "kitty +kitten ssh";
       ytdl = "ytdl_with_options";
       ytdl_mp4 = "ytdl_with_options -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]'";
@@ -97,6 +96,10 @@
     };
 
     functions = {
+      podman = ''
+        fish -c "set -e SSH_AUTH_SOCK; ${config.home.profileDirectory}/bin/podman $argv"
+      '';
+
       upp = ''
         if not test -f ./.envrc; or rg --quiet '^use flake$' ./.envrc
           nix flake update ./ -v
