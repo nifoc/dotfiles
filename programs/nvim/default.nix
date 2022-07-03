@@ -314,7 +314,6 @@ in
             tree-sitter-json
             tree-sitter-lua
             tree-sitter-make
-            tree-sitter-markdown
             tree-sitter-nix
             tree-sitter-query
             tree-sitter-regex
