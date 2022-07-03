@@ -80,12 +80,12 @@
   };
   leap-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "leap.nvim";
-    version = "2022-07-02";
+    version = "2022-07-03";
     src = pkgs.fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "b51c4bc051ab54f2694a24cb4f5f808f665cddf1";
-      sha256 = "1i58nhg99zlw74b6gf5hrpkgdl82d9mjmslllwl31ch5z7hja0g8";
+      rev = "b46f1e1217f07ed42ad06ea0e6a2dcc6d904915b";
+      sha256 = "15sjz9ggzalki82yrk46x4znsyf0g2x7ayyz1xjzq9l1np9kn7b7";
       fetchSubmodules = false;
     };
   };
@@ -538,12 +538,12 @@
   };
   spellsitter-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "spellsitter.nvim";
-    version = "2022-07-02";
+    version = "2022-07-03";
     src = pkgs.fetchFromGitHub {
       owner = "lewis6991";
       repo = "spellsitter.nvim";
-      rev = "0efeeb877e9fe70a45aff73c20556ec69760cbaf";
-      sha256 = "0js355v7zk9gk7bkg0cx9pjyn270b97c3g4blf5bgvv8pqyr53ij";
+      rev = "9a79ce2e670a3bbf85a6669ab5a6e5f6f01f2a13";
+      sha256 = "0m49sqxalr69h5f7b7bplgdnxazmsn82gw4h9gxvjfi9v4xgblil";
       fetchSubmodules = false;
     };
   };

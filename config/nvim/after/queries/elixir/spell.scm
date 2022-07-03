@@ -1,2 +1,0 @@
-(comment) @spell
-(string) @spell
