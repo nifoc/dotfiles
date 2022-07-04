@@ -25,12 +25,12 @@
   };
   plenary-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "plenary.nvim";
-    version = "2022-06-12";
+    version = "2022-07-04";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-lua";
       repo = "plenary.nvim";
-      rev = "968a4b9afec0c633bc369662e78f8c5db0eba249";
-      sha256 = "05x9hnz960ljcb2psqycxgdmh99j36y16vbb9l92wjv5szkz37x5";
+      rev = "46e8bb9d3a852e0a2678be2d48179db545a9a39a";
+      sha256 = "0jdaayzyk4w39k72yh5asg3rc5ljc1j4w5g22g0bjg3difznkqgy";
       fetchSubmodules = false;
     };
   };
@@ -80,12 +80,12 @@
   };
   leap-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "leap.nvim";
-    version = "2022-07-03";
+    version = "2022-07-04";
     src = pkgs.fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "b46f1e1217f07ed42ad06ea0e6a2dcc6d904915b";
-      sha256 = "15sjz9ggzalki82yrk46x4znsyf0g2x7ayyz1xjzq9l1np9kn7b7";
+      rev = "1ab9deb88ef8ccf01a359ef5053b7d3804f8425a";
+      sha256 = "0s7rnzcgcjgc6xjhi2chri2y9c048xpgqa0551km9m3d20rnzrjj";
       fetchSubmodules = false;
     };
   };
