@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   customPlugins = import ./plugins.nix { inherit pkgs; };
@@ -400,15 +400,27 @@ in
     recursive = true;
   };
 
-  home.file."${nvim-spell-directory}/de.utf-8.spl".source = builtins.fetchurl {
-    url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl";
-    sha256 = "73c7107ea339856cdbe921deb92a45939c4de6eb9c07261da1b9dd19f683a3d1";
-  };
+  home = {
+    activation = {
+      neovimActivation = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        echo -n 'Removing luacache files: '
+        $DRY_RUN_CMD rm -f $HOME/.cache/nvim/luacache*
+        echo 'Done'
+      '';
+    };
 
-  home.file."${nvim-spell-directory}/de.utf-8.sug".source = builtins.fetchurl {
-    url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.sug";
-    sha256 = "13d0ecf92863d89ef60cd4a8a5eb2a5a13a0e8f9ba8d1c6abe47aba85714a948";
-  };
+    sessionVariables.EDITOR = "nvim";
 
-  home.sessionVariables.EDITOR = "nvim";
+    file = {
+      "${nvim-spell-directory}/de.utf-8.spl".source = builtins.fetchurl {
+        url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl";
+        sha256 = "73c7107ea339856cdbe921deb92a45939c4de6eb9c07261da1b9dd19f683a3d1";
+      };
+
+      "${nvim-spell-directory}/de.utf-8.sug".source = builtins.fetchurl {
+        url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.sug";
+        sha256 = "13d0ecf92863d89ef60cd4a8a5eb2a5a13a0e8f9ba8d1c6abe47aba85714a948";
+      };
+    };
+  };
 }

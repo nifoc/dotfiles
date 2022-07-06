@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -60,15 +60,6 @@
       wget
       xz
     ];
-
-    activation = {
-      updateAppCaches = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        # neovim
-        echo -n '[nvim] Removing luacache file: '
-        $DRY_RUN_CMD rm -f $HOME/.cache/nvim/luacache*
-        echo 'Done'
-      '';
-    };
   };
 
   programs = {
