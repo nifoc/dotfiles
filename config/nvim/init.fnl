@@ -69,8 +69,6 @@
   (let [theme (require :nifoc.theme)]
     (theme.setup))
   ;; Plugins
-  (set g.did_load_filetypes 1) ; Lua filetype detection
-  (set g.do_filetype_lua 1)
   (set g.loaded_python_provider 0) ; Disable built-in providers
   (set g.loaded_python3_provider 0)
   (set g.loaded_ruby_provider 0)
