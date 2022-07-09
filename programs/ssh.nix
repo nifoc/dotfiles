@@ -86,6 +86,14 @@ in
         identitiesOnly = true;
       };
 
+      "piboat.lan" = {
+        port = 22;
+        user = "pi";
+        extraOptions = {
+          PreferredAuthentications = "password";
+        };
+      };
+
       "webboat" = {
         hostname = "100.99.89.98";
         port = 20022;
