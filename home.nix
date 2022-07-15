@@ -17,6 +17,9 @@
 
     ./programs/jq.nix
 
+    ./programs/texlive.nix
+    ./programs/pandoc.nix
+
     ./programs/podman.nix
 
     ./programs/scripts.nix
