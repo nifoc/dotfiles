@@ -89,9 +89,8 @@ in
       "piboat.lan" = {
         port = 22;
         user = "pi";
-        extraOptions = {
-          PreferredAuthentications = "password";
-        };
+        identityFile = "~/.ssh/LAN.pub";
+        identitiesOnly = true;
       };
 
       "webboat" = {
