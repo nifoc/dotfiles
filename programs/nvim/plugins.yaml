@@ -74,6 +74,7 @@
 
 # Textobjects
 - src: nvim-treesitter/nvim-treesitter-textobjects
+- src: kylechui/nvim-surround
 
 # UI
 - src: rebelot/heirline.nvim

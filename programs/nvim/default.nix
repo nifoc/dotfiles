@@ -212,6 +212,12 @@ in
       # Textobjects
       nvim-treesitter-textobjects
 
+      {
+        plugin = nvim-surround;
+        config = builtins.readFile ../../config/nvim/plugins/surround.fnl;
+        type = "fennel";
+      }
+
       # UI
       {
         plugin = heirline-nvim;
@@ -330,9 +336,6 @@ in
         config = builtins.readFile ../../config/nvim/plugins/treesitter.fnl;
         type = "fennel";
       }
-
-      # Textobjects
-      vim-surround
 
       # UI
       undotree
