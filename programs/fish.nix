@@ -59,6 +59,28 @@
         };
       }
 
+      # https://github.com/nickeb96/puffer-fish
+      {
+        name = "puffer-fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "nickeb96";
+          repo = "puffer-fish";
+          rev = "f8df25bde0875359805967aa999744a28dee0561";
+          sha256 = "sha256-Gm4In5f03G2ijL1xDTKFsgE+hRXjQ29kk84LQSXXeF0=";
+        };
+      }
+
+      # https://github.com/andreiborisov/sponge/releases
+      {
+        name = "sponge";
+        src = pkgs.fetchFromGitHub {
+          owner = "andreiborisov";
+          repo = "sponge";
+          rev = "1.0.4";
+          sha256 = "sha256-+GGfFC/hH7A8n9Wwojt5PW96fSzvRhThnZ3pLeWEqds=";
+        };
+      }
+
       # https://github.com/PatrickF1/colored_man_pages.fish
       {
         name = "colored_man_pages";
