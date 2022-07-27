@@ -1,7 +1,7 @@
 (let [o vim.opt
       g vim.g]
   ;; Preamble
-  (vim.cmd "filetype plugin indent on")
+  (vim.cmd.filetype "plugin indent on")
   (set o.shell :/bin/sh)
   ;; Various Options
   (set o.spelllang [:en :de])

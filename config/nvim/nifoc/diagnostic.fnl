@@ -1,5 +1,5 @@
 (let [mod {}
-      cmd vim.cmd
+      sign vim.cmd.sign
       api vim.api
       keymap (require :nifoc.keymap)
       augroup (vim.api.nvim_create_augroup :NifocDiagnostic {:clear true})
@@ -15,10 +15,10 @@
                             :float {:border :rounded :source true}
                             :update_in_insert false
                             :severity_sort true})
-    (cmd "sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticSignError")
-    (cmd "sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticSignWarn")
-    (cmd "sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticSignInfo")
-    (cmd "sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticSignHint"))
+    (sign "define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticSignError")
+    (sign "define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticSignWarn")
+    (sign "define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticSignInfo")
+    (sign "define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticSignHint"))
 
   (fn mod.maybe-enable-diagnostics [bufnr]
     (when (= vim.b.nifoc_diagnostics_enabled nil)
