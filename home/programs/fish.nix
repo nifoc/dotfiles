@@ -96,7 +96,7 @@
     shellAliases = {
       drsw = "nix-darwin-switch";
       upa = "nix flake update ~/.config/nixpkgs -v && upn";
-      upn = "$HOME/.config/nixpkgs/programs/nvim/update-plugins.sh";
+      upn = "$HOME/.config/nixpkgs/home/programs/nvim/update-plugins.sh";
       ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
       nsr = "sudo nix-store --verify --check-contents --repair";
 

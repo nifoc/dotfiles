@@ -1,71 +1,41 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     darwin = {
       url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     zig-overlay = {
       url = "github:arqv/zig-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     nifoc-overlay = {
       url = "github:nifoc/nix-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, darwin, home-manager, ... }:
+  outputs = inputs@{ self, ... }:
     let
-      overlay-x86 = final: prev: { pkgs-x86 = import inputs.nixpkgs { system = "x86_64-darwin"; }; };
-      overlay-neovim = inputs.neovim-nightly-overlay.overlay;
-      overlay-zig = final: prev: { zigpkgs = inputs.zig-overlay.packages.${prev.system}; };
-      overlay-nifoc = inputs.nifoc-overlay.overlay;
-      overlay-patches = import ./overlay-patches.nix;
-
-      nixpkgsConfig = {
-        overlays = [
-          overlay-x86
-          overlay-neovim
-          overlay-zig
-          overlay-nifoc
-          overlay-patches
-        ];
-
-        config = {
-          allowUnfree = true;
-          allowBroken = true;
-        };
+      config-Styx = import ./system/flakes/Styx.nix {
+        nixpkgs = inputs.nixpkgs-unstable;
+        inherit (inputs) home-manager;
+        inherit (inputs) darwin;
+        inherit inputs;
       };
     in
-    {
-      darwinConfigurations."Styx" = darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [
-          ./darwin-configuration.nix
-
-          home-manager.darwinModules.home-manager
-          {
-            nixpkgs = nixpkgsConfig;
-            nix.nixPath = { nixpkgs = "${nixpkgs}"; };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.daniel = import ./home.nix;
-          }
-        ];
-      };
-    };
+    config-Styx;
 }

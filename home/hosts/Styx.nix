@@ -2,31 +2,31 @@
 
 {
   imports = [
-    ./programs/fish.nix
-    ./programs/starship.nix
-    ./programs/direnv.nix
-    ./programs/kitty.nix
+    ../programs/fish.nix
+    ../programs/starship.nix
+    ../programs/direnv.nix
+    ../programs/kitty.nix
 
-    ./programs/nvim
+    ../programs/nvim
 
-    ./programs/git.nix
+    ../programs/git.nix
 
-    ./programs/bat.nix
+    ../programs/bat.nix
 
-    ./programs/fzf.nix
+    ../programs/fzf.nix
 
-    ./programs/jq.nix
+    ../programs/jq.nix
 
-    ./programs/texlive.nix
-    ./programs/pandoc.nix
+    ../programs/texlive.nix
+    ../programs/pandoc.nix
 
-    ./programs/podman.nix
+    ../programs/podman.nix
 
-    ./programs/scripts.nix
+    ../programs/scripts.nix
 
-    ./programs/ssh.nix
+    ../programs/ssh.nix
 
-    ./programs/yt-dlp.nix
+    ../programs/yt-dlp.nix
   ];
 
   home = {

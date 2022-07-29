@@ -1,7 +1,7 @@
 {
   imports = [
-    ./system/defaults.nix
-    ./system/fonts.nix
+    ../darwin/defaults.nix
+    ../darwin/fonts.nix
   ];
 
   nix = {
@@ -35,7 +35,7 @@
   };
 
   environment = {
-    darwinConfig = "$HOME/.config/nixpkgs/darwin-configuration.nix";
+    darwinConfig = "$HOME/.config/nixpkgs/system/hosts/Styx.nix";
 
     variables = {
       EDITOR = "nvim";
