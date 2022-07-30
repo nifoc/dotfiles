@@ -2,19 +2,21 @@
   virtualisation.arion.projects.webserver.settings = {
     services = {
       ipv6nat = {
-        image = "robbertkl/ipv6nat:latest";
-        name = "ipv6nat";
-        restart = "always";
-        networks = [ "web" ];
-        capabilities = {
-          ALL = false;
-          NET_ADMIN = true;
-          NET_RAW = true;
+        service = {
+          image = "robbertkl/ipv6nat:latest";
+          name = "ipv6nat";
+          restart = "always";
+          networks = [ "web" ];
+          capabilities = {
+            ALL = false;
+            NET_ADMIN = true;
+            NET_RAW = true;
+          };
+          network_mode = "host";
+          volumes = [
+            "/var/run/docker.sock:/var/run/docker.sock:ro"
+          ];
         };
-        network_mode = "host";
-        volumes = [
-          "/var/run/docker.sock:/var/run/docker.sock:ro"
-        ];
       };
 
       ifconfig-sexy = {
