@@ -14,4 +14,8 @@
     dockerSocket.enable = true;
     defaultNetwork.dnsname.enable = true;
   };
+
+  virtualisation.arion = {
+    backend = "podman-socket";
+  };
 }
