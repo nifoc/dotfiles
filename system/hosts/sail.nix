@@ -8,6 +8,7 @@
     ../nixos/git.nix
 
     ../nixos/arion.nix
+    ../../container/webserver.nix
   ];
 
   nix = {
