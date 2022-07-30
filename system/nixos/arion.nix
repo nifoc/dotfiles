@@ -3,19 +3,14 @@
 {
   environment.systemPackages = [
     pkgs.arion
-    pkgs.docker-client
   ];
 
-  virtualisation.docker.enable = false;
-
-  virtualisation.podman = {
+  virtualisation.docker = {
     enable = true;
-
-    dockerSocket.enable = true;
-    defaultNetwork.dnsname.enable = true;
+    autoPrune.enable = true;
   };
 
   virtualisation.arion = {
-    backend = "podman-socket";
+    backend = "docker";
   };
 }
