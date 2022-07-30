@@ -17,8 +17,9 @@ in
 {
   nixosConfigurations.sail = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
-    nixpkgs = nixpkgsConfig;
     modules = [
+      ({ nixpkgs = nixpkgsConfig; })
+
       arion.nixosModules.arion
 
       ../hosts/sail.nix
