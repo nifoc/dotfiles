@@ -11,7 +11,7 @@ in
     ../nixos/git.nix
 
     ../nixos/arion.nix
-    ../../container/webserver.nix
+    ../../container/webserver
   ];
 
   nix = {
