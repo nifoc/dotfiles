@@ -29,6 +29,7 @@
     };
 
     networks.webserver = {
+      name = "webserver";
       driver = "bridge";
       enable_ipv6 = true;
       ipam = {
