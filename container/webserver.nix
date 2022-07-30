@@ -6,7 +6,7 @@
           image = "robbertkl/ipv6nat:latest";
           name = "ipv6nat";
           restart = "always";
-          networks = [ "web" ];
+          networks = [ "webserver" ];
           capabilities = {
             ALL = false;
             NET_ADMIN = true;
@@ -23,7 +23,7 @@
         service = {
           image = "ghcr.io/nifoc/ifconfig.sexy-caddy:master";
           restart = "always";
-          networks = [ "web" ];
+          networks = [ "webserver" ];
         };
       };
     };
