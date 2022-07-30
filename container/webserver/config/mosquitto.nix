@@ -1,5 +1,5 @@
 let
-  secret = import ../../secret/container/webserver.nix;
+  secret = import ../../../secret/container/webserver.nix;
 in
 {
   environment.usr."local/etc/container-webserver/mosquitto/mosquitto.conf".text = ''
