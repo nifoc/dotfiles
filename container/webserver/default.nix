@@ -21,6 +21,20 @@ in
         };
       };
 
+      mosquitto = {
+        service = {
+          image = "eclipse-mosquitto:2";
+          container_name = "mosquitto";
+          restart = "always";
+          depends_on = [ "ipv6nat" ];
+          networks = [ "webserver" ];
+          ports = [ "1883:1883" ];
+          volumes = [
+            "/etc/container-webserver/mosquitto:/mosquitto/config:ro"
+          ];
+        };
+      };
+
       ifconfig-sexy = {
         service = {
           image = "ghcr.io/nifoc/ifconfig.sexy-caddy:master";
