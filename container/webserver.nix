@@ -22,6 +22,7 @@
         service = {
           image = "ghcr.io/nifoc/ifconfig.sexy-caddy:master";
           restart = "always";
+          networks = [ "webserver" ];
         };
       };
     };
