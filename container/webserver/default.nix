@@ -29,6 +29,7 @@ in
           depends_on = [ "ipv6nat" ];
           networks = [ "webserver" ];
           ports = [ "1883:1883" ];
+          user = "1883";
           volumes = [
             "/etc/container-webserver/mosquitto:/mosquitto/config:ro"
           ];
