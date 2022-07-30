@@ -1,4 +1,4 @@
-{ pkgs, arion, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -7,7 +7,6 @@
 
     ../nixos/git.nix
 
-    arion.nixosModules.arion
     ../nixos/arion.nix
   ];
 
