@@ -1,13 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, arion, ... }:
 
 {
   imports = [
     ../../hardware/hosts/sail.nix
-
     ../nixos/ssh.nix
 
-    ../nixos/arion.nix
     ../nixos/git.nix
+
+    arion.nixosModules.arion
+    ../nixos/arion.nix
   ];
 
   nix = {

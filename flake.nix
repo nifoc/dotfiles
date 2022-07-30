@@ -17,6 +17,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    arion = {
+      url = "github:hercules-ci/arion";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     zig-overlay = {
       url = "github:arqv/zig-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +44,7 @@
 
       config-sail = import ./system/flakes/sail.nix {
         inherit (inputs) nixpkgs;
+        inherit (inputs) arion;
       };
     in
     config-Styx // config-sail;
