@@ -1,10 +1,12 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 let
   config-work-nedeco = "${config.xdg.configHome}/git/config-work-nedeco";
   config-work-wdw = "${config.xdg.configHome}/git/config-work-wdw";
 in
 {
+  home.packages = [ pkgs.git-crypt ];
+
   programs.git = {
     enable = true;
     lfs.enable = true;
