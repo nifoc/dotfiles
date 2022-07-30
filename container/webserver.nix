@@ -31,11 +31,14 @@
     networks.webserver = {
       driver = "bridge";
       enable_ipv6 = true;
-      ipam = ''
-        driver: default
-        config:
-          - subnet: fd00:dead:beef::/48
-      '';
+      ipam = {
+        driver = "default";
+        config = [
+          {
+            subnet = "fd00:dead:beef::/48";
+          }
+        ];
+      };
     };
   };
 }
