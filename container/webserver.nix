@@ -6,7 +6,7 @@
           image = "robbertkl/ipv6nat:latest";
           name = "ipv6nat";
           restart = "always";
-          networks = [ "webserver" ];
+          networks = [ "webserver_net" ];
           capabilities = {
             ALL = false;
             NET_ADMIN = true;
@@ -23,12 +23,12 @@
         service = {
           image = "ghcr.io/nifoc/ifconfig.sexy-caddy:master";
           restart = "always";
-          networks = [ "webserver" ];
+          networks = [ "webserver_net" ];
         };
       };
     };
 
-    networks.webserver = {
+    networks.net = {
       driver = "bridge";
       enable_ipv6 = true;
       ipam = {
