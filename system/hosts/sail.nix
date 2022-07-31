@@ -9,6 +9,7 @@ in
     ../nixos/ssh.nix
 
     ../nixos/git.nix
+    ../nixos/tailscale.nix
 
     ../nixos/arion.nix
     ../../container/webserver
