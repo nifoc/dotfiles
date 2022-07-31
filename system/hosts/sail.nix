@@ -44,6 +44,8 @@ in
     interfaces.enp1s0.ipv6.addresses = secret.networking.interfaces.enp1s0.ipv6.addresses;
     defaultGateway6 = { address = "fe80::1"; interface = "enp1s0"; };
 
+    dhcpcd.denyInterfaces = [ "veth*" ];
+
     timeServers = [
       "ntp1.hetzner.de"
       "ntp2.hetzner.com"
