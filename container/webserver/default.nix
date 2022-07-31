@@ -79,6 +79,25 @@ in
           };
         };
       };
+
+      nifoc-pw-docs = {
+        service = {
+          image = "ghcr.io/nifoc/nifoc.pw-docs:master";
+          restart = "always";
+          depends_on = [ "ipv6nat" ];
+          networks = [ "webserver" ];
+          labels = {
+            "traefik.enable" = "true";
+            "traefik.http.routers.nifoc-pw-docs.rule" = "HostRegexp(`{subdomain:[a-z_]+}.nifoc.pw`)";
+            "traefik.http.routers.nifoc-pw-docs.entrypoints" = "websecure";
+            "traefik.http.routers.nifoc-pw-docs.tls" = "true";
+            "traefik.http.routers.nifoc-pw-docs.tls.certresolver" = "cfresolver";
+            "traefik.http.routers.nifoc-pw-docs.tls.domains[0].main" = "nifoc.pw";
+            "traefik.http.routers.nifoc-pw-docs.tls.domains[0].sans" = "*.nifoc.pw";
+            "traefik.http.routers.nifoc-pw-docs.middlewares" = "content-compression@file";
+          };
+        };
+      };
     };
 
     networks.webserver = {
