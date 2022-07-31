@@ -46,6 +46,7 @@
         inherit (inputs) nixpkgs;
         inherit (inputs) home-manager;
         inherit (inputs) arion;
+        inherit inputs;
       };
     in
     config-Styx // config-sail;

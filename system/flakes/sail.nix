@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, arion, ... }:
+{ nixpkgs, home-manager, arion, inputs, ... }:
 
 let
   overlay-arion = arion.overlay;
