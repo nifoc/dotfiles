@@ -1,5 +1,5 @@
 let
-  secret = import ../../secret/container/webserver.nix;
+  secret = import ../../secret/container/webserver;
   custom-config = import ./config.nix { inherit secret; };
 in
 {
@@ -98,6 +98,22 @@ in
           };
         };
       };
+
+      # weewx = {
+      #   service = {
+      #     image = "ghcr.io/nifoc/weewx-docker:master";
+      #     restart = "always";
+      #     depends_on = [ "ipv6nat" "mosquitto" ];
+      #     networks = [ "webserver" ];
+      #     environment = {
+      #       "TZ" = "Europe/Berlin";
+      #     };
+      #     volumes = [
+      #       "/etc/container-webserver/weewx:/data"
+      #     ];
+      #     labels = secret.container.webserver.weewx.labels;
+      #   };
+      # };
     };
 
     networks.webserver = {

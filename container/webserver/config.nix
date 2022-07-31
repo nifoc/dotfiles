@@ -79,4 +79,17 @@
 
     mode = "0644";
   };
+
+  # weewx
+
+  systemd.tmpfiles.rules = [
+    "d /etc/container-webserver/weewx 0755 421 421"
+  ];
+
+  environment.etc."container-webserver/weewx/weewx.conf" = {
+    source = ../../secret/container/webserver/config/weewx.conf;
+    mode = "0644";
+    uid = 421;
+    gid = 421;
+  };
 }

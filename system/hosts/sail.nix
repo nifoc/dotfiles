@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+args@{ pkgs, ... }:
 
 let
   secret = import ../../secret/hosts/sail.nix;
@@ -9,7 +9,7 @@ in
     ../nixos/ssh.nix
 
     ../nixos/git.nix
-    ../nixos/tailscale.nix
+    (import ../nixos/tailscale.nix (args // { inherit secret; }))
 
     ../nixos/arion.nix
     ../../container/webserver
@@ -43,6 +43,13 @@ in
 
     interfaces.enp1s0.ipv6.addresses = secret.networking.interfaces.enp1s0.ipv6.addresses;
     defaultGateway6 = { address = "fe80::1"; interface = "enp1s0"; };
+
+    timeServers = [
+      "ntp1.hetzner.de"
+      "ntp2.hetzner.com"
+      "ntp3.hetzner.net"
+      "time.cloudflare.com"
+    ];
   };
 
   users.users.root.openssh.authorizedKeys.keys = [
