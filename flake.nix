@@ -44,6 +44,7 @@
 
       config-sail = import ./system/flakes/sail.nix {
         inherit (inputs) nixpkgs;
+        inherit (inputs) home-manager;
         inherit (inputs) arion;
       };
     in
