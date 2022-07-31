@@ -33,7 +33,7 @@ in
 
       ../hosts/sail.nix
 
-      home-manager.darwinModules.home-manager
+      home-manager.nixosModules.home-manager
       {
         nixpkgs = nixpkgsConfig;
         nix.nixPath = { nixpkgs = "${nixpkgs}"; };
