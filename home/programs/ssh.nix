@@ -1,8 +1,11 @@
 { pkgs, config, ... }:
 
 let
-  auth-socket = "${config.home.homeDirectory}/.ssh/1password.sock";
-  signers-directory = "${config.home.homeDirectory}/.ssh/allowed_signers";
+  ssh-directory = "${config.home.homeDirectory}/.ssh";
+  ssh-keys = import ../../system/shared/ssh-keys.nix;
+
+  auth-socket = "${ssh-directory}/1password.sock";
+  signers-directory = "${ssh-directory}/allowed_signers";
 in
 {
   home.packages = [ pkgs.openssh ];
@@ -109,8 +112,15 @@ in
 
   home.sessionVariables.SSH_AUTH_SOCK = "${auth-socket}";
 
-  home.file."${signers-directory}" = {
-    source = ../config/ssh/allowed_signers;
-    recursive = true;
+  home.file = {
+    "${ssh-directory}/GitHub.pub".text = ssh-keys.GitHub;
+    "${ssh-directory}/GitLab.pub".text = ssh-keys.GitLab;
+    "${ssh-directory}/Hetzner.pub".text = ssh-keys.Hetzner;
+    "${ssh-directory}/LAN.pub".text = ssh-keys.LAN;
+
+    "${signers-directory}" = {
+      source = ../config/ssh/allowed_signers;
+      recursive = true;
+    };
   };
 }
