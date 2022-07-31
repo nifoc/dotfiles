@@ -38,7 +38,7 @@
       [http.middlewares]
         [http.middlewares.non-www-redirect.redirectRegex]
           regex = "^https://www.(.*)"
-          replacement = "https://${1}"
+          replacement = "https://''${1}"
           permanent = true
 
         [http.middlewares.https-redirect.redirectScheme]

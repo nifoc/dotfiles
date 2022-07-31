@@ -2,6 +2,8 @@ let
   secret = import ../../secret/container/webserver.nix;
   config-mosquitto = import ./config/mosquitto.nix { inherit secret; };
   config-traefik = import ./config/traefik.nix { inherit secret; };
+
+  custom-config = config-mosquitto // config-traefik;
 in
 {
   virtualisation.arion.projects.webserver.settings = {
@@ -95,4 +97,4 @@ in
       };
     };
   };
-} // config-mosquitto // config-traefik
+} // custom-config
