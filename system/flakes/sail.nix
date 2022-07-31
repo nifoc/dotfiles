@@ -18,7 +18,10 @@ in
   nixosConfigurations.sail = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
-      ({ nixpkgs = nixpkgsConfig; })
+      ({
+        nixpkgs.overlays = nixpkgsConfig.overlays;
+        nixpkgs.config = nixpkgsConfig.config;
+      })
 
       arion.nixosModules.arion
 

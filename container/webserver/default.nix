@@ -1,5 +1,7 @@
 let
-  config-mosquitto = import ./config/mosquitto.nix;
+  secret = import ../../secret/container/webserver.nix;
+  config-mosquitto = import ./config/mosquitto.nix { inherit secret; };
+  config-traefik = import ./config/traefik.nix { inherit secret; };
 in
 {
   virtualisation.arion.projects.webserver.settings = {
@@ -7,7 +9,7 @@ in
       ipv6nat = {
         service = {
           image = "robbertkl/ipv6nat:latest";
-          name = "ipv6nat";
+          container_name = "ipv6nat";
           restart = "always";
           capabilities = {
             ALL = false;
@@ -29,10 +31,33 @@ in
           depends_on = [ "ipv6nat" ];
           networks = [ "webserver" ];
           ports = [ "1883:1883" ];
-          user = "1883";
+          user = "nobody";
           volumes = [
             "/etc/container-webserver/mosquitto:/mosquitto/config:ro"
           ];
+        };
+      };
+
+      traefik = {
+        service = {
+          image = "traefik:v2.8";
+          container_name = "traefik";
+          restart = "always";
+          depends_on = [ "ipv6nat" ];
+          networks = [ "webserver" ];
+          ports = [
+            "80:80"
+            "443:443"
+          ];
+          command = [ "--configFile=/traefik.toml" ];
+          environment = secret.container.webserver.traefik.environment;
+          volumes = [
+            "/var/run/docker.sock:/var/run/docker.sock:ro"
+            "/etc/container-webserver/traefik/traefik.toml:/traefik.toml:ro"
+            "/etc/container-webserver/traefik/acme.json:/acme.json"
+            "/etc/container-webserver/traefik/custom:/custom_config:ro"
+          ];
+          labels = secret.container.webserver.traefik.labels;
         };
       };
 
@@ -70,4 +95,4 @@ in
       };
     };
   };
-} // config-mosquitto
+} // config-mosquitto // config-traefik
