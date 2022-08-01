@@ -1,14 +1,14 @@
-{ nixpkgs, home-manager, darwin, inputs, ... }:
+{ nixpkgs, home-manager, arion, inputs, ... }:
 
 let
-  overlay-x86 = _: _: { pkgs-x86 = import nixpkgs { system = "x86_64-darwin"; }; };
+  overlay-arion = arion.overlay;
   overlay-neovim = inputs.neovim-nightly-overlay.overlay;
   overlay-zig = _: prev: { zigpkgs = inputs.zig-overlay.packages.${prev.system}; };
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
     overlays = [
-      overlay-x86
+      overlay-arion
       overlay-neovim
       overlay-zig
       overlay-nifoc
@@ -21,18 +21,25 @@ let
   };
 in
 {
-  system = darwin.lib.darwinSystem {
-    system = "aarch64-darwin";
+  system = nixpkgs.lib.nixosSystem {
+    system = "aarch64-linux";
     modules = [
-      ../hosts/Styx.nix
+      ({
+        nixpkgs.overlays = nixpkgsConfig.overlays;
+        nixpkgs.config = nixpkgsConfig.config;
+      })
 
-      home-manager.darwinModules.home-manager
+      arion.nixosModules.arion
+
+      ../hosts/adsb-antenna.nix
+
+      home-manager.nixosModules.home-manager
       {
         nixpkgs = nixpkgsConfig;
-        nix.nixPath = { nixpkgs = "${nixpkgs}"; };
+        nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users.daniel = import ../../home/hosts/Styx.nix;
+        home-manager.users.daniel = import ../../home/hosts/adsb-antenna.nix;
       }
     ];
   };

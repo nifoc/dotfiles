@@ -35,19 +35,35 @@
 
   outputs = inputs@{ self, ... }:
     let
-      config-Styx = import ./system/flakes/Styx.nix {
+      Styx = import ./system/flakes/Styx.nix {
         inherit (inputs) nixpkgs;
         inherit (inputs) home-manager;
         inherit (inputs) darwin;
         inherit inputs;
       };
 
-      config-sail = import ./system/flakes/sail.nix {
+      sail = import ./system/flakes/sail.nix {
+        inherit (inputs) nixpkgs;
+        inherit (inputs) home-manager;
+        inherit (inputs) arion;
+        inherit inputs;
+      };
+
+      adsb-antenna = import ./system/flakes/adsb-antenna.nix {
         inherit (inputs) nixpkgs;
         inherit (inputs) home-manager;
         inherit (inputs) arion;
         inherit inputs;
       };
     in
-    config-Styx // config-sail;
+    {
+      darwinConfigurations = {
+        "Styx" = Styx.system;
+      };
+
+      nixosConfigurations = {
+        sail = sail.system;
+        adsb-antenna = adsb-antenna.system;
+      };
+    };
 }

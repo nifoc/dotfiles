@@ -21,7 +21,7 @@ let
   };
 in
 {
-  nixosConfigurations.sail = nixpkgs.lib.nixosSystem {
+  system = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
       ({
