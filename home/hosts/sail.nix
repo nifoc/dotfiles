@@ -2,6 +2,9 @@
 
 {
   imports = [
+    ../programs/fish.nix
+    ../programs/starship.nix
+
     ../programs/nvim
 
     ../programs/git.nix
@@ -24,9 +27,5 @@
       q
       ripgrep
     ];
-  };
-
-  programs = {
-    zoxide.enable = true;
   };
 }

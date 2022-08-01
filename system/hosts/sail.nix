@@ -55,6 +55,8 @@ in
     ];
   };
 
+  programs.fish.enable = true;
+
   users.users = {
     root = {
       openssh.authorizedKeys.keys = [ ssh-keys.Hetzner ];
@@ -66,6 +68,7 @@ in
       home = "/home/daniel";
       description = "Daniel";
       extraGroups = [ "wheel" ];
+      shell = pkgs.fish;
       openssh.authorizedKeys.keys = [ ssh-keys.Hetzner ];
     };
   };

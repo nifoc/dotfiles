@@ -26,6 +26,7 @@
 
     ../programs/ssh.nix
 
+    ../programs/streamlink.nix
     ../programs/yt-dlp.nix
   ];
 
@@ -36,7 +37,6 @@
       agilebits-op
       aria2
       arp-scan
-      atomicparsley
       cachix
       cliclick
       curlFull
@@ -55,8 +55,6 @@
       parallel
       q
       ripgrep
-      rtmpdump
-      streamlink
       socat
       tokei
       viddy
