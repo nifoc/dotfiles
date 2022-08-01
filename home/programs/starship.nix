@@ -30,6 +30,12 @@
         format = "\\[[$symbol$branch]($style)\\]";
       };
 
+      hostname = {
+        ssh_only = true;
+        ssh_symbol = " ";
+        format = "\\[[$ssh_symbol$hostname]($style)\\]";
+      };
+
       java = {
         symbol = " ";
         format = "\\[[$symbol($version)]($style)\\]";
@@ -78,6 +84,10 @@
 
       time = {
         format = "\\[[$time]($style)\\]";
+      };
+
+      username = {
+        format = "\\[[ $user]($style)\\]";
       };
     };
   };
