@@ -5,8 +5,6 @@
     ../programs/fish.nix
     ../programs/starship.nix
 
-    ../programs/nvim
-
     ../programs/git.nix
 
     ../programs/bat.nix
