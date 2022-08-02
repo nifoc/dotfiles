@@ -28,6 +28,10 @@ in
           volumes = [
             "/etc/container-adsb/readsb/autogain:/run/autogain"
           ];
+          tmpfs = [
+            "/run:exec,size=64M"
+            "/var/log:size=32M"
+          ];
         };
       };
 
@@ -48,6 +52,10 @@ in
             "READSB_NET_CONNECTOR" = "piaware,30105,beast_in;adsbexchange,30105,beast_in";
             "READSB_NET_BEAST_OUTPUT_PORT" = "30105";
           };
+          tmpfs = [
+            "/run:exec,size=64M"
+            "/var/log:size=32M"
+          ];
         };
       };
 
