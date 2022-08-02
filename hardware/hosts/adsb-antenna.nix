@@ -11,6 +11,7 @@
 
     kernelModules = [ ];
     extraModulePackages = [ ];
+    blacklistedKernelModules = [ "rtl2832" "dvb_usb_rtl28xxu" "rtl2832_sdr" ];
   };
 
   fileSystems."/" = {
