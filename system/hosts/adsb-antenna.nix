@@ -10,6 +10,9 @@ in
     ../nixos/ssh.nix
 
     ../nixos/git.nix
+
+    ../nixos/arion.nix
+    ../../container/adsb
   ];
 
   nix = {
