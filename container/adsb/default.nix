@@ -94,7 +94,7 @@ in
             "LONG" = secret.container.adsb.readsb.lon;
             "ALT" = "70m";
             "SITENAME" = secret.container.adsb.adsbexchange.sitename;
-            "PRIVATE_MLAT" = true;
+            "PRIVATE_MLAT" = "true";
             "UUID" = secret.container.adsb.adsbexchange.uuid;
           };
           tmpfs = [
