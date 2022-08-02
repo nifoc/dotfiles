@@ -60,14 +60,6 @@
   (set o.swapfile false)
   (set o.undofile true)
   (set o.undodir (.. (os.getenv :HOME) :/.local/share/nvim/undo//))
-  ;; Clipboard
-  (if (= uname.sysname :Darwin)
-      (do
-        (set g.clipboard {:name :pbcopy
-                          :copy {:+ :pbcopy :* :pbcopy}
-                          :paste {:+ :pbpaste :* :pbpaste}
-                          :cache_enabled 0})
-        (o.clipboard:prepend :unnamedplus)))
   ;; Theme
   (let [theme (require :nifoc.theme)]
     (theme.setup))

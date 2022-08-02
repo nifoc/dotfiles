@@ -7,6 +7,7 @@
 - src: kyazdani42/nvim-web-devicons
 
 # Keybindings
+- src: ojroques/nvim-osc52
 - src: gbprod/yanky.nvim
 - src: gbprod/cutlass.nvim
 - src: gbprod/substitute.nvim

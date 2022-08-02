@@ -45,6 +45,17 @@
       fetchSubmodules = false;
     };
   };
+  nvim-osc52 = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "nvim-osc52";
+    version = "2022-07-31";
+    src = pkgs.fetchFromGitHub {
+      owner = "ojroques";
+      repo = "nvim-osc52";
+      rev = "0f25ebe9eb5050bb242e947c42134a851391a73e";
+      sha256 = "0csd7ymia5k9pqrq8fr12yykiw4ssm06gsbz63i6xsgpvgmwnpv7";
+      fetchSubmodules = false;
+    };
+  };
   yanky-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "yanky.nvim";
     version = "2022-07-29";

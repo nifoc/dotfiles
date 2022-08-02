@@ -68,6 +68,12 @@ in
 
       # Keybindings
       {
+        plugin = nvim-osc52;
+        config = builtins.readFile ../../config/nvim/plugins/osc52.fnl;
+        type = "fennel";
+      }
+
+      {
         plugin = yanky-nvim;
         config = builtins.readFile ../../config/nvim/plugins/yanky.fnl;
         type = "fennel";
