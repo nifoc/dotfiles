@@ -9,7 +9,7 @@ in
         service = {
           image = "robbertkl/ipv6nat:latest";
           container_name = "ipv6nat";
-          restart = "always";
+          restart = "unless-stopped";
           capabilities = {
             ALL = false;
             NET_ADMIN = true;
@@ -26,7 +26,7 @@ in
         service = {
           image = "eclipse-mosquitto:2";
           container_name = "mosquitto";
-          restart = "always";
+          restart = "unless-stopped";
           depends_on = [ "ipv6nat" ];
           networks = [ "webserver" ];
           ports = [ "1883:1883" ];
@@ -41,7 +41,7 @@ in
         service = {
           image = "traefik:v2.8";
           container_name = "traefik";
-          restart = "always";
+          restart = "unless-stopped";
           depends_on = [ "ipv6nat" ];
           networks = [ "webserver" ];
           ports = [
@@ -63,7 +63,7 @@ in
       ifconfig-sexy = {
         service = {
           image = "ghcr.io/nifoc/ifconfig.sexy-caddy:master";
-          restart = "always";
+          restart = "unless-stopped";
           depends_on = [ "ipv6nat" ];
           networks = [ "webserver" ];
           labels = {
@@ -83,7 +83,7 @@ in
       nifoc-pw-docs = {
         service = {
           image = "ghcr.io/nifoc/nifoc.pw-docs:master";
-          restart = "always";
+          restart = "unless-stopped";
           depends_on = [ "ipv6nat" ];
           networks = [ "webserver" ];
           labels = {
@@ -102,7 +102,7 @@ in
       weewx = {
         service = {
           image = "ghcr.io/nifoc/weewx-docker:master";
-          restart = "always";
+          restart = "unless-stopped";
           depends_on = [ "ipv6nat" "mosquitto" ];
           networks = [ "webserver" ];
           environment = {

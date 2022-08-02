@@ -10,7 +10,7 @@ in
           image = "ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest";
           container_name = "readsb";
           hostname = "readsb";
-          restart = "always";
+          restart = "unless-stopped";
           environment = {
             "TZ" = "Europe/Berlin";
             "DISABLE_PERFORMANCE_GRAPHS" = "true";
@@ -36,7 +36,7 @@ in
           image = "ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest";
           container_name = "mlathub";
           hostname = "mlathub";
-          restart = "always";
+          restart = "unless-stopped";
           depends_on = [ "readsb" "piaware" "adsbexchange" ];
           environment = {
             "TZ" = "Europe/Berlin";
@@ -55,7 +55,7 @@ in
         service = {
           image = "ghcr.io/sdr-enthusiasts/docker-tar1090:latest";
           container_name = "tar1090";
-          restart = "always";
+          restart = "unless-stopped";
           depends_on = [ "readsb" "mlathub" ];
           ports = [ "8081:80" ];
           environment = {
@@ -84,7 +84,7 @@ in
         service = {
           image = "ghcr.io/sdr-enthusiasts/docker-adsbexchange:latest";
           container_name = "adsbexchange";
-          restart = "always";
+          restart = "unless-stopped";
           depends_on = [ "readsb" ];
           environment = {
             "TZ" = "Europe/Berlin";
@@ -107,7 +107,7 @@ in
         service = {
           image = "ghcr.io/sdr-enthusiasts/docker-flightradar24:latest";
           container_name = "fr24feed";
-          restart = "always";
+          restart = "unless-stopped";
           depends_on = [ "readsb" ];
           environment = {
             "TZ" = "Europe/Berlin";
@@ -123,7 +123,7 @@ in
         service = {
           image = "ghcr.io/sdr-enthusiasts/docker-piaware:latest";
           container_name = "piaware";
-          restart = "always";
+          restart = "unless-stopped";
           depends_on = [ "readsb" ];
           environment = {
             "TZ" = "Europe/Berlin";
