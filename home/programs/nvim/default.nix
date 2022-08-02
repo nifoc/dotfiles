@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, config, lib, ... }:
 
 let
   customPlugins = import ./plugins.nix { inherit pkgs; };

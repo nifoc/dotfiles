@@ -149,7 +149,7 @@
       # Disable greeting
       set fish_greeting
 
-      if [ -z "$__NIX_DARWIN_SET_ENVIRONMENT_DONE" ]
+      if test (uname) = "Darwin"; and test -z "$__NIX_DARWIN_SET_ENVIRONMENT_DONE"
         set __nifoc_nix_darwin_set_env (cat /run/current-system/etc/bashrc | grep '-set-environment' | cut -d '.' -f 2)
         fenv source "$__nifoc_nix_darwin_set_env"
       end

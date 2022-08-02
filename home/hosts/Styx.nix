@@ -38,7 +38,6 @@
       aria2
       arp-scan
       cachix
-      cliclick
       curlFull
       dasel
       exa
@@ -51,7 +50,6 @@
       lnav
       mtr
       nix-prefetch
-      nvd
       parallel
       q
       ripgrep
