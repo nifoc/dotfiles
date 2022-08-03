@@ -47,12 +47,12 @@
   };
   nvim-osc52 = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-osc52";
-    version = "2022-07-31";
+    version = "2022-08-03";
     src = pkgs.fetchFromGitHub {
       owner = "ojroques";
       repo = "nvim-osc52";
-      rev = "0f25ebe9eb5050bb242e947c42134a851391a73e";
-      sha256 = "0csd7ymia5k9pqrq8fr12yykiw4ssm06gsbz63i6xsgpvgmwnpv7";
+      rev = "6428be94f9a10755bb797d1b2b3f2e41334d6908";
+      sha256 = "1h7v1licgaazk7hrql21p81vqk2gfw1pz2n37ma8sf6anmdp1mip";
       fetchSubmodules = false;
     };
   };
@@ -208,12 +208,12 @@
   };
   nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-lspconfig";
-    version = "2022-08-01";
+    version = "2022-08-03";
     src = pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "06744ba3783ce2d502838f988dec95378543f5d7";
-      sha256 = "1hlwxm97wri9w40m1d90j9spzs29mi5xjr7iw86dvhhs2pa8xln4";
+      rev = "4bec857a983f732009ad96ba4936d389a93fdc98";
+      sha256 = "0xa62xbj4zp9cswmx1ikwq0jw3glkn97ydd282vhl1r5fhjm06vw";
       fetchSubmodules = false;
     };
   };

@@ -1,6 +1,5 @@
 (let [o vim.opt
-      g vim.g
-      uname (vim.loop.os_uname)]
+      g vim.g]
   ;; Preamble
   (vim.cmd.filetype "plugin indent on")
   (set o.shell :/bin/sh)
