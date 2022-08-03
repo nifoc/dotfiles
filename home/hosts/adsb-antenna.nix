@@ -12,6 +12,8 @@
     ../programs/fzf.nix
 
     ../programs/jq.nix
+
+    ../programs/scripts.nix
   ];
 
   home = {
