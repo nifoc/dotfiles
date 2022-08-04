@@ -25,6 +25,8 @@
       auto-optimise-store = true
     '';
 
+    distributedBuilds = true;
+
     buildMachines = [
       {
         hostName = "builder-sail";
