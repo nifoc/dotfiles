@@ -90,10 +90,20 @@ in
         identitiesOnly = true;
       };
 
+      "adsb-antenna" = {
+        hostname = "adsb-antenna.laniot";
+        port = 22;
+        user = "daniel";
+        forwardAgent = true;
+        identityFile = "~/.ssh/LAN.pub";
+        identitiesOnly = true;
+      };
+
       "sail" = {
         hostname = secret-sail.publicIP;
         port = 22;
         user = "daniel";
+        forwardAgent = true;
         identityFile = "~/.ssh/Hetzner.pub";
         identitiesOnly = true;
       };
