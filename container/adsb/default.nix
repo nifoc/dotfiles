@@ -32,6 +32,9 @@ in
             "/run:exec,size=64M"
             "/var/log:size=32M"
           ];
+          labels = {
+            "com.centurylinklabs.watchtower.enable" = "true";
+          };
         };
       };
 
@@ -56,6 +59,9 @@ in
             "/run:exec,size=64M"
             "/var/log:size=32M"
           ];
+          labels = {
+            "com.centurylinklabs.watchtower.enable" = "true";
+          };
         };
       };
 
@@ -85,6 +91,9 @@ in
             "/run:exec,size=64M"
             "/var/log"
           ];
+          labels = {
+            "com.centurylinklabs.watchtower.enable" = "true";
+          };
         };
       };
 
@@ -108,6 +117,9 @@ in
           tmpfs = [
             "/run:rw,nosuid,nodev,exec,relatime,size=64M,uid=1000,gid=1000"
           ];
+          labels = {
+            "com.centurylinklabs.watchtower.enable" = "true";
+          };
         };
       };
 
@@ -123,6 +135,9 @@ in
             "BEASTPORT" = "30005";
             "MLAT" = "yes";
             "FR24KEY" = secret.container.adsb.fr24feed.key;
+          };
+          labels = {
+            "com.centurylinklabs.watchtower.enable" = "true";
           };
         };
       };
@@ -148,6 +163,9 @@ in
             "/run:exec,size=64M"
             "/var/log"
           ];
+          labels = {
+            "com.centurylinklabs.watchtower.enable" = "true";
+          };
         };
       };
     };

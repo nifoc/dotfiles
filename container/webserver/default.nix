@@ -19,6 +19,9 @@ in
           volumes = [
             "/var/run/docker.sock:/var/run/docker.sock:ro"
           ];
+          labels = {
+            "com.centurylinklabs.watchtower.enable" = "true";
+          };
         };
       };
 
@@ -34,6 +37,9 @@ in
           volumes = [
             "/etc/container-webserver/mosquitto:/mosquitto/config:ro"
           ];
+          labels = {
+            "com.centurylinklabs.watchtower.enable" = "true";
+          };
         };
       };
 
@@ -76,6 +82,7 @@ in
             "traefik.http.routers.ifconfig-sexy.tls" = "true";
             "traefik.http.routers.ifconfig-sexy.tls.certresolver" = "cfresolver";
             "traefik.http.routers.ifconfig-sexy.middlewares" = "non-www-redirect@file, content-compression@file";
+            "com.centurylinklabs.watchtower.enable" = "true";
           };
         };
       };
@@ -95,6 +102,7 @@ in
             "traefik.http.routers.nifoc-pw-docs.tls.domains[0].main" = "nifoc.pw";
             "traefik.http.routers.nifoc-pw-docs.tls.domains[0].sans" = "*.nifoc.pw";
             "traefik.http.routers.nifoc-pw-docs.middlewares" = "content-compression@file";
+            "com.centurylinklabs.watchtower.enable" = "true";
           };
         };
       };
