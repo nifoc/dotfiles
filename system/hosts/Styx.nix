@@ -24,6 +24,14 @@
       keep-outputs = true
       auto-optimise-store = true
     '';
+
+    buildMachines = [
+      {
+        hostName = "builder-sail";
+        system = "x86_64-linux";
+        maxJobs = 1;
+      }
+    ];
   };
 
   users = {

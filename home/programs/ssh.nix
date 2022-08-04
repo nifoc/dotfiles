@@ -6,6 +6,8 @@ let
 
   auth-socket = "${ssh-directory}/1password.sock";
   signers-directory = "${ssh-directory}/allowed_signers";
+
+  secret-sail = import ../../secret/hosts/sail.nix;
 in
 {
   home.packages = [ pkgs.openssh ];
@@ -81,14 +83,6 @@ in
         identitiesOnly = true;
       };
 
-      "haven" = {
-        hostname = "100.101.243.36";
-        port = 22;
-        user = "daniel";
-        identityFile = "~/.ssh/LAN.pub";
-        identitiesOnly = true;
-      };
-
       "piboat.lan" = {
         port = 22;
         user = "pi";
@@ -96,9 +90,19 @@ in
         identitiesOnly = true;
       };
 
-      "webboat" = {
-        hostname = "100.99.89.98";
-        port = 20022;
+      "sail" = {
+        hostname = secret-sail.publicIP;
+        port = 22;
+        user = "daniel";
+        identityFile = "~/.ssh/Hetzner.pub";
+        identitiesOnly = true;
+      };
+
+      # Builder
+
+      "builder-sail" = {
+        hostname = secret-sail.publicIP;
+        port = 22;
         user = "root";
         identityFile = "~/.ssh/Hetzner.pub";
         identitiesOnly = true;

@@ -74,7 +74,7 @@ in
             "MLATPORT" = "30105";
             "LAT" = secret.container.adsb.readsb.lat;
             "LONG" = secret.container.adsb.readsb.lon;
-            "HEYWHATSTHAT_PANORAMA_ID" = secret.container.adsb.tar1090.heywhatsthat-id;
+            "HEYWHATSTHAT_PANORAMA_ID" = secret.container.adsb.tar1090.heywhatsthatId;
             "TAR1090_FLIGHTAWARELINKS" = "true";
             "TAR1090_DISPLAYUNITS" = "metric";
           };
@@ -142,7 +142,7 @@ in
             "MLAT_RESULTS" = "yes";
             "LAT" = secret.container.adsb.readsb.lat;
             "LONG" = secret.container.adsb.readsb.lon;
-            "FEEDER_ID" = secret.container.adsb.piaware.feeder-id;
+            "FEEDER_ID" = secret.container.adsb.piaware.feederId;
           };
           tmpfs = [
             "/run:exec,size=64M"
