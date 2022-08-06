@@ -7,10 +7,12 @@
   nix = {
     binaryCaches = [
       "https://nix-community.cachix.org"
+      "https://nifoc.cachix.org"
     ];
 
     binaryCachePublicKeys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "nifoc.cachix.org-1:ymuftq7RgN/lf/iWXFK8gpwDSAGFaGBeliWe9u6q8II="
     ];
 
     trustedUsers = [
