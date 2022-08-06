@@ -95,8 +95,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "dcea9ec83e54cefe43ab751e0f0b0c79eba3c16d";
-      sha256 = "1a4g3qhqz3zcn9bibq4492fggs4paafm3k5x4j2259y43zjmspqq";
+      rev = "c7656e57381bff5ee57c96e0f0ba6e22d50dca53";
+      sha256 = "1rcrpnkdnxm5ihadaraps6d8gjnnhgcrlhpwl5qff2ganjlqjxm6";
       fetchSubmodules = false;
     };
   };
@@ -117,8 +117,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "p00f";
       repo = "nvim-ts-rainbow";
-      rev = "c5d2e6c45723daf2bfc1502d5d4b1331e6ebd6ab";
-      sha256 = "10frnlg4xmn4krmm14nzymlj6qp3vc7khgi4mairmz8qpz5rdznm";
+      rev = "a37f5e0afbb8ab91946121c750a8e422158baa10";
+      sha256 = "01bk8q06kha5gy9q11q4vyiyhvp1zw9i21cjqzimhhyh1krkfzq0";
       fetchSubmodules = false;
     };
   };
@@ -208,12 +208,12 @@
   };
   nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-lspconfig";
-    version = "2022-08-05";
+    version = "2022-08-06";
     src = pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "4b627e15434e30568442046b5c726eea32810fc9";
-      sha256 = "0wvg25sw93ch07wz0ag6ikk82d2n000ssr8i7nc78np31afif9a1";
+      rev = "6e047f11861bfb6ec28a6ad0138a8f0a62bb8806";
+      sha256 = "1f7yzl4pqk1ipwgpbrh45gmvsf6974f21w0dp7vn4ppzjcpwjg7b";
       fetchSubmodules = false;
     };
   };
@@ -410,8 +410,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-autopairs";
-      rev = "8f7f682caa497e6cf6f9ed1a6e5ed3aba0cf26e0";
-      sha256 = "193zvax56pbvych70jxvj69dcdndpd7yw1w42dd5qkj8x6pbfnls";
+      rev = "ca89ab9e7e42aa9279f1cdad15398d6e18ccee86";
+      sha256 = "1gyaigj2ch820ikikr7123v2yfm6i08bfaxivayixxw27bj3y2d5";
       fetchSubmodules = false;
     };
   };
