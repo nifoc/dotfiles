@@ -91,12 +91,12 @@
   };
   leap-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "leap.nvim";
-    version = "2022-08-02";
+    version = "2022-08-06";
     src = pkgs.fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "a9949044bc59b0ae026c2e8394da826069049211";
-      sha256 = "1r23f49ln6mb3gmhqgswr8q6zk3h9lih6ajv3h631chg1xp6kyn1";
+      rev = "dcea9ec83e54cefe43ab751e0f0b0c79eba3c16d";
+      sha256 = "1a4g3qhqz3zcn9bibq4492fggs4paafm3k5x4j2259y43zjmspqq";
       fetchSubmodules = false;
     };
   };
@@ -113,12 +113,12 @@
   };
   nvim-ts-rainbow = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-ts-rainbow";
-    version = "2022-08-03";
+    version = "2022-08-06";
     src = pkgs.fetchFromGitHub {
       owner = "p00f";
       repo = "nvim-ts-rainbow";
-      rev = "973fea924e42589348a12e8226ae15727e8cb6c1";
-      sha256 = "0i7v8ls389yvawf0x87f75c4w8iikll5xnbd397l38rr1jpzfa55";
+      rev = "c5d2e6c45723daf2bfc1502d5d4b1331e6ebd6ab";
+      sha256 = "10frnlg4xmn4krmm14nzymlj6qp3vc7khgi4mairmz8qpz5rdznm";
       fetchSubmodules = false;
     };
   };
@@ -406,12 +406,12 @@
   };
   nvim-autopairs = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-autopairs";
-    version = "2022-08-01";
+    version = "2022-08-06";
     src = pkgs.fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-autopairs";
-      rev = "cc8f7569cc1e1b31e50b3c8e382bc2749cbfb2fa";
-      sha256 = "1kzyrsxhynv4qiyrncs8dka95vbkf632jawwd9g5mdpb4jlqm7qx";
+      rev = "8f7f682caa497e6cf6f9ed1a6e5ed3aba0cf26e0";
+      sha256 = "193zvax56pbvych70jxvj69dcdndpd7yw1w42dd5qkj8x6pbfnls";
       fetchSubmodules = false;
     };
   };
@@ -450,12 +450,12 @@
   };
   nvim-surround = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-surround";
-    version = "2022-07-22";
+    version = "2022-08-06";
     src = pkgs.fetchFromGitHub {
       owner = "kylechui";
       repo = "nvim-surround";
-      rev = "306a92830ede75d7d3a48ba04c7e603b73c3f377";
-      sha256 = "0ql6fjavhnkwmnay60r0k19c91qcrn8ypgvlv58nc2cbk54fh0m5";
+      rev = "a06dea11e7fdcf338776fa51fa5277163ffb048d";
+      sha256 = "0z983kby30yqwwd9gc96k2ywc7mif7n5xfiwg3cq0b9xhyx02b24";
       fetchSubmodules = false;
     };
   };
