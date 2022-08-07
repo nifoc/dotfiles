@@ -32,7 +32,7 @@
     buildMachines = [
       {
         hostName = "builder-sail";
-        system = "x86_64-linux";
+        systems = [ "x86_64-linux" "aarch64-linux" ];
         maxJobs = 1;
       }
     ];

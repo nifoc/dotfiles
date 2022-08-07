@@ -14,6 +14,8 @@
     ../programs/jq.nix
 
     ../programs/scripts.nix
+
+    ../programs/ssh.nix
   ];
 
   home = {

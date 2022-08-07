@@ -40,6 +40,16 @@ in
       keep-derivations = true
       keep-outputs = true
     '';
+
+    distributedBuilds = true;
+
+    buildMachines = [
+      {
+        hostName = "builder-sail";
+        systems = [ "x86_64-linux" "aarch64-linux" ];
+        maxJobs = 1;
+      }
+    ];
   };
 
   boot = {
