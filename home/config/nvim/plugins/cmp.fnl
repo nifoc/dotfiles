@@ -30,6 +30,7 @@
                                             {:name :path}])
               :mapping (cmp.mapping.preset.insert {:<C-e> (cmp.mapping {:i (cmp.mapping.abort)
                                                                         :c (cmp.mapping.close)})
+                                                   :<esc> (cmp.mapping {:i (cmp.mapping.abort)})
                                                    :<Tab> (cmp.mapping {:c #(if (cmp.visible)
                                                                                 (cmp.select_next_item {:behavior cmp.SelectBehavior.Insert})
                                                                                 (cmp.complete))
