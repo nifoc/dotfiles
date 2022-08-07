@@ -35,12 +35,17 @@ in
 
     extraOptions = ''
       experimental-features = nix-command flakes
+      extra-platforms = aarch64-linux
       keep-derivations = true
       keep-outputs = true
     '';
   };
 
-  boot.cleanTmpDir = true;
+  boot = {
+    cleanTmpDir = true;
+
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
+  };
 
   zramSwap.enable = true;
 
