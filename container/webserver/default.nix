@@ -70,7 +70,10 @@ in
         service = {
           image = "ghcr.io/nifoc/ifconfig.sexy-caddy:master";
           restart = "unless-stopped";
-          depends_on = [ "ipv6nat" ];
+          depends_on = [
+            "ipv6nat"
+            "traefik"
+          ];
           networks = [ "webserver" ];
           labels = {
             "traefik.enable" = "true";
@@ -91,7 +94,10 @@ in
         service = {
           image = "ghcr.io/nifoc/nifoc.pw-docs:master";
           restart = "unless-stopped";
-          depends_on = [ "ipv6nat" ];
+          depends_on = [
+            "ipv6nat"
+            "traefik"
+          ];
           networks = [ "webserver" ];
           labels = {
             "traefik.enable" = "true";
@@ -111,7 +117,11 @@ in
         service = {
           image = "ghcr.io/nifoc/weewx-docker:master";
           restart = "unless-stopped";
-          depends_on = [ "ipv6nat" "mosquitto" ];
+          depends_on = [
+            "ipv6nat"
+            "mosquitto"
+            "traefik"
+          ];
           networks = [ "webserver" ];
           environment = {
             "TZ" = "Europe/Berlin";
