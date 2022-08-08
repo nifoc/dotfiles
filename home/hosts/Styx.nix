@@ -24,7 +24,7 @@
 
     ../programs/scripts.nix
 
-    ../programs/ssh.nix
+    ../programs/ssh/Styx.nix
 
     ../programs/streamlink.nix
     ../programs/yt-dlp.nix
