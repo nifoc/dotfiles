@@ -208,12 +208,12 @@
   };
   nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-lspconfig";
-    version = "2022-08-08";
+    version = "2022-08-09";
     src = pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "a78831f97564b4344953ce1ba0f53fc5d034472d";
-      sha256 = "0pp74gigw4qqaknva49262pd5jb5bi370fjq2j39qp86z0f9hkb7";
+      rev = "da7461b596d70fa47b50bf3a7acfaef94c47727d";
+      sha256 = "1bahbla28qx4vzkdfbncws22qf0pr4kkra0df52sca245xzgl605";
       fetchSubmodules = false;
     };
   };
@@ -230,12 +230,12 @@
   };
   vim-illuminate = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "vim-illuminate";
-    version = "2022-07-09";
+    version = "2022-08-09";
     src = pkgs.fetchFromGitHub {
       owner = "RRethy";
       repo = "vim-illuminate";
-      rev = "6bfa5dc069bd4aa8513a3640d0b73392094749be";
-      sha256 = "0jwqmp8zx9iv80rlz24xvp62jnrhq7m8jamnk7s2x1cw2ik83gjl";
+      rev = "27f6ef135a88d9410a33cf92fc47f5c018df552c";
+      sha256 = "1s4paj5w5g2frrkp4zgh0i3r1h08jakhrs07w7shjkb4iqxhbyi8";
       fetchSubmodules = false;
     };
   };
@@ -450,12 +450,12 @@
   };
   nvim-surround = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-surround";
-    version = "2022-08-07";
+    version = "2022-08-09";
     src = pkgs.fetchFromGitHub {
       owner = "kylechui";
       repo = "nvim-surround";
-      rev = "7b8a295a27038715bc87c01277d82c294b690e6d";
-      sha256 = "19hma2wckwwk46y5a01v9wanmh5ycagx2wnq23i0skbywniwls88";
+      rev = "328f20c1d0e39ed30df3fc6334c093e8e8b72453";
+      sha256 = "1n1fq4d56ybjc5gr44i892c3mflnn06pg244dmgmn1b2q97g98p3";
       fetchSubmodules = false;
     };
   };
