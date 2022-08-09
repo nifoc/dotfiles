@@ -1,4 +1,4 @@
-args@{ pkgs, ... }:
+args@{ pkgs, lib, ... }:
 
 let
   inherit (lib) optionals;
