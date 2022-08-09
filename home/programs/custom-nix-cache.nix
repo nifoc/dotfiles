@@ -17,6 +17,7 @@ in
         storePath=$(readlink -f /nix/store/$uncachedHash-*)
 
         if [[ $storePath == *"darwin-system"* ]] ||
+           [[ $storePath == *"nixos-system"* ]] ||
            [[ $storePath == *"home-manager-generation"* ]] ||
            [[ $storePath == *"-etc" ]] ||
            [[ $storePath == *"-source" ]] ||
