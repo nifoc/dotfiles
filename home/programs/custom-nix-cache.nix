@@ -10,6 +10,10 @@ in
       #!/usr/bin/env nix-shell
       #!nix-shell -i bash -p sqlite
 
+      # Make sure the files are available to root on NixOS and macOS
+      sudo mkdir ${cache.rootDir}/.aws 2> /dev/null
+      sudo cp "$HOME/.aws/credentials" ${cache.rootDir}/.aws/
+
       uncachedHashes=$(echo 'SELECT DISTINCT hashPart FROM NARs WHERE present = 0;' | sudo sqlite3 "${cache.database}")
       signingKey="$HOME/.config/nifoc-nix/${cache.signingKey}"
 
@@ -50,16 +54,7 @@ in
     '';
   };
 
-  xdg.configFile."nifoc-nix/${cache.signingKey}" = {
+  xdg.configFile."nifoc-nix/${cache.signingKey}" = lib.mkIf cache.enabled {
     text = cache.signingKeyValue;
-  };
-
-  home.activation = lib.mkIf cache.enabled {
-    customNixCacheActivation = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      echo -n 'Copying AWS configuration: '
-      $DRY_RUN_CMD sudo mkdir ${cache.rootDir}/.aws 2> /dev/null
-      $DRY_RUN_CMD sudo cp "$HOME/.aws/credentials" ${cache.rootDir}/.aws/
-      echo 'Done'
-    '';
   };
 }
