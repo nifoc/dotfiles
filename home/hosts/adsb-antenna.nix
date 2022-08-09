@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+args@{ pkgs, ... }:
 
+let
+  secret = import ../../secret/hosts/adsb-antenna.nix;
+in
 {
   imports = [
     ../programs/fish.nix
@@ -8,6 +11,8 @@
     ../programs/git.nix
 
     ../programs/bat.nix
+
+    (import ../programs/custom-nix-cache.nix (args // { inherit secret; }))
 
     ../programs/fzf.nix
 
