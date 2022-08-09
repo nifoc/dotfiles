@@ -31,4 +31,10 @@ set system_new (readlink /run/current-system)
 nvd diff "$system_old" "$system_new"
 
 rm -f result
+
+if test -e "$HOME/.bin/upload-nifoc-nix-cache"
+    echo "Updating nifoc-nix-cache ..."
+    upload-nifoc-nix-cache
+end
+
 popd

@@ -19,7 +19,6 @@
         environment = {
           WATCHTOWER_POLL_INTERVAL = "28800";
           WATCHTOWER_LABEL_ENABLE = "true";
-          WATCHTOWER_NO_RESTART = "true";
         };
         volumes = [ "/var/run/docker.sock:/var/run/docker.sock" ];
       };
