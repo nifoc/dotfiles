@@ -1,6 +1,8 @@
 args@{ pkgs, ... }:
 
 let
+  inherit (lib) optionals;
+
   secret = import ../../secret/hosts/sail.nix;
   ssh-keys = import ../shared/ssh-keys.nix;
 in
@@ -25,11 +27,15 @@ in
       substituters = [
         "https://nix-community.cachix.org"
         "https://nifoc.cachix.org"
+      ] ++ optionals secret.nix-cache.nifoc.enabled [
+        secret.nix-cache.nifoc.s3Url
       ];
 
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "nifoc.cachix.org-1:ymuftq7RgN/lf/iWXFK8gpwDSAGFaGBeliWe9u6q8II="
+      ] ++ optionals secret.nix-cache.nifoc.enabled [
+        secret.nix-cache.nifoc.publicKeyValue
       ];
     };
 
