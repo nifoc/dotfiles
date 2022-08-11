@@ -26,6 +26,7 @@ in
            [[ $storePath == *"home-manager-generation"* ]] ||
            [[ $storePath == *"-etc" ]] ||
            [[ $storePath == *"-source" ]] ||
+           [[ $storePath == *"-vim-pack-dir" ]] ||
            [[ $storePath == *".drv" ]] ||
            [[ $storePath == *".drv.chroot" ]] ||
            [[ $storePath == *".check" ]] ||
