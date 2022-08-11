@@ -26,15 +26,17 @@ switch $os
         sudo nixos-rebuild switch --flake .
 end
 
-set system_new (readlink /run/current-system)
+if test $status -eq 0
+    set system_new (readlink /run/current-system)
 
-nvd diff "$system_old" "$system_new"
+    rm -f result
 
-rm -f result
+    if test -e "$HOME/.bin/upload-nifoc-nix-cache"
+        echo "Updating nifoc-nix-cache ..."
+        upload-nifoc-nix-cache
+    end
 
-if test -e "$HOME/.bin/upload-nifoc-nix-cache"
-    echo "Updating nifoc-nix-cache ..."
-    upload-nifoc-nix-cache
+    nvd diff "$system_old" "$system_new"
 end
 
 popd

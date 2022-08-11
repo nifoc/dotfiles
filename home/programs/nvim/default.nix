@@ -410,13 +410,11 @@ in
   };
 
   home = {
-    activation = {
-      neovimActivation = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        echo -n 'Removing luacache files: '
-        $DRY_RUN_CMD rm -f $HOME/.cache/nvim/luacache*
-        echo 'Done'
-      '';
-    };
+    activation.neovimActivation = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      echo -n 'Removing luacache files: '
+      $DRY_RUN_CMD rm -f $HOME/.cache/nvim/luacache*
+      echo 'Done'
+    '';
 
     sessionVariables.EDITOR = "nvim";
 

@@ -14,7 +14,7 @@ in
       sudo mkdir ${cache.rootDir}/.aws 2> /dev/null
       sudo cp "$HOME/.aws/credentials" ${cache.rootDir}/.aws/
 
-      minTimestamp=$(expr $(date +%s) - 3600)
+      minTimestamp=$(expr $(date +%s) - 1800)
       uncachedHashes=$(echo "SELECT DISTINCT hashPart FROM NARs WHERE present = 0 AND timestamp >= $minTimestamp;" | sudo sqlite3 "${cache.database}")
       signingKey="$HOME/.config/nifoc-nix/${cache.signingKey}"
 
@@ -23,23 +23,30 @@ in
 
         if [[ $storePath == *"darwin-system"* ]] ||
            [[ $storePath == *"nixos-system"* ]] ||
-           [[ $storePath == *"home-manager-generation"* ]] ||
+           [[ $storePath == *"home-manager"* ]] ||
            [[ $storePath == *"-etc" ]] ||
            [[ $storePath == *"-source" ]] ||
            [[ $storePath == *".drv" ]] ||
            [[ $storePath == *".drv.chroot" ]] ||
            [[ $storePath == *".check" ]] ||
-           [[ $storePath == *".lock" ]]; then
+           [[ $storePath == *".lock" ]] ||
+           [[ $storePath == *"-*" ]]; then
           continue
         fi
 
         if [ "$1" = "--list" ]; then
           echo "$storePath"
         else
-          sudo -H nix store sign --key-file $signingKey $storePath
+          curl -I --fail --silent "https://cache.nixos.org/$uncachedHash.narinfo" > /dev/null
 
-          echo "Uploading $storePath ..."
-          sudo -H nix copy --to '${cache.s3Url}' $storePath
+          if [ $? -eq 0 ]; then
+            echo "Already cached: $storePath ..."
+          else
+            sudo -H nix store sign --key-file $signingKey $storePath
+
+            echo "Uploading $storePath ..."
+            sudo -H nix copy --to '${cache.s3Url}' $storePath
+          fi
         fi
       done
     '';
