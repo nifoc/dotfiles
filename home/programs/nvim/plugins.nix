@@ -113,12 +113,12 @@
   };
   nvim-ts-rainbow = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-ts-rainbow";
-    version = "2022-08-09";
+    version = "2022-08-10";
     src = pkgs.fetchFromGitHub {
       owner = "p00f";
       repo = "nvim-ts-rainbow";
-      rev = "0c19f1eda263a1d44b6741e727fef223886c80a8";
-      sha256 = "0n01yfjldf2qcwyzmjpqnrccsy7xax191c26y1zsyahlfxk70ay9";
+      rev = "1e904f6d1b41adb9d3b87df2108dc4a315a72379";
+      sha256 = "1x4mfq63z7fxg7cyv2dmhzy7kxq9xgz16cvfj69gxz0mqxmmg3xz";
       fetchSubmodules = false;
     };
   };
@@ -135,12 +135,12 @@
   };
   telescope-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "telescope.nvim";
-    version = "2022-08-09";
+    version = "2022-08-10";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "8f80e821085bdb4583e78ea685e68dc34209d360";
-      sha256 = "1m6cw6xgbmx07pnxn351650v53nmmndjwliwwk1fq6gsyiyixxk3";
+      rev = "8746347ac4065f5795e7bd33c7912ab1152cca4b";
+      sha256 = "1xxhkfk62mrv1sw26yslqrjvdrd92i2ghnnhz28s6if47lvzlv3n";
       fetchSubmodules = false;
     };
   };
@@ -154,7 +154,7 @@
       sha256 = "11fmsalkx4hx0vd28q0hvw6jcvnb8qd7f0y69f7rlbd2n0mh9vx4";
       fetchSubmodules = true;
     };
-    nativeBuildInputs = with pkgs; [ just zigpkgs."0.9.1" ];
+    nativeBuildInputs = with pkgs; [ just zig ];
     buildPhase = ''
       just clean
       XDG_CACHE_HOME=./xdg_cache just build
@@ -263,12 +263,12 @@
   };
   LuaSnip = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "LuaSnip";
-    version = "2022-08-07";
+    version = "2022-08-10";
     src = pkgs.fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "c599c560ed26f04f5bdb7e4498b632dc16fb9209";
-      sha256 = "0wi3gzy9mqwaaqd16gikfycj1zkk20x79aqglzbrv1bd17863jk9";
+      rev = "3d6c52babf918294ea12e6f46a3df008d0ca4299";
+      sha256 = "1wqn906djb9w1cwjvqg2wvxvwig1zpyllmldkq0zr56npfgsmc6d";
       fetchSubmodules = false;
     };
   };
@@ -351,12 +351,12 @@
   };
   cmp-buffer = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "cmp-buffer";
-    version = "2022-06-15";
+    version = "2022-08-10";
     src = pkgs.fetchFromGitHub {
       owner = "hrsh7th";
       repo = "cmp-buffer";
-      rev = "62fc67a2b0205136bc3e312664624ba2ab4a9323";
-      sha256 = "0wcys2z1yw6raxr9x5nm19ac04q8gfri4pw9mfsh18smv4rnl8zs";
+      rev = "3022dbc9166796b644a841a02de8dd1cc1d311fa";
+      sha256 = "1cwx8ky74633y0bmqmvq1lqzmphadnhzmhzkddl3hpb7rgn18vkl";
       fetchSubmodules = false;
     };
   };
@@ -406,12 +406,12 @@
   };
   nvim-autopairs = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-autopairs";
-    version = "2022-08-06";
+    version = "2022-08-11";
     src = pkgs.fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-autopairs";
-      rev = "ca89ab9e7e42aa9279f1cdad15398d6e18ccee86";
-      sha256 = "1gyaigj2ch820ikikr7123v2yfm6i08bfaxivayixxw27bj3y2d5";
+      rev = "34bd374f75fb58656572f847e2bc3565b0acb34f";
+      sha256 = "1wx2gmv46xlxbnhhw0vcxpj79ss51g0g0i6fpip9xwx2g0dp88da";
       fetchSubmodules = false;
     };
   };
@@ -439,12 +439,12 @@
   };
   nvim-treesitter-textobjects = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter-textobjects";
-    version = "2022-07-31";
+    version = "2022-08-10";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "b8df8b07b4ec2fea8af606004c952b1881402b1e";
-      sha256 = "03hrhwsn97229fxd3yxkcgfpcjf0s6agg4kbaxrcw36w181wx53s";
+      rev = "30a5e25f92852fa8ee57d49760f08e37f1f614ed";
+      sha256 = "0n553x2gp4waf1dzxsc6hp9b4z1wdlx6iv2p1hpfzmvdij5fx21f";
       fetchSubmodules = false;
     };
   };
@@ -549,12 +549,12 @@
   };
   gitsigns-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "gitsigns.nvim";
-    version = "2022-08-01";
+    version = "2022-08-10";
     src = pkgs.fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "9c3ca027661136a618c82275427746e481c84a4e";
-      sha256 = "089nqxs54x5bi55zkdynln32xvq9jfadlp95l85dal6c5nmn7yyi";
+      rev = "ce636faddd573c1e6d821250da713e00e99d0f74";
+      sha256 = "0gf4wvc6rz6g1n0cj2b708vhcrgriynk7xx29qcbli37rjwaafaj";
       fetchSubmodules = false;
     };
   };

@@ -3,14 +3,12 @@
 let
   overlay-arion = arion.overlay;
   overlay-neovim = inputs.neovim-nightly-overlay.overlay;
-  overlay-zig = _: prev: { zigpkgs = inputs.zig-overlay.packages.${prev.system}; };
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
     overlays = [
       overlay-arion
       overlay-neovim
-      overlay-zig
       overlay-nifoc
     ];
 

@@ -31,5 +31,4 @@
 ## Overlays
 
 * [neovim-nightly-overlay](https://github.com/nix-community/neovim-nightly-overlay)
-* [zig-overlay](https://github.com/arqv/zig-overlay)
 * [nifoc-overlay](https://github.com/nifoc/nix-overlay)

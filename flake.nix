@@ -22,11 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zig-overlay = {
-      url = "github:arqv/zig-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nifoc-overlay = {
       url = "github:nifoc/nix-overlay";
       inputs.nixpkgs.follows = "nixpkgs";

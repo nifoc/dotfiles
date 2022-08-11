@@ -3,14 +3,12 @@
 let
   overlay-x86 = _: _: { pkgs-x86 = import nixpkgs { system = "x86_64-darwin"; }; };
   overlay-neovim = inputs.neovim-nightly-overlay.overlay;
-  overlay-zig = _: prev: { zigpkgs = inputs.zig-overlay.packages.${prev.system}; };
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
     overlays = [
       overlay-x86
       overlay-neovim
-      overlay-zig
       overlay-nifoc
     ];
 

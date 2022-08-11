@@ -27,7 +27,7 @@
   fetchSubmodules: true
   nativeBuildInputs:
   - just
-  - zigpkgs."0.9.1"
+  - zig
   buildPhase: |-
     just clean
     XDG_CACHE_HOME=./xdg_cache just build
