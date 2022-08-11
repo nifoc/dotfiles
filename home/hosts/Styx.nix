@@ -82,6 +82,7 @@ in
     lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       baseDir="$HOME/Applications/Home Manager Apps"
       if [ -d "$baseDir" ]; then
+        rm -f "''${baseDir}/.DS_Store"
         rm -rf "$baseDir"
       fi
       mkdir -p "$baseDir"
