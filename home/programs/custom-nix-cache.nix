@@ -38,14 +38,25 @@ in
           echo "$storePath"
         else
           curl -I --fail --silent "https://cache.nixos.org/$uncachedHash.narinfo" > /dev/null
+          cached_nixos="$?"
 
-          if [ $? -eq 0 ]; then
-            echo "Already cached: $storePath ..."
+          if [ $cached_nixos -eq 0 ]; then
+            echo "Already cached on NixOS: $storePath ..."
           else
-            sudo -H nix store sign --key-file $signingKey $storePath
+            curl -I --fail --silent "https://nix-community.cachix.org/$uncachedHash.narinfo" > /dev/null
+            cached_cachix_nixcommunity="$?"
 
-            echo "Uploading $storePath ..."
-            sudo -H nix copy --to '${cache.s3Url}' $storePath
+            curl -I --fail --silent "https://nifoc.cachix.org/$uncachedHash.narinfo" > /dev/null
+            cached_cachix_nifoc="$?"
+
+            if [ $cached_cachix_nixcommunity -eq 0 ] || [ $cached_cachix_nifoc -eq 0 ]; then
+              echo "Already cached on Cachix: $storePath ..."
+            else
+              sudo -H nix store sign --key-file $signingKey $storePath
+
+              echo "Uploading $storePath ..."
+              sudo -H nix copy --to '${cache.s3Url}' $storePath
+            fi
           fi
         fi
       done
