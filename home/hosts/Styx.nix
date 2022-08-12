@@ -62,6 +62,7 @@ in
       tokei
       viddy
       wget
+      xxHash
       xz
     ];
   };
@@ -81,15 +82,27 @@ in
     in
     lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       baseDir="$HOME/Applications/Home Manager Apps"
-      if [ -d "$baseDir" ]; then
-        rm -f "''${baseDir}/.DS_Store"
-        rm -rf "$baseDir"
-      fi
-      mkdir -p "$baseDir"
+      $DRY_RUN_CMD mkdir -p "$baseDir"
+
       for appFile in ${apps}/Applications/*; do
+        appFileChecksum="$(find "$appFile/Contents/MacOS" -type f -exec md5 -q {} \; | md5 -q)"
         target="$baseDir/$(basename "$appFile")"
-        $DRY_RUN_CMD cp ''${VERBOSE_ARG:+-v} -fHRL "$appFile" "$baseDir"
-        $DRY_RUN_CMD chmod ''${VERBOSE_ARG:+-v} -R +w "$target"
+
+        if [ -d "$target" ]; then
+          targetChecksum="$(find "$target/Contents/MacOS" -type f -exec md5 -q {} \; | md5 -q)"
+        else 
+          targetChecksum="0"
+        fi
+
+        if [ "$appFileChecksum" = "$targetChecksum" ]; then
+          echo "Application not changed: $(basename "$appFile")"
+        else
+          echo -n "Coyping application $(basename "$appFile"): "
+          $DRY_RUN_CMD rm -rf "$target"
+          $DRY_RUN_CMD cp ''${VERBOSE_ARG:+-v} -fHRL "$appFile" "$baseDir"
+          $DRY_RUN_CMD chmod ''${VERBOSE_ARG:+-v} -R +w "$target"
+          echo 'Done'
+        fi
       done
     '';
 }
