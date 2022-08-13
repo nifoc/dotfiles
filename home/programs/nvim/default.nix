@@ -27,6 +27,8 @@ in
       EOF
     '';
 
+    extraLuaPackages = with pkgs; [ luarocks-jsregexp ];
+
     extraPackages = with pkgs; [
       git
       nodejs
