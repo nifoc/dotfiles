@@ -23,6 +23,7 @@ in
 
         if [[ $storePath == *"darwin-system"* ]] ||
            [[ $storePath == *"nixos-system"* ]] ||
+           [[ $storePath == *"-system-"* ]] ||
            [[ $storePath == *"home-manager"* ]] ||
            [[ $storePath == *"-etc" ]] ||
            [[ $storePath == *"-source" ]] ||
@@ -31,6 +32,7 @@ in
            [[ $storePath == *".check" ]] ||
            [[ $storePath == *".lock" ]] ||
            [[ $storePath == *"-*" ]]; then
+          echo "Skipping: $storePath"
           continue
         fi
 
