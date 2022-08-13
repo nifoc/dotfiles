@@ -1,13 +1,11 @@
 { nixpkgs, home-manager, arion, inputs, ... }:
 
 let
-  overlay-arion = arion.overlay;
   overlay-neovim = inputs.neovim-nightly-overlay.overlay;
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
     overlays = [
-      overlay-arion
       overlay-neovim
       overlay-nifoc
     ];
