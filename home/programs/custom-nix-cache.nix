@@ -36,6 +36,18 @@ in
           continue
         fi
 
+        # Ignore Neovim-related packages for now, because they will be recreated after every nightly update.
+        # Might work better once nix is CA.
+        if [[ $storePath == *"-vim-pack-dir" ]] ||
+           [[ $storePath == *"-vimplugin-"* ]] ||
+           [[ $storePath == *"-neovim-unwrapped-master" ]] ||
+           [[ $storePath == *"-vim-command-check-hook" ]] ||
+           [[ $storePath == *"-neovim-require-check-hook" ]] ||
+           [[ $storePath == *"-neovim-master-fish-completions" ]]; then
+          echo "Skipping: $storePath"
+          continue
+        fi
+
         if [ "$1" = "--list" ]; then
           echo "$storePath"
         else
