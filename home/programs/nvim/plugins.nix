@@ -91,12 +91,12 @@
   };
   leap-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "leap.nvim";
-    version = "2022-08-13";
+    version = "2022-08-14";
     src = pkgs.fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "801884c7de8ffeb64adb700c8685aa98d67e64bb";
-      sha256 = "1nkfilxpknifxjql3lmm3difkffpvgk51jcqir1ncrnpsvmsh7r5";
+      rev = "88580344a77b6aaf11ffe1f5bd50d01ac9a1574f";
+      sha256 = "1alyalvj7kvmipykp1sa5aay0zrwwibj83rnk3amwvk7fqv1qc2j";
       fetchSubmodules = false;
     };
   };
