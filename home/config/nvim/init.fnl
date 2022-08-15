@@ -49,7 +49,6 @@
   (set o.updatetime 2000)
   (set g.cursorhold_updatetime 100) ; https://github.com/antoinemadec/FixCursorHold.nvim
   (o.shortmess:append :c)
-  (o.shortmess:remove :S)
   (set o.termguicolors true)
   (set o.mouse :a)
   (set o.mousemodel :popup_setpos)
