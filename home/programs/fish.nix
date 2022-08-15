@@ -22,8 +22,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "dracula";
           repo = "fish";
-          rev = "62b109f12faab5604f341e8b83460881f94b1550";
-          sha256 = "sha256-0TlKq2ur2I6Bv7pu7JObrJxV0NbQhydmCuUs6ZdDU1I=";
+          rev = "610147cc384ff161fbabb9a9ebfd22b743f82b67";
+          sha256 = "sha256-WywEGAGaRwfHJpT+B3oKoyrnLJZxURTQ+MK9e5Asxl0=";
         };
       }
 
@@ -43,8 +43,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "PatrickF1";
           repo = "fzf.fish";
-          rev = "v9.0";
-          sha256 = "sha256-0rnd8oJzLw8x/U7OLqoOMQpK81gRc7DTxZRSHxN9YlM=";
+          rev = "v9.2";
+          sha256 = "sha256-XmRGe39O3xXmTvfawwT2mCwLIyXOlQm7f40mH5tzz+s=";
         };
       }
 
