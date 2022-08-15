@@ -271,6 +271,16 @@
                                                          i)]
                                     (string.rep new-scrollbar 2)))
                       :hl {:fg colors.purple}})
+  ;; Search count
+  (set mod.search-count
+       {:condition (fn []
+                     (if (= vim.v.hlsearch 0) false true))
+        :init (fn [self]
+                (set self.count (vim.fn.searchcount {:timeout 5})))
+        :provider (fn [self]
+                    (string.format "[%s/%s]" self.count.current
+                                   self.count.total))
+        :hl {:fg colors.black :bg colors.purple}})
   ;; Custom Mode
 
   (fn mod.custom-mode [str fg bg]
