@@ -20,7 +20,10 @@
           WATCHTOWER_POLL_INTERVAL = "28800";
           WATCHTOWER_LABEL_ENABLE = "true";
         };
-        volumes = [ "/var/run/docker.sock:/var/run/docker.sock" ];
+        volumes = [
+          "/var/run/docker.sock:/var/run/docker.sock"
+          "/root/.docker/config.json:/config.json:ro"
+        ];
       };
     };
 

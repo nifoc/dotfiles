@@ -273,8 +273,7 @@
                       :hl {:fg colors.purple}})
   ;; Search count
   (set mod.search-count
-       {:condition (fn []
-                     (if (= vim.v.hlsearch 0) false true))
+       {:condition #(> vim.v.hlsearch 0)
         :init (fn [self]
                 (set self.count (vim.fn.searchcount {:timeout 5})))
         :provider (fn [self]
