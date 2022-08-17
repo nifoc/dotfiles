@@ -27,6 +27,13 @@ in
            [[ $storePath == *"home-manager"* ]] ||
            [[ $storePath == *"-etc" ]] ||
            [[ $storePath == *"-source" ]] ||
+           [[ $storePath == *"-launchd" ]] ||
+           [[ $storePath == *"-fonts" ]] ||
+           [[ $storePath == *"-darwin-manual-"* ]] ||
+           [[ $storePath == *"-manual-olinkdb" ]] ||
+           [[ $storePath == *"-man-pages" ]] ||
+           [[ $storePath == *"-darwin-manpages" ]] ||
+           [[ $storePath == *"-fish-completions" ]] ||
            [[ $storePath == *".drv" ]] ||
            [[ $storePath == *".drv.chroot" ]] ||
            [[ $storePath == *".check" ]] ||
