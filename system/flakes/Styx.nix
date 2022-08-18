@@ -27,7 +27,7 @@ in
       home-manager.darwinModules.home-manager
       {
         nixpkgs = nixpkgsConfig;
-        nix.nixPath = { nixpkgs = "${nixpkgs}"; };
+        nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.daniel = import ../../home/hosts/Styx.nix;

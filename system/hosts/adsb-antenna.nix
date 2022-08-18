@@ -37,7 +37,7 @@ in
         secret.nix-cache.nifoc.publicKeyValue
       ];
 
-      cores = 3;
+      cores = 2;
       max-jobs = 1;
     };
 
