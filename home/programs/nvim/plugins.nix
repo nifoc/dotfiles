@@ -267,8 +267,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "a96cf3083934c794620d1e1ae2a7578f61b7dc1b";
-      sha256 = "0kdrvhpzajz08kyplb1h1vizs0jnvklsx0b79jga9zw2f66nci5k";
+      rev = "faa525713e1244551877a4d89646a10f3c3fa31e";
+      sha256 = "0ynd51j4wl9q49m9cm6lic87rbq4xcsfn1w8xw40ahm8wg813ahj";
       fetchSubmodules = false;
     };
   };
@@ -454,8 +454,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "kylechui";
       repo = "nvim-surround";
-      rev = "7f7ca045648912c03f565e91e2b6ba91e85b9a33";
-      sha256 = "0q5g5bh4wf6yj8zfr0rwisf5xy9nci6clxssh9cg8wq5f703nswc";
+      rev = "22a25192ed98a937efe48b93c192a352d197c7e3";
+      sha256 = "11xgy9905v5givv22p09bmdjg1n93xa8n8mg4r2wbv4s4bnvq8z1";
       fetchSubmodules = false;
     };
   };

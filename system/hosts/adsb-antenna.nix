@@ -37,8 +37,14 @@ in
         secret.nix-cache.nifoc.publicKeyValue
       ];
 
-      cores = 2;
+      cores = 3;
       max-jobs = 1;
+    };
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 14d";
     };
 
     extraOptions = ''
