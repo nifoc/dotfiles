@@ -31,6 +31,7 @@ in
            [[ $storePath == *"-fonts" ]] ||
            [[ $storePath == *"-darwin-manual-"* ]] ||
            [[ $storePath == *"-manual-olinkdb" ]] ||
+           [[ $storePath == *"-manual-combined" ]] ||
            [[ $storePath == *"-man-pages" ]] ||
            [[ $storePath == *"-darwin-manpages" ]] ||
            [[ $storePath == *"-fish-completions" ]] ||
