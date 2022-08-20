@@ -1,12 +1,9 @@
 (let [lsp (require :lspconfig)
-      illuminate (require :illuminate)
       cmp (require :cmp_nvim_lsp)
       nifoc-lsp (require :nifoc.lsp)
       diagnostic (require :nifoc.diagnostic)
       formatting (require :nifoc.formatting)]
   (fn custom-attach [client bufnr]
-    (when (client.supports_method :textDocument/documentHighlight)
-      (illuminate.on_attach client bufnr))
     (nifoc-lsp.on-attach client bufnr)
     (diagnostic.maybe-enable-lsp client bufnr)
     (formatting.maybe-enable-lsp client bufnr))

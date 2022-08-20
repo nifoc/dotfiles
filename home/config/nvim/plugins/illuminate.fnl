@@ -1,2 +1,3 @@
-(let [g vim.g]
-  (set g.Illuminate_ftblacklist [:netrw]))
+(let [illuminate (require :illuminate)]
+  (illuminate.configure {:filetypes_denylist [:netrw]}))
+
