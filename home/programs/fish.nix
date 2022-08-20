@@ -118,6 +118,10 @@
     };
 
     functions = {
+      base64decode = ''
+        echo "$argv" | base64 --decode
+      '';
+
       podman = ''
         fish -c "set -e SSH_AUTH_SOCK; ${config.home.profileDirectory}/bin/podman $argv"
       '';
