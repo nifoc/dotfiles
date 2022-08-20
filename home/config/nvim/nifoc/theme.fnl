@@ -14,6 +14,11 @@
     (highlight :MatchParen {:fg dracula-colors.orange :bold true :italic true})
     (highlight :MatchWord {:italic true})
     (highlight-link :MatchupVirtualText :Comment)
+    ;; vim-illuminate
+    (highlight :IlluminatedWordText {:bg dracula-colors.selection})
+    (highlight :IlluminatedWordRead {:bg dracula-colors.selection})
+    (highlight :IlluminatedWordWrite
+               {:bg dracula-colors.selection :underline true})
     ;; nvim-ts-rainbow
     (highlight :rainbowcol1 {:fg dracula-colors.bright_red})
     (highlight :rainbowcol2 {:fg dracula-colors.bright_yellow})
