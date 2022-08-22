@@ -24,7 +24,8 @@
     (when (= vim.b.nifoc_diagnostics_enabled nil)
       (api.nvim_buf_set_var bufnr :nifoc_diagnostics_enabled 1)
       (aucmd [:CursorHold :CursorHoldI]
-             {:callback #(vim.diagnostic.open_float {:focus false})
+             {:callback #(vim.diagnostic.open_float {:focusable false
+                                                     :focus false})
               :buffer bufnr
               :group augroup
               :desc "Open Diagnostic Window"})))
