@@ -9,6 +9,7 @@ in
 {
   imports = [
     ../../hardware/hosts/adsb-antenna.nix
+    ../nixos/raspberry.nix
     ../nixos/ssh.nix
 
     ../nixos/git.nix
