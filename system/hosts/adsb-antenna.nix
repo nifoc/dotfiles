@@ -37,9 +37,6 @@ in
       ] ++ optionals secret.nix-cache.nifoc.enabled [
         secret.nix-cache.nifoc.publicKeyValue
       ];
-
-      cores = 3;
-      max-jobs = 1;
     };
 
     gc = {
