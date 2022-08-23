@@ -1,9 +1,0 @@
-[user]
-  email = "d.kempkens@wdw-consulting.com"
-  name = "Daniel Kempkens"
-
-[commit]
-  gpgsign = false
-
-[tag]
-  gpgsign = false

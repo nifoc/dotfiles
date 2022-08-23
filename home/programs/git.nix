@@ -1,9 +1,5 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
-let
-  config-work-nedeco = "${config.xdg.configHome}/git/config-work-nedeco";
-  config-work-wdw = "${config.xdg.configHome}/git/config-work-wdw";
-in
 {
   home.packages = [ pkgs.git-crypt ];
 
@@ -58,20 +54,57 @@ in
     ];
 
     includes = [
+      # Private
       {
-        path = "${config-work-nedeco}";
-        condition = "gitdir:~/Code/Work/";
+        condition = "hasconfig:remote.*.url:git@github.com:*/**";
+        contents = {
+          user = {
+            signingKey = "~/.ssh/GitHub.pub";
+          };
+
+          commit = {
+            gpgSign = true;
+          };
+
+          tag = {
+            gpgSign = true;
+          };
+
+          gpg = {
+            format = "ssh";
+          };
+        };
       }
 
+      # Work
       {
-        path = "${config-work-wdw}";
-        condition = "gitdir:~/Code/Work/WDW/";
+        condition = "hasconfig:remote.*.url:git@git.app.nedeco.de:*/**";
+        contents = {
+          user = {
+            email = "d.kempkens@nedeco.de";
+            name = "Daniel Kempkens";
+            signingKey = "~/.ssh/nedeco_gitlab.pub";
+          };
+
+          commit = {
+            gpgSign = true;
+          };
+
+          tag = {
+            gpgSign = true;
+          };
+
+          gpg = {
+            format = "ssh";
+          };
+
+          "gpg \"ssh\"" = {
+            allowedSignersFile = "~/.ssh/allowed_signers/work-nedeco";
+          };
+        };
       }
     ];
   };
 
   home.sessionVariables.GIT_CEILING_DIRECTORIES = "/Users";
-
-  home.file."${config-work-nedeco}".source = ../config/git/config-work-nedeco;
-  home.file."${config-work-wdw}".source = ../config/git/config-work-wdw;
 }
