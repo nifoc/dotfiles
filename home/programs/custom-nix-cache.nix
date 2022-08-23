@@ -34,6 +34,7 @@ in
            [[ $storePath == *"-manual-combined" ]] ||
            [[ $storePath == *"-man-pages" ]] ||
            [[ $storePath == *"-darwin-manpages" ]] ||
+           [[ $storePath == *"-generated-docbook" ]] ||
            [[ $storePath == *"-fish-completions" ]] ||
            [[ $storePath == *".drv" ]] ||
            [[ $storePath == *".drv.chroot" ]] ||
