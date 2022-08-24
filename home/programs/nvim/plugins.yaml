@@ -84,8 +84,6 @@
 - src: lukas-reineke/virt-column.nvim
 - src: akinsho/toggleterm.nvim
 - src: axieax/urlview.nvim
-- src: sindrets/diffview.nvim
-- src: TimUntersberger/neogit
 - src: lewis6991/gitsigns.nvim
 - src: lewis6991/spellsitter.nvim
 - src: rcarriga/nvim-notify

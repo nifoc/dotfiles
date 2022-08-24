@@ -8,8 +8,7 @@
       dracula (require :dracula)
       colors (dracula.colors)
       formatting (require :nifoc.formatting)
-      nifoc-treesitter (require :nifoc.treesitter)
-      neogit (require :neogit)]
+      nifoc-treesitter (require :nifoc.treesitter)]
   (fn buffer-variable-exists? [key]
     (not= (. vim :b key) nil))
 
@@ -164,9 +163,7 @@
                           (set self.git-removed (or git-status.removed 0))
                           (set self.git-changed (or git-status.changed 0))))
                 1 {:provider #(.. "  " $1.git-head " ")
-                   :hl {:fg colors.black :bg colors.orange :bold true}
-                   :on_click {:name :heirline_git_branch
-                              :callback #(neogit.open {:kind :split})}}
+                   :hl {:fg colors.black :bg colors.orange :bold true}}
                 2 {:provider " "}
                 3 {:provider (fn [self]
                                (.. " " self.git-added " "))

@@ -10,7 +10,6 @@
       telescope-dropdown (telescope-themes.get_dropdown)
       npairs (require :nvim-autopairs)
       gitsigns (require :gitsigns)
-      neogit (require :neogit)
       repl (require :nifoc.repl)
       formatting (require :nifoc.formatting)
       nifoc-lsp (require :nifoc.lsp)]
@@ -49,14 +48,6 @@
                 #(telescope-builtin.git_branches telescope-dropdown)
                 {:desc "List VCS Branches"})
     (keymap.set :n :<leader>vl gitsigns.blame_line {:desc "Blame Line"})
-    (keymap.set :n :<leader>vn #(neogit.open {:kind :split})
-                {:desc "Open Neogit"})
-    (keymap.set :n :<leader>vc #(neogit.open {1 :commit :kind :split})
-                {:desc "Neogit Commit"})
-    (keymap.set :n :<leader>vp #(neogit.open {1 :pull :kind :split})
-                {:desc "Neogit Pull"})
-    (keymap.set :n :<leader>vP #(neogit.open {1 :push :kind :split})
-                {:desc "Neogit Push"})
     (keymap.set :n :<leader>lk telescope-builtin.keymaps
                 {:desc "Show Keymappings"})
     (keymap.set :n :<leader>ld #(telescope-builtin.diagnostics telescope-ivy)

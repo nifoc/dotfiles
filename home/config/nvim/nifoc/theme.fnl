@@ -18,15 +18,7 @@
     (highlight :IlluminatedWordText {:bg dracula-colors.selection})
     (highlight :IlluminatedWordRead {:bg dracula-colors.selection})
     (highlight :IlluminatedWordWrite
-               {:bg dracula-colors.selection :underline true})
-    ;; nvim-ts-rainbow
-    (highlight :rainbowcol1 {:fg dracula-colors.bright_red})
-    (highlight :rainbowcol2 {:fg dracula-colors.bright_yellow})
-    (highlight :rainbowcol3 {:fg dracula-colors.bright_blue})
-    (highlight :rainbowcol4 {:fg dracula-colors.bright_green})
-    (highlight :rainbowcol5 {:fg dracula-colors.bright_magenta})
-    (highlight :rainbowcol6 {:fg dracula-colors.bright_cyan})
-    (highlight :rainbowcol7 {:fg dracula-colors.bright_white}))
+               {:bg dracula-colors.selection :underline true}))
 
   mod)
 
