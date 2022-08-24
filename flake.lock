@@ -145,11 +145,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1661329759,
-        "narHash": "sha256-UtIcQn0OQiLdJTgaSEOcSeNuM+RwJIlzvc6MTOFTfDA=",
+        "lastModified": 1661375319,
+        "narHash": "sha256-57ZcYmCX4zBqXJqaYlX+ahdHoNfaU8gik6H2f4opgL4=",
         "owner": "nifoc",
         "repo": "nix-overlay",
-        "rev": "4d477d9201253618a14fc50e599556de2fc0612c",
+        "rev": "ee0a8f8e1582a587cd69063be5a531ffcd71e4f3",
         "type": "github"
       },
       "original": {
