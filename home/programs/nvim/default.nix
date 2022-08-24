@@ -57,6 +57,7 @@ in
       shfmt
       statix
       vale
+      yamllint
     ];
 
     plugins = (with customPlugins; [

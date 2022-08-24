@@ -31,7 +31,8 @@
                            :fish [:fish]
                            :markdown [:vale]
                            :nix [:deadnix :nix :statix]
-                           :sh [:shellcheck]})
+                           :sh [:shellcheck]
+                           :yaml [:yamllint]})
 
   (fn setup-linting [opts]
     (diagnostic.maybe-enable-diagnostics opts.buf)
