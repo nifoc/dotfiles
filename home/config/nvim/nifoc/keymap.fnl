@@ -48,6 +48,8 @@
                 #(telescope-builtin.git_branches telescope-dropdown)
                 {:desc "List VCS Branches"})
     (keymap.set :n :<leader>vl gitsigns.blame_line {:desc "Blame Line"})
+    (keymap.set :n :<leader>vc #(repl.toggle-specific-shell :vcs)
+                {:desc "Toggle VCS Shell"})
     (keymap.set :n :<leader>lk telescope-builtin.keymaps
                 {:desc "Show Keymappings"})
     (keymap.set :n :<leader>ld #(telescope-builtin.diagnostics telescope-ivy)

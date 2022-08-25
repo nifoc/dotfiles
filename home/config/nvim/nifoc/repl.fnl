@@ -4,8 +4,8 @@
   (fn repl-setup []
     (set vim.b.nifoc_shell_mode :REPL))
 
-  (fn shell-setup []
-    (set vim.b.nifoc_shell_mode :SHELL))
+  (fn generic-setup [label]
+    (set vim.b.nifoc_shell_mode label))
 
   (local elixir (terminal:new {:cmd :iex
                                :on_open repl-setup
@@ -17,7 +17,7 @@
                                :on_open repl-setup
                                :close_on_exit true}))
   (local fish (terminal:new {:cmd :fish
-                             :on_open shell-setup
+                             :on_open #(generic-setup :SHELL)
                              :close_on_exit true}))
   (local javascript (terminal:new {:cmd :node
                                    :on_open repl-setup
@@ -29,6 +29,13 @@
          (terminal:new {:cmd :irb :on_open repl-setup :close_on_exit true}))
   ;; Map filetype to REPL
   (local repl-map {: elixir : erlang : fennel : fish : javascript : nix : ruby})
+  ;; Various specific shell windows
+  (local specific-shell
+         {:vcs (terminal:new {:cmd :fish
+                              :on_open #(generic-setup :VCS)
+                              :direction :float
+                              :close_on_exit true
+                              :float_opts {:border :rounded}})})
 
   (fn mod.toggle-shell []
     (let [shell (. repl-map :fish)]
@@ -39,6 +46,10 @@
           repl (. repl-map ft)]
       (when (not= repl nil)
         (repl:toggle))))
+
+  (fn mod.toggle-specific-shell [name]
+    (let [shell (. specific-shell name)]
+      (shell:toggle)))
 
   mod)
 
