@@ -15,13 +15,8 @@ in
     withPython3 = false;
 
     extraConfig = ''
-      " Move these paths to the end of $PATH to prevent triggering the XCode CLI popup
-      let xcode_paths = [':/usr/local/bin:', ':/usr/bin:', ':/usr/sbin:', ':/bin:', ':/sbin:']
-      for xcode_path in xcode_paths
-        let $PATH = substitute($PATH, xcode_path, ":", "") . substitute(xcode_path, ":$", "", "")
-      endfor
-
       lua << EOF
+        require('nifoc.nix')
         require('impatient')
         require('configuration.init')
       EOF
