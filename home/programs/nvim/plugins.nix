@@ -212,8 +212,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "03981bd991fe700c5a870d0a1422812045426781";
-      sha256 = "0cxl1w3sz3x5mv459x9gyxfk79dq6w4d3sxrpknbc40rpn81s7j8";
+      rev = "b89530f9f8783f19a172ed3a94fca2ba993c653b";
+      sha256 = "1nr2jxrdlgk5in7lif63j2jxp3llq1vqkwwgpb95ax2yp3jacsw5";
       fetchSubmodules = false;
     };
   };
