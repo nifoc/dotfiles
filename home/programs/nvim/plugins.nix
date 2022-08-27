@@ -146,12 +146,12 @@ rec {
   };
   playground = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "playground";
-    version = "2022-06-22";
+    version = "2022-08-27";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "playground";
-      rev = "ce7e4b757598f1c785ed0fd94fc65959acd7d39c";
-      sha256 = "0r3pjpzwjp1m563n80qp93y7f8gvpqjzlhsrd0hvi67qzm6pj87f";
+      rev = "a0aeb6af82b087b37aeed359b68df3e8f594967f";
+      sha256 = "1svwybs8k5ysq7y1x1sbzvirxh3knz23qiq924rd7zdja41fiw1x";
       fetchSubmodules = false;
     };
   };
@@ -285,12 +285,12 @@ rec {
   };
   LuaSnip = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "LuaSnip";
-    version = "2022-08-25";
+    version = "2022-08-27";
     src = pkgs.fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "92c79c5826e165e3a54075630d2117dd692dae5e";
-      sha256 = "07i99sbd3f8ppmpz00sn5yh5iddxsr19136jfrb8sp5qcajbvvny";
+      rev = "b9450d848163c438a1cc31be5805546ae9694781";
+      sha256 = "1lja00a274xncjxyciny1gi7grnwnn3cz6xvjxc8243bjc0dfqmw";
       fetchSubmodules = false;
     };
   };

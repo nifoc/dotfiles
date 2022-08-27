@@ -10,5 +10,6 @@
         (table.insert new-path part)))
   (each [_ part (ipairs append-path)]
     (table.insert new-path part))
-  (set vim.env.PATH (table.concat new-path ":")))
+  (local joined-path (table.concat new-path ":"))
+  (set vim.env.PATH joined-path))
 
