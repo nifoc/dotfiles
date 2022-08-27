@@ -19,7 +19,7 @@ rm -f "$nix_new_file"
 echo '# This file has been auto-generated' >"$nix_new_file"
 echo '{ pkgs, ... }:' >>"$nix_new_file"
 
-echo "{" >>"$nix_new_file"
+echo "rec {" >>"$nix_new_file"
 for plugin in "${plugin_array[@]}"; do
   raw_src="$(echo "$plugin" | dasel -r json --plain '.src')"
   owner="$(echo "$raw_src" | awk -F'/' '{ print $(NF-1) }')"
@@ -96,6 +96,27 @@ for plugin in "${plugin_array[@]}"; do
   if [ -n "$build_phase" ]; then
     printf "buildPhase = ''\n%s\n'';\n" "$build_phase" >>"$nix_new_file"
   fi
+
+  case "$name" in
+  nvim-treesitter)
+    passthru="passthru.withPlugins =
+      grammarFn: nvim-treesitter.overrideAttrs (_: {
+        postPatch =
+          let
+            grammars = pkgs.tree-sitter.withPlugins grammarFn;
+          in
+          ''
+            rm -r parser
+            ln -s \${grammars} parser
+          '';
+      });"
+    ;;
+  *)
+    passthru=""
+    ;;
+  esac
+
+  echo -n "$passthru" >>"$nix_new_file"
 
   echo '};' >>"$nix_new_file"
 done

@@ -102,6 +102,42 @@ in
       dracula-nvim
 
       # Syntax
+      {
+        plugin = nvim-treesitter.withPlugins (
+          plugins: with plugins; [
+            tree-sitter-bash
+            tree-sitter-comment
+            tree-sitter-css
+            tree-sitter-dockerfile
+            tree-sitter-elixir
+            tree-sitter-erlang
+            tree-sitter-fennel
+            tree-sitter-fish
+            tree-sitter-heex
+            tree-sitter-html
+            tree-sitter-http
+            tree-sitter-javascript
+            tree-sitter-jsdoc
+            tree-sitter-json
+            tree-sitter-lua
+            tree-sitter-make
+            tree-sitter-nix
+            tree-sitter-query
+            tree-sitter-regex
+            tree-sitter-ruby
+            tree-sitter-scss
+            tree-sitter-svelte
+            tree-sitter-toml
+            tree-sitter-tsx
+            tree-sitter-typescript
+            tree-sitter-vim
+            tree-sitter-yaml
+          ]
+        );
+        config = builtins.readFile ../../config/nvim/plugins/treesitter.fnl;
+        type = "fennel";
+      }
+
       nvim-ts-rainbow
       playground
 
@@ -291,43 +327,6 @@ in
     ]) ++ (with pkgs.vimPlugins; [
       # Fixes
       FixCursorHold-nvim
-
-      # Syntax
-      {
-        plugin = nvim-treesitter.withPlugins (
-          plugins: with plugins; [
-            tree-sitter-bash
-            tree-sitter-comment
-            tree-sitter-css
-            tree-sitter-dockerfile
-            tree-sitter-elixir
-            tree-sitter-erlang
-            tree-sitter-fennel
-            tree-sitter-fish
-            tree-sitter-heex
-            tree-sitter-html
-            tree-sitter-http
-            tree-sitter-javascript
-            tree-sitter-jsdoc
-            tree-sitter-json
-            tree-sitter-lua
-            tree-sitter-make
-            tree-sitter-nix
-            tree-sitter-query
-            tree-sitter-regex
-            tree-sitter-ruby
-            tree-sitter-scss
-            tree-sitter-svelte
-            tree-sitter-toml
-            tree-sitter-tsx
-            tree-sitter-typescript
-            tree-sitter-vim
-            tree-sitter-yaml
-          ]
-        );
-        config = builtins.readFile ../../config/nvim/plugins/treesitter.fnl;
-        type = "fennel";
-      }
 
       # UI
       undotree

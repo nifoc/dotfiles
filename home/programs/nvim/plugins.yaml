@@ -17,7 +17,7 @@
 - src: Mofiqul/dracula.nvim
 
 # Syntax
-# - src: nvim-treesitter/nvim-treesitter
+- src: nvim-treesitter/nvim-treesitter
 - src: p00f/nvim-ts-rainbow
 - src: nvim-treesitter/playground
 
