@@ -1,7 +1,8 @@
 (let [heirline (require :heirline)
       utils (require :heirline.utils)
       conditions (require :heirline.conditions)
-      ns (require :nifoc.statusline)]
+      ns (require :nifoc.statusline)
+      nt (require :nifoc.tabline)]
   (local default-statusline [;; Left
                              ns.vi-mode
                              (ns.insert-left-unless-empty ns.git " ")
@@ -35,7 +36,10 @@
                       1 telescope-statusline
                       2 shell-statusline
                       3 default-statusline})
-  ;; Load Statusline
+  (local winbar nil)
+  (local tabline (utils.make_buflist nt.buffer-block nt.truncate-left
+                                     nt.truncate-right))
+  ;; Load Lines
   (set vim.opt.laststatus 3)
-  (heirline.setup statuslines))
+  (heirline.setup statuslines winbar tabline))
 

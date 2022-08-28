@@ -164,7 +164,7 @@
                           (set self.git-changed (or git-status.changed 0))))
                 1 {:provider #(.. "  " $1.git-head " ")
                    :hl {:fg colors.black :bg colors.orange :bold true}}
-                2 {:provider " "}
+                2 mod.space
                 3 {:provider (fn [self]
                                (.. " " self.git-added " "))
                    :hl {:fg colors.bright_green}}
@@ -227,7 +227,7 @@
   (set mod.buffer-options
        {:static {:format {:dos "" :unix "" :mac ""}}
         :hl {:fg colors.black :bg colors.orange}
-        1 {:provider " "}
+        1 mod.space
         2 {:condition #(buffer-variable-exists? :nifoc_lsp_enabled)
            :provider " "
            :on_click {:name :heirline_buffer_options_lsp

@@ -31,10 +31,6 @@
     (keymap.set :n :<leader>r repl.toggle-repl {:desc "Toggle REPL"})
     (keymap.set :n :<leader>bl #(telescope-builtin.buffers telescope-dropdown)
                 {:desc "List Buffers"})
-    (keymap.set :n :<leader>bn :<cmd>BufferLineCycleNext<CR>
-                {:desc "Next Buffer"})
-    (keymap.set :n :<leader>bp :<cmd>BufferLineCyclePrev<CR>
-                {:desc "Previous Buffer"})
     (keymap.set :n :<leader>bf
                 #(telescope-builtin.current_buffer_fuzzy_find telescope-dropdown)
                 {:desc "Find In Buffer"})

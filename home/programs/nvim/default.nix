@@ -266,12 +266,6 @@ in
       }
 
       {
-        plugin = bufferline-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/bufferline.fnl;
-        type = "fennel";
-      }
-
-      {
         plugin = indent-blankline-nvim;
         config = builtins.readFile ../../config/nvim/plugins/indent_line.fnl;
         type = "fennel";

@@ -79,7 +79,6 @@
 
 # UI
 - src: rebelot/heirline.nvim
-- src: akinsho/bufferline.nvim
 - src: lukas-reineke/indent-blankline.nvim
 - src: lukas-reineke/virt-column.nvim
 - src: akinsho/toggleterm.nvim
