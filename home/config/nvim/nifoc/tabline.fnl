@@ -3,10 +3,18 @@
       heirline-utils (require :heirline.utils)
       dracula (require :dracula)
       colors (dracula.colors)
-      statusline (require :nifoc.statusline)]
+      statusline (require :nifoc.statusline)
+      fg-active (. (heirline-utils.get_highlight :TabLineSel) :fg)
+      fg-inactive (. (heirline-utils.get_highlight :TabLine) :fg)
+      bg-active (. (heirline-utils.get_highlight :TabLineSel) :bg)
+      bg-inactive (. (heirline-utils.get_highlight :TabLine) :bg)]
   ;; Utils
-  (set mod.truncate-left {:provider "" :hl {:fg :gray}})
-  (set mod.truncate-right {:provider "" :hl {:fg :gray}})
+  (set mod.space
+       {:provider " "
+        :hl (fn [self]
+              (if self.is_active {:bg bg-active} {:bg bg-inactive}))})
+  (set mod.truncate-left {:provider "" :hl {:fg fg-inactive}})
+  (set mod.truncate-right {:provider "" :hl {:fg fg-inactive}})
   ;; Filename
   (set mod.filename-block
        {:init (fn [self]
@@ -42,9 +50,11 @@
   (set mod.close-button
        {:condition (fn [self]
                      (not (. vim :bo self.bufnr :modified)))
-        1 statusline.space
+        1 mod.space
         2 {:provider ""
-           :hl {:fg :gray}
+           :hl (fn [self]
+                 (if self.is_active {:fg fg-active :bg bg-active}
+                     {:fg fg-inactive :bg bg-inactive}))
            :on_click {:name :heirline_tabline_close_buffer_callback
                       :callback (fn [_ minwid]
                                   (api.nvim_buf_delete minwid {:force false}))
@@ -54,18 +64,13 @@
   (set mod.active-indicator
        {:provider (fn [self]
                     (if self.is_active "┃ " "  "))
-        :hl {:fg colors.purple :bold true}})
+        :hl (fn [self]
+              (if self.is_active {:fg colors.purple :bg bg-active :bold true}
+                  {:fg fg-inactive :bg bg-inactive :bold true}))})
   ;; Block
-  (set mod.buffer-block
-       (heirline-utils.surround [" " " "]
-                                (fn [self]
-                                  (if self.is_active
-                                      (. (heirline-utils.get_highlight :TabLineSel)
-                                         :bg)
-                                      (. (heirline-utils.get_highlight :TabLine)
-                                         :bg)))
-                                [mod.active-indicator
-                                 mod.filename-block
-                                 mod.close-button]))
+  (set mod.buffer-block [mod.active-indicator
+                         mod.filename-block
+                         mod.close-button
+                         mod.space])
   mod)
 

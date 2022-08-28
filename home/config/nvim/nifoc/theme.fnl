@@ -10,6 +10,10 @@
     (set g.dracula_italic_comment true)
     (set o.background :dark)
     (colorscheme :dracula)
+    ;; Tabline
+    (highlight :TabLine {:fg dracula-colors.comment :bg dracula-colors.black})
+    (highlight :TabLineSel {:fg dracula-colors.white :bg dracula-colors.bg})
+    (highlight :TabLineFill {:bg dracula-colors.black})
     ;; vim-matchup
     (highlight :MatchParen {:fg dracula-colors.orange :bold true :italic true})
     (highlight :MatchWord {:italic true})
