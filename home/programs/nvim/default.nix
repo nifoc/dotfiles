@@ -312,12 +312,6 @@ in
         config = builtins.readFile ../../config/nvim/plugins/notify.fnl;
         type = "fennel";
       }
-
-      {
-        plugin = nvim-visual-eof-lua;
-        config = builtins.readFile ../../config/nvim/plugins/visual-eof.fnl;
-        type = "fennel";
-      }
     ]) ++ (with pkgs.vimPlugins; [
       # Fixes
       FixCursorHold-nvim

@@ -86,4 +86,3 @@
 - src: lewis6991/gitsigns.nvim
 - src: lewis6991/spellsitter.nvim
 - src: rcarriga/nvim-notify
-- src: LumaKernel/nvim-visual-eof.lua
