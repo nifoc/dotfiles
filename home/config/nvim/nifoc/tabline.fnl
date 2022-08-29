@@ -73,12 +73,16 @@
         :hl (fn [self]
               (if self.is_active {:fg colors.purple :bg bg-active :bold true}
                   {:fg fg-inactive :bg bg-inactive :bold true}))})
-  (set mod.os-indicator {:static {:uname (vim.loop.os_uname)
-                                  :os {:Darwin "" :Linux ""}}
-                         :hl {:fg colors.white :bg bg-active}
+  (set mod.os-indicator {:static {:uname (. (vim.loop.os_uname) :sysname)
+                                  :os {:Darwin "" :Linux ""}
+                                  :os-color {:Darwin colors.white
+                                             :Linux "#7ebae4"}}
+                         :hl (fn [self]
+                               (let [fg-color (. self :os-color self.uname)]
+                                 {:fg fg-color :bg bg-active}))
                          1 {:provider "  "}
                          2 {:provider (fn [self]
-                                        (. self :os self.uname.sysname))}
+                                        (. self :os self.uname))}
                          3 {:provider "  "}})
   ;; Block
   (set mod.buffer-block [mod.active-indicator
