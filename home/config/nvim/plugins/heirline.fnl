@@ -5,10 +5,9 @@
       nt (require :nifoc.tabline)]
   (local default-statusline [;; Left
                              ns.vi-mode
-                             (ns.insert-left-unless-empty ns.git " ")
-                             (ns.insert-left-unless-empty ns.diagnostics " ")
-                             (ns.insert-left-unless-empty ns.current-function
-                                                          " ")
+                             ns.git
+                             ns.diagnostics
+                             ns.current-function
                              ;; Right
                              ns.push-right
                              ns.filetype-block
@@ -37,8 +36,10 @@
                       2 shell-statusline
                       3 default-statusline})
   (local winbar nil)
-  (local tabline (utils.make_buflist nt.buffer-block nt.truncate-left
-                                     nt.truncate-right))
+  (local tabline [nt.os-indicator
+                  (utils.make_buflist nt.buffer-block nt.truncate-left
+                                      nt.truncate-right)
+                  nt.tabpages-block])
   ;; Load Lines
   (set vim.opt.laststatus 3)
   (heirline.setup statuslines winbar tabline))

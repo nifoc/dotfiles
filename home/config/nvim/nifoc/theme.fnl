@@ -5,24 +5,25 @@
       g vim.g
       dracula (require :dracula)
       dracula-colors (dracula.colors)]
+  (set mod.colors dracula-colors)
+
   (fn mod.setup []
     (set g.dracula_show_end_of_buffer false)
     (set g.dracula_italic_comment true)
     (set o.background :dark)
     (colorscheme :dracula)
     ;; Tabline
-    (highlight :TabLine {:fg dracula-colors.comment :bg dracula-colors.black})
-    (highlight :TabLineSel {:fg dracula-colors.white :bg dracula-colors.bg})
-    (highlight :TabLineFill {:bg dracula-colors.black})
+    (highlight :TabLine {:fg mod.colors.comment :bg mod.colors.black})
+    (highlight :TabLineSel {:fg mod.colors.white :bg mod.colors.bg})
+    (highlight :TabLineFill {:bg mod.colors.black})
     ;; vim-matchup
-    (highlight :MatchParen {:fg dracula-colors.orange :bold true :italic true})
+    (highlight :MatchParen {:fg mod.colors.orange :bold true :italic true})
     (highlight :MatchWord {:italic true})
     (highlight-link :MatchupVirtualText :Comment)
     ;; vim-illuminate
-    (highlight :IlluminatedWordText {:bg dracula-colors.selection})
-    (highlight :IlluminatedWordRead {:bg dracula-colors.selection})
-    (highlight :IlluminatedWordWrite
-               {:bg dracula-colors.selection :underline true}))
+    (highlight :IlluminatedWordText {:bg mod.colors.selection})
+    (highlight :IlluminatedWordRead {:bg mod.colors.selection})
+    (highlight :IlluminatedWordWrite {:bg mod.colors.selection :underline true}))
 
   mod)
 

@@ -5,8 +5,7 @@
       heirline-utils (require :heirline.utils)
       heirline-conditions (require :heirline.conditions)
       web-devicons (require :nvim-web-devicons)
-      dracula (require :dracula)
-      colors (dracula.colors)
+      colors (. (require :nifoc.theme) :colors)
       formatting (require :nifoc.formatting)
       nifoc-treesitter (require :nifoc.treesitter)]
   (fn buffer-variable-exists? [key]
@@ -19,25 +18,20 @@
   (fn get-total-lines []
     (api.nvim_buf_line_count 0))
 
+  (fn max-number [nums]
+    (math.max (unpack nums)))
+
   ;; Utils
   (set mod.default-hl (fn []
                         {:bg colors.black}))
   (set mod.space {:provider " "})
   (set mod.spacer {:provider " " :hl {:fg colors.bg :bg colors.bg}})
   (set mod.push-right {:provider "%="})
-
-  (fn mod.insert-left-unless-empty [item left]
-    {:after (fn [self]
-              (if (and (not= self.stl nil) (> (length self.stl) 0))
-                  (set self.stl (.. left self.stl))))
-     1 item})
-
-  (fn mod.insert-right-unless-empty [item right]
-    {:after (fn [self]
-              (if (and (not= self.stl nil) (> (length self.stl) 0))
-                  (set self.stl (.. self.stl right))))
-     1 item})
-
+  (set mod.space-if-count {:condition #(> $1.check-count 0) :provider " "})
+  (set mod.space-if-length {:condition #(> $1.check-length 0) :provider " "})
+  (set mod.space-if-count-or-length
+       {:condition #(or (> $1.check-count 0) (> $1.check-length 0))
+        :provider " "})
   ;; Mode
   (set mod.vi-mode {:init (fn [self]
                             (let [mode (. (api.nvim_get_mode) :mode)]
@@ -161,17 +155,23 @@
                           (set self.git-head git-status.head)
                           (set self.git-added (or git-status.added 0))
                           (set self.git-removed (or git-status.removed 0))
-                          (set self.git-changed (or git-status.changed 0))))
-                1 {:provider #(.. "  " $1.git-head " ")
+                          (set self.git-changed (or git-status.changed 0))
+                          (set self.check-count
+                               (max-number [self.git-added
+                                            self.git-removed
+                                            self.git-changed]))
+                          (set self.check-length (length self.git-head))))
+                1 mod.space-if-count-or-length
+                2 {:provider #(.. "  " $1.git-head " ")
                    :hl {:fg colors.black :bg colors.orange :bold true}}
-                2 mod.space
-                3 {:provider (fn [self]
+                3 mod.space
+                4 {:provider (fn [self]
                                (.. " " self.git-added " "))
                    :hl {:fg colors.bright_green}}
-                4 {:provider (fn [self]
+                5 {:provider (fn [self]
                                (.. " " self.git-removed " "))
                    :hl {:fg colors.bright_red}}
-                5 {:provider (fn [self]
+                6 {:provider (fn [self]
                                (.. " " self.git-changed))
                    :hl {:fg colors.cyan}}})
   ;; Diagnostics
@@ -189,9 +189,15 @@
                                                       {:severity d.severity.INFO})))
                                   (set self.hints
                                        (length (d.get 0
-                                                      {:severity d.severity.HINT})))))
+                                                      {:severity d.severity.HINT})))
+                                  (set self.check-count
+                                       (max-number [self.errors
+                                                    self.warnings
+                                                    self.info
+                                                    self.hints]))))
                         :update [:DiagnosticChanged :BufEnter]
-                        1 {:provider (fn [self]
+                        1 mod.space-if-count
+                        2 {:provider (fn [self]
                                        (let [spacer (if (or (> self.warnings 0)
                                                             (> self.info 0)
                                                             (> self.hints 0))
@@ -199,30 +205,38 @@
                                          (when (> self.errors 0)
                                            (.. " " self.errors spacer))))
                            :hl {:fg colors.red}}
-                        2 {:provider (fn [self]
+                        3 {:provider (fn [self]
                                        (let [spacer (if (or (> self.info 0)
                                                             (> self.hints 0))
                                                         " " "")]
                                          (when (> self.warnings 0)
                                            (.. " " self.warnings spacer))))
                            :hl {:fg colors.yellow}}
-                        3 {:provider (fn [self]
+                        4 {:provider (fn [self]
                                        (let [spacer (if (> self.hints 0) " " "")]
                                          (when (> self.info 0)
                                            (.. " " self.info spacer))))
                            :hl {:fg colors.cyan}}
-                        4 {:provider (fn [self]
+                        5 {:provider (fn [self]
                                        (when (> self.hints 0)
                                          (.. " " self.hints)))
                            :hl {:fg colors.cyan}}})
   ;; Current Function
   (set mod.current-function
        {:condition heirline-conditions.lsp_attached
-        :provider (fn []
-                    (let [ctx vim.b.nifoc_lsp_current_context]
-                      (when (and (not= ctx nil) (> (ctx:len) 0))
-                        ctx)))
-        :hl {:fg colors.white}})
+        :init (fn [self]
+                (let [ctx vim.b.nifoc_lsp_current_context]
+                  (if (and (not= ctx nil) (> (ctx:len) 0))
+                      (do
+                        (set self.current-ctx ctx)
+                        (set self.check-length 1))
+                      (do
+                        (set self.current-ctx nil)
+                        (set self.check-length 0)))))
+        1 mod.space-if-length
+        2 {:provider (fn [self]
+                       self.current-ctx)
+           :hl {:fg colors.white}}})
   ;; Buffer Options
   (set mod.buffer-options
        {:static {:format {:dos "" :unix "" :mac ""}}
