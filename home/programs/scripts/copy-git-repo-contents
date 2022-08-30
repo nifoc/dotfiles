@@ -1,0 +1,15 @@
+#!/usr/bin/env nix-shell
+#!nix-shell -i bash -p coreutils findutils rsync
+
+current="$PWD"
+src="$(realpath "$1")"
+dst="$(realpath "$2")"
+
+cd "$dst"
+find . -not -path './.git/*' -not -path './.git' -not -path '.' -not -path '..' -print0 | xargs -0 rm -rf
+rsync -ax "$src/" ./ --exclude .git --exclude deps --exclude _build
+
+rm -rf ./.gitlab
+rm -f ./.gitlab-ci.yml
+
+cd "$current"
