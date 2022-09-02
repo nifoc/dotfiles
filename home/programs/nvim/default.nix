@@ -121,6 +121,8 @@ in
             tree-sitter-json
             tree-sitter-lua
             tree-sitter-make
+            tree-sitter-markdown
+            tree-sitter-markdown-inline
             tree-sitter-nix
             tree-sitter-query
             tree-sitter-regex

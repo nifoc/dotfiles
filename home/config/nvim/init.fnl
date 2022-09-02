@@ -47,7 +47,7 @@
   (set o.conceallevel 2)
   (set o.concealcursor :nc)
   (set o.updatetime 2000)
-  (set g.cursorhold_updatetime 100) ; https://github.com/antoinemadec/FixCursorHold.nvim
+  (set g.cursorhold_updatetime 250) ; https://github.com/antoinemadec/FixCursorHold.nvim
   (o.shortmess:append :c)
   (set o.termguicolors true)
   (set o.mouse :a)

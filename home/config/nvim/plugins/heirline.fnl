@@ -31,7 +31,7 @@
           4 ns.space
           5 (ns.shell-mode :black :purple)})
   (local statuslines {:hl ns.default-hl
-                      :init utils.pick_child_on_condition
+                      :fallthrough false
                       1 telescope-statusline
                       2 shell-statusline
                       3 default-statusline})
