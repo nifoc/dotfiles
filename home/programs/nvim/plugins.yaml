@@ -84,5 +84,4 @@
 - src: akinsho/toggleterm.nvim
 - src: axieax/urlview.nvim
 - src: lewis6991/gitsigns.nvim
-- src: lewis6991/spellsitter.nvim
 - src: rcarriga/nvim-notify

@@ -301,15 +301,6 @@ in
       }
 
       {
-        plugin = spellsitter-nvim;
-        config = ''
-          (let [spellsitter (require :spellsitter)]
-            (spellsitter.setup))
-        '';
-        type = "fennel";
-      }
-
-      {
         plugin = nvim-notify;
         config = builtins.readFile ../../config/nvim/plugins/notify.fnl;
         type = "fennel";
