@@ -42,7 +42,7 @@
       };
 
       nix_shell = {
-        symbol = " ";
+        symbol = " ";
         format = "\\[[$symbol$state( \\($name\\))]($style)\\]";
       };
 
