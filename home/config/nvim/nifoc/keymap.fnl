@@ -11,8 +11,7 @@
       npairs (require :nvim-autopairs)
       gitsigns (require :gitsigns)
       repl (require :nifoc.repl)
-      formatting (require :nifoc.formatting)
-      nifoc-lsp (require :nifoc.lsp)]
+      formatting (require :nifoc.formatting)]
   (fn mod.setup []
     (keymap.set :n :<space> :<nop> {:noremap true})
     (set vim.g.mapleader " ")
