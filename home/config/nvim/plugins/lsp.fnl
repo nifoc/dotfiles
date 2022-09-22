@@ -1,10 +1,11 @@
 (let [lsp (require :lspconfig)
       cmp (require :cmp_nvim_lsp)
+      navic (require :nvim-navic)
       nifoc-lsp (require :nifoc.lsp)
       diagnostic (require :nifoc.diagnostic)
       formatting (require :nifoc.formatting)]
   (fn custom-attach [client bufnr]
-    (nifoc-lsp.on-attach client bufnr)
+    (navic.attach client bufnr)
     (diagnostic.maybe-enable-lsp client bufnr)
     (formatting.maybe-enable-lsp client bufnr))
 

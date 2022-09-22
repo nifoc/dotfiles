@@ -41,6 +41,7 @@
 # LSP
 - src: neovim/nvim-lspconfig
 - src: onsails/lspkind.nvim
+- src: SmiteshP/nvim-navic
 - src: RRethy/vim-illuminate
 
 # Linter

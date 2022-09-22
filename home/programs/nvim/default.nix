@@ -14,14 +14,6 @@ in
     withRuby = false;
     withPython3 = false;
 
-    extraConfig = ''
-      lua << EOF
-        require('nifoc.nix')
-        require('impatient')
-        require('configuration.init')
-      EOF
-    '';
-
     extraLuaPackages = with pkgs; [ luarocks-jsregexp ];
 
     extraPackages = with pkgs; [
@@ -57,7 +49,16 @@ in
 
     plugins = (with customPlugins; [
       # Fixes
-      impatient-nvim
+      {
+        plugin = impatient-nvim;
+        config = ''
+          -- Nix init.lua workaround
+          require('nifoc.nix')
+          require('impatient')
+          require('configuration.init')
+        '';
+        type = "lua";
+      }
 
       # Utils
       popup-nvim
@@ -175,6 +176,12 @@ in
       }
 
       lspkind-nvim
+
+      {
+        plugin = nvim-navic;
+        config = builtins.readFile ../../config/nvim/plugins/navic.fnl;
+        type = "fennel";
+      }
 
       {
         plugin = vim-illuminate;

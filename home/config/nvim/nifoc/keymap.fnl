@@ -99,9 +99,7 @@
                 #(telescope-builtin.lsp_implementations telescope-dropdown)
                 {:buffer bufnr :desc "Find Implementations"})
     (keymap.set :n :K vim.lsp.buf.hover
-                {:buffer bufnr :desc "Show Documentation"})
-    (keymap.set :n :<leader>ddsc nifoc-lsp.symbols-under-cursor
-                {:buffer bufnr :desc "Document Symbols Under Cursor"}))
+                {:buffer bufnr :desc "Show Documentation"}))
 
   (fn mod.terminal-open [bufnr]
     (let [map-opts {:buffer bufnr}]

@@ -7,7 +7,8 @@
       web-devicons (require :nvim-web-devicons)
       colors (. (require :nifoc.theme) :colors)
       formatting (require :nifoc.formatting)
-      nifoc-treesitter (require :nifoc.treesitter)]
+      nifoc-treesitter (require :nifoc.treesitter)
+      navic (require :nvim-navic)]
   (fn buffer-variable-exists? [key]
     (not= (. vim :b key) nil))
 
@@ -225,18 +226,11 @@
   (set mod.current-function
        {:condition heirline-conditions.lsp_attached
         :init (fn [self]
-                (let [ctx vim.b.nifoc_lsp_current_context]
-                  (if (and (not= ctx nil) (> (ctx:len) 0))
-                      (do
-                        (set self.current-ctx ctx)
-                        (set self.check-length 1))
-                      (do
-                        (set self.current-ctx nil)
-                        (set self.check-length 0)))))
+                (if (navic.is_available)
+                    (set self.check-length 1)
+                    (set self.check-length 0)))
         1 mod.space-if-length
-        2 {:provider (fn [self]
-                       self.current-ctx)
-           :hl {:fg colors.white}}})
+        2 {:provider #(navic.get_location) :hl {:fg colors.white}}})
   ;; Buffer Options
   (set mod.buffer-options
        {:static {:format {:dos "" :unix "" :mac ""}}
