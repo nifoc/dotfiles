@@ -230,7 +230,8 @@
                     (set self.check-length 1)
                     (set self.check-length 0)))
         1 mod.space-if-length
-        2 {:provider #(navic.get_location) :hl {:fg colors.white}}})
+        2 {:provider #(string.gsub (navic.get_location) "%%" "")
+           :hl {:fg colors.white}}})
   ;; Buffer Options
   (set mod.buffer-options
        {:static {:format {:dos "" :unix "" :mac ""}}
