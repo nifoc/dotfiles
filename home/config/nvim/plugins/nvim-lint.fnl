@@ -27,7 +27,7 @@
   ;; Configure Linters per FT
   (set lint.linters_by_ft {:dockerfile [:hadolint]
                            :elixir [:credo]
-                           :fennel [:fennel]
+                           ;:fennel [:fennel]
                            :fish [:fish]
                            :markdown [:vale]
                            :nix [:deadnix :nix :statix]

@@ -38,7 +38,7 @@ in
       # Diagnostic Tools
       deadnix
       hadolint
-      fennel-luajit
+      lua51Packages.fennel
       fnlfmt
       shellcheck
       shfmt
@@ -324,7 +324,7 @@ in
   xdg.configFile."nvim" = {
     source = pkgs.runCommand "nvim-fennel-files"
       {
-        nativeBuildInputs = with pkgs; [ fennel-luajit stylua ];
+        nativeBuildInputs = with pkgs; [ lua51Packages.fennel stylua ];
       } ''
       mkdir -p $out/lua/configuration
       mkdir -p $out/lua/nifoc/utils

@@ -16,13 +16,9 @@
                            :desc "Run Formatter"})))
 
   (fn run-neoformat [formatprg]
-    (let [neoformat (.. "Neoformat " formatprg)
-          cmdheight (vim.opt.cmdheight:get)]
-      ;; Workaround for a prompt issue with cmdheight=0
-      (set vim.opt.cmdheight 1)
+    (let [neoformat (.. "Neoformat " formatprg)]
       (cmd (.. "try | undojoin | " neoformat " | catch /E790/ | " neoformat
-               " | endtry"))
-      (set vim.opt.cmdheight cmdheight)))
+               " | endtry"))))
 
   (fn mod.enable-for-buffer []
     (set-bufvar 0 :nifoc_formatter_disabled 0))
