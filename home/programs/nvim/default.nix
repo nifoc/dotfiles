@@ -24,6 +24,7 @@ in
       ripgrep
 
       # LSP
+      nil
       nodePackages.bash-language-server
       nodePackages.dockerfile-language-server-nodejs
       nodePackages.svelte-language-server

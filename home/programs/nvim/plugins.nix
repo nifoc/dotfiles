@@ -289,8 +289,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "numtostr";
       repo = "comment.nvim";
-      rev = "256cea0082c404cdced10319e9fa7580d33cf255";
-      sha256 = "188wbh4wx256sna6b8m3hrsdfv529g6n928l220sy65kkv2dvj6k";
+      rev = "7cc86127d30f7001a6e83c8b72656f17a67bc55f";
+      sha256 = "1jl2wwr8ssszgkynnkxpz2c57mw7yapvrc892jrnkbkj6lv7h8vi";
       fetchSubmodules = false;
     };
   };
@@ -483,12 +483,12 @@ rec {
   };
   nvim-surround = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-surround";
-    version = "2022-09-05";
+    version = "2022-09-26";
     src = pkgs.fetchFromGitHub {
       owner = "kylechui";
       repo = "nvim-surround";
-      rev = "d91787d5a716623be7cec3be23c06c0856dc21b8";
-      sha256 = "054kpdx7s0pj49yqf5111f1dsfh80js6fxlma1r0mds5q7vw5mav";
+      rev = "a0b35fd410e16f00543e81dbb6c52c723f49717e";
+      sha256 = "1krsgy0x3x9bml8iszd0svz9iqmdn73yn15n49ffznq3vj3gafr2";
       fetchSubmodules = false;
     };
   };

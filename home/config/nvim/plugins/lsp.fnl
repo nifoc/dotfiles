@@ -4,7 +4,8 @@
       diagnostic (require :nifoc.diagnostic)
       formatting (require :nifoc.formatting)]
   (fn custom-attach [client bufnr]
-    (navic.attach client bufnr)
+    (when (client.supports_method :textDocument/documentSymbol)
+      (navic.attach client bufnr))
     (diagnostic.maybe-enable-lsp client bufnr)
     (formatting.maybe-enable-lsp client bufnr))
 
@@ -32,6 +33,7 @@
                          :erlangls
                          :eslint
                          :html
+                         :nil_ls
                          :rnix
                          :sqls
                          :svelte
