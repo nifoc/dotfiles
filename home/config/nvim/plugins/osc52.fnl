@@ -1,6 +1,8 @@
 (let [osc52 (require :osc52)
       uname (vim.loop.os_uname)
       clip-name :nifocClipboard]
+  (osc52.setup {:silent true})
+
   (fn copy [lines _]
     (-> lines
         (table.concat "\n")
