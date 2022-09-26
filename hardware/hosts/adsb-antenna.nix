@@ -9,9 +9,15 @@
       kernelModules = [ ];
     };
 
-    kernelModules = [ ];
+    kernelModules = [ "tcp_bbr" ];
+
     extraModulePackages = [ ];
     blacklistedKernelModules = [ "rtl2832" "dvb_usb_rtl28xxu" "rtl2832_sdr" ];
+
+    kernel.sysctl = {
+      "net.core.default_qdisc" = "fq";
+      "net.ipv4.tcp_congestion_control" = "bbr";
+    };
   };
 
   fileSystems."/" = {
