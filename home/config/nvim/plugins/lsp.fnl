@@ -20,8 +20,7 @@
   (tset vim.lsp.handlers :textDocument/signatureHelp
         (vim.lsp.with vim.lsp.handlers.signature_help {:border :rounded}))
   ;; Servers
-  (let [default-capabilities (vim.lsp.protocol.make_client_capabilities)
-        capabilities (cmp.update_capabilities default-capabilities)
+  (let [capabilities (cmp.default_capabilities)
         flags {:allow_incremental_sync true :debounce_text_changes 700}
         default-config {:on_attach custom-attach : capabilities : flags}
         default-config-no-format {:on_attach custom-attach-no-format
