@@ -50,6 +50,8 @@ in
     ];
   };
 
+  documentation.doc.enable = false;
+
   users = {
     users.daniel = {
       home = "/Users/daniel";

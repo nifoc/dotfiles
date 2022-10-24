@@ -74,6 +74,8 @@ in
     ];
   };
 
+  documentation.doc.enable = false;
+
   programs.fish.enable = true;
 
   users.users = {
