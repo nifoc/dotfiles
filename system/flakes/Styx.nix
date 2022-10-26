@@ -1,6 +1,20 @@
 { nixpkgs, home-manager, darwin, inputs, ... }:
 
 let
+  default-system = "aarch64-darwin";
+
+  patched-darwin =
+    let
+      src = nixpkgs.legacyPackages.${default-system}.applyPatches {
+        name = "nix-darwin";
+        src = darwin;
+        patches = [
+          ../../patches/darwin/ventura-fontrestore.patch
+        ];
+      };
+    in
+    nixpkgs.lib.fix (self: (import "${src}/flake.nix").outputs { inherit self nixpkgs; });
+
   overlay-x86 = _: _: { pkgs-x86 = import nixpkgs { system = "x86_64-darwin"; }; };
   overlay-neovim = inputs.neovim-nightly-overlay.overlay;
   overlay-nifoc = inputs.nifoc-overlay.overlay;
@@ -19,8 +33,8 @@ let
   };
 in
 {
-  system = darwin.lib.darwinSystem {
-    system = "aarch64-darwin";
+  system = patched-darwin.lib.darwinSystem {
+    system = default-system;
     modules = [
       ../hosts/Styx.nix
 
