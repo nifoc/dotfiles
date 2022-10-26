@@ -8,9 +8,7 @@ let
       src = nixpkgs.legacyPackages.${default-system}.applyPatches {
         name = "nix-darwin";
         src = darwin;
-        patches = [
-          ../../patches/darwin/ventura-fontrestore.patch
-        ];
+        patches = [ ];
       };
     in
     nixpkgs.lib.fix (self: (import "${src}/flake.nix").outputs { inherit self nixpkgs; });

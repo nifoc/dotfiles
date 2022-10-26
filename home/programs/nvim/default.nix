@@ -152,7 +152,7 @@ in
         type = "fennel";
       }
 
-      telescope-zf-native-nvim
+      telescope-fzf-native-nvim
 
       {
         plugin = project-nvim;
