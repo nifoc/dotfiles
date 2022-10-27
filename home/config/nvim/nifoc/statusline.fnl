@@ -229,9 +229,73 @@
                 (if (navic.is_available)
                     (set self.check-length 1)
                     (set self.check-length 0)))
+        :update :CursorMoved
         1 mod.space-if-length
-        2 {:provider #(string.gsub (navic.get_location) "%%" "")
+        2 {:provider #(string.gsub (navic.get_location) "%%" "%%%%")
            :hl {:fg colors.white}}})
+  (set mod.navic
+       {:condition navic.is_available
+        :static {:type-hl {:File :Directory
+                           :Module "@include"
+                           :Namespace "@namespace"
+                           :Package "@include"
+                           :Class "@structure"
+                           :Method "@method"
+                           :Property "@property"
+                           :Field "@field"
+                           :Constructor "@constructor"
+                           :Enum "@field"
+                           :Interface "@type"
+                           :Function "@function"
+                           :Variable "@variable"
+                           :Constant "@constant"
+                           :String "@string"
+                           :Number "@number"
+                           :Boolean "@boolean"
+                           :Array "@field"
+                           :Object "@type"
+                           :Key "@keyword"
+                           :Null "@comment"
+                           :EnumMember "@field"
+                           :Struct "@structure"
+                           :Event "@keyword"
+                           :Operator "@operator"
+                           :TypeParameter "@type"}
+                 :enc (fn [line col winnr]
+                        (let [enc-line (bit.lshift line 16)
+                              enc-col (bit.lshift col 6)]
+                          (bit.bor enc-line enc-col winnr)))
+                 :dec (fn [c]
+                        (let [line (bit.rshift c 16)
+                              col (-> c (bit.rshift 6) (bit.band 1023))
+                              winnr (bit.band c 63)]
+                          [line col winnr]))}
+        :init (fn [self]
+                (set self.check-length 1)
+                (local data (or (navic.get_data) []))
+                (local data-len (length data))
+                (var children [])
+                (each [i d (ipairs data)]
+                  (let [pos (self.enc d.scope.start.line
+                                      d.scope.start.character self.winnr)
+                        child [{:provider d.icon :hl (. self.type-hl d.type)}
+                               {:provider (string.gsub d.name "%%" "%%%%")
+                                :on_click {:name :heirline_navic
+                                           :minwid pos
+                                           :callback (fn [_ minwid]
+                                                       (let [[line col winnr] (self.dec minwid)
+                                                             id (vim.fn.win_getid winnr)]
+                                                         (api.nvim_win_set_cursor id
+                                                                                  [line
+                                                                                   col])))}}]]
+                    (when (and (> data-len 1) (< i data-len))
+                      (table.insert child
+                                    {:provider "  " :hl {:fg colors.white}}))
+                    (table.insert children child)))
+                (set self.child (self:new children 1)))
+        :update :CursorMoved
+        1 mod.space-if-length
+        2 {:provider #(: $1.child :eval) :hl {:fg colors.white}}})
   ;; Buffer Options
   (set mod.buffer-options
        {:static {:format {:dos "" :unix "" :mac ""}}

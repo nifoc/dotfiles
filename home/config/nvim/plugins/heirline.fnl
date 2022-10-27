@@ -7,7 +7,7 @@
                              ns.vi-mode
                              ns.git
                              ns.diagnostics
-                             ns.current-function
+                             ns.navic
                              ;; Right
                              ns.push-right
                              ns.filetype-block
