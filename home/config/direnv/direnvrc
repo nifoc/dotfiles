@@ -30,6 +30,7 @@ project_elixir()  {
 
 project_node() {
   export NODE_PATH=$(direnv_layout_dir)/node
+  export NPM_CONFIG_USERCONFIG=$(direnv_layout_dir)/npm/npmrc
   export NPM_CONFIG_PREFIX=$(direnv_layout_dir)/npm/config
   export NPM_CONFIG_CACHE=$(direnv_layout_dir)/npm/cache
   export NPM_CONFIG_DEVDIR=$(direnv_layout_dir)/npm/dev
