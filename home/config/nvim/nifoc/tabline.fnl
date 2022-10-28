@@ -55,6 +55,7 @@
   (set mod.close-button
        {:condition (fn [self]
                      (not (. vim :bo self.bufnr :modified)))
+        :update [:WinNew :WinClosed :BufEnter]
         1 mod.space
         2 {:provider ""
            :hl (fn [self]
