@@ -1,13 +1,13 @@
 (let [mod {}
       keymap vim.keymap
       substitute (require :substitute)
-      telescope (require :telescope)
       telescope-builtin (require :telescope.builtin)
       telescope-themes (require :telescope.themes)
       telescope-nifoc (require :nifoc.telescope)
       telescope-toggleterm (require :telescope-toggleterm)
       telescope-ivy (telescope-themes.get_ivy)
       telescope-dropdown (telescope-themes.get_dropdown)
+      noice (require :noice)
       npairs (require :nvim-autopairs)
       gitsigns (require :gitsigns)
       repl (require :nifoc.repl)
@@ -53,7 +53,7 @@
     (keymap.set :n :<leader>dlr :<cmd>LspRestart<CR> {:desc "Restart LSP"})
     (keymap.set :n :<leader>dt :<cmd>TSPlaygroundToggle<CR>
                 {:desc "Toggle Treetsitter Playground"})
-    (keymap.set :n :<leader>dn telescope.extensions.notify.notify
+    (keymap.set :n :<leader>dn #(noice.cmd :telescope)
                 {:desc "Display Notifications"})
     ;; Other Mappings
     (keymap.set :n :<CR> ":nohlsearch<CR><CR>" {:silent true})

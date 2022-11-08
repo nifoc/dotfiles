@@ -18,7 +18,7 @@ project_erlang() {
   export REBAR_GLOBAL_CACHE_DIR=$(direnv_layout_dir)/rebar/cache
 }
 
-project_elixir()  {
+project_elixir() {
   project_erlang
 
   export MIX_HOME=$(direnv_layout_dir)/mix
@@ -26,6 +26,10 @@ project_elixir()  {
 
   PATH_add $MIX_HOME/bin
   PATH_add $HEX_HOME/bin
+}
+
+project_java() {
+  export M2_HOME=$(direnv_layout_dir)/m2
 }
 
 project_node() {
@@ -36,6 +40,7 @@ project_node() {
   export NPM_CONFIG_DEVDIR=$(direnv_layout_dir)/npm/dev
 
   export YARN_ENABLE_TELEMETRY=false
+  export NEXT_TELEMETRY_DISABLED=1
 
   PATH_add $NODE_PATH/bin
   PATH_add node_modules/.bin

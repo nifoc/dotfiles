@@ -308,9 +308,12 @@ in
         type = "fennel";
       }
 
+      nvim-notify
+      nui-nvim
+
       {
-        plugin = nvim-notify;
-        config = builtins.readFile ../../config/nvim/plugins/notify.fnl;
+        plugin = noice-nvim;
+        config = builtins.readFile ../../config/nvim/plugins/noice.fnl;
         type = "fennel";
       }
     ]) ++ (with pkgs.vimPlugins; [

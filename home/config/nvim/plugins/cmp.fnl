@@ -46,7 +46,6 @@
                                                    :<CR> (cmp.mapping.confirm {:select true})})
               :completion {:keyword_length 2
                            :completeopt "menu,menuone,noinsert"}
-              :window {:documentation (cmp.config.window.bordered {:border :rounded})}
               :snippet {:expand (fn [args]
                                   (luasnip.lsp_expand args.body))}
               :formatting {:format (lspkind.cmp_format {:mode :symbol_text

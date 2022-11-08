@@ -31,11 +31,13 @@
                        :typescript
                        :vim
                        :yaml]
-      rainbow-parsers [:fennel]]
+      rainbow-parsers [:fennel]
+      disable-parsers [:tsx]]
   (nifoc-treesitter.setup)
   (treesitter-config.setup {:ensure_installed []
                             :sync_install true
-                            :highlight {:enable true}
+                            :auto_install false
+                            :highlight {:enable true :disable disable-parsers}
                             :indent {:enable true}
                             :textobjects {:select {:enable true
                                                    :keymaps {:af "@function.outer"
@@ -47,7 +49,7 @@
                                                                  (not (vim.tbl_contains rainbow-parsers
                                                                                         parser)))
                                                                install-parsers)}
-                            :matchup {:enable true}
+                            :matchup {:enable true :disable disable-parsers}
                             :autopairs {:enable true}
                             :autotag {:enable true}
                             :playground {:enable true}

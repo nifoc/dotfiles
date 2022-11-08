@@ -78,4 +78,6 @@
 - src: akinsho/toggleterm.nvim
 - src: axieax/urlview.nvim
 - src: lewis6991/gitsigns.nvim
+- src: MunifTanjim/nui.nvim
 - src: rcarriga/nvim-notify
+- src: folke/noice.nvim

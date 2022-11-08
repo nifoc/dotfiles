@@ -14,11 +14,6 @@
     (set client.server_capabilities.documentRangeFormattingProvider false)
     (custom-attach client bufnr))
 
-  ;; Custom handler
-  (tset vim.lsp.handlers :textDocument/hover
-        (vim.lsp.with vim.lsp.handlers.hover {:border :rounded}))
-  (tset vim.lsp.handlers :textDocument/signatureHelp
-        (vim.lsp.with vim.lsp.handlers.signature_help {:border :rounded}))
   ;; Servers
   (let [capabilities (cmp.default_capabilities)
         flags {:allow_incremental_sync true :debounce_text_changes 700}

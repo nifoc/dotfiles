@@ -8,7 +8,6 @@
   (set o.showmode false)
   (set o.modeline false)
   (set o.ruler false)
-  (set o.lazyredraw true)
   (set o.cursorline true)
   (set o.list true)
   (set o.listchars {:tab "»·"
