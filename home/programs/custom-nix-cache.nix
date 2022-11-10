@@ -23,6 +23,7 @@ in
 
         if [[ $storePath == *"darwin-system"* ]] ||
            [[ $storePath == *"nixos-system"* ]] ||
+           [[ $storePath == *"-nix-shell-env" ]] ||
            [[ $storePath == *"-system-"* ]] ||
            [[ $storePath == *"home-manager"* ]] ||
            [[ $storePath == *"-etc" ]] ||

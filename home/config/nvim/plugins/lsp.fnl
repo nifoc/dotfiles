@@ -27,6 +27,7 @@
                          :erlangls
                          :eslint
                          :html
+                         :jdtls
                          :nil_ls
                          :rnix
                          :sqls

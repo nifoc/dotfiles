@@ -91,12 +91,12 @@ rec {
   };
   leap-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "leap.nvim";
-    version = "2022-11-05";
+    version = "2022-11-09";
     src = pkgs.fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "dda4ed60f90ae889f459887449a43c4de29609bd";
-      sha256 = "1vg3aawik80g59kvaf0n97hc6k3f7bkh43xw94dz3f3gs1yiks8b";
+      rev = "c19e974cfd9d52dc5070ec7b68183da39702c877";
+      sha256 = "1wdjmziq9910h51hvnmq27abqa8052fbpx5g065hbwk3jwsb5417";
       fetchSubmodules = false;
     };
   };
@@ -197,8 +197,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "folke";
       repo = "todo-comments.nvim";
-      rev = "f244aa391774b29878db580eff63a9e26dc5f084";
-      sha256 = "1awd6008lzmhwc285ldzglmjmzqiianfn32d5siy9lhlri915v33";
+      rev = "bca0e00644c22a3eecedce703c0db080dd6bdc55";
+      sha256 = "1rb8w2xgnwkf2vv3fwrjmqzw06iwhfmzb33ya01kbs077hp5qyc9";
       fetchSubmodules = false;
     };
   };
@@ -567,12 +567,12 @@ rec {
   };
   nvim-notify = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-notify";
-    version = "2022-11-08";
+    version = "2022-11-09";
     src = pkgs.fetchFromGitHub {
       owner = "rcarriga";
       repo = "nvim-notify";
-      rev = "ba270debc292cf173f5907ab67325947334c6dd8";
-      sha256 = "1zwmzvy900xdqzp7p8dicp7gr6x7256j30y9aqq1s06lskkg9w31";
+      rev = "30e6b5a710319e354c3e362deb7819cb2135c417";
+      sha256 = "0wg4zh8n25q9yhfhpgf9vimgcq5mim3nfj332fzh13vzn2w9z4jp";
       fetchSubmodules = false;
     };
   };
