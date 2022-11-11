@@ -57,7 +57,7 @@ in
           command = [ "--configFile=/traefik.toml" ];
           environment = secret.container.webserver.traefik.environment;
           volumes = [
-            "/var/run/docker.sock:/var/run/docker.sock:ro"
+            "/var/run/docker.sock:/var/run/docker.sock"
             "/etc/container-webserver/traefik/traefik.toml:/traefik.toml:ro"
             "/etc/container-webserver/traefik/acme.json:/acme.json"
             "/etc/container-webserver/traefik/custom:/custom_config:ro"
