@@ -148,6 +148,7 @@ in
           volumes = [
             "/etc/container-matrix/synapse:/data"
             "/etc/container-matrix/telegram:/bridge-data/telegram:ro"
+            "/etc/container-matrix/signal:/bridge-data/signal:ro"
           ];
           labels = {
             "traefik.enable" = "true";
