@@ -5,6 +5,7 @@
     "d /etc/container-webserver/weewx 0755 421 421"
     "d /etc/container-webserver/weewx/html 0755 421 421"
     "d /etc/container-matrix/synapse 0755 991 991"
+    "d /etc/container-matrix/telegram 0775 1337 1337"
   ];
 
   # mosquitto
@@ -102,5 +103,14 @@
     mode = "0640";
     uid = 991;
     gid = 991;
+  };
+
+  # Matrix: Telegram
+
+  environment.etc."container-matrix/telegram/config.yaml" = {
+    source = ../../secret/container/webserver/config/matrix/telegram.yaml;
+    mode = "0640";
+    uid = 1337;
+    gid = 1337;
   };
 }

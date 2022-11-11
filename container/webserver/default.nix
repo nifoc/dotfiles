@@ -162,6 +162,25 @@ in
           };
         };
       };
+
+      matrix-telegram = {
+        service = {
+          image = "dock.mau.dev/mautrix/telegram:latest";
+          container_name = "mautrix-telegram";
+          restart = "unless-stopped";
+          depends_on = [
+            "ipv6nat"
+            "synapse"
+          ];
+          networks = [ "webserver" ];
+          volumes = [
+            "/etc/container-matrix/telegram:/data"
+          ];
+          labels = {
+            "com.centurylinklabs.watchtower.enable" = "true";
+          };
+        };
+      };
     };
 
     networks.webserver = {
