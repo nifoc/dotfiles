@@ -182,6 +182,43 @@ in
           };
         };
       };
+
+      signald = {
+        service = {
+          image = "signald/signald:latest";
+          container_name = "signald";
+          restart = "unless-stopped";
+          depends_on = [ "ipv6nat" ];
+          networks = [ "webserver" ];
+          volumes = [
+            "/etc/container-matrix/signald:/signald"
+          ];
+          labels = {
+            "com.centurylinklabs.watchtower.enable" = "true";
+          };
+        };
+      };
+
+      matrix-signal = {
+        service = {
+          image = "dock.mau.dev/mautrix/signal:latest";
+          container_name = "mautrix-signal";
+          restart = "unless-stopped";
+          depends_on = [
+            "ipv6nat"
+            "synapse"
+            "signald"
+          ];
+          networks = [ "webserver" ];
+          volumes = [
+            "/etc/container-matrix/signal:/data"
+            "/etc/container-matrix/signald:/signald"
+          ];
+          labels = {
+            "com.centurylinklabs.watchtower.enable" = "true";
+          };
+        };
+      };
     };
 
     networks.webserver = {
