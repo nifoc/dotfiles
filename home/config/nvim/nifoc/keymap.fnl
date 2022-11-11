@@ -10,6 +10,7 @@
       noice (require :noice)
       npairs (require :nvim-autopairs)
       gitsigns (require :gitsigns)
+      lsp-lines (require :lsp_lines)
       repl (require :nifoc.repl)
       formatting (require :nifoc.formatting)]
   (fn mod.setup []
@@ -51,7 +52,8 @@
                 {:desc "Show Diagnostics"})
     (keymap.set :n :<leader>dli :<cmd>LspInfo<CR> {:desc "LSP Info"})
     (keymap.set :n :<leader>dlr :<cmd>LspRestart<CR> {:desc "Restart LSP"})
-    (keymap.set :n :<leader>dt :<cmd>TSPlaygroundToggle<CR>
+    (keymap.set :n :<leader>dt #(lsp-lines.toggle) {:desc "Toggle Diagnostics"})
+    (keymap.set :n :<leader>dtp :<cmd>TSPlaygroundToggle<CR>
                 {:desc "Toggle Treetsitter Playground"})
     (keymap.set :n :<leader>dn #(noice.cmd :telescope)
                 {:desc "Display Notifications"})

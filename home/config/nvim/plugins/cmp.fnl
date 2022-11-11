@@ -44,6 +44,7 @@
                                                    :<C-Space> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert
                                                                                     :select true})
                                                    :<CR> (cmp.mapping.confirm {:select true})})
+              :window {:documentation (cmp.config.window.bordered)}
               :completion {:keyword_length 2
                            :completeopt "menu,menuone,noinsert"}
               :snippet {:expand (fn [args]

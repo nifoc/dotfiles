@@ -29,7 +29,6 @@
                            :elixir [:credo]
                            ;:fennel [:fennel]
                            :fish [:fish]
-                           :markdown [:vale]
                            :nix [:deadnix :nix :statix]
                            :sh [:shellcheck]
                            :yaml [:yamllint]})

@@ -33,6 +33,7 @@
 
 # LSP
 - src: neovim/nvim-lspconfig
+- src: "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
 - src: onsails/lspkind.nvim
 - src: SmiteshP/nvim-navic
 - src: RRethy/vim-illuminate

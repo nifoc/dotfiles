@@ -44,7 +44,6 @@ in
       shellcheck
       shfmt
       statix
-      vale
       yamllint
     ];
 
@@ -173,6 +172,15 @@ in
       {
         plugin = nvim-lspconfig;
         config = builtins.readFile ../../config/nvim/plugins/lsp.fnl;
+        type = "fennel";
+      }
+
+      {
+        plugin = lsp_lines-nvim;
+        config = ''
+          (let [lsp-lines (require :lsp_lines)]
+            (lsp-lines.setup))
+        '';
         type = "fennel";
       }
 
