@@ -147,6 +147,7 @@ in
           networks = [ "webserver" ];
           volumes = [
             "/etc/container-matrix/synapse:/data"
+            "/etc/container-matrix/telegram:/bridge-data/telegram:ro"
           ];
           labels = {
             "traefik.enable" = "true";
