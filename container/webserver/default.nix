@@ -149,6 +149,7 @@ in
             "/etc/container-matrix/synapse:/data"
             "/etc/container-matrix/telegram:/bridge-data/telegram:ro"
             "/etc/container-matrix/signal:/bridge-data/signal:ro"
+            "/etc/container-matrix/whatsapp:/bridge-data/whatsapp:ro"
           ];
           labels = {
             "traefik.enable" = "true";
@@ -214,6 +215,25 @@ in
           volumes = [
             "/etc/container-matrix/signal:/data"
             "/etc/container-matrix/signald:/signald"
+          ];
+          labels = {
+            "com.centurylinklabs.watchtower.enable" = "true";
+          };
+        };
+      };
+
+      matrix-whatsapp = {
+        service = {
+          image = "dock.mau.dev/mautrix/whatsapp:latest";
+          container_name = "mautrix-whatsapp";
+          restart = "unless-stopped";
+          depends_on = [
+            "ipv6nat"
+            "synapse"
+          ];
+          networks = [ "webserver" ];
+          volumes = [
+            "/etc/container-matrix/whatsapp:/data"
           ];
           labels = {
             "com.centurylinklabs.watchtower.enable" = "true";

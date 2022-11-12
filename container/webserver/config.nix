@@ -8,6 +8,7 @@
     "d /etc/container-matrix/telegram 0775 1337 1337"
     "d /etc/container-matrix/signald 0775 0 0"
     "d /etc/container-matrix/signal 0775 1337 1337"
+    "d /etc/container-matrix/whatsapp 0775 1337 1337"
   ];
 
   # mosquitto
@@ -120,6 +121,15 @@
 
   environment.etc."container-matrix/signal/config.yaml" = {
     source = ../../secret/container/webserver/config/matrix/signal.yaml;
+    mode = "0640";
+    uid = 1337;
+    gid = 1337;
+  };
+
+  # Matrix: WhatsApp
+
+  environment.etc."container-matrix/whatsapp/config.yaml" = {
+    source = ../../secret/container/webserver/config/matrix/whatsapp.yaml;
     mode = "0640";
     uid = 1337;
     gid = 1337;

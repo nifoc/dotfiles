@@ -113,12 +113,12 @@ rec {
   };
   nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2022-11-11";
+    version = "2022-11-12";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "47bda4171aad2ee990a35ddb6319ceedc4d78b5d";
-      sha256 = "080x8j4crwrnrh4dsnzwvjz3zanmd282ax9z703i7hfavvxrpg5n";
+      rev = "692432df294ef3881f450dc80839e21c978cde28";
+      sha256 = "1lgrfkcdf9rj30rdj7kdifpn5j7hndj61z1qlr2f0ikxs07s6wxc";
       fetchSubmodules = false;
     };
     passthru.withPlugins =
@@ -270,12 +270,12 @@ rec {
   };
   vim-illuminate = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "vim-illuminate";
-    version = "2022-11-02";
+    version = "2022-11-11";
     src = pkgs.fetchFromGitHub {
       owner = "RRethy";
       repo = "vim-illuminate";
-      rev = "fb83d835eac50baeef49aac20c524a80727db0ac";
-      sha256 = "0xk5hhsb3gv3yrfcr3gnxj9g9bcdab8nlfi06q5c7nqgy4fryp6n";
+      rev = "a6d0b28ea7d6b9d139374be1f94a16bd120fcda3";
+      sha256 = "0wby253z3njala4syizy3m463gi8l45gcf7rj866r2jhnfxg9ba8";
       fetchSubmodules = false;
     };
   };
@@ -325,12 +325,12 @@ rec {
   };
   nvim-cmp = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-cmp";
-    version = "2022-11-11";
+    version = "2022-11-12";
     src = pkgs.fetchFromGitHub {
       owner = "hrsh7th";
       repo = "nvim-cmp";
-      rev = "69c85860d7c3b39e1be3881702e13a8440cd33fc";
-      sha256 = "1pj1q04lr7mqkrcl60pymj6i2ypxn4yqczwnjind0kn263wfihx8";
+      rev = "c53dd36adcf512611fa7c523fced55447bfdbfa5";
+      sha256 = "05kgrqllfd3qd0mhqy99p3k5ikbkxpx05jr5fkxn8wv37w35pvy6";
       fetchSubmodules = false;
     };
   };
@@ -435,12 +435,12 @@ rec {
   };
   neoformat = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "neoformat";
-    version = "2022-11-05";
+    version = "2022-11-12";
     src = pkgs.fetchFromGitHub {
       owner = "sbdchd";
       repo = "neoformat";
-      rev = "bb32035068b66004f79933ff09edeac273d38c1a";
-      sha256 = "1c98y3z9ik1vzydkx2cyn7rvm4smp2i8qjxjpksxcxpf9zk7xrc7";
+      rev = "1f79f6e6b2a1e2b3ace87d4760769feb4146ff35";
+      sha256 = "02vik8gfqncxjhr065sr9bw7fd9lhbwkjjkzn2j9p7y2gw0yjcis";
       fetchSubmodules = false;
     };
   };
