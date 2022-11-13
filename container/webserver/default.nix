@@ -153,7 +153,7 @@ in
           ];
           labels = {
             "traefik.enable" = "true";
-            "traefik.http.routers.matrix.rule" = "Host(`matrix-synapse.kempkens.io`)";
+            "traefik.http.routers.matrix.rule" = "Host(`matrix.kempkens.io`)";
             "traefik.http.routers.matrix.entrypoints" = "websecure";
             "traefik.http.routers.matrix.service" = "matrix-web";
             "traefik.http.routers.matrix.tls.certresolver" = "cfresolver";
