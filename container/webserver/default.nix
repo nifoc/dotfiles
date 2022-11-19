@@ -43,29 +43,6 @@ in
         };
       };
 
-      traefik = {
-        service = {
-          image = "traefik:v2.8";
-          container_name = "traefik";
-          restart = "unless-stopped";
-          depends_on = [ "ipv6nat" ];
-          networks = [ "webserver" ];
-          ports = [
-            "80:80"
-            "443:443"
-          ];
-          command = [ "--configFile=/traefik.toml" ];
-          environment = secret.container.webserver.traefik.environment;
-          volumes = [
-            "/var/run/docker.sock:/var/run/docker.sock:ro"
-            "/etc/container-webserver/traefik/traefik.toml:/traefik.toml:ro"
-            "/etc/container-webserver/traefik/acme.json:/acme.json"
-            "/etc/container-webserver/traefik/custom:/custom_config:ro"
-          ];
-          labels = secret.container.webserver.traefik.labels;
-        };
-      };
-
       cloudflared = {
         service = {
           image = "cloudflare/cloudflared:latest";
@@ -79,49 +56,14 @@ in
         };
       };
 
-      ifconfig-sexy = {
-        service = {
-          image = "ghcr.io/nifoc/ifconfig.sexy-caddy:master";
-          restart = "unless-stopped";
-          depends_on = [
-            "ipv6nat"
-            "traefik"
-          ];
-          networks = [ "webserver" ];
-          labels = {
-            "traefik.enable" = "true";
-            "traefik.http.routers.ifconfig-sexy-http.rule" = "Host(`ifconfig.sexy`, `www.ifconfig.sexy`, `4.ifconfig.sexy`, `6.ifconfig.sexy`)";
-            "traefik.http.routers.ifconfig-sexy-http.entrypoints" = "web";
-            "traefik.http.routers.ifconfig-sexy-http.middlewares" = "https-redirect@file";
-            "traefik.http.routers.ifconfig-sexy.rule" = "Host(`ifconfig.sexy`, `www.ifconfig.sexy`, `4.ifconfig.sexy`, `6.ifconfig.sexy`)";
-            "traefik.http.routers.ifconfig-sexy.entrypoints" = "websecure";
-            "traefik.http.routers.ifconfig-sexy.tls" = "true";
-            "traefik.http.routers.ifconfig-sexy.tls.certresolver" = "cfresolver";
-            "traefik.http.routers.ifconfig-sexy.middlewares" = "non-www-redirect@file, content-compression@file";
-            "com.centurylinklabs.watchtower.enable" = "true";
-          };
-        };
-      };
-
       nifoc-pw-docs = {
         service = {
           image = "ghcr.io/nifoc/nifoc.pw-docs:master";
           container_name = "nifoc-pw-docs";
           restart = "unless-stopped";
-          depends_on = [
-            "ipv6nat"
-            "traefik"
-          ];
+          depends_on = [ "ipv6nat" ];
           networks = [ "webserver" ];
           labels = {
-            "traefik.enable" = "true";
-            "traefik.http.routers.nifoc-pw-docs.rule" = "HostRegexp(`{subdomain:[a-z_]+}.nifoc.pw`)";
-            "traefik.http.routers.nifoc-pw-docs.entrypoints" = "websecure";
-            "traefik.http.routers.nifoc-pw-docs.tls" = "true";
-            "traefik.http.routers.nifoc-pw-docs.tls.certresolver" = "cfresolver";
-            "traefik.http.routers.nifoc-pw-docs.tls.domains[0].main" = "nifoc.pw";
-            "traefik.http.routers.nifoc-pw-docs.tls.domains[0].sans" = "*.nifoc.pw";
-            "traefik.http.routers.nifoc-pw-docs.middlewares" = "content-compression@file";
             "com.centurylinklabs.watchtower.enable" = "true";
           };
         };
@@ -135,7 +77,6 @@ in
           depends_on = [
             "ipv6nat"
             "mosquitto"
-            "traefik"
           ];
           networks = [ "webserver" ];
           environment = {
@@ -155,10 +96,7 @@ in
           image = "matrixdotorg/synapse:latest";
           container_name = "synapse";
           restart = "unless-stopped";
-          depends_on = [
-            "ipv6nat"
-            "traefik"
-          ];
+          depends_on = [ "ipv6nat" ];
           networks = [ "webserver" ];
           volumes = [
             "/etc/container-matrix/synapse:/data"
@@ -167,15 +105,6 @@ in
             "/etc/container-matrix/whatsapp:/bridge-data/whatsapp:ro"
           ];
           labels = {
-            "traefik.enable" = "true";
-            "traefik.http.routers.matrix.rule" = "Host(`matrix.kempkens.io`)";
-            "traefik.http.routers.matrix.entrypoints" = "websecure";
-            "traefik.http.routers.matrix.service" = "matrix-web";
-            "traefik.http.routers.matrix.tls.certresolver" = "cfresolver";
-            "traefik.http.routers.matrix.tls.domains[0].main" = "kempkens.io";
-            "traefik.http.routers.matrix.tls.domains[0].sans" = "*.kempkens.io";
-            "traefik.http.routers.matrix.middlewares" = "content-compression@file";
-            "traefik.http.services.matrix-web.loadbalancer.server.port" = "8008";
             "com.centurylinklabs.watchtower.enable" = "true";
           };
         };
