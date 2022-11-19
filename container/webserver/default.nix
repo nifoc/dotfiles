@@ -66,6 +66,19 @@ in
         };
       };
 
+      cloudflared = {
+        service = {
+          image = "cloudflare/cloudflared:latest";
+          container_name = "cloudflared";
+          restart = "unless-stopped";
+          networks = [ "webserver" ];
+          command = [ "tunnel" "--no-autoupdate" "run" "--token" secret.container.webserver.cloudflared.config.token ];
+          labels = {
+            "com.centurylinklabs.watchtower.enable" = "true";
+          };
+        };
+      };
+
       ifconfig-sexy = {
         service = {
           image = "ghcr.io/nifoc/ifconfig.sexy-caddy:master";
