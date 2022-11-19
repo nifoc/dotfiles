@@ -106,6 +106,7 @@ in
       nifoc-pw-docs = {
         service = {
           image = "ghcr.io/nifoc/nifoc.pw-docs:master";
+          container_name = "nifoc-pw-docs";
           restart = "unless-stopped";
           depends_on = [
             "ipv6nat"
@@ -129,6 +130,7 @@ in
       weewx = {
         service = {
           image = "ghcr.io/nifoc/weewx-docker:master";
+          container_name = "weewx";
           restart = "unless-stopped";
           depends_on = [
             "ipv6nat"
