@@ -117,6 +117,7 @@ in
             tree-sitter-heex
             tree-sitter-html
             tree-sitter-http
+            tree-sitter-java
             tree-sitter-javascript
             tree-sitter-jsdoc
             tree-sitter-json

@@ -13,6 +13,7 @@
                        :heex
                        :html
                        :http
+                       :java
                        :javascript
                        :jsdoc
                        :json
