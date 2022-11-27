@@ -21,7 +21,13 @@ in
         report_stats.enabled = false;
       };
 
-      app_service_api.database.connection_string = connectionString;
+      app_service_api = {
+        database.connection_string = connectionString;
+        config_files = [
+          "/etc/container-matrix/telegram/registration.yaml"
+        ];
+      };
+
       federation_api.database.connection_string = connectionString;
       key_server.database.connection_string = connectionString;
       media_api.database.connection_string = connectionString;
