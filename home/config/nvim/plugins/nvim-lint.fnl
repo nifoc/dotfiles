@@ -1,7 +1,8 @@
 (let [lint (require :lint)
       diagnostic (require :nifoc.diagnostic)
       augroup (vim.api.nvim_create_augroup :NifocLint {:clear true})
-      aucmd vim.api.nvim_create_autocmd]
+      aucmd vim.api.nvim_create_autocmd
+      project-root (vim.fs.dirname (. (vim.fs.find [:.git] {:upward true}) 1))]
   ;; Custom Linters
   (set lint.linters.deadnix
        {:cmd :deadnix
@@ -22,13 +23,18 @@
                                         :message result.message})
                                      findings.results))))})
   ;; Linter Options
-  (let [fennel (require :lint.linters.fennel)]
+  (let [checkstyle (require :lint.linters.checkstyle)
+        fennel (require :lint.linters.fennel)]
+    (when (not= project-root nil)
+      (set checkstyle.config_file
+           (.. project-root :/config/checkstyle/checkstyle.xml)))
     (set fennel.globals [:vim]))
   ;; Configure Linters per FT
   (set lint.linters_by_ft {:dockerfile [:hadolint]
                            :elixir [:credo]
                            ;:fennel [:fennel]
                            :fish [:fish]
+                           :java [:checkstyle]
                            :nix [:deadnix :nix :statix]
                            :sh [:shellcheck]
                            :yaml [:yamllint]})

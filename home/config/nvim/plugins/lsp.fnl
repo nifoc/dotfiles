@@ -2,32 +2,31 @@
       cmp (require :cmp_nvim_lsp)
       navic (require :nvim-navic)
       diagnostic (require :nifoc.diagnostic)
-      formatting (require :nifoc.formatting)]
-  (fn custom-attach [client bufnr]
-    (when (client.supports_method :textDocument/documentSymbol)
-      (navic.attach client bufnr))
-    (diagnostic.maybe-enable-lsp client bufnr)
-    (formatting.maybe-enable-lsp client bufnr))
-
-  (fn custom-attach-no-format [client bufnr]
-    (set client.server_capabilities.documentFormattingProvider false)
-    (set client.server_capabilities.documentRangeFormattingProvider false)
-    (custom-attach client bufnr))
-
+      formatting (require :nifoc.formatting)
+      augroup (vim.api.nvim_create_augroup :NifocLsp {:clear true})
+      aucmd vim.api.nvim_create_autocmd]
+  ;; Attach
+  (aucmd :LspAttach {:callback (fn [args]
+                                 (let [client (vim.lsp.get_client_by_id args.data.client_id)
+                                       bufnr args.buf]
+                                   (when (client.supports_method :textDocument/documentSymbol)
+                                     (navic.attach client bufnr))
+                                   (diagnostic.maybe-enable-lsp client bufnr)
+                                   (formatting.maybe-enable-lsp client bufnr)))
+                     :group augroup
+                     :desc "Automatic LSP setup"})
   ;; Servers
   (let [capabilities (cmp.default_capabilities)
         flags {:allow_incremental_sync true :debounce_text_changes 700}
-        default-config {:on_attach custom-attach : capabilities : flags}
-        default-config-no-format {:on_attach custom-attach-no-format
-                                  : capabilities
-                                  : flags}
+        default-config {: capabilities : flags}
         default-servers [:bashls
                          :cssls
                          :dockerls
                          :erlangls
                          :eslint
+                         :fennel-ls
                          :html
-                         :jdtls
+                         :jsonls
                          :nil_ls
                          :rnix
                          :sqls
@@ -44,9 +43,7 @@
                                     :--stdio
                                     :--tsserver-path
                                     :tsserver]}
-                             (vim.tbl_extend :force default-config-no-format)))
-    (lsp.jsonls.setup (->> {:cmd [:vscode-json-language-server :--stdio]}
-                           (vim.tbl_extend :force default-config)))
+                             (vim.tbl_extend :force default-config)))
     (lsp.solargraph.setup (->> {:settings {:solargraph {:diagnostics true}}}
                                (vim.tbl_extend :force default-config)))
     (lsp.sumneko_lua.setup (->> {:cmd [:lua-language-server]

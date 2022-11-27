@@ -24,6 +24,7 @@ in
       ripgrep
 
       # LSP
+      fennel-ls
       nil
       nodePackages.bash-language-server
       nodePackages.dockerfile-language-server-nodejs
@@ -37,6 +38,7 @@ in
       taplo-lsp
 
       # Diagnostic Tools
+      checkstyle
       deadnix
       hadolint
       lua51Packages.fennel
@@ -175,6 +177,8 @@ in
         config = builtins.readFile ../../config/nvim/plugins/lsp.fnl;
         type = "fennel";
       }
+
+      nvim-jdtls
 
       {
         plugin = lsp_lines-nvim;
@@ -341,6 +345,7 @@ in
       } ''
       mkdir -p $out/lua/configuration
       mkdir -p $out/lua/nifoc/utils
+      mkdir -p $out/ftplugin
       mkdir -p $out/after/ftplugin
 
       config_store_path="${../../config/nvim}"
@@ -364,6 +369,17 @@ in
 
         echo "Compiling $fnlfile ..."
         $fennel "$fnlfile" > "$out/lua/nifoc/$file_out_path"
+      done
+
+      # ftplugin
+      ftplugin_store_path="$config_store_path/ftplugin"
+      ftplugin_store_fnl="$(find "$ftplugin_store_path" -type f -name '*.fnl')"
+
+      for fnlfile in $ftplugin_store_fnl; do
+        file_out_path="$(echo "$fnlfile" | sed "s|$ftplugin_store_path/||" | sed "s/.fnl$/.lua/")"
+
+        echo "Compiling $fnlfile ..."
+        $fennel "$fnlfile" > "$out/ftplugin/$file_out_path"
       done
 
       # After

@@ -76,9 +76,21 @@ for plugin in "${plugin_array[@]}"; do
     ;;
   esac
 
+  case "$name" in
+  nvim-treesitter)
+    echo "${name} = pkgs.vimPlugins.nvim-treesitter.overrideAttrs (_: {" >>"$nix_new_file"
+    close_block="});"
+    ;;
+  *)
+    {
+      echo "${name} = pkgs.vimUtils.buildVimPluginFrom2Nix {"
+      echo "pname = \"${repo}\";"
+    } >>"$nix_new_file"
+    close_block="};"
+    ;;
+  esac
+
   {
-    echo "${name} = pkgs.vimUtils.buildVimPluginFrom2Nix {"
-    echo "pname = \"${repo}\";"
     echo "version = \"${version}\";"
     echo "src = ${fetcher} ${src};"
   } >>"$nix_new_file"
@@ -97,28 +109,7 @@ for plugin in "${plugin_array[@]}"; do
     printf "buildPhase = ''\n%s\n'';\n" "$build_phase" >>"$nix_new_file"
   fi
 
-  case "$name" in
-  nvim-treesitter)
-    passthru="passthru.withPlugins =
-      grammarFn: nvim-treesitter.overrideAttrs (_: {
-        postPatch =
-          let
-            grammars = pkgs.tree-sitter.withPlugins grammarFn;
-          in
-          ''
-            rm -r parser
-            ln -s \${grammars} parser
-          '';
-      });"
-    ;;
-  *)
-    passthru=""
-    ;;
-  esac
-
-  echo -n "$passthru" >>"$nix_new_file"
-
-  echo '};' >>"$nix_new_file"
+  echo "$close_block" >>"$nix_new_file"
 done
 echo "}" >>"$nix_new_file"
 

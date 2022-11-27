@@ -11,6 +11,7 @@ in
     ../../hardware/hosts/sail.nix
     ../nixos/ssh.nix
 
+    (import ../nixos/dendrite.nix (args // { inherit secret; }))
     ../nixos/git.nix
     (import ../nixos/tailscale.nix (args // { inherit secret; }))
 
