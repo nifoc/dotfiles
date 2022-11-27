@@ -89,6 +89,12 @@
       enable_metrics = false;
       report_stats = false;
 
+      app_service_config_files = [
+        "/etc/container-matrix/signal/registration.yaml"
+        "/etc/container-matrix/telegram/registration.yaml"
+        "/etc/container-matrix/whatsapp/registration.yaml"
+      ];
+
       experimental_features = {
         msc3202_device_masquerading = true;
         msc3202_transaction_extensions = true;
