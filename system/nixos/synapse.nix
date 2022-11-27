@@ -81,11 +81,6 @@
         "2001:db8::/32"
         "2a01:4f8:c2c:989c::/64"
       ];
-      url_preview_url_blacklist = [
-        { username = "*"; }
-        { scheme = "http"; }
-        { netloc = "^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$"; }
-      ];
 
       inherit (secret.synapse) registration_shared_secret;
       inherit (secret.synapse) macaroon_secret_key;
