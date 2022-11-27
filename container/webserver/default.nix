@@ -5,6 +5,21 @@ in
 {
   virtualisation.arion.projects.webserver.settings = {
     services = {
+      cloudflared = {
+        service = {
+          image = "cloudflare/cloudflared:latest";
+          container_name = "cloudflared";
+          restart = "unless-stopped";
+          command = [ "tunnel" "--no-autoupdate" "run" "--token" secret.container.webserver.cloudflared.config.token ];
+          extra_hosts = [
+            "host.docker.internal:host-gateway"
+          ];
+          labels = {
+            "com.centurylinklabs.watchtower.enable" = "true";
+          };
+        };
+      };
+
       mosquitto = {
         service = {
           image = "eclipse-mosquitto:2";
@@ -15,18 +30,6 @@ in
           volumes = [
             "/etc/container-webserver/mosquitto:/mosquitto/config:ro"
           ];
-          labels = {
-            "com.centurylinklabs.watchtower.enable" = "true";
-          };
-        };
-      };
-
-      cloudflared = {
-        service = {
-          image = "cloudflare/cloudflared:latest";
-          container_name = "cloudflared";
-          restart = "unless-stopped";
-          command = [ "tunnel" "--no-autoupdate" "run" "--token" secret.container.webserver.cloudflared.config.token ];
           labels = {
             "com.centurylinklabs.watchtower.enable" = "true";
           };
