@@ -17,6 +17,7 @@ in
 
     ../nixos/arion.nix
     ../../container/webserver
+    ../../container/matrix
   ];
 
   nix = {
