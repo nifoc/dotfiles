@@ -7,10 +7,10 @@ in
   services.dendrite = {
     enable = true;
 
-    environmentFile = "/var/lib/dendrite/secrets/environment";
+    environmentFile = "/var/lib/dendrite-secrets/environment";
 
     loadCredential = [
-      "private_key:/var/lib/dendrite/secrets/matrix_key.pem"
+      "private_key:/var/lib/dendrite-secrets/matrix_key.pem"
     ];
 
     settings = {
