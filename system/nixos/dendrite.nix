@@ -24,7 +24,9 @@ in
       app_service_api = {
         database.connection_string = connectionString;
         config_files = [
+          "/etc/container-matrix/signal/registration.yaml"
           "/etc/container-matrix/telegram/registration.yaml"
+          "/etc/container-matrix/whatsapp/registration.yaml"
         ];
       };
 

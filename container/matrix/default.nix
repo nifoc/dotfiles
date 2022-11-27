@@ -39,6 +39,7 @@ in
           container_name = "mautrix-signal";
           restart = "unless-stopped";
           depends_on = [ "signald" ];
+          ports = [ "29328:29328" ];
           volumes = [
             "/etc/container-matrix/signal:/data"
             "/etc/container-matrix/signald:/signald"
@@ -54,6 +55,7 @@ in
           image = "dock.mau.dev/mautrix/whatsapp:latest";
           container_name = "mautrix-whatsapp";
           restart = "unless-stopped";
+          ports = [ "29318:29318" ];
           volumes = [
             "/etc/container-matrix/whatsapp:/data"
           ];
