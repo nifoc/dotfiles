@@ -5,33 +5,11 @@ in
 {
   virtualisation.arion.projects.webserver.settings = {
     services = {
-      ipv6nat = {
-        service = {
-          image = "robbertkl/ipv6nat:latest";
-          container_name = "ipv6nat";
-          restart = "unless-stopped";
-          capabilities = {
-            ALL = false;
-            NET_ADMIN = true;
-            NET_RAW = true;
-          };
-          network_mode = "host";
-          volumes = [
-            "/var/run/docker.sock:/var/run/docker.sock:ro"
-          ];
-          labels = {
-            "com.centurylinklabs.watchtower.enable" = "true";
-          };
-        };
-      };
-
       mosquitto = {
         service = {
           image = "eclipse-mosquitto:2";
           container_name = "mosquitto";
           restart = "unless-stopped";
-          depends_on = [ "ipv6nat" ];
-          networks = [ "webserver" ];
           ports = [ "1883:1883" ];
           user = "nobody";
           volumes = [
@@ -48,7 +26,6 @@ in
           image = "cloudflare/cloudflared:latest";
           container_name = "cloudflared";
           restart = "unless-stopped";
-          networks = [ "webserver" ];
           command = [ "tunnel" "--no-autoupdate" "run" "--token" secret.container.webserver.cloudflared.config.token ];
           labels = {
             "com.centurylinklabs.watchtower.enable" = "true";
@@ -61,8 +38,6 @@ in
           image = "ghcr.io/nifoc/nifoc.pw-docs:master";
           container_name = "nifoc-pw-docs";
           restart = "unless-stopped";
-          depends_on = [ "ipv6nat" ];
-          networks = [ "webserver" ];
           labels = {
             "com.centurylinklabs.watchtower.enable" = "true";
           };
@@ -74,11 +49,7 @@ in
           image = "ghcr.io/nifoc/weewx-docker:master";
           container_name = "weewx";
           restart = "unless-stopped";
-          depends_on = [
-            "ipv6nat"
-            "mosquitto"
-          ];
-          networks = [ "webserver" ];
+          depends_on = [ "mosquitto" ];
           environment = {
             "TZ" = "Europe/Berlin";
           };
@@ -184,19 +155,6 @@ in
       #     };
       #   };
       # };
-    };
-
-    networks.webserver = {
-      driver = "bridge";
-      enable_ipv6 = true;
-      ipam = {
-        driver = "default";
-        config = [
-          {
-            subnet = "fd00:dead:beef::/48";
-          }
-        ];
-      };
     };
   };
 } // custom-config
