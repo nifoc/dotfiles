@@ -29,9 +29,12 @@
       database = {
         name = "psycopg2";
         args = {
+          host = "10.99.99.3";
           database = "synapse";
           inherit (secret.synapse.database) user;
           inherit (secret.synapse.database) password;
+          cp_min = 5;
+          cp_max = 10;
         };
       };
 
