@@ -11,8 +11,12 @@ in
     ../../hardware/hosts/sail.nix
     ../nixos/ssh.nix
 
-    (import ../nixos/synapse.nix (args // { inherit secret; }))
     ../nixos/git.nix
+
+    (import ../nixos/mastodon.nix (args // { inherit secret; }))
+
+    (import ../nixos/synapse.nix (args // { inherit secret; }))
+
     (import ../nixos/tailscale.nix (args // { inherit secret; }))
 
     ../nixos/arion.nix

@@ -82,6 +82,8 @@
         "2a01:4f8:c2c:989c::/64"
       ];
 
+      enable_registration = false;
+
       inherit (secret.synapse) registration_shared_secret;
       inherit (secret.synapse) macaroon_secret_key;
       inherit (secret.synapse) form_secret;
