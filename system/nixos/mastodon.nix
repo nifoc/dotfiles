@@ -16,7 +16,7 @@ in
     sidekiqPort = 55002;
     enableUnixSocket = true;
 
-    trustedProxy = "172.18.0.4";
+    trustedProxy = "127.0.0.1";
 
     vapidPublicKeyFile = "/var/lib/mastodon/secrets/vapid-public-key";
     secretKeyBaseFile = "/var/lib/mastodon/secrets/secret-key-base";
