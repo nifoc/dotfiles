@@ -60,7 +60,7 @@ in
 
     extraConfig = {
       WEB_DOMAIN = web-domain;
-      LOCAL_HTTPS = true;
+      LOCAL_HTTPS = "true";
     };
   };
 
