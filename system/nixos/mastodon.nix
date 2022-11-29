@@ -1,5 +1,8 @@
-{ secret, ... }:
+{ config, secret, ... }:
 
+let
+  web-domain = "mastodon.kempkens.io";
+in
 {
   services.mastodon = {
     enable = true;
@@ -11,7 +14,7 @@
     streamingPort = 55000;
     webPort = 55001;
     sidekiqPort = 55002;
-    enableUnixSocket = false;
+    enableUnixSocket = true;
 
     trustedProxy = "172.18.0.4";
 
@@ -56,7 +59,33 @@
     };
 
     extraConfig = {
-      WEB_DOMAIN = "mastodon.kempkens.io";
+      WEB_DOMAIN = web-domain;
+    };
+  };
+
+  services.nginx = {
+    enable = true;
+    recommendedProxySettings = true;
+    virtualHosts."${web-domain}" = {
+      root = "${config.services.mastodon.package}/public/";
+      forceSSL = false;
+      enableACME = false;
+
+      locations."/system/".alias = "/var/lib/mastodon/public-system/";
+
+      locations."/" = {
+        tryFiles = "$uri @proxy";
+      };
+
+      locations."@proxy" = {
+        proxyPass = "http://unix:/run/mastodon-web/web.socket";
+        proxyWebsockets = true;
+      };
+
+      locations."/api/v1/streaming/" = {
+        proxyPass = "http://unix:/run/mastodon-streaming/streaming.socket";
+        proxyWebsockets = true;
+      };
     };
   };
 
