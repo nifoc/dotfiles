@@ -100,7 +100,7 @@ in
     };
   };
 
-  users.groups.mastodon.members = config.services.nginx.user;
+  users.groups.mastodon.members = [ config.services.nginx.user ];
 
   networking.firewall.allowedTCPPorts = [ 80 ];
 }
