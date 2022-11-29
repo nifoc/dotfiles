@@ -14,7 +14,7 @@ in
     streamingPort = 55000;
     webPort = 55001;
     sidekiqPort = 55002;
-    enableUnixSocket = true;
+    enableUnixSocket = false;
 
     trustedProxy = "127.0.0.1";
 
@@ -78,12 +78,12 @@ in
       };
 
       locations."@proxy" = {
-        proxyPass = "http://unix:/run/mastodon-web/web.socket";
+        proxyPass = "http://127.0.0.1:55001";
         proxyWebsockets = true;
       };
 
       locations."/api/v1/streaming/" = {
-        proxyPass = "http://unix:/run/mastodon-streaming/streaming.socket";
+        proxyPass = "http://127.0.0.1:55000";
         proxyWebsockets = true;
       };
     };
