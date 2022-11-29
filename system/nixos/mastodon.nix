@@ -3,13 +3,13 @@
 let
   web-domain = "mastodon.kempkens.io";
 
-  nginx-extra-proxy-settings = [
-    "proxy_set_header Host $host;"
-    "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"
-    "proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;"
-    "proxy_set_header X-Forwarded-Host $host;"
-    "proxy_set_header X-Forwarded-Server $host;"
-  ];
+  nginx-extra-proxy-settings = ''
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Server $host;
+  '';
 in
 {
   services.mastodon = {
