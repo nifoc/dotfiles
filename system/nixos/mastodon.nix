@@ -52,7 +52,7 @@ in
       createLocally = false;
       authenticate = true;
       host = "smtp.mailgun.org";
-      port = 465;
+      port = 587;
       fromAddress = "mastodon@mg.kempkens.io";
       inherit (secret.mastodon.smtp) user;
       inherit (secret.mastodon.smtp) passwordFile;
