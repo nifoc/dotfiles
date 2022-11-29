@@ -2,6 +2,14 @@
 
 let
   web-domain = "mastodon.kempkens.io";
+
+  nginx-extra-proxy-settings = [
+    "proxy_set_header Host $host;"
+    "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;"
+    "proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;"
+    "proxy_set_header X-Forwarded-Host $host;"
+    "proxy_set_header X-Forwarded-Server $host;"
+  ];
 in
 {
   services.mastodon = {
@@ -60,13 +68,11 @@ in
 
     extraConfig = {
       WEB_DOMAIN = web-domain;
-      LOCAL_HTTPS = "true";
     };
   };
 
   services.nginx = {
     enable = true;
-    recommendedProxySettings = true;
     virtualHosts."${web-domain}" = {
       root = "${config.services.mastodon.package}/public/";
       forceSSL = false;
@@ -81,11 +87,13 @@ in
       locations."@proxy" = {
         proxyPass = "http://127.0.0.1:55001";
         proxyWebsockets = true;
+        extraConfig = nginx-extra-proxy-settings;
       };
 
       locations."/api/v1/streaming/" = {
         proxyPass = "http://127.0.0.1:55000";
         proxyWebsockets = true;
+        extraConfig = nginx-extra-proxy-settings;
       };
     };
   };
