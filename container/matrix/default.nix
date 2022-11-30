@@ -1,6 +1,6 @@
 let
   secret = import ../../secret/container/matrix;
-  custom-config = import ./config.nix { inherit secret; };
+  custom-config = import ./config.nix;
 in
 {
   virtualisation.arion.projects.matrix.settings = {
