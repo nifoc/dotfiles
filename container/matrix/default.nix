@@ -1,5 +1,6 @@
 let
-  custom-config = import ./config.nix;
+  secret = import ../../secret/container/matrix;
+  custom-config = import ./config.nix { inherit secret; };
 in
 {
   virtualisation.arion.projects.matrix.settings = {
@@ -27,6 +28,9 @@ in
           volumes = [
             "/etc/container-matrix/signald:/signald"
           ];
+          environment = {
+            SIGNALD_DATABASE = secret.container.matrix.signald.environment.database;
+          };
           labels = {
             "com.centurylinklabs.watchtower.enable" = "true";
           };
