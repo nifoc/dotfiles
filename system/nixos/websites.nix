@@ -17,7 +17,7 @@
             autoindex_format html;
           '';
         };
-      }) [ "katja.nifoc.pw" ]);
+      }) [ "katja.nifoc.pw" "katja_vmstats.nifoc.pw" "noesis.nifoc.pw" "propagator.nifoc.pw" ]);
   };
 
   networking.firewall.allowedTCPPorts = [ 80 ];

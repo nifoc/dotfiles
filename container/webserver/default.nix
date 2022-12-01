@@ -36,17 +36,6 @@ in
         };
       };
 
-      nifoc-pw-docs = {
-        service = {
-          image = "ghcr.io/nifoc/nifoc.pw-docs:master";
-          container_name = "nifoc-pw-docs";
-          restart = "unless-stopped";
-          labels = {
-            "com.centurylinklabs.watchtower.enable" = "true";
-          };
-        };
-      };
-
       weewx = {
         service = {
           image = "ghcr.io/nifoc/weewx-docker:master";
