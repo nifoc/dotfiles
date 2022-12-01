@@ -17,6 +17,8 @@ in
 
     (import ../nixos/synapse.nix (args // { inherit secret; }))
 
+    ../nixos/websites.nix
+
     (import ../nixos/tailscale.nix (args // { inherit secret; }))
 
     ../nixos/arion.nix
