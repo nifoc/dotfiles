@@ -85,6 +85,10 @@ in
     ];
   };
 
+  services.journald.extraConfig = ''
+    SystemMaxUse=1G
+  '';
+
   documentation.doc.enable = false;
 
   programs.fish.enable = true;
@@ -95,7 +99,7 @@ in
     };
 
     daniel = {
-      hashedPassword = secret.users.daniel.hashedPassword;
+      inherit (secret.users.daniel) hashedPassword;
       isNormalUser = true;
       home = "/home/daniel";
       description = "Daniel";

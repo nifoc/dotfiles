@@ -74,6 +74,10 @@ in
     ];
   };
 
+  services.journald.extraConfig = ''
+    SystemMaxUse=512M
+  '';
+
   documentation.doc.enable = false;
 
   programs.fish.enable = true;

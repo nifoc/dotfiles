@@ -65,7 +65,7 @@ in
     mediaAutoRemove = {
       enable = true;
       startAt = "daily";
-      olderThanDays = 21;
+      olderThanDays = 14;
     };
 
     extraConfig = {
