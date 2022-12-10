@@ -42,6 +42,7 @@
     (let [formatprg (vim.opt_local.formatprg:get)
           formatprg-exe (-> formatprg (vim.split " " {:trimempty true}) (. 1))]
       (if (= b.nifoc_formatter_disabled 1) nil
+          (= b.nifoc_formatter_force_formatprg 1) (run-neoformat formatprg-exe)
           (= b.nifoc_lsp_formatter_enabled 1) (vim.lsp.buf.format {:timeout_ms 1000})
           (not= formatprg-exe nil) (run-neoformat formatprg-exe))))
 

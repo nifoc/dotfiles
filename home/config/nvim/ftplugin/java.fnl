@@ -3,6 +3,7 @@
       cache-dir (.. (vim.loop.os_homedir) :/.cache/jdtls)
       jars-dir (.. cache-dir :/jars)
       workspace-dir (.. cache-dir :/workspace/ project-name)
+      formatter-config (.. cache-dir :/config/formatter. project-name :.xml)
       config {:cmd [:jdt-language-server :-data workspace-dir]
               :root_dir (vim.fs.dirname (. (vim.fs.find [:.gradlew
                                                          :.git
