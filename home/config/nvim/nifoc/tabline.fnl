@@ -32,15 +32,17 @@
         :hl (fn [self]
               (let [visible (or self.is_active self.is_visible)]
                 {:bold visible :italic visible}))})
-  (set mod.file-flags [{:provider (fn [self]
-                                    (when (. vim :bo self.bufnr :modified)
-                                      " "))
+  (set mod.file-flags [{:condition #(api.nvim_buf_get_option $1.bufnr :modified)
+                        :provider " "
                         :hl {:fg colors.yellow}}
-                       {:provider (fn [self]
-                                    (when (or (not (. vim :bo self.bufnr
-                                                      :modifiable))
-                                              (. vim :bo self.bufnr :readonly))
-                                      " "))
+                       {:condition #(or (not (api.nvim_buf_get_option $1.bufnr
+                                                                      :modifiable))
+                                        (api.nvim_buf_get_option $1.bufnr
+                                                                 :readonly))
+                        :provider (fn [self]
+                                    (if (= api.nvim_buf_get_option self.bufnr
+                                           :terminal)
+                                        " " " "))
                         :hl {:fg colors.orange}}])
   (set mod.filename-block
        (heirline-utils.insert mod.filename-block statusline.file-icon
