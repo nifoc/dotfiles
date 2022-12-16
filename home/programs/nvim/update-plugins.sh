@@ -21,7 +21,7 @@ echo '{ pkgs, ... }:' >>"$nix_new_file"
 
 echo "rec {" >>"$nix_new_file"
 for plugin in "${plugin_array[@]}"; do
-  raw_src="$(echo "$plugin" | dasel -r json --plain '.src')"
+  raw_src="$(echo "$plugin" | dasel -r json -w - '.src')"
   owner="$(echo "$raw_src" | awk -F'/' '{ print $(NF-1) }')"
   repo="$(echo "$raw_src" | awk -F'/' '{ print $(NF) }')"
   name="$(echo "$repo" | tr [.] '-')"
@@ -55,12 +55,12 @@ for plugin in "${plugin_array[@]}"; do
   src="{
     owner = \"${owner}\";
     repo = \"${repo}\";
-    rev = \"$(echo "$src_json" | dasel -r json --plain '.rev')\";
-    sha256 = \"$(echo "$src_json" | dasel -r json --plain '.sha256')\";
-    fetchSubmodules = $(echo "$src_json" | dasel -r json --plain '.fetchSubmodules');
+    rev = \"$(echo "$src_json" | dasel -r json -w - '.rev')\";
+    sha256 = \"$(echo "$src_json" | dasel -r json -w - '.sha256')\";
+    fetchSubmodules = $(echo "$src_json" | dasel -r json -w - '.fetchSubmodules');
   }"
 
-  commit_date="$(echo "$src_json" | dasel -r json --plain '.date')"
+  commit_date="$(echo "$src_json" | dasel -r json -w - '.date')"
   version="$(date -d "$commit_date" "+%Y-%m-%d")"
 
   case "$clone_src" in
