@@ -1,6 +1,8 @@
 { pkgs, config, ... }:
 
 {
+  home.packages = [ pkgs.terminal-notifier ];
+
   programs.fish = {
     enable = true;
 
@@ -27,13 +29,14 @@
         };
       }
 
+      # https://github.com/franciscolourenco/done/releases
       {
         name = "done-fish";
         src = pkgs.fetchFromGitHub {
-          owner = "nifoc";
+          owner = "franciscolourenco";
           repo = "done";
-          rev = "2f4e94d8306224f63cd12fb992318985a83d51a8";
-          sha256 = "Pq8HEISGjpCTXBIyukcLUK8r1hJ3/QXAklRCesm4nQ0=";
+          rev = "1.16.5";
+          sha256 = "sha256-E0wveeDw1VzEH2kzn63q9hy1xkccfxQHBV2gVpu2IdQ=";
         };
       }
 
@@ -43,8 +46,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "PatrickF1";
           repo = "fzf.fish";
-          rev = "v9.2";
-          sha256 = "sha256-XmRGe39O3xXmTvfawwT2mCwLIyXOlQm7f40mH5tzz+s=";
+          rev = "v9.5";
+          sha256 = "sha256-ZdHfIZNCtY36IppnufEIyHr+eqlvsIUOs0kY5I9Df6A=";
         };
       }
 
@@ -65,8 +68,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "nickeb96";
           repo = "puffer-fish";
-          rev = "f8df25bde0875359805967aa999744a28dee0561";
-          sha256 = "sha256-Gm4In5f03G2ijL1xDTKFsgE+hRXjQ29kk84LQSXXeF0=";
+          rev = "fd0a9c95da59512beffddb3df95e64221f894631";
+          sha256 = "sha256-aij48yQHeAKCoAD43rGhqW8X/qmEGGkg8B4jSeqjVU0=";
         };
       }
 
@@ -76,8 +79,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "andreiborisov";
           repo = "sponge";
-          rev = "1.0.4";
-          sha256 = "sha256-+GGfFC/hH7A8n9Wwojt5PW96fSzvRhThnZ3pLeWEqds=";
+          rev = "1.1.0";
+          sha256 = "sha256-MdcZUDRtNJdiyo2l9o5ma7nAX84xEJbGFhAVhK+Zm1w=";
         };
       }
 

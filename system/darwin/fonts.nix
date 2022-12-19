@@ -5,11 +5,16 @@
     fontDir.enable = true;
 
     fonts = with pkgs; [
+      jetbrains-mono
+      victor-mono
+      noto-fonts
+      unifont
+
       (nerdfonts.override {
         fonts = [
-          "FiraCode"
-          "JetBrainsMono"
-          "VictorMono"
+          "NerdFontsSymbolsOnly"
+          # "JetBrainsMono"
+          # "VictorMono"
         ];
       })
     ];

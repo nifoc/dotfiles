@@ -28,7 +28,7 @@
     (when (not= project-root nil)
       (set checkstyle.config_file
            (.. project-root :/config/checkstyle/checkstyle.xml)))
-    (set fennel.globals [:vim]))
+    (set fennel.globals [:vim :wezterm]))
   ;; Configure Linters per FT
   (set lint.linters_by_ft {:dockerfile [:hadolint]
                            :elixir [:credo]

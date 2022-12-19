@@ -8,7 +8,7 @@ in
     ../programs/fish.nix
     ../programs/starship.nix
     ../programs/direnv.nix
-    ../programs/kitty.nix
+    ../programs/wezterm.nix
 
     ../programs/nvim
 

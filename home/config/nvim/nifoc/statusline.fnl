@@ -325,19 +325,28 @@
   (set mod.scrollbar {:init (fn [self]
                               (set self.current-line (get-current-line))
                               (set self.total-lines (get-total-lines)))
-                      :static {:scrollbar-icons ["🭶"
-                                                 "🭷"
-                                                 "🭸"
-                                                 "🭹"
-                                                 "🭺"
-                                                 "🭻"]}
+                      :static {:scrollbar-icons-block ["▁"
+                                                       "▂"
+                                                       "▃"
+                                                       "▄"
+                                                       "▅"
+                                                       "▆"
+                                                       "▇"
+                                                       "█"]
+                               :scrollbar-icons-line ["🭶"
+                                                      "🭷"
+                                                      "🭸"
+                                                      "🭹"
+                                                      "🭺"
+                                                      "🭻"]}
                       :provider (fn [self]
                                   (let [i (+ (math.floor (* (/ (- self.current-line
                                                                   1)
                                                                self.total-lines)
-                                                            (length self.scrollbar-icons)))
+                                                            (length self.scrollbar-icons-block)))
                                              1)
-                                        new-scrollbar (. self :scrollbar-icons
+                                        new-scrollbar (. self
+                                                         :scrollbar-icons-block
                                                          i)]
                                     (string.rep new-scrollbar 2)))
                       :hl {:fg colors.purple}})
