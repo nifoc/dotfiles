@@ -9,6 +9,8 @@ let
     proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
     proxy_set_header X-Forwarded-Host $host;
     proxy_set_header X-Forwarded-Server $host;
+
+    proxy_force_ranges on;
   '';
 in
 {
