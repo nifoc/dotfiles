@@ -1,7 +1,14 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
+let
+  inherit (pkgs.stdenv) isDarwin;
+  inherit (lib) optionals;
+in
 {
-  home.packages = [ pkgs.terminal-notifier ];
+
+  home.packages = with pkgs; [ ] ++ optionals isDarwin [
+    terminal-notifier
+  ];
 
   programs.fish = {
     enable = true;
