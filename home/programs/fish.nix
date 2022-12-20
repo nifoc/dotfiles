@@ -182,4 +182,9 @@
       end
     '';
   };
+
+  xdg.configFile."fish/conf.d" = {
+    source = ../config/fish;
+    recursive = true;
+  };
 }
