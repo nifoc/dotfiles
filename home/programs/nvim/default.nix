@@ -170,6 +170,7 @@ in
 
       telescope-ui-select-nvim
       telescope-toggleterm-nvim
+      telescope-undo-nvim
 
       # LSP
       {
@@ -329,12 +330,6 @@ in
         config = builtins.readFile ../../config/nvim/plugins/noice.fnl;
         type = "fennel";
       }
-    ]) ++ (with pkgs.vimPlugins; [
-      # Fixes
-      FixCursorHold-nvim
-
-      # UI
-      undotree
     ]);
   };
 

@@ -30,6 +30,7 @@
 - src: folke/todo-comments.nvim
 - src: nvim-telescope/telescope-ui-select.nvim
 - src: "https://git.sr.ht/~havi/telescope-toggleterm.nvim"
+- src: debugloop/telescope-undo.nvim
 
 # LSP
 - src: neovim/nvim-lspconfig

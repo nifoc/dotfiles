@@ -33,6 +33,7 @@
   (telescope.load_extension :ui-select)
   (telescope.load_extension :toggleterm)
   (telescope.load_extension :yank_history)
+  (telescope.load_extension :undo)
   (let [augroup (vim.api.nvim_create_augroup :NifocTelescope {:clear true})
         aucmd vim.api.nvim_create_autocmd]
     (aucmd :FileType {:pattern :TelescopePrompt
