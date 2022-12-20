@@ -16,6 +16,8 @@ in
 
     ../programs/bat.nix
 
+    ../programs/btop.nix
+
     (import ../programs/custom-nix-cache.nix (args // { inherit secret; }))
 
     ../programs/fzf.nix

@@ -5,7 +5,13 @@
     enable = true;
 
     extraConfig = ''
-      _G.default_shell = { '${pkgs.fish.outPath}/bin/fish', '--interactive'};
+      _G.shells = {
+        fish = '${pkgs.fish.outPath}/bin/fish',
+      };
+
+      _G.programs = {
+        btop = '${pkgs.btop.outPath}/bin/btop',
+      };
 
       local cfg = require('config');
       return cfg
