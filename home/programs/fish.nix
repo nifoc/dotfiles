@@ -115,7 +115,6 @@ in
       la = "exa --long --all --group --header --group-directories-first --sort=type --icons";
       lg = "exa --long --all --group --header --git";
       lt = "exa --long --all --group --header --tree --level ";
-      s = "kitty +kitten ssh";
       ytdl = "ytdl_with_options";
       ytdl_mp4 = "ytdl_with_options -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]'";
       yti = "ytdl_with_options -F";
