@@ -1,11 +1,17 @@
-(let [wezterm (require :wezterm)]
+(let [wezterm (require :wezterm)
+      window-padding 15]
   {:default_prog [_G.shells.fish :--interactive]
    ;; Appearance
    :color_scheme "Dracula (Official)"
-   :window_padding {:left :6px :right :6px :top :2px :bottom :4px}
+   :window_decorations :RESIZE
+   :window_padding {:left window-padding
+                    :right window-padding
+                    :top window-padding
+                    :bottom window-padding}
    :enable_tab_bar true
    :use_fancy_tab_bar true
    :hide_tab_bar_if_only_one_tab true
+   :tab_bar_at_bottom true
    ;; Fonts
    :font (wezterm.font_with_fallback [{:family "JetBrains Mono"
                                        :weight :Medium}
