@@ -50,7 +50,10 @@ in
       port = 6379;
     };
 
-    elasticsearch.host = null;
+    elasticsearch = {
+      host = "10.99.99.3";
+      port = 9200;
+    };
 
     smtp = {
       createLocally = false;
@@ -72,6 +75,9 @@ in
 
     extraConfig = {
       WEB_DOMAIN = web-domain;
+
+      ES_USER = secret.mastodon.elasticsearch.user;
+      ES_PASS = secret.mastodon.elasticsearch.password;
     };
   };
 
