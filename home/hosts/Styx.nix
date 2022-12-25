@@ -46,7 +46,7 @@ in
       agilebits-op
       aria2
       arp-scan
-      awscli
+      awscli2
       cachix
       curlFull
       dasel

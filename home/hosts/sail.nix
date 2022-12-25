@@ -27,7 +27,7 @@ in
     stateVersion = "22.11";
 
     packages = with pkgs; [
-      awscli
+      awscli2
       curlFull
       lnav
       mtr
