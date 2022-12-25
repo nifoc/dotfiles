@@ -18,6 +18,8 @@ in
     ../../container/adsb
   ];
 
+  system.stateVersion = "22.11";
+
   nix = {
     package = pkgs.nixVersions.stable;
 

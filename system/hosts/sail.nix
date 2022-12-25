@@ -26,6 +26,8 @@ in
     ../../container/matrix
   ];
 
+  system.stateVersion = "22.11";
+
   nix = {
     package = pkgs.nixVersions.stable;
 
