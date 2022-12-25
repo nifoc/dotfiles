@@ -10,5 +10,4 @@
       truecolor = true;
     };
   };
-
 }
