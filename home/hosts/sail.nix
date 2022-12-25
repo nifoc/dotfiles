@@ -33,6 +33,7 @@ in
       parallel
       q
       ripgrep
+      s3cmd
     ];
   };
 }

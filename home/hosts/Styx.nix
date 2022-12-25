@@ -22,6 +22,8 @@ in
 
     ../programs/fzf.nix
 
+    ../programs/gpg.nix
+
     ../programs/jq.nix
 
     ../programs/texlive.nix
@@ -60,6 +62,7 @@ in
       parallel
       q
       ripgrep
+      s3cmd
       socat
       tokei
       viddy
