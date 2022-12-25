@@ -27,13 +27,13 @@ in
     stateVersion = "22.11";
 
     packages = with pkgs; [
+      awscli
       curlFull
       lnav
       mtr
       parallel
       q
       ripgrep
-      s3cmd
     ];
   };
 }

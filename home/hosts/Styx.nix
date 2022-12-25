@@ -46,6 +46,7 @@ in
       agilebits-op
       aria2
       arp-scan
+      awscli
       cachix
       curlFull
       dasel
@@ -62,7 +63,6 @@ in
       parallel
       q
       ripgrep
-      s3cmd
       socat
       tokei
       viddy
