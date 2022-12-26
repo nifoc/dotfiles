@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = [ pkgs.website-docs-nifoc-pw ];
-
   services.nginx = {
     enable = true;
 
@@ -11,7 +9,15 @@
       (domain: {
         name = domain;
         value = {
+          listen = [
+            {
+              addr = "127.0.0.1";
+              port = 80;
+            }
+          ];
+
           root = "${pkgs.website-docs-nifoc-pw}/site/${domain}";
+
           extraConfig = ''
             autoindex on;
             autoindex_format html;
@@ -19,6 +25,4 @@
         };
       }) [ "katja.nifoc.pw" "katja_vmstats.nifoc.pw" "noesis.nifoc.pw" "propagator.nifoc.pw" ]);
   };
-
-  networking.firewall.allowedTCPPorts = [ 80 ];
 }
