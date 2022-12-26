@@ -5,21 +5,6 @@ in
 {
   virtualisation.arion.projects.webserver.settings = {
     services = {
-      cloudflared = {
-        service = {
-          image = "cloudflare/cloudflared:latest";
-          container_name = "cloudflared";
-          restart = "unless-stopped";
-          command = [ "tunnel" "--no-autoupdate" "run" "--token" secret.container.webserver.cloudflared.config.token ];
-          extra_hosts = [
-            "host.docker.internal:host-gateway"
-          ];
-          labels = {
-            "com.centurylinklabs.watchtower.enable" = "true";
-          };
-        };
-      };
-
       mosquitto = {
         service = {
           image = "eclipse-mosquitto:2";
@@ -42,6 +27,7 @@ in
           container_name = "weewx";
           restart = "unless-stopped";
           depends_on = [ "mosquitto" ];
+          ports = [ "127.0.0.1:8000:8000" ];
           environment = {
             "TZ" = "Europe/Berlin";
           };
