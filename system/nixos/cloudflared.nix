@@ -8,7 +8,7 @@
 
   users.groups.cloudflared = { };
 
-  systemd.services.my_tunnel = {
+  systemd.services.cloudflared-sail = {
     wantedBy = [ "multi-user.target" ];
     after = [ "network-online.target" "systemd-resolved.service" ];
     serviceConfig = {
