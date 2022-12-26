@@ -13,6 +13,8 @@ in
 
     ../nixos/git.nix
 
+    (import ../nixos/cloudflared.nix (args // { inherit secret; }))
+
     (import ../nixos/mastodon.nix (args // { inherit secret; }))
 
     (import ../nixos/synapse.nix (args // { inherit secret; }))
