@@ -94,6 +94,13 @@ in
   services.nginx = {
     enable = true;
     virtualHosts."${web-domain}" = {
+      listen = [
+        {
+          addr = "127.0.0.1";
+          port = 80;
+        }
+      ];
+
       root = "${config.services.mastodon.package}/public/";
       forceSSL = false;
       enableACME = false;
@@ -119,6 +126,4 @@ in
   };
 
   users.groups.mastodon.members = [ config.services.nginx.user ];
-
-  networking.firewall.allowedTCPPorts = [ 80 ];
 }
