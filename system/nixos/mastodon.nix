@@ -79,7 +79,7 @@ in
       ES_USER = secret.mastodon.elasticsearch.user;
       ES_PASS = secret.mastodon.elasticsearch.password;
 
-      S3_ENABLED = true;
+      S3_ENABLED = "true";
       S3_BUCKET = secret.mastodon.s3.bucket;
       AWS_ACCESS_KEY_ID = secret.mastodon.s3.accessKeyId;
       AWS_SECRET_ACCESS_KEY = secret.mastodon.s3.secretAccessKey;
