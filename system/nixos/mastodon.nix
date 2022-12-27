@@ -86,8 +86,8 @@ in
       S3_PROTOCOL = "https";
       S3_REGION = secret.mastodon.s3.region;
       S3_ENDPOINT = secret.mastodon.s3.endpoint;
-      S3_ALIAS_HOST = secret.mastodon.s3.hostname;
-      S3_HOSTNAME = secret.mastodon.s3.hostname;
+      S3_ALIAS_HOST = "mastodon-cdn.kempkens.io";
+      S3_HOSTNAME = "mastodon-cdn.kempkens.io";
     };
   };
 
@@ -105,7 +105,9 @@ in
       forceSSL = false;
       enableACME = false;
 
-      locations."/system/".alias = "/var/lib/mastodon/public-system/";
+      locations."/system/" = {
+        return = "301 https://mastodon-cdn.kempkens.io$request_uri";
+      };
 
       locations."/" = {
         tryFiles = "$uri @proxy";
