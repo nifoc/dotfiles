@@ -106,7 +106,9 @@ in
       enableACME = false;
 
       locations."/system/" = {
-        return = "301 https://mastodon-cdn.kempkens.io$request_uri";
+        extraConfig = ''
+          rewrite ^/system/?(.*)$ https://mastodon-cdn.kempkens.io/$1 permanent;
+        '';
       };
 
       locations."/" = {

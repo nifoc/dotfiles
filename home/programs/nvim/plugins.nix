@@ -116,8 +116,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "0cb637ca9f4389172933e5aba36387ab8430b6fb";
-      sha256 = "071plz2vnn6qsyf9738hvpdh1hd5q9pqzsyyw6hjsn8higz55kab";
+      rev = "fb36ed4c9e962d9fbfa608cd4a5d9313b1e8a8b1";
+      sha256 = "097mlnw5a0pzgx3xz11nqysa4drygfl0rm1sf6n5ik2vasllj7m8";
       fetchSubmodules = false;
     };
   });
