@@ -9,6 +9,7 @@ in
   imports = [
     ../darwin/defaults.nix
     ../darwin/fonts.nix
+    ../darwin/sudo.nix
   ];
 
   nix = {
