@@ -14,7 +14,7 @@ in
     withRuby = false;
     withPython3 = false;
 
-    extraLuaPackages = with pkgs; [ luarocks-jsregexp ];
+    extraLuaPackages = _: [ pkgs.luarocks-jsregexp ];
 
     extraPackages = with pkgs; [
       git
