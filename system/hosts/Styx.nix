@@ -61,10 +61,6 @@ in
 
   environment = {
     darwinConfig = "$HOME/.config/nixpkgs/system/hosts/Styx.nix";
-
-    variables = {
-      EDITOR = "nvim";
-    };
   };
 
   services = {

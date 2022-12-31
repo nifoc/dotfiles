@@ -10,6 +10,8 @@ in
     enable = true;
     package = pkgs.neovim-nightly;
 
+    defaultEditor = true;
+
     withNodeJs = false;
     withRuby = false;
     withPython3 = false;
@@ -412,8 +414,6 @@ in
       $DRY_RUN_CMD rm -f $HOME/.cache/nvim/luacache*
       echo 'Done'
     '';
-
-    sessionVariables.EDITOR = "nvim";
 
     file = {
       "${nvim-spell-directory}/de.utf-8.spl".source = builtins.fetchurl {
