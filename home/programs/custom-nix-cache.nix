@@ -50,7 +50,7 @@ in
         # Might work better once nix is CA.
         if [[ $storePath == *"-vim-pack-dir" ]] ||
            [[ $storePath == *"-vimplugin-"* ]] ||
-           [[ $storePath == *"-neovim-unwrapped-master" ]] ||
+           [[ $storePath == *"-neovim-unwrapped"* ]] ||
            [[ $storePath == *"-vim-command-check-hook" ]] ||
            [[ $storePath == *"-neovim-require-check-hook" ]] ||
            [[ $storePath == *"-neovim-master-fish-completions" ]]; then

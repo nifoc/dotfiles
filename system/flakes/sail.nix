@@ -20,16 +20,12 @@ in
   system = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
-      ({
-        nixpkgs.overlays = nixpkgsConfig.overlays;
-        nixpkgs.config = nixpkgsConfig.config;
-      })
-
       arion.nixosModules.arion
 
       ../hosts/sail.nix
 
       home-manager.nixosModules.home-manager
+
       {
         nixpkgs = nixpkgsConfig;
         nix.nixPath = [ "nixpkgs=${nixpkgs}" ];

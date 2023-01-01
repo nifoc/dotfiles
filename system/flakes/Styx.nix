@@ -37,6 +37,7 @@ in
       ../hosts/Styx.nix
 
       home-manager.darwinModules.home-manager
+
       {
         nixpkgs = nixpkgsConfig;
         nix.nixPath = [ "nixpkgs=${nixpkgs}" ];

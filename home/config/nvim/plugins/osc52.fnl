@@ -13,7 +13,7 @@
 
   (if (= uname.sysname :Darwin)
       (set vim.g.clipboard {:name clip-name
-                            :copy {:+ copy :* copy}
+                            :copy {:+ :pbcopy :* :pbcopy}
                             :paste {:+ :pbpaste :* :pbpaste}
                             :cache_enabled 0})
       ;; Other OS

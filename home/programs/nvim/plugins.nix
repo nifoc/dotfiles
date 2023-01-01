@@ -112,12 +112,12 @@ rec {
     };
   };
   nvim-treesitter = pkgs.vimPlugins.nvim-treesitter.overrideAttrs (_: {
-    version = "2022-12-31";
+    version = "2023-01-01";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "168567efb8aa3874f3da8832dbcd3d1a4ff40d3b";
-      sha256 = "0iphg3vlzqicaviy8z9dmasm262c41byx31r9196zvgzvnircxqz";
+      rev = "b67822bf58b0fbf0c496ae21a177d02fa8388edf";
+      sha256 = "01l1sl39pia8fa2b7ld0rdi76yjlrnh82rlxvgfqjivppq23k0zm";
       fetchSubmodules = false;
     };
   });
@@ -500,12 +500,12 @@ rec {
   };
   nvim-surround = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-surround";
-    version = "2022-12-30";
+    version = "2023-01-01";
     src = pkgs.fetchFromGitHub {
       owner = "kylechui";
       repo = "nvim-surround";
-      rev = "64e21061953102b19bbb22e824fbb96054782799";
-      sha256 = "11m62i66gicv7spz6bcsxpdqshi19v0306bh69lcmbyawbwyli4a";
+      rev = "ad56e6234bf42fb7f7e4dccc7752e25abd5ec80e";
+      sha256 = "1fi5lk3iacjdbq1p4wm0bia93awwqfn7jiy019vpg4gngi41azrz";
       fetchSubmodules = false;
     };
   };
@@ -599,12 +599,12 @@ rec {
   };
   noice-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "noice.nvim";
-    version = "2022-12-31";
+    version = "2023-01-01";
     src = pkgs.fetchFromGitHub {
       owner = "folke";
       repo = "noice.nvim";
-      rev = "661495acc1cc29f53d2defd1c18c87da1cc8f850";
-      sha256 = "1cbk9961j2rrshc2947idpb8dc9ypgfmbzg7a66ab7sk1wgk1a4i";
+      rev = "256ec7318e227d4a0879f3776bfbe3955f5d2eef";
+      sha256 = "1fqi4vw0q50prs2n0gxxw9kdg752hlamb4b0axkp8k067x3lpa2r";
       fetchSubmodules = false;
     };
   };
