@@ -59,7 +59,7 @@ in
       hyperfine
       lnav
       mtr
-      nix-prefetch
+      nurl
       parallel
       q
       ripgrep
