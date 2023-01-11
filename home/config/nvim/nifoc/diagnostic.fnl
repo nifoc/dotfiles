@@ -12,7 +12,9 @@
     (vim.diagnostic.config {:underline true
                             :virtual_text false
                             :signs true
-                            :float {:border :rounded :source true}
+                            :float {:border :rounded
+                                    :source true
+                                    :focusable false}
                             :update_in_insert false
                             :severity_sort true})
     (sign "define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=")

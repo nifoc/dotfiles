@@ -61,11 +61,16 @@
                $1.sign.name)
         :on_click {:name :heirline_statuscolumn_diagnostic
                    :callback (fn [self]
-                               (let [mouse (vim.fn.getmousepos)]
-                                 (vim.schedule #(vim.diagnostic.open_float {:bufnr self.bufnr
-                                                                            :pos (- mouse.line
-                                                                                    1)
-                                                                            :scope :line
-                                                                            :focusable false}))))}})
+                               (let [mouse (vim.fn.getmousepos)
+                                     line (- mouse.line 1)
+                                     cursor-pos [mouse.line 0]]
+                                 (api.nvim_win_set_cursor mouse.winid
+                                                          cursor-pos)
+                                 (vim.schedule #(vim.diagnostic.goto_next {:win_id mouse.winid
+                                                                           :float false}))
+                                 (vim.defer_fn #(vim.diagnostic.open_float {:bufnr self.bufnr
+                                                                            :pos line
+                                                                            :scope :line})
+                                               200)))}})
   mod)
 
