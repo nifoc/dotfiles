@@ -2,7 +2,8 @@
       utils (require :heirline.utils)
       conditions (require :heirline.conditions)
       ns (require :nifoc.statusline)
-      nt (require :nifoc.tabline)]
+      nt (require :nifoc.tabline)
+      nc (require :nifoc.statuscolumn)]
   (local default-statusline [;; Left
                              ns.vi-mode
                              ns.git
@@ -23,24 +24,25 @@
                        (conditions.buffer_matches {:filetype [:TelescopePrompt]}))
           1 (ns.custom-mode :Telescope :black :green)})
   (local shell-statusline
-         {:condition (fn []
-                       (not= vim.b.nifoc_shell_mode nil))
+         {:condition #(not= vim.b.nifoc_shell_mode nil)
           1 ns.vi-mode
           2 ns.push-right
           3 ns.scrollbar
           4 ns.space
           5 (ns.shell-mode :black :purple)})
-  (local statuslines {:hl ns.default-hl
-                      :fallthrough false
-                      1 telescope-statusline
-                      2 shell-statusline
-                      3 default-statusline})
+  (local statusline {:hl ns.default-hl
+                     :fallthrough false
+                     1 telescope-statusline
+                     2 shell-statusline
+                     3 default-statusline})
   (local winbar nil)
   (local tabline [nt.os-indicator
                   (utils.make_buflist nt.buffer-block nt.truncate-left
                                       nt.truncate-right)
                   nt.tabpages-block])
+  (local statuscolumn [nc.diagnostic-signs nc.line-number nc.gitsigns-or-space])
   ;; Load Lines
   (set vim.opt.laststatus 3)
-  (heirline.setup statuslines winbar tabline))
+  (set vim.opt.showtabline 2)
+  (heirline.setup {: statusline : winbar : tabline : statuscolumn}))
 

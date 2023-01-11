@@ -11,15 +11,14 @@
   (fn mod.setup []
     (vim.diagnostic.config {:underline true
                             :virtual_text false
-                            :virtual_lines true
                             :signs true
                             :float {:border :rounded :source true}
                             :update_in_insert false
                             :severity_sort true})
-    (sign "define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticSignError")
-    (sign "define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticSignWarn")
-    (sign "define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticSignInfo")
-    (sign "define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticSignHint"))
+    (sign "define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=")
+    (sign "define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=")
+    (sign "define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=")
+    (sign "define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl="))
 
   (fn mod.maybe-enable-diagnostics [bufnr]
     (when (= vim.b.nifoc_diagnostics_enabled nil)

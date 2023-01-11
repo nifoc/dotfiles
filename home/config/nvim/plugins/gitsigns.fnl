@@ -1,4 +1,5 @@
-(let [gitsigns (require :gitsigns)]
+(let [gitsigns (require :gitsigns)
+      set-bufvar vim.api.nvim_buf_set_var]
   (gitsigns.setup {:signs {:add {:hl :GitSignsAdd
                                  :text "│"
                                  :numhl :GitSignsAddNr
@@ -18,9 +19,15 @@
                            :changedelete {:hl :GitSignsChange
                                           :text "~"
                                           :numhl :GitSignsChangeNr
-                                          :linehl :GitSignsChangeLn}}
+                                          :linehl :GitSignsChangeLn}
+                           :untracked {:hl :GitSignsUntracked
+                                       :text "┆"
+                                       :numhl :GitSignsUntrackedNr
+                                       :linehl :GitSignsUntrackedLn}}
                    :numhl false
                    :linehl false
                    :diff_opts {:internal true}
-                   :preview_config {:border :rounded}}))
+                   :preview_config {:border :rounded}
+                   :on_attach (fn [bufnr]
+                                (set-bufvar bufnr :nifoc_gitsigns_enabled 1))}))
 

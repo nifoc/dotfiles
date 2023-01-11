@@ -1,3 +1,4 @@
+---
 # Fixes
 - src: lewis6991/impatient.nvim
 
@@ -18,7 +19,7 @@
 
 # Syntax
 - src: nvim-treesitter/nvim-treesitter
-- src: p00f/nvim-ts-rainbow
+- src: mrjones2014/nvim-ts-rainbow
 - src: nvim-treesitter/playground
 
 # Telescope
@@ -35,7 +36,6 @@
 # LSP
 - src: neovim/nvim-lspconfig
 - src: mfussenegger/nvim-jdtls
-- src: "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
 - src: onsails/lspkind.nvim
 - src: SmiteshP/nvim-navic
 - src: RRethy/vim-illuminate

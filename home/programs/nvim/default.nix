@@ -183,15 +183,6 @@ in
 
       nvim-jdtls
 
-      {
-        plugin = lsp_lines-nvim;
-        config = ''
-          (let [lsp-lines (require :lsp_lines)]
-            (lsp-lines.setup))
-        '';
-        type = "fennel";
-      }
-
       lspkind-nvim
 
       {
