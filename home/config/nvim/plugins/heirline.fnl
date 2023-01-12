@@ -40,7 +40,7 @@
                   (utils.make_buflist nt.buffer-block nt.truncate-left
                                       nt.truncate-right)
                   nt.tabpages-block])
-  (local statuscolumn [nc.diagnostic-signs nc.line-number nc.gitsigns-or-space])
+  (local statuscolumn [nc.diagnostic-signs nc.line-number nc.gitsigns-or-bar])
   ;; Load Lines
   (set vim.opt.laststatus 3)
   (set vim.opt.showtabline 2)

@@ -15,25 +15,26 @@
   ;; Signs
   (set mod.signs {:provider "%s" :hl {:bold true}})
   ;; gitsigns
-  (set mod.gitsigns {:condition #(= vim.b.nifoc_gitsigns_enabled 1)
-                     :init (fn [self]
-                             (let [bufnr (api.nvim_get_current_buf)
-                                   lnum vim.v.lnum
-                                   sign (?. (vim.fn.sign_getplaced bufnr
-                                                                   {:group :gitsigns_vimfn_signs_
-                                                                    :id lnum
-                                                                    : lnum})
-                                            1 :signs 1)]
-                               (set self.sign sign)
-                               (set self.has_sign (not= sign nil))))
-                     :provider #(if $1.has_sign " ▎" "  ")
-                     :hl #(when $1.has_sign
-                            $1.sign.name)})
-  (set mod.gitsigns-or-space [{:condition #(or (o.number:get)
-                                               (o.relativenumber:get))
-                               :provider #(if (= vim.b.nifoc_gitsigns_enabled 1)
-                                              "" "  ")}
-                              mod.gitsigns])
+  (set mod.gitsigns
+       {:condition #(= vim.b.nifoc_gitsigns_enabled 1)
+        :init (fn [self]
+                (let [bufnr (api.nvim_get_current_buf)
+                      lnum vim.v.lnum
+                      sign (?. (vim.fn.sign_getplaced bufnr
+                                                      {:group :gitsigns_vimfn_signs_
+                                                       :id lnum
+                                                       : lnum})
+                               1 :signs 1)]
+                  (set self.sign sign)
+                  (set self.has_sign (not= sign nil))))
+        :provider " │"
+        :hl #(if $1.has_sign $1.sign.name :StatusLineNC)})
+  (set mod.gitsigns-or-bar [{:condition #(or (o.number:get)
+                                             (o.relativenumber:get))
+                             :provider #(if (= vim.b.nifoc_gitsigns_enabled 1)
+                                            "" " │")
+                             :hl :StatusLineNC}
+                            mod.gitsigns])
   ;; Diagnostic signs
   (set mod.diagnostic-signs
        {:condition #(= vim.b.nifoc_diagnostics_enabled 1)
