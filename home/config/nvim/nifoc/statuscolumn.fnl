@@ -1,8 +1,55 @@
 (let [mod {}
+      cache {}
       api vim.api
       o vim.opt
       statusline (require :nifoc.statusline)
-      gitsigns (require :gitsigns)]
+      diagnostic vim.diagnostic
+      gitsigns (require :gitsigns)
+      augroup (vim.api.nvim_create_augroup :NifocStatuscolumn {:clear true})
+      aucmd vim.api.nvim_create_autocmd]
+  ;; Cache
+
+  (fn clear-cache [bufnr key]
+    (when (= (. cache bufnr) nil)
+      (tset cache bufnr {}))
+    (tset cache bufnr key {}))
+
+  (fn update-cache-diagnostics [bufnr diagnostics]
+    (clear-cache bufnr :diagnostics)
+    (each [_ diagnostic (pairs diagnostics)]
+      (let [lnum (+ diagnostic.lnum 1)
+            current (. cache bufnr :diagnostics lnum)]
+        (when (or (= current nil) (< diagnostic.severity current.severity))
+          (tset cache bufnr :diagnostics lnum
+                {:severity diagnostic.severity :col diagnostic.col})))))
+
+  (fn update-cache-gitsigns [bufnr]
+    (clear-cache bufnr :gitsigns)
+    (let [signs (?. (vim.fn.sign_getplaced bufnr
+                                           {:group :gitsigns_vimfn_signs_})
+                    1 :signs)]
+      (when (not= signs nil)
+        (each [_ sign (pairs signs)]
+          (let [lnum sign.lnum
+                current (. cache bufnr :gitsigns lnum)]
+            (when (= current nil)
+              (tset cache bufnr :gitsigns lnum sign)))))))
+
+  (fn cached-sign [bufnr key lnum]
+    (?. cache bufnr key lnum))
+
+  (aucmd :DiagnosticChanged
+         {:callback #(update-cache-diagnostics $1.buf $1.data.diagnostics)
+          :group augroup
+          :desc "Update cached diagnostic signs"})
+  (aucmd :User {:pattern :GitSignsUpdate
+                :callback #(update-cache-gitsigns $1.buf)
+                :group augroup
+                :desc "Update cached gitsigns signs"})
+  (aucmd :BufWipeout
+         {:callback #(tset cache $1.buf nil)
+          :group augroup
+          :desc "Clear sign cache for current buffer"})
   ;; Line Number
   (set mod.line-number
        {:condition #(or (o.number:get) (o.relativenumber:get))
@@ -21,11 +68,7 @@
         :init (fn [self]
                 (let [bufnr (api.nvim_get_current_buf)
                       lnum vim.v.lnum
-                      sign (?. (vim.fn.sign_getplaced bufnr
-                                                      {:group :gitsigns_vimfn_signs_
-                                                       :id lnum
-                                                       : lnum})
-                               1 :signs 1)]
+                      sign (cached-sign bufnr :gitsigns lnum)]
                   (set self.sign sign)
                   (set self.has_sign (not= sign nil))))
         :provider " ▏"
@@ -49,28 +92,25 @@
   (set mod.diagnostic-signs
        {:condition #(and (= vim.b.nifoc_diagnostics_enabled 1)
                          (> (length (vim.diagnostic.get 0)) 0))
-        :static {:sign-text {:DiagnosticSignError " "
-                             :DiagnosticSignWarn " "
-                             :DiagnosticSignInfo " "
-                             :DiagnosticSignHint " "}}
+        :static {:sign-text {diagnostic.severity.ERROR " "
+                             diagnostic.severity.WARN " "
+                             diagnostic.severity.INFO " "
+                             diagnostic.severity.HINT " "}
+                 :sign-hl {diagnostic.severity.ERROR :DiagnosticSignError
+                           diagnostic.severity.WARN :DiagnosticSignWarn
+                           diagnostic.severity.INFO :DiagnosticSignInfo
+                           diagnostic.severity.HINT :DiagnosticSignHint}}
         :init (fn [self]
                 (let [bufnr (api.nvim_get_current_buf)
                       lnum vim.v.lnum
-                      signs (?. (vim.fn.sign_getplaced bufnr
-                                                       {:group "*" : lnum})
-                                1 :signs)
-                      diagnostic-signs (vim.tbl_filter #(vim.startswith $1.group
-                                                                        :vim.diagnostic)
-                                                       signs)
-                      sign (?. diagnostic-signs 1)]
-                  (set self.bufnr bufnr)
+                      sign (cached-sign bufnr :diagnostics lnum)]
                   (set self.sign sign)
                   (set self.has_sign (not= sign nil))))
         :provider #(if $1.has_sign
-                       (. $1.sign-text $1.sign.name)
+                       (. $1.sign-text $1.sign.severity)
                        "  ")
         :hl #(when $1.has_sign
-               $1.sign.name)
+               (. $1.sign-hl $1.sign.severity))
         :on_click {:name :heirline_statuscolumn_diagnostic
                    :callback (fn [self]
                                (let [mouse (vim.fn.getmousepos)
