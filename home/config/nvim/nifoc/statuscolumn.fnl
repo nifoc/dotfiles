@@ -1,7 +1,8 @@
 (let [mod {}
       api vim.api
       o vim.opt
-      statusline (require :nifoc.statusline)]
+      statusline (require :nifoc.statusline)
+      gitsigns (require :gitsigns)]
   ;; Line Number
   (set mod.line-number
        {:condition #(or (o.number:get) (o.relativenumber:get))
@@ -27,21 +28,31 @@
                                1 :signs 1)]
                   (set self.sign sign)
                   (set self.has_sign (not= sign nil))))
-        :provider " │"
-        :hl #(if $1.has_sign $1.sign.name :StatusLineNC)})
-  (set mod.gitsigns-or-bar [{:condition #(or (o.number:get)
-                                             (o.relativenumber:get))
-                             :provider #(if (= vim.b.nifoc_gitsigns_enabled 1)
-                                            "" " │")
+        :provider " ▏"
+        :hl #(if $1.has_sign $1.sign.name :StatusLineNC)
+        :on_click {:name :heirline_statuscolumn_gitsigns
+                   :callback (fn [self]
+                               (let [mouse (vim.fn.getmousepos)
+                                     cursor-pos [mouse.line 0]]
+                                 (api.nvim_win_set_cursor mouse.winid
+                                                          cursor-pos)
+                                 (vim.defer_fn #(gitsigns.blame_line {:full true})
+                                               100)))}})
+  (set mod.gitsigns-or-bar [{:condition #(and (not= vim.b.nifoc_gitsigns_enabled
+                                                    1)
+                                              (or (o.number:get)
+                                                  (o.relativenumber:get)))
+                             :provider " ▏"
                              :hl :StatusLineNC}
                             mod.gitsigns])
   ;; Diagnostic signs
   (set mod.diagnostic-signs
-       {:condition #(= vim.b.nifoc_diagnostics_enabled 1)
-        :static {:sign-text {:DiagnosticSignError " "
-                             :DiagnosticSignWarn " "
+       {:condition #(and (= vim.b.nifoc_diagnostics_enabled 1)
+                         (> (length (vim.diagnostic.get 0)) 0))
+        :static {:sign-text {:DiagnosticSignError " "
+                             :DiagnosticSignWarn " "
                              :DiagnosticSignInfo " "
-                             :DiagnosticSignHint " "}}
+                             :DiagnosticSignHint " "}}
         :init (fn [self]
                 (let [bufnr (api.nvim_get_current_buf)
                       lnum vim.v.lnum
@@ -67,11 +78,9 @@
                                      cursor-pos [mouse.line 0]]
                                  (api.nvim_win_set_cursor mouse.winid
                                                           cursor-pos)
-                                 (vim.schedule #(vim.diagnostic.goto_next {:win_id mouse.winid
-                                                                           :float false}))
                                  (vim.defer_fn #(vim.diagnostic.open_float {:bufnr self.bufnr
                                                                             :pos line
                                                                             :scope :line})
-                                               200)))}})
+                                               100)))}})
   mod)
 

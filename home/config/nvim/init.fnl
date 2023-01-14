@@ -38,7 +38,11 @@
   (set o.splitbelow true)
   (set o.splitright true)
   ;; Diff
-  (set o.diffopt [:filler :internal "algorithm:histogram" :indent-heuristic])
+  (set o.diffopt [:internal
+                  :filler
+                  "algorithm:histogram"
+                  :indent-heuristic
+                  "linematch:50"])
   ;; UI
   (set o.number true)
   (set o.relativenumber true)
