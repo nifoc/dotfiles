@@ -17,6 +17,7 @@
                                     :argument_list
                                     :object
                                     :dictionary
+                                    :map
                                     :element
                                     :list
                                     :table

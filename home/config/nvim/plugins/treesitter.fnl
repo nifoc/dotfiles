@@ -26,6 +26,7 @@
                        :regex
                        :ruby
                        :scss
+                       :sql
                        :svelte
                        :toml
                        :tsx
