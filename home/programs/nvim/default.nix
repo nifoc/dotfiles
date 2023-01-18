@@ -134,6 +134,7 @@ in
             tree-sitter-regex
             tree-sitter-ruby
             tree-sitter-scss
+            tree-sitter-sql
             tree-sitter-svelte
             tree-sitter-toml
             tree-sitter-tsx
