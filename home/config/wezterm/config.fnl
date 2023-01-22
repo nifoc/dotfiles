@@ -10,11 +10,19 @@
   (fn extract-tab-info [title]
     (match title
       (where t (t:find "^nvim%s"))
-      {:title (title:gsub "^nvim%s(.*)" "%1") :icon " " :color "#019833"}
+      {:title (t:gsub "^nvim%s(.*)" "%1") :icon " " :color "#019833"}
+      (where t (t:find "^git%s"))
+      {:title (t:gsub "^git%s(.*)" "%1") :icon " " :color "#41535B"}
+      (where t (t:find "^mix%s"))
+      {:title (t:gsub "^mix%s(.*)" "%1") :icon " " :color "#A074C4"}
+      (where t (t:find "^iex%s")) {: title :icon " " :color "#A074C4"}
       (where t (t:find "^upa%s")) {: title :icon " " :color "#7EBAE4"}
       (where t (t:find "^upp%s")) {: title :icon " " :color "#7EBAE4"}
       (where t (t:find "^nrsw%s")) {: title :icon " " :color "#7EBAE4"}
+      (where t (t:find "^ssh%s")) {: title :icon " " :color "#F4C82D"}
+      (where t (t:find "^scp%s")) {: title :icon " " :color "#F4C82D"}
       (where t (t:find :^instagram-)) {: title :icon " " :color "#FB2179"}
+      (where t (t:find :^immich-)) {: title :icon " " :color "#31A352"}
       _ {: title :icon " " :color "#F8F8F2"}))
 
   (wezterm.on :format-tab-title
@@ -63,7 +71,7 @@
    :use_fancy_tab_bar false
    :hide_tab_bar_if_only_one_tab true
    :tab_bar_at_bottom true
-   :tab_max_width 48
+   :tab_max_width 32
    :colors {:tab_bar {:background colors.inactive-background
                       :new_tab {:bg_color colors.inactive-background
                                 :fg_color colors.inactive-foreground}}}
@@ -87,7 +95,13 @@
            :action (wezterm.action.ScrollToPrompt -1)}
           {:key :DownArrow
            :mods :SHIFT
-           :action (wezterm.action.ScrollToPrompt 1)}]
+           :action (wezterm.action.ScrollToPrompt 1)}
+          {:key :LeftArrow
+           :mods :CMD
+           :action (wezterm.action.ActivateTabRelative -1)}
+          {:key :RightArrow
+           :mods :CMD
+           :action (wezterm.action.ActivateTabRelative 1)}]
    ;; Mouse
    :mouse_bindings [; Only select text and don't open hyperlinks
                     {:event {:Up {:streak 1 :button :Left}}

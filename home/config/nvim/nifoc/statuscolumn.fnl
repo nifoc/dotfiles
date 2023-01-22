@@ -9,22 +9,42 @@
       aucmd vim.api.nvim_create_autocmd]
   ;; Cache
 
-  (fn clear-cache [bufnr key]
+  (fn maybe-setup-buffer-cache! [bufnr key]
     (when (= (. cache bufnr) nil)
       (tset cache bufnr {}))
+    (when (= (. cache bufnr key) nil)
+      (tset cache bufnr key {})))
+
+  (fn clear-cache! [bufnr key]
     (tset cache bufnr key {}))
 
+  (fn clear-diagnostics-cache! [bufnr diagnostics]
+    (let [key :diagnostics
+          namespaces (vim.tbl_map (fn [d]
+                                    d.namespace)
+                                  diagnostics)
+          cleared-namespaces {}]
+      (each [_ ns (pairs namespaces)]
+        (when (= (. cleared-namespaces ns) nil)
+          (local current-cache (. cache bufnr key))
+          (tset cache bufnr key (vim.tbl_filter #(not= $1.ns ns) current-cache))
+          (tset cleared-namespaces ns true)))))
+
   (fn update-cache-diagnostics [bufnr diagnostics]
-    (clear-cache bufnr :diagnostics)
+    (maybe-setup-buffer-cache! bufnr :diagnostics)
+    (clear-diagnostics-cache! bufnr diagnostics)
     (each [_ diagnostic (pairs diagnostics)]
       (let [lnum (+ diagnostic.lnum 1)
             current (. cache bufnr :diagnostics lnum)]
         (when (or (= current nil) (< diagnostic.severity current.severity))
           (tset cache bufnr :diagnostics lnum
-                {:severity diagnostic.severity :col diagnostic.col})))))
+                {:severity diagnostic.severity
+                 :col diagnostic.col
+                 :ns diagnostic.namespace})))))
 
   (fn update-cache-gitsigns [bufnr]
-    (clear-cache bufnr :gitsigns)
+    (maybe-setup-buffer-cache! bufnr :gitsigns)
+    (clear-cache! bufnr :gitsigns)
     (let [signs (?. (vim.fn.sign_getplaced bufnr
                                            {:group :gitsigns_vimfn_signs_})
                     1 :signs)]

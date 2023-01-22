@@ -4,6 +4,8 @@
   systemd.tmpfiles.rules = [
     "d /etc/container-webserver/weewx 0755 421 421"
     "d /etc/container-webserver/weewx/html 0755 421 421"
+
+    "d /etc/container-webserver/nitter 0755 0 0"
   ];
 
   # mosquitto
@@ -29,5 +31,13 @@
     mode = "0644";
     uid = 421;
     gid = 421;
+  };
+
+  # nitter
+  environment.etc."container-webserver/nitter/nitter.conf" = {
+    source = ../../secret/container/webserver/config/nitter.conf;
+    mode = "0644";
+    uid = 0;
+    gid = 0;
   };
 }
