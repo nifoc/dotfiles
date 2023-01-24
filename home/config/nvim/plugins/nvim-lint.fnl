@@ -12,7 +12,10 @@
         :ignore_exitcode false
         :parser (fn [output]
                   (if (= output "") {}
-                      (let [findings (vim.json.decode output)]
+                      (let [findings (vim.json.decode output)
+                            filtered-findings (vim.tbl_filter #(not= $1.line
+                                                                     nil)
+                                                              findings.results)]
                         (vim.tbl_map (fn [result]
                                        {:lnum (- result.line 1)
                                         :end_lnum (- result.line 1)
@@ -21,7 +24,7 @@
                                         :severity vim.diagnostic.severity.HINT
                                         :source :deadnix
                                         :message result.message})
-                                     findings.results))))})
+                                     filtered-findings))))})
   ;; Linter Options
   (let [checkstyle (require :lint.linters.checkstyle)
         fennel (require :lint.linters.fennel)]

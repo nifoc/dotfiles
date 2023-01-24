@@ -69,12 +69,12 @@ rec {
   };
   cutlass-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "cutlass.nvim";
-    version = "2023-01-23";
+    version = "2023-01-24";
     src = pkgs.fetchFromGitHub {
       owner = "gbprod";
       repo = "cutlass.nvim";
-      rev = "0a249b72cdc758f74f68817061eb879929b21a11";
-      sha256 = "1ms4sg4ihc5f34mjnsgabbfqx9i60bw44f3l7cm0dfpjwhg7as3a";
+      rev = "9d5c8a92a6ff1e4c3776b7c90b050efbc3fe2b7f";
+      sha256 = "010mvkh8ybb2yl2bqqcnbkyj410xjgcgj93qnpc96fd9rsfia8il";
       fetchSubmodules = false;
     };
   };
