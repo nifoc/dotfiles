@@ -88,6 +88,9 @@ in
       S3_ENDPOINT = secret.mastodon.s3.endpoint;
       S3_ALIAS_HOST = "mastodon-cdn.kempkens.io";
       S3_HOSTNAME = "mastodon-cdn.kempkens.io";
+
+      DEEPL_PLAN = "free";
+      DEEPL_API_KEY = secret.mastodon.deepl.apiKey;
     };
   };
 
