@@ -21,8 +21,8 @@
       (where t (t:find "^nrsw%s")) {: title :icon " " :color "#7EBAE4"}
       (where t (t:find "^ssh%s")) {: title :icon " " :color "#F4C82D"}
       (where t (t:find "^scp%s")) {: title :icon " " :color "#F4C82D"}
+      (where t (t:find :^ytdl)) {: title :icon " " :color "#FF0000"}
       (where t (t:find :^instagram-)) {: title :icon " " :color "#FB2179"}
-      (where t (t:find :^immich-)) {: title :icon " " :color "#31A352"}
       _ {: title :icon " " :color "#F8F8F2"}))
 
   (wezterm.on :format-tab-title
