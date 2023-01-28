@@ -1,7 +1,10 @@
 { pkgs, ... }:
 
 {
-  home.packages = [ pkgs.git-crypt ];
+  home.packages = with pkgs; [
+    git-absorb
+    git-crypt
+  ];
 
   programs.git = {
     enable = true;
