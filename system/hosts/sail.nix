@@ -85,8 +85,8 @@ in
         addresses = [{ address = "10.99.99.2"; prefixLength = 32; }];
 
         routes = [
-          { address = "10.99.99.0"; prefixLength = 24; via = "10.99.99.1"; }
           { address = "10.99.99.1"; prefixLength = 32; }
+          { address = "10.99.99.0"; prefixLength = 24; via = "10.99.99.1"; }
         ];
       };
     };
