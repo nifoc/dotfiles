@@ -53,7 +53,7 @@ in
     };
 
     "sail" = {
-      hostname = secret-sail.publicIP;
+      hostname = secret-sail.tailscaleIP;
       port = 22;
       user = "daniel";
       forwardAgent = true;
