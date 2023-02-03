@@ -80,13 +80,11 @@ in
 
     interfaces = {
       enp1s0.ipv6.addresses = secret.networking.interfaces.enp1s0.ipv6.addresses;
-
-      enp7s0.ipv4.addresses = [{ address = "10.99.99.2"; prefixLength = 24; }];
     };
 
     defaultGateway6 = { address = "fe80::1"; interface = "enp1s0"; };
 
-    dhcpcd.denyInterfaces = [ "enp7s0" "veth*" ];
+    dhcpcd.denyInterfaces = [ "veth*" ];
 
     timeServers = [
       "ntp1.hetzner.de"
