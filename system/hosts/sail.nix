@@ -78,10 +78,15 @@ in
   networking = {
     hostName = "sail";
 
-    interfaces.enp1s0.ipv6.addresses = secret.networking.interfaces.enp1s0.ipv6.addresses;
+    interfaces = {
+      enp1s0.ipv6.addresses = secret.networking.interfaces.enp1s0.ipv6.addresses;
+
+      enp7s0.ipv4.addresses = [{ address = "10.99.99.2"; prefixLength = 24; }];
+    };
+
     defaultGateway6 = { address = "fe80::1"; interface = "enp1s0"; };
 
-    dhcpcd.denyInterfaces = [ "veth*" ];
+    dhcpcd.denyInterfaces = [ "enp7s0" "veth*" ];
 
     timeServers = [
       "ntp1.hetzner.de"
