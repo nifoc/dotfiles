@@ -5,21 +5,6 @@ in
 {
   virtualisation.arion.projects.matrix.settings = {
     services = {
-      matrix-telegram = {
-        service = {
-          image = "dock.mau.dev/mautrix/telegram:latest";
-          container_name = "mautrix-telegram";
-          restart = "unless-stopped";
-          ports = [ "29317:29317" ];
-          volumes = [
-            "/etc/container-matrix/telegram:/data"
-          ];
-          labels = {
-            "com.centurylinklabs.watchtower.enable" = "true";
-          };
-        };
-      };
-
       signald = {
         service = {
           image = "signald/signald:latest";

@@ -93,7 +93,6 @@
 
       app_service_config_files = [
         "/etc/container-matrix/signal/registration.yaml"
-        "/etc/container-matrix/telegram/registration.yaml"
         "/etc/container-matrix/whatsapp/registration.yaml"
       ];
 
