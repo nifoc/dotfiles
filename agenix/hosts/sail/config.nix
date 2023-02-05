@@ -1,7 +1,7 @@
 {
   age.secrets = {
-    freshrss = {
-      userPassword.file = ./freshrss/userPassword.age;
+    freshrss-user-password = {
+      file = ./freshrss/userPassword.age;
     };
   };
 }
