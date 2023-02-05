@@ -234,7 +234,7 @@
         2 {:provider #(string.gsub (navic.get_location) "%%" "%%%%")
            :hl {:fg colors.white}}})
   (set mod.navic
-       {:condition navic.is_available
+       {:condition #(navic.is_available 0)
         :static {:type-hl {:File :Directory
                            :Module "@include"
                            :Namespace "@namespace"

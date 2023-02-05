@@ -9,6 +9,7 @@ in
 {
   imports = [
     ../../hardware/hosts/sail.nix
+    ../../agenix/hosts/sail/config.nix
     ../nixos/ssh.nix
 
     ../nixos/git.nix

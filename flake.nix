@@ -12,6 +12,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "darwin";
+    };
+
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
@@ -40,6 +46,7 @@
       sail = import ./system/flakes/sail.nix {
         inherit (inputs) nixpkgs;
         inherit (inputs) home-manager;
+        inherit (inputs) agenix;
         inherit (inputs) arion;
         inherit inputs;
       };

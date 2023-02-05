@@ -5,7 +5,7 @@
     enable = true;
 
     inherit (secret.freshrss) defaultUser;
-    inherit (secret.freshrss) passwordFile;
+    passwordFile = config.age.secrets.freshrss.userPassword.path;
 
     inherit (secret.freshrss) baseUrl;
     inherit (secret.freshrss) virtualHost;

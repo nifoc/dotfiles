@@ -43,6 +43,7 @@ in
     stateVersion = "22.11";
 
     packages = with pkgs; [
+      agenix
       agilebits-op
       aria2
       arp-scan

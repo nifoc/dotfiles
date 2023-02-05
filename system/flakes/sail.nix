@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, arion, inputs, ... }:
+{ nixpkgs, home-manager, agenix, arion, inputs, ... }:
 
 let
   overlay-neovim = inputs.neovim-nightly-overlay.overlay;
@@ -20,11 +20,13 @@ in
   system = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
-      arion.nixosModules.arion
-
       ../hosts/sail.nix
 
       home-manager.nixosModules.home-manager
+
+      agenix.nixosModules.default
+
+      arion.nixosModules.arion
 
       {
         nixpkgs = nixpkgsConfig;

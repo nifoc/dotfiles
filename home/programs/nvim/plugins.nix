@@ -112,12 +112,12 @@ rec {
     };
   };
   nvim-treesitter = pkgs.vimPlugins.nvim-treesitter.overrideAttrs (_: {
-    version = "2023-02-04";
+    version = "2023-02-05";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "bd7b4b6eff2dcb4a8a65f55d51398e79fa3d4ec6";
-      sha256 = "08amxr13yfqi2301lrdb0swl6wfjkbi3i7cq5r5ypyw7xaj1nbqb";
+      rev = "720f75f9881cae820cecde23fc2f07affacf2826";
+      sha256 = "16rh90skmhs2qr9v39l7f0kmml8n7f8c36vsp96pwkd9rw1j99ki";
       fetchSubmodules = false;
     };
   });
@@ -156,12 +156,12 @@ rec {
   };
   telescope-fzf-native-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "telescope-fzf-native.nvim";
-    version = "2022-12-18";
+    version = "2023-02-05";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope-fzf-native.nvim";
-      rev = "fab3e2212e206f4f8b3bbaa656e129443c9b802e";
-      sha256 = "0paiaag3aazfv8rr0i43maq34pn3iga3lkjyllhfysqvdm8jk50f";
+      rev = "580b6c48651cabb63455e97d7e131ed557b8c7e2";
+      sha256 = "1yjdn4729syz80radl90f2bsh7jl73rxq5ss0yp2qjj7aj8hkhm6";
       fetchSubmodules = false;
     };
     buildPhase = ''
