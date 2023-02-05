@@ -42,6 +42,12 @@
       group = "mastodon";
     };
 
+    synapse-extra-config = {
+      file = ./synapse/extraConfig.nix;
+      owner = "matrix-synapse";
+      group = "matrix-synapse";
+    };
+
     freshrss-user-password = {
       file = ./freshrss/userPassword.age;
       owner = "freshrss";

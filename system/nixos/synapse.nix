@@ -1,4 +1,4 @@
-{ secret, ... }:
+{ config, ... }:
 
 {
   services.matrix-synapse = {
@@ -25,28 +25,6 @@
           ];
         }
       ];
-
-      database = {
-        name = "psycopg2";
-        args = {
-          host = "10.99.99.3";
-          database = "synapse";
-          inherit (secret.synapse.database) user;
-          inherit (secret.synapse.database) password;
-          cp_min = 5;
-          cp_max = 10;
-        };
-      };
-
-      email = {
-        smtp_host = "smtp.mailgun.org";
-        smtp_port = 465;
-        smtp_user = secret.synapse.email.user;
-        smtp_pass = secret.synapse.email.password;
-        force_tls = true;
-        notif_from = "%(app)s <matrix@mg.kempkens.io>";
-        app_name = "kempkens_matrix";
-      };
 
       thumbnail_sizes = [
         { width = 32; height = 32; method = "crop"; }
@@ -84,10 +62,6 @@
 
       enable_registration = false;
 
-      inherit (secret.synapse) registration_shared_secret;
-      inherit (secret.synapse) macaroon_secret_key;
-      inherit (secret.synapse) form_secret;
-
       enable_metrics = false;
       report_stats = false;
 
@@ -102,6 +76,8 @@
         msc2409_to_device_messages_enabled = true;
       };
     };
+
+    extraConfigFiles = [ config.age.secrets.synapse-extra-config.path ];
   };
 
   networking.firewall.allowedTCPPorts = [ 8008 ];

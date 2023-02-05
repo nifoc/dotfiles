@@ -20,7 +20,7 @@ in
 
     (import ../nixos/mastodon.nix (args // { inherit secret; }))
 
-    (import ../nixos/synapse.nix (args // { inherit secret; }))
+    ../nixos/synapse.nix
 
     ../nixos/websites.nix
 

@@ -102,12 +102,12 @@ rec {
   };
   dracula-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "dracula.nvim";
-    version = "2023-01-19";
+    version = "2023-02-05";
     src = pkgs.fetchFromGitHub {
       owner = "Mofiqul";
       repo = "dracula.nvim";
-      rev = "a0b129d7dea51b317fa8064f13b29f68004839c4";
-      sha256 = "0q7ly95hp123z9z8qh4sih5a53dnbxv0jxa80b1s7d6h1wpr2w5j";
+      rev = "798274ba3c454a9aa3cd71f95a86ea55cbbbb142";
+      sha256 = "156g08ab9jghi580b1k88si3bc6h72d77avlpn34dnnn5481anvh";
       fetchSubmodules = false;
     };
   };
@@ -116,8 +116,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "720f75f9881cae820cecde23fc2f07affacf2826";
-      sha256 = "16rh90skmhs2qr9v39l7f0kmml8n7f8c36vsp96pwkd9rw1j99ki";
+      rev = "24d5be6e7192a855a0eba21829717614fa1cf54e";
+      sha256 = "0mk81rjjg4z86kc5wh400j3hvhfq5fflmv0w7daxbxz83133xnxx";
       fetchSubmodules = false;
     };
   });

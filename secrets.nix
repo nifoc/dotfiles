@@ -15,6 +15,8 @@ in
   "agenix/hosts/sail/mastodon/vapidPublicKey.age".publicKeys = sail;
   "agenix/hosts/sail/mastodon/extraConfig.age".publicKeys = sail;
 
+  "agenix/hosts/sail/synapse/extraConfig.age".publicKeys = sail;
+
   "agenix/hosts/sail/freshrss/userPassword.age".publicKeys = sail;
   "agenix/hosts/sail/freshrss/databasePassword.age".publicKeys = sail;
 }
