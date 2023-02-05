@@ -30,10 +30,6 @@
         name = "psycopg2";
         args = {
           host = "10.99.99.3";
-          database = "synapse";
-          user = "synapse";
-          cp_min = 5;
-          cp_max = 10;
         };
       };
 
