@@ -75,23 +75,9 @@ in
 
     extraConfig = {
       WEB_DOMAIN = web-domain;
-
-      ES_USER = secret.mastodon.elasticsearch.user;
-      ES_PASS = secret.mastodon.elasticsearch.password;
-
-      S3_ENABLED = "true";
-      S3_BUCKET = secret.mastodon.s3.bucket;
-      AWS_ACCESS_KEY_ID = secret.mastodon.s3.accessKeyId;
-      AWS_SECRET_ACCESS_KEY = secret.mastodon.s3.secretAccessKey;
-      S3_PROTOCOL = "https";
-      S3_REGION = secret.mastodon.s3.region;
-      S3_ENDPOINT = secret.mastodon.s3.endpoint;
-      S3_ALIAS_HOST = "mastodon-cdn.kempkens.io";
-      S3_HOSTNAME = "mastodon-cdn.kempkens.io";
-
-      DEEPL_PLAN = "free";
-      DEEPL_API_KEY = secret.mastodon.deepl.apiKey;
     };
+
+    extraEnvFiles = [ config.age.secrets.mastodon-extra-config.path ];
   };
 
   services.nginx = {

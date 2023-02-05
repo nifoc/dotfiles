@@ -36,6 +36,12 @@
       group = "mastodon";
     };
 
+    mastodon-extra-config = {
+      file = ./mastodon/extraConfig.age;
+      owner = "mastodon";
+      group = "mastodon";
+    };
+
     freshrss-user-password = {
       file = ./freshrss/userPassword.age;
       owner = "freshrss";
