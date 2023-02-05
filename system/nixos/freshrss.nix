@@ -14,8 +14,8 @@
       type = "pgsql";
       host = "10.99.99.3";
       port = 5432;
-      inherit (secret.freshrss.database) user;
-      inherit (secret.freshrss.database) passFile;
+      user = "freshrss";
+      passFile = config.age.secrets.freshrss-database-password.path;
     };
   };
 }

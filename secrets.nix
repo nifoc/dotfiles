@@ -6,5 +6,7 @@ let
   sail = [ user-daniel system-sail ];
 in
 {
+  # sail
   "agenix/hosts/sail/freshrss/userPassword.age".publicKeys = sail;
+  "agenix/hosts/sail/freshrss/databasePassword.age".publicKeys = sail;
 }
