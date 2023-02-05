@@ -26,6 +26,17 @@
         }
       ];
 
+      database = {
+        name = "psycopg2";
+        args = {
+          host = "10.99.99.3";
+          database = "synapse";
+          user = "synapse";
+          cp_min = 5;
+          cp_max = 10;
+        };
+      };
+
       thumbnail_sizes = [
         { width = 32; height = 32; method = "crop"; }
         { width = 96; height = 96; method = "crop"; }
