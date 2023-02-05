@@ -30,10 +30,10 @@ in
 
     trustedProxy = "127.0.0.1";
 
-    vapidPublicKeyFile = "/var/lib/mastodon/secrets/vapid-public-key";
-    secretKeyBaseFile = "/var/lib/mastodon/secrets/secret-key-base";
-    otpSecretFile = "/var/lib/mastodon/secrets/otp-secret";
-    vapidPrivateKeyFile = "/var/lib/mastodon/secrets/vapid-private-key";
+    vapidPublicKeyFile = config.age.secrets.mastodon-vapid-public-key.path;
+    secretKeyBaseFile = config.age.secrets.mastodon-secret-key-base.path;
+    otpSecretFile = config.age.secrets.mastodon-otp-secret.path;
+    vapidPrivateKeyFile = config.age.secrets.mastodon-vapid-private-key.path;
 
     database = {
       createLocally = false;
@@ -41,7 +41,7 @@ in
       port = 5432;
       name = "mastodon";
       inherit (secret.mastodon.database) user;
-      inherit (secret.mastodon.database) passwordFile;
+      passwordFile = config.age.secrets.mastodon-database-password.path;
     };
 
     redis = {
@@ -62,7 +62,7 @@ in
       port = 587;
       fromAddress = "mastodon@mg.kempkens.io";
       inherit (secret.mastodon.smtp) user;
-      inherit (secret.mastodon.smtp) passwordFile;
+      passwordFile = config.age.secrets.mastodon-smtp-password.path;
     };
 
     automaticMigrations = true;

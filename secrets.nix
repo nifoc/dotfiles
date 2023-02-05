@@ -7,6 +7,13 @@ let
 in
 {
   # sail
+  "agenix/hosts/sail/mastodon/databasePassword.age".publicKeys = sail;
+  "agenix/hosts/sail/mastodon/smtpPassword.age".publicKeys = sail;
+  "agenix/hosts/sail/mastodon/otpSecret.age".publicKeys = sail;
+  "agenix/hosts/sail/mastodon/secretKeyBase.age".publicKeys = sail;
+  "agenix/hosts/sail/mastodon/vapidPrivateKey.age".publicKeys = sail;
+  "agenix/hosts/sail/mastodon/vapidPublicKey.age".publicKeys = sail;
+
   "agenix/hosts/sail/freshrss/userPassword.age".publicKeys = sail;
   "agenix/hosts/sail/freshrss/databasePassword.age".publicKeys = sail;
 }
