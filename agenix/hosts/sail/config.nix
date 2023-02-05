@@ -43,7 +43,7 @@
     };
 
     synapse-extra-config = {
-      file = ./synapse/extraConfig.nix;
+      file = ./synapse/extraConfig.age;
       owner = "matrix-synapse";
       group = "matrix-synapse";
     };
