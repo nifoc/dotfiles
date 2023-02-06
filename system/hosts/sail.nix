@@ -14,7 +14,7 @@ in
 
     ../nixos/git.nix
 
-    (import ../nixos/cloudflared.nix (args // { inherit secret; }))
+    ../nixos/cloudflared.nix
 
     (import ../nixos/freshrss.nix (args // { inherit secret; }))
 

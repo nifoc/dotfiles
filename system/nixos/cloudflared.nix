@@ -1,4 +1,4 @@
-{ pkgs, secret, ... }:
+{ pkgs, config, ... }:
 
 {
   users.users.cloudflared = {
@@ -10,10 +10,12 @@
 
   systemd.services.cloudflared-sail = {
     wantedBy = [ "multi-user.target" ];
-    after = [ "network-online.target" "systemd-resolved.service" ];
+    after = [ "network.target" "network-online.target" ];
+    wants = [ "network.target" "network-online.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run --token=${secret.cloudflared.token}";
-      Restart = "always";
+      ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run";
+      EnvironmentFile = [ config.age.secrets.cloudflared-environment.path ];
+      Restart = "on-failure";
       User = "cloudflared";
       Group = "cloudflared";
     };

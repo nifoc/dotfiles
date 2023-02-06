@@ -102,6 +102,8 @@
           {:key :RightArrow
            :mods :CMD
            :action (wezterm.action.ActivateTabRelative 1)}]
+   :send_composed_key_when_left_alt_is_pressed true
+   :send_composed_key_when_right_alt_is_pressed true
    ;; Mouse
    :mouse_bindings [; Only select text and don't open hyperlinks
                     {:event {:Up {:streak 1 :button :Left}}
