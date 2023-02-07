@@ -22,6 +22,9 @@
   (fn max-number [nums]
     (math.max (unpack nums)))
 
+  (fn truncate-string [str max-length ellipsis]
+    (if (> (length str) max-length) (.. (str:sub 1 max-length) ellipsis) str))
+
   ;; Utils
   (set mod.default-hl (fn []
                         {:bg colors.black}))
@@ -261,6 +264,7 @@
                            :Event "@keyword"
                            :Operator "@operator"
                            :TypeParameter "@type"}
+                 :separator "  "
                  :enc (fn [line col winnr]
                         (let [enc-line (bit.lshift line 16)
                               enc-col (bit.lshift col 6)]
@@ -279,7 +283,10 @@
                   (let [pos (self.enc d.scope.start.line
                                       d.scope.start.character self.winnr)
                         child [{:provider d.icon :hl (. self.type-hl d.type)}
-                               {:provider (string.gsub d.name "%%" "%%%%")
+                               {:provider (truncate-string (string.gsub d.name
+                                                                        "%%"
+                                                                        "%%%%")
+                                                           45 "…")
                                 :on_click {:name :heirline_navic
                                            :minwid pos
                                            :callback (fn [_ minwid]
@@ -290,7 +297,8 @@
                                                                                    col])))}}]]
                     (when (and (> data-len 1) (< i data-len))
                       (table.insert child
-                                    {:provider "  " :hl {:fg colors.white}}))
+                                    {:provider self.separator
+                                     :hl {:fg colors.white}}))
                     (table.insert children child)))
                 (set self.child (self:new children 1)))
         :update :CursorMoved
