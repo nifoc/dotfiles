@@ -18,6 +18,8 @@ in
 
     (import ../nixos/freshrss.nix (args // { inherit secret; }))
 
+    ../nixos/libreddit.nix
+
     (import ../nixos/mastodon.nix (args // { inherit secret; }))
 
     ../nixos/synapse.nix
