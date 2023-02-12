@@ -36,7 +36,7 @@ in
       nodePackages.yaml-language-server
       rnix-lsp
       sqls
-      sumneko-lua-language-server
+      lua-language-server
       taplo-lsp
 
       # Diagnostic Tools
