@@ -1,5 +1,11 @@
 { config, ... }:
 
+let
+  proxy-no-auth = {
+    recommendedProxySettings = true;
+    proxyPass = "http://127.0.0.1:8001";
+  };
+in
 {
   virtualisation.arion.projects.nitter.settings = {
     services = {
@@ -43,35 +49,13 @@
         proxyPass = "http://127.0.0.1:8001";
       };
 
-      locations."/pic/" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:8001";
-      };
-
-      locations."/video/" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:8001";
-      };
-
-      locations."/favicon.ico" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:8001";
-      };
-
-      locations."/favicon-32x32.png" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:8001";
-      };
-
-      locations."/favicon-16x16.png" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:8001";
-      };
-
-      locations."/apple-touch-icon.png" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:8001";
-      };
+      # Disable auth for certain paths
+      locations."/pic/" = proxy-no-auth;
+      locations."/video/" = proxy-no-auth;
+      locations."/favicon.ico" = proxy-no-auth;
+      locations."/favicon-32x32.png" = proxy-no-auth;
+      locations."/favicon-16x16.png" = proxy-no-auth;
+      locations."/apple-touch-icon.png" = proxy-no-auth;
     };
   };
 }
