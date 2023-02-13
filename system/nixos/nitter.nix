@@ -52,6 +52,11 @@
         recommendedProxySettings = true;
         proxyPass = "http://127.0.0.1:8001";
       };
+
+      locations."favicon.ico" = {
+        recommendedProxySettings = true;
+        proxyPass = "http://127.0.0.1:8001";
+      };
     };
   };
 }
