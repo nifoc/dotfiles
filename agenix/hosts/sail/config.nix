@@ -75,5 +75,11 @@
       owner = "nginx";
       group = "nginx";
     };
+
+    libreddit-auth = {
+      file = ./libreddit/auth.age;
+      owner = "nginx";
+      group = "nginx";
+    };
   };
 }

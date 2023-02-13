@@ -24,4 +24,6 @@ in
 
   "agenix/hosts/sail/nitter/config.age".publicKeys = sail;
   "agenix/hosts/sail/nitter/auth.age".publicKeys = sail;
+
+  "agenix/hosts/sail/libreddit/auth.age".publicKeys = sail;
 }
