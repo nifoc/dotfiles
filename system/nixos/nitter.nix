@@ -35,9 +35,20 @@
 
       forceSSL = false;
       enableACME = false;
-      basicAuthFile = config.age.secrets.nitter-auth.path;
 
       locations."/" = {
+        basicAuthFile = config.age.secrets.nitter-auth.path;
+
+        recommendedProxySettings = true;
+        proxyPass = "http://127.0.0.1:8001";
+      };
+
+      locations."/pic/" = {
+        recommendedProxySettings = true;
+        proxyPass = "http://127.0.0.1:8001";
+      };
+
+      locations."/video/" = {
         recommendedProxySettings = true;
         proxyPass = "http://127.0.0.1:8001";
       };
