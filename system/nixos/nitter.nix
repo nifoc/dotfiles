@@ -53,6 +53,21 @@
         proxyPass = "http://127.0.0.1:8001";
       };
 
+      locations."/favicon.ico" = {
+        recommendedProxySettings = true;
+        proxyPass = "http://127.0.0.1:8001";
+      };
+
+      locations."/favicon-32x32.png" = {
+        recommendedProxySettings = true;
+        proxyPass = "http://127.0.0.1:8001";
+      };
+
+      locations."/favicon-16x16.png" = {
+        recommendedProxySettings = true;
+        proxyPass = "http://127.0.0.1:8001";
+      };
+
       locations."/apple-touch-icon.png" = {
         recommendedProxySettings = true;
         proxyPass = "http://127.0.0.1:8001";
