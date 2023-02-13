@@ -72,6 +72,8 @@
 
     nitter-auth = {
       file = ./nitter/auth.age;
+      owner = "nginx";
+      group = "nginx";
     };
   };
 }
