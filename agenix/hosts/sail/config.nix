@@ -69,5 +69,9 @@
     nitter-config = {
       file = ./nitter/config.age;
     };
+
+    nitter-auth = {
+      file = ./nitter/auth.age;
+    };
   };
 }

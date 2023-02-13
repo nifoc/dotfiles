@@ -22,4 +22,25 @@
       };
     };
   };
+
+  services.nginx = {
+    enable = true;
+    virtualHosts."nitter.only.internal" = {
+      listen = [
+        {
+          addr = "127.0.0.1";
+          port = 80;
+        }
+      ];
+
+      forceSSL = false;
+      enableACME = false;
+      basicAuthFile = config.age.secrets.nitter-auth.path;
+
+      locations."/" = {
+        recommendedProxySettings = true;
+        proxyPass = "http://127.0.0.1:8001";
+      };
+    };
+  };
 }
