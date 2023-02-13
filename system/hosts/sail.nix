@@ -22,6 +22,8 @@ in
 
     (import ../nixos/mastodon.nix (args // { inherit secret; }))
 
+    ../nixos/nitter.nix
+
     ../nixos/synapse.nix
 
     ../nixos/websites.nix

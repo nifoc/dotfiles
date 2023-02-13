@@ -65,5 +65,9 @@
       owner = "freshrss";
       group = "freshrss";
     };
+
+    nitter-config = {
+      file = ./nitter/config.age;
+    };
   };
 }
