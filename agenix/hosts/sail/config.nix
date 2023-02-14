@@ -68,6 +68,7 @@
 
     nitter-config = {
       file = ./nitter/config.age;
+      mode = "444";
     };
 
     nitter-auth = {
