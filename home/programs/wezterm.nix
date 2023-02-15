@@ -4,6 +4,8 @@
   programs.wezterm = {
     enable = true;
 
+    package = pkgs.wezterm-unstable;
+
     extraConfig = ''
       _G.shells = {
         fish = '${pkgs.fish.outPath}/bin/fish',
