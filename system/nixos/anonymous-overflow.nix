@@ -16,6 +16,25 @@ in
       ExecStart = "${anonymous-overflow-pkg}/bin/anonymousoverflow";
       Restart = "on-failure";
       RestartSec = "5s";
+      # Hardening
+      CapabilityBoundingSet = [ "" ];
+      DeviceAllow = [ "" ];
+      LockPersonality = true;
+      MemoryDenyWriteExecute = true;
+      PrivateDevices = true;
+      PrivateUsers = true;
+      ProcSubset = "pid";
+      ProtectClock = true;
+      ProtectControlGroups = true;
+      ProtectHome = true;
+      ProtectHostname = true;
+      ProtectKernelLogs = true;
+      ProtectKernelModules = true;
+      ProtectKernelTunables = true;
+      RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
+      RestrictNamespaces = true;
+      RestrictRealtime = true;
+      RestrictSUIDSGID = true;
     };
   };
 
