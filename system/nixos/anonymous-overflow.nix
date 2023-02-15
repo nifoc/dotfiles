@@ -1,28 +1,20 @@
 { pkgs, config, ... }:
 
 let
-  nitter-pkg = pkgs.nitter-unstable;
-
-  proxy-no-auth = {
-    recommendedProxySettings = true;
-    proxyPass = "http://127.0.0.1:8001";
-  };
+  anonymous-overflow-pkg = pkgs.anonymous-overflow;
 in
 {
-  # Based on: https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/misc/nitter.nix
-
-  systemd.services.nitter = {
-    description = "Nitter (An alternative Twitter front-end)";
+  systemd.services.anonymous-overflow = {
+    description = "View StackOverflow in privacy and without the clutter";
     wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" "network-online.target" ];
+    after = [ "network.target" ];
     serviceConfig = {
       DynamicUser = true;
-      StateDirectory = "nitter";
-      Environment = [ "NITTER_CONF_FILE=${config.age.secrets.nitter-config.path}" ];
+      StateDirectory = "anonymous-overflow";
+      EnvironmentFile = [ config.age.secrets.anonymous-overflow-config.path ];
       # Some parts of Nitter expect `public` folder in working directory,
       # see https://github.com/zedeus/nitter/issues/414
-      WorkingDirectory = "${nitter-pkg}/share/nitter";
-      ExecStart = "${nitter-pkg}/bin/nitter";
+      ExecStart = "${anonymous-overflow-pkg}/bin/anonymousoverflow";
       Restart = "on-failure";
       RestartSec = "5s";
       # Hardening
@@ -53,7 +45,7 @@ in
 
   services.nginx = {
     enable = true;
-    virtualHosts."nitter.only.internal" = {
+    virtualHosts."anonymous-overflow.only.internal" = {
       listen = [
         {
           addr = "127.0.0.1";
@@ -61,21 +53,13 @@ in
         }
       ];
 
-      root = "${nitter-pkg}/share/nitter/public/";
       forceSSL = false;
       enableACME = false;
 
       locations."/" = {
-        tryFiles = "$uri @proxy";
-      };
-
-      locations."/pic/" = proxy-no-auth;
-      locations."/video/" = proxy-no-auth;
-
-      locations."@proxy" = {
-        basicAuthFile = config.age.secrets.nitter-auth.path;
+        basicAuthFile = config.age.secrets.anonymous-overflow-auth.path;
         recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:8001";
+        proxyPass = "http://127.0.0.1:8003";
       };
     };
   };

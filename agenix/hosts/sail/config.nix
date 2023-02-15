@@ -82,5 +82,16 @@
       owner = "nginx";
       group = "nginx";
     };
+
+    anonymous-overflow-config = {
+      file = ./anonymous-overflow/config.age;
+      mode = "444";
+    };
+
+    anonymous-overflow-auth = {
+      file = ./anonymous-overflow/auth.age;
+      owner = "nginx";
+      group = "nginx";
+    };
   };
 }
