@@ -52,10 +52,15 @@ in
       forceSSL = false;
       enableACME = false;
 
+      basicAuthFile = config.age.secrets.anonymous-overflow-auth.path;
+
       locations."/" = {
-        basicAuthFile = config.age.secrets.anonymous-overflow-auth.path;
         tryFiles = "$uri @proxy";
       };
+
+      locations."/static".extraConfig = ''
+        rewrite ^/static(/.*)$ $1 last;
+      '';
 
       locations."@proxy" = {
         recommendedProxySettings = true;
