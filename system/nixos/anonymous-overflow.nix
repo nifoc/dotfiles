@@ -12,34 +12,9 @@ in
       DynamicUser = true;
       StateDirectory = "anonymous-overflow";
       EnvironmentFile = [ config.age.secrets.anonymous-overflow-config.path ];
-      # Some parts of Nitter expect `public` folder in working directory,
-      # see https://github.com/zedeus/nitter/issues/414
       ExecStart = "${anonymous-overflow-pkg}/bin/anonymousoverflow";
       Restart = "on-failure";
       RestartSec = "5s";
-      # Hardening
-      CapabilityBoundingSet = [ "" ];
-      DeviceAllow = [ "" ];
-      LockPersonality = true;
-      MemoryDenyWriteExecute = true;
-      PrivateDevices = true;
-      PrivateUsers = true;
-      ProcSubset = "pid";
-      ProtectClock = true;
-      ProtectControlGroups = true;
-      ProtectHome = true;
-      ProtectHostname = true;
-      ProtectKernelLogs = true;
-      ProtectKernelModules = true;
-      ProtectKernelTunables = true;
-      ProtectProc = "invisible";
-      RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
-      RestrictNamespaces = true;
-      RestrictRealtime = true;
-      RestrictSUIDSGID = true;
-      SystemCallArchitectures = "native";
-      SystemCallFilter = [ "@system-service" "~@privileged" "~@resources" ];
-      UMask = "0077";
     };
   };
 
