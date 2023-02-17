@@ -22,11 +22,11 @@
         (fallback)))
 
   (cmp.setup {:sources (cmp.config.sources [{:name :nvim_lsp}
+                                            ;{:name :nvim_lsp_signature_help}
                                             {:name :luasnip}
-                                            {:name :nvim_lsp_signature_help}
-                                            {:name :nvim_lua}]
-                                           [{:name :treesitter}
-                                            {:name :buffer}
+                                            {:name :treesitter
+                                             :keyword_length 3}
+                                            {:name :buffer :keyword_length 3}
                                             {:name :path}])
               :mapping (cmp.mapping.preset.insert {:<C-e> (cmp.mapping {:i (cmp.mapping.abort)
                                                                         :c (cmp.mapping.close)})
@@ -67,5 +67,5 @@
                      {:sources (cmp.config.sources [{:name :path}]
                                                    [{:name :cmdline}])
                       :mapping (cmp.mapping.preset.cmdline)})
-  (cmp.event:on :confirm_done (npairs.on_confirm_done {:map_char {:tex ""}})))
+  (cmp.event:on :confirm_done (npairs.on_confirm_done)))
 

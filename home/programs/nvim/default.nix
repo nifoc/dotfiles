@@ -229,9 +229,8 @@ in
       }
 
       cmp-nvim-lsp
-      cmp-nvim-lsp-signature-help
+      # cmp-nvim-lsp-signature-help
       cmp_luasnip
-      cmp-nvim-lua
       cmp-path
       cmp-buffer
       cmp-treesitter

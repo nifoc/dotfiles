@@ -55,7 +55,6 @@
 - src: hrsh7th/cmp-nvim-lsp
 - src: hrsh7th/cmp-nvim-lsp-signature-help
 - src: saadparwaiz1/cmp_luasnip
-- src: hrsh7th/cmp-nvim-lua
 - src: hrsh7th/cmp-path
 - src: hrsh7th/cmp-buffer
 - src: ray-x/cmp-treesitter
