@@ -26,6 +26,8 @@ in
 
     ../nixos/nitter.nix
 
+    (import ../nixos/ntfy-sh.nix (args // { inherit secret; }))
+
     ../nixos/synapse.nix
 
     ../nixos/websites.nix
