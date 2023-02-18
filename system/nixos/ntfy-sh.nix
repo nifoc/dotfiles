@@ -13,7 +13,7 @@
       auth-default-access = "deny-all";
 
       cache-file = "/var/lib/ntfy-sh/cache.db";
-      attachment-cache-dir = "/var/cache/ntfy/attachments";
+      attachment-cache-dir = "/var/lib/ntfy-sh/cache-attachments";
 
       keepalive-interval = "45s";
     };
