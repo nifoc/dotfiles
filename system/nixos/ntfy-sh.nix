@@ -6,7 +6,7 @@
 
     settings = {
       base-url = secret.ntfy.baseUrl;
-      listen-unix = "/run/ntfy-sh/ntfy.socket";
+      listen-http = "127.0.0.1:8004";
       behind-proxy = true;
 
       auth-file = "/var/lib/ntfy-sh/user.db";
@@ -35,7 +35,7 @@
       locations."/" = {
         proxyWebsockets = true;
         recommendedProxySettings = true;
-        proxyPass = "http://unix:/run/ntfy-sh/ntfy.socket";
+        proxyPass = "http://127.0.0.1:8004";
       };
     };
   };
