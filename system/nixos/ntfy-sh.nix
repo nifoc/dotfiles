@@ -15,28 +15,8 @@
       cache-file = "/var/lib/ntfy-sh/cache.db";
       attachment-cache-dir = "/var/lib/ntfy-sh/cache-attachments";
 
+      upstream-base-url = "https://ntfy.sh";
       keepalive-interval = "45s";
-    };
-  };
-
-  services.nginx = {
-    enable = true;
-    virtualHosts."${secret.ntfy.web-domain}" = {
-      listen = [
-        {
-          addr = "127.0.0.1";
-          port = 80;
-        }
-      ];
-
-      forceSSL = false;
-      enableACME = false;
-
-      locations."/" = {
-        proxyWebsockets = true;
-        recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:8004";
-      };
     };
   };
 }
