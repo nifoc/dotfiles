@@ -33,10 +33,6 @@
       enableACME = false;
 
       locations."/" = {
-        tryFiles = "$uri @proxy";
-      };
-
-      locations."@proxy" = {
         proxyWebsockets = true;
         recommendedProxySettings = true;
         proxyPass = "http://unix:/run/ntfy-sh/ntfy.socket";
