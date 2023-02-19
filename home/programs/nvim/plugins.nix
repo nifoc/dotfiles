@@ -40,8 +40,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
-      rev = "5f79ca760e1f95fee55f3553f040a51dc1c4d953";
-      sha256 = "1yzi13r58dz5l7cirfahk40xhp1mkgj5c8z2vsgw6hjzabfjc4xi";
+      rev = "4709a504d2cd2680fb511675e64ef2790d491d36";
+      sha256 = "0b3h95x2xhrhwspfazibpknxrli70vjahbf52h74yda4ji0n2x4a";
       fetchSubmodules = false;
     };
   };
@@ -116,8 +116,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "8b6f08165bca8545405ce86eedb1d5be882cd5f7";
-      sha256 = "168rbgxpwn6bp0sbpwqw08jl8gsw02n4i8a6pmsdsxxy9k4rhrgv";
+      rev = "ce0dba96f47cd8bbd46b4c3ac8fd1b9502f1002a";
+      sha256 = "0hgd2flldhjh38j69mgg5gg7iy8wcg258rhdx46ag8jgxvx31imc";
       fetchSubmodules = false;
     };
   });
@@ -149,8 +149,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "443e5a6802849f9e4611a2d91db01b8a37350524";
-      sha256 = "1saa5nixfi75061i6llzafz1cfwad8w8f0l32xn16ii2hzyivys1";
+      rev = "f40e3e2304c633411ddf266075f7db5184b1db02";
+      sha256 = "0qmqsz9q9rk9y0glv8dsps95dzkpc50a0nwi6hw5fg7zm0xwfjks";
       fetchSubmodules = false;
     };
   };
@@ -225,12 +225,12 @@ rec {
   };
   nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-lspconfig";
-    version = "2023-02-15";
+    version = "2023-02-19";
     src = pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "649137cbc53a044bffde36294ce3160cb18f32c7";
-      sha256 = "1xy1jzjhjn6m4xy556giiq265flli04csl0c1wf4dgpa03rd0yqf";
+      rev = "f0d9150fe8486d0f74757ed9d8987bfc33c7ff44";
+      sha256 = "03dmcb2i64ifdi9f15zwbxm71pcgiazi7l4dybrban1nvzl6hwcn";
       fetchSubmodules = false;
     };
   };
@@ -456,12 +456,12 @@ rec {
   };
   vim-matchup = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "vim-matchup";
-    version = "2023-02-18";
+    version = "2023-02-19";
     src = pkgs.fetchFromGitHub {
       owner = "andymass";
       repo = "vim-matchup";
-      rev = "a1a9c1d52e392295a0d5e48fdd3f603198fb51d7";
-      sha256 = "0rs8qv2aklfz3sd091rry4cjjxd1z57q1nlja9pl4rqd6ym7s8gf";
+      rev = "3a48818a8113a502f245c29d894201421727577a";
+      sha256 = "1hxsjs83i2rjkmhvsxrxk1y6as9xi8b5ji9abvwvb90p2a765987";
       fetchSubmodules = false;
     };
   };
