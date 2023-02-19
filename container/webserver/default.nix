@@ -34,7 +34,9 @@ in
           volumes = [
             "/etc/container-webserver/weewx:/data"
           ];
-          inherit (secret.container.webserver.weewx) labels;
+          labels = {
+            "com.centurylinklabs.watchtower.enable" = "true";
+          };
         };
       };
     };
