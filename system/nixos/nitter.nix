@@ -53,6 +53,10 @@ in
 
   services.nginx = {
     enable = true;
+    recommendedOptimisation = true;
+    recommendedGzipSettings = true;
+    recommendedBrotliSettings = true;
+
     virtualHosts."nitter.only.internal" = {
       listen = [
         {

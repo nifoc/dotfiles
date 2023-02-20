@@ -10,6 +10,10 @@
 
   services.nginx = {
     enable = true;
+    recommendedOptimisation = true;
+    recommendedGzipSettings = true;
+    recommendedBrotliSettings = true;
+
     virtualHosts."libreddit.only.internal" = {
       listen = [
         {

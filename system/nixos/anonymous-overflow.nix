@@ -40,6 +40,10 @@ in
 
   services.nginx = {
     enable = true;
+    recommendedOptimisation = true;
+    recommendedGzipSettings = true;
+    recommendedBrotliSettings = true;
+
     virtualHosts."anonymous-overflow.only.internal" = {
       listen = [
         {

@@ -3,6 +3,9 @@
 {
   services.nginx = {
     enable = true;
+    recommendedOptimisation = true;
+    recommendedGzipSettings = true;
+    recommendedBrotliSettings = true;
 
     # Documentation
     virtualHosts = builtins.listToAttrs (builtins.map
