@@ -44,7 +44,7 @@ in
           container_name = "mlathub";
           hostname = "mlathub";
           restart = "unless-stopped";
-          depends_on = [ "readsb" "piaware" "adsbexchange" ];
+          depends_on = [ "readsb" "piaware" ];
           environment = {
             "TZ" = "Europe/Berlin";
             "DISABLE_PERFORMANCE_GRAPHS" = "true";
@@ -52,7 +52,7 @@ in
             "READSB_NET_ENABLE" = "true";
             "READSB_NET_ONLY" = "true";
             "READSB_FORWARD_MLAT" = "true";
-            "READSB_NET_CONNECTOR" = "piaware,30105,beast_in;adsbexchange,30105,beast_in";
+            "READSB_NET_CONNECTOR" = "piaware,30105,beast_in";
             "READSB_NET_BEAST_OUTPUT_PORT" = "30105";
           };
           tmpfs = [
@@ -90,32 +90,6 @@ in
           tmpfs = [
             "/run:exec,size=64M"
             "/var/log"
-          ];
-          labels = {
-            "com.centurylinklabs.watchtower.enable" = "true";
-          };
-        };
-      };
-
-      adsbexchange = {
-        service = {
-          image = "ghcr.io/sdr-enthusiasts/docker-adsbexchange:latest";
-          container_name = "adsbexchange";
-          restart = "unless-stopped";
-          depends_on = [ "readsb" ];
-          environment = {
-            "TZ" = "Europe/Berlin";
-            "BEASTHOST" = "readsb";
-            "BEASTPORT" = "30005";
-            "LAT" = secret.container.adsb.readsb.lat;
-            "LONG" = secret.container.adsb.readsb.lon;
-            "ALT" = "70m";
-            "SITENAME" = secret.container.adsb.adsbexchange.sitename;
-            "PRIVATE_MLAT" = "true";
-            "UUID" = secret.container.adsb.adsbexchange.uuid;
-          };
-          tmpfs = [
-            "/run:rw,nosuid,nodev,exec,relatime,size=64M,uid=1000,gid=1000"
           ];
           labels = {
             "com.centurylinklabs.watchtower.enable" = "true";
