@@ -225,12 +225,12 @@ rec {
   };
   nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-lspconfig";
-    version = "2023-02-19";
+    version = "2023-02-20";
     src = pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "f0d9150fe8486d0f74757ed9d8987bfc33c7ff44";
-      sha256 = "03dmcb2i64ifdi9f15zwbxm71pcgiazi7l4dybrban1nvzl6hwcn";
+      rev = "b5db147e28337319331d516a826b00976f3584de";
+      sha256 = "14hjgk0g81mn26xwd3hspzi2jqiy1viiyc6pz3zqnmn66g958bfl";
       fetchSubmodules = false;
     };
   };
@@ -313,12 +313,12 @@ rec {
   };
   friendly-snippets = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "friendly-snippets";
-    version = "2023-02-12";
+    version = "2023-02-20";
     src = pkgs.fetchFromGitHub {
       owner = "rafamadriz";
       repo = "friendly-snippets";
-      rev = "1645e7cd98ed99e766c84ab3cf13a1612c77dcee";
-      sha256 = "13zvkv7vnfrj0xs31s1gv74amxpdyvc2m2x8br58vxfscy3wbaa4";
+      rev = "6fa50a94ba5378bb73013a6e163376d8e69bd8a5";
+      sha256 = "0a0xzfynxrwb53azlsdqda4pdsnvavkdfxmsg776snv6iqx9sw1g";
       fetchSubmodules = false;
     };
   };
@@ -489,23 +489,23 @@ rec {
   };
   heirline-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "heirline.nvim";
-    version = "2023-02-18";
+    version = "2023-02-19";
     src = pkgs.fetchFromGitHub {
       owner = "rebelot";
       repo = "heirline.nvim";
-      rev = "274cb59f29c4c41820b630ea133f3b67d1655cff";
-      sha256 = "0l1jh3m4sicc53p3758hb94kkncxm8x0cmfax3faah4n0wahdlwl";
+      rev = "b69415d912d466db17b8ee1eb777cc7f776a9286";
+      sha256 = "0pv320i23wwp58xy3lpiy4j90y6fl8frmw19nk0c8dy9c10pdg6s";
       fetchSubmodules = false;
     };
   };
   indent-blankline-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "indent-blankline.nvim";
-    version = "2023-01-26";
+    version = "2023-02-20";
     src = pkgs.fetchFromGitHub {
       owner = "lukas-reineke";
       repo = "indent-blankline.nvim";
-      rev = "8299fe7703dfff4b1752aeed271c3b95281a952d";
-      sha256 = "1z2rnaa9p62yid89n9pni9jzzdlcdc55i95c67yn5qzxd3h637hi";
+      rev = "018bd04d80c9a73d399c1061fa0c3b14a7614399";
+      sha256 = "1ncpar0n8702j5h4a2bv8zx9kcg7gwfhs52qqrcg1yfsgjzb86bl";
       fetchSubmodules = false;
     };
   };
