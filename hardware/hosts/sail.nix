@@ -1,4 +1,4 @@
-{ modulesPath, ... }:
+{ pkgs, modulesPath, ... }:
 
 {
   imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
@@ -11,6 +11,7 @@
       kernelModules = [ "nvme" ];
     };
 
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "tcp_bbr" ];
 
     kernel.sysctl = {
