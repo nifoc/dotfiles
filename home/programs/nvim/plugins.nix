@@ -58,12 +58,12 @@ rec {
   };
   yanky-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "yanky.nvim";
-    version = "2023-02-04";
+    version = "2023-02-20";
     src = pkgs.fetchFromGitHub {
       owner = "gbprod";
       repo = "yanky.nvim";
-      rev = "14b9c4cc572c3be5cf5b0a678e7ac240f08a8681";
-      sha256 = "1mnql64irf4dshfkii5dbfm3l7gigxxzs65knsva8gvfmh9pdzbn";
+      rev = "c41e4c31990ae1f5f3517de8dc006e4da235a043";
+      sha256 = "1w15ils8clcwildc4sf8xzjwwyvasbn1x0awgmm2mzwm7xpb30gb";
       fetchSubmodules = false;
     };
   };
@@ -80,12 +80,12 @@ rec {
   };
   substitute-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "substitute.nvim";
-    version = "2023-02-16";
+    version = "2023-02-21";
     src = pkgs.fetchFromGitHub {
       owner = "gbprod";
       repo = "substitute.nvim";
-      rev = "8acd0acbff80b0ab0a8b61068bd4aca3f3f96b98";
-      sha256 = "16glk3kq2m68kbs1slxfzhfc6v67z9wc043a3si84gwy7r6hsmr2";
+      rev = "7898b00aaca2b1899ca0dbcc41798d38c8109cce";
+      sha256 = "08bg3y7nbljqx667k697f1kqf3mrnjk70p81z6323sgi8hs59b2r";
       fetchSubmodules = false;
     };
   };
@@ -112,23 +112,23 @@ rec {
     };
   };
   nvim-treesitter = pkgs.vimPlugins.nvim-treesitter.overrideAttrs (_: {
-    version = "2023-02-19";
+    version = "2023-02-23";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "ce0dba96f47cd8bbd46b4c3ac8fd1b9502f1002a";
-      sha256 = "0hgd2flldhjh38j69mgg5gg7iy8wcg258rhdx46ag8jgxvx31imc";
+      rev = "83e2e22d9e25d739093c38f0663d547dfea00cf4";
+      sha256 = "16w7c4234l14a1dl3yqycib8q3rjbky305wmrwi5kva9m9xhwh0c";
       fetchSubmodules = false;
     };
   });
   nvim-ts-rainbow = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-ts-rainbow";
-    version = "2023-02-13";
+    version = "2023-02-21";
     src = pkgs.fetchFromGitHub {
       owner = "mrjones2014";
       repo = "nvim-ts-rainbow";
-      rev = "496ff7ea19cdd4e4b7cf2aeeb6780d015f3f9fa5";
-      sha256 = "0li2mcxppk37dqxpln6py056i7mzwf541f7mcd037h1zy14075bs";
+      rev = "81f9a2e752edc793a34355be952dd1ebb1d5701b";
+      sha256 = "1zc8p31dmlwsqrz8p9r6xnhq9zwgvq82crgr339w0ndn3m0wy508";
       fetchSubmodules = false;
     };
   };
@@ -145,12 +145,12 @@ rec {
   };
   telescope-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "telescope.nvim";
-    version = "2023-02-19";
+    version = "2023-02-20";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "f40e3e2304c633411ddf266075f7db5184b1db02";
-      sha256 = "0qmqsz9q9rk9y0glv8dsps95dzkpc50a0nwi6hw5fg7zm0xwfjks";
+      rev = "a486ac3e8fb2198f3636da1927ed57a28836fbd8";
+      sha256 = "1a2qdqxvp3d1i1wlc7gac1vqfbp0idcnk6y78vmjgziksamj4579";
       fetchSubmodules = false;
     };
   };
@@ -225,12 +225,12 @@ rec {
   };
   nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-lspconfig";
-    version = "2023-02-20";
+    version = "2023-02-23";
     src = pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "b5db147e28337319331d516a826b00976f3584de";
-      sha256 = "14hjgk0g81mn26xwd3hspzi2jqiy1viiyc6pz3zqnmn66g958bfl";
+      rev = "69e2fe3d638566a812c39bc4ea1980f7b833e2fc";
+      sha256 = "0shxxa5vbx2hmcyqgph9fk839kjkv45qvhrhasa79qfny9j9jzxf";
       fetchSubmodules = false;
     };
   };
@@ -302,12 +302,12 @@ rec {
   };
   LuaSnip = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "LuaSnip";
-    version = "2023-02-18";
+    version = "2023-02-23";
     src = pkgs.fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "37ffce053d4e20236efd43cecf7800e8ef40a997";
-      sha256 = "1mxjacm7n9q1k4zd2xsvf4g76fcfnvw9wjr98cy7xkh1v91cby7i";
+      rev = "f7c845749aba6096f041a73a26ba64f3817bab99";
+      sha256 = "0931chbv7cy430j1kv0ql0klb6w6xkhbvzd6327z2b1agjcqxvj1";
       fetchSubmodules = false;
     };
   };
@@ -324,12 +324,12 @@ rec {
   };
   nvim-cmp = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-cmp";
-    version = "2023-02-18";
+    version = "2023-02-23";
     src = pkgs.fetchFromGitHub {
       owner = "hrsh7th";
       repo = "nvim-cmp";
-      rev = "8202df9561b90102b41dbc1ad71945534ef4ea39";
-      sha256 = "15mpzg05x36vnbq9gs5q71fw9hin8b635r5lf42v6crdqw8wghmf";
+      rev = "7cd39409e7378fa711624687d3b430b8a56c3af9";
+      sha256 = "19z2b0bjjmbjp7bs7bzhk7p4wfzh38vn92c5s85sk2dn3v18jppn";
       fetchSubmodules = false;
     };
   };
@@ -423,23 +423,23 @@ rec {
   };
   neoformat = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "neoformat";
-    version = "2023-02-04";
+    version = "2023-02-20";
     src = pkgs.fetchFromGitHub {
       owner = "sbdchd";
       repo = "neoformat";
-      rev = "2e9fd3a7cbdce0c90379c8bc52e0bca6726eba81";
-      sha256 = "02f77wwhb1wfk9bcvy5mnc4r2rdgw6b3pdmacizmjnd1a9ajqysn";
+      rev = "16bd62efc3fcdcd0f6682ea47f1f6070850f9963";
+      sha256 = "1d5bqxfdg01hnx239v7bi301325ihvdypy0p4b1ay5py5jckld9h";
       fetchSubmodules = false;
     };
   };
   nvim-autopairs = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-autopairs";
-    version = "2023-02-17";
+    version = "2023-02-23";
     src = pkgs.fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-autopairs";
-      rev = "bde7a1b4534e0a4c2451a738379cd628ba65eba7";
-      sha256 = "0axmm6qj1vklkg7czcw0pqkd2gbzcj7z2llhvyf4fnqr4fwbi8y0";
+      rev = "d80d93f182262a91674f472e90488f67a7230fe7";
+      sha256 = "0wcfxs5pzybs81dwcjfqj55ipgyvrgya91kbxg4mgn8bcyi2yfnp";
       fetchSubmodules = false;
     };
   };
@@ -478,12 +478,12 @@ rec {
   };
   nvim-surround = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-surround";
-    version = "2023-02-17";
+    version = "2023-02-21";
     src = pkgs.fetchFromGitHub {
       owner = "kylechui";
       repo = "nvim-surround";
-      rev = "9739e85547cb97d2f0497d2aedbab7d6f5c6654d";
-      sha256 = "0lirvmb9yc2yc8an2x0wll1vwlpc4fh95x3r5wh21s8m0nqvv577";
+      rev = "ebdd22d2040798d0b5a5e50d72d940e95f308121";
+      sha256 = "0y7v17qakrkp2bcv9sln4v9bxagjbi2arlis5fd29vpg6fphkj3p";
       fetchSubmodules = false;
     };
   };
@@ -522,12 +522,12 @@ rec {
   };
   toggleterm-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "toggleterm.nvim";
-    version = "2023-02-17";
+    version = "2023-02-22";
     src = pkgs.fetchFromGitHub {
       owner = "akinsho";
       repo = "toggleterm.nvim";
-      rev = "557664818f6af78de6192f0ce8bc2e887bf4943a";
-      sha256 = "1pfr2240cwqjcdza18815lblcsr1ccd63phajcl31izsrx0ba78z";
+      rev = "1f47ea9cda973af3f1742a71841f3914f5b1469f";
+      sha256 = "001inq8azflnj0n35gx130nznanhmvw5cjmmi5l970ndcl82ijzs";
       fetchSubmodules = false;
     };
   };
@@ -566,12 +566,12 @@ rec {
   };
   nvim-notify = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-notify";
-    version = "2023-01-18";
+    version = "2023-02-23";
     src = pkgs.fetchFromGitHub {
       owner = "rcarriga";
       repo = "nvim-notify";
-      rev = "bdd647f61a05c9b8a57c83b78341a0690e9c29d7";
-      sha256 = "0fnn4jarxmp43jyk4j13wpk9zd7r7pjjmgqbr8brzfd3f9xabx6c";
+      rev = "9c987081390753b625e2d94e749e80e9b4a3e082";
+      sha256 = "060hj1shwxa8s4a9fimh4wjbdvzi26yrxj86vbps3d93fyid81cz";
       fetchSubmodules = false;
     };
   };
