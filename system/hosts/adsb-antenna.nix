@@ -80,7 +80,10 @@ in
     SystemMaxUse=512M
   '';
 
-  documentation.doc.enable = false;
+  documentation = {
+    nixos.enable = false;
+    doc.enable = false;
+  };
 
   programs.fish.enable = true;
 

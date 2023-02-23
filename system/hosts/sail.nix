@@ -116,7 +116,10 @@ in
     SystemMaxUse=1G
   '';
 
-  documentation.doc.enable = false;
+  documentation = {
+    nixos.enable = false;
+    doc.enable = false;
+  };
 
   programs.fish.enable = true;
 
