@@ -10,11 +10,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1677126346,
-        "narHash": "sha256-4s+PPGC1M07QsPyeye5drc2JLa1lhDnCV3XAsG8+pH4=",
+        "lastModified": 1677247280,
+        "narHash": "sha256-sa+8MtoAOSLsWP9vf0qiJUyMovIEYgDzHE8TkoK04Hk=",
         "owner": "ryantm",
         "repo": "agenix",
-        "rev": "c2a71c83c70844c5e31db69347e86af080bcdad0",
+        "rev": "833f87c8ff574a29aea3e091045cbaed3cf86bc1",
         "type": "github"
       },
       "original": {
@@ -164,11 +164,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1677101901,
-        "narHash": "sha256-908qXxXXsthrKxTeaX8IOW1O7s5gDr9nftumJdltDjs=",
+        "lastModified": 1677225707,
+        "narHash": "sha256-V+8RDil3L1SK1D5KFdVxvFmIRZkKvc8GhmJywx9K0io=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "d422fc8274e757e95329e60b4e6daec59363ba19",
+        "rev": "306e67358377cd17bb20104ec4f8d27619937ad6",
         "type": "github"
       },
       "original": {
@@ -187,11 +187,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1677140105,
-        "narHash": "sha256-7Wnu88AvyvWbJn+Bt7EIKgs9UzqYLMwPCFXFZvIwxoU=",
+        "lastModified": 1677226520,
+        "narHash": "sha256-27N8sBU+6osBNK56pY6bJEt9nb/tM48w8bWpW9BoUZg=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "805c75a17eb7f5a4a53006d96e518adffe5c52b7",
+        "rev": "e629f6741755e5c8c28f6335c592b7849649792c",
         "type": "github"
       },
       "original": {
@@ -207,11 +207,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1677186075,
-        "narHash": "sha256-WkmOl6M9B+D3IiFNhz7d7C3T8d1bGRDqRmg1219exgo=",
+        "lastModified": 1677227124,
+        "narHash": "sha256-pqTayL+4vGKmT/gm/acvam1JqvnucCPj0lsS3chFESc=",
         "owner": "nifoc",
         "repo": "nix-overlay",
-        "rev": "26e156e7267a9511ece11bbd29bdb67c9c4616d3",
+        "rev": "9ae4351790580f9b9a45b4a091b64cd06ccffaa2",
         "type": "github"
       },
       "original": {
@@ -222,11 +222,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1677080879,
-        "narHash": "sha256-0SjW4/d3Rkw6C7hHZ5lxT4r6Pw9vzQb6Il6zYWwe2Bo=",
+        "lastModified": 1677142198,
+        "narHash": "sha256-Y/uC2ZmkQkyrdRZ5szZilhZ/46786Wio5CGTgL+Vb/c=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f5dad40450d272a1ea2413f4a67ac08760649e89",
+        "rev": "03fb72201639e5274fee6d77b0d9c66e98329aba",
         "type": "github"
       },
       "original": {
