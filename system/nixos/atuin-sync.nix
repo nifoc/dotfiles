@@ -25,4 +25,6 @@
       RuntimeDirectoryMode = "0700";
     };
   };
+
+  networking.firewall.allowedTCPPorts = [ 8015 ];
 }
