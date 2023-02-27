@@ -1,5 +1,8 @@
 { pkgs, lib, ... }:
 
+let
+  cargoHash = if pkgs.stdenv.isDarwin then "sha256-0j2daQ9Qj+t3J91lMw4OXdpUViFgPhDDJFMm4QvFohU=" else "sha256-WOJurXTLIKTyFrxjnQpDbyrc6U0UvJELvqfG2UbfS4g=";
+in
 {
   programs.atuin = {
     enable = true;
@@ -18,7 +21,7 @@
         cargoDeps = oldAttrs.cargoDeps.overrideAttrs (lib.const {
           name = "${oldAttrs.pname}-${version}-vendor.tar.gz";
           inherit src;
-          outputHash = "sha256-0j2daQ9Qj+t3J91lMw4OXdpUViFgPhDDJFMm4QvFohU=";
+          outputHash = cargoHash;
         });
 
         checkFlags = [
