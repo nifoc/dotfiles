@@ -80,17 +80,6 @@ in
         };
       }
 
-      # https://github.com/andreiborisov/sponge/releases
-      {
-        name = "sponge";
-        src = pkgs.fetchFromGitHub {
-          owner = "andreiborisov";
-          repo = "sponge";
-          rev = "1.1.0";
-          sha256 = "sha256-MdcZUDRtNJdiyo2l9o5ma7nAX84xEJbGFhAVhK+Zm1w=";
-        };
-      }
-
       # https://github.com/PatrickF1/colored_man_pages.fish
       {
         name = "colored_man_pages";
@@ -182,12 +171,6 @@ in
 
       # Plugin: done
       set -g __done_min_cmd_duration 10000
-    '';
-
-    interactiveShellInit = ''
-      if [ "$TERM" = "xterm-kitty" ]
-        alias ssh "env TERM=xterm-256color ssh"
-      end
     '';
   };
 

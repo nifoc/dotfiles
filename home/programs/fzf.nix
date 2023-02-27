@@ -23,5 +23,9 @@
       spinner = "#ffb86c";
       header = "#6272a4";
     };
+
+    enableBashIntegration = false;
+    enableZshIntegration = false;
+    enableFishIntegration = false;
   };
 }

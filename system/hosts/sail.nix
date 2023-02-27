@@ -16,6 +16,8 @@ in
 
     ../nixos/cloudflared.nix
 
+    ../nixos/atuin.nix
+
     ../nixos/anonymous-overflow.nix
 
     (import ../nixos/freshrss.nix (args // { inherit secret; }))

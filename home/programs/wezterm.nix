@@ -4,7 +4,7 @@
   programs.wezterm = {
     enable = true;
 
-    package = pkgs.wezterm-unstable;
+    package = pkgs.wezterm;
 
     extraConfig = ''
       _G.shells = {

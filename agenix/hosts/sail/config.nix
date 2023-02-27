@@ -54,6 +54,12 @@
       group = "matrix-synapse";
     };
 
+    atuin-environment = {
+      file = ./atuin/environment.age;
+      owner = "atuin";
+      group = "atuin";
+    };
+
     freshrss-user-password = {
       file = ./freshrss/userPassword.age;
       owner = "freshrss";

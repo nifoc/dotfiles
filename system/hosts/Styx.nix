@@ -49,6 +49,11 @@ in
         maxJobs = 1;
       }
     ];
+
+    gc = {
+      automatic = true;
+      user = "daniel";
+    };
   };
 
   documentation.doc.enable = false;

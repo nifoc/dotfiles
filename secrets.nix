@@ -19,6 +19,8 @@ in
 
   "agenix/hosts/sail/synapse/extraConfig.age".publicKeys = sail;
 
+  "agenix/hosts/sail/atuin/environment.age".publicKeys = sail;
+
   "agenix/hosts/sail/freshrss/userPassword.age".publicKeys = sail;
   "agenix/hosts/sail/freshrss/databasePassword.age".publicKeys = sail;
 
