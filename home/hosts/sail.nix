@@ -6,6 +6,7 @@ in
 {
   imports = [
     ../programs/fish.nix
+    ../programs/atuin.nix
     ../programs/starship.nix
 
     ../programs/nvim
