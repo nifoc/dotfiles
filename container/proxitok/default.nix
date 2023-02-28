@@ -11,6 +11,9 @@
           depends_on = [ "proxitok-signer" ];
           ports = [ "127.0.0.1:8005:80" ];
           env_file = [ config.age.secrets.proxitok-environment.path ];
+          volumes = [
+            "/etc/container-proxitok/cache:/cache"
+          ];
           labels = {
             "com.centurylinklabs.watchtower.enable" = "true";
           };
@@ -29,6 +32,10 @@
       };
     };
   };
+
+  systemd.tmpfiles.rules = [
+    "d /etc/container-proxitok/cache 0755 33 33"
+  ];
 
   services.nginx = {
     enable = true;
