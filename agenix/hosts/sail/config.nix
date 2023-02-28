@@ -99,5 +99,16 @@
       owner = "nginx";
       group = "nginx";
     };
+
+    proxitok-environment = {
+      file = ./proxitok/environment.age;
+      mode = "444";
+    };
+
+    proxitok-auth = {
+      file = ./proxitok/auth.age;
+      owner = "nginx";
+      group = "nginx";
+    };
   };
 }

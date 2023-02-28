@@ -39,6 +39,7 @@ in
     ../nixos/arion.nix
     ../../container/webserver
     ../../container/matrix
+    ../../container/proxitok
   ];
 
   system.stateVersion = "22.11";

@@ -31,4 +31,7 @@ in
 
   "agenix/hosts/sail/anonymous-overflow/config.age".publicKeys = sail;
   "agenix/hosts/sail/anonymous-overflow/auth.age".publicKeys = sail;
+
+  "agenix/hosts/sail/proxitok/environment.age".publicKeys = sail;
+  "agenix/hosts/sail/proxitok/auth.age".publicKeys = sail;
 }
