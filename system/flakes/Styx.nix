@@ -14,7 +14,7 @@ let
     nixpkgs.lib.fix (self: (import "${src}/flake.nix").outputs { inherit self nixpkgs; });
 
   overlay-x86 = _: _: { pkgs-x86 = import nixpkgs { system = "x86_64-darwin"; }; };
-  overlay-agenix = inputs.agenix.overlays.default;
+  overlay-agenix = inputs.ragenix.overlays.default;
   overlay-neovim = inputs.neovim-nightly-overlay.overlay;
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 

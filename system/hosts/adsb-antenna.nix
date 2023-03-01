@@ -28,6 +28,7 @@ in
 
       substituters = [
         "https://nix-community.cachix.org"
+        "https://wurzelpfropf.cachix.org"
         "https://nifoc.cachix.org"
       ] ++ optionals secret.nix-cache.nifoc.enabled [
         secret.nix-cache.nifoc.s3Url
@@ -35,6 +36,7 @@ in
 
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "wurzelpfropf.cachix.org-1:ilZwK5a6wJqVr7Fyrzp4blIEkGK+LJT0QrpWr1qBNq0="
         "nifoc.cachix.org-1:ymuftq7RgN/lf/iWXFK8gpwDSAGFaGBeliWe9u6q8II="
       ] ++ optionals secret.nix-cache.nifoc.enabled [
         secret.nix-cache.nifoc.publicKeyValue
