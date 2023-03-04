@@ -146,7 +146,7 @@ in
         type = "fennel";
       }
 
-      nvim-ts-rainbow
+      nvim-ts-rainbow2
       playground
 
       # Telescope

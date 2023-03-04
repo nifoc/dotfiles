@@ -19,7 +19,7 @@
 
 # Syntax
 - src: nvim-treesitter/nvim-treesitter
-- src: mrjones2014/nvim-ts-rainbow
+- src: HiPhish/nvim-ts-rainbow2
 - src: nvim-treesitter/playground
 
 # Telescope

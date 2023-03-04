@@ -25,7 +25,15 @@
     ;; vim-illuminate
     (highlight :IlluminatedWordText {:bg mod.colors.selection})
     (highlight :IlluminatedWordRead {:bg mod.colors.selection})
-    (highlight :IlluminatedWordWrite {:bg mod.colors.selection :underline true}))
+    (highlight :IlluminatedWordWrite {:bg mod.colors.selection :underline true})
+    ;; nvim-ts-rainbow2
+    (highlight :TSRainbowRed {:fg mod.colors.red})
+    (highlight :TSRainbowYellow {:fg mod.colors.yellow})
+    (highlight :TSRainbowBlue {:fg mod.colors.purple})
+    (highlight :TSRainbowOrange {:fg mod.colors.orange})
+    (highlight :TSRainbowGreen {:fg mod.colors.green})
+    (highlight :TSRainbowViolet {:fg mod.colors.pink})
+    (highlight :TSRainbowCyan {:fg mod.colors.cyan}))
 
   mod)
 

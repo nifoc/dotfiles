@@ -121,14 +121,14 @@ rec {
       fetchSubmodules = false;
     };
   });
-  nvim-ts-rainbow = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "nvim-ts-rainbow";
-    version = "2023-02-21";
+  nvim-ts-rainbow2 = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "nvim-ts-rainbow2";
+    version = "2023-03-03";
     src = pkgs.fetchFromGitHub {
-      owner = "mrjones2014";
-      repo = "nvim-ts-rainbow";
-      rev = "81f9a2e752edc793a34355be952dd1ebb1d5701b";
-      sha256 = "1zc8p31dmlwsqrz8p9r6xnhq9zwgvq82crgr339w0ndn3m0wy508";
+      owner = "HiPhish";
+      repo = "nvim-ts-rainbow2";
+      rev = "293e12e90f0928845582b9a3db7258eaa8e92a65";
+      sha256 = "069nyc2bxi5wyvbnyqmdif2vqk7fv0kfgz3b7r7xgjf6s4kgw9yl";
       fetchSubmodules = false;
     };
   };

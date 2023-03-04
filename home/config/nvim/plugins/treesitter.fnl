@@ -33,7 +33,7 @@
                        :typescript
                        :vim
                        :yaml]
-      rainbow-parsers [:fennel]
+      rainbow-parsers [:css :fennel :json :query :yaml]
       disable-parsers []]
   (nifoc-treesitter.setup)
   (treesitter-config.setup {:ensure_installed []
@@ -51,7 +51,9 @@
                                       :disable (vim.tbl_filter (fn [parser]
                                                                  (not (vim.tbl_contains rainbow-parsers
                                                                                         parser)))
-                                                               install-parsers)}
+                                                               install-parsers)
+                                      :query :rainbow-parens
+                                      :strategy (require :ts-rainbow.strategy.global)}
                             :matchup {:enable true :disable disable-parsers}
                             :autopairs {:enable true :disable disable-parsers}
                             :autotag {:enable true :disable disable-parsers}
