@@ -3,7 +3,7 @@
 {
   matchBlocks = {
     "git.app.nedeco.de" = {
-      port = 22;
+      port = 20022;
       user = "git";
       identityFile = "~/.ssh/nedeco_gitlab.pub";
       identitiesOnly = true;

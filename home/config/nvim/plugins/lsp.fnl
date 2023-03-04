@@ -27,7 +27,6 @@
                          :fennel_ls
                          :html
                          :jsonls
-                         :nil_ls
                          :rnix
                          :sqls
                          :svelte
