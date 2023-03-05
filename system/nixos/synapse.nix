@@ -87,5 +87,5 @@
     extraConfigFiles = [ config.age.secrets.synapse-extra-config.path ];
   };
 
-  networking.firewall.allowedTCPPorts = [ 8008 ];
+  networking.firewall.interfaces."enp7s0".allowedTCPPorts = [ 8008 ];
 }

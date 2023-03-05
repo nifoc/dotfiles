@@ -3,9 +3,9 @@
 {
   security.acme = {
     acceptTerms = true;
-    email = "acme@kempkens.io";
 
     defaults = {
+      email = "acme@kempkens.io";
       dnsProvider = "cloudflare";
       credentialsFile = config.age.secrets.acme-credentials.path;
       dnsResolver = "1.1.1.1:53";

@@ -26,5 +26,5 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 8015 ];
+  networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 8015 ];
 }
