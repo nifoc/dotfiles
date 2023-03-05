@@ -1,5 +1,11 @@
 {
   age.secrets = {
+    acme-credentials = {
+      file = ./acme/credentials.age;
+      owner = "acme";
+      group = "acme";
+    };
+
     cloudflared-environment = {
       file = ./cloudflared/environment.age;
       owner = "cloudflared";

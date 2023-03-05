@@ -7,6 +7,8 @@ let
 in
 {
   # sail
+  "agenix/hosts/sail/acme/credentials.age".publicKeys = sail;
+
   "agenix/hosts/sail/cloudflared/environment.age".publicKeys = sail;
 
   "agenix/hosts/sail/mastodon/databasePassword.age".publicKeys = sail;

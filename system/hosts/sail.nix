@@ -16,6 +16,8 @@ in
 
     ../nixos/cloudflared.nix
 
+    ../nixos/acme-sail.nix
+
     ../nixos/atuin-sync.nix
 
     ../nixos/anonymous-overflow.nix
