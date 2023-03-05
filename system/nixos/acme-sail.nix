@@ -12,8 +12,10 @@
       dnsPropagationCheck = true;
     };
 
-    "daniel.sx" = {
-      domain = "*.daniel.sx";
+    certs = {
+      "daniel.sx" = {
+        domain = "*.daniel.sx";
+      };
     };
   };
 }
