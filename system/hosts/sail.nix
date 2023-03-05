@@ -17,6 +17,7 @@ in
     ../nixos/cloudflared.nix
 
     ../nixos/acme-sail.nix
+    ../nixos/nginx.nix
 
     ../nixos/atuin-sync.nix
 
@@ -24,7 +25,7 @@ in
 
     (import ../nixos/freshrss.nix (args // { inherit secret; }))
 
-    ../nixos/libreddit.nix
+    (import ../nixos/libreddit.nix (args // { inherit secret; }))
 
     (import ../nixos/mastodon.nix (args // { inherit secret; }))
 

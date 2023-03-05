@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, secret, ... }:
 
 {
   services.libreddit = {
@@ -9,16 +9,9 @@
   };
 
   services.nginx = {
-    virtualHosts."libreddit.only.internal" = {
-      listen = [
-        {
-          addr = "127.0.0.1";
-          port = 80;
-        }
-      ];
-
-      forceSSL = false;
-      enableACME = false;
+    virtualHosts."${secret.nginx.hostnames.libreddit}" = {
+      forceSSL = true;
+      useACMEHost = "daniel.sx";
       basicAuthFile = config.age.secrets.libreddit-auth.path;
 
       locations."/" = {
