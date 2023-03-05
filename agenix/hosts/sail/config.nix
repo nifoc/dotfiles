@@ -89,6 +89,12 @@
       group = "nginx";
     };
 
+    rimgo-auth = {
+      file = ./rimgo/auth.age;
+      owner = "nginx";
+      group = "nginx";
+    };
+
     anonymous-overflow-config = {
       file = ./anonymous-overflow/config.age;
       mode = "444";

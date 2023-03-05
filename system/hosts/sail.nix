@@ -30,6 +30,8 @@ in
 
     (import ../nixos/ntfy-sh.nix (args // { inherit secret; }))
 
+    ../nixos/rimgo.nix
+
     ../nixos/synapse.nix
 
     ../nixos/websites.nix

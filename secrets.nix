@@ -29,6 +29,8 @@ in
 
   "agenix/hosts/sail/libreddit/auth.age".publicKeys = sail;
 
+  "agenix/hosts/sail/rimgo/auth.age".publicKeys = sail;
+
   "agenix/hosts/sail/anonymous-overflow/config.age".publicKeys = sail;
   "agenix/hosts/sail/anonymous-overflow/auth.age".publicKeys = sail;
 
