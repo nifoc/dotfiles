@@ -87,15 +87,24 @@
     extraConfigFiles = [ config.age.secrets.synapse-extra-config.path ];
   };
 
-  networking.firewall.interfaces."enp7s0".allowedTCPPorts = [ 8008 ];
+  networking.firewall.interfaces."enp7s0".allowedTCPPorts = [ 8008 8443 ];
 
   services.nginx.virtualHosts."matrix.kempkens.io" = {
+    listen = [
+      { addr = "0.0.0.0"; port = 80; }
+      { addr = "[::0]"; port = 80; }
+      { addr = "0.0.0.0"; port = 443; ssl = true; }
+      { addr = "[::0]"; port = 443; ssl = true; }
+
+      { addr = "0.0.0.0"; port = 8443; ssl = true; }
+      { addr = "[::0]"; port = 8443; ssl = true; }
+    ];
     http3 = true;
 
     forceSSL = true;
     useACMEHost = "kempkens.io";
 
-    locations."/" = {
+    locations."~ ^(/_matrix|/_synapse/client)" = {
       recommendedProxySettings = true;
       proxyPass = "http://127.0.0.1:8008";
       proxyWebsockets = true;
