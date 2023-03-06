@@ -41,4 +41,30 @@ in
       };
     };
   };
+
+  services.nginx.virtualHosts."${secret.container.webserver.hostname}" = {
+    http3 = true;
+
+    root = "/etc/container-webserver/weewx/html/wdc";
+    index = "index.html";
+    forceSSL = true;
+    useACMEHost = "kempkens.io";
+
+    location."~* \.html$".extraConfig = ''
+      expires modified 120s;
+    '';
+
+    location."~* \.(js|css)$".extraConfig = ''
+      expires 1h;
+    '';
+
+    locations."~ ^/dwd/(icons|warn_icons)/" = {
+      recommendedProxySettings = true;
+      proxyPass = "http://127.0.0.1:8000";
+    };
+
+    location."~ ^/dwd/[\w]+\.(gif|png)".extraConfig = ''
+      expires modified 1h;
+    '';
+  };
 } // custom-config
