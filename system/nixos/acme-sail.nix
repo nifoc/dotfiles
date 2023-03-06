@@ -14,6 +14,10 @@
     };
 
     certs = {
+      "kempkens.io" = {
+        domain = "*.kempkens.io";
+      };
+
       "daniel.sx" = {
         domain = "*.daniel.sx";
       };

@@ -19,4 +19,19 @@
       keepalive-interval = "45s";
     };
   };
+
+  services.nginx = {
+    virtualHosts."ntfy.kempkens.io" = {
+      http3 = true;
+
+      forceSSL = true;
+      useACMEHost = "kempkens.io";
+
+      locations."/" = {
+        recommendedProxySettings = true;
+        proxyWebsockets = true;
+        proxyPass = "http://127.0.0.1:8004";
+      };
+    };
+  };
 }
