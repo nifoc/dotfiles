@@ -53,11 +53,11 @@ in
       index index.html;
     '';
 
-    location."~* \.html$".extraConfig = ''
+    locations."~* \.html$".extraConfig = ''
       expires modified 120s;
     '';
 
-    location."~* \.(js|css)$".extraConfig = ''
+    locations."~* \.(js|css)$".extraConfig = ''
       expires 1h;
     '';
 
@@ -66,7 +66,7 @@ in
       proxyPass = "http://127.0.0.1:8000";
     };
 
-    location."~ ^/dwd/[\w]+\.(gif|png)".extraConfig = ''
+    locations."~ ^/dwd/[\w]+\.(gif|png)".extraConfig = ''
       expires modified 1h;
     '';
   };
