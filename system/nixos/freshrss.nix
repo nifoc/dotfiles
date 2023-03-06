@@ -27,6 +27,10 @@
     forceSSL = true;
     useACMEHost = "kempkens.io";
 
+    extraConfig = ''
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+    '';
+
     # php files handling
     # this regex is mandatory because of the API
     locations."~ ^.+?\.php(/.*)?$".extraConfig = ''

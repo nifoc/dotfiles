@@ -77,6 +77,10 @@ in
     forceSSL = true;
     useACMEHost = "kempkens.io";
 
+    extraConfig = ''
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+    '';
+
     locations."/system/" = {
       extraConfig = ''
         rewrite ^/system/?(.*)$ https://mastodon-cdn.kempkens.io/$1 permanent;

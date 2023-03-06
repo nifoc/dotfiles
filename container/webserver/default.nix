@@ -51,6 +51,7 @@ in
 
     extraConfig = ''
       index index.html;
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
     '';
 
     locations."~* \.html$".extraConfig = ''
