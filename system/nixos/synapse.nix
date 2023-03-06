@@ -88,4 +88,22 @@
   };
 
   networking.firewall.interfaces."enp7s0".allowedTCPPorts = [ 8008 ];
+
+  services.nginx.virtualHosts."matrix.kempkens.io" = {
+    http3 = true;
+
+    forceSSL = true;
+    useACMEHost = "kempkens.io";
+
+    locations."/" = {
+      recommendedProxySettings = true;
+      proxyPass = "http://127.0.0.1:8008";
+      proxyWebsockets = true;
+
+      extraConfig = ''
+        client_max_body_size 50m;
+        proxy_force_ranges on;
+      '';
+    };
+  };
 }

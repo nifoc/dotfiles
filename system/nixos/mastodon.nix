@@ -70,41 +70,41 @@ in
     extraEnvFiles = [ config.age.secrets.mastodon-extra-config.path ];
   };
 
-  services.nginx = {
-    virtualHosts."${web-domain}" = {
-      http3 = true;
+  services.nginx.virtualHosts."${web-domain}" = {
+    http3 = true;
 
-      root = "${config.services.mastodon.package}/public/";
-      forceSSL = true;
-      useACMEHost = "kempkens.io";
+    root = "${config.services.mastodon.package}/public/";
+    forceSSL = true;
+    useACMEHost = "kempkens.io";
 
-      locations."/system/" = {
-        extraConfig = ''
-          rewrite ^/system/?(.*)$ https://mastodon-cdn.kempkens.io/$1 permanent;
-        '';
-      };
+    locations."/system/" = {
+      extraConfig = ''
+        rewrite ^/system/?(.*)$ https://mastodon-cdn.kempkens.io/$1 permanent;
+      '';
+    };
 
-      locations."/" = {
-        tryFiles = "$uri @proxy";
-      };
+    locations."/" = {
+      tryFiles = "$uri @proxy";
+    };
 
-      locations."@proxy" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://unix:/run/mastodon-web/web.socket";
-        proxyWebsockets = true;
-        extraConfig = ''
-          proxy_force_ranges on;
-        '';
-      };
+    locations."@proxy" = {
+      recommendedProxySettings = true;
+      proxyPass = "http://unix:/run/mastodon-web/web.socket";
+      proxyWebsockets = true;
 
-      locations."/api/v1/streaming/" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://unix:/run/mastodon-streaming/streaming.socket";
-        proxyWebsockets = true;
-        extraConfig = ''
-          proxy_force_ranges on;
-        '';
-      };
+      extraConfig = ''
+        proxy_force_ranges on;
+      '';
+    };
+
+    locations."/api/v1/streaming/" = {
+      recommendedProxySettings = true;
+      proxyPass = "http://unix:/run/mastodon-streaming/streaming.socket";
+      proxyWebsockets = true;
+
+      extraConfig = ''
+        proxy_force_ranges on;
+      '';
     };
   };
 
