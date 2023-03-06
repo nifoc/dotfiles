@@ -111,9 +111,12 @@ in
   services.nginx.virtualHosts."mastodon-cdn.kempkens.io" = {
     http3 = true;
 
-    root = "/var/lib/mastodon/public-system/";
+    root = "${config.services.mastodon.package}/public/";
     forceSSL = true;
     useACMEHost = "kempkens.io";
+
+    locations."/system/".alias = "/var/lib/mastodon/public-system/";
+    locations."/cache/".alias = "/var/lib/mastodon/public-system/cache/";
   };
 
   users.groups.mastodon.members = [ config.services.nginx.user ];
