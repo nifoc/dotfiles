@@ -120,7 +120,12 @@ in
     '';
 
     locations."/system/".alias = "/var/lib/mastodon/public-system/";
+
+    # "Old" CDN paths
+    locations."/accounts/".alias = "/var/lib/mastodon/public-system/accounts/";
     locations."/cache/".alias = "/var/lib/mastodon/public-system/cache/";
+    locations."/custom_emojis/".alias = "/var/lib/mastodon/public-system/custom_emojis/";
+    locations."/media_attachments/".alias = "/var/lib/mastodon/public-system/media_attachments/";
   };
 
   users.groups.mastodon.members = [ config.services.nginx.user ];
