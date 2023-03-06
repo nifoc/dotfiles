@@ -115,6 +115,10 @@ in
     forceSSL = true;
     useACMEHost = "kempkens.io";
 
+    extraConfig = ''
+      add_header Access-Control-Allow-Origin https://mastodon.kempkens.io;
+    '';
+
     locations."/system/".alias = "/var/lib/mastodon/public-system/";
     locations."/cache/".alias = "/var/lib/mastodon/public-system/cache/";
   };
