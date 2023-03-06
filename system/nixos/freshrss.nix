@@ -39,6 +39,8 @@
         # https://trac.nginx.org/nginx/ticket/321
         set $path_info $fastcgi_path_info;
         fastcgi_param PATH_INFO $path_info;
+        include ${config.services.nginx.package}/conf/fastcgi_params;
+        include ${config.services.nginx.package}/conf/fastcgi.conf;
       '';
 
       locations."/" = {
