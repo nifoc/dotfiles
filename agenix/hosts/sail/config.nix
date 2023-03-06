@@ -6,12 +6,6 @@
       group = "acme";
     };
 
-    cloudflared-environment = {
-      file = ./cloudflared/environment.age;
-      owner = "cloudflared";
-      group = "cloudflared";
-    };
-
     mastodon-database-password = {
       file = ./mastodon/databasePassword.age;
       owner = "mastodon";
