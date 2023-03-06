@@ -108,5 +108,13 @@ in
     };
   };
 
+  services.nginx.virtualHosts."mastodon-cdn.kempkens.io" = {
+    http3 = true;
+
+    root = "/var/lib/mastodon/public-system/";
+    forceSSL = true;
+    useACMEHost = "kempkens.io";
+  };
+
   users.groups.mastodon.members = [ config.services.nginx.user ];
 }
