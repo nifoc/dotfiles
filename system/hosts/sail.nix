@@ -14,8 +14,6 @@ in
 
     ../nixos/git.nix
 
-    ../nixos/cloudflared.nix
-
     ../nixos/acme-sail.nix
     ../nixos/nginx.nix
 
