@@ -46,9 +46,12 @@ in
     http3 = true;
 
     root = "/etc/container-webserver/weewx/html/wdc";
-    index = "index.html";
     forceSSL = true;
     useACMEHost = "kempkens.io";
+
+    extraConfig = ''
+      index index.html;
+    '';
 
     location."~* \.html$".extraConfig = ''
       expires modified 120s;
