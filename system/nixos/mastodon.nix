@@ -117,10 +117,6 @@ in
 
     extraConfig = ''
       add_header Access-Control-Allow-Origin https://mastodon.kempkens.io;
-
-      if ($ssl_protocol != "") {
-        add_header Strict-Transport-Security max-age=31536000; includeSubDomains; preload;
-      }
     '';
 
     locations."/system/".alias = "/var/lib/mastodon/public-system/";
