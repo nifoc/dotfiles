@@ -53,6 +53,8 @@ in
 
   services.nginx = {
     virtualHosts."${secret.nginx.hostnames.nitter}" = {
+      http3 = true;
+
       root = "${nitter-pkg}/share/nitter/public/";
       forceSSL = true;
       useACMEHost = "daniel.sx";

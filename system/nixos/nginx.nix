@@ -1,6 +1,10 @@
+{ pkgs, ... }:
+
 {
   services.nginx = {
     enable = true;
+    package = pkgs.nginxQuic;
+
     recommendedOptimisation = true;
     recommendedGzipSettings = true;
     recommendedBrotliSettings = true;

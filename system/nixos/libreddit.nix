@@ -10,6 +10,8 @@
 
   services.nginx = {
     virtualHosts."${secret.nginx.hostnames.libreddit}" = {
+      http3 = true;
+
       forceSSL = true;
       useACMEHost = "daniel.sx";
       basicAuthFile = config.age.secrets.libreddit-auth.path;

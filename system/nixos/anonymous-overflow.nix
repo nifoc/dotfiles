@@ -40,6 +40,8 @@ in
 
   services.nginx = {
     virtualHosts."overflow.daniel.sx" = {
+      http3 = true;
+
       root = "${anonymous-overflow-pkg}/share/anonymous-overflow/public/";
       forceSSL = true;
       useACMEHost = "daniel.sx";

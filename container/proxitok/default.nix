@@ -39,6 +39,8 @@
 
   services.nginx = {
     virtualHosts."tictac.daniel.sx" = {
+      http3 = true;
+
       forceSSL = true;
       useACMEHost = "daniel.sx";
       basicAuthFile = config.age.secrets.proxitok-auth.path;
