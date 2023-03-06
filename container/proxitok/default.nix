@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, secret, ... }:
 
 {
   virtualisation.arion.projects.proxitok.settings = {
@@ -38,24 +38,12 @@
   ];
 
   services.nginx = {
-    enable = true;
-    recommendedOptimisation = true;
-    recommendedGzipSettings = true;
-    recommendedBrotliSettings = true;
-
-    virtualHosts."proxitok.only.internal" = {
-      listen = [
-        {
-          addr = "127.0.0.1";
-          port = 80;
-        }
-      ];
-
-      forceSSL = false;
-      enableACME = false;
+    virtualHosts."tictac.daniel.sx" = {
+      forceSSL = true;
+      useACMEHost = "daniel.sx";
+      basicAuthFile = config.age.secrets.proxitok-auth.path;
 
       locations."/" = {
-        basicAuthFile = config.age.secrets.proxitok-auth.path;
         recommendedProxySettings = true;
         proxyPass = "http://127.0.0.1:8005";
       };

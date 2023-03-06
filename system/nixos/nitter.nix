@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, secret, ... }:
 
 let
   nitter-pkg = pkgs.nitter-unstable;
@@ -52,22 +52,10 @@ in
   };
 
   services.nginx = {
-    enable = true;
-    recommendedOptimisation = true;
-    recommendedGzipSettings = true;
-    recommendedBrotliSettings = true;
-
-    virtualHosts."nitter.only.internal" = {
-      listen = [
-        {
-          addr = "127.0.0.1";
-          port = 80;
-        }
-      ];
-
+    virtualHosts."${secret.nginx.hostnames.nitter}" = {
       root = "${nitter-pkg}/share/nitter/public/";
-      forceSSL = false;
-      enableACME = false;
+      forceSSL = true;
+      useACMEHost = "daniel.sx";
 
       locations."/" = {
         tryFiles = "$uri @proxy";

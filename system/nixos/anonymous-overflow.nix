@@ -39,23 +39,10 @@ in
   };
 
   services.nginx = {
-    enable = true;
-    recommendedOptimisation = true;
-    recommendedGzipSettings = true;
-    recommendedBrotliSettings = true;
-
-    virtualHosts."anonymous-overflow.only.internal" = {
-      listen = [
-        {
-          addr = "127.0.0.1";
-          port = 80;
-        }
-      ];
-
+    virtualHosts."overflow.daniel.sx" = {
       root = "${anonymous-overflow-pkg}/share/anonymous-overflow/public/";
-      forceSSL = false;
-      enableACME = false;
-
+      forceSSL = true;
+      useACMEHost = "daniel.sx";
       basicAuthFile = config.age.secrets.anonymous-overflow-auth.path;
 
       locations."/" = {

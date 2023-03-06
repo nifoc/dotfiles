@@ -41,21 +41,9 @@ in
   };
 
   services.nginx = {
-    enable = true;
-    recommendedOptimisation = true;
-    recommendedGzipSettings = true;
-    recommendedBrotliSettings = true;
-
-    virtualHosts."rimgo.only.internal" = {
-      listen = [
-        {
-          addr = "127.0.0.1";
-          port = 80;
-        }
-      ];
-
-      forceSSL = false;
-      enableACME = false;
+    virtualHosts."ringo.daniel.sx" = {
+      forceSSL = true;
+      useACMEHost = "daniel.sx";
       basicAuthFile = config.age.secrets.rimgo-auth.path;
 
       locations."/" = {
