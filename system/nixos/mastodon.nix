@@ -2,16 +2,6 @@
 
 let
   web-domain = "mastodon.kempkens.io";
-
-  nginx-extra-proxy-settings = ''
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-For $http_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
-    proxy_set_header X-Forwarded-Host $host;
-    proxy_set_header X-Forwarded-Server $host;
-
-    proxy_force_ranges on;
-  '';
 in
 {
   services.mastodon = {
@@ -81,22 +71,12 @@ in
   };
 
   services.nginx = {
-    enable = true;
-    recommendedOptimisation = true;
-    recommendedGzipSettings = true;
-    recommendedBrotliSettings = true;
-
     virtualHosts."${web-domain}" = {
-      listen = [
-        {
-          addr = "127.0.0.1";
-          port = 80;
-        }
-      ];
+      http3 = true;
 
       root = "${config.services.mastodon.package}/public/";
-      forceSSL = false;
-      enableACME = false;
+      forceSSL = true;
+      useACMEHost = "kempkens.io";
 
       locations."/system/" = {
         extraConfig = ''
@@ -109,15 +89,21 @@ in
       };
 
       locations."@proxy" = {
+        recommendedProxySettings = true;
         proxyPass = "http://unix:/run/mastodon-web/web.socket";
         proxyWebsockets = true;
-        extraConfig = nginx-extra-proxy-settings;
+        extraConfig = ''
+          proxy_force_ranges on;
+        '';
       };
 
       locations."/api/v1/streaming/" = {
+        recommendedProxySettings = true;
         proxyPass = "http://unix:/run/mastodon-streaming/streaming.socket";
         proxyWebsockets = true;
-        extraConfig = nginx-extra-proxy-settings;
+        extraConfig = ''
+          proxy_force_ranges on;
+        '';
       };
     };
   };
