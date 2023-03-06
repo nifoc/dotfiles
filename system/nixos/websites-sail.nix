@@ -2,24 +2,16 @@
 
 {
   services.nginx = {
-    enable = true;
-    recommendedOptimisation = true;
-    recommendedGzipSettings = true;
-    recommendedBrotliSettings = true;
-
     # Documentation
     virtualHosts = builtins.listToAttrs (builtins.map
       (domain: {
         name = domain;
         value = {
-          listen = [
-            {
-              addr = "127.0.0.1";
-              port = 80;
-            }
-          ];
+          http3 = true;
 
           root = "${pkgs.website-docs-nifoc-pw}/site/${domain}";
+          forceSSL = true;
+          useACMEHost = "nifoc.pw";
 
           extraConfig = ''
             autoindex on;

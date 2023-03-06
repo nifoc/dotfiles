@@ -17,6 +17,10 @@
       "daniel.sx" = {
         domain = "*.daniel.sx";
       };
+
+      "nifoc.pw" = {
+        domain = "*.nifoc.pw";
+      };
     };
   };
 }

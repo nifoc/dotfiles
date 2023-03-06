@@ -37,7 +37,7 @@ in
 
     ../nixos/synapse.nix
 
-    ../nixos/websites.nix
+    ../nixos/websites-sail.nix
 
     (import ../nixos/tailscale.nix (args // { inherit secret; }))
 
