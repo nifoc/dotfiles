@@ -114,6 +114,7 @@ in
 
   services.nginx.virtualHosts."mastodon-cdn.kempkens.io" = {
     http3 = true;
+    kTLS = true;
 
     root = "${config.services.mastodon.package}/public/";
     forceSSL = true;
