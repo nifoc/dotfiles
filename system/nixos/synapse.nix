@@ -87,7 +87,7 @@
     extraConfigFiles = [ config.age.secrets.synapse-extra-config.path ];
   };
 
-  networking.firewall.interfaces."enp7s0".allowedTCPPorts = [ 8008 ];
+  networking.firewall.allowedTCPPorts = [ 8008 ];
 
   services.nginx.virtualHosts."matrix.kempkens.io" = {
     http3 = true;
