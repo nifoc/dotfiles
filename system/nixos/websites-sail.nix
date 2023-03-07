@@ -8,6 +8,7 @@
         name = domain;
         value = {
           http3 = true;
+          kTLS = true;
 
           root = "${pkgs.website-docs-nifoc-pw}/site/${domain}";
           forceSSL = true;
