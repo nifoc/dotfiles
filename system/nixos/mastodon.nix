@@ -97,6 +97,7 @@ in
       proxyWebsockets = true;
 
       extraConfig = ''
+        proxy_hide_header Strict-Transport-Security;
         proxy_force_ranges on;
       '';
     };
@@ -107,6 +108,7 @@ in
       proxyWebsockets = true;
 
       extraConfig = ''
+        proxy_hide_header Strict-Transport-Security;
         proxy_force_ranges on;
       '';
     };
