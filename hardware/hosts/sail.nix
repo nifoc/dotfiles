@@ -8,7 +8,7 @@
 
     initrd = {
       availableKernelModules = [ "ata_piix" "uhci_hcd" "xen_blkfront" ];
-      kernelModules = [ "nvme" ];
+      kernelModules = [ "nvme" "tls" ];
     };
 
     kernelPackages = pkgs.linuxPackages_latest;
