@@ -39,7 +39,7 @@ in
 
     (import ../nixos/tailscale.nix (args // { inherit secret; }))
 
-    ../nixos/arion.nix
+    (import ../nixos/arion.nix (args // { inherit secret; }))
     ../../container/webserver
     ../../container/matrix
     ../../container/proxitok

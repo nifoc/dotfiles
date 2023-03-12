@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, secret, ... }:
 
 {
   environment.systemPackages = [
@@ -22,6 +22,8 @@
         environment = {
           WATCHTOWER_POLL_INTERVAL = "28800";
           WATCHTOWER_LABEL_ENABLE = "true";
+          WATCHTOWER_NOTIFICATIONS = "shoutrrr";
+          WATCHTOWER_NOTIFICATION_URL = secret.watchtower.ntfyUrl;
         };
         volumes = [
           "/var/run/docker.sock:/var/run/docker.sock"
