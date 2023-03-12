@@ -4,18 +4,6 @@
   programs.atuin = {
     enable = true;
 
-    package = pkgs.atuin.overrideAttrs (
-      _: rec {
-        nativeCheckInputs = [ ];
-
-        checkPhase = ''
-          runHook preCheck
-          cargo test
-          runHook postCheck
-        '';
-      }
-    );
-
     enableBashIntegration = false;
     enableZshIntegration = false;
     enableFishIntegration = true;
