@@ -51,26 +51,24 @@ in
     };
   };
 
-  services.nginx = {
-    virtualHosts."${secret.nginx.hostnames.nitter}" = {
-      http3 = true;
+  services.nginx.virtualHosts."${secret.nginx.hostnames.nitter}" = {
+    http3 = true;
 
-      root = "${nitter-pkg}/share/nitter/public/";
-      forceSSL = true;
-      useACMEHost = "daniel.sx";
+    root = "${nitter-pkg}/share/nitter/public/";
+    onlySSL = true;
+    useACMEHost = "daniel.sx";
 
-      locations."/" = {
-        tryFiles = "$uri @proxy";
-      };
+    locations."/" = {
+      tryFiles = "$uri @proxy";
+    };
 
-      locations."/pic/" = proxy-no-auth;
-      locations."/video/" = proxy-no-auth;
+    locations."/pic/" = proxy-no-auth;
+    locations."/video/" = proxy-no-auth;
 
-      locations."@proxy" = {
-        basicAuthFile = config.age.secrets.nitter-auth.path;
-        recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:8001";
-      };
+    locations."@proxy" = {
+      basicAuthFile = config.age.secrets.nitter-auth.path;
+      recommendedProxySettings = true;
+      proxyPass = "http://127.0.0.1:8001";
     };
   };
 }

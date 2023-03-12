@@ -38,27 +38,25 @@ in
     };
   };
 
-  services.nginx = {
-    virtualHosts."overflow.daniel.sx" = {
-      http3 = true;
+  services.nginx.virtualHosts."overflow.daniel.sx" = {
+    http3 = true;
 
-      root = "${anonymous-overflow-pkg}/share/anonymous-overflow/public/";
-      forceSSL = true;
-      useACMEHost = "daniel.sx";
-      basicAuthFile = config.age.secrets.anonymous-overflow-auth.path;
+    root = "${anonymous-overflow-pkg}/share/anonymous-overflow/public/";
+    onlySSL = true;
+    useACMEHost = "daniel.sx";
+    basicAuthFile = config.age.secrets.anonymous-overflow-auth.path;
 
-      locations."/" = {
-        tryFiles = "$uri @proxy";
-      };
+    locations."/" = {
+      tryFiles = "$uri @proxy";
+    };
 
-      locations."/static".extraConfig = ''
-        rewrite ^/static(/.*)$ $1 last;
-      '';
+    locations."/static".extraConfig = ''
+      rewrite ^/static(/.*)$ $1 last;
+    '';
 
-      locations."@proxy" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:8003";
-      };
+    locations."@proxy" = {
+      recommendedProxySettings = true;
+      proxyPass = "http://127.0.0.1:8003";
     };
   };
 }

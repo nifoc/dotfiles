@@ -40,18 +40,16 @@ in
     };
   };
 
-  services.nginx = {
-    virtualHosts."ringo.daniel.sx" = {
-      http3 = true;
+  services.nginx.virtualHosts."ringo.daniel.sx" = {
+    http3 = true;
 
-      forceSSL = true;
-      useACMEHost = "daniel.sx";
-      basicAuthFile = config.age.secrets.rimgo-auth.path;
+    onlySSL = true;
+    useACMEHost = "daniel.sx";
+    basicAuthFile = config.age.secrets.rimgo-auth.path;
 
-      locations."/" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:8006";
-      };
+    locations."/" = {
+      recommendedProxySettings = true;
+      proxyPass = "http://127.0.0.1:8006";
     };
   };
 }
