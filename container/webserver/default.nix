@@ -44,6 +44,7 @@ in
 
   services.nginx.virtualHosts."${secret.container.webserver.hostname}" = {
     http3 = true;
+    kTLS = true;
 
     root = "/etc/container-webserver/weewx/html/wdc";
     forceSSL = true;
