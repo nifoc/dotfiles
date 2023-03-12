@@ -1,6 +1,3 @@
-let
-  secret-sail = import ../../../../secret/hosts/sail.nix;
-in
 {
   matchBlocks = {
     "github.com" = {
@@ -53,7 +50,7 @@ in
     };
 
     "sail" = {
-      hostname = secret-sail.tailscaleIP;
+      hostname = "100.113.242.85";
       port = 22;
       user = "daniel";
       forwardAgent = true;

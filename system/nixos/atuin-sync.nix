@@ -26,5 +26,18 @@
     };
   };
 
+  services.nginx.virtualHosts."atuin-sync.kempkens.io" = {
+    listenAddresses = [ "100.113.242.85" ];
+    http3 = true;
+
+    onlySSL = true;
+    useACMEHost = "kempkens.io";
+
+    locations."/" = {
+      recommendedProxySettings = true;
+      proxyPass = "http://127.0.0.1:8015";
+    };
+  };
+
   networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 8015 ];
 }

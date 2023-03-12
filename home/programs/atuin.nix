@@ -10,8 +10,8 @@
 
     settings = {
       auto_sync = true;
-      sync_address = "http://100.113.242.85:8015";
-      sync_frequency = "1h";
+      sync_address = "https://atuin-sync.kempkens.io";
+      sync_frequency = "30m";
       update_check = false;
 
       style = "auto";

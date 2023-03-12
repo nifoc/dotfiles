@@ -4,7 +4,7 @@ in
 {
   matchBlocks = {
     "builder-sail" = {
-      hostname = secret-sail.tailscaleIP;
+      hostname = "100.113.242.85";
       port = 22;
       user = "root";
       identityFile = "~/.ssh/Hetzner.pub";
