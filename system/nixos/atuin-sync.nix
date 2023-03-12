@@ -38,6 +38,4 @@
       proxyPass = "http://127.0.0.1:8015";
     };
   };
-
-  networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 8015 ];
 }
