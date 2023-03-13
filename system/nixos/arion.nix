@@ -40,4 +40,6 @@
       backend = "docker";
     };
   };
+
+  networking.firewall.interfaces."docker0".allowedTCPPorts = [ 443 ];
 }
