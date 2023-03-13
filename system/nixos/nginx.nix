@@ -21,7 +21,7 @@
                                '"$request" $status $body_bytes_sent '
                                '"$http_referer" "$http_user_agent"';
 
-      access_log logs/access.log combined_anon;
+      access_log /var/log/nginx/access.log combined_anon;
     '';
   };
 
