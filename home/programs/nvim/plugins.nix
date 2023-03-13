@@ -40,8 +40,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
-      rev = "4ee637e0b1873efe1e901380f232799fa0764879";
-      sha256 = "0b689qr3pbx3828pa2xdmyzf3g18lws78v9cjsldk23raglv1mhf";
+      rev = "b8d0c99578dcb9d084a45ca4b3a4a502712c2741";
+      sha256 = "1mm33s20x4mrxjzxacal2fjxjyqwc3rnbj1f7zvi4ml00wcwiaps";
       fetchSubmodules = false;
     };
   };
@@ -306,8 +306,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "54e06334a440b476fcc184fcf555cfd4ad9110c0";
-      sha256 = "05h7n7f44m3xk050bwkghsfpbcjmy5gaj6mjz1rxbrfpix08rwlq";
+      rev = "a835e3d680c5940b61780c6af07885db95382478";
+      sha256 = "0rzzkx1wrqzdzrszp1qlf95wbmv1n0vn1dgfznrrpc5jn3wvqx0p";
       fetchSubmodules = false;
     };
   };
