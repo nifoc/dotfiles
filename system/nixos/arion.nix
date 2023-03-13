@@ -20,7 +20,7 @@
       containers.watchtower = {
         image = "containrrr/watchtower";
         environment = {
-          WATCHTOWER_POLL_INTERVAL = "28800";
+          WATCHTOWER_POLL_INTERVAL = "21600";
           WATCHTOWER_LABEL_ENABLE = "true";
           WATCHTOWER_NOTIFICATIONS = "shoutrrr";
           WATCHTOWER_NOTIFICATIONS_HOSTNAME = config.networking.hostName;
@@ -29,6 +29,9 @@
         volumes = [
           "/var/run/docker.sock:/var/run/docker.sock"
           "/root/.docker/config.json:/config.json:ro"
+        ];
+        extraOptions = [
+          "--label com.centurylinklabs.watchtower.enable=true"
         ];
       };
     };
