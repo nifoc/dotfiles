@@ -31,7 +31,7 @@
           "/root/.docker/config.json:/config.json:ro"
         ];
         extraOptions = [
-          "--label com.centurylinklabs.watchtower.enable=true"
+          "--label=com.centurylinklabs.watchtower.enable=true"
         ];
       };
     };
