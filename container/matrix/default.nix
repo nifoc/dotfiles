@@ -7,7 +7,7 @@ in
     services = {
       signald = {
         service = {
-          image = "signald/signald:latest";
+          image = "registry.gitlab.com/signald/signald:latest";
           container_name = "signald";
           restart = "unless-stopped";
           volumes = [
