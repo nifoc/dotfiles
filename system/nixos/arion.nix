@@ -14,6 +14,11 @@
       defaultNetwork.settings.dns_enabled = true;
     };
 
+    containers.containersConf.cniPlugins = with pkgs; [
+      cni-plugins
+      dnsname-cni
+    ];
+
     oci-containers.backend = "podman";
 
     arion = {
