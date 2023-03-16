@@ -45,7 +45,7 @@
     };
 
     arion = {
-      backend = "podman";
+      backend = "podman-socket";
     };
   };
 
