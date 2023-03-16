@@ -25,4 +25,8 @@
       backend = "podman-socket";
     };
   };
+
+  networking.firewall.interfaces."podman1".allowedUDPPorts = [ 53 ];
+  networking.firewall.interfaces."podman2".allowedUDPPorts = [ 53 ];
+  networking.firewall.interfaces."podman3".allowedUDPPorts = [ 53 ];
 }
