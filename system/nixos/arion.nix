@@ -54,7 +54,7 @@
   };
 
   networking.firewall.interfaces."podman+" = {
-    allowedUDPPorts = [ 53 ];
-    allowedTCPPorts = [ 53 ];
+    allowedUDPPorts = [ 53 443 ];
+    allowedTCPPorts = [ 53 443 ];
   };
 }
