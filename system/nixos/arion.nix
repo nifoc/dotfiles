@@ -3,18 +3,10 @@
 {
   environment.systemPackages = [
     pkgs.arion
-    pkgs.docker-client
   ];
 
   virtualisation = {
     docker.enable = false;
-    # docker = {
-    #   enable = true;
-    #   autoPrune = {
-    #     enable = true;
-    #     flags = [ "--all" ];
-    #   };
-    # };
 
     podman = {
       enable = true;
@@ -22,32 +14,14 @@
       defaultNetwork.settings.dns_enabled = true;
     };
 
-    oci-containers = {
-      backend = "docker";
+    containers.containersConf.cniPlugins = [
+      pkgs.cniPlugins.dnsname
+    ];
 
-      # containers.watchtower = {
-      #   image = "containrrr/watchtower";
-      #   environment = {
-      #     WATCHTOWER_POLL_INTERVAL = "21600";
-      #     WATCHTOWER_LABEL_ENABLE = "true";
-      #     WATCHTOWER_NOTIFICATIONS = "shoutrrr";
-      #     WATCHTOWER_NOTIFICATIONS_HOSTNAME = config.networking.hostName;
-      #     WATCHTOWER_NOTIFICATION_URL = secret.watchtower.ntfyUrl;
-      #   };
-      #   volumes = [
-      #     "/var/run/docker.sock:/var/run/docker.sock"
-      #     "/root/.docker/config.json:/config.json:ro"
-      #   ];
-      #   extraOptions = [
-      #     "--label=com.centurylinklabs.watchtower.enable=true"
-      #   ];
-      # };
-    };
+    oci-containers.backend = "podman";
 
     arion = {
       backend = "podman-socket";
     };
   };
-
-  # networking.firewall.interfaces."docker0".allowedTCPPorts = [ 443 ];
 }
