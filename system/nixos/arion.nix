@@ -24,23 +24,6 @@
 
     oci-containers = {
       backend = "podman";
-
-      containers.watchtower = {
-        image = "ghcr.io/containrrr/watchtower:latest";
-        environment = {
-          WATCHTOWER_POLL_INTERVAL = "21600";
-          WATCHTOWER_LABEL_ENABLE = "true";
-          WATCHTOWER_NOTIFICATIONS = "shoutrrr";
-          WATCHTOWER_NOTIFICATIONS_HOSTNAME = config.networking.hostName;
-          WATCHTOWER_NOTIFICATION_URL = secret.watchtower.ntfyUrl;
-        };
-        volumes = [
-          "/var/run/docker.sock:/var/run/docker.sock"
-        ];
-        extraOptions = [
-          "--label=com.centurylinklabs.watchtower.enable=true"
-        ];
-      };
     };
 
     arion = {
