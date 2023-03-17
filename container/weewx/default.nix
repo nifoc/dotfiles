@@ -40,20 +40,18 @@ in
   };
 
   services.mosquitto.listeners = [{
-    weewx-private = {
-      address = "0.0.0.0";
-      port = 1883;
+    address = "0.0.0.0";
+    port = 1883;
 
-      users = {
-        weewx-proxy = {
-          hashedPasswordFile = config.age.secrets.mosquitto-password-weewx-proxy.path;
-          acl = [ "write weewx/+" ];
-        };
+    users = {
+      weewx-proxy = {
+        hashedPasswordFile = config.age.secrets.mosquitto-password-weewx-proxy.path;
+        acl = [ "write weewx/+" ];
+      };
 
-        weewx = {
-          hashedPasswordFile = config.age.secrets.mosquitto-password-weewx.path;
-          acl = [ "read weewx/+" ];
-        };
+      weewx = {
+        hashedPasswordFile = config.age.secrets.mosquitto-password-weewx.path;
+        acl = [ "read weewx/+" ];
       };
     };
   }];
