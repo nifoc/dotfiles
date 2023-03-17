@@ -39,6 +39,8 @@ in
 
     (import ../nixos/tailscale.nix (args // { inherit secret; }))
 
+    ../nixos/mosquitto.nix
+
     (import ../nixos/arion.nix (args // { inherit secret; }))
     ../../container/weewx
     ../../container/matrix
