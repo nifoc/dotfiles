@@ -1,4 +1,4 @@
-{ config, secret, ... }:
+{ config, ... }:
 
 {
   virtualisation.arion.projects.proxitok.settings = {

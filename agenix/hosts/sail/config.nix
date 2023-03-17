@@ -54,6 +54,14 @@
       group = "matrix-synapse";
     };
 
+    mosquitto-password-weewx-proxy = {
+      file = ./mosquitto/passwordWeewxProxy.age;
+    };
+
+    mosquitto-password-weewx = {
+      file = ./mosquitto/passwordWeewx.age;
+    };
+
     atuin-environment = {
       file = ./atuin/environment.age;
       owner = "atuin";
