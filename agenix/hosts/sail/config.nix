@@ -56,10 +56,14 @@
 
     mosquitto-password-weewx-proxy = {
       file = ./mosquitto/passwordWeewxProxy.age;
+      user = "mosquitto";
+      group = "mosquitto";
     };
 
     mosquitto-password-weewx = {
       file = ./mosquitto/passwordWeewx.age;
+      user = "mosquitto";
+      group = "mosquitto";
     };
 
     atuin-environment = {
