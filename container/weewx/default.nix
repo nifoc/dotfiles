@@ -12,7 +12,6 @@ in
           image = "ghcr.io/nifoc/weewx-docker:master";
           container_name = "weewx";
           restart = "unless-stopped";
-          depends_on = [ "mosquitto" ];
           ports = [ "127.0.0.1:8000:8000" ];
           environment = {
             "TZ" = "Europe/Berlin";
