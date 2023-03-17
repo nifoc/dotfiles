@@ -56,8 +56,16 @@ in
     };
   }];
 
-  networking.firewall.interfaces."enp7s0".allowedTCPPorts = [ 1883 ];
-  networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 1883 ];
+
+  networking.firewall.interfaces =
+    let
+      mosquittoPorts = [ 1883 ];
+    in
+    {
+      "enp7s0".allowedTCPPorts = mosquittoPorts;
+      "tailscale0".allowedTCPPorts = mosquittoPorts;
+      "podman+".allowedTCPPorts = mosquittoPorts;
+    };
 
   services.nginx.virtualHosts."${secret.container.weewx.hostname}" = {
     http3 = true;
