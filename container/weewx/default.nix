@@ -21,6 +21,7 @@ in
           ];
           labels = {
             "com.centurylinklabs.watchtower.enable" = "true";
+            "io.containers.autoupdate" = "registry";
           };
         };
       };

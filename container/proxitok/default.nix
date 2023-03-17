@@ -16,6 +16,7 @@
           ];
           labels = {
             "com.centurylinklabs.watchtower.enable" = "true";
+            "io.containers.autoupdate" = "registry";
           };
         };
       };
@@ -27,6 +28,7 @@
           restart = "unless-stopped";
           labels = {
             "com.centurylinklabs.watchtower.enable" = "true";
+            "io.containers.autoupdate" = "registry";
           };
         };
       };
