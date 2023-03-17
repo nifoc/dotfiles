@@ -39,7 +39,7 @@ in
     gid = 421;
   };
 
-  services.mosquitto.listeners = {
+  services.mosquitto.listeners = [{
     weewx-private = {
       address = "0.0.0.0";
       port = 1883;
@@ -56,7 +56,7 @@ in
         };
       };
     };
-  };
+  }];
 
   networking.firewall.interfaces."enp7s0".allowedTCPPorts = [ 1883 ];
   networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 1883 ];
