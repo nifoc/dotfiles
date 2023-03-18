@@ -5,27 +5,19 @@ let
   data-dir = "/etc/container-weewx";
 in
 {
-  virtualisation.arion.projects.weewx.settings = {
-    services = {
-      weewx = {
-        service = {
-          image = "ghcr.io/nifoc/weewx-docker:master";
-          container_name = "weewx";
-          restart = "unless-stopped";
-          ports = [ "127.0.0.1:8000:8000" ];
-          environment = {
-            "TZ" = "Europe/Berlin";
-          };
-          volumes = [
-            "${data-dir}:/data"
-          ];
-          labels = {
-            "com.centurylinklabs.watchtower.enable" = "true";
-            "io.containers.autoupdate" = "registry";
-          };
-        };
-      };
+  virtualisation.oci-containers.containers.weewx = {
+    image = "ghcr.io/nifoc/weewx-docker:master";
+    ports = [ "127.0.0.1:8000:8000" ];
+    environment = {
+      "TZ" = "Europe/Berlin";
     };
+    volumes = [
+      "${data-dir}:/data"
+    ];
+    extraOptions = [
+      "--label=com.centurylinklabs.watchtower.enable=true"
+      "--label=io.containers.autoupdate=registry"
+    ];
   };
 
   systemd.tmpfiles.rules = [
