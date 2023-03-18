@@ -225,12 +225,12 @@ rec {
   };
   nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-lspconfig";
-    version = "2023-03-17";
+    version = "2023-03-18";
     src = pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "4deb72306a59b1a36e571f9d86d6c5a05b20b294";
-      sha256 = "1dfr89l94dchli031qxrssblcdhgb60ks07d8kgn7zqpcxbchqph";
+      rev = "5a871409199d585b52b69952532e3fb435e64566";
+      sha256 = "13dr00ms9vghbb979rpd627qd90nfx9afhz8hjrpkhr9qm8jlry0";
       fetchSubmodules = false;
     };
   };
@@ -423,12 +423,12 @@ rec {
   };
   neoformat = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "neoformat";
-    version = "2023-02-26";
+    version = "2023-03-18";
     src = pkgs.fetchFromGitHub {
       owner = "sbdchd";
       repo = "neoformat";
-      rev = "891fad5829f91cbc3d0866f7abd028d233b8763e";
-      sha256 = "0288iqk9rymsql0qnr9093qpadcwiqbd88grq25vkygs33czbif6";
+      rev = "ae79cb838b8ed106a083370f3eb3da88ce834c69";
+      sha256 = "04d85969zmklmylf3bk68wi1ivcn0icx96f7r7g49cf7xwrr2vm7";
       fetchSubmodules = false;
     };
   };
