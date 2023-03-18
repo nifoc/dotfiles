@@ -54,6 +54,10 @@
       group = "matrix-synapse";
     };
 
+    signald-environment = {
+      file = ./signald/environment.age;
+    };
+
     mosquitto-password-weewx-proxy = {
       file = ./mosquitto/passwordWeewxProxy.age;
       owner = "mosquitto";

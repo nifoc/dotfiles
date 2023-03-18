@@ -1,61 +1,67 @@
-let
-  secret = import ../../secret/container/matrix;
-  custom-config = import ./config.nix;
-in
+{ config, ... }:
+
 {
-  virtualisation.arion.projects.matrix.settings = {
-    services = {
-      signald = {
-        service = {
-          image = "registry.gitlab.com/signald/signald:latest";
-          container_name = "signald";
-          restart = "unless-stopped";
-          volumes = [
-            "/etc/container-matrix/signald:/signald"
-          ];
-          environment = {
-            SIGNALD_DATABASE = secret.container.matrix.signald.environment.database;
-          };
-          labels = {
-            "com.centurylinklabs.watchtower.enable" = "true";
-            "io.containers.autoupdate" = "registry";
-          };
-        };
-      };
+  virtualisation.oci-containers.containers = {
+    signald = {
+      image = "registry.gitlab.com/signald/signald:latest";
+      environmentFiles = [ config.age.secrets.signald-environment.path ];
+      volumes = [
+        "/etc/container-matrix/signald:/signald"
+      ];
+      extraOptions = [
+        "--label=com.centurylinklabs.watchtower.enable=true"
+        "--label=io.containers.autoupdate=registry"
+      ];
+    };
 
-      matrix-signal = {
-        service = {
-          image = "dock.mau.dev/mautrix/signal:latest";
-          container_name = "mautrix-signal";
-          restart = "unless-stopped";
-          depends_on = [ "signald" ];
-          ports = [ "29328:29328" ];
-          volumes = [
-            "/etc/container-matrix/signal:/data"
-            "/etc/container-matrix/signald:/signald"
-          ];
-          labels = {
-            "com.centurylinklabs.watchtower.enable" = "true";
-            "io.containers.autoupdate" = "registry";
-          };
-        };
-      };
+    matrix-signal = {
+      image = "dock.mau.dev/mautrix/signal:latest";
+      dependsOn = [ "signald" ];
+      ports = [ "127.0.0.1:29328:29328" ];
+      volumes = [
+        "/etc/container-matrix/signal:/data"
+        "/etc/container-matrix/signald:/signald"
+      ];
+      extraOptions = [
+        "--label=com.centurylinklabs.watchtower.enable=true"
+        "--label=io.containers.autoupdate=registry"
+      ];
+    };
 
-      matrix-whatsapp = {
-        service = {
-          image = "dock.mau.dev/mautrix/whatsapp:latest";
-          container_name = "mautrix-whatsapp";
-          restart = "unless-stopped";
-          ports = [ "29318:29318" ];
-          volumes = [
-            "/etc/container-matrix/whatsapp:/data"
-          ];
-          labels = {
-            "com.centurylinklabs.watchtower.enable" = "true";
-            "io.containers.autoupdate" = "registry";
-          };
-        };
-      };
+    matrix-whatsapp = {
+      image = "dock.mau.dev/mautrix/whatsapp:latest";
+      ports = [ "127.0.0.1:29318:29318" ];
+      volumes = [
+        "/etc/container-matrix/whatsapp:/data"
+      ];
+      extraOptions = [
+        "--label=com.centurylinklabs.watchtower.enable=true"
+        "--label=io.containers.autoupdate=registry"
+      ];
     };
   };
-} // custom-config
+
+  systemd.tmpfiles.rules = [
+    "d /etc/container-matrix/signald 0775 0 0"
+    "d /etc/container-matrix/signal 0775 1337 1337"
+    "d /etc/container-matrix/whatsapp 0775 1337 1337"
+  ];
+
+  # Matrix: Signal
+
+  environment.etc."container-matrix/signal/config.yaml" = {
+    source = ../../secret/container/matrix/config/signal.yaml;
+    mode = "0640";
+    uid = 1337;
+    gid = 1337;
+  };
+
+  # Matrix: WhatsApp
+
+  environment.etc."container-matrix/whatsapp/config.yaml" = {
+    source = ../../secret/container/matrix/config/whatsapp.yaml;
+    mode = "0640";
+    uid = 1337;
+    gid = 1337;
+  };
+} 

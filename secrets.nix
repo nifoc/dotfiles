@@ -19,6 +19,8 @@ in
 
   "agenix/hosts/sail/synapse/extraConfig.age".publicKeys = sail;
 
+  "agenix/hosts/sail/signald/environment.age".publicKeys = sail;
+
   "agenix/hosts/sail/mosquitto/passwordWeewxProxy.age".publicKeys = sail;
   "agenix/hosts/sail/mosquitto/passwordWeewx.age".publicKeys = sail;
 
