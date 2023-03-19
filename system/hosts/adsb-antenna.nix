@@ -14,7 +14,7 @@ in
 
     ../nixos/git.nix
 
-    (import ../nixos/arion.nix (args // { inherit secret; }))
+    ../nixos/arion.nix
     ../../container/adsb
   ];
 

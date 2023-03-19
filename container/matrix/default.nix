@@ -44,6 +44,11 @@
     };
   };
 
+  networking.firewall.interfaces."podman+" = {
+    allowedUDPPorts = [ 443 ];
+    allowedTCPPorts = [ 443 ];
+  };
+
   systemd.tmpfiles.rules = [
     "d /etc/container-matrix/signald 0775 0 0"
     "d /etc/container-matrix/signal 0775 1337 1337"
