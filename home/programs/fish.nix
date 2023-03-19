@@ -14,17 +14,6 @@ in
     enable = true;
 
     plugins = [
-      # https://github.com/oh-my-fish/plugin-foreign-env
-      {
-        name = "foreign-env";
-        src = pkgs.fetchFromGitHub {
-          owner = "oh-my-fish";
-          repo = "plugin-foreign-env";
-          rev = "b3dd471bcc885b597c3922e4de836e06415e52dd";
-          sha256 = "sha256-3h03WQrBZmTXZLkQh1oVyhv6zlyYsSDS7HTHr+7WjY8=";
-        };
-      }
-
       # https://github.com/dracula/fish
       {
         name = "dracula";
@@ -150,13 +139,6 @@ in
     shellInit = ''
       # Disable greeting
       set fish_greeting
-
-      if test (uname) = "Darwin"; and test -z "$__NIX_DARWIN_SET_ENVIRONMENT_DONE"
-        set __nifoc_nix_darwin_set_env (grep '-set-environment' /run/current-system/etc/bashrc | cut -d '.' -f 2)
-        set __nifoc_old_editor "$EDITOR"
-        fenv source "$__nifoc_nix_darwin_set_env"
-        set -g EDITOR "$__nifoc_old_editor"
-      end
 
       if test -d "$HOME/.bin"
         set -gx PATH "$HOME/.bin" $PATH

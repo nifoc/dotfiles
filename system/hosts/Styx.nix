@@ -10,6 +10,7 @@ in
     ../darwin/defaults.nix
     ../darwin/fonts.nix
     ../darwin/sudo.nix
+    ../darwin/fish.nix
   ];
 
   nix = {
