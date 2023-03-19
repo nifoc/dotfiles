@@ -41,7 +41,7 @@ in
 
     ../nixos/mosquitto.nix
 
-    ../nixos/arion.nix
+    ../nixos/container.nix
     ../../container/weewx
     ../../container/matrix
     ../../container/proxitok

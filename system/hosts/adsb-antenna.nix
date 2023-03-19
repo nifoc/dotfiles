@@ -14,7 +14,7 @@ in
 
     ../nixos/git.nix
 
-    ../nixos/arion.nix
+    ../nixos/container.nix
     ../../container/adsb
   ];
 

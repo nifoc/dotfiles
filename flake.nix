@@ -22,11 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    arion = {
-      url = "github:hercules-ci/arion";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nifoc-overlay = {
       url = "github:nifoc/nix-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,7 +47,6 @@
       adsb-antenna = import ./system/flakes/adsb-antenna.nix {
         inherit (inputs) nixpkgs;
         inherit (inputs) home-manager;
-        inherit (inputs) arion;
         inherit inputs;
       };
     in

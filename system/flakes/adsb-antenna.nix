@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, arion, inputs, ... }:
+{ nixpkgs, home-manager, inputs, ... }:
 
 let
   overlay-neovim = inputs.neovim-nightly-overlay.overlay;
@@ -24,8 +24,6 @@ in
         nixpkgs.overlays = nixpkgsConfig.overlays;
         nixpkgs.config = nixpkgsConfig.config;
       })
-
-      arion.nixosModules.arion
 
       ../hosts/adsb-antenna.nix
 
