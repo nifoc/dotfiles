@@ -2,8 +2,9 @@
 
 {
   virtualisation.oci-containers.containers = {
+    # https://gitlab.com/signald/signald
     signald = {
-      image = "registry.gitlab.com/signald/signald:latest";
+      image = "registry.gitlab.com/signald/signald:0.23.2";
       environmentFiles = [ config.age.secrets.signald-environment.path ];
       volumes = [
         "/etc/container-matrix/signald:/signald"
@@ -14,8 +15,9 @@
       ];
     };
 
+    # https://mau.dev/mautrix/signal
     matrix-signal = {
-      image = "dock.mau.dev/mautrix/signal:latest";
+      image = "dock.mau.dev/mautrix/signal:v0.4.2";
       dependsOn = [ "signald" ];
       ports = [ "127.0.0.1:29328:29328" ];
       volumes = [
@@ -28,8 +30,9 @@
       ];
     };
 
+    # https://mau.dev/mautrix/whatsapp
     matrix-whatsapp = {
-      image = "dock.mau.dev/mautrix/whatsapp:latest";
+      image = "dock.mau.dev/mautrix/whatsapp:v0.8.3";
       ports = [ "127.0.0.1:29318:29318" ];
       volumes = [
         "/etc/container-matrix/whatsapp:/data"
