@@ -41,7 +41,7 @@ in
 
     ../nixos/mosquitto.nix
 
-    (import ../nixos/arion.nix (args // { inherit secret; }))
+    ../nixos/arion.nix
     ../../container/weewx
     ../../container/matrix
     ../../container/proxitok

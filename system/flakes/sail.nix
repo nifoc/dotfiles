@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, ragenix, arion, inputs, ... }:
+{ nixpkgs, home-manager, ragenix, inputs, ... }:
 
 let
   overlay-neovim = inputs.neovim-nightly-overlay.overlay;
@@ -25,8 +25,6 @@ in
       home-manager.nixosModules.home-manager
 
       ragenix.nixosModules.default
-
-      arion.nixosModules.arion
 
       {
         nixpkgs = nixpkgsConfig;

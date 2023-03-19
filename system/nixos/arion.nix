@@ -1,10 +1,6 @@
-{ pkgs, config, secret, ... }:
+{ pkgs, config, ... }:
 
 {
-  environment.systemPackages = [
-    pkgs.arion
-  ];
-
   virtualisation = {
     docker.enable = false;
 
@@ -26,14 +22,10 @@
     oci-containers = {
       backend = "podman";
     };
-
-    arion = {
-      backend = "podman-socket";
-    };
   };
 
   networking.firewall.interfaces."podman+" = {
-    allowedUDPPorts = [ 53 ];
-    allowedTCPPorts = [ 53 ];
+    allowedUDPPorts = [ 53 443 ];
+    allowedTCPPorts = [ 53 443 ];
   };
 }

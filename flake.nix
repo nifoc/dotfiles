@@ -46,7 +46,6 @@
         inherit (inputs) nixpkgs;
         inherit (inputs) home-manager;
         inherit (inputs) ragenix;
-        inherit (inputs) arion;
         inherit inputs;
       };
 
