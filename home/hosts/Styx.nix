@@ -1,8 +1,5 @@
 args@{ pkgs, config, lib, ... }:
 
-let
-  secret = import ../../secret/hosts/Styx.nix;
-in
 {
   imports = [
     ../programs/fish.nix
@@ -18,8 +15,6 @@ in
     ../programs/bat.nix
 
     ../programs/btop.nix
-
-    (import ../programs/custom-nix-cache.nix (args // { inherit secret; }))
 
     ../programs/fzf.nix
 
