@@ -117,7 +117,7 @@
 
     anonymous-overflow-config = {
       file = ./anonymous-overflow/config.age;
-      mode = "444";
+      #mode = "444";
     };
 
     anonymous-overflow-auth = {
