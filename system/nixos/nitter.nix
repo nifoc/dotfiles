@@ -18,7 +18,8 @@ in
     serviceConfig = {
       DynamicUser = true;
       StateDirectory = "nitter";
-      Environment = [ "NITTER_CONF_FILE=${config.age.secrets.nitter-config.path}" ];
+      LoadCredential = [ "config:${config.age.secrets.nitter-config.path}" ];
+      Environment = [ "NITTER_CONF_FILE=%d/config" ];
       # Some parts of Nitter expect `public` folder in working directory,
       # see https://github.com/zedeus/nitter/issues/414
       WorkingDirectory = "${nitter-pkg}/share/nitter";
