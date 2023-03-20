@@ -14,7 +14,7 @@ in
       createLocally = false;
       host = "10.99.99.3";
       port = 5432;
-      passwordFile = "%d/databasePassword";
+      passwordFile = config.age.secrets.invidious-database-password.path;
     };
 
     settings = {
@@ -39,8 +39,6 @@ in
 
     nginx.enable = false;
   };
-
-  systemd.services.invidious.serviceConfig.LoadCredential = "databasePassword:${config.age.secrets.invidious-database-password.path}";
 
   services.nginx.virtualHosts."${fqdn}" = {
     http3 = true;

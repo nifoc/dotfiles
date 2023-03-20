@@ -90,6 +90,7 @@
 
     invidious-database-password = {
       file = ./invidious/databasePassword.age;
+      mode = "444";
     };
 
     invidious-auth = {
