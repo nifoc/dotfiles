@@ -23,6 +23,8 @@ in
 
     (import ../nixos/freshrss.nix (args // { inherit secret; }))
 
+    ../nixos/invidious.nix
+
     (import ../nixos/libreddit.nix (args // { inherit secret; }))
 
     (import ../nixos/mastodon.nix (args // { inherit secret; }))
