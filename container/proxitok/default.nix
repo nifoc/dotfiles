@@ -25,6 +25,11 @@
     };
   };
 
+  # The proxitok-signer container doesn't play nicely with SIGTERM
+  systemd.services.podman-proxitok-signer.serviceConfig = {
+    TimeoutStopSec = 2;
+  };
+
   systemd.tmpfiles.rules = [
     "d /etc/container-proxitok/cache 0755 33 33"
   ];
