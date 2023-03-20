@@ -30,7 +30,6 @@ in
   "agenix/hosts/sail/freshrss/databasePassword.age".publicKeys = sail;
 
   "agenix/hosts/sail/invidious/databasePassword.age".publicKeys = sail;
-  "agenix/hosts/sail/invidious/auth.age".publicKeys = sail;
 
   "agenix/hosts/sail/nitter/config.age".publicKeys = sail;
   "agenix/hosts/sail/nitter/auth.age".publicKeys = sail;

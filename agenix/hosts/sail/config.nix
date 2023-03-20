@@ -93,12 +93,6 @@
       mode = "444";
     };
 
-    invidious-auth = {
-      file = ./invidious/auth.age;
-      owner = "nginx";
-      group = "nginx";
-    };
-
     nitter-config = {
       file = ./nitter/config.age;
       mode = "444";

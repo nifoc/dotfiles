@@ -41,11 +41,11 @@ in
   };
 
   services.nginx.virtualHosts."${fqdn}" = {
+    listenAddresses = [ "100.113.242.85" ];
     http3 = true;
 
     onlySSL = true;
     useACMEHost = "daniel.sx";
-    basicAuthFile = config.age.secrets.invidious-auth.path;
 
     locations."/" = {
       recommendedProxySettings = true;
