@@ -489,12 +489,12 @@ rec {
   };
   heirline-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "heirline.nvim";
-    version = "2023-03-14";
+    version = "2023-03-19";
     src = pkgs.fetchFromGitHub {
       owner = "rebelot";
       repo = "heirline.nvim";
-      rev = "a7cc90b6ef4b599fef8f0d61a88c389bfd7fdb10";
-      sha256 = "1zhv241pg724mcgrzkmlz2bxn2pb346cmr7cnm34nz2aqh4nj6id";
+      rev = "2666c2514354c61c14d4142ee7b2b2c93455e8e4";
+      sha256 = "12x9c2qbi8ac22zpjjndxa0ccms8y74pj1y9ds5hfvwpnm5g5s23";
       fetchSubmodules = false;
     };
   };
