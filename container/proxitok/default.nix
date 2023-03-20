@@ -25,7 +25,11 @@
     };
   };
 
-  # The proxitok-signer container doesn't play nicely with SIGTERM
+  # The proxitok-* container doesn't play nicely with SIGTERM
+  systemd.services.podman-proxitok-web.serviceConfig = {
+    TimeoutStopSec = lib.mkForce 2;
+  };
+
   systemd.services.podman-proxitok-signer.serviceConfig = {
     TimeoutStopSec = lib.mkForce 2;
   };
