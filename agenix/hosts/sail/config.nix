@@ -125,7 +125,6 @@
 
     proxitok-environment = {
       file = ./proxitok/environment.age;
-      mode = "444";
     };
 
     proxitok-auth = {
