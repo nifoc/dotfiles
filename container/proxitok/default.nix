@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
   virtualisation.oci-containers.containers = {
@@ -27,7 +27,7 @@
 
   # The proxitok-signer container doesn't play nicely with SIGTERM
   systemd.services.podman-proxitok-signer.serviceConfig = {
-    TimeoutStopSec = 2;
+    TimeoutStopSec = lib.mkForce 2;
   };
 
   systemd.tmpfiles.rules = [
