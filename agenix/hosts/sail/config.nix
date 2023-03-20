@@ -72,8 +72,6 @@
 
     atuin-environment = {
       file = ./atuin/environment.age;
-      owner = "atuin";
-      group = "atuin";
     };
 
     freshrss-user-password = {
@@ -117,7 +115,6 @@
 
     anonymous-overflow-config = {
       file = ./anonymous-overflow/config.age;
-      #mode = "444";
     };
 
     anonymous-overflow-auth = {
