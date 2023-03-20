@@ -29,7 +29,7 @@ in
 
       statistics_enabled = false;
 
-      registration_enabled = true;
+      registration_enabled = false;
       login_enabled = true;
       captcha_enabled = false;
       admins = [ "daniel" ];
