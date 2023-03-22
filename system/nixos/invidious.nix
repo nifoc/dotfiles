@@ -27,12 +27,14 @@ in
       external_port = 443;
       https_only = true;
 
+      use_quic = true;
+
       statistics_enabled = false;
 
       registration_enabled = false;
       login_enabled = true;
       captcha_enabled = false;
-      admins = [ "daniel" ];
+      admins = [ ];
 
       use_pubsub_feeds = false;
     };
