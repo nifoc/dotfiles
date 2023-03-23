@@ -9,11 +9,11 @@
   };
 
   services.nginx.virtualHosts."${secret.nginx.hostnames.libreddit}" = {
+    listenAddresses = [ "100.113.242.85" ];
     http3 = true;
 
     onlySSL = true;
     useACMEHost = "daniel.sx";
-    basicAuthFile = config.age.secrets.libreddit-auth.path;
 
     locations."/" = {
       recommendedProxySettings = true;

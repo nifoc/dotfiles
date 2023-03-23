@@ -41,11 +41,11 @@ in
   };
 
   services.nginx.virtualHosts."ringo.daniel.sx" = {
+    listenAddresses = [ "100.113.242.85" ];
     http3 = true;
 
     onlySSL = true;
     useACMEHost = "daniel.sx";
-    basicAuthFile = config.age.secrets.rimgo-auth.path;
 
     locations."/" = {
       recommendedProxySettings = true;

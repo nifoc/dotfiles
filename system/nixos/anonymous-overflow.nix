@@ -39,12 +39,12 @@ in
   };
 
   services.nginx.virtualHosts."overflow.daniel.sx" = {
+    listenAddresses = [ "100.113.242.85" ];
     http3 = true;
 
     root = "${anonymous-overflow-pkg}/share/anonymous-overflow/public/";
     onlySSL = true;
     useACMEHost = "daniel.sx";
-    basicAuthFile = config.age.secrets.anonymous-overflow-auth.path;
 
     locations."/" = {
       tryFiles = "$uri @proxy";

@@ -32,15 +32,8 @@ in
   "agenix/hosts/sail/invidious/databasePassword.age".publicKeys = sail;
 
   "agenix/hosts/sail/nitter/config.age".publicKeys = sail;
-  "agenix/hosts/sail/nitter/auth.age".publicKeys = sail;
-
-  "agenix/hosts/sail/libreddit/auth.age".publicKeys = sail;
-
-  "agenix/hosts/sail/rimgo/auth.age".publicKeys = sail;
 
   "agenix/hosts/sail/anonymous-overflow/config.age".publicKeys = sail;
-  "agenix/hosts/sail/anonymous-overflow/auth.age".publicKeys = sail;
 
   "agenix/hosts/sail/proxitok/environment.age".publicKeys = sail;
-  "agenix/hosts/sail/proxitok/auth.age".publicKeys = sail;
 }

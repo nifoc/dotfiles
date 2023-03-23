@@ -95,42 +95,12 @@
       file = ./nitter/config.age;
     };
 
-    nitter-auth = {
-      file = ./nitter/auth.age;
-      owner = "nginx";
-      group = "nginx";
-    };
-
-    libreddit-auth = {
-      file = ./libreddit/auth.age;
-      owner = "nginx";
-      group = "nginx";
-    };
-
-    rimgo-auth = {
-      file = ./rimgo/auth.age;
-      owner = "nginx";
-      group = "nginx";
-    };
-
     anonymous-overflow-config = {
       file = ./anonymous-overflow/config.age;
     };
 
-    anonymous-overflow-auth = {
-      file = ./anonymous-overflow/auth.age;
-      owner = "nginx";
-      group = "nginx";
-    };
-
     proxitok-environment = {
       file = ./proxitok/environment.age;
-    };
-
-    proxitok-auth = {
-      file = ./proxitok/auth.age;
-      owner = "nginx";
-      group = "nginx";
     };
   };
 }

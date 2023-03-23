@@ -2,11 +2,6 @@
 
 let
   nitter-pkg = pkgs.nitter-unstable;
-
-  proxy-no-auth = {
-    recommendedProxySettings = true;
-    proxyPass = "http://127.0.0.1:8001";
-  };
 in
 {
   # Based on: https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/misc/nitter.nix
@@ -53,6 +48,7 @@ in
   };
 
   services.nginx.virtualHosts."${secret.nginx.hostnames.nitter}" = {
+    listenAddresses = [ "100.113.242.85" ];
     http3 = true;
 
     root = "${nitter-pkg}/share/nitter/public/";
@@ -63,11 +59,7 @@ in
       tryFiles = "$uri @proxy";
     };
 
-    locations."/pic/" = proxy-no-auth;
-    locations."/video/" = proxy-no-auth;
-
     locations."@proxy" = {
-      basicAuthFile = config.age.secrets.nitter-auth.path;
       recommendedProxySettings = true;
       proxyPass = "http://127.0.0.1:8001";
     };
