@@ -9,8 +9,8 @@
 
       defaultNetwork.settings.dns_enabled = true;
 
-      dockerSocket.enable = true;
-      dockerCompat = true;
+      dockerSocket.enable = false;
+      dockerCompat = false;
 
       autoPrune = {
         enable = true;
