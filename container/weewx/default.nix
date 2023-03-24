@@ -36,22 +36,38 @@ in
     gid = 421;
   };
 
-  services.mosquitto.listeners = [{
-    address = "0.0.0.0";
-    port = 1883;
+  services.mosquitto.listeners = [
+    {
+      address = "0.0.0.0";
+      port = 1883;
 
-    users = {
-      weewx-proxy = {
-        hashedPasswordFile = config.age.secrets.mosquitto-password-weewx-proxy.path;
-        acl = [ "write weewx/+" ];
+      settings = {
+        protocol = "mqtt";
       };
 
-      weewx = {
-        hashedPasswordFile = config.age.secrets.mosquitto-password-weewx.path;
-        acl = [ "read weewx/+" ];
+      users = {
+        weewx-proxy = {
+          hashedPasswordFile = config.age.secrets.mosquitto-password-weewx-proxy.path;
+          acl = [ "write weewx/+" ];
+        };
+
+        weewx = {
+          hashedPasswordFile = config.age.secrets.mosquitto-password-weewx.path;
+          acl = [ "read weewx/+" "write weather/+" ];
+        };
       };
-    };
-  }];
+    }
+    {
+      address = "127.0.0.1";
+      port = 9883;
+
+      settings = {
+        protocol = "websockets";
+      };
+
+      acl = [ "topic read weather/+" ];
+    }
+  ];
 
 
   networking.firewall.interfaces =
