@@ -44,6 +44,18 @@
     };
   };
 
+  systemd.services.podman-signald.serviceConfig = {
+    TimeoutStopSec = lib.mkForce 5;
+  };
+
+  systemd.services.podman-matrix-signal.serviceConfig = {
+    TimeoutStopSec = lib.mkForce 5;
+  };
+
+  systemd.services.podman-matrix-whatsapp.serviceConfig = {
+    TimeoutStopSec = lib.mkForce 5;
+  };
+
   networking.firewall.interfaces."podman+" = {
     allowedUDPPorts = [ 443 ];
     allowedTCPPorts = [ 443 ];

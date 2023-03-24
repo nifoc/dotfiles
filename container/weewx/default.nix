@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 let
   secret = import ../../secret/container/weewx;
@@ -18,6 +18,10 @@ in
       "--label=com.centurylinklabs.watchtower.enable=true"
       "--label=io.containers.autoupdate=registry"
     ];
+  };
+
+  systemd.services.podman-weewx.serviceConfig = {
+    TimeoutStopSec = lib.mkForce 5;
   };
 
   systemd.tmpfiles.rules = [
@@ -83,6 +87,9 @@ in
 
     locations."~ ^/dwd/(icons|warn_icons)/" = {
       root = "${data-dir}/static_html";
+      extraConfig = ''
+        expires 7d;
+      '';
     };
 
     locations."~ ^/dwd/[\w]+\.(gif|png)".extraConfig = ''
