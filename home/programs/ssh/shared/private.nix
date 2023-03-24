@@ -50,7 +50,7 @@
     };
 
     "sail" = {
-      hostname = "100.113.242.85";
+      hostname = "sail-ts.kempkens.io";
       port = 22;
       user = "daniel";
       forwardAgent = true;
