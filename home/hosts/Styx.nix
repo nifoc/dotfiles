@@ -47,6 +47,7 @@ args@{ pkgs, config, lib, ... }:
       curlFull
       dasel
       exa
+      exiftool
       fd
       ffmpeg
       gallery-dl

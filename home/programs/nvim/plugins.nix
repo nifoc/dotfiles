@@ -577,12 +577,12 @@ rec {
   };
   noice-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "noice.nvim";
-    version = "2023-03-23";
+    version = "2023-03-24";
     src = pkgs.fetchFromGitHub {
       owner = "folke";
       repo = "noice.nvim";
-      rev = "f8b1a72a7bce56d9e9ed054708dc855d57dec085";
-      sha256 = "1dci8aqlny9saq8w1rjwpdknz3cpk4rqmiijdav26djdb85ghwb1";
+      rev = "a26fca0f623d095dfac5f97a436f97efb90772df";
+      sha256 = "189d4apwca3s30332vb7wwy9f26w2jrclibgrrcfwdvk8v9kgrn2";
       fetchSubmodules = false;
     };
   };
