@@ -82,8 +82,7 @@ in
     '';
 
     locations."~ ^/dwd/(icons|warn_icons)/" = {
-      recommendedProxySettings = true;
-      proxyPass = "http://127.0.0.1:8000";
+      root = "${data-dir}/static_html";
     };
 
     locations."~ ^/dwd/[\w]+\.(gif|png)".extraConfig = ''
