@@ -111,5 +111,11 @@ in
     locations."~ ^/dwd/[\w]+\.(gif|png)".extraConfig = ''
       expires modified 1h;
     '';
+
+    locations."/mqtt" = {
+      recommendedProxySettings = true;
+      proxyPass = "http://127.0.0.1:9883";
+      proxyWebsockets = true;
+    };
   };
 }
