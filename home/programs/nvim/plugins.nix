@@ -112,12 +112,12 @@ rec {
     };
   };
   nvim-treesitter = pkgs.vimPlugins.nvim-treesitter.overrideAttrs (_: {
-    version = "2023-03-24";
+    version = "2023-03-25";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "cb568af5393241e5dbc9c19157c5df5e9ca9af2d";
-      sha256 = "08wvfkxb0vw25f0rx3y183z4j30yxr5z4s0pzm6vppspzg6ksrx2";
+      rev = "c9ef5e58f7d59aba875324825ff47900d0be61f2";
+      sha256 = "1j43qm5am49v67zadn9ga2yyslm10dz3iy7na0qfq699i7pvsg1v";
       fetchSubmodules = false;
     };
   });
@@ -225,12 +225,12 @@ rec {
   };
   nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-lspconfig";
-    version = "2023-03-24";
+    version = "2023-03-25";
     src = pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "f1392727d8ab6472b6463e875f553ebd32665d65";
-      sha256 = "0ia6lmycvg8rrjbng33iqrmx1pqgsp66il7870zv899s12aspscp";
+      rev = "79982ef99377aede4b7508ac71b05c12b6c4613a";
+      sha256 = "1nmnd1gbawa67n27sgbgipaiaxy8dqsgdk6vzc6wpjs4sgx32fd8";
       fetchSubmodules = false;
     };
   };
@@ -467,12 +467,12 @@ rec {
   };
   nvim-treesitter-textobjects = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter-textobjects";
-    version = "2023-03-19";
+    version = "2023-03-25";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "582cbb5a4cb50f6161cac8cc01f55aeaff6d836a";
-      sha256 = "11dm8vyxsy1b7c93f8gx5n6x4qf86b821myqaa09k1g761skrsvz";
+      rev = "0cb5b17b8da50a913eabc9aa37e22931d3e6a9d8";
+      sha256 = "1j8x1amvqawad9l040sx739a088hdr21zjyx06akr9zp6wldpgkq";
       fetchSubmodules = false;
     };
   };
@@ -522,12 +522,12 @@ rec {
   };
   toggleterm-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "toggleterm.nvim";
-    version = "2023-03-16";
+    version = "2023-03-25";
     src = pkgs.fetchFromGitHub {
       owner = "akinsho";
       repo = "toggleterm.nvim";
-      rev = "9a595ba699837c4333c4296634feed320f084df2";
-      sha256 = "154qnxarrmylnyclw4kyapi6hc98rfjymajf0a8i2ars9qkwnqzi";
+      rev = "0aa936445b895cd5d3387860f96ce424ce32b072";
+      sha256 = "0yjnv3k0g4zw9w4wpq5lhl392nqsxl1rp21j7ljb4d0z51lj31wx";
       fetchSubmodules = false;
     };
   };
