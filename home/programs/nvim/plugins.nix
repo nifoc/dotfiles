@@ -456,12 +456,12 @@ rec {
   };
   vim-matchup = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "vim-matchup";
-    version = "2023-03-16";
+    version = "2023-03-25";
     src = pkgs.fetchFromGitHub {
       owner = "andymass";
       repo = "vim-matchup";
-      rev = "f69d1ac5bd3c4e6ad349f64317000cc9a4a895cf";
-      sha256 = "10i9h942c9inmd2wcd3y7mmb8yn1bwc9dg5swrfl1iif6k4cmj34";
+      rev = "156367e4cbd123bc9a70eeabeaa16f7cf9239e12";
+      sha256 = "19jh4s9fv40q9vy1lykh0zv5qv225zs48wgskd7b0xq0gh2c9vcz";
       fetchSubmodules = false;
     };
   };
@@ -471,8 +471,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "0cb5b17b8da50a913eabc9aa37e22931d3e6a9d8";
-      sha256 = "1j8x1amvqawad9l040sx739a088hdr21zjyx06akr9zp6wldpgkq";
+      rev = "de9801d4f448df958d09fec60839e0a39d069610";
+      sha256 = "1ayfqni774a3989nna35ssqszy75dsg3pppm268k5k2gwlllyq18";
       fetchSubmodules = false;
     };
   };
