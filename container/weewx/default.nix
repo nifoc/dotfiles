@@ -59,7 +59,10 @@ in
         protocol = "websockets";
       };
 
-      acl = [ "topic read weather/+" ];
+      acl = [
+        "topic read $SYS/#"
+        "topic read weather/+"
+      ];
     }
   ];
 
