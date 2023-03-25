@@ -57,12 +57,10 @@ in
 
       settings = {
         protocol = "websockets";
+        allow_anonymous = true;
       };
 
-      acl = [
-        "topic read $SYS/#"
-        "topic read weather/+"
-      ];
+      acl = [ "topic read weather/+" ];
     }
   ];
 
