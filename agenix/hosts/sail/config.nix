@@ -58,6 +58,24 @@
       file = ./signald/environment.age;
     };
 
+    weewx-config = {
+      file = ./weewx/config.age;
+      symlink = false;
+      path = "/etc/container-weewx/weewx.conf";
+      mode = "644";
+      owner = "421";
+      group = "421";
+    };
+
+    weewx-skin = {
+      file = ./weewx/skin.age;
+      symlink = false;
+      path = "/etc/container-weewx/skin-wdc/skin.conf";
+      mode = "644";
+      owner = "421";
+      group = "421";
+    };
+
     mosquitto-password-weewx-proxy = {
       file = ./mosquitto/passwordWeewxProxy.age;
       owner = "mosquitto";

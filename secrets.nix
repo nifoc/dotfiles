@@ -21,6 +21,9 @@ in
 
   "agenix/hosts/sail/signald/environment.age".publicKeys = sail;
 
+  "agenix/hosts/sail/weewx/config.age".publicKeys = sail;
+  "agenix/hosts/sail/weewx/skin.age".publicKeys = sail;
+
   "agenix/hosts/sail/mosquitto/passwordWeewxProxy.age".publicKeys = sail;
   "agenix/hosts/sail/mosquitto/passwordWeewx.age".publicKeys = sail;
 

@@ -27,14 +27,8 @@ in
   systemd.tmpfiles.rules = [
     "d ${data-dir} 0755 421 421"
     "d ${data-dir}/html 0755 421 421"
+    "d ${data-dir}/skin-wdc 0755 421 421"
   ];
-
-  environment.etc."container-weewx/weewx.conf" = {
-    source = ../../secret/container/weewx/config/weewx.conf;
-    mode = "0644";
-    uid = 421;
-    gid = 421;
-  };
 
   services.mosquitto.listeners = [
     {
