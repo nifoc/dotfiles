@@ -112,12 +112,12 @@ rec {
     };
   };
   nvim-treesitter = pkgs.vimPlugins.nvim-treesitter.overrideAttrs (_: {
-    version = "2023-03-25";
+    version = "2023-03-26";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "c9ef5e58f7d59aba875324825ff47900d0be61f2";
-      sha256 = "1j43qm5am49v67zadn9ga2yyslm10dz3iy7na0qfq699i7pvsg1v";
+      rev = "981f88a0c206e19e99b9990bf95a107e7bc35f14";
+      sha256 = "1mia46c76lg40mjwiqmygnxwqzipfnabl3chfhinr6lnapfkfz95";
       fetchSubmodules = false;
     };
   });
@@ -262,8 +262,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "SmiteshP";
       repo = "nvim-navic";
-      rev = "59b997feb5915b8dbcbe5f34b07b12de332ea9de";
-      sha256 = "1jhm3iiz9d2v1n39qw95g0zjfbarmaizx7an85h0bazm2pk904l9";
+      rev = "ec0ae4a3855ede3f7c412b6823f14978179828a5";
+      sha256 = "1sqbwy0879p0fc7wyks7mccjz865sk9jmhs9lrvhs0f2lql951ql";
       fetchSubmodules = false;
     };
   };
