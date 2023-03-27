@@ -50,18 +50,56 @@ in
       yamllint
     ];
 
+    extraLuaConfig =
+      let
+        treesitter-parsers = pkgs.symlinkJoin {
+          name = "treesitter-parsers";
+          paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
+            p.bash
+            p.comment
+            p.css
+            p.dockerfile
+            p.elixir
+            p.erlang
+            p.fennel
+            p.fish
+            p.heex
+            p.html
+            p.http
+            p.java
+            p.javascript
+            p.jsdoc
+            p.json
+            p.lua
+            p.make
+            p.markdown
+            p.markdown-inline
+            p.nix
+            p.query
+            p.regex
+            p.ruby
+            p.scss
+            p.sql
+            p.svelte
+            p.toml
+            p.tsx
+            p.typescript
+            p.vim
+            p.yaml
+          ])).dependencies;
+        };
+      in
+      ''
+        vim.opt.runtimepath:append("${treesitter-parsers}")
+
+        require('nifoc.nix')
+        require('impatient')
+        require('configuration.init')
+      '';
+
     plugins = (with customPlugins; [
       # Fixes
-      {
-        plugin = impatient-nvim;
-        config = ''
-          -- Nix init.lua workaround
-          require('nifoc.nix')
-          require('impatient')
-          require('configuration.init')
-        '';
-        type = "lua";
-      }
+      impatient-nvim
 
       # Utils
       popup-nvim
@@ -107,41 +145,7 @@ in
 
       # Syntax
       {
-        plugin = nvim-treesitter.withPlugins (
-          plugins: with plugins; [
-            tree-sitter-bash
-            tree-sitter-comment
-            tree-sitter-css
-            tree-sitter-dockerfile
-            tree-sitter-elixir
-            tree-sitter-erlang
-            tree-sitter-fennel
-            tree-sitter-fish
-            tree-sitter-heex
-            tree-sitter-html
-            tree-sitter-http
-            tree-sitter-java
-            tree-sitter-javascript
-            tree-sitter-jsdoc
-            tree-sitter-json
-            tree-sitter-lua
-            tree-sitter-make
-            tree-sitter-markdown
-            tree-sitter-markdown-inline
-            tree-sitter-nix
-            tree-sitter-query
-            tree-sitter-regex
-            tree-sitter-ruby
-            tree-sitter-scss
-            tree-sitter-sql
-            tree-sitter-svelte
-            tree-sitter-toml
-            tree-sitter-tsx
-            tree-sitter-typescript
-            tree-sitter-vim
-            tree-sitter-yaml
-          ]
-        );
+        plugin = nvim-treesitter;
         config = builtins.readFile ../../config/nvim/plugins/treesitter.fnl;
         type = "fennel";
       }
