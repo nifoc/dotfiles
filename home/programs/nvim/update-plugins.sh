@@ -77,10 +77,10 @@ for plugin in "${plugin_array[@]}"; do
   esac
 
   case "$name" in
-  nvim-treesitter)
-    echo "${name} = pkgs.vimPlugins.nvim-treesitter.overrideAttrs (_: {" >>"$nix_new_file"
-    close_block="});"
-    ;;
+  #nvim-treesitter)
+  #  echo "${name} = pkgs.vimPlugins.nvim-treesitter.overrideAttrs (_: {" >>"$nix_new_file"
+  #  close_block="});"
+  #  ;;
   *)
     {
       echo "${name} = pkgs.vimUtils.buildVimPluginFrom2Nix {"
