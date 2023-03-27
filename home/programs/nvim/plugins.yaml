@@ -1,7 +1,4 @@
 ---
-# Fixes
-- src: lewis6991/impatient.nvim
-
 # Utils
 - src: nvim-lua/popup.nvim
 - src: nvim-lua/plenary.nvim

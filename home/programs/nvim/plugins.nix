@@ -1,17 +1,6 @@
 # This file has been auto-generated
 { pkgs, ... }:
 rec {
-  impatient-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "impatient.nvim";
-    version = "2022-12-28";
-    src = pkgs.fetchFromGitHub {
-      owner = "lewis6991";
-      repo = "impatient.nvim";
-      rev = "c90e273f7b8c50a02f956c24ce4804a47f18162e";
-      sha256 = "1cd1l55lax3938ym0kpwz0gpzmfi8rxq8rgl3l8vhq9frlaqyn53";
-      fetchSubmodules = false;
-    };
-  };
   popup-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "popup.nvim";
     version = "2021-11-18";
@@ -124,12 +113,12 @@ rec {
   };
   nvim-ts-rainbow2 = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-ts-rainbow2";
-    version = "2023-03-26";
+    version = "2023-03-27";
     src = pkgs.fetchFromGitHub {
       owner = "HiPhish";
       repo = "nvim-ts-rainbow2";
-      rev = "aa0247e5109e53a2cca1cf1edba4a4defad43181";
-      sha256 = "0lchn9axiw45iwcvbqlmm7lqrlfcbvhhw45320chppgykxyq855f";
+      rev = "51d835d411df45b14b9531789eff0c590cabf018";
+      sha256 = "0c8cy8bcmbn7lrr7ld9l5iss4k6hccn4m1mp25zx3blmwz0xi01d";
       fetchSubmodules = false;
     };
   };
@@ -303,12 +292,12 @@ rec {
   };
   LuaSnip = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "LuaSnip";
-    version = "2023-03-22";
+    version = "2023-03-27";
     src = pkgs.fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "025886915e7a1442019f467e0ae2847a7cf6bf1a";
-      sha256 = "0pn6r25pk0hm5zw3dnjf811b3n0hrbrf0v9mna02i8bbni6xmnlj";
+      rev = "bc8ec05022743d3f08bda7a76c6bb5e9a9024581";
+      sha256 = "0iicqy737w0zqgdx5hw2cdnzw7qks5scmnr0s8ssvqyw3zzym7b9";
       fetchSubmodules = false;
     };
   };
@@ -483,8 +472,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "kylechui";
       repo = "nvim-surround";
-      rev = "ed4e95c89f96019688463f30a3ee218ed3682bd3";
-      sha256 = "1kpfx8bmb6rmf6wicmlh3psn7y84d4myzqbk3bxi7kdgw0cs7zys";
+      rev = "b7acf822a62ddc743e8129061c0d2adb32a6b810";
+      sha256 = "13pyag877n1cnrck49350q0x66766mcb9wd9ymvs72xqhj526g7b";
       fetchSubmodules = false;
     };
   };
