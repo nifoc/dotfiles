@@ -1,10 +1,5 @@
 { pkgs, config, lib, ... }:
 
-let
-  customPlugins = import ./plugins.nix { inherit pkgs; };
-
-  nvim-spell-directory = "${config.xdg.configHome}/nvim/spell";
-in
 {
   programs.neovim = {
     enable = true;
@@ -16,7 +11,7 @@ in
     withRuby = false;
     withPython3 = false;
 
-    extraLuaPackages = _: [ pkgs.luarocks-jsregexp ];
+    extraLuaPackages = luaPkgs: with luaPkgs; [ jsregexp readline ];
 
     extraPackages = with pkgs; [
       git
@@ -42,12 +37,14 @@ in
       checkstyle
       deadnix
       hadolint
-      lua51Packages.fennel
+      luajitPackages.fennel
       fnlfmt
       shellcheck
       shfmt
       statix
       yamllint
+    ] ++ lib.optionals pkgs.stdenv.isDarwin [
+      xcbuild
     ];
 
     extraLuaConfig =
@@ -97,242 +94,246 @@ in
         require('configuration.init')
       '';
 
-    plugins = (with customPlugins; [
-      # Fixes
-      impatient-nvim
+    plugins =
+      let
+        customPlugins = import ./plugins.nix { inherit pkgs; };
+      in
+      (with customPlugins; [
+        # Fixes
+        impatient-nvim
 
-      # Utils
-      popup-nvim
-      plenary-nvim
-      nvim-web-devicons
+        # Utils
+        popup-nvim
+        plenary-nvim
+        nvim-web-devicons
 
-      # Keybindings
-      {
-        plugin = nvim-osc52;
-        config = builtins.readFile ../../config/nvim/plugins/osc52.fnl;
-        type = "fennel";
-      }
+        # Keybindings
+        {
+          plugin = nvim-osc52;
+          config = builtins.readFile ../../config/nvim/plugins/osc52.fnl;
+          type = "fennel";
+        }
 
-      {
-        plugin = yanky-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/yanky.fnl;
-        type = "fennel";
-      }
+        {
+          plugin = yanky-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/yanky.fnl;
+          type = "fennel";
+        }
 
-      {
-        plugin = cutlass-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/cutlass.fnl;
-        type = "fennel";
-      }
+        {
+          plugin = cutlass-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/cutlass.fnl;
+          type = "fennel";
+        }
 
-      {
-        plugin = substitute-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/substitute.fnl;
-        type = "fennel";
-      }
+        {
+          plugin = substitute-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/substitute.fnl;
+          type = "fennel";
+        }
 
-      {
-        plugin = leap-nvim;
-        config = ''
-          (let [leap (require :leap)]
-            (leap.set_default_keymaps))
-        '';
-        type = "fennel";
-      }
+        {
+          plugin = leap-nvim;
+          config = ''
+            (let [leap (require :leap)]
+              (leap.set_default_keymaps))
+          '';
+          type = "fennel";
+        }
 
-      # Themes
-      dracula-nvim
+        # Themes
+        dracula-nvim
 
-      # Syntax
-      {
-        plugin = nvim-treesitter;
-        config = builtins.readFile ../../config/nvim/plugins/treesitter.fnl;
-        type = "fennel";
-      }
+        # Syntax
+        {
+          plugin = nvim-treesitter;
+          config = builtins.readFile ../../config/nvim/plugins/treesitter.fnl;
+          type = "fennel";
+        }
 
-      nvim-ts-rainbow2
-      playground
+        nvim-ts-rainbow2
+        playground
 
-      # Telescope
-      {
-        plugin = telescope-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/telescope.fnl;
-        type = "fennel";
-      }
+        # Telescope
+        {
+          plugin = telescope-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/telescope.fnl;
+          type = "fennel";
+        }
 
-      telescope-fzf-native-nvim
+        telescope-fzf-native-nvim
 
-      {
-        plugin = project-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/project.fnl;
-        type = "fennel";
-      }
+        {
+          plugin = project-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/project.fnl;
+          type = "fennel";
+        }
 
-      {
-        plugin = todo-comments-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/todo-comments.fnl;
-        type = "fennel";
-      }
+        {
+          plugin = todo-comments-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/todo-comments.fnl;
+          type = "fennel";
+        }
 
-      telescope-ui-select-nvim
-      telescope-toggleterm-nvim
-      telescope-undo-nvim
+        telescope-ui-select-nvim
+        telescope-toggleterm-nvim
+        telescope-undo-nvim
 
-      # LSP
-      {
-        plugin = nvim-lspconfig;
-        config = builtins.readFile ../../config/nvim/plugins/lsp.fnl;
-        type = "fennel";
-      }
+        # LSP
+        {
+          plugin = nvim-lspconfig;
+          config = builtins.readFile ../../config/nvim/plugins/lsp.fnl;
+          type = "fennel";
+        }
 
-      nvim-jdtls
+        nvim-jdtls
 
-      lspkind-nvim
+        lspkind-nvim
 
-      {
-        plugin = nvim-navic;
-        config = builtins.readFile ../../config/nvim/plugins/navic.fnl;
-        type = "fennel";
-      }
+        {
+          plugin = nvim-navic;
+          config = builtins.readFile ../../config/nvim/plugins/navic.fnl;
+          type = "fennel";
+        }
 
-      {
-        plugin = vim-illuminate;
-        config = builtins.readFile ../../config/nvim/plugins/illuminate.fnl;
-        type = "fennel";
-      }
+        {
+          plugin = vim-illuminate;
+          config = builtins.readFile ../../config/nvim/plugins/illuminate.fnl;
+          type = "fennel";
+        }
 
-      # Linter
-      {
-        plugin = nvim-lint;
-        config = builtins.readFile ../../config/nvim/plugins/nvim-lint.fnl;
-        type = "fennel";
-      }
+        # Linter
+        {
+          plugin = nvim-lint;
+          config = builtins.readFile ../../config/nvim/plugins/nvim-lint.fnl;
+          type = "fennel";
+        }
 
-      # Comments
-      {
-        plugin = comment-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/comment.fnl;
-        type = "fennel";
-      }
+        # Comments
+        {
+          plugin = comment-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/comment.fnl;
+          type = "fennel";
+        }
 
-      # Snippets
-      {
-        plugin = LuaSnip;
-        config = builtins.readFile ../../config/nvim/plugins/luasnip.fnl;
-        type = "fennel";
-      }
+        # Snippets
+        {
+          plugin = LuaSnip;
+          config = builtins.readFile ../../config/nvim/plugins/luasnip.fnl;
+          type = "fennel";
+        }
 
-      friendly-snippets
+        friendly-snippets
 
-      # cmp
-      {
-        plugin = nvim-cmp;
-        config = builtins.readFile ../../config/nvim/plugins/cmp.fnl;
-        type = "fennel";
-      }
+        # cmp
+        {
+          plugin = nvim-cmp;
+          config = builtins.readFile ../../config/nvim/plugins/cmp.fnl;
+          type = "fennel";
+        }
 
-      cmp-nvim-lsp
-      # cmp-nvim-lsp-signature-help
-      cmp_luasnip
-      cmp-path
-      cmp-buffer
-      cmp-treesitter
-      cmp-cmdline
-      cmp-nvim-lsp-document-symbol
+        cmp-nvim-lsp
+        # cmp-nvim-lsp-signature-help
+        cmp_luasnip
+        cmp-path
+        cmp-buffer
+        cmp-treesitter
+        cmp-cmdline
+        cmp-nvim-lsp-document-symbol
 
-      # Formatting
-      {
-        plugin = neoformat;
-        config = builtins.readFile ../../config/nvim/plugins/neoformat.fnl;
-        type = "fennel";
-      }
+        # Formatting
+        {
+          plugin = neoformat;
+          config = builtins.readFile ../../config/nvim/plugins/neoformat.fnl;
+          type = "fennel";
+        }
 
-      # Pairs
-      {
-        plugin = nvim-autopairs;
-        config = builtins.readFile ../../config/nvim/plugins/autopairs.fnl;
-        type = "fennel";
-      }
+        # Pairs
+        {
+          plugin = nvim-autopairs;
+          config = builtins.readFile ../../config/nvim/plugins/autopairs.fnl;
+          type = "fennel";
+        }
 
-      {
-        plugin = nvim-ts-autotag;
-        config = ''
-          (let [ts-autotag (require :nvim-ts-autotag)]
-            (ts-autotag.setup))
-        '';
-        type = "fennel";
-      }
+        {
+          plugin = nvim-ts-autotag;
+          config = ''
+            (let [ts-autotag (require :nvim-ts-autotag)]
+              (ts-autotag.setup))
+          '';
+          type = "fennel";
+        }
 
-      {
-        plugin = vim-matchup;
-        config = builtins.readFile ../../config/nvim/plugins/matchup.fnl;
-        type = "fennel";
-      }
+        {
+          plugin = vim-matchup;
+          config = builtins.readFile ../../config/nvim/plugins/matchup.fnl;
+          type = "fennel";
+        }
 
-      # Textobjects
-      nvim-treesitter-textobjects
+        # Textobjects
+        nvim-treesitter-textobjects
 
-      {
-        plugin = nvim-surround;
-        config = builtins.readFile ../../config/nvim/plugins/surround.fnl;
-        type = "fennel";
-      }
+        {
+          plugin = nvim-surround;
+          config = builtins.readFile ../../config/nvim/plugins/surround.fnl;
+          type = "fennel";
+        }
 
-      # UI
-      {
-        plugin = heirline-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/heirline.fnl;
-        type = "fennel";
-      }
+        # UI
+        {
+          plugin = heirline-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/heirline.fnl;
+          type = "fennel";
+        }
 
-      {
-        plugin = indent-blankline-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/indent_line.fnl;
-        type = "fennel";
-      }
+        {
+          plugin = indent-blankline-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/indent_line.fnl;
+          type = "fennel";
+        }
 
-      {
-        plugin = virt-column-nvim;
-        config = ''
-          (let [virt-column (require :virt-column)]
-            (virt-column.setup))
-        '';
-        type = "fennel";
-      }
+        {
+          plugin = virt-column-nvim;
+          config = ''
+            (let [virt-column (require :virt-column)]
+              (virt-column.setup))
+          '';
+          type = "fennel";
+        }
 
-      {
-        plugin = toggleterm-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/toggleterm.fnl;
-        type = "fennel";
-      }
+        {
+          plugin = toggleterm-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/toggleterm.fnl;
+          type = "fennel";
+        }
 
-      {
-        plugin = urlview-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/urlview.fnl;
-        type = "fennel";
-      }
+        {
+          plugin = urlview-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/urlview.fnl;
+          type = "fennel";
+        }
 
-      {
-        plugin = gitsigns-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/gitsigns.fnl;
-        type = "fennel";
-      }
+        {
+          plugin = gitsigns-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/gitsigns.fnl;
+          type = "fennel";
+        }
 
-      nvim-notify
-      nui-nvim
+        nvim-notify
+        nui-nvim
 
-      {
-        plugin = noice-nvim;
-        config = builtins.readFile ../../config/nvim/plugins/noice.fnl;
-        type = "fennel";
-      }
-    ]);
+        {
+          plugin = noice-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/noice.fnl;
+          type = "fennel";
+        }
+      ]);
   };
 
   xdg.configFile."nvim" = {
     source = pkgs.runCommand "nvim-fennel-files"
       {
-        nativeBuildInputs = with pkgs; [ lua51Packages.fennel stylua ];
+        nativeBuildInputs = with pkgs; [ luajitPackages.fennel stylua ];
       } ''
       mkdir -p $out/lua/configuration
       mkdir -p $out/lua/nifoc/utils
@@ -409,16 +410,20 @@ in
       echo 'Done'
     '';
 
-    file = {
-      "${nvim-spell-directory}/de.utf-8.spl".source = builtins.fetchurl {
-        url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl";
-        sha256 = "73c7107ea339856cdbe921deb92a45939c4de6eb9c07261da1b9dd19f683a3d1";
-      };
+    file =
+      let
+        nvim-spell-directory = "${config.xdg.configHome}/nvim/spell";
+      in
+      {
+        "${nvim-spell-directory}/de.utf-8.spl".source = builtins.fetchurl {
+          url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl";
+          sha256 = "73c7107ea339856cdbe921deb92a45939c4de6eb9c07261da1b9dd19f683a3d1";
+        };
 
-      "${nvim-spell-directory}/de.utf-8.sug".source = builtins.fetchurl {
-        url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.sug";
-        sha256 = "13d0ecf92863d89ef60cd4a8a5eb2a5a13a0e8f9ba8d1c6abe47aba85714a948";
+        "${nvim-spell-directory}/de.utf-8.sug".source = builtins.fetchurl {
+          url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.sug";
+          sha256 = "13d0ecf92863d89ef60cd4a8a5eb2a5a13a0e8f9ba8d1c6abe47aba85714a948";
+        };
       };
-    };
   };
 }
