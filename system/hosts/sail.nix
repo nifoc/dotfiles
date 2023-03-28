@@ -96,32 +96,59 @@ in
 
   zramSwap.enable = true;
 
-  networking = {
-    hostName = "sail";
+  systemd.network = {
+    enable = true;
 
-    interfaces = {
-      enp1s0.ipv6.addresses = secret.networking.interfaces.enp1s0.ipv6.addresses;
+    networks = {
+      "10-wan" = {
+        matchConfig.Name = "enp1s0";
+        networkConfig = {
+          DHCP = "ipv4";
+          IPv6AcceptRA = true;
+        };
+        linkConfig.RequiredForOnline = "routable";
 
-      enp7s0.ipv4 = {
-        addresses = [{ address = "10.99.99.2"; prefixLength = 32; }];
-
-        routes = [
-          { address = "10.99.99.1"; prefixLength = 32; }
-          { address = "10.99.99.0"; prefixLength = 24; via = "10.99.99.1"; }
+        ntp = [
+          "ntp1.hetzner.de"
+          "ntp2.hetzner.com"
+          "ntp3.hetzner.net"
         ];
       };
+
+      "20-private" = {
+        matchConfig.Name = "enp7s0";
+        address = [ "10.99.99.2/24" ];
+      };
     };
+  };
 
-    defaultGateway6 = { address = "fe80::1"; interface = "enp1s0"; };
+  networking = {
+    hostName = "sail";
+    useNetworkd = true;
 
-    dhcpcd.denyInterfaces = [ "enp7s0" "veth*" ];
-
-    timeServers = [
-      "ntp1.hetzner.de"
-      "ntp2.hetzner.com"
-      "ntp3.hetzner.net"
-      "time.cloudflare.com"
-    ];
+    # interfaces = {
+    #   enp1s0.ipv6.addresses = secret.networking.interfaces.enp1s0.ipv6.addresses;
+    #
+    #   enp7s0.ipv4 = {
+    #     addresses = [{ address = "10.99.99.2"; prefixLength = 32; }];
+    #
+    #     routes = [
+    #       { address = "10.99.99.1"; prefixLength = 32; }
+    #       { address = "10.99.99.0"; prefixLength = 24; via = "10.99.99.1"; }
+    #     ];
+    #   };
+    # };
+    #
+    # defaultGateway6 = { address = "fe80::1"; interface = "enp1s0"; };
+    #
+    # dhcpcd.denyInterfaces = [ "enp7s0" "veth*" ];
+    #
+    # timeServers = [
+    #   "ntp1.hetzner.de"
+    #   "ntp2.hetzner.com"
+    #   "ntp3.hetzner.net"
+    #   "time.cloudflare.com"
+    # ];
   };
 
   services.journald.extraConfig = ''
