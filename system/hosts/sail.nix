@@ -118,6 +118,9 @@ in
       "20-private" = {
         matchConfig.Name = "enp7s0";
         address = [ "10.99.99.2/24" ];
+        routes = [
+          { routeConfig.Gateway = "10.99.99.1"; }
+        ];
       };
     };
   };
