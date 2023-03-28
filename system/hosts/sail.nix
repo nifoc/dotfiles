@@ -103,7 +103,7 @@ in
       "10-wan" = {
         matchConfig.Name = "enp1s0";
         networkConfig = {
-          DHCP = "ipv4";
+          DHCP = "yes";
           IPv6AcceptRA = true;
         };
         linkConfig.RequiredForOnline = "routable";
