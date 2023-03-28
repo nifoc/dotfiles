@@ -122,6 +122,7 @@ in
           DHCP = "ipv4";
           IPv6AcceptRA = false;
         };
+        linkConfig.RequiredForOnline = "yes";
       };
     };
   };
@@ -129,30 +130,6 @@ in
   networking = {
     hostName = "sail";
     useNetworkd = true;
-
-    # interfaces = {
-    #   enp1s0.ipv6.addresses = secret.networking.interfaces.enp1s0.ipv6.addresses;
-    #
-    #   enp7s0.ipv4 = {
-    #     addresses = [{ address = "10.99.99.2"; prefixLength = 32; }];
-    #
-    #     routes = [
-    #       { address = "10.99.99.1"; prefixLength = 32; }
-    #       { address = "10.99.99.0"; prefixLength = 24; via = "10.99.99.1"; }
-    #     ];
-    #   };
-    # };
-    #
-    # defaultGateway6 = { address = "fe80::1"; interface = "enp1s0"; };
-    #
-    # dhcpcd.denyInterfaces = [ "enp7s0" "veth*" ];
-    #
-    # timeServers = [
-    #   "ntp1.hetzner.de"
-    #   "ntp2.hetzner.com"
-    #   "ntp3.hetzner.net"
-    #   "time.cloudflare.com"
-    # ];
   };
 
   services.journald.extraConfig = ''
