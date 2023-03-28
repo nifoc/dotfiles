@@ -96,6 +96,11 @@ in
 
   zramSwap.enable = true;
 
+  networking = {
+    hostName = "sail";
+    useNetworkd = true;
+  };
+
   systemd.network = {
     enable = true;
 
@@ -125,11 +130,6 @@ in
         linkConfig.RequiredForOnline = "yes";
       };
     };
-  };
-
-  networking = {
-    hostName = "sail";
-    useNetworkd = true;
   };
 
   services.journald.extraConfig = ''
