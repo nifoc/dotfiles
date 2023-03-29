@@ -74,7 +74,10 @@
    :tab_max_width 32
    :colors {:tab_bar {:background colors.inactive-background
                       :new_tab {:bg_color colors.inactive-background
-                                :fg_color colors.inactive-foreground}}}
+                                :fg_color colors.inactive-foreground}
+                      :inactive_tab_hover {:bg_color colors.inactive-background
+                                           :fg_color colors.inactive-foreground
+                                           :italic false}}}
    ;; Fonts
    :font (wezterm.font_with_fallback [{:family "JetBrains Mono"
                                        :weight :Medium}
