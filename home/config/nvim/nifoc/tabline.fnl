@@ -42,7 +42,8 @@
                         :provider (fn [self]
                                     (if (= api.nvim_buf_get_option self.bufnr
                                            :terminal)
-                                        " " " "))
+                                        " "
+                                        " "))
                         :hl {:fg colors.orange}}])
   (set mod.filename-block
        (heirline-utils.insert mod.filename-block statusline.file-icon
@@ -65,7 +66,9 @@
                      {:fg fg-inactive :bg bg-inactive}))
            :on_click {:name :heirline_tabline_close_buffer_callback
                       :callback (fn [_ minwid]
-                                  (api.nvim_buf_delete minwid {:force false}))
+                                  (vim.schedule #(api.nvim_buf_delete minwid
+                                                                      {:force false}))
+                                  (vim.cmd.redrawtabline))
                       :minwid (fn [self]
                                 self.bufnr)}}})
   (set mod.close-tabpage {:provider "%999X  %X" :hl :TabLine})

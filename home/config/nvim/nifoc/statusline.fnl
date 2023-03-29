@@ -40,7 +40,9 @@
   (set mod.vi-mode {:init (fn [self]
                             (let [mode (. (api.nvim_get_mode) :mode)]
                               (set self.mode mode)))
-                    :update :ModeChanged
+                    :update {1 :ModeChanged
+                             :pattern "*:*"
+                             :callback (vim.schedule_wrap #(vim.cmd.redrawstatus))}
                     :static {:mode-names {:n :NORMAL
                                           :no :O-PENDING
                                           :nov :O-PENDING
@@ -205,19 +207,22 @@
                                        (let [spacer (if (or (> self.warnings 0)
                                                             (> self.info 0)
                                                             (> self.hints 0))
-                                                        " " "")]
+                                                        " "
+                                                        "")]
                                          (when (> self.errors 0)
                                            (.. " " self.errors spacer))))
                            :hl {:fg colors.red}}
                         3 {:provider (fn [self]
                                        (let [spacer (if (or (> self.info 0)
                                                             (> self.hints 0))
-                                                        " " "")]
+                                                        " "
+                                                        "")]
                                          (when (> self.warnings 0)
                                            (.. " " self.warnings spacer))))
                            :hl {:fg colors.yellow}}
                         4 {:provider (fn [self]
-                                       (let [spacer (if (> self.hints 0) " " "")]
+                                       (let [spacer (if (> self.hints 0) " "
+                                                        "")]
                                          (when (> self.info 0)
                                            (.. " " self.info spacer))))
                            :hl {:fg colors.cyan}}
