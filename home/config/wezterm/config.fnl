@@ -4,7 +4,13 @@
               :active-foreground "#ABB2BF"
               :active-indicator "#BD93F9"
               :inactive-background "#191A21"
-              :inactive-foreground "#6272A4"}]
+              :inactive-foreground "#6272A4"
+              :hover-background "#BD93F9"
+              :hover-foreground "#191A21"
+              ; Icons
+              :elixir "#A074C4"
+              :nix "#7EBAE4"
+              :ssh "#F4C82D"}]
   ;; Event: Tab format
 
   (fn extract-tab-info [title]
@@ -14,15 +20,18 @@
       (where t (t:find "^git%s"))
       {:title (t:gsub "^git%s(.*)" "%1") :icon " " :color "#41535B"}
       (where t (t:find "^mix%s"))
-      {:title (t:gsub "^mix%s(.*)" "%1") :icon " " :color "#A074C4"}
-      (where t (t:find "^iex%s")) {: title :icon " " :color "#A074C4"}
-      (where t (t:find "^upa%s")) {: title :icon " " :color "#7EBAE4"}
-      (where t (t:find "^upp%s")) {: title :icon " " :color "#7EBAE4"}
-      (where t (t:find "^nrsw%s")) {: title :icon " " :color "#7EBAE4"}
-      (where t (t:find "^ssh%s")) {: title :icon " " :color "#F4C82D"}
-      (where t (t:find "^scp%s")) {: title :icon " " :color "#F4C82D"}
+      {:title (t:gsub "^mix%s(.*)" "%1") :icon " " :color colors.elixir}
+      (where t (t:find "^iex%s")) {: title :icon " " :color colors.elixir}
+      (where t (t:find "^upa%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^upp%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^nrsw%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^ngc%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^ssh%s")) {: title :icon " " :color colors.ssh}
+      (where t (t:find "^scp%s")) {: title :icon " " :color colors.ssh}
       (where t (t:find :^ytdl)) {: title :icon " " :color "#FF0000"}
       (where t (t:find :^instagram-)) {: title :icon " " :color "#FB2179"}
+      (where t (t:find "^gallery-dl%s"))
+      {:title (t:gsub "^gallery-dl%s(.*)" "%1") :icon " " :color "#009900"}
       _ {: title :icon " " :color "#F8F8F2"}))
 
   (wezterm.on :format-tab-title
@@ -74,7 +83,13 @@
    :tab_max_width 32
    :colors {:tab_bar {:background colors.inactive-background
                       :new_tab {:bg_color colors.inactive-background
-                                :fg_color colors.inactive-foreground}
+                                :fg_color colors.inactive-foreground
+                                :italic false
+                                :intensity :Bold}
+                      :new_tab_hover {:bg_color colors.hover-background
+                                      :fg_color colors.hover-foreground
+                                      :italic false
+                                      :intensity :Bold}
                       :inactive_tab_hover {:bg_color colors.inactive-background
                                            :fg_color colors.inactive-foreground
                                            :italic false}}}
