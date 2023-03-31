@@ -25,12 +25,12 @@ rec {
   };
   nvim-web-devicons = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-web-devicons";
-    version = "2023-03-28";
+    version = "2023-03-31";
     src = pkgs.fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
-      rev = "267af2d57e0f251d65b95bdfd1f382211b272417";
-      sha256 = "1lmd723v78jyrx3ibfllc45ykripzdvlc664fi9pd3r5gkl2xx9a";
+      rev = "d92b3f4275f4774c0cb23b8b094a41d1dbb3e78c";
+      sha256 = "0hx9jy06nrka4hj0gzk1ppm91n3fnzba2ammakh2aagk7vv0p399";
       fetchSubmodules = false;
     };
   };
@@ -102,12 +102,12 @@ rec {
   };
   nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2023-03-30";
+    version = "2023-03-31";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "09275650b8ae262ac173398976093b60e36e01e8";
-      sha256 = "04cihvq3dnx48mnp7zpzdx8xqhwxvssv3n86r3djhhba61pk25mi";
+      rev = "d546bcd1f1393e144396fc049ae4bf7d4fffccab";
+      sha256 = "1jm4j071b46rjrb37fwifspcijx5pnw1p3v5v1bizwam53z9x7z7";
       fetchSubmodules = false;
     };
   };
@@ -175,8 +175,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "folke";
       repo = "todo-comments.nvim";
-      rev = "82311fa82ffab9640ca3493306371100ffb063bb";
-      sha256 = "027v67xac566f4yh137vqad2wrc2chlkffmwnaa5apzjvk3qzzwj";
+      rev = "8febc60a76feefd8203077ef78b6a262ea1a41f9";
+      sha256 = "02mv85rhm3vmzm614dxc9v6qqsi25dcjnbkmzza88lr8as9dm237";
       fetchSubmodules = false;
     };
   };
