@@ -44,7 +44,7 @@ args@{ pkgs, config, lib, ... }:
       aria2
       arp-scan
       awscli2
-      curlFull
+      curlHTTP3
       dasel
       exa
       exiftool

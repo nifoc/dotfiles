@@ -29,7 +29,7 @@ in
 
     packages = with pkgs; [
       awscli2
-      curlFull
+      curlHTTP3
       lnav
       mtr
       parallel
