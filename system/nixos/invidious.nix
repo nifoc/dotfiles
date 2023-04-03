@@ -43,7 +43,7 @@ in
   };
 
   services.nginx.virtualHosts."${fqdn}" = {
-    listenAddresses = [ "100.113.242.85" "[fd7a:115c:a1e0:ab12:4843:cd96:6271:f255]" ];
+    listenAddresses = [ "100.113.242.85" ];
     http3 = true;
 
     onlySSL = true;
