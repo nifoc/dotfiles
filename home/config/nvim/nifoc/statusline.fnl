@@ -133,14 +133,11 @@
                                                                               {:default true})]
                                 (set self.icon icon)
                                 (set self.icon-color color)))
-                      :provider (fn [self]
-                                  (when self.icon
-                                    (.. self.icon " ")))
-                      :hl (fn [self]
-                            {:fg self.icon-color})})
-  (set mod.filetype {:provider (fn []
-                                 (let [ft vim.bo.filetype]
-                                   (if (> (ft:len) 0) ft "no ft")))
+                      :provider #(when $1.icon
+                                   (.. $1.icon " "))
+                      :hl #{:fg $1.icon-color}})
+  (set mod.filetype {:provider #(let [ft vim.bo.filetype]
+                                  (if (> (ft:len) 0) ft "no ft"))
                      :hl {:fg colors.white}})
   (set mod.encoding {:provider (fn []
                                  (let [vim-enc (if (not= vim.bo.fenc nil)
@@ -155,31 +152,28 @@
                               {:provider " | " :hl {:fg colors.white}}
                               mod.encoding))
   ;; git
-  (set mod.git {:condition heirline-conditions.is_git_repo
-                :init (fn [self]
-                        (let [git-status vim.b.gitsigns_status_dict]
-                          (set self.git-head git-status.head)
-                          (set self.git-added (or git-status.added 0))
-                          (set self.git-removed (or git-status.removed 0))
-                          (set self.git-changed (or git-status.changed 0))
-                          (set self.check-count
-                               (max-number [self.git-added
-                                            self.git-removed
-                                            self.git-changed]))
-                          (set self.check-length (length self.git-head))))
-                1 mod.space-if-count-or-length
-                2 {:provider #(.. "  " $1.git-head " ")
-                   :hl {:fg colors.black :bg colors.orange :bold true}}
-                3 mod.space
-                4 {:provider (fn [self]
-                               (.. " " self.git-added " "))
-                   :hl {:fg colors.bright_green}}
-                5 {:provider (fn [self]
-                               (.. " " self.git-removed " "))
-                   :hl {:fg colors.bright_red}}
-                6 {:provider (fn [self]
-                               (.. " " self.git-changed))
-                   :hl {:fg colors.cyan}}})
+  (set mod.git
+       {:condition heirline-conditions.is_git_repo
+        :init (fn [self]
+                (let [git-status vim.b.gitsigns_status_dict]
+                  (set self.git-head git-status.head)
+                  (set self.git-added (or git-status.added 0))
+                  (set self.git-removed (or git-status.removed 0))
+                  (set self.git-changed (or git-status.changed 0))
+                  (set self.check-count
+                       (max-number [self.git-added
+                                    self.git-removed
+                                    self.git-changed]))
+                  (set self.check-length (length self.git-head))))
+        1 mod.space-if-count-or-length
+        2 {:provider #(.. "  " $1.git-head " ")
+           :hl {:fg colors.black :bg colors.orange :bold true}}
+        3 mod.space
+        4 {:provider #(.. " " $1.git-added " ")
+           :hl {:fg colors.bright_green}}
+        5 {:provider #(.. " " $1.git-removed " ")
+           :hl {:fg colors.bright_red}}
+        6 {:provider #(.. " " $1.git-changed) :hl {:fg colors.cyan}}})
   ;; Diagnostics
   (set mod.diagnostics {:condition heirline-conditions.has_diagnostics
                         :init (fn [self]
@@ -233,10 +227,9 @@
   ;; Current Function
   (set mod.current-function
        {:condition heirline-conditions.lsp_attached
-        :init (fn [self]
-                (if (navic.is_available)
-                    (set self.check-length 1)
-                    (set self.check-length 0)))
+        :init #(if (navic.is_available)
+                   (set $1.check-length 1)
+                   (set $1.check-length 0))
         :update :CursorMoved
         1 mod.space-if-length
         2 {:provider #(string.gsub (navic.get_location) "%%" "%%%%")
@@ -330,9 +323,8 @@
                 (let [pos (api.nvim_win_get_cursor 0)]
                   (set self.position-line (tostring (. pos 1)))
                   (set self.position-column (tostring (. pos 2)))))
-        :provider (fn [self]
-                    (string.format " %3s:%-3s " self.position-line
-                                   self.position-column))
+        :provider #(string.format " %3s:%-3s " $1.position-line
+                                  $1.position-column)
         :hl {:fg colors.black :bg colors.purple :bold true}})
   ;; Scrollbar
   (set mod.scrollbar {:init (fn [self]
@@ -366,11 +358,8 @@
   ;; Search count
   (set mod.search-count
        {:condition #(> vim.v.hlsearch 0)
-        :init (fn [self]
-                (set self.count (vim.fn.searchcount {:timeout 5})))
-        :provider (fn [self]
-                    (string.format "[%s/%s]" self.count.current
-                                   self.count.total))
+        :init #(set $1.count (vim.fn.searchcount {:timeout 5}))
+        :provider #(string.format "[%s/%s]" $1.count.current $1.count.total)
         :hl {:fg colors.black :bg colors.purple}})
   ;; Custom Mode
 
