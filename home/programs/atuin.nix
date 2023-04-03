@@ -15,6 +15,7 @@
       update_check = false;
 
       style = "auto";
+      inline_height = 40;
       search_mode = "fuzzy";
       filter_mode_shell_up_key_binding = "session";
 
