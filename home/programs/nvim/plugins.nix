@@ -226,12 +226,12 @@ rec {
   };
   nvim-jdtls = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-jdtls";
-    version = "2023-03-23";
+    version = "2023-04-03";
     src = pkgs.fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-jdtls";
-      rev = "f8fb45e05e638e5c67e884f3039abcda7abc2d2d";
-      sha256 = "0pr98bmfh0jx8jbwnzidbdjpxkg2fg4i4scbyimkbpbq5isxnq7h";
+      rev = "ffb8f63689197b845c2388f0df5f0d1bd21c968f";
+      sha256 = "0pxz9050522vlglvwm67s43dniwxygynvi0f8qdd8dhb5zm9x65q";
       fetchSubmodules = false;
     };
   };
