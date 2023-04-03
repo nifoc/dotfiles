@@ -48,7 +48,7 @@ in
   };
 
   services.nginx.virtualHosts."${secret.nginx.hostnames.nitter}" = {
-    listenAddresses = [ "100.113.242.85" ];
+    listenAddresses = [ "100.113.242.85" "[fd7a:115c:a1e0:ab12:4843:cd96:6271:f255]" ];
     http3 = true;
 
     root = "${nitter-pkg}/share/nitter/public/";
