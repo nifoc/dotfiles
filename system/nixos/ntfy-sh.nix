@@ -21,6 +21,7 @@
   };
 
   services.nginx.virtualHosts."ntfy.kempkens.io" = {
+    quic = true;
     http3 = true;
 
     forceSSL = true;

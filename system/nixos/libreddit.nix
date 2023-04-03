@@ -10,6 +10,7 @@
 
   services.nginx.virtualHosts."${secret.nginx.hostnames.libreddit}" = {
     listenAddresses = [ "100.113.242.85" "[fd7a:115c:a1e0:ab12:4843:cd96:6271:f255]" ];
+    quic = true;
     http3 = true;
 
     onlySSL = true;

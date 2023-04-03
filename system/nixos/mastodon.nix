@@ -71,6 +71,7 @@ in
   };
 
   services.nginx.virtualHosts."${web-domain}" = {
+    quic = true;
     http3 = true;
 
     root = "${config.services.mastodon.package}/public/";
@@ -115,6 +116,7 @@ in
   };
 
   services.nginx.virtualHosts."mastodon-cdn.kempkens.io" = {
+    quic = true;
     http3 = true;
     kTLS = true;
 

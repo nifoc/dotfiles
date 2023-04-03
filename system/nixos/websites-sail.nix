@@ -7,6 +7,7 @@
       (domain: {
         name = domain;
         value = {
+          quic = true;
           http3 = true;
           kTLS = true;
 

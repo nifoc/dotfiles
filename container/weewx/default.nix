@@ -76,6 +76,7 @@ in
     };
 
   services.nginx.virtualHosts."${secret.container.weewx.hostname}" = {
+    quic = true;
     http3 = true;
     kTLS = true;
 

@@ -21,6 +21,7 @@
 
   # Based on: https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/web-apps/freshrss.nix
   services.nginx.virtualHosts."${secret.freshrss.virtualHost}" = {
+    quic = true;
     http3 = true;
 
     root = "${config.services.freshrss.package}/p";

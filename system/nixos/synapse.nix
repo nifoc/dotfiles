@@ -90,6 +90,7 @@
   networking.firewall.allowedTCPPorts = [ 8008 ];
 
   services.nginx.virtualHosts."matrix.kempkens.io" = {
+    quic = true;
     http3 = true;
 
     forceSSL = true;
