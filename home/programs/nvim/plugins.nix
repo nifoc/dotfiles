@@ -106,8 +106,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "9711139326284ddb2c6f1d29783a162c08b47bb8";
-      sha256 = "1y65jxxcfylpvw62c30rjyh06acv5d8aljfxny2919k3y33m2xmy";
+      rev = "0a20d1bb63ff0352b1254cc21ad99f4d04327ea6";
+      sha256 = "0yxyal983vx0bjx9s17fclqf462k17lhp2cqfzrriyznr5ppd206";
       fetchSubmodules = false;
     };
   };
@@ -270,12 +270,12 @@ rec {
   };
   nvim-lint = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-lint";
-    version = "2023-04-02";
+    version = "2023-04-03";
     src = pkgs.fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-lint";
-      rev = "bfef82ebaeaa4d4e89be477d02f17f4f5e55e3a9";
-      sha256 = "1mvi071wfcqc0p976cha6j333ijw5zvc6figdi32c4xwc0m4ysjz";
+      rev = "cc1cad5bf8dcfb2d604392dfa6b8730d9ecbee88";
+      sha256 = "1bvaqkja0y4sv2msad7vxp7nb4mcbwlk4wgnp6ad1al3hhrcin3q";
       fetchSubmodules = false;
     };
   };
