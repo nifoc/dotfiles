@@ -4,7 +4,7 @@ let
   fqdn = "attic.cache.daniel.sx";
 in
 {
-  environment.systemPackages = [ pkgs.attic ];
+  environment.systemPackages = [ pkgs.attic-client ];
 
   services.atticd = {
     enable = true;
