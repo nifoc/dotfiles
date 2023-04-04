@@ -1,6 +1,11 @@
-{ config, secret, ... }:
+{ pkgs, config, secret, ... }:
 
+let
+  fqdn = "attic.cache.daniel.sx";
+in
 {
+  environment.systemPackages = [ pkgs.attic ];
+
   services.atticd = {
     enable = true;
 
@@ -8,6 +13,9 @@
 
     settings = {
       listen = "127.0.0.1:8080";
+
+      allowed-hosts = [ "${fqdn}" ];
+      api-endpoint = "https://${fqdn}/";
 
       storage = {
         type = "s3";
@@ -27,6 +35,19 @@
         interval = "12 hours";
         default-retention-period = "3 months";
       };
+    };
+  };
+
+  services.nginx.virtualHosts."${fqdn}" = {
+    quic = true;
+    http3 = true;
+
+    onlySSL = true;
+    useACMEHost = "cache.daniel.sx";
+
+    locations."/" = {
+      recommendedProxySettings = true;
+      proxyPass = "http://127.0.0.1:8080";
     };
   };
 }
