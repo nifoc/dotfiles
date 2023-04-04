@@ -11,6 +11,8 @@ in
   # sail
   "agenix/hosts/sail/acme/credentials.age".publicKeys = sail;
 
+  "agenix/hosts/sail/tailscale/authkey.age".publicKeys = sail;
+
   "agenix/hosts/sail/mastodon/databasePassword.age".publicKeys = sail;
   "agenix/hosts/sail/mastodon/smtpPassword.age".publicKeys = sail;
   "agenix/hosts/sail/mastodon/otpSecret.age".publicKeys = sail;
@@ -44,4 +46,6 @@ in
 
   # attic
   "agenix/hosts/attic/user/danielPassword.age".publicKeys = attic;
+
+  "agenix/hosts/attic/tailscale/authkey.age".publicKeys = attic;
 }

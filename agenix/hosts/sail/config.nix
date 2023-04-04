@@ -6,6 +6,10 @@
       group = "acme";
     };
 
+    tailscale-authkey = {
+      file = ./tailscale/authkey.age;
+    };
+
     mastodon-database-password = {
       file = ./mastodon/databasePassword.age;
       owner = "mastodon";

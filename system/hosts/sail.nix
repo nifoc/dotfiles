@@ -39,7 +39,7 @@ in
 
     ../nixos/websites-sail.nix
 
-    (import ../nixos/tailscale.nix (args // { inherit secret; }))
+    ../nixos/tailscale.nix
 
     ../nixos/mosquitto.nix
 

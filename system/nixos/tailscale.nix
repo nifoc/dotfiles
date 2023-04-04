@@ -1,4 +1,4 @@
-{ pkgs, secret, ... }:
+{ pkgs, config, ... }:
 
 {
   environment.systemPackages = [ pkgs.tailscale ];
@@ -25,7 +25,8 @@
       fi
 
       # otherwise authenticate with tailscale
-      ${pkgs.tailscale}/bin/tailscale up -authkey ${secret.tailscale.key}
+      authkey="$(cat ${config.age.secrets.tailscale-authkey.path})"
+      ${pkgs.tailscale}/bin/tailscale up -authkey "$authkey"
     '';
   };
 }
