@@ -13,7 +13,7 @@
         type = "s3";
         region = "eu-central-1";
         bucket = "attic-cache";
-        endpoint = "https://${secret.cloudflare.account-id}.r2.cloudflarestorage.com/attic-cache";
+        endpoint = "https://${secret.cloudflare.account-id}.r2.cloudflarestorage.com";
       };
 
       chunking = {
