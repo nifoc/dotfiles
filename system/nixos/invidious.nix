@@ -37,6 +37,7 @@ in
       admins = [ ];
 
       use_pubsub_feeds = false;
+      channel_refresh_interval = "15m";
     };
 
     nginx.enable = false;
