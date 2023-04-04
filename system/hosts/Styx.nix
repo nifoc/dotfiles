@@ -45,6 +45,7 @@
     gc = {
       automatic = true;
       user = "daniel";
+      interval = { Weekday = 0; Hour = 3; Minute = 15; };
     };
   };
 
