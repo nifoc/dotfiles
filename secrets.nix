@@ -2,8 +2,10 @@ let
   user-daniel = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA1UfCIu7jUe64iQmp2UUyAgqZ3IYdMOo/Me6hRTnKoG";
 
   system-sail = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJMs1BqZ+MC7XBwV+dZW8EmaZt2cOg/xcOBPS9KSzIl";
+  system-attic = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHe6N3LfPxu7KNsyuI8YE3R0OHLTxNw5+WhuQjKL6PUr";
 
   sail = [ user-daniel system-sail ];
+  attic = [ user-daniel system-attic ];
 in
 {
   # sail
@@ -39,4 +41,7 @@ in
   "agenix/hosts/sail/anonymous-overflow/config.age".publicKeys = sail;
 
   "agenix/hosts/sail/proxitok/environment.age".publicKeys = sail;
+
+  # attic
+  "agenix/hosts/attic/user/danielPassword.age".publicKeys = attic;
 }
