@@ -12,6 +12,9 @@ in
 
     ../nixos/git.nix
 
+    ../nixos/acme-attic.nix
+    ../nixos/nginx.nix
+
     (import ../nixos/atticd.nix (args // { inherit secret; }))
 
     ../nixos/tailscale.nix
@@ -70,7 +73,7 @@ in
 
     networks = {
       "10-wan" = {
-        matchConfig.Name = "eth0";
+        matchConfig.Name = "enp1s0";
         networkConfig = {
           DHCP = "ipv4";
           Address = "2a01:4f8:c0c:fa14::1/64";

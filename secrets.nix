@@ -47,6 +47,8 @@ in
   # attic
   "agenix/hosts/attic/user/danielPassword.age".publicKeys = attic;
 
+  "agenix/hosts/attic/acme/credentials.age".publicKeys = attic;
+
   "agenix/hosts/attic/tailscale/authkey.age".publicKeys = attic;
 
   "agenix/hosts/attic/atticd/environment.age".publicKeys = attic;
