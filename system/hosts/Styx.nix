@@ -40,6 +40,12 @@
         systems = [ "x86_64-linux" "aarch64-linux" ];
         maxJobs = 1;
       }
+
+      {
+        hostName = "builder-attic";
+        systems = [ "x86_64-linux" "aarch64-linux" ];
+        maxJobs = 1;
+      }
     ];
 
     gc = {

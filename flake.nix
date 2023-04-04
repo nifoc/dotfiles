@@ -17,6 +17,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    attic = {
+      url = "github:zhaofengli/attic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,6 +53,7 @@
         inherit (inputs) nixpkgs;
         inherit (inputs) home-manager;
         inherit (inputs) ragenix;
+        inherit (inputs) attic;
         inherit inputs;
       };
 

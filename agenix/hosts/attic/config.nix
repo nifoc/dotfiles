@@ -7,5 +7,9 @@
     tailscale-authkey = {
       file = ./tailscale/authkey.age;
     };
+
+    atticd-environment = {
+      file = ./atticd/environment.age;
+    };
   };
 }

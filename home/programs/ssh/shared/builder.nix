@@ -1,10 +1,15 @@
-let
-  secret-sail = import ../../../../secret/hosts/sail.nix;
-in
 {
   matchBlocks = {
     "builder-sail" = {
-      hostname = "100.113.242.85";
+      hostname = "sail-ts.kempkens.io";
+      port = 22;
+      user = "root";
+      identityFile = "~/.ssh/Hetzner.pub";
+      identitiesOnly = true;
+    };
+
+    "builder-attic" = {
+      hostname = "100.76.233.31";
       port = 22;
       user = "root";
       identityFile = "~/.ssh/Hetzner.pub";

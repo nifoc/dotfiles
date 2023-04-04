@@ -57,5 +57,14 @@
       identityFile = "~/.ssh/Hetzner.pub";
       identitiesOnly = true;
     };
+
+    "attic" = {
+      hostname = "100.76.233.31";
+      port = 22;
+      user = "daniel";
+      forwardAgent = true;
+      identityFile = "~/.ssh/Hetzner.pub";
+      identitiesOnly = true;
+    };
   };
 }

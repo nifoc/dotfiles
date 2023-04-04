@@ -1,6 +1,7 @@
 args@{ pkgs, config, lib, ... }:
 
 let
+  secret = import ../../secret/hosts/attic.nix;
   ssh-keys = import ../shared/ssh-keys.nix;
 in
 {
@@ -10,6 +11,8 @@ in
     ../nixos/ssh.nix
 
     ../nixos/git.nix
+
+    (import ../nixos/atticd.nix (args // { inherit secret; }))
 
     ../nixos/tailscale.nix
   ];
