@@ -12,7 +12,7 @@ in
 
     ../nixos/git.nix
 
-    #(import ../nixos/atticd.nix (args // { inherit secret; }))
+    (import ../nixos/atticd.nix (args // { inherit secret; }))
 
     ../nixos/tailscale.nix
   ];
