@@ -19,6 +19,8 @@ in
 
     ../nixos/atuin-sync.nix
 
+    ../nixos/attic.nix
+
     ../nixos/anonymous-overflow.nix
 
     (import ../nixos/freshrss.nix (args // { inherit secret; }))
@@ -61,16 +63,14 @@ in
         "https://nix-community.cachix.org"
         "https://wurzelpfropf.cachix.org"
         "https://nifoc.cachix.org"
-      ] ++ optionals secret.nix-cache.nifoc.enabled [
-        secret.nix-cache.nifoc.s3Url
+        "https://attic.cache.daniel.sx/nifoc-systems"
       ];
 
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "wurzelpfropf.cachix.org-1:ilZwK5a6wJqVr7Fyrzp4blIEkGK+LJT0QrpWr1qBNq0="
         "nifoc.cachix.org-1:ymuftq7RgN/lf/iWXFK8gpwDSAGFaGBeliWe9u6q8II="
-      ] ++ optionals secret.nix-cache.nifoc.enabled [
-        secret.nix-cache.nifoc.publicKeyValue
+        "nifoc-systems:eDDqVP5BFR6/1KvXbF9oUL8JahDdmbrsYtxlQ57LOTU="
       ];
     };
 
@@ -85,8 +85,11 @@ in
       extra-platforms = aarch64-linux
       keep-derivations = true
       keep-outputs = true
+      post-build-hook = ${../../home/programs/scripts/attic-system-cache}
     '';
   };
+
+  environment.etc."nix/netrc".source = ../../secret/shared/nix-netrc;
 
   boot = {
     cleanTmpDir = true;
