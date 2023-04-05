@@ -46,6 +46,10 @@ in
     onlySSL = true;
     useACMEHost = "cache.daniel.sx";
 
+    extraConfig = ''
+      client_max_body_size 0;
+    '';
+
     locations."/" = {
       recommendedProxySettings = true;
       proxyPass = "http://127.0.0.1:8080";
