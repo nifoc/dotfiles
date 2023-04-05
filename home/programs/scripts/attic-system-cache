@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -eu
+set -f # disable globbing
+export IFS=' '
+
+echo "Uploading $OUT_PATHS ..."
+exec /run/current-system/sw/bin/attic push nifoc-systems $OUT_PATHS

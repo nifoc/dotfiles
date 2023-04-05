@@ -4,6 +4,7 @@
     ../darwin/fonts.nix
     ../darwin/sudo.nix
     ../darwin/fish.nix
+    ../darwin/attic.nix
   ];
 
   nix = {
@@ -29,6 +30,10 @@
 
       trusted-users = [ "@admin" ];
     };
+
+    extraOptions = ''
+      post-build-hook = /Users/daniel/.config/nixpkgs/home/programs/scripts/attic-system-cache
+    '';
 
     configureBuildUsers = true;
 

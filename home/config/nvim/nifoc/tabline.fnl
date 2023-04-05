@@ -50,8 +50,7 @@
                               mod.filename mod.file-flags))
   ;; Tabpages
   (set mod.tabpage
-       {:provider (fn [self]
-                    (.. "%" self.tabnr "T " self.tabnr " %T"))
+       {:provider #(.. "%" $1.tabnr "T " $1.tabnr " %T")
         :hl (fn [self]
               (if self.is_active :TabLineSel :TabLine))})
   ;; Buttons
