@@ -13,7 +13,7 @@ in
 
     settings = {
       listen = "127.0.0.1:8080";
-      database.url = "postgresql://attic?host=10.99.99.3&user=attic";
+      database.url = "";
 
       allowed-hosts = [ "${fqdn}" ];
       api-endpoint = "https://${fqdn}/";
