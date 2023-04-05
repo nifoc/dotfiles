@@ -12,8 +12,6 @@ in
 
     ../programs/bat.nix
 
-    (import ../programs/custom-nix-cache.nix (args // { inherit secret; }))
-
     ../programs/fzf.nix
 
     ../programs/jq.nix
