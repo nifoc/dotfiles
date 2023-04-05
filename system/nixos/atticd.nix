@@ -19,7 +19,7 @@ in
 
       storage = {
         type = "s3";
-        region = "eu-central-1";
+        region = "auto";
         bucket = "attic-cache";
         endpoint = "https://${secret.cloudflare.account-id}.r2.cloudflarestorage.com";
       };
