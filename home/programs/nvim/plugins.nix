@@ -219,8 +219,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "8dc63a44bfe3188708f0b968c17a5260bdf75650";
-      sha256 = "0d37qs8jf9130134mp4yqj9xf54b0r5ga9zj3s6lk2f0hpxvxvaw";
+      rev = "7179a46c2345050783d14397e672e7b152a7af4f";
+      sha256 = "1vm24x1rbmjsbb6ykbvqsz4y1pbdxb3gainzrv0z6q4xfz0y4ira";
       fetchSubmodules = false;
     };
   };
