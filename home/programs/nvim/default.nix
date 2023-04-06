@@ -22,14 +22,13 @@
 
       # LSP
       fennel-ls
+      nil
       nodePackages.bash-language-server
       nodePackages.dockerfile-language-server-nodejs
       nodePackages.svelte-language-server
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.yaml-language-server
-      rnix-lsp
-      sqls
       lua-language-server
       taplo-lsp
 
@@ -39,6 +38,7 @@
       hadolint
       luajitPackages.fennel
       fnlfmt
+      nixpkgs-fmt
       shellcheck
       shfmt
       statix

@@ -27,8 +27,6 @@
                          :fennel_ls
                          :html
                          :jsonls
-                         :rnix
-                         :sqls
                          :svelte
                          :taplo
                          :yamlls]]
@@ -38,6 +36,8 @@
     ;; Custom
     (lsp.elixirls.setup (->> {:cmd [:elixir-ls]}
                              (vim.tbl_extend :force default-config)))
+    (lsp.nil_ls.setup (->> {:settings {:nil {:formatting {:command [:nixpkgs-fmt]}}}}
+                           (vim.tbl_extend :force default-config)))
     (lsp.tsserver.setup (->> {:cmd [:typescript-language-server
                                     :--stdio
                                     :--tsserver-path
