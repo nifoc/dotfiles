@@ -117,8 +117,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "HiPhish";
       repo = "nvim-ts-rainbow2";
-      rev = "742c1576c014ef0299fd25f429eda83398ca1a09";
-      sha256 = "12d4m2s8b1kgy4w91md31fpcaqazx0x46ngdav6qilj19hf4j5k5";
+      rev = "2c82e0965be2baf67fa2d3d48f3747437fde7204";
+      sha256 = "1f31bx466vl1if7kinbb1szrl65b9gq06v32nf9h6s5rs4yvmpv4";
       fetchSubmodules = false;
     };
   };
