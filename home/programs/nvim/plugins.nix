@@ -106,8 +106,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "226c1475a46a2ef6d840af9caa0117a439465500";
-      sha256 = "1d76kqijiackpfwv30gvpj1d9yyg4z3a081p0x25zf4jmrifz8b9";
+      rev = "584ccea56e2d37b31ba292da2b539e1a4bb411ca";
+      sha256 = "0gs1jzf0zr6pq0ryndd70afppx0p243725jac5g8d3z17fkv0i1l";
       fetchSubmodules = false;
     };
   };
@@ -117,8 +117,8 @@ rec {
     src = pkgs.fetchFromGitHub {
       owner = "HiPhish";
       repo = "nvim-ts-rainbow2";
-      rev = "6542cefc97b496d8286f0cf82f460763a124f170";
-      sha256 = "1hc9a28ss846lf9hki5y3s48mq670crizb8hg5v0div9grxmkzjk";
+      rev = "742c1576c014ef0299fd25f429eda83398ca1a09";
+      sha256 = "12d4m2s8b1kgy4w91md31fpcaqazx0x46ngdav6qilj19hf4j5k5";
       fetchSubmodules = false;
     };
   };
