@@ -1,11 +1,13 @@
 { nixpkgs, home-manager, inputs, ... }:
 
 let
+  overlay-attic = inputs.attic.overlays.default;
   overlay-neovim = inputs.neovim-nightly-overlay.overlay;
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
     overlays = [
+      overlay-attic
       overlay-neovim
       overlay-nifoc
     ];
