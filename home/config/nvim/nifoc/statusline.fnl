@@ -368,8 +368,7 @@
      :hl {:fg (. colors fg) :bg (. colors bg) :bold true}})
 
   (fn mod.shell-mode [fg bg]
-    {:provider (fn []
-                 (.. " " vim.b.nifoc_shell_mode " "))
+    {:provider #(.. " " vim.b.nifoc_shell_mode " ")
      :hl {:fg (. colors fg) :bg (. colors bg) :bold true}})
 
   mod)
