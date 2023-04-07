@@ -12,6 +12,8 @@ in
 
     ../nixos/git.nix
 
+    ../nixos/attic.nix
+
     ../nixos/container.nix
     ../../container/adsb
   ];
