@@ -28,12 +28,14 @@ in
         "https://nix-community.cachix.org"
         "https://wurzelpfropf.cachix.org"
         "https://nifoc.cachix.org"
+        "https://attic.cache.daniel.sx/nifoc-systems"
       ];
 
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "wurzelpfropf.cachix.org-1:ilZwK5a6wJqVr7Fyrzp4blIEkGK+LJT0QrpWr1qBNq0="
         "nifoc.cachix.org-1:ymuftq7RgN/lf/iWXFK8gpwDSAGFaGBeliWe9u6q8II="
+        "nifoc-systems:eDDqVP5BFR6/1KvXbF9oUL8JahDdmbrsYtxlQ57LOTU="
       ];
     };
 
@@ -49,6 +51,8 @@ in
       keep-outputs = true
     '';
   };
+
+  environment.etc."nix/netrc".source = ../../secret/shared/nix-netrc;
 
   boot = {
     loader = {
