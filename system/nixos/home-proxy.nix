@@ -2,8 +2,9 @@
 
 {
   services.nginx.streamConfig = ''
+    resolver 1.1.1.1 ipv6=off;
+
     upstream home {
-      resolver 1.1.1.1 ipv6=off;
       server ${secret.nginx.upstream.home.hostname}:${builtins.toString(secret.nginx.upstream.home.port)};
     }
 
