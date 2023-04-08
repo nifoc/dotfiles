@@ -5,7 +5,7 @@
     resolver 1.1.1.1 ipv6=off;
 
     server {
-      listen ${builtins.toString(secret.nginx.upstream.home.port)} proxy_protocol;
+      listen 0.0.0.0:${builtins.toString(secret.nginx.upstream.home.port)} proxy_protocol;
       proxy_connect_timeout 2s;
       proxy_timeout 3s;
       proxy_pass ${secret.nginx.upstream.home.hostname}:${builtins.toString(secret.nginx.upstream.home.port)};
