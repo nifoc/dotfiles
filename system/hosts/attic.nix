@@ -17,6 +17,8 @@ in
 
     (import ../nixos/atticd.nix (args // { inherit secret; }))
 
+    (import ../nixos/home-proxy.nix (args // { inherit secret; }))
+
     ../nixos/tailscale.nix
   ];
 
