@@ -9,7 +9,7 @@
     }
 
     server {
-      listen ${builtins.toString(secret.nginx.upstream.home.port)};
+      listen ${builtins.toString(secret.nginx.upstream.home.port)} proxy_protocol;
       proxy_pass home;
     }
   '';
