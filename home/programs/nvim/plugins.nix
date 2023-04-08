@@ -25,12 +25,12 @@ rec {
   };
   nvim-web-devicons = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-web-devicons";
-    version = "2023-04-03";
+    version = "2023-04-08";
     src = pkgs.fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
-      rev = "0568104bf8d0c3ab16395433fcc5c1638efc25d4";
-      sha256 = "0s3bn0m9lml0b2b82zl1c7g7idrzbb7jhi7yf24cm5rl457iixp2";
+      rev = "f16ec8f6e5d23e4349501dae46e0a661918e086e";
+      sha256 = "08c76ps667wkyh8lzkjszpfhjr22cdxz7p30bkps42i71vq12d4n";
       fetchSubmodules = false;
     };
   };
@@ -215,12 +215,12 @@ rec {
   };
   nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-lspconfig";
-    version = "2023-04-07";
+    version = "2023-04-08";
     src = pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "1ec6f5cbf6ffc44c84783d70039df5295ca22b4e";
-      sha256 = "06s1zc0qs2h0k8chmnlvvk9czgxhkg6z2y13qilz4093qn75a051";
+      rev = "e683951a35ade60f9e1768ef770bb42ffcc1d2b7";
+      sha256 = "0w5h5fdknnzz690il14da3p5hfvalsysiplmh1fy78s1klfzqrjg";
       fetchSubmodules = false;
     };
   };
@@ -435,12 +435,12 @@ rec {
   };
   nvim-ts-autotag = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-ts-autotag";
-    version = "2023-03-17";
+    version = "2023-04-08";
     src = pkgs.fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-ts-autotag";
-      rev = "25698e4033cd6cd3745454bfc837dd670eba0480";
-      sha256 = "065j0188x7j72sz14i3i7q0vxfjbl5xz3566nybghcnqmksp9m2w";
+      rev = "7a1c677985b8fc4cdfdb87dd55fbc16dadd86bbe";
+      sha256 = "0yqxg4hmdjs2bn7hg5al012kf8ykhrjsg1ca22vnnaqz4j98il0k";
       fetchSubmodules = false;
     };
   };
