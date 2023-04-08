@@ -59,7 +59,7 @@
     };
 
     "attic" = {
-      hostname = "100.76.233.31";
+      hostname = "attic-ts.kempkens.io";
       port = 22;
       user = "daniel";
       forwardAgent = true;
