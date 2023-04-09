@@ -1,10 +1,15 @@
 # This file has been auto-generated
 { pkgs, ... }:
-rec {
-  popup-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+let
+  inherit (pkgs) fetchFromGitHub;
+  inherit (pkgs) fetchFromSourcehut;
+  inherit (pkgs.vimUtils) buildVimPluginFrom2Nix;
+in
+{
+  popup-nvim = buildVimPluginFrom2Nix {
     pname = "popup.nvim";
     version = "2021-11-18";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "nvim-lua";
       repo = "popup.nvim";
       rev = "b7404d35d5d3548a82149238289fa71f7f6de4ac";
@@ -12,21 +17,21 @@ rec {
       fetchSubmodules = false;
     };
   };
-  plenary-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  plenary-nvim = buildVimPluginFrom2Nix {
     pname = "plenary.nvim";
-    version = "2023-02-19";
-    src = pkgs.fetchFromGitHub {
+    version = "2023-04-09";
+    src = fetchFromGitHub {
       owner = "nvim-lua";
       repo = "plenary.nvim";
-      rev = "253d34830709d690f013daf2853a9d21ad7accab";
-      sha256 = "17vvl06jc5vrfrv7gljflkqykshhg84wnhbl9br4pm050ywlg4ng";
+      rev = "0c31c398261567cda89b66ddffc69d39495f63ae";
+      sha256 = "1wwbcw35nbsszqhwc7spz5p3qlb08dcwwpn2f3wk6xxb66yycdri";
       fetchSubmodules = false;
     };
   };
-  nvim-web-devicons = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  nvim-web-devicons = buildVimPluginFrom2Nix {
     pname = "nvim-web-devicons";
     version = "2023-04-08";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
       rev = "f16ec8f6e5d23e4349501dae46e0a661918e086e";
@@ -34,10 +39,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  nvim-osc52 = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  nvim-osc52 = buildVimPluginFrom2Nix {
     pname = "nvim-osc52";
     version = "2023-03-03";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "ojroques";
       repo = "nvim-osc52";
       rev = "47ce7ee2396fa3ee4fb6b0e0ef14ba06f9c9bd31";
@@ -45,10 +50,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  yanky-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  yanky-nvim = buildVimPluginFrom2Nix {
     pname = "yanky.nvim";
     version = "2023-03-09";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "gbprod";
       repo = "yanky.nvim";
       rev = "c4c794afd762a00ca543972e5b9e34ce9aa14a87";
@@ -56,10 +61,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  cutlass-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  cutlass-nvim = buildVimPluginFrom2Nix {
     pname = "cutlass.nvim";
     version = "2023-01-26";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "gbprod";
       repo = "cutlass.nvim";
       rev = "31a2099627cd1ef8898f442ee6a58c7400111395";
@@ -67,10 +72,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  substitute-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  substitute-nvim = buildVimPluginFrom2Nix {
     pname = "substitute.nvim";
     version = "2023-03-16";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "gbprod";
       repo = "substitute.nvim";
       rev = "14eea5563234424e9a732cba2e8acb2e4e1f9bb4";
@@ -78,10 +83,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  leap-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  leap-nvim = buildVimPluginFrom2Nix {
     pname = "leap.nvim";
     version = "2023-03-14";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
       rev = "f74473d23ebf60957e0db3ff8172349a82e5a442";
@@ -89,10 +94,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  dracula-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  dracula-nvim = buildVimPluginFrom2Nix {
     pname = "dracula.nvim";
     version = "2023-03-31";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "Mofiqul";
       repo = "dracula.nvim";
       rev = "8653e7699810b63bda8ef267055cb4d4237670ef";
@@ -100,10 +105,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  nvim-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  nvim-treesitter = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
     version = "2023-04-09";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
       rev = "fa9fe9a95ba481e26e11eede4657f8c5350a0eaa";
@@ -111,10 +116,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  nvim-ts-rainbow2 = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  nvim-ts-rainbow2 = buildVimPluginFrom2Nix {
     pname = "nvim-ts-rainbow2";
     version = "2023-04-07";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "nvim-ts-rainbow2";
       rev = "2c82e0965be2baf67fa2d3d48f3747437fde7204";
@@ -122,10 +127,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  playground = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  playground = buildVimPluginFrom2Nix {
     pname = "playground";
     version = "2023-04-09";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "playground";
       rev = "934cb4c4adc2e7f4f351846a63c9532018c996ed";
@@ -133,10 +138,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  telescope-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  telescope-nvim = buildVimPluginFrom2Nix {
     pname = "telescope.nvim";
     version = "2023-04-09";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
       rev = "7141515a7cabde46449675a403ed564416363887";
@@ -144,10 +149,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  telescope-fzf-native-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  telescope-fzf-native-nvim = buildVimPluginFrom2Nix {
     pname = "telescope-fzf-native.nvim";
     version = "2023-02-05";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope-fzf-native.nvim";
       rev = "580b6c48651cabb63455e97d7e131ed557b8c7e2";
@@ -158,10 +163,10 @@ rec {
       make
     '';
   };
-  project-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  project-nvim = buildVimPluginFrom2Nix {
     pname = "project.nvim";
     version = "2023-04-04";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "ahmedkhalf";
       repo = "project.nvim";
       rev = "8c6bad7d22eef1b71144b401c9f74ed01526a4fb";
@@ -169,10 +174,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  todo-comments-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  todo-comments-nvim = buildVimPluginFrom2Nix {
     pname = "todo-comments.nvim";
     version = "2023-03-31";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "folke";
       repo = "todo-comments.nvim";
       rev = "8febc60a76feefd8203077ef78b6a262ea1a41f9";
@@ -180,10 +185,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  telescope-ui-select-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  telescope-ui-select-nvim = buildVimPluginFrom2Nix {
     pname = "telescope-ui-select.nvim";
     version = "2022-04-30";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope-ui-select.nvim";
       rev = "62ea5e58c7bbe191297b983a9e7e89420f581369";
@@ -191,10 +196,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  telescope-toggleterm-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  telescope-toggleterm-nvim = buildVimPluginFrom2Nix {
     pname = "telescope-toggleterm.nvim";
     version = "2022-02-10";
-    src = pkgs.fetchFromSourcehut {
+    src = fetchFromSourcehut {
       owner = "~havi";
       repo = "telescope-toggleterm.nvim";
       rev = "5c1402507f0ad01711196e5d27e9f0606f78b7d0";
@@ -202,10 +207,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  telescope-undo-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  telescope-undo-nvim = buildVimPluginFrom2Nix {
     pname = "telescope-undo.nvim";
     version = "2023-03-26";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "debugloop";
       repo = "telescope-undo.nvim";
       rev = "231b5ebb4328d2768c830c9a8d1b9c696116848d";
@@ -213,10 +218,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  nvim-lspconfig = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  nvim-lspconfig = buildVimPluginFrom2Nix {
     pname = "nvim-lspconfig";
     version = "2023-04-09";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
       rev = "27e9e1d2638ffd133b06f314a49ac55825cb1017";
@@ -224,10 +229,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  nvim-jdtls = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  nvim-jdtls = buildVimPluginFrom2Nix {
     pname = "nvim-jdtls";
     version = "2023-04-03";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-jdtls";
       rev = "ffb8f63689197b845c2388f0df5f0d1bd21c968f";
@@ -235,10 +240,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  lspkind-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  lspkind-nvim = buildVimPluginFrom2Nix {
     pname = "lspkind.nvim";
     version = "2022-09-22";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "onsails";
       repo = "lspkind.nvim";
       rev = "c68b3a003483cf382428a43035079f78474cd11e";
@@ -246,10 +251,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  nvim-navic = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  nvim-navic = buildVimPluginFrom2Nix {
     pname = "nvim-navic";
     version = "2023-04-02";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "SmiteshP";
       repo = "nvim-navic";
       rev = "27124a773d362628b114cd12016e743dab4ccf3e";
@@ -257,10 +262,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  vim-illuminate = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  vim-illuminate = buildVimPluginFrom2Nix {
     pname = "vim-illuminate";
     version = "2023-03-19";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "RRethy";
       repo = "vim-illuminate";
       rev = "a2907275a6899c570d16e95b9db5fd921c167502";
@@ -268,10 +273,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  nvim-lint = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  nvim-lint = buildVimPluginFrom2Nix {
     pname = "nvim-lint";
     version = "2023-04-05";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-lint";
       rev = "2a9969a09d8456104d7954b67ee6667d6645c71a";
@@ -279,10 +284,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  comment-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  comment-nvim = buildVimPluginFrom2Nix {
     pname = "comment.nvim";
     version = "2023-03-10";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "numtostr";
       repo = "comment.nvim";
       rev = "8d3aa5c22c2d45e788c7a5fe13ad77368b783c20";
@@ -290,10 +295,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  LuaSnip = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  LuaSnip = buildVimPluginFrom2Nix {
     pname = "LuaSnip";
     version = "2023-04-09";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
       rev = "8fdb06d4601c019a9ee880473646364bdbed3206";
@@ -301,10 +306,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  friendly-snippets = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  friendly-snippets = buildVimPluginFrom2Nix {
     pname = "friendly-snippets";
     version = "2023-03-26";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "rafamadriz";
       repo = "friendly-snippets";
       rev = "8d91ba2dc2421a54981115f61b914974f938fa77";
@@ -312,10 +317,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  nvim-cmp = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  nvim-cmp = buildVimPluginFrom2Nix {
     pname = "nvim-cmp";
     version = "2023-03-17";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "hrsh7th";
       repo = "nvim-cmp";
       rev = "777450fd0ae289463a14481673e26246b5e38bf2";
@@ -323,10 +328,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  cmp-nvim-lsp = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  cmp-nvim-lsp = buildVimPluginFrom2Nix {
     pname = "cmp-nvim-lsp";
     version = "2023-02-06";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "hrsh7th";
       repo = "cmp-nvim-lsp";
       rev = "0e6b2ed705ddcff9738ec4ea838141654f12eeef";
@@ -334,10 +339,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  cmp-nvim-lsp-signature-help = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  cmp-nvim-lsp-signature-help = buildVimPluginFrom2Nix {
     pname = "cmp-nvim-lsp-signature-help";
     version = "2023-02-03";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "hrsh7th";
       repo = "cmp-nvim-lsp-signature-help";
       rev = "3d8912ebeb56e5ae08ef0906e3a54de1c66b92f1";
@@ -345,10 +350,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  cmp_luasnip = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  cmp_luasnip = buildVimPluginFrom2Nix {
     pname = "cmp_luasnip";
     version = "2022-10-28";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "saadparwaiz1";
       repo = "cmp_luasnip";
       rev = "18095520391186d634a0045dacaa346291096566";
@@ -356,10 +361,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  cmp-path = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  cmp-path = buildVimPluginFrom2Nix {
     pname = "cmp-path";
     version = "2022-10-03";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "hrsh7th";
       repo = "cmp-path";
       rev = "91ff86cd9c29299a64f968ebb45846c485725f23";
@@ -367,10 +372,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  cmp-buffer = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  cmp-buffer = buildVimPluginFrom2Nix {
     pname = "cmp-buffer";
     version = "2022-08-10";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "hrsh7th";
       repo = "cmp-buffer";
       rev = "3022dbc9166796b644a841a02de8dd1cc1d311fa";
@@ -378,10 +383,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  cmp-treesitter = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  cmp-treesitter = buildVimPluginFrom2Nix {
     pname = "cmp-treesitter";
     version = "2023-04-06";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "ray-x";
       repo = "cmp-treesitter";
       rev = "389eadd48c27aa6dc0e6b992644704f026802a2e";
@@ -389,10 +394,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  cmp-cmdline = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  cmp-cmdline = buildVimPluginFrom2Nix {
     pname = "cmp-cmdline";
     version = "2023-02-16";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "hrsh7th";
       repo = "cmp-cmdline";
       rev = "8fcc934a52af96120fe26358985c10c035984b53";
@@ -400,10 +405,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  cmp-nvim-lsp-document-symbol = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  cmp-nvim-lsp-document-symbol = buildVimPluginFrom2Nix {
     pname = "cmp-nvim-lsp-document-symbol";
     version = "2023-04-01";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "hrsh7th";
       repo = "cmp-nvim-lsp-document-symbol";
       rev = "f0f53f704c08ea501f9d222b23491b0d354644b0";
@@ -411,10 +416,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  neoformat = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  neoformat = buildVimPluginFrom2Nix {
     pname = "neoformat";
     version = "2023-03-31";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "sbdchd";
       repo = "neoformat";
       rev = "e18e0cc2641dd78f0cdb0ddd575843045d672dde";
@@ -422,10 +427,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  nvim-autopairs = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  nvim-autopairs = buildVimPluginFrom2Nix {
     pname = "nvim-autopairs";
     version = "2023-04-09";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-autopairs";
       rev = "7470af886ffb3df32800e5ef9c072a6cd825770d";
@@ -433,10 +438,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  nvim-ts-autotag = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  nvim-ts-autotag = buildVimPluginFrom2Nix {
     pname = "nvim-ts-autotag";
     version = "2023-04-08";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-ts-autotag";
       rev = "7a1c677985b8fc4cdfdb87dd55fbc16dadd86bbe";
@@ -444,10 +449,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  vim-matchup = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  vim-matchup = buildVimPluginFrom2Nix {
     pname = "vim-matchup";
     version = "2023-03-25";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "andymass";
       repo = "vim-matchup";
       rev = "156367e4cbd123bc9a70eeabeaa16f7cf9239e12";
@@ -455,10 +460,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  nvim-treesitter-textobjects = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  nvim-treesitter-textobjects = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter-textobjects";
     version = "2023-03-27";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
       rev = "b55fe6175f0001347a433c9df358c8cbf8a4e90f";
@@ -466,10 +471,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  nvim-surround = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  nvim-surround = buildVimPluginFrom2Nix {
     pname = "nvim-surround";
     version = "2023-04-02";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "kylechui";
       repo = "nvim-surround";
       rev = "e6047128e57c1aff1566fb9f627521d2887fc77a";
@@ -477,10 +482,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  heirline-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  heirline-nvim = buildVimPluginFrom2Nix {
     pname = "heirline.nvim";
     version = "2023-04-08";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "rebelot";
       repo = "heirline.nvim";
       rev = "64d57ac5dcfd24a998ff38a76bf3204810273988";
@@ -488,10 +493,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  indent-blankline-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  indent-blankline-nvim = buildVimPluginFrom2Nix {
     pname = "indent-blankline.nvim";
     version = "2023-02-20";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "lukas-reineke";
       repo = "indent-blankline.nvim";
       rev = "018bd04d80c9a73d399c1061fa0c3b14a7614399";
@@ -499,10 +504,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  virt-column-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  virt-column-nvim = buildVimPluginFrom2Nix {
     pname = "virt-column.nvim";
     version = "2023-01-20";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "lukas-reineke";
       repo = "virt-column.nvim";
       rev = "93b40ea038f676f5a72d7d1f2336fe7b051fc0ce";
@@ -510,21 +515,21 @@ rec {
       fetchSubmodules = false;
     };
   };
-  toggleterm-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  toggleterm-nvim = buildVimPluginFrom2Nix {
     pname = "toggleterm.nvim";
-    version = "2023-03-31";
-    src = pkgs.fetchFromGitHub {
+    version = "2023-04-09";
+    src = fetchFromGitHub {
       owner = "akinsho";
       repo = "toggleterm.nvim";
-      rev = "b86982429325112d2b20c6d0cc7a5c4b182ab705";
-      sha256 = "1md3j9865lq4xc3ai0k8h8jdwpmqk82d7j33zrqlpak83ys8mbgk";
+      rev = "2e477f7ee8ee8229ff3158e3018a067797b9cd38";
+      sha256 = "1d7qqgviimgmzz1g7ykv688pyhr0m9kv6h9lrczxmdq7xwymmbbq";
       fetchSubmodules = false;
     };
   };
-  urlview-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  urlview-nvim = buildVimPluginFrom2Nix {
     pname = "urlview.nvim";
     version = "2023-03-19";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "axieax";
       repo = "urlview.nvim";
       rev = "e92d99f062685f9d3ab84238e1cdde6399dc64ce";
@@ -532,10 +537,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  gitsigns-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  gitsigns-nvim = buildVimPluginFrom2Nix {
     pname = "gitsigns.nvim";
     version = "2023-04-04";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
       rev = "372d5cb485f2062ac74abc5b33054abac21d8b58";
@@ -543,10 +548,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  nui-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  nui-nvim = buildVimPluginFrom2Nix {
     pname = "nui.nvim";
     version = "2023-04-02";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "MunifTanjim";
       repo = "nui.nvim";
       rev = "1f43b13d133eb4b4f53a4485379d9afa58808389";
@@ -554,10 +559,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  nvim-notify = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  nvim-notify = buildVimPluginFrom2Nix {
     pname = "nvim-notify";
     version = "2023-03-22";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "rcarriga";
       repo = "nvim-notify";
       rev = "50d037041ada0895aeba4c0215cde6d11b7729c4";
@@ -565,10 +570,10 @@ rec {
       fetchSubmodules = false;
     };
   };
-  noice-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  noice-nvim = buildVimPluginFrom2Nix {
     pname = "noice.nvim";
     version = "2023-03-26";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "folke";
       repo = "noice.nvim";
       rev = "1da4edfba3e9278e98fc9723d7235d9ab3889744";

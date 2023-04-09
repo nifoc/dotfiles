@@ -16,10 +16,17 @@ plugins_json="$(dasel -r yaml -w json . <"$plugins")"
 readarray -t plugin_array <<<"$(echo "$plugins_json" | jq -c '.[]')"
 
 rm -f "$nix_new_file"
-echo '# This file has been auto-generated' >"$nix_new_file"
-echo '{ pkgs, ... }:' >>"$nix_new_file"
+{
+  echo '# This file has been auto-generated'
+  echo '{ pkgs, ... }:'
+  echo 'let'
+  echo 'inherit (pkgs) fetchFromGitHub;'
+  echo 'inherit (pkgs) fetchFromSourcehut;'
+  echo 'inherit (pkgs.vimUtils) buildVimPluginFrom2Nix;'
+  echo 'in'
+  echo '{'
+} >>"$nix_new_file"
 
-echo "rec {" >>"$nix_new_file"
 for plugin in "${plugin_array[@]}"; do
   raw_src="$(echo "$plugin" | dasel -r json -w - '.src')"
   owner="$(echo "$raw_src" | awk -F'/' '{ print $(NF-1) }')"
@@ -65,10 +72,10 @@ for plugin in "${plugin_array[@]}"; do
 
   case "$clone_src" in
   https://github.com*)
-    fetcher="pkgs.fetchFromGitHub"
+    fetcher="fetchFromGitHub"
     ;;
   https://git.sr.ht*)
-    fetcher="pkgs.fetchFromSourcehut"
+    fetcher="fetchFromSourcehut"
     ;;
   *)
     echo "Unsupported URL: $clone_src"
@@ -83,7 +90,7 @@ for plugin in "${plugin_array[@]}"; do
   #  ;;
   *)
     {
-      echo "${name} = pkgs.vimUtils.buildVimPluginFrom2Nix {"
+      echo "${name} = buildVimPluginFrom2Nix {"
       echo "pname = \"${repo}\";"
     } >>"$nix_new_file"
     close_block="};"
