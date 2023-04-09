@@ -4,9 +4,14 @@
   services.nginx.streamConfig = ''
     resolver 1.1.1.1 ipv6=off;
 
+    upstream home {
+      server ${secret.nginx.upstream.home.hostname}:${builtins.toString(secret.nginx.upstream.home.port)};
+    }
+
     server {
-      listen 0.0.0.0:${builtins.toString(secret.nginx.upstream.home.port)};
-      proxy_pass ${secret.nginx.upstream.home.hostname}:${builtins.toString(secret.nginx.upstream.home.port)};
+      listen ${builtins.toString(secret.nginx.upstream.home.port)};
+      proxy_protocol on;
+      proxy_pass home;
     }
   '';
 
