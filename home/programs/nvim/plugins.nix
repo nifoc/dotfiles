@@ -297,12 +297,12 @@ in
   };
   LuaSnip = buildVimPluginFrom2Nix {
     pname = "LuaSnip";
-    version = "2023-04-09";
+    version = "2023-04-10";
     src = fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "8fdb06d4601c019a9ee880473646364bdbed3206";
-      sha256 = "07vfp43pgkzyhpn044fsv6l38a2whiiydv9fc58qpq2kljziir03";
+      rev = "225ef9a02c44dac1f52a53886980553765ceb537";
+      sha256 = "1bd3bgpjjq2x598cmhp32vvbjxq72lmjg9xd5cy9px5amiljw9ag";
       fetchSubmodules = false;
     };
   };
@@ -488,8 +488,8 @@ in
     src = fetchFromGitHub {
       owner = "rebelot";
       repo = "heirline.nvim";
-      rev = "f4b7ff8848c9dc5462040c849acd76b46de68e99";
-      sha256 = "1sdabq0gmif5y5wr9zl7cv1b9n83zp0a2rvrzcrj87dpwzadh4x6";
+      rev = "d860874eef6088109b5cb102871d76307280f052";
+      sha256 = "0gh4jc45zvgmgx3bg4iyqa4smjl2bqalkwylpq74izzn4bxjd4yz";
       fetchSubmodules = false;
     };
   };
