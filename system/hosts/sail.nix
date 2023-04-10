@@ -102,6 +102,10 @@ in
   networking = {
     hostName = "sail";
     useNetworkd = true;
+
+    extraHosts = ''
+      10.99.99.4 attic.cache.daniel.sx
+    '';
   };
 
   systemd.network = {

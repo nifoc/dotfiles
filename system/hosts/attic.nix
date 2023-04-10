@@ -73,6 +73,10 @@ in
   networking = {
     hostName = "attic";
     useNetworkd = true;
+
+    extraHosts = ''
+      127.0.0.1 attic.cache.daniel.sx
+    '';
   };
 
   systemd.network = {
