@@ -34,6 +34,8 @@
     {
       "enp1s0".allowedTCPPorts = nginxTCPPorts;
       "enp1s0".allowedUDPPorts = nginxUDPPorts;
+      "enp7s0".allowedTCPPorts = nginxTCPPorts;
+      "enp7s0".allowedUDPPorts = nginxUDPPorts;
       "tailscale0".allowedTCPPorts = nginxTCPPorts;
       "tailscale0".allowedUDPPorts = nginxUDPPorts;
     };
