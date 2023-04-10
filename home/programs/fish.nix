@@ -1,6 +1,7 @@
 { pkgs, config, lib, ... }:
 
 let
+  inherit (pkgs) fetchFromGitHub;
   inherit (pkgs.stdenv) isDarwin;
   inherit (lib) optionals;
 in
@@ -17,18 +18,18 @@ in
       # https://github.com/dracula/fish
       {
         name = "dracula";
-        src = pkgs.fetchFromGitHub {
+        src = fetchFromGitHub {
           owner = "dracula";
           repo = "fish";
-          rev = "610147cc384ff161fbabb9a9ebfd22b743f82b67";
-          sha256 = "sha256-WywEGAGaRwfHJpT+B3oKoyrnLJZxURTQ+MK9e5Asxl0=";
+          rev = "0e51af5e5346e5d24efabd43fb4631e2a8fd1b70";
+          hash = "sha256-YXh6pPJ9dJDPpq1kX5xd1edoOaH6jDq8pDOkx3k03/0=";
         };
       }
 
       # https://github.com/franciscolourenco/done/releases
       {
         name = "done-fish";
-        src = pkgs.fetchFromGitHub {
+        src = fetchFromGitHub {
           owner = "franciscolourenco";
           repo = "done";
           rev = "1.16.5";
@@ -39,18 +40,18 @@ in
       # https://github.com/PatrickF1/fzf.fish/releases
       {
         name = "fzf-fish";
-        src = pkgs.fetchFromGitHub {
+        src = fetchFromGitHub {
           owner = "PatrickF1";
           repo = "fzf.fish";
-          rev = "v9.5";
-          sha256 = "sha256-ZdHfIZNCtY36IppnufEIyHr+eqlvsIUOs0kY5I9Df6A=";
+          rev = "v9.7";
+          sha256 = "sha256-i9FcuQdmNlJnMWQp7myF3N0tMD/2I0CaMs/PlD8o1gw=";
         };
       }
 
       # https://github.com/jorgebucaran/autopair.fish/releases
       {
         name = "autopair-fish";
-        src = pkgs.fetchFromGitHub {
+        src = fetchFromGitHub {
           owner = "jorgebucaran";
           repo = "autopair.fish";
           rev = "1.0.4";
@@ -61,18 +62,18 @@ in
       # https://github.com/nickeb96/puffer-fish
       {
         name = "puffer-fish";
-        src = pkgs.fetchFromGitHub {
+        src = fetchFromGitHub {
           owner = "nickeb96";
           repo = "puffer-fish";
-          rev = "fd0a9c95da59512beffddb3df95e64221f894631";
-          sha256 = "sha256-aij48yQHeAKCoAD43rGhqW8X/qmEGGkg8B4jSeqjVU0=";
+          rev = "5d3cb25e0d63356c3342fb3101810799bb651b64";
+          hash = "sha256-aPxEHSXfiJJXosIm7b3Pd+yFnyz43W3GXyUB5BFAF54=";
         };
       }
 
       # https://github.com/PatrickF1/colored_man_pages.fish
       {
         name = "colored_man_pages";
-        src = pkgs.fetchFromGitHub {
+        src = fetchFromGitHub {
           owner = "PatrickF1";
           repo = "colored_man_pages.fish";
           rev = "f885c2507128b70d6c41b043070a8f399988bc7a";

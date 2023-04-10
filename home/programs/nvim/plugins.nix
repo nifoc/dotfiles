@@ -111,8 +111,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "cc360a9beb1b30d172438f640e2c3450358c4086";
-      sha256 = "08rnx980g429cgyhq3dzl84553vil30djzzxi1w9sa2mp060zyw8";
+      rev = "a82501244a75b3d59cdc42496e5ad841f31e4d6d";
+      sha256 = "024rc6swvh21k6br9f4dj57hjf9h5lbqmy4p8axgml04r77r20y8";
       fetchSubmodules = false;
     };
   };
@@ -484,12 +484,12 @@ in
   };
   heirline-nvim = buildVimPluginFrom2Nix {
     pname = "heirline.nvim";
-    version = "2023-04-08";
+    version = "2023-04-10";
     src = fetchFromGitHub {
       owner = "rebelot";
       repo = "heirline.nvim";
-      rev = "64d57ac5dcfd24a998ff38a76bf3204810273988";
-      sha256 = "1q1yv1i5ynfwrxkiinlrhgjd6cc6c7pzvcv7f5ziadk7fvikpdlf";
+      rev = "f4b7ff8848c9dc5462040c849acd76b46de68e99";
+      sha256 = "1sdabq0gmif5y5wr9zl7cv1b9n83zp0a2rvrzcrj87dpwzadh4x6";
       fetchSubmodules = false;
     };
   };
@@ -528,12 +528,12 @@ in
   };
   urlview-nvim = buildVimPluginFrom2Nix {
     pname = "urlview.nvim";
-    version = "2023-03-19";
+    version = "2023-04-10";
     src = fetchFromGitHub {
       owner = "axieax";
       repo = "urlview.nvim";
-      rev = "e92d99f062685f9d3ab84238e1cdde6399dc64ce";
-      sha256 = "0ahs5sgs95wkpr11s93r08w0xagiqrfw5zrgqyhhjqg2dfpqzxp9";
+      rev = "cef8de1ea2f2faf3964f2d017cd88a35e93c9fe3";
+      sha256 = "0x4l1lypyrcj2w5nx6khjpw7myp225gd0y9wfb2x98d1ymln5j83";
       fetchSubmodules = false;
     };
   };
