@@ -26,8 +26,7 @@
     (if (> (length str) max-length) (.. (str:sub 1 max-length) ellipsis) str))
 
   ;; Utils
-  (set mod.default-hl (fn []
-                        {:bg colors.black}))
+  (set mod.default-hl #{:bg colors.black})
   (set mod.space {:provider " "})
   (set mod.spacer {:provider " " :hl {:fg colors.bg :bg colors.bg}})
   (set mod.push-right {:provider "%="})
@@ -37,9 +36,7 @@
        {:condition #(or (> $1.check-count 0) (> $1.check-length 0))
         :provider " "})
   ;; Mode
-  (set mod.vi-mode {:init (fn [self]
-                            (let [mode (. (api.nvim_get_mode) :mode)]
-                              (set self.mode mode)))
+  (set mod.vi-mode {:init #(set $1.mode (. (api.nvim_get_mode) :mode))
                     :update {1 :ModeChanged
                              :pattern "*:*"
                              :callback (vim.schedule_wrap #(vim.cmd.redrawstatus))}
@@ -122,9 +119,7 @@
                           (let [short-mode (self.mode:sub 1 1)]
                             (. self :mode-hl short-mode)))})
   ;; Filetype
-  (set mod.filetype-block
-       {:init (fn [self]
-                (set self.filename (api.nvim_buf_get_name 0)))})
+  (set mod.filetype-block {:init #(set $1.filename (api.nvim_buf_get_name 0))})
   (set mod.file-icon {:init (fn [self]
                               (let [filename self.filename
                                     ext (vim.fn.fnamemodify filename ":e")
@@ -360,6 +355,24 @@
        {:condition #(> vim.v.hlsearch 0)
         :init #(set $1.count (vim.fn.searchcount {:timeout 5}))
         :provider #(string.format "[%s/%s]" $1.count.current $1.count.total)
+        :hl {:fg colors.black :bg colors.purple}})
+  ;; Command
+  (set mod.command
+       {:condition (fn [self]
+                     (let [mode (. (api.nvim_get_mode) :mode)]
+                       (vim.tbl_contains self.enabled-modes mode)))
+        :update {1 :ModeChanged :pattern "*:*"}
+        :static {:enabled-modes [:no
+                                 :nov
+                                 :noV
+                                 "no\022"
+                                 :v
+                                 :vs
+                                 :V
+                                 :Vs
+                                 "\022"
+                                 "\022s"]}
+        :provider "[%S]"
         :hl {:fg colors.black :bg colors.purple}})
   ;; Custom Mode
 

@@ -18,7 +18,8 @@
                              ns.scrollbar
                              ns.space
                              ns.position
-                             ns.search-count])
+                             ns.search-count
+                             ns.command])
   (local telescope-statusline
          {:condition (fn []
                        (conditions.buffer_matches {:filetype [:TelescopePrompt]}))

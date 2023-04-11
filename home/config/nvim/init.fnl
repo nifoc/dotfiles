@@ -54,6 +54,7 @@
   (set o.mouse :a)
   (set o.mousemodel :popup_setpos)
   (set o.cmdheight 1)
+  (set o.showcmdloc :statusline)
   ;; Backups
   (set o.backup false)
   (set o.swapfile false)
