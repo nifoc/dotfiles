@@ -3,16 +3,6 @@
 let
   default-system = "aarch64-darwin";
 
-  patched-darwin =
-    let
-      src = nixpkgs.legacyPackages.${default-system}.applyPatches {
-        name = "nix-darwin";
-        src = darwin;
-        patches = [ ];
-      };
-    in
-    nixpkgs.lib.fix (self: (import "${src}/flake.nix").outputs { inherit self nixpkgs; });
-
   overlay-x86 = _: _: { pkgs-x86 = import nixpkgs { system = "x86_64-darwin"; }; };
   overlay-agenix = inputs.ragenix.overlays.default;
   overlay-attic = inputs.attic.overlays.default;
@@ -35,7 +25,7 @@ let
   };
 in
 {
-  system = patched-darwin.lib.darwinSystem {
+  system = darwin.lib.darwinSystem {
     system = default-system;
     modules = [
       ../hosts/Styx.nix
