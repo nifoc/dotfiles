@@ -1,7 +1,7 @@
 {
   matchBlocks = {
     "builder-sail" = {
-      hostname = "sail-ts.kempkens.io";
+      hostname = "sail.ts.kempkens.network";
       port = 22;
       user = "root";
       identityFile = "~/.ssh/Hetzner.pub";
@@ -9,10 +9,18 @@
     };
 
     "builder-attic" = {
-      hostname = "attic-ts.kempkens.io";
+      hostname = "attic.ts.kempkens.network";
       port = 22;
       user = "root";
       identityFile = "~/.ssh/Hetzner.pub";
+      identitiesOnly = true;
+    };
+
+    "builder-mediaserver" = {
+      hostname = "mediaserver.ts.kempkens.network";
+      port = 22;
+      user = "root";
+      identityFile = "~/.ssh/LAN.pub";
       identitiesOnly = true;
     };
   };

@@ -11,6 +11,8 @@ in
 
     ../nixos/git.nix
 
+    ../nixos/atuin-sync.nix
+
     ../nixos/attic.nix
 
     ../nixos/tailscale.nix

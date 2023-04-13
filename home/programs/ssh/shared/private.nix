@@ -50,7 +50,7 @@
     };
 
     "sail" = {
-      hostname = "sail-ts.kempkens.io";
+      hostname = "sail.ts.kempkens.network";
       port = 22;
       user = "daniel";
       forwardAgent = true;
@@ -59,11 +59,20 @@
     };
 
     "attic" = {
-      hostname = "attic-ts.kempkens.io";
+      hostname = "attic.ts.kempkens.network";
       port = 22;
       user = "daniel";
       forwardAgent = true;
       identityFile = "~/.ssh/Hetzner.pub";
+      identitiesOnly = true;
+    };
+
+    "mediaserver" = {
+      hostname = "mediaserver.ts.kempkens.network";
+      port = 22;
+      user = "daniel";
+      forwardAgent = true;
+      identityFile = "~/.ssh/LAN.pub";
       identitiesOnly = true;
     };
   };
