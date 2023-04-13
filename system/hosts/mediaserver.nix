@@ -16,6 +16,7 @@ in
     ../nixos/tailscale.nix
 
     ../nixos/wireguard-netns.nix
+    ../nixos/prowlarr.nix
   ];
 
   system.stateVersion = "22.11";
