@@ -57,6 +57,13 @@
         inherit inputs;
       };
 
+      mediaserver = import ./system/flakes/mediaserver.nix {
+        inherit (inputs) nixpkgs;
+        inherit (inputs) home-manager;
+        inherit (inputs) ragenix;
+        inherit inputs;
+      };
+
       adsb-antenna = import ./system/flakes/adsb-antenna.nix {
         inherit (inputs) nixpkgs;
         inherit (inputs) home-manager;
@@ -71,6 +78,7 @@
       nixosConfigurations = {
         sail = sail.system;
         attic = attic.system;
+        mediaserver = mediaserver.system;
         adsb-antenna = adsb-antenna.system;
       };
     };

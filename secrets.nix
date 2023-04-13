@@ -3,9 +3,11 @@ let
 
   system-sail = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJMs1BqZ+MC7XBwV+dZW8EmaZt2cOg/xcOBPS9KSzIl";
   system-attic = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHe6N3LfPxu7KNsyuI8YE3R0OHLTxNw5+WhuQjKL6PUr";
+  system-mediaserver = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlB0cL5CtTOyARWSE2yUsNU4JHUPmr71710mZHzsmbX";
 
   sail = [ user-daniel system-sail ];
   attic = [ user-daniel system-attic ];
+  mediaserver = [ user-daniel system-mediaserver ];
 in
 {
   # sail
@@ -52,4 +54,7 @@ in
   "agenix/hosts/attic/tailscale/authkey.age".publicKeys = attic;
 
   "agenix/hosts/attic/atticd/environment.age".publicKeys = attic;
+
+  # mediaserver
+  "agenix/hosts/mediaserver/user/danielPassword.age".publicKeys = mediaserver;
 }
