@@ -1,5 +1,8 @@
 { pkgs, modulesPath, ... }:
 
+let
+  latestKernelPackage = pkgs.linuxPackages_latest;
+in
 {
   imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
 
@@ -14,8 +17,9 @@
       kernelModules = [ "tls" ];
     };
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = latestKernelPackage;
     kernelModules = [ "kvm-intel" "tcp_bbr" ];
+    extraModulePackages = [ latestKernelPackage.wireguard ];
 
     kernel.sysctl = {
       "net.core.default_qdisc" = "fq";
