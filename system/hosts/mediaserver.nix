@@ -12,6 +12,8 @@ in
     ../nixos/git.nix
 
     ../nixos/attic.nix
+
+    ../nixos/tailscale.nix
   ];
 
   system.stateVersion = "22.11";
