@@ -10,6 +10,8 @@ in
     ../nixos/ssh.nix
 
     ../nixos/git.nix
+
+    ../nixos/attic.nix
   ];
 
   system.stateVersion = "22.11";
