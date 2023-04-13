@@ -69,7 +69,7 @@ in
     useNetworkd = true;
   };
 
-  environment.systemPackages = with pkgs; [ wireguard wireguard-tools ];
+  environment.systemPackages = with pkgs; [ wireguard-tools ];
 
   systemd.network = {
     enable = true;
