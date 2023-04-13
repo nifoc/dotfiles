@@ -69,6 +69,8 @@ in
     useNetworkd = true;
   };
 
+  boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
+
   systemd.network = {
     enable = true;
 
