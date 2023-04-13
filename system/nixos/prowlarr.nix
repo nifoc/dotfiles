@@ -24,8 +24,9 @@
     serviceConfig = {
       Type = "simple";
       DynamicUser = true;
+      PrivateTmp = false;
       NetworkNamespacePath = "/var/run/netns/wg";
-      ExecStart = "${pkgs.socat}/bin/socat UNIX-LISTEN:/tmp/prowlarr.sock,unlink-early,fork TCP4:127.0.0.1:80";
+      ExecStart = "${pkgs.socat}/bin/socat UNIX-LISTEN:/tmp/prowlarr.sock,unlink-early,fork TCP4:127.0.0.1:9696";
       Restart = "on-failure";
     };
   };
