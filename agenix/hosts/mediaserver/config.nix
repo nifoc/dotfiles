@@ -8,12 +8,8 @@
       file = ./tailscale/authkey.age;
     };
 
-    openvpn-auth-pp = {
-      file = ./openvpn/authPP.age;
-    };
-
-    openvpn-pp-nbg = {
-      file = ./openvpn/pp-nbg.age;
+    wireguard-config = {
+      file = ./wireguard/config.age;
     };
   };
 }

@@ -60,6 +60,5 @@ in
 
   "agenix/hosts/mediaserver/tailscale/authkey.age".publicKeys = mediaserver;
 
-  "agenix/hosts/mediaserver/openvpn/authPP.age".publicKeys = mediaserver;
-  "agenix/hosts/mediaserver/openvpn/pp-nbg.age".publicKeys = mediaserver;
+  "agenix/hosts/mediaserver/wireguard/config.age".publicKeys = mediaserver;
 }

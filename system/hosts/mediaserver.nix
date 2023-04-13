@@ -14,6 +14,8 @@ in
     ../nixos/attic.nix
 
     ../nixos/tailscale.nix
+
+    ../nixos/wireguard-netns.nix
   ];
 
   system.stateVersion = "22.11";
@@ -68,8 +70,6 @@ in
     hostName = "mediaserver";
     useNetworkd = true;
   };
-
-  environment.systemPackages = with pkgs; [ wireguard-tools ];
 
   systemd.network = {
     enable = true;
