@@ -13,6 +13,8 @@ in
 
     ../nixos/attic.nix
 
+    ../nixos/openvpn-mediaserver.nix
+
     ../nixos/tailscale.nix
   ];
 

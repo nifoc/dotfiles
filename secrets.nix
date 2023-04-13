@@ -59,4 +59,7 @@ in
   "agenix/hosts/mediaserver/user/danielPassword.age".publicKeys = mediaserver;
 
   "agenix/hosts/mediaserver/tailscale/authkey.age".publicKeys = mediaserver;
+
+  "agenix/hosts/mediaserver/openvpn/authPP.age".publicKeys = mediaserver;
+  "agenix/hosts/mediaserver/openvpn/pp-nbg.age".publicKeys = mediaserver;
 }
