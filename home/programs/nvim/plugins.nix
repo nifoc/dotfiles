@@ -96,12 +96,12 @@ in
   };
   dracula-nvim = buildVimPluginFrom2Nix {
     pname = "dracula.nvim";
-    version = "2023-04-11";
+    version = "2023-04-13";
     src = fetchFromGitHub {
       owner = "Mofiqul";
       repo = "dracula.nvim";
-      rev = "ce99c0b68edca27caa1701c0e79cf461b484d501";
-      sha256 = "00rnxjz7cvlcbs1zld04fxnk8y5vjvikcz078bs7ap3l4pg1zy5p";
+      rev = "b5bd9c7e4c6c8f4712610bda92140c735fe90521";
+      sha256 = "0v1hq1la8l6kfz0p6ypkd8krr373pb7gizxljay3yk3jh9yzx524";
       fetchSubmodules = false;
     };
   };
@@ -451,12 +451,12 @@ in
   };
   vim-matchup = buildVimPluginFrom2Nix {
     pname = "vim-matchup";
-    version = "2023-04-11";
+    version = "2023-04-13";
     src = fetchFromGitHub {
       owner = "andymass";
       repo = "vim-matchup";
-      rev = "03ebc3b7dbf8f17f2d45d9b5619b48a030e1bf88";
-      sha256 = "18bgw4gv9xd8msh7ly4lz8x631a3bprn5lcdl114g3h6ybs8ldix";
+      rev = "57499f5ca9a66f233efa4faeb04571e5194863a6";
+      sha256 = "08dm88wfwl55lx3kygh4mpwm5l62k3v0776jpwni8k80pzf057fi";
       fetchSubmodules = false;
     };
   };
