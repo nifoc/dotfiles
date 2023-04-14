@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   services.prowlarr = {
@@ -8,7 +8,8 @@
 
   systemd.services.prowlarr = {
     bindsTo = [ "netns@wg.service" ];
-    after = [ "wg.service" ];
+    requires = [ "network-online.target" ];
+    after = lib.mkForce [ "wg.service" ];
 
     serviceConfig = {
       NetworkNamespacePath = "/var/run/netns/wg";
