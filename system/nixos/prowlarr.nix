@@ -7,8 +7,7 @@
   };
 
   systemd.services.prowlarr = {
-    bindsTo = [ "netns@wg.service" ];
-    requires = [ "network-online.target" ];
+    bindsTo = [ "wg.service" ];
     after = lib.mkForce [ "wg.service" ];
 
     serviceConfig = {
@@ -18,8 +17,7 @@
 
   systemd.services.socat-prowlarr = {
     description = "socat exposes prowlarr";
-    bindsTo = [ "netns@wg.service" ];
-    requires = [ "network-online.target" ];
+    bindsTo = [ "wg.service" ];
     after = [ "wg.service" ];
 
     serviceConfig = {
