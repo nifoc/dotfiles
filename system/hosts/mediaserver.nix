@@ -61,7 +61,7 @@ in
   environment.etc."nix/netrc".source = ../../secret/shared/nix-netrc;
 
   boot = {
-    cleanTmpDir = true;
+    tmp.cleanOnBoot = true;
 
     binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
@@ -73,7 +73,7 @@ in
     useNetworkd = true;
   };
 
-  kernel.sysctl."net.ipv6.conf.ens3.disable_ipv6" = 1;
+  boot.kernel.sysctl."net.ipv6.conf.ens3.disable_ipv6" = 1;
 
   systemd.network = {
     enable = true;
