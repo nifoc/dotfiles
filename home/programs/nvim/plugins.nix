@@ -111,19 +111,19 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "f499a711fa5c573b5ba0af09a3c9955a6c14b062";
-      sha256 = "1aaw83878lqn4wnggjz4y3qgdilgk19iwdnhmpviff0q97lvqydb";
+      rev = "f7e8b7420ccf8bc61534ea6155db03d62c7ff571";
+      sha256 = "0vydjw0drzprvn38wi8a027n3a2fj5ic1i662nrplz7d2bf9vvwz";
       fetchSubmodules = false;
     };
   };
   nvim-ts-rainbow2 = buildVimPluginFrom2Nix {
     pname = "nvim-ts-rainbow2";
-    version = "2023-04-07";
+    version = "2023-04-14";
     src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "nvim-ts-rainbow2";
-      rev = "2c82e0965be2baf67fa2d3d48f3747437fde7204";
-      sha256 = "1f31bx466vl1if7kinbb1szrl65b9gq06v32nf9h6s5rs4yvmpv4";
+      rev = "7f814b9d6e4ef6f1f5b09526ba16b75125173480";
+      sha256 = "1l2p3q1n4ax4kyx5j044wxc22k7ay4rx2bh0lpaskmia47khd4ja";
       fetchSubmodules = false;
     };
   };
@@ -396,12 +396,12 @@ in
   };
   cmp-cmdline = buildVimPluginFrom2Nix {
     pname = "cmp-cmdline";
-    version = "2023-02-16";
+    version = "2023-04-14";
     src = fetchFromGitHub {
       owner = "hrsh7th";
       repo = "cmp-cmdline";
-      rev = "8fcc934a52af96120fe26358985c10c035984b53";
-      sha256 = "1bhhna3f1xzf6y7q6iq9v2369w0jrgnh0hngnw84wh79pknqsgb3";
+      rev = "af88e700417c6449719fc77f6f3745f88e42d5da";
+      sha256 = "07wkbyzia7b7m99dd96km3qhdl8ndibjnsjix5skzqsvxjv24jib";
       fetchSubmodules = false;
     };
   };

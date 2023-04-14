@@ -26,6 +26,10 @@
     '';
   };
 
+  systemd.tmpfiles.rules = [
+    "d /run/nginx-sockets 0777 root root"
+  ];
+
   networking.firewall.interfaces =
     let
       interfaces = lib.mapAttrsToList (_: value: lib.attrsets.attrByPath [ "matchConfig" "Name" ] null value) config.systemd.network.networks ++ [ "tailscale0" ];
