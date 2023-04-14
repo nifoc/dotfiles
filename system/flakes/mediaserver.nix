@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, ragenix, inputs, ... }:
+{ nixpkgs, home-manager, agenix, inputs, ... }:
 
 let
   overlay-attic = inputs.attic.overlays.default;
@@ -26,7 +26,7 @@ in
 
       home-manager.nixosModules.home-manager
 
-      ragenix.nixosModules.default
+      agenix.nixosModules.default
 
       {
         nixpkgs = nixpkgsConfig;

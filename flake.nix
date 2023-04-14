@@ -12,9 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ragenix = {
-      url = "github:yaxitech/ragenix";
+    agenix = {
+      url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "darwin";
     };
 
     attic = {
@@ -45,14 +46,14 @@
       sail = import ./system/flakes/sail.nix {
         inherit (inputs) nixpkgs;
         inherit (inputs) home-manager;
-        inherit (inputs) ragenix;
+        inherit (inputs) agenix;
         inherit inputs;
       };
 
       attic = import ./system/flakes/attic.nix {
         inherit (inputs) nixpkgs;
         inherit (inputs) home-manager;
-        inherit (inputs) ragenix;
+        inherit (inputs) agenix;
         inherit (inputs) attic;
         inherit inputs;
       };
@@ -60,7 +61,7 @@
       mediaserver = import ./system/flakes/mediaserver.nix {
         inherit (inputs) nixpkgs;
         inherit (inputs) home-manager;
-        inherit (inputs) ragenix;
+        inherit (inputs) agenix;
         inherit inputs;
       };
 

@@ -63,14 +63,12 @@ in
         "https://attic.cache.daniel.sx/nifoc-systems"
         "https://nifoc.cachix.org"
         "https://nix-community.cachix.org"
-        "https://wurzelpfropf.cachix.org"
       ];
 
       trusted-public-keys = [
         "nifoc-systems:eDDqVP5BFR6/1KvXbF9oUL8JahDdmbrsYtxlQ57LOTU="
         "nifoc.cachix.org-1:ymuftq7RgN/lf/iWXFK8gpwDSAGFaGBeliWe9u6q8II="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "wurzelpfropf.cachix.org-1:ilZwK5a6wJqVr7Fyrzp4blIEkGK+LJT0QrpWr1qBNq0="
       ];
     };
 
