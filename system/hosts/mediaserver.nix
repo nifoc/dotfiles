@@ -82,6 +82,7 @@ in
         networkConfig = {
           DHCP = "yes";
           IPv6AcceptRA = true;
+          IPv6PrivacyExtensions = true;
         };
         linkConfig.RequiredForOnline = "routable";
 
