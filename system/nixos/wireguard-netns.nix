@@ -6,6 +6,7 @@
   systemd.services."netns@" = {
     description = "%I network namespace";
     before = [ "network.target" ];
+    after = [ "run-agenix.d.mount" ];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
