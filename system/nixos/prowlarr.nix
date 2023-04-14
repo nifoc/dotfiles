@@ -38,6 +38,10 @@
     onlySSL = true;
     useACMEHost = "internal.kempkens.network";
 
+    extraConfig = ''
+      client_max_body_size 32m;
+    '';
+
     locations."/" = {
       recommendedProxySettings = true;
       proxyWebsockets = true;
