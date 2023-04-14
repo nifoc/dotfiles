@@ -1,5 +1,8 @@
 { pkgs, lib, config, ... }:
 
+let
+  interfaces = lib.mapAttrsToList (name: value: value.matchConfig.Name) config.systemd.network.networks ++ [ "tailscale0" ];
+in
 {
   services.nginx = {
     enable = true;
@@ -36,5 +39,5 @@
             allowedUDPPorts = [ 443 ];
           };
         })
-      (builtins.filter builtins.isString (lib.mapAttrsToList (name: value: value.matchConfig.Name) config.systemd.network.networks ++ [ "tailscale0" ])));
+      (builtins.filter builtins.isString interfaces));
 }
