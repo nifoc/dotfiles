@@ -35,5 +35,5 @@
           allowedUDPPorts = [ 443 ];
         };
       })
-      (lib.mapAttrsToList (name: value: value.matchConfig.Name) config.systemd.network.networks ++ [ "tailscale0" ]));
+      (lib.mapAttrsToList (name: value: value.matchConfig.Name) config.systemd.network.networks));
 }
