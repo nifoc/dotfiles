@@ -40,6 +40,7 @@
 
     locations."/" = {
       recommendedProxySettings = true;
+      proxyWebsockets = true;
       proxyPass = "http://unix:/run/socat-prowlarr/prowlarr.sock:/";
     };
   };
