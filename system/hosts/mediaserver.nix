@@ -80,7 +80,7 @@ in
       "10-lan" = {
         matchConfig.Name = "ens3";
         networkConfig = {
-          DHCP = "yes";
+          DHCP = "ipv4";
           IPv6AcceptRA = true;
         };
         linkConfig.RequiredForOnline = "routable";
