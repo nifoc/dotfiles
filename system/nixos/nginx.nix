@@ -29,15 +29,12 @@
   networking.firewall.interfaces = builtins.listToAttrs
     (builtins.map
       (iface:
-        let
-          xx = builtins.trace iface iface;
-        in
         {
-          name = xx;
+          name = iface;
           value = {
             allowedTCPPorts = [ 80 443 ];
             allowedUDPPorts = [ 443 ];
           };
         })
-      (lib.mapAttrsToList (name: value: value.matchConfig.Name) config.systemd.network.networks ++ [ "tailscale0" ]));
+      (builtins.filter builtins.isString (lib.mapAttrsToList (name: value: value.matchConfig.Name) config.systemd.network.networks ++ [ "tailscale0" ])));
 }
