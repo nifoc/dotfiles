@@ -19,8 +19,8 @@
   systemd.services.socat-prowlarr = {
     description = "socat exposes prowlarr";
     bindsTo = [ "netns@wg.service" ];
-    after = [ "network.target" "wg.service" ];
-    wantedBy = [ "multi-user.target" ];
+    requires = [ "network-online.target" ];
+    after = [ "wg.service" ];
 
     serviceConfig = {
       Type = "simple";
