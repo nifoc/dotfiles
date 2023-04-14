@@ -24,6 +24,7 @@
       Type = "simple";
       RuntimeDirectory = "socat-prowlarr";
       DynamicUser = true;
+      UMask = "000";
       NetworkNamespacePath = "/var/run/netns/wg";
       ExecStart = "${pkgs.socat}/bin/socat -d -d UNIX-LISTEN:/run/socat-prowlarr/prowlarr.sock,unlink-early,fork TCP4:127.0.0.1:9696";
       Restart = "on-failure";
