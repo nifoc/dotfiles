@@ -27,7 +27,7 @@
   };
 
   systemd.tmpfiles.rules = [
-    "d /run/nginx-sockets 0777 root root"
+    "d /var/lib/nginx-sockets 0777 root root"
   ];
 
   networking.firewall.interfaces =
