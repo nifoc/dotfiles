@@ -22,7 +22,7 @@
 
     serviceConfig = {
       Type = "simple";
-      User = "nobody";
+      DynamicUser = true;
       NetworkNamespacePath = "/var/run/netns/wg";
       UMask = "000";
       ExecStart = "${pkgs.socat}/bin/socat -d -d UNIX-LISTEN:/run/nginx-sockets/prowlarr.sock,unlink-early,fork TCP4:127.0.0.1:9696";
