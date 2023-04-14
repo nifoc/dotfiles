@@ -33,7 +33,7 @@
           xx = builtins.trace iface iface;
         in
         {
-          name = iface;
+          name = xx;
           value = {
             allowedTCPPorts = [ 80 443 ];
             allowedUDPPorts = [ 443 ];
