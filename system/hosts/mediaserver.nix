@@ -73,6 +73,8 @@ in
     useNetworkd = true;
   };
 
+  kernel.sysctl."net.ipv6.conf.ens3.disable_ipv6" = 1;
+
   systemd.network = {
     enable = true;
 
@@ -81,7 +83,7 @@ in
         matchConfig.Name = "ens3";
         networkConfig = {
           DHCP = "ipv4";
-          IPv6AcceptRA = true;
+          IPv6AcceptRA = false;
         };
         linkConfig.RequiredForOnline = "routable";
 
