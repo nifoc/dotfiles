@@ -29,4 +29,17 @@
       Restart = "on-failure";
     };
   };
+
+  services.nginx.virtualHosts."prowlarr.internal.kempkens.network" = {
+    quic = true;
+    http3 = true;
+
+    onlySSL = true;
+    useACMEHost = "internal.kempkens.network";
+
+    locations."/" = {
+      recommendedProxySettings = true;
+      proxyPass = "http://unix:/tmp/prowlarr.sock";
+    };
+  };
 }
