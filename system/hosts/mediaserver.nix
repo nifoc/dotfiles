@@ -11,6 +11,9 @@ in
 
     ../nixos/git.nix
 
+    ../nixos/acme-mediaserver.nix
+    ../nixos/nginx.nix
+
     ../nixos/attic.nix
 
     ../nixos/tailscale.nix

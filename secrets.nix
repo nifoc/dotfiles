@@ -58,6 +58,8 @@ in
   # mediaserver
   "agenix/hosts/mediaserver/user/danielPassword.age".publicKeys = mediaserver;
 
+  "agenix/hosts/mediaserver/acme/credentials.age".publicKeys = mediaserver;
+
   "agenix/hosts/mediaserver/tailscale/authkey.age".publicKeys = mediaserver;
 
   "agenix/hosts/mediaserver/wireguard/config.age".publicKeys = mediaserver;

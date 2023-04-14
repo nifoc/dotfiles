@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   services.nginx = {
@@ -26,17 +26,14 @@
     '';
   };
 
-  networking.firewall.interfaces =
-    let
-      nginxTCPPorts = [ 80 443 ];
-      nginxUDPPorts = [ 443 ];
-    in
-    {
-      "enp1s0".allowedTCPPorts = nginxTCPPorts;
-      "enp1s0".allowedUDPPorts = nginxUDPPorts;
-      "enp7s0".allowedTCPPorts = nginxTCPPorts;
-      "enp7s0".allowedUDPPorts = nginxUDPPorts;
-      "tailscale0".allowedTCPPorts = nginxTCPPorts;
-      "tailscale0".allowedUDPPorts = nginxUDPPorts;
-    };
+  networking.firewall.interfaces = builtins.listToAttrs
+    (builtins.map
+      (iface: {
+        name = iface;
+        value = {
+          allowedTCPPorts = [ 80 443 ];
+          allowedUDPPorts = [ 443 ];
+        };
+      })
+      (lib.mapAttrsToList (name: value: value.matchConfig.Name) config.systemd.network.networks ++ [ "tailscale0" ]));
 }
