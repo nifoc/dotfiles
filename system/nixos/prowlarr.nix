@@ -22,10 +22,10 @@
 
     serviceConfig = {
       Type = "simple";
+      RuntimeDirectory = "socat-prowlarr";
       DynamicUser = true;
       NetworkNamespacePath = "/var/run/netns/wg";
-      UMask = "000";
-      ExecStart = "${pkgs.socat}/bin/socat -d -d UNIX-LISTEN:/var/lib/nginx-sockets/prowlarr.sock,unlink-early,fork TCP4:127.0.0.1:9696";
+      ExecStart = "${pkgs.socat}/bin/socat -d -d UNIX-LISTEN:/run/socat-prowlarr/prowlarr.sock,unlink-early,fork TCP4:127.0.0.1:9696";
       Restart = "on-failure";
     };
   };
@@ -39,7 +39,7 @@
 
     locations."/" = {
       recommendedProxySettings = true;
-      proxyPass = "http://unix:/var/lib/nginx-sockets/prowlarr.sock:/";
+      proxyPass = "http://unix:/run/socat-prowlarr/prowlarr.sock:/";
     };
   };
 }
