@@ -6,7 +6,6 @@
   systemd.services."netns@" = {
     description = "%I network namespace";
     before = [ "network.target" ];
-    after = [ "run-agenix.d.mount" ];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
@@ -19,7 +18,7 @@
     description = "wg network interface";
     bindsTo = [ "netns@wg.service" ];
     requires = [ "network-online.target" ];
-    after = [ "netns@wg.service" ];
+    after = [ "netns@wg.service" "run-agenix.d.mount" ];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
