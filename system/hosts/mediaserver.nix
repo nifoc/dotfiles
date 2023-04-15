@@ -18,6 +18,7 @@ in
 
     ../nixos/tailscale.nix
 
+    ../nixos/mediaserver-setup.nix
     ../nixos/wireguard-netns.nix
     ../nixos/prowlarr.nix
   ];
