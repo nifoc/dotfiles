@@ -12,14 +12,23 @@
 
   services.rpcbind.enable = true;
 
-  systemd.mounts = [
-    {
-      type = "nfs";
-      mountConfig = {
-        Options = "noatime";
-      };
-      what = "10.0.0.100:/mnt/dozer/downloads";
-      where = "/mnt/downloads";
-    }
-  ];
+  systemd = {
+    mounts = [
+      {
+        type = "nfs";
+        mountConfig = {
+          Options = "noatime";
+        };
+        what = "10.0.0.100:/mnt/dozer/downloads";
+        where = "/mnt/downloads";
+      }
+    ];
+
+    automounts = [
+      {
+        wantedBy = [ "multi-user.target" ];
+        where = "/mnt/downloads";
+      }
+    ];
+  };
 }
