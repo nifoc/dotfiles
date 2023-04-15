@@ -19,6 +19,7 @@
   systemd.services.socat-sabnzbd = {
     description = "socat exposes sabnzbd";
     bindsTo = [ "wg.service" ];
+    requires = [ "sabnzbd.service" ];
     after = [ "wg.service" ];
 
     serviceConfig = {

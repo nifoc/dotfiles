@@ -18,6 +18,7 @@
   systemd.services.socat-prowlarr = {
     description = "socat exposes prowlarr";
     bindsTo = [ "wg.service" ];
+    requires = [ "prowlarr.service" ];
     after = [ "wg.service" ];
 
     serviceConfig = {
