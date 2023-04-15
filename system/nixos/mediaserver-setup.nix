@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   users.groups.media_group = {
     gid = 2001;
@@ -9,6 +11,8 @@
     description = "Media User";
     group = "media_group";
   };
+
+  environment.systemPackages = [ pkgs.nfs-utils ];
 
   services.rpcbind.enable = true;
 
