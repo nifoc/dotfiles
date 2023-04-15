@@ -46,8 +46,18 @@
     '';
 
     locations."/" = {
-      recommendedProxySettings = true;
       proxyPass = "http://unix:/run/socat-sonarr/sonarr.sock:/";
+
+      extraConfig = ''
+        set $fake_host localhost;
+
+        proxy_set_header Host $fake_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $fake_host;
+        proxy_set_header X-Forwarded-Server $fake_host;
+      '';
     };
   };
 }
