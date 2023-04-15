@@ -26,12 +26,68 @@
         what = "10.0.0.100:/mnt/dozer/downloads";
         where = "/mnt/downloads";
       }
+
+      {
+        type = "nfs";
+        mountConfig = {
+          Options = "noatime";
+        };
+        what = "10.0.0.100:/mnt/dozer/media/TV Shows";
+        where = "/mnt/media/TV Shows";
+      }
+
+      {
+        type = "nfs";
+        mountConfig = {
+          Options = "noatime";
+        };
+        what = "10.0.0.100:/mnt/dozer/media/Documentaries";
+        where = "/mnt/media/Documentaries";
+      }
+
+      {
+        type = "nfs";
+        mountConfig = {
+          Options = "noatime";
+        };
+        what = "10.0.0.100:/mnt/dozer/MediaVault/Anime";
+        where = "/mnt/media/Anime";
+      }
+
+      {
+        type = "nfs";
+        mountConfig = {
+          Options = "noatime";
+        };
+        what = "10.0.0.100:/mnt/dozer/media/Movies";
+        where = "/mnt/media/Movies";
+      }
     ];
 
     automounts = [
       {
         wantedBy = [ "multi-user.target" ];
         where = "/mnt/downloads";
+      }
+
+      {
+        wantedBy = [ "multi-user.target" ];
+        where = "/mnt/media/TV Shows";
+      }
+
+      {
+        wantedBy = [ "multi-user.target" ];
+        where = "/mnt/media/Documentaries";
+      }
+
+      {
+        wantedBy = [ "multi-user.target" ];
+        where = "/mnt/media/Anime";
+      }
+
+      {
+        wantedBy = [ "multi-user.target" ];
+        where = "/mnt/media/Movies";
       }
     ];
   };
