@@ -46,11 +46,8 @@
     '';
 
     locations."/" = {
+      recommendedProxySettings = true;
       proxyPass = "http://unix:/run/socat-sonarr/sonarr.sock:/";
-
-      extraConfig = ''
-        proxy_set_header Host localhost;
-      '';
     };
   };
 }
