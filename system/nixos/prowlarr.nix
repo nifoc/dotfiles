@@ -20,6 +20,7 @@
     bindsTo = [ "wg.service" ];
     requires = [ "prowlarr.service" ];
     after = [ "wg.service" ];
+    wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {
       Type = "simple";

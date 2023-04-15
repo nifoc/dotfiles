@@ -21,6 +21,7 @@
     bindsTo = [ "wg.service" ];
     requires = [ "sabnzbd.service" ];
     after = [ "wg.service" ];
+    wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {
       Type = "simple";

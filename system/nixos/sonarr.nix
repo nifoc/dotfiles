@@ -22,6 +22,7 @@
     bindsTo = [ "wg.service" ];
     requires = [ "sonarr.service" ];
     after = [ "wg.service" ];
+    wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {
       Type = "simple";
