@@ -12,8 +12,8 @@
     group = "media_group";
   };
 
+  boot.supportedFilesystems = [ "nfs" ];
   environment.systemPackages = [ pkgs.nfs-utils ];
-
   services.rpcbind.enable = true;
 
   systemd = {
