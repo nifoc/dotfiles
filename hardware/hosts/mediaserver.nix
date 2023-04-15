@@ -22,6 +22,8 @@
       "net.ipv4.tcp_congestion_control" = "bbr";
       "net.core.rmem_max" = 2500000;
     };
+
+    supportedFilesystems = [ "nfs" ];
   };
 
   fileSystems = {
