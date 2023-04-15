@@ -23,6 +23,7 @@ in
     ../nixos/prowlarr.nix
     ../nixos/sabnzbd.nix
     ../nixos/sonarr.nix
+    ../nixos/radarr.nix
   ];
 
   system.stateVersion = "22.11";
