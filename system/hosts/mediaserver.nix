@@ -22,6 +22,7 @@ in
     ../nixos/wireguard-netns.nix
     ../nixos/prowlarr.nix
     ../nixos/sabnzbd.nix
+    ../nixos/sonarr.nix
   ];
 
   system.stateVersion = "22.11";
