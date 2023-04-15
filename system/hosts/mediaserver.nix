@@ -21,6 +21,7 @@ in
     ../nixos/mediaserver-setup.nix
     ../nixos/wireguard-netns.nix
     ../nixos/prowlarr.nix
+    ../nixos/sabnzbd.nix
   ];
 
   system.stateVersion = "22.11";
