@@ -61,7 +61,7 @@ in
       generic-extlinux-compatible.enable = true;
     };
 
-    cleanTmpDir = true;
+    tmp.cleanOnBoot = true;
   };
 
   networking = {

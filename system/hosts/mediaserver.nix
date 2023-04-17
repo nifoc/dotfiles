@@ -24,6 +24,8 @@ in
     ../nixos/sabnzbd.nix
     ../nixos/sonarr.nix
     ../nixos/radarr.nix
+
+    ../nixos/container.nix
   ];
 
   system.stateVersion = "22.11";

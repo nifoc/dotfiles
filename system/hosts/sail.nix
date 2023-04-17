@@ -90,7 +90,7 @@ in
   environment.etc."nix/netrc".source = ../../secret/shared/nix-netrc;
 
   boot = {
-    cleanTmpDir = true;
+    tmp.cleanOnBoot = true;
 
     binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
