@@ -26,6 +26,7 @@ in
     ../nixos/radarr.nix
 
     ../nixos/container.nix
+    ../../secret/container/additional-media
   ];
 
   system.stateVersion = "22.11";
