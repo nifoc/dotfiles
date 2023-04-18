@@ -10,7 +10,7 @@
     };
 
     initrd = {
-      availableKernelModules = [ "ata_piix" "xhci_pci" "ahci" "sd_mod" "sr_mod" "virtio_balloon" ];
+      availableKernelModules = [ "ata_piix" "xhci_pci" "ahci" "sd_mod" "sr_mod" ];
       kernelModules = [ "tls" ];
     };
 
