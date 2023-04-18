@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ ldns wireguard-tools ];
+  environment.systemPackages = with pkgs; [ ldns tcpdump wireguard-tools ];
 
   environment.etc."netns/wg/resolv.conf" = {
     mode = "0644";
