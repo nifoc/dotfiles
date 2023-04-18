@@ -6,7 +6,6 @@
   environment.etc."netns/wg/resolv.conf" = {
     mode = "0644";
     text = ''
-      # de-fra-wg-004
       nameserver 10.64.0.1
     '';
   };
