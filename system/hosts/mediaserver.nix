@@ -102,6 +102,16 @@ in
     };
   };
 
+  services.resolved.enable = false;
+
+  environment.etc."resolv.conf" = {
+    mode = "0644";
+    text = ''
+      search lan
+      nameserver 10.0.0.1
+    '';
+  };
+
   services.journald.extraConfig = ''
     SystemMaxUse=1G
   '';
