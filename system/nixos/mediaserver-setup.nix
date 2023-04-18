@@ -8,6 +8,7 @@
   users.users.media_user = {
     uid = 1001;
     group = "media_group";
+    isSystemUser = true;
     description = "Media User";
     home = "/var/lib/media_user";
     createHome = true;
