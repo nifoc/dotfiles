@@ -12,6 +12,7 @@
     description = "Media User";
     home = "/var/lib/media_user";
     createHome = true;
+    autoSubUidGidRange = true;
   };
 
   boot.supportedFilesystems = [ "nfs" ];
