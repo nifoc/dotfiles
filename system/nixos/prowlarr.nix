@@ -15,24 +15,6 @@
     };
   };
 
-  systemd.services.socat-prowlarr = {
-    description = "socat exposes prowlarr";
-    bindsTo = [ "wg.service" ];
-    requires = [ "prowlarr.service" ];
-    after = [ "wg.service" ];
-    wantedBy = [ "multi-user.target" ];
-
-    serviceConfig = {
-      Type = "simple";
-      RuntimeDirectory = "socat-prowlarr";
-      DynamicUser = true;
-      UMask = "000";
-      NetworkNamespacePath = "/var/run/netns/wg";
-      ExecStart = "${pkgs.socat}/bin/socat -d -d UNIX-LISTEN:/run/socat-prowlarr/prowlarr.sock,unlink-early,fork TCP4:127.0.0.1:9696";
-      Restart = "on-failure";
-    };
-  };
-
   services.nginx.virtualHosts."prowlarr.internal.kempkens.network" = {
     quic = true;
     http3 = true;
@@ -46,8 +28,8 @@
 
     locations."/" = {
       recommendedProxySettings = true;
+      proxyPass = "http://192.168.42.2:9696";
       proxyWebsockets = true;
-      proxyPass = "http://unix:/run/socat-prowlarr/prowlarr.sock:/";
     };
   };
 }

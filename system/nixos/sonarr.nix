@@ -17,24 +17,6 @@
     };
   };
 
-  systemd.services.socat-sonarr = {
-    description = "socat exposes sonarr";
-    bindsTo = [ "wg.service" ];
-    requires = [ "sonarr.service" ];
-    after = [ "wg.service" ];
-    wantedBy = [ "multi-user.target" ];
-
-    serviceConfig = {
-      Type = "simple";
-      RuntimeDirectory = "socat-sonarr";
-      DynamicUser = true;
-      UMask = "000";
-      NetworkNamespacePath = "/var/run/netns/wg";
-      ExecStart = "${pkgs.socat}/bin/socat -d -d UNIX-LISTEN:/run/socat-sonarr/sonarr.sock,unlink-early,fork TCP4:127.0.0.1:8989";
-      Restart = "on-failure";
-    };
-  };
-
   services.nginx.virtualHosts."sonarr.internal.kempkens.network" = {
     quic = true;
     http3 = true;
@@ -48,7 +30,8 @@
 
     locations."/" = {
       recommendedProxySettings = true;
-      proxyPass = "http://unix:/run/socat-sonarr/sonarr.sock:/";
+      proxyPass = "http://192.168.42.2:8989";
+      proxyWebsockets = true;
     };
   };
 }

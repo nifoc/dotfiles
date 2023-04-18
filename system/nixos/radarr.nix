@@ -17,24 +17,6 @@
     };
   };
 
-  systemd.services.socat-radarr = {
-    description = "socat exposes radarr";
-    bindsTo = [ "wg.service" ];
-    requires = [ "radarr.service" ];
-    after = [ "wg.service" ];
-    wantedBy = [ "multi-user.target" ];
-
-    serviceConfig = {
-      Type = "simple";
-      RuntimeDirectory = "socat-radarr";
-      DynamicUser = true;
-      UMask = "000";
-      NetworkNamespacePath = "/var/run/netns/wg";
-      ExecStart = "${pkgs.socat}/bin/socat -d -d UNIX-LISTEN:/run/socat-radarr/radarr.sock,unlink-early,fork TCP4:127.0.0.1:7878";
-      Restart = "on-failure";
-    };
-  };
-
   services.nginx.virtualHosts."radarr.internal.kempkens.network" = {
     quic = true;
     http3 = true;
@@ -48,7 +30,8 @@
 
     locations."/" = {
       recommendedProxySettings = true;
-      proxyPass = "http://unix:/run/socat-radarr/radarr.sock:/";
+      proxyPass = "http://192.168.42.2:7878";
+      proxyWebsockets = true;
     };
   };
 }
