@@ -48,8 +48,6 @@
       RemainAfterExit = true;
       ExecStart = with pkgs; writers.writeBash "wg-up" ''
         set -e
-        echo "Setting lo to up ..."
-        ${iproute}/bin/ip -n wg link set lo up
         echo "Creating veth bridge ..."
         ${iproute}/bin/ip link add name vethwghost0 type veth peer name vethwgns0
         ${iproute}/bin/ip link set vethwgns0 netns wg
@@ -76,8 +74,6 @@
         echo "Tearing down veth bridge ..."
         ${iproute}/bin/ip -n wg link del vethwgns0
         ${iproute}/bin/ip link del vethwghost0
-        echo "Setting lo to down ..."
-        ${iproute}/bin/ip -n wg link set lo down
         echo "Done!"
       '';
     };
