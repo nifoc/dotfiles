@@ -1,18 +1,20 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
-  services.sabnzbd = {
-    enable = true;
-    user = "media_user";
-    group = "media_group";
-  };
-
+  # The nix-provided options force a sabnzbd-user to a certain degree
   systemd.services.sabnzbd = {
+    description = "sabnzbd server";
     bindsTo = [ "wg.service" ];
-    after = lib.mkForce [ "wg.service" ];
+    after = [ "wg.service" ];
+    wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {
+      Type = "forking";
+      GuessMainPID = "no";
+      User = "media_user";
+      Group = "media_group";
       NetworkNamespacePath = "/var/run/netns/wg";
+      ExecStart = "${pkgs.sabnzbd}/bin/sabnzbd -d -f /var/lib/sabnzbd/sabnzbd.ini";
     };
   };
 
