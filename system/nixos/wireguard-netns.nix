@@ -10,6 +10,23 @@
     '';
   };
 
+  environment.etc."netns/wg/nsswitch.conf" = {
+    mode = "0644";
+    text = ''
+      passwd:    files systemd
+      group:     files [success=merge] systemd
+      shadow:    files
+
+      hosts:     files mymachines myhostname dns
+      networks:  files
+
+      ethers:    files
+      services:  files
+      protocols: files
+      rpc:       files
+    '';
+  };
+
   systemd.services."netns@" = {
     description = "%I network namespace";
     before = [ "network.target" ];
