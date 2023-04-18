@@ -7,9 +7,10 @@
 
   users.users.media_user = {
     uid = 1001;
-    isSystemUser = true;
-    description = "Media User";
     group = "media_group";
+    description = "Media User";
+    home = "/var/lib/media_user";
+    createHome = true;
   };
 
   boot.supportedFilesystems = [ "nfs" ];
