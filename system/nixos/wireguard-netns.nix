@@ -24,14 +24,21 @@
       RemainAfterExit = true;
       ExecStart = with pkgs; writers.writeBash "wg-up" ''
         set -e
-        echo "Creating interface ..."
+        echo "Setting lo to up ..."
+        ${iproute}/bin/ip -n wg link set lo up
+        echo "Creating veth bridge ..."
+        ${iproute}/bin/ip link add name vethwghost0 type veth peer name vethwgns0
+        ${iproute}/bin/ip link set vethwgns0 netns wg
+        ${iproute}/bin/ip address add 192.168.42.1/24 dev vethwghost0
+        ${iproute}/bin/ip -n wg address add 192.168.42.2/24 dev vethwgns0
+        ${iproute}/bin/ip link set vethwghost0 up
+        ${iproute}/bin/ip -n wg link set vethwgns0 up
+        echo "Creating wg0 interface ..."
         ${iproute}/bin/ip link add wg0 type wireguard
-        echo "Configuring wg0 ..."
         ${wireguard-tools}/bin/wg setconf wg0 ${config.age.secrets.wireguard-config.path}
         ${iproute}/bin/ip link set wg0 netns wg
         ${iproute}/bin/ip -n wg address add 10.66.10.158/32 dev wg0
         ${iproute}/bin/ip -n wg -6 address add fc00:bbbb:bbbb:bb01::3:a9d/128 dev wg0
-        ${iproute}/bin/ip -n wg link set lo up
         ${iproute}/bin/ip -n wg link set wg0 up
         ${iproute}/bin/ip -n wg route add default dev wg0
         ${iproute}/bin/ip -n wg -6 route add default dev wg0
@@ -42,6 +49,10 @@
         ${iproute}/bin/ip -n wg route del default dev wg0
         ${iproute}/bin/ip -n wg -6 route del default dev wg0
         ${iproute}/bin/ip -n wg link del wg0
+        echo "Tearing down veth bridge ..."
+        ${iproute}/bin/ip -n wg link del vethwgns0
+        ${iproute}/bin/ip link del vethwghost0
+        echo "Setting lo to down ..."
         ${iproute}/bin/ip -n wg link set lo down
         echo "Done!"
       '';
