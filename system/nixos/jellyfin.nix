@@ -26,8 +26,6 @@
     quic = true;
     http3 = true;
 
-    serverAliases = [ "jellyfin.home.kempkens.io" ];
-
     onlySSL = true;
     useACMEHost = "internal.kempkens.network";
 
