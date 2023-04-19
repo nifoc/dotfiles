@@ -53,9 +53,6 @@
       }
     ];
 
-    quic = true;
-    http3 = true;
-
     onlySSL = true;
     useACMEHost = "internal.kempkens.network";
 
