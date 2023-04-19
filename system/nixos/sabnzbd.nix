@@ -14,6 +14,10 @@
       User = "media_user";
       Group = "media_group";
       NetworkNamespacePath = "/var/run/netns/wg";
+      BindReadOnlyPaths = [
+        "/etc/netns/wg/resolv.conf:/etc/resolv.conf:norbind"
+        "/etc/netns/wg/nsswitch.conf:/etc/nsswitch.conf:norbind"
+      ];
       ExecStart = "${pkgs.sabnzbd}/bin/sabnzbd -d -f /var/lib/sabnzbd/sabnzbd.ini";
     };
   };
