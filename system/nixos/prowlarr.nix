@@ -12,6 +12,10 @@
 
     serviceConfig = {
       NetworkNamespacePath = "/var/run/netns/wg";
+      BindReadOnlyPaths = [
+        "/etc/netns/wg/resolv.conf:/etc/resolv.conf:norbind"
+        "/etc/netns/wg/nsswitch.conf:/etc/nsswitch.conf:norbind"
+      ];
     };
   };
 
