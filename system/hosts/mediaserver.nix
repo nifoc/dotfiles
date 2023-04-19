@@ -24,6 +24,7 @@ in
     ../nixos/sabnzbd.nix
     ../nixos/sonarr.nix
     ../nixos/radarr.nix
+    ../nixos/jellyfin.nix
 
     ../nixos/container.nix
     ../../secret/container/additional-media
