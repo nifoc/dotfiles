@@ -49,6 +49,8 @@
     in
     {
       "ens3".allowedTCPPorts = ports;
+      "ens3".allowedUDPPorts = ports;
       "tailscale0".allowedTCPPorts = ports;
+      "tailscale0".allowedUDPPorts = ports;
     };
 }
