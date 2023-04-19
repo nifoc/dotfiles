@@ -9,6 +9,12 @@
   };
 
   services.nginx.virtualHosts."jellyfin.internal.kempkens.network" = {
+    listen = [{
+      addr = "0.0.0.0";
+      port = 9920;
+      ssl = true;
+    }];
+
     quic = true;
     http3 = true;
 
@@ -17,7 +23,7 @@
 
     locations."/" = {
       recommendedProxySettings = true;
-      proxyPass = "http://192.168.42.2:7878";
+      proxyPass = "http://127.0.0.1:8096";
       proxyWebsockets = true;
     };
   };
