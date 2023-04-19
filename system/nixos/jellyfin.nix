@@ -14,14 +14,12 @@
         addr = "0.0.0.0";
         port = 9920;
         ssl = true;
-        extraParameters = [ "proxy_protocol" ];
       }
 
       {
         addr = "[::0]";
         port = 9920;
         ssl = true;
-        extraParameters = [ "proxy_protocol" ];
       }
     ];
 
