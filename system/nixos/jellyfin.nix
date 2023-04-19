@@ -43,9 +43,42 @@
     };
   };
 
+  services.nginx.virtualHosts."jellyfin.home.kempkens.io" = {
+    listen = [
+      {
+        addr = "0.0.0.0";
+        port = 9921;
+        ssl = true;
+        extraParameters = [ "proxy_protocol" ];
+      }
+    ];
+
+    quic = true;
+    http3 = true;
+
+    onlySSL = true;
+    useACMEHost = "internal.kempkens.network";
+
+    extraConfig = ''
+      set_real_ip_from 100.76.233.31/32;
+      real_ip_header proxy_protocol;
+    '';
+
+    locations."/" = {
+      recommendedProxySettings = true;
+      proxyPass = "http://127.0.0.1:8096";
+    };
+
+    locations."/socket" = {
+      recommendedProxySettings = true;
+      proxyPass = "http://127.0.0.1:8096";
+      proxyWebsockets = true;
+    };
+  };
+
   networking.firewall.interfaces =
     let
-      ports = [ 9920 ];
+      ports = [ 9920 9921 ];
     in
     {
       "ens3".allowedTCPPorts = ports;
