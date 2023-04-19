@@ -27,4 +27,13 @@
       proxyWebsockets = true;
     };
   };
+
+  networking.firewall.interfaces =
+    let
+      ports = [ 9920 ];
+    in
+    {
+      "ens3".allowedTCPPorts = ports;
+      "tailscale0".allowedTCPPorts = ports;
+    };
 }
