@@ -4,7 +4,7 @@
   systemd.tmpfiles.rules = [
     "d /var/lib/tubearchivist 0755 root root"
     "d /var/lib/tubearchivist/redis 0755 root root"
-    "d /var/lib/tubearchivist/es 0755 root root"
+    "d /var/lib/tubearchivist/es 0755 1000 root"
   ];
 
   virtualisation.oci-containers.containers = {
@@ -36,14 +36,14 @@
   };
 
   systemd.services.podman-tubearchivist.serviceConfig = {
-    TimeoutStopSec = lib.mkForce 5;
+    TimeoutStopSec = lib.mkForce 30;
   };
 
   systemd.services.podman-archivist-redis.serviceConfig = {
-    TimeoutStopSec = lib.mkForce 10;
+    TimeoutStopSec = lib.mkForce 30;
   };
 
   systemd.services.podman-archivist-es.serviceConfig = {
-    TimeoutStopSec = lib.mkForce 20;
+    TimeoutStopSec = lib.mkForce 30;
   };
 }
