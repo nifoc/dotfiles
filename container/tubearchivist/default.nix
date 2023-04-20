@@ -1,4 +1,4 @@
-{ config, ... }:
+{ lib, config, ... }:
 
 {
   systemd.tmpfiles.rules = [
@@ -33,5 +33,17 @@
         "/var/lib/tubearchivist/es:/usr/share/elasticsearch/data"
       ];
     };
+  };
+
+  systemd.services.podman-tubearchivist.serviceConfig = {
+    TimeoutStopSec = lib.mkForce 5;
+  };
+
+  systemd.services.podman-archivist-redis.serviceConfig = {
+    TimeoutStopSec = lib.mkForce 10;
+  };
+
+  systemd.services.podman-archivist-es.serviceConfig = {
+    TimeoutStopSec = lib.mkForce 20;
   };
 }
