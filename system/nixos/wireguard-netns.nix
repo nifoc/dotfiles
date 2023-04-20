@@ -50,9 +50,8 @@
         set -e
         echo "Setting lo to up ..."
         ${iproute}/bin/ip -n wg link set lo up
-        echo "Creating veth bridge ..."
-        ${iproute}/bin/ip link add name vethwghost0 type veth peer name vethwgns0
-        ${iproute}/bin/ip link set vethwgns0 netns wg
+        echo "Creating veth network ..."
+        ${iproute}/bin/ip link add name vethwghost0 type veth peer vethwgns0 netns wg
         ${iproute}/bin/ip address add 192.168.42.1/24 dev vethwghost0
         ${iproute}/bin/ip -n wg address add 192.168.42.2/24 dev vethwgns0
         ${iproute}/bin/ip link set vethwghost0 up
@@ -73,9 +72,9 @@
         ${iproute}/bin/ip -n wg route del default dev wg0
         ${iproute}/bin/ip -n wg -6 route del default dev wg0
         ${iproute}/bin/ip -n wg link del wg0
-        echo "Tearing down veth bridge ..."
-        ${iproute}/bin/ip -n wg link del vethwgns0
+        echo "Tearing down veth network ..."
         ${iproute}/bin/ip link del vethwghost0
+        ${iproute}/bin/ip -n wg link del vethwgns0
         echo "Setting lo to down ..."
         ${iproute}/bin/ip -n wg link set lo down
         echo "Done!"
