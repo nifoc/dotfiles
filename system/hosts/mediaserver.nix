@@ -1,6 +1,7 @@
 args@{ pkgs, config, lib, ... }:
 
 let
+  secret = import ../../secret/hosts/mediaserver.nix;
   ssh-keys = import ../shared/ssh-keys.nix;
 in
 {
@@ -19,7 +20,7 @@ in
     ../nixos/tailscale.nix
 
     ../nixos/mediaserver-setup.nix
-    ../nixos/wireguard-netns.nix
+    (import ../nixos/wireguard-netns.nix (args // { inherit secret; }))
     ../nixos/prowlarr.nix
     ../nixos/sabnzbd.nix
     ../nixos/sonarr.nix
