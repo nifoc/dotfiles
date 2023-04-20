@@ -83,6 +83,15 @@
         what = "10.0.0.100:/mnt/dozer/media/Deutsche Filme";
         where = "/mnt/media/Deutsche Filme";
       }
+
+      {
+        type = "nfs";
+        mountConfig = {
+          Options = "noatime,nconnect=4";
+        };
+        what = "10.0.0.100:/mnt/dozer/MediaVault/YTDL";
+        where = "/mnt/media/YTDL";
+      }
     ];
 
     automounts = [
@@ -119,6 +128,11 @@
       {
         wantedBy = [ "multi-user.target" ];
         where = "/mnt/media/Deutsche Filme";
+      }
+
+      {
+        wantedBy = [ "multi-user.target" ];
+        where = "/mnt/media/YTDL";
       }
     ];
   };
