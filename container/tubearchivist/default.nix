@@ -46,4 +46,17 @@
   systemd.services.podman-archivist-es.serviceConfig = {
     TimeoutStopSec = lib.mkForce 30;
   };
+
+  services.nginx.virtualHosts."tubearchivist.internal.kempkens.network" = {
+    quic = true;
+    http3 = true;
+
+    onlySSL = true;
+    useACMEHost = "internal.kempkens.network";
+
+    locations."/" = {
+      recommendedProxySettings = true;
+      proxyPass = "http://127.0.0.1:9887";
+    };
+  };
 }
