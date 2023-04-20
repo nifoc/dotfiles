@@ -8,17 +8,17 @@
   ];
 
   virtualisation.oci-containers.containers = {
-    #   tubearchivist = {
-    #     image = "docker.io/bbilly1/tubearchivist:latest";
-    #     dependsOn = [ "archivist-es" "archivist-redis" ];
-    #     ports = [ "127.0.0.1:9887:8000" ];
-    #     environmentFiles = [ config.age.secrets.tubearchivist-environment-ta.path ];
-    #     volumes = [
-    #       "/mnt/media/YTDL/Downloads:/youtube"
-    #       "/mnt/media/YTDL/Cache:/cache"
-    #     ];
-    #   };
-    #
+    tubearchivist = {
+      image = "docker.io/bbilly1/tubearchivist:latest";
+      dependsOn = [ "archivist-es" "archivist-redis" ];
+      ports = [ "127.0.0.1:9887:8000" ];
+      environmentFiles = [ config.age.secrets.tubearchivist-environment-ta.path ];
+      volumes = [
+        "/mnt/media/YTDL/Downloads:/youtube"
+        "/mnt/media/YTDL/Cache:/cache"
+      ];
+    };
+
     archivist-redis = {
       image = "docker.io/redis/redis-stack-server:latest";
       volumes = [
