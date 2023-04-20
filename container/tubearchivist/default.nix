@@ -29,7 +29,6 @@
     archivist-es = {
       image = "docker.io/bbilly1/tubearchivist-es:latest";
       environmentFiles = [ config.age.secrets.tubearchivist-environment-es.path ];
-      extraOptions = [ "--ulimit memlock=-1:-1" ];
       volumes = [
         "/var/lib/tubearchivist/es:/usr/share/elasticsearch/data"
       ];
