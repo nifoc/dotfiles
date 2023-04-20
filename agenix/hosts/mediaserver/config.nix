@@ -17,5 +17,13 @@
     wireguard-config = {
       file = ./wireguard/config.age;
     };
+
+    tubearchivist-environment-ta = {
+      file = ./tubearchivist/environmentTA.age;
+    };
+
+    tubearchivist-environment-es = {
+      file = ./tubearchivist/environmentES.age;
+    };
   };
 }

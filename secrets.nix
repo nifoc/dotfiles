@@ -63,4 +63,8 @@ in
   "agenix/hosts/mediaserver/tailscale/authkey.age".publicKeys = mediaserver;
 
   "agenix/hosts/mediaserver/wireguard/config.age".publicKeys = mediaserver;
+
+  "agenix/hosts/mediaserver/tubearchivist/environmentTA.age".publicKeys = mediaserver;
+
+  "agenix/hosts/mediaserver/tubearchivist/environmentES.age".publicKeys = mediaserver;
 }

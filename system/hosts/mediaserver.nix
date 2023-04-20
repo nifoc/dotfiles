@@ -27,6 +27,7 @@ in
     ../nixos/jellyfin.nix
 
     ../nixos/container.nix
+    ../../container/tubearchivist
     ../../secret/container/additional-media
   ];
 
