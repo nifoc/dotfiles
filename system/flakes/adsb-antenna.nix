@@ -33,6 +33,7 @@ in
       {
         nixpkgs = nixpkgsConfig;
         nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
+        nix.registry.nixpkgs.flake = nixpkgs;
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.daniel = import ../../home/hosts/adsb-antenna.nix;
