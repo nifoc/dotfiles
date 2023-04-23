@@ -24,7 +24,7 @@
       {
         type = "nfs";
         mountConfig = {
-          Options = "noatime,nconnect=4";
+          Options = "noatime,nconnect=16";
         };
         what = "10.0.0.100:/mnt/dozer/downloads";
         where = "/mnt/downloads";
@@ -33,7 +33,7 @@
       {
         type = "nfs";
         mountConfig = {
-          Options = "noatime,nconnect=4";
+          Options = "noatime,nconnect=16";
         };
         what = "10.0.0.100:/mnt/dozer/media/TV Shows";
         where = "/mnt/media/TV Shows";
@@ -42,7 +42,7 @@
       {
         type = "nfs";
         mountConfig = {
-          Options = "noatime,nconnect=4";
+          Options = "noatime,nconnect=16";
         };
         what = "10.0.0.100:/mnt/dozer/media/Documentaries";
         where = "/mnt/media/Documentaries";
@@ -51,7 +51,7 @@
       {
         type = "nfs";
         mountConfig = {
-          Options = "noatime,nconnect=4";
+          Options = "noatime,nconnect=16";
         };
         what = "10.0.0.100:/mnt/dozer/MediaVault/Anime";
         where = "/mnt/media/Anime";
@@ -60,7 +60,7 @@
       {
         type = "nfs";
         mountConfig = {
-          Options = "noatime,nconnect=4";
+          Options = "noatime,nconnect=16";
         };
         what = "10.0.0.100:/mnt/dozer/media/Movies";
         where = "/mnt/media/Movies";
@@ -69,7 +69,7 @@
       {
         type = "nfs";
         mountConfig = {
-          Options = "noatime,nconnect=4";
+          Options = "noatime,nconnect=16";
         };
         what = "10.0.0.100:/mnt/dozer/MediaVault/Deutsche Serien";
         where = "/mnt/media/Deutsche Serien";
@@ -78,7 +78,7 @@
       {
         type = "nfs";
         mountConfig = {
-          Options = "noatime,nconnect=4";
+          Options = "noatime,nconnect=16";
         };
         what = "10.0.0.100:/mnt/dozer/media/Deutsche Filme";
         where = "/mnt/media/Deutsche Filme";
@@ -87,7 +87,7 @@
       {
         type = "nfs";
         mountConfig = {
-          Options = "noatime,nconnect=4";
+          Options = "noatime,nconnect=16";
         };
         what = "10.0.0.100:/mnt/dozer/MediaVault/YTDL";
         where = "/mnt/media/YTDL";
