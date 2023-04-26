@@ -36,6 +36,20 @@ in
   };
 
   services.nginx.virtualHosts."aria.internal.kempkens.network" = {
+    listen = [
+      {
+        addr = "0.0.0.0";
+        port = 6800;
+        ssl = true;
+      }
+
+      {
+        addr = "[::0]";
+        port = 6800;
+        ssl = true;
+      }
+    ];
+
     quic = true;
     http3 = true;
     kTLS = true;
@@ -46,13 +60,8 @@ in
 
     locations."/jsonrpc" = {
       recommendedProxySettings = true;
-      proxyPass = "http://192.168.42.2:6800";
+      proxyPass = "http://192.168.42.2:6801";
       proxyWebsockets = true;
-    };
-
-    locations."/rpc" = {
-      recommendedProxySettings = true;
-      proxyPass = "http://192.168.42.2:6800";
     };
   };
 }
