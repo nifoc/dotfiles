@@ -7,12 +7,6 @@ let
 in
 {
   # The nix-provided options force a aria2-user to a certain degree
-  systemd.tmpfiles.rules = [
-    "d ${ariaDir} 0755 media_user media_group"
-    "d ${settingsDir} 0755 media_user media_group"
-    "d ${ariaDir}/dl 0755 media_user media_group"
-  ];
-
   systemd.services.aria2 = {
     description = "aria2 Service";
     bindsTo = [ "wg.service" ];
