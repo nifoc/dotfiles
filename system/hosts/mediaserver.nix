@@ -26,6 +26,7 @@ in
     ../nixos/sonarr.nix
     ../nixos/radarr.nix
     ../nixos/jellyfin.nix
+    ../nixos/aria2.nix
 
     ../nixos/container.nix
     ../../container/tubearchivist

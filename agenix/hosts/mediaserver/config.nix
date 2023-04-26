@@ -25,5 +25,11 @@
     tubearchivist-environment-es = {
       file = ./tubearchivist/environmentES.age;
     };
+
+    aria2-config = {
+      file = ./aria2/config.age;
+      owner = "media_user";
+      group = "media_group";
+    };
   };
 }

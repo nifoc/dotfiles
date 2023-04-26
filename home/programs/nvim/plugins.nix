@@ -107,12 +107,12 @@ in
   };
   nvim-treesitter = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2023-04-25";
+    version = "2023-04-26";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "82bcd8483e0b802bd5f639046c88aecfddbab508";
-      sha256 = "12phddjhxir1b9b8731b2d28zfa9lxvk85pi6i126s84rnr76nv2";
+      rev = "0d7da3bd7d59ffacc2fac6a52a1ba16d820f882c";
+      sha256 = "0dd125zxggjxkdv8lpshm9w0fm0m1w7k2r1i5ar1rhgzbb4v0b3y";
       fetchSubmodules = false;
     };
   };
@@ -140,12 +140,12 @@ in
   };
   telescope-nvim = buildVimPluginFrom2Nix {
     pname = "telescope.nvim";
-    version = "2023-04-23";
+    version = "2023-04-26";
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "f2645c13205abb9ee3dbcee68416645c69b863c8";
-      sha256 = "0kayab5maqjw9dq1dvila2si6j79rrbimfmj7az718msz20fp35z";
+      rev = "713d26b98583b160b50fb827adb751f768238ed3";
+      sha256 = "0g9ac5wp9vnj2qmwc4v6ix0pjsaqg0q5vk42wbyjjnkxa17f2y1b";
       fetchSubmodules = false;
     };
   };
@@ -308,12 +308,12 @@ in
   };
   friendly-snippets = buildVimPluginFrom2Nix {
     pname = "friendly-snippets";
-    version = "2023-04-24";
+    version = "2023-04-26";
     src = fetchFromGitHub {
       owner = "rafamadriz";
       repo = "friendly-snippets";
-      rev = "9590ff90759488674cf97fe5d5754a0733ab37bb";
-      sha256 = "1x89ffp5ih2xsjzczfv1nma8jvr0sbwyss7mw4pkxfivhz10ai5c";
+      rev = "631f79e346b0b3203d2ce3eae619ca8d612e5463";
+      sha256 = "0ly8dpp2g6ls5cxwhwb2pwihn9ivhc0amb9h33lfchs5m6ps2a7b";
       fetchSubmodules = false;
     };
   };
