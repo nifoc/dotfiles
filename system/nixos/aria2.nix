@@ -36,20 +36,6 @@ in
   };
 
   services.nginx.virtualHosts."aria.internal.kempkens.network" = {
-    listen = [
-      {
-        addr = "0.0.0.0";
-        port = 6800;
-        ssl = true;
-      }
-
-      {
-        addr = "[::0]";
-        port = 6800;
-        ssl = true;
-      }
-    ];
-
     quic = true;
     http3 = true;
     kTLS = true;
@@ -64,15 +50,4 @@ in
       proxyWebsockets = true;
     };
   };
-
-  networking.firewall.interfaces =
-    let
-      ports = [ 6800 ];
-    in
-    {
-      "ens3".allowedTCPPorts = ports;
-      "ens3".allowedUDPPorts = ports;
-      "tailscale0".allowedTCPPorts = ports;
-      "tailscale0".allowedUDPPorts = ports;
-    };
 }
