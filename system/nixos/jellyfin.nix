@@ -8,6 +8,22 @@
     openFirewall = false;
   };
 
+  systemd.services.jellyfin =
+    let
+      mounts = [
+        "mnt-media-TV\\x20Shows.mount"
+        "mnt-media-Documentaries.mount"
+        "mnt-media-Anime.mount"
+        "mnt-media-Movies.mount"
+        "mnt-media-Deutsche\\x20Serien.mount"
+        "mnt-media-Deutsche\\x20Filme.mount"
+      ];
+    in
+    {
+      requires = mounts;
+      after = lib.mkMerge mounts;
+    };
+
   services.nginx.virtualHosts."jellyfin.internal.kempkens.network" = {
     listen = [
       {

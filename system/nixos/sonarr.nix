@@ -8,18 +8,28 @@
     openFirewall = false;
   };
 
-  systemd.services.sonarr = {
-    bindsTo = [ "wg.service" ];
-    after = lib.mkForce [ "wg.service" ];
-
-    serviceConfig = {
-      NetworkNamespacePath = "/var/run/netns/wg";
-      BindReadOnlyPaths = [
-        "/etc/netns/wg/resolv.conf:/etc/resolv.conf:norbind"
-        "/etc/netns/wg/nsswitch.conf:/etc/nsswitch.conf:norbind"
+  systemd.services.sonarr =
+    let
+      mounts = [
+        "mnt-media-TV\\x20Shows.mount"
+        "mnt-media-Documentaries.mount"
+        "mnt-media-Anime.mount"
+        "mnt-downloads.mount"
       ];
+    in
+    {
+      requires = mounts;
+      bindsTo = [ "wg.service" ];
+      after = lib.mkForce ([ "wg.service" ] ++ mounts);
+
+      serviceConfig = {
+        NetworkNamespacePath = "/var/run/netns/wg";
+        BindReadOnlyPaths = [
+          "/etc/netns/wg/resolv.conf:/etc/resolv.conf:norbind"
+          "/etc/netns/wg/nsswitch.conf:/etc/nsswitch.conf:norbind"
+        ];
+      };
     };
-  };
 
   services.nginx.virtualHosts."sonarr.internal.kempkens.network" = {
     quic = true;

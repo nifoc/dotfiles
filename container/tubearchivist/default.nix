@@ -35,9 +35,18 @@
     };
   };
 
-  systemd.services.podman-tubearchivist.serviceConfig = {
-    TimeoutStopSec = lib.mkForce 30;
-  };
+  systemd.services.podman-tubearchivist =
+    let
+      mounts = [ "mnt-media-YTDL.mount" ];
+    in
+    {
+      requires = mounts;
+      after = lib.mkMerge mounts;
+
+      serviceConfig = {
+        TimeoutStopSec = lib.mkForce 30;
+      };
+    };
 
   systemd.services.podman-archivist-redis.serviceConfig = {
     TimeoutStopSec = lib.mkForce 30;
