@@ -21,7 +21,7 @@
     in
     {
       requires = mounts;
-      after = lib.mkMerge mounts;
+      after = lib.mkForce ([ "network.target" ] ++ mounts);
     };
 
   services.nginx.virtualHosts."jellyfin.internal.kempkens.network" = {
