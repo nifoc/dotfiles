@@ -41,7 +41,7 @@
     in
     {
       requires = mounts;
-      after = lib.mkMerge mounts;
+      after = lib.mkForce ([ "network-online.target" "podman-archivist-es.service" "podman-archivist-redis.service" ] ++ mounts);
 
       serviceConfig = {
         TimeoutStopSec = lib.mkForce 30;
