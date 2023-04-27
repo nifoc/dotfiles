@@ -22,6 +22,7 @@
   systemd = {
     mounts = [
       {
+        wantedBy = [ "multi-user.target" ];
         type = "nfs";
         mountConfig = {
           Options = "noatime,nconnect=16";
@@ -31,6 +32,7 @@
       }
 
       {
+        wantedBy = [ "multi-user.target" ];
         type = "nfs";
         mountConfig = {
           Options = "noatime,nconnect=16";
@@ -40,6 +42,7 @@
       }
 
       {
+        wantedBy = [ "multi-user.target" ];
         type = "nfs";
         mountConfig = {
           Options = "noatime,nconnect=16";
@@ -49,6 +52,7 @@
       }
 
       {
+        wantedBy = [ "multi-user.target" ];
         type = "nfs";
         mountConfig = {
           Options = "noatime,nconnect=16";
@@ -58,6 +62,7 @@
       }
 
       {
+        wantedBy = [ "multi-user.target" ];
         type = "nfs";
         mountConfig = {
           Options = "noatime,nconnect=16";
@@ -67,6 +72,7 @@
       }
 
       {
+        wantedBy = [ "multi-user.target" ];
         type = "nfs";
         mountConfig = {
           Options = "noatime,nconnect=16";
@@ -76,6 +82,7 @@
       }
 
       {
+        wantedBy = [ "multi-user.target" ];
         type = "nfs";
         mountConfig = {
           Options = "noatime,nconnect=16";
@@ -85,53 +92,12 @@
       }
 
       {
+        wantedBy = [ "multi-user.target" ];
         type = "nfs";
         mountConfig = {
           Options = "noatime,nconnect=16";
         };
         what = "10.0.0.100:/mnt/dozer/MediaVault/YTDL";
-        where = "/mnt/media/YTDL";
-      }
-    ];
-
-    automounts = [
-      {
-        wantedBy = [ "multi-user.target" ];
-        where = "/mnt/downloads";
-      }
-
-      {
-        wantedBy = [ "multi-user.target" ];
-        where = "/mnt/media/TV Shows";
-      }
-
-      {
-        wantedBy = [ "multi-user.target" ];
-        where = "/mnt/media/Documentaries";
-      }
-
-      {
-        wantedBy = [ "multi-user.target" ];
-        where = "/mnt/media/Anime";
-      }
-
-      {
-        wantedBy = [ "multi-user.target" ];
-        where = "/mnt/media/Movies";
-      }
-
-      {
-        wantedBy = [ "multi-user.target" ];
-        where = "/mnt/media/Deutsche Serien";
-      }
-
-      {
-        wantedBy = [ "multi-user.target" ];
-        where = "/mnt/media/Deutsche Filme";
-      }
-
-      {
-        wantedBy = [ "multi-user.target" ];
         where = "/mnt/media/YTDL";
       }
     ];
