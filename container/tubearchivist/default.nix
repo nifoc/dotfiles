@@ -40,7 +40,7 @@
       mounts = [ "mnt-media-YTDL.mount" ];
     in
     {
-      requires = mounts;
+      requires = lib.mkAfter mounts;
       after = lib.mkAfter mounts;
 
       serviceConfig = {
