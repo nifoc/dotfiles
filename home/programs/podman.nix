@@ -6,7 +6,6 @@
     qemu
     gvproxy
     skopeo
-    dive
   ];
 
   xdg.configFile."containers/containers.conf.d/nix.conf".text = ''
