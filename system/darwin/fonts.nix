@@ -13,10 +13,10 @@
       (nerdfonts.override {
         fonts = [
           "NerdFontsSymbolsOnly"
-          # "JetBrainsMono"
-          # "VictorMono"
         ];
       })
+
+      montserrat
     ];
   };
 }
