@@ -21,6 +21,11 @@
     TimeoutStopSec = lib.mkForce 5;
   };
 
+  networking.firewall.interfaces."podman+" = {
+    allowedUDPPorts = [ 443 ];
+    allowedTCPPorts = [ 443 ];
+  };
+
   services.nginx.virtualHosts."homepage.internal.kempkens.network" = {
     quic = true;
     http3 = true;
