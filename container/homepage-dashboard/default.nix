@@ -22,8 +22,8 @@
   };
 
   networking.firewall.interfaces."podman+" = {
-    allowedUDPPorts = [ 443 ];
-    allowedTCPPorts = [ 443 ];
+    allowedUDPPorts = [ 443 9920 ];
+    allowedTCPPorts = [ 443 9920 ];
   };
 
   services.nginx.virtualHosts."homepage.internal.kempkens.network" = {
