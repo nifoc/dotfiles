@@ -3,6 +3,8 @@ name: Build
 on:
   push:
     branches: ['master']
+  paths:
+    - 'flake.lock'
 
 jobs:
   build-x86_64-linux:

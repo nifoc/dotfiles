@@ -71,4 +71,5 @@ in
   "agenix/hosts/mediaserver/aria2/config.age".publicKeys = mediaserver;
 
   "agenix/hosts/mediaserver/homepage-dashboard/services.age".publicKeys = mediaserver;
+  "agenix/hosts/mediaserver/homepage-dashboard/bookmarks.age".publicKeys = mediaserver;
 }
