@@ -35,6 +35,7 @@
       # Diagnostic Tools
       checkstyle
       deadnix
+      nodePackages.eslint_d
       hadolint
       luajitPackages.fennel
       fnlfmt

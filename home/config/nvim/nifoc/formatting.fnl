@@ -20,6 +20,13 @@
       (cmd (.. "try | undojoin | " neoformat " | catch /E790/ | " neoformat
                " | endtry"))))
 
+  (fn run-lsp-format []
+    (if (not= b.nifoc_formatter_filter_lsp_client nil)
+        (vim.lsp.buf.format {:filter #(= $1.name
+                                         b.nifoc_formatter_filter_lsp_client)
+                             :timeout_ms 1000})
+        (vim.lsp.buf.format {:timeout_ms 1000})))
+
   (fn mod.enable-for-buffer []
     (set-bufvar 0 :nifoc_formatter_disabled 0))
 
@@ -43,7 +50,7 @@
           formatprg-exe (-> formatprg (vim.split " " {:trimempty true}) (. 1))]
       (if (= b.nifoc_formatter_disabled 1) nil
           (= b.nifoc_formatter_force_formatprg 1) (run-neoformat formatprg-exe)
-          (= b.nifoc_lsp_formatter_enabled 1) (vim.lsp.buf.format {:timeout_ms 1000})
+          (= b.nifoc_lsp_formatter_enabled 1) (run-lsp-format)
           (not= formatprg-exe nil) (run-neoformat formatprg-exe))))
 
   mod)

@@ -31,5 +31,14 @@
       owner = "media_user";
       group = "media_group";
     };
+
+    homepage-dashboard-services = {
+      file = ./homepage-dashboard/services.age;
+      symlink = false;
+      path = "/var/lib/homepage-dashboard/services.yaml";
+      mode = "640";
+      owner = "media_user";
+      group = "media_group";
+    };
   };
 }

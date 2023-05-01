@@ -29,6 +29,7 @@ in
     ../nixos/aria2.nix
 
     ../nixos/container.nix
+    ../../container/homepage-dashboard
     ../../container/tubearchivist
     ../../secret/container/additional-media
   ];

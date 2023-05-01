@@ -66,7 +66,7 @@
       file = ./weewx/config.age;
       symlink = false;
       path = "/etc/container-weewx/weewx.conf";
-      mode = "644";
+      mode = "640";
       owner = "421";
       group = "421";
     };

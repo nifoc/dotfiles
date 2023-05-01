@@ -69,4 +69,6 @@ in
   "agenix/hosts/mediaserver/tubearchivist/environmentES.age".publicKeys = mediaserver;
 
   "agenix/hosts/mediaserver/aria2/config.age".publicKeys = mediaserver;
+
+  "agenix/hosts/mediaserver/homepage-dashboard/services.age".publicKeys = mediaserver;
 }
