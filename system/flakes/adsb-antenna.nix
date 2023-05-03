@@ -1,8 +1,10 @@
 { nixpkgs, home-manager, inputs, ... }:
 
 let
+  default-system = "aarch64-linux";
+
   overlay-attic = inputs.attic.overlays.default;
-  overlay-neovim = inputs.neovim-nightly-overlay.overlay;
+  overlay-neovim = _: _: { neovim-nightly = inputs.neovim-flake.packages.${default-system}.neovim; };
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
@@ -20,7 +22,7 @@ let
 in
 {
   system = nixpkgs.lib.nixosSystem {
-    system = "aarch64-linux";
+    system = default-system;
     modules = [
       ({
         nixpkgs.overlays = nixpkgsConfig.overlays;

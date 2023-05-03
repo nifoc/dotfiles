@@ -3,7 +3,11 @@
 {
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly;
+    package = pkgs.neovim-nightly.overrideAttrs (oa: {
+      nativeBuildInputs = oa.nativeBuildInputs ++ [
+        pkgs.liblpeg-darwin
+      ];
+    });
 
     defaultEditor = true;
 

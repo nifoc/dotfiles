@@ -1,8 +1,10 @@
 { nixpkgs, home-manager, agenix, inputs, ... }:
 
 let
+  default-system = "x86_64-linux";
+
   overlay-attic = inputs.attic.overlays.default;
-  overlay-neovim = inputs.neovim-nightly-overlay.overlay;
+  overlay-neovim = _: _: { neovim-nightly = inputs.neovim-flake.packages.${default-system}.neovim; };
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
@@ -20,7 +22,7 @@ let
 in
 {
   system = nixpkgs.lib.nixosSystem {
-    system = "x86_64-linux";
+    system = default-system;
     modules = [
       ../hosts/mediaserver.nix
 
