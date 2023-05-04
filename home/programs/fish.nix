@@ -85,7 +85,6 @@ in
     shellAliases = {
       nrsw = "nixpkgs-switch";
       upa = "nix flake update ~/.config/nixpkgs -v && upn";
-      upn = "$HOME/.config/nixpkgs/home/programs/nvim/update-plugins.sh";
       ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
       nsr = "sudo nix-store --verify --check-contents --repair";
 
@@ -94,9 +93,6 @@ in
       la = "exa --long --all --group --header --group-directories-first --sort=type --icons";
       lg = "exa --long --all --group --header --git";
       lt = "exa --long --all --group --header --tree --level ";
-      ytdl = "ytdl_with_options";
-      ytdl_mp4 = "ytdl_with_options -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]'";
-      yti = "ytdl_with_options -F";
 
       mysqld-direnv-init = "mysql_install_db --user $USER --datadir=$PWD/.direnv/mysql/data --auth-root-authentication-method=normal";
       mysqld-direnv = "mysqld --datadir=$PWD/.direnv/mysql/data --bind-address=127.0.0.1 --socket=$PWD/.direnv/mysql/mysqld.sock --gdb";
@@ -110,8 +106,18 @@ in
         echo "$argv" | base64 --decode
       '';
 
-      podman = ''
-        fish -c "set -e SSH_AUTH_SOCK; ${config.home.profileDirectory}/bin/podman $argv"
+      upn = ''
+        set -f os (uname)
+
+        switch $os
+            case Darwin
+                $HOME/.config/nixpkgs/home/programs/nvim/update-plugins.sh
+            case Linux
+                /etc/nixos/home/programs/nvim/update-plugins.sh
+            case '*'
+                echo "Unsupported OS"
+                exit 1
+        end
       '';
 
       upp = ''
@@ -130,10 +136,6 @@ in
       aria-browser = ''
         set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
         aria2c -U "$user_agent" --file-allocation none -x 2 $argv
-      '';
-
-      ytdl_with_options = ''
-        yt-dlp --config-location "$HOME/.config/yt-dlp/config" --download-archive "$HOME/.config/yt-dlp/archive" $argv
       '';
     };
 

@@ -1,12 +1,12 @@
 #!/usr/bin/env fish
 
-set -g os (uname)
+set -f os (uname)
 
 switch $os
     case Darwin
-        set -g config_dir "$HOME/.config/nixpkgs"
+        set -f config_dir "$HOME/.config/nixpkgs"
     case Linux
-        set -g config_dir /etc/nixos
+        set -f config_dir /etc/nixos
     case '*'
         echo "Unsupported OS"
         exit 1
