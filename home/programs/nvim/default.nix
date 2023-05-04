@@ -1,10 +1,14 @@
 { pkgs, config, lib, ... }:
 
+let
+  inherit (pkgs.stdenv) isDarwin;
+  inherit (lib) optionals;
+in
 {
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-nightly.overrideAttrs (oa: {
-      nativeBuildInputs = oa.nativeBuildInputs ++ [
+      nativeBuildInputs = oa.nativeBuildInputs ++ optionals isDarwin [
         pkgs.liblpeg-darwin
       ];
     });
@@ -48,7 +52,7 @@
       shfmt
       statix
       yamllint
-    ] ++ lib.optionals pkgs.stdenv.isDarwin [
+    ] ++ optionals isDarwin [
       xcbuild
     ];
 
