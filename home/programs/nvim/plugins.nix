@@ -107,12 +107,12 @@ in
   };
   nvim-treesitter = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2023-05-03";
+    version = "2023-05-04";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "bff7115bf89a553e4a1a120eb69b99486564af4c";
-      sha256 = "1l20an16vxxgdm3mvni6g51lq6xsxkls68hplv7mwp7k66zxxfrp";
+      rev = "01c23a8036340af45cd90fa5b771ba16bd6eb152";
+      sha256 = "0vn6v1cw9xq53awzhpd31pd5s2a6ar5by5p5g7ddfxcm1141vcx3";
       fetchSubmodules = false;
     };
   };
@@ -308,12 +308,12 @@ in
   };
   friendly-snippets = buildVimPluginFrom2Nix {
     pname = "friendly-snippets";
-    version = "2023-05-01";
+    version = "2023-05-04";
     src = fetchFromGitHub {
       owner = "rafamadriz";
       repo = "friendly-snippets";
-      rev = "2308366ad625f61284e51d249ede4f795394b186";
-      sha256 = "1vvlqc8a2v2891zfjvw3knmrvxszx1zzyh1jkyszz4ii8h3f746m";
+      rev = "10f741908e56ce47cf6b3440e3f04b4fdc0da2f2";
+      sha256 = "0zq2q844nqr2jlikxrjvd478zbpgsr50m3jpdnbkzrdlf658y3ln";
       fetchSubmodules = false;
     };
   };
@@ -323,8 +323,8 @@ in
     src = fetchFromGitHub {
       owner = "hrsh7th";
       repo = "nvim-cmp";
-      rev = "bd168a2f86f01f2a348e5f4ac2980943737ff459";
-      sha256 = "18bzn6xklnl02d8xayx4m501nz117wfbcc8m174kmg6nl6l4yh88";
+      rev = "8d2f190506013064775ec328377e196ab343ad61";
+      sha256 = "0kmssdy3hq6zfs8sq8pdh6b1ywvxwqvnpj6cj5p3wlrigj1a0ri1";
       fetchSubmodules = false;
     };
   };
