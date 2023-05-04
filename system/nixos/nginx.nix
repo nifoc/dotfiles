@@ -8,7 +8,6 @@
     recommendedOptimisation = true;
     recommendedGzipSettings = true;
     recommendedBrotliSettings = true;
-    recommendedZstdSettings = true;
     recommendedTlsSettings = true;
 
     commonHttpConfig = ''
