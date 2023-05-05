@@ -100,6 +100,16 @@
         what = "10.0.0.100:/mnt/dozer/MediaVault/YTDL";
         where = "/mnt/media/YTDL";
       }
+
+      {
+        wantedBy = [ "multi-user.target" ];
+        type = "nfs";
+        mountConfig = {
+          Options = "noatime,nconnect=16";
+        };
+        what = "10.0.0.100:/mnt/dozer/JailVault/MediaScraper";
+        where = "/mnt/media-scraper";
+      }
     ];
   };
 }
