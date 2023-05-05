@@ -6,7 +6,6 @@
 
     fonts = with pkgs; [
       jetbrains-mono
-      victor-mono
       noto-fonts
       unifont
 
@@ -15,8 +14,6 @@
           "NerdFontsSymbolsOnly"
         ];
       })
-
-      montserrat
     ];
   };
 }

@@ -5,6 +5,7 @@ args@{ pkgs, ... }:
     ../programs/fish.nix
     ../programs/atuin.nix
     ../programs/starship.nix
+    ../programs/direnv.nix
 
     ../programs/nvim
 

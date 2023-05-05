@@ -33,6 +33,7 @@
       (where t (t:find "^gallery-dl%s"))
       {:title (t:gsub "^gallery-dl%s(.*)" "%1") :icon " " :color "#009900"}
       (where t (t:find :^redis-)) {: title :icon " " :color "#DC372C"}
+      (where t (t:find "^%[%w+%]%s")) {: title :icon " " :color colors.ssh}
       _ {: title :icon " " :color "#F8F8F2"}))
 
   (wezterm.on :format-tab-title
