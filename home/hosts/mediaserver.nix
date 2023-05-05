@@ -14,6 +14,8 @@ args@{ pkgs, ... }:
 
     ../programs/fzf.nix
 
+    ../programs/gallery-dl.nix
+
     ../programs/jq.nix
 
     ../programs/scripts.nix
