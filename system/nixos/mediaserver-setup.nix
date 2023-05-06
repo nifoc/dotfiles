@@ -107,7 +107,7 @@
         mountConfig = {
           Options = "noatime,nconnect=16";
         };
-        what = "10.0.0.100:/mnt/dozer/JailVault/MediaScraper";
+        what = "10.0.0.100:/mnt/dozer/JailVault/media-scraper";
         where = "/mnt/media-scraper";
       }
     ];
