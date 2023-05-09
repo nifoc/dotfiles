@@ -135,6 +135,15 @@ in
         linkConfig.RequiredForOnline = "yes";
       };
     };
+
+    wait-online.ignoredInterfaces = [
+      "veth0"
+      "veth1"
+      "veth2"
+      "veth3"
+      "veth4"
+      "veth5"
+    ];
   };
 
   services.journald.extraConfig = ''

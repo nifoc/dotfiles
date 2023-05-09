@@ -105,6 +105,13 @@ in
         ];
       };
     };
+
+    wait-online.ignoredInterfaces = [
+      "veth0"
+      "veth1"
+      "veth2"
+      "veth3"
+    ];
   };
 
   services.journald.extraConfig = ''
