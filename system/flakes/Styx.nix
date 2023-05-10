@@ -6,7 +6,6 @@ let
   overlay-x86 = _: _: { pkgs-x86 = import nixpkgs { system = "x86_64-darwin"; }; };
   overlay-agenix = inputs.agenix.overlays.default;
   overlay-attic = inputs.attic.overlays.default;
-  overlay-neovim = _: _: { neovim-nightly = inputs.neovim-flake.packages.${default-system}.neovim; };
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
@@ -14,7 +13,6 @@ let
       overlay-x86
       overlay-agenix
       overlay-attic
-      overlay-neovim
       overlay-nifoc
     ];
 

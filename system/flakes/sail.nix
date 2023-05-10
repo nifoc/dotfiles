@@ -4,13 +4,11 @@ let
   default-system = "x86_64-linux";
 
   overlay-attic = inputs.attic.overlays.default;
-  overlay-neovim = _: _: { neovim-nightly = inputs.neovim-flake.packages.${default-system}.neovim; };
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
     overlays = [
       overlay-attic
-      overlay-neovim
       overlay-nifoc
     ];
 

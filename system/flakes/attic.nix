@@ -3,12 +3,10 @@
 let
   default-system = "x86_64-linux";
 
-  overlay-neovim = _: _: { neovim-nightly = inputs.neovim-flake.packages.${default-system}.neovim; };
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
     overlays = [
-      overlay-neovim
       overlay-nifoc
     ];
 

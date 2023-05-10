@@ -84,11 +84,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1682773107,
-        "narHash": "sha256-+h94XeJnG3uk5imJlBi/1lVmcfCbxHpwZp5u7n3Krwg=",
+        "lastModified": 1683753978,
+        "narHash": "sha256-v3/MZqcg4hY6qY6s7ZxP6UXYah69fxWXfJrEXMkC1wQ=",
         "owner": "lnl7",
         "repo": "nix-darwin",
-        "rev": "379d42fad6bc5c28f79d5f7ff2fa5f1c90cb7bf8",
+        "rev": "25e28feddab8923376b9ed2620f817d9d282cd6c",
         "type": "github"
       },
       "original": {
@@ -167,16 +167,17 @@
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nixpkgs": [
+          "nifoc-overlay",
           "nixpkgs"
         ]
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1683648894,
-        "narHash": "sha256-jVKbohNE4kUn0exw0hBKkFXT/k7Bk2z5IhYVsPz/geY=",
+        "lastModified": 1683738879,
+        "narHash": "sha256-V53XRMc6YUYoHFdQ0OgE3HE5qbnwvXWJT9tEi6lT75w=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "36baaf7c1aa0bbc9c80f4512bb1384839c8851ff",
+        "rev": "ac1aee99bc76c0036aa0ccf7b9eda48fcf46ac11",
         "type": "github"
       },
       "original": {
@@ -188,16 +189,17 @@
     },
     "nifoc-overlay": {
       "inputs": {
+        "neovim-flake": "neovim-flake",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1683620480,
-        "narHash": "sha256-qqfDPWgcjg4fa+gn5kfCAeNIOipYbbucEUZH0ojEcCI=",
+        "lastModified": 1683754238,
+        "narHash": "sha256-utLzZGTbf4f5qk5m+k240JOKWEbP+XZxBrWhxf2NSYY=",
         "owner": "nifoc",
         "repo": "nix-overlay",
-        "rev": "f228a26a36b47fdb10c4c3f3813e417966a48e39",
+        "rev": "7e5b7accfb8b23a8e63f7f38559676e9384024a6",
         "type": "github"
       },
       "original": {
@@ -208,11 +210,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1683594133,
-        "narHash": "sha256-iUhLhEAgOCnexSGDsYT2ouydis09uDoNzM7UC685XGE=",
+        "lastModified": 1683686518,
+        "narHash": "sha256-ieG0J4GCUqOE9Wo8cNSsa1Ev9QKMLrHANOlu22v17bo=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8d447c5626cfefb9b129d5b30103344377fe09bc",
+        "rev": "12ba1a5f90b16acdca741ac82d8204b3ec8c2aaf",
         "type": "github"
       },
       "original": {
@@ -244,7 +246,6 @@
         "attic": "attic",
         "darwin": "darwin",
         "home-manager": "home-manager",
-        "neovim-flake": "neovim-flake",
         "nifoc-overlay": "nifoc-overlay",
         "nixpkgs": "nixpkgs"
       }
