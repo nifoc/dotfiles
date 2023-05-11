@@ -32,7 +32,7 @@
 
     # https://mau.dev/mautrix/whatsapp
     matrix-whatsapp = {
-      image = "dock.mau.dev/mautrix/whatsapp:v0.8.3";
+      image = "dock.mau.dev/mautrix/whatsapp:v0.8.4";
       ports = [ "127.0.0.1:29318:29318" ];
       volumes = [
         "/etc/container-matrix/whatsapp:/data"
