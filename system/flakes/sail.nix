@@ -1,14 +1,16 @@
-{ nixpkgs, home-manager, agenix, inputs, ... }:
+{ nixpkgs, deploy-rs, home-manager, agenix, inputs, ... }:
 
 let
   default-system = "x86_64-linux";
 
   overlay-attic = inputs.attic.overlays.default;
+  overlay-deploy-rs = _: _: { inherit (deploy-rs.packages.${default-system}) deploy-rs; };
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
     overlays = [
       overlay-attic
+      overlay-deploy-rs
       overlay-nifoc
     ];
 
@@ -18,7 +20,7 @@ let
     };
   };
 in
-{
+rec {
   system = nixpkgs.lib.nixosSystem {
     system = default-system;
     modules = [
@@ -37,5 +39,15 @@ in
         home-manager.users.daniel = import ../../home/hosts/sail.nix;
       }
     ];
+  };
+
+  deployment = {
+    hostname = "builder-sail";
+    sshUser = "root";
+    remoteBuild = true;
+
+    profiles.system = {
+      path = deploy-rs.lib.${default-system}.activate.nixos system;
+    };
   };
 }

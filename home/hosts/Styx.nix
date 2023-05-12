@@ -48,6 +48,7 @@ args@{ pkgs, config, lib, ... }:
       awscli2
       curlHTTP3
       dasel
+      deploy-rs
       exa
       exiftool
       fd

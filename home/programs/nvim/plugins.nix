@@ -418,12 +418,12 @@ in
   };
   neoformat = buildVimPluginFrom2Nix {
     pname = "neoformat";
-    version = "2023-04-14";
+    version = "2023-05-12";
     src = fetchFromGitHub {
       owner = "sbdchd";
       repo = "neoformat";
-      rev = "aca320ad601338c93eca50ab4c86fca964a18d96";
-      sha256 = "17wcvqwddw4nlcpfvlaxxkcyl93axb1hqdcn73xb4c1yr8fdwaxi";
+      rev = "2d5d071d5957681ae677ee06f6eb879a61b7b618";
+      sha256 = "17rs8k6xzy4c8nkiap84h5n7m0wcam06r6mv2z207di0cck2f4pk";
       fetchSubmodules = false;
     };
   };

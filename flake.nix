@@ -27,42 +27,37 @@
       url = "github:nifoc/nix-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, ... }:
     let
       Styx = import ./system/flakes/Styx.nix {
-        inherit (inputs) nixpkgs;
-        inherit (inputs) home-manager;
-        inherit (inputs) darwin;
+        inherit (inputs) nixpkgs home-manager darwin;
         inherit inputs;
       };
 
       sail = import ./system/flakes/sail.nix {
-        inherit (inputs) nixpkgs;
-        inherit (inputs) home-manager;
-        inherit (inputs) agenix;
+        inherit (inputs) nixpkgs deploy-rs home-manager agenix;
         inherit inputs;
       };
 
       attic = import ./system/flakes/attic.nix {
-        inherit (inputs) nixpkgs;
-        inherit (inputs) home-manager;
-        inherit (inputs) agenix;
-        inherit (inputs) attic;
+        inherit (inputs) nixpkgs deploy-rs home-manager agenix attic;
         inherit inputs;
       };
 
       mediaserver = import ./system/flakes/mediaserver.nix {
-        inherit (inputs) nixpkgs;
-        inherit (inputs) home-manager;
-        inherit (inputs) agenix;
+        inherit (inputs) nixpkgs deploy-rs home-manager agenix;
         inherit inputs;
       };
 
       adsb-antenna = import ./system/flakes/adsb-antenna.nix {
-        inherit (inputs) nixpkgs;
-        inherit (inputs) home-manager;
+        inherit (inputs) nixpkgs home-manager;
         inherit inputs;
       };
     in
@@ -76,6 +71,12 @@
         attic = attic.system;
         mediaserver = mediaserver.system;
         adsb-antenna = adsb-antenna.system;
+      };
+
+      deploy.nodes = {
+        sail = sail.deployment;
+        attic = attic.deployment;
+        mediaserver = mediaserver.deployment;
       };
     };
 }
