@@ -26,6 +26,7 @@
       (where t (t:find "^upp%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^nrsw%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^ngc%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^deploy%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^ssh%s")) {: title :icon " " :color colors.ssh}
       (where t (t:find "^scp%s")) {: title :icon " " :color colors.ssh}
       (where t (t:find :^ytdl)) {: title :icon " " :color "#FF0000"}
