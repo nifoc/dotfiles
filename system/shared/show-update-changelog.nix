@@ -1,7 +1,10 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 
 {
   system.activationScripts.show-update-changelog = ''
-    ${pkgs.nvd}/bin/nvd --nix-bin-dir='${config.nix.package}/bin' diff $(ls -d /nix/var/nix/profiles/system-*-link | tail -n2)
+    if [[ -e /run/current-system ]]; then
+      echo "[show-update-changelog] Changelog"
+      ${config.nix.package}/bin/nix store diff-closures /run/current-system "$systemConfig" || true
+    fi
   '';
 }

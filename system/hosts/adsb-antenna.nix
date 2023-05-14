@@ -7,6 +7,7 @@ in
 {
   imports = [
     ../../hardware/hosts/adsb-antenna.nix
+    ../shared/show-update-changelog.nix
     ../nixos/raspberry.nix
     ../nixos/ssh.nix
 

@@ -8,6 +8,7 @@ in
   imports = [
     ../../hardware/hosts/attic.nix
     ../../agenix/hosts/attic/config.nix
+    ../shared/show-update-changelog.nix
     ../nixos/ssh.nix
 
     ../nixos/git.nix

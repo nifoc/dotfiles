@@ -1,8 +1,6 @@
-args@{ pkgs, lib, ... }:
+args@{ pkgs, ... }:
 
 let
-  inherit (lib) optionals;
-
   secret = import ../../secret/hosts/sail.nix;
   ssh-keys = import ../shared/ssh-keys.nix;
 in
@@ -10,6 +8,7 @@ in
   imports = [
     ../../hardware/hosts/sail.nix
     ../../agenix/hosts/sail/config.nix
+    ../shared/show-update-changelog.nix
     ../nixos/ssh.nix
 
     ../nixos/git.nix

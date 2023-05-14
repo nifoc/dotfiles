@@ -8,6 +8,7 @@ in
   imports = [
     ../../hardware/hosts/mediaserver.nix
     ../../agenix/hosts/mediaserver/config.nix
+    ../shared/show-update-changelog.nix
     ../nixos/ssh.nix
 
     ../nixos/git.nix
