@@ -28,6 +28,7 @@
 
     archivist-es = {
       image = "docker.io/bbilly1/tubearchivist-es:latest";
+      ports = [ "127.0.0.1:9200:9200" ];
       environmentFiles = [ config.age.secrets.tubearchivist-environment-es.path ];
       volumes = [
         "/var/lib/tubearchivist/es:/usr/share/elasticsearch/data"
