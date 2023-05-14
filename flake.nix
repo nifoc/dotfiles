@@ -57,7 +57,7 @@
       };
 
       adsb-antenna = import ./system/flakes/adsb-antenna.nix {
-        inherit (inputs) nixpkgs home-manager;
+        inherit (inputs) nixpkgs deploy-rs home-manager;
         inherit inputs;
       };
     in
@@ -77,6 +77,7 @@
         sail = sail.deployment;
         attic = attic.deployment;
         mediaserver = mediaserver.deployment;
+        adsb-antenna = adsb-antenna.deployment;
       };
     };
 }
