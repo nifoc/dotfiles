@@ -42,7 +42,7 @@ rec {
   };
 
   deployment = {
-    hostname = "builder-sail";
+    hostname = "sail";
     sshUser = "root";
     remoteBuild = true;
 

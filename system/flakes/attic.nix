@@ -42,7 +42,7 @@ rec {
   };
 
   deployment = {
-    hostname = "builder-attic";
+    hostname = "attic";
     sshUser = "root";
     remoteBuild = true;
 

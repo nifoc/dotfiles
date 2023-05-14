@@ -42,7 +42,7 @@ rec {
   };
 
   deployment = {
-    hostname = "builder-mediaserver";
+    hostname = "mediaserver";
     sshUser = "root";
     remoteBuild = true;
 

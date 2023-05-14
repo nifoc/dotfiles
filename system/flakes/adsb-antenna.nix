@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, inputs, ... }:
+{ nixpkgs, deploy-rs, home-manager, inputs, ... }:
 
 let
   default-system = "aarch64-linux";
@@ -20,18 +20,14 @@ let
     };
   };
 in
-{
+rec {
   system = nixpkgs.lib.nixosSystem {
     system = default-system;
     modules = [
-      ({
-        nixpkgs.overlays = nixpkgsConfig.overlays;
-        nixpkgs.config = nixpkgsConfig.config;
-      })
-
       ../hosts/adsb-antenna.nix
 
       home-manager.nixosModules.home-manager
+
       {
         nixpkgs = nixpkgsConfig;
         nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
@@ -41,5 +37,15 @@ in
         home-manager.users.daniel = import ../../home/hosts/adsb-antenna.nix;
       }
     ];
+  };
+
+  deployment = {
+    hostname = "adsb-antenna";
+    sshUser = "root";
+    remoteBuild = true;
+
+    profiles.system = {
+      path = deploy-rs.lib.${default-system}.activate.nixos system;
+    };
   };
 }
