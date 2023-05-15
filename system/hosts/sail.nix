@@ -131,17 +131,13 @@ in
           DHCP = "ipv4";
           IPv6AcceptRA = false;
         };
-        linkConfig.RequiredForOnline = "yes";
+        linkConfig.RequiredForOnline = "routable";
       };
     };
 
-    wait-online.ignoredInterfaces = [
-      "veth0"
-      "veth1"
-      "veth2"
-      "veth3"
-      "veth4"
-      "veth5"
+    wait-online.extraArgs = [
+      "--interface=enp1s0"
+      "--interface=enp7s0"
     ];
   };
 

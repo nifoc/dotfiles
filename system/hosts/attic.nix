@@ -104,9 +104,14 @@ in
           DHCP = "ipv4";
           IPv6AcceptRA = false;
         };
-        linkConfig.RequiredForOnline = "yes";
+        linkConfig.RequiredForOnline = "routable";
       };
     };
+
+    wait-online.extraArgs = [
+      "--interface=enp1s0"
+      "--interface=enp7s0"
+    ];
   };
 
   services.journald.extraConfig = ''

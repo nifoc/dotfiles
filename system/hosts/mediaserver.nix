@@ -107,11 +107,8 @@ in
       };
     };
 
-    wait-online.ignoredInterfaces = [
-      "veth0"
-      "veth1"
-      "veth2"
-      "veth3"
+    wait-online.extraArgs = [
+      "--interface=ens3"
     ];
   };
 

@@ -15,8 +15,6 @@ end
 pushd "$config_dir"
 rm -rf result
 
-set system_old (readlink /run/current-system)
-
 switch $os
     case Darwin
         git pull
@@ -27,8 +25,5 @@ switch $os
 end
 
 rm -f result
-
-set system_new (readlink /run/current-system)
-nvd diff "$system_old" "$system_new"
 
 popd
