@@ -6,6 +6,7 @@
                        :comment
                        :css
                        :dockerfile
+                       :eex
                        :elixir
                        :erlang
                        :fennel

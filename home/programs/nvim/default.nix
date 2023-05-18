@@ -61,6 +61,7 @@ in
             p.comment
             p.css
             p.dockerfile
+            p.eex
             p.elixir
             p.erlang
             p.fennel

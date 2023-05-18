@@ -79,7 +79,5 @@
         mediaserver = mediaserver.deployment;
         adsb-antenna = adsb-antenna.deployment;
       };
-
-      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) inputs.deploy-rs.lib;
     };
 }

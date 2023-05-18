@@ -18,6 +18,8 @@ in
 
     ../nixos/attic.nix
 
+    ../nixos/bdfr-browser.nix
+
     ../nixos/tailscale.nix
 
     ../nixos/mediaserver-setup.nix
