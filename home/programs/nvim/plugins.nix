@@ -297,12 +297,12 @@ in
   };
   LuaSnip = buildVimPluginFrom2Nix {
     pname = "LuaSnip";
-    version = "2023-05-06";
+    version = "2023-05-19";
     src = fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "b4bc24c4925aeb05fd47d2ee9b24b7f73f5d7e32";
-      sha256 = "1fbjv2zdxn962hf3vxfl4s45yvqdr8israz5chw4w37jf8achqx4";
+      rev = "ec7fba1d119fb5090a901eb616145450ffb95e31";
+      sha256 = "19fx1jxmyny7jym254ar029479v340p1h08s4rjikmhqbc2xs8a0";
       fetchSubmodules = false;
     };
   };
