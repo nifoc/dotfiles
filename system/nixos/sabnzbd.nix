@@ -2,7 +2,7 @@
 
 {
   systemd.tmpfiles.rules = [
-    "d /var/lib/sabnzbd 0700 media_user media_group"
+    "d /var/lib/sabnzbd 0750 media_user media_group"
   ];
 
   # The nix-provided options force a sabnzbd-user to a certain degree

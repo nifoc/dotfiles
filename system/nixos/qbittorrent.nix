@@ -25,8 +25,25 @@
           "/etc/netns/wg/resolv.conf:/etc/resolv.conf:norbind"
           "/etc/netns/wg/nsswitch.conf:/etc/nsswitch.conf:norbind"
         ];
-        ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox --profile=/var/lib/qbittorrent";
+        ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox --profile=/var/lib/qbittorrent --webui-port=8071";
         AmbientCapabilities = [ "CAP_NET_RAW" ];
       };
     };
+
+  services.nginx.virtualHosts."qbittorrent.internal.kempkens.network" = {
+    quic = true;
+    http3 = true;
+
+    onlySSL = true;
+    useACMEHost = "internal.kempkens.network";
+
+    extraConfig = ''
+      client_max_body_size 32m;
+    '';
+
+    locations."/" = {
+      recommendedProxySettings = true;
+      proxyPass = "http://192.168.42.2:8071";
+    };
+  };
 }

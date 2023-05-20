@@ -24,6 +24,7 @@ in
 
     ../nixos/mediaserver-setup.nix
     (import ../nixos/wireguard-netns.nix (args // { inherit secret; }))
+    (import ../nixos/wireguard-firewall-mediaserver.nix (args // { inherit secret; }))
     ../nixos/prowlarr.nix
     ../nixos/sonarr.nix
     ../nixos/radarr.nix
@@ -35,6 +36,7 @@ in
     ../nixos/container.nix
     ../../container/homepage-dashboard
     ../../container/tubearchivist
+    ../../container/autobrr
     ../../secret/container/additional-media
   ];
 
