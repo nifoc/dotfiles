@@ -25,9 +25,10 @@ in
     ../nixos/mediaserver-setup.nix
     (import ../nixos/wireguard-netns.nix (args // { inherit secret; }))
     ../nixos/prowlarr.nix
-    ../nixos/sabnzbd.nix
     ../nixos/sonarr.nix
     ../nixos/radarr.nix
+    ../nixos/sabnzbd.nix
+    ../nixos/qbittorrent.nix
     ../nixos/jellyfin.nix
     ../nixos/aria2.nix
 
