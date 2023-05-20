@@ -44,6 +44,7 @@ let
 
     # Ports
     ip46tables -A wg-fw -p tcp --dport 6801 -j wg-fw-accept -i vethwgns0
+    ip46tables -A wg-fw -p tcp --dport 7441 -j wg-fw-accept -i vethwgns0
     ip46tables -A wg-fw -p tcp --dport 7474 -j wg-fw-accept -i vethwgns0
     ip46tables -A wg-fw -p tcp --dport 7878 -j wg-fw-accept -i vethwgns0
     ip46tables -A wg-fw -p tcp --dport 8071 -j wg-fw-accept -i vethwgns0
