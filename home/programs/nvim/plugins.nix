@@ -111,8 +111,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "3d5fe8caf85ff1e18963b0c6ded1cf6d3a648ffa";
-      sha256 = "06bwy26g7hdp7gx4sz6zhidsx9dj8149v07fi18kjvlr1p2965kv";
+      rev = "8e59b4919d1a61bd4eb29c397bd19bab83883cbb";
+      sha256 = "18qpyk03987pmak2fw2gvqa0gmlk4jlx1nixpzzmm4wd5r4yfvwk";
       fetchSubmodules = false;
     };
   };
@@ -312,8 +312,8 @@ in
     src = fetchFromGitHub {
       owner = "rafamadriz";
       repo = "friendly-snippets";
-      rev = "f674dae71b9daf5ba4a4daf0734f7780417237b1";
-      sha256 = "1sydyxq102ghsh25iv4i35ar9c9dn2c6wrm626hnz27zqrdhs68z";
+      rev = "28ee6669ab36cab6ff7d3d7f17ecb045e0138e7f";
+      sha256 = "11p3b7wmgdlqsc0kp6m5jmmifp4vd4iwvvkwzj2k8v8w2q7mzpic";
       fetchSubmodules = false;
     };
   };
