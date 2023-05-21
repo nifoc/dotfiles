@@ -9,10 +9,6 @@
       volumes = [
         "/etc/container-matrix/signald:/signald"
       ];
-      extraOptions = [
-        "--label=com.centurylinklabs.watchtower.enable=true"
-        "--label=io.containers.autoupdate=registry"
-      ];
     };
 
     # https://mau.dev/mautrix/signal
@@ -24,10 +20,6 @@
         "/etc/container-matrix/signal:/data"
         "/etc/container-matrix/signald:/signald"
       ];
-      extraOptions = [
-        "--label=com.centurylinklabs.watchtower.enable=true"
-        "--label=io.containers.autoupdate=registry"
-      ];
     };
 
     # https://mau.dev/mautrix/whatsapp
@@ -36,10 +28,6 @@
       ports = [ "127.0.0.1:29318:29318" ];
       volumes = [
         "/etc/container-matrix/whatsapp:/data"
-      ];
-      extraOptions = [
-        "--label=com.centurylinklabs.watchtower.enable=true"
-        "--label=io.containers.autoupdate=registry"
       ];
     };
   };

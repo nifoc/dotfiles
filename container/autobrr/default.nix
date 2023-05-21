@@ -17,6 +17,8 @@
     ];
     extraOptions = [
       "--network=ns:/var/run/netns/wg"
+      "--label=com.centurylinklabs.watchtower.enable=true"
+      "--label=io.containers.autoupdate=registry"
     ];
   };
 
@@ -28,6 +30,8 @@
     ];
     extraOptions = [
       "--network=ns:/var/run/netns/wg"
+      "--label=com.centurylinklabs.watchtower.enable=true"
+      "--label=io.containers.autoupdate=registry"
     ];
   };
 
