@@ -37,6 +37,7 @@ in
     ../nixos/container.nix
     ../../container/tubearchivist
     ../../container/autobrr
+    ../../container/flaresolverr
     ../../secret/container/additional-media
   ];
 
