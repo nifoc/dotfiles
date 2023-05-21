@@ -31,5 +31,11 @@
       owner = "media_user";
       group = "media_group";
     };
+
+    unpackerr-config = {
+      file = ./unpackerr/config.age;
+      owner = "media_user";
+      group = "media_group";
+    };
   };
 }

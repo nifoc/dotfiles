@@ -26,6 +26,7 @@ in
     (import ../nixos/wireguard-netns.nix (args // { inherit secret; }))
     (import ../nixos/wireguard-firewall-mediaserver.nix (args // { inherit secret; }))
     ../nixos/prowlarr.nix
+    ../nixos/unpackerr.nix
     ../nixos/sonarr.nix
     ../nixos/radarr.nix
     ../nixos/sabnzbd.nix
