@@ -47,6 +47,8 @@ rec {
     hostname = "adsb-antenna";
     sshUser = "root";
     remoteBuild = true;
+    autoRollback = false;
+    magicRollback = false;
 
     profiles.system = {
       path = deploy-rs.lib.${default-system}.activate.nixos system;

@@ -308,12 +308,12 @@ in
   };
   friendly-snippets = buildVimPluginFrom2Nix {
     pname = "friendly-snippets";
-    version = "2023-05-21";
+    version = "2023-05-23";
     src = fetchFromGitHub {
       owner = "rafamadriz";
       repo = "friendly-snippets";
-      rev = "2bb3958e1fe0a613e028f3c6fd2d2923fc23bd0c";
-      sha256 = "1nlbm7ji73ggg48pzvlbb32jfscnj71bgfzg4q1p3zfvssisz85c";
+      rev = "ef6547d2f586e08e071efeebac835e545f3015cc";
+      sha256 = "0xjcnx787kc1xc259czwn6masym2v2r4ixjb772cb3lb5bn9v73q";
       fetchSubmodules = false;
     };
   };
@@ -473,12 +473,12 @@ in
   };
   nvim-surround = buildVimPluginFrom2Nix {
     pname = "nvim-surround";
-    version = "2023-04-30";
+    version = "2023-05-22";
     src = fetchFromGitHub {
       owner = "kylechui";
       repo = "nvim-surround";
-      rev = "219bd66585aa467b1c90fd01b54a2a423aaed4ab";
-      sha256 = "0aximc9fiicmhxkqrazjsqfr9mqw7llnfdc778acn5rkhwj1xms9";
+      rev = "26b5067c3b56815eafbf41b7b830f1ab52819a45";
+      sha256 = "17r7klq852wq3kwhjlpc6a5k6d6h4bm8rf9ivjxgc7b4whiris5n";
       fetchSubmodules = false;
     };
   };

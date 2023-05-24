@@ -1,14 +1,29 @@
 { pkgs, lib, ... }:
 
 {
-  services.sonarr = {
-    enable = true;
-    user = "media_user";
-    group = "media_group";
-    openFirewall = false;
+  virtualisation.oci-containers.containers.sonarr = {
+    image = "lscr.io/linuxserver/sonarr:latest";
+    ports = [ "192.168.42.2:8989:8989" ];
+    environment = {
+      "PUID" = "1001";
+      "PGID" = "2001";
+      "TZ" = "Etc/UTC";
+    };
+    volumes = [
+      "/var/lib/sonarr/.config/NzbDrone:/config"
+      "/mnt/downloads:/mnt/downloads"
+      "/mnt/media/TV Shows:/mnt/media/TV Shows"
+      "/mnt/media/Documentaries:/mnt/media/Documentaries"
+      "/mnt/media/Anime:/mnt/media/Anime"
+    ];
+    extraOptions = [
+      "--network=ns:/var/run/netns/wg"
+      "--label=com.centurylinklabs.watchtower.enable=true"
+      "--label=io.containers.autoupdate=registry"
+    ];
   };
 
-  systemd.services.sonarr =
+  systemd.services.podman-sonarr =
     let
       mounts = [
         "mnt-media-TV\\x20Shows.mount"
@@ -18,16 +33,12 @@
       ];
     in
     {
-      requires = mounts;
+      requires = lib.mkAfter mounts;
       bindsTo = [ "wg.service" ];
       after = lib.mkForce ([ "wg.service" ] ++ mounts);
 
       serviceConfig = {
-        NetworkNamespacePath = "/var/run/netns/wg";
-        BindReadOnlyPaths = [
-          "/etc/netns/wg/resolv.conf:/etc/resolv.conf:norbind"
-          "/etc/netns/wg/nsswitch.conf:/etc/nsswitch.conf:norbind"
-        ];
+        TimeoutStopSec = lib.mkForce 5;
       };
     };
 

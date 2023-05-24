@@ -22,10 +22,12 @@ in
 
     ../nixos/tailscale.nix
 
+    ../nixos/container.nix
     ../nixos/mediaserver-setup.nix
     (import ../nixos/wireguard-netns.nix (args // { inherit secret; }))
     (import ../nixos/wireguard-firewall-mediaserver.nix (args // { inherit secret; }))
     ../nixos/prowlarr.nix
+    ../nixos/autobrr.nix
     ../nixos/unpackerr.nix
     ../nixos/sonarr.nix
     ../nixos/radarr.nix
@@ -34,10 +36,9 @@ in
     ../nixos/jellyfin.nix
     ../nixos/aria2.nix
 
-    ../nixos/container.nix
+    ../nixos/convos.nix
+
     ../../container/tubearchivist
-    ../../container/autobrr
-    ../../container/flaresolverr
     ../../secret/container/additional-media
   ];
 

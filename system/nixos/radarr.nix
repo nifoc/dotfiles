@@ -1,31 +1,45 @@
 { pkgs, lib, ... }:
 
 {
-  services.radarr = {
-    enable = true;
-    user = "media_user";
-    group = "media_group";
-    openFirewall = false;
+  virtualisation.oci-containers.containers.radarr = {
+    image = "lscr.io/linuxserver/radarr:latest";
+    ports = [ "192.168.42.2:7878:7878" ];
+    environment = {
+      "PUID" = "1001";
+      "PGID" = "2001";
+      "TZ" = "Etc/UTC";
+    };
+    volumes = [
+      "/var/lib/radarr/.config/Radarr:/config"
+      "/mnt/downloads:/mnt/downloads"
+      "/mnt/media/Movies:/mnt/media/Movies"
+    ];
+    extraOptions = [
+      "--network=ns:/var/run/netns/wg"
+      "--label=com.centurylinklabs.watchtower.enable=true"
+      "--label=io.containers.autoupdate=registry"
+    ];
   };
 
-  systemd.services.radarr =
+  systemd.services.podman-radarr =
     let
       mounts = [
         "mnt-media-Movies.mount"
         "mnt-downloads.mount"
       ];
+
+      depends = [
+        "podman-sabnzbd.service"
+        "podman-qbittorrent.service"
+      ];
     in
     {
-      requires = mounts;
+      requires = lib.mkAfter (mounts ++ depends);
       bindsTo = [ "wg.service" ];
-      after = lib.mkForce ([ "wg.service" ] ++ mounts);
+      after = lib.mkForce ([ "wg.service" ] ++ mounts ++ depends);
 
       serviceConfig = {
-        NetworkNamespacePath = "/var/run/netns/wg";
-        BindReadOnlyPaths = [
-          "/etc/netns/wg/resolv.conf:/etc/resolv.conf:norbind"
-          "/etc/netns/wg/nsswitch.conf:/etc/nsswitch.conf:norbind"
-        ];
+        TimeoutStopSec = lib.mkForce 5;
       };
     };
 

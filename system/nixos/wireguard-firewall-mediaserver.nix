@@ -20,7 +20,8 @@ let
 
   startScript = writeShScript "wg-firewall-start" ''
     ip46tables -D INPUT -j wg-fw 2> /dev/null || true
-    for chain in wg-fw wg-fw-accept wg-fw-log-refuse wg-fw-refuse; do
+    ip46tables -D OUTPUT -j wg-fw-out 2> /dev/null || true
+    for chain in wg-fw wg-fw-out wg-fw-accept wg-fw-log-refuse wg-fw-refuse; do
       ip46tables -F "$chain" 2> /dev/null || true
       ip46tables -X "$chain" 2> /dev/null || true
     done
@@ -36,6 +37,8 @@ let
     ip46tables -A wg-fw-log-refuse -m pkttype ! --pkt-type unicast -j wg-fw-refuse
     ip46tables -A wg-fw-log-refuse -j wg-fw-refuse
 
+    ## IN
+
     ip46tables -N wg-fw
 
     ip46tables -A wg-fw -i lo -j wg-fw-accept
@@ -43,6 +46,7 @@ let
     ip46tables -A wg-fw -m conntrack --ctstate ESTABLISHED,RELATED -j wg-fw-accept
 
     # Ports
+    ip46tables -A wg-fw -p tcp --dport 3000 -j wg-fw-accept -i vethwgns0
     ip46tables -A wg-fw -p tcp --dport 6801 -j wg-fw-accept -i vethwgns0
     ip46tables -A wg-fw -p tcp --dport 7441 -j wg-fw-accept -i vethwgns0
     ip46tables -A wg-fw -p tcp --dport 7474 -j wg-fw-accept -i vethwgns0
@@ -63,26 +67,45 @@ let
     ip6tables -A wg-fw -p icmpv6 -j wg-fw-accept
 
     ip46tables -A wg-fw -j wg-fw-log-refuse
+
+    ## OUT
+
+    ip46tables -N wg-fw-out
+
+    # Block non-local traffic
+    iptables -A wg-fw-out -i vethwgns0 ! -d 192.168.42.0/24 -j wg-fw-refuse
+    ip6tables -A wg-fw-out -i vethwgns0 -j wg-fw-refuse
+
+    ip46tables -A wg-fw-out -j wg-fw-accept
+
+    ## SETUP
+
     ip46tables -A INPUT -j wg-fw
+    ip46tables -A OUTPUT -j wg-fw-out
   '';
 
   stopScript = writeShScript "wg-firewall-stop" ''
     ip46tables -D INPUT -j wg-drop 2>/dev/null || true
+    ip46tables -D OUTPUT -j wg-drop 2>/dev/null || true
 
     ip46tables -D INPUT -j wg-fw 2>/dev/null || true
+    ip46tables -D OUTPUT -j wg-fw-out 2>/dev/null || true
   '';
 
   reloadScript = writeShScript "wg-firewall-reload" ''
     ip46tables -D INPUT -j wg-drop 2>/dev/null || true
+    ip46tables -D OUTPUT -j wg-drop 2>/dev/null || true
     ip46tables -F wg-drop 2>/dev/null || true
     ip46tables -X wg-drop 2>/dev/null || true
     ip46tables -N wg-drop
     ip46tables -A wg-drop -j DROP
 
     ip46tables -A INPUT -j wg-drop
+    ip46tables -A OUTPUT -j wg-drop
 
     if ${startScript}; then
       ip46tables -D INPUT -j wg-drop 2>/dev/null || true
+      ip46tables -D OUTPUT -j wg-drop 2>/dev/null || true
     else
       echo "Failed to reload firewall... Stopping"
       ${stopScript}

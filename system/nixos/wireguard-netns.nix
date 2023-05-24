@@ -1,4 +1,4 @@
-{ pkgs, config, secret, ... }:
+{ pkgs, lib, config, secret, ... }:
 
 {
   environment.systemPackages = with pkgs; [ ldns tcpdump wireguard-tools ];
@@ -17,7 +17,7 @@
       group:     files [success=merge] systemd
       shadow:    files
 
-      hosts:     files mymachines myhostname dns
+      hosts:     dns [!UNAVAIL=return] files
       networks:  files
 
       ethers:    files

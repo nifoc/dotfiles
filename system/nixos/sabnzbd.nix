@@ -1,33 +1,42 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   systemd.tmpfiles.rules = [
     "d /var/lib/sabnzbd 0750 media_user media_group"
   ];
 
-  # The nix-provided options force a sabnzbd-user to a certain degree
-  systemd.services.sabnzbd =
+  virtualisation.oci-containers.containers.sabnzbd = {
+    image = "lscr.io/linuxserver/sabnzbd:latest";
+    ports = [ "192.168.42.2:8080:8080" ];
+    environment = {
+      "PUID" = "1001";
+      "PGID" = "2001";
+      "TZ" = "Etc/UTC";
+    };
+    volumes = [
+      "/var/lib/sabnzbd:/config"
+      "/mnt/downloads:/mnt/downloads"
+    ];
+    extraOptions = [
+      "--network=ns:/var/run/netns/wg"
+      "--label=com.centurylinklabs.watchtower.enable=true"
+      "--label=io.containers.autoupdate=registry"
+    ];
+  };
+
+  systemd.services.podman-sabnzbd =
     let
-      mounts = [ "mnt-downloads.mount" ];
+      mounts = [
+        "mnt-downloads.mount"
+      ];
     in
     {
-      description = "sabnzbd server";
-      requires = mounts;
+      requires = lib.mkAfter mounts;
       bindsTo = [ "wg.service" ];
-      after = [ "wg.service" ] ++ mounts;
-      wantedBy = [ "multi-user.target" ];
+      after = lib.mkForce ([ "wg.service" ] ++ mounts);
 
       serviceConfig = {
-        Type = "forking";
-        GuessMainPID = "no";
-        User = "media_user";
-        Group = "media_group";
-        NetworkNamespacePath = "/var/run/netns/wg";
-        BindReadOnlyPaths = [
-          "/etc/netns/wg/resolv.conf:/etc/resolv.conf:norbind"
-          "/etc/netns/wg/nsswitch.conf:/etc/nsswitch.conf:norbind"
-        ];
-        ExecStart = "${pkgs.sabnzbd}/bin/sabnzbd -d -f /var/lib/sabnzbd/sabnzbd.ini";
+        TimeoutStopSec = lib.mkForce 10;
       };
     };
 

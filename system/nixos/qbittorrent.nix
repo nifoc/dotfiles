@@ -1,32 +1,45 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   systemd.tmpfiles.rules = [
     "d /var/lib/qbittorrent 0750 media_user media_group"
   ];
 
-  systemd.services.qbittorrent =
+  virtualisation.oci-containers.containers.qbittorrent = {
+    image = "lscr.io/linuxserver/qbittorrent:latest";
+    ports = [ "192.168.42.2:8071:8071" ];
+    environment = {
+      "PUID" = "1001";
+      "PGID" = "2001";
+      "TZ" = "Etc/UTC";
+      "WEBUI_PORT" = "8071";
+    };
+    volumes = [
+      "/var/lib/qbittorrent:/config"
+      "/mnt/downloads:/mnt/downloads"
+      "${pkgs.vuetorrent}/share:/usr/local/share/vuetorrent"
+    ];
+    extraOptions = [
+      "--network=ns:/var/run/netns/wg"
+      "--cap-add=CAP_NET_RAW"
+      "--label=com.centurylinklabs.watchtower.enable=true"
+      "--label=io.containers.autoupdate=registry"
+    ];
+  };
+
+  systemd.services.podman-qbittorrent =
     let
-      mounts = [ "mnt-downloads.mount" ];
+      mounts = [
+        "mnt-downloads.mount"
+      ];
     in
     {
-      description = "qbittorrent instance";
-      requires = mounts;
+      requires = lib.mkAfter mounts;
       bindsTo = [ "wg.service" ];
-      after = [ "wg.service" ] ++ mounts;
-      wantedBy = [ "multi-user.target" ];
+      after = lib.mkForce ([ "wg.service" ] ++ mounts);
 
       serviceConfig = {
-        Type = "exec";
-        User = "media_user";
-        Group = "media_group";
-        NetworkNamespacePath = "/var/run/netns/wg";
-        BindReadOnlyPaths = [
-          "/etc/netns/wg/resolv.conf:/etc/resolv.conf:norbind"
-          "/etc/netns/wg/nsswitch.conf:/etc/nsswitch.conf:norbind"
-        ];
-        ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox --profile=/var/lib/qbittorrent --webui-port=8071";
-        AmbientCapabilities = [ "CAP_NET_RAW" ];
+        TimeoutStopSec = lib.mkForce 10;
       };
     };
 

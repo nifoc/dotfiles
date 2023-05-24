@@ -1,16 +1,19 @@
 { pkgs, lib, ... }:
 
 {
-  virtualisation.oci-containers.containers.prowlarr = {
-    image = "lscr.io/linuxserver/prowlarr:latest";
-    ports = [ "192.168.42.2:9696:9696" ];
+  systemd.tmpfiles.rules = [
+    "d /var/lib/convos 0755 root root"
+  ];
+
+  virtualisation.oci-containers.containers.convos = {
+    image = "docker.io/convos/convos:stable";
+    ports = [ "192.168.42.2:3000:3000" ];
     environment = {
-      "PUID" = "1001";
-      "PGID" = "2001";
+      "CONVOS_REVERSE_PROXY" = "1";
       "TZ" = "Etc/UTC";
     };
     volumes = [
-      "/var/lib/prowlarr:/config"
+      "/var/lib/convos:/data"
     ];
     extraOptions = [
       "--network=ns:/var/run/netns/wg"
@@ -19,7 +22,7 @@
     ];
   };
 
-  systemd.services.podman-prowlarr = {
+  systemd.services.podman-convos = {
     bindsTo = [ "wg.service" ];
     after = lib.mkForce [ "wg.service" ];
 
@@ -28,21 +31,21 @@
     };
   };
 
-  services.nginx.virtualHosts."prowlarr.internal.kempkens.network" = {
+  services.nginx.virtualHosts."convos.internal.kempkens.network" = {
     quic = true;
     http3 = true;
 
     onlySSL = true;
     useACMEHost = "internal.kempkens.network";
 
-    extraConfig = ''
-      client_max_body_size 32m;
-    '';
-
     locations."/" = {
       recommendedProxySettings = true;
-      proxyPass = "http://192.168.42.2:9696";
+      proxyPass = "http://192.168.42.2:3000";
       proxyWebsockets = true;
+
+      extraConfig = ''
+        proxy_set_header X-Request-Base "$scheme://$host/";
+      '';
     };
   };
 }
