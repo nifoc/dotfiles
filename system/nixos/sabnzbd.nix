@@ -34,10 +34,6 @@
       requires = lib.mkAfter mounts;
       bindsTo = [ "wg.service" ];
       after = lib.mkForce ([ "wg.service" ] ++ mounts);
-
-      serviceConfig = {
-        TimeoutStopSec = lib.mkForce 10;
-      };
     };
 
   services.nginx.virtualHosts."sabnzbd.internal.kempkens.network" = {

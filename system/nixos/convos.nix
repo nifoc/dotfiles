@@ -25,10 +25,6 @@
   systemd.services.podman-convos = {
     bindsTo = [ "wg.service" ];
     after = lib.mkForce [ "wg.service" ];
-
-    serviceConfig = {
-      TimeoutStopSec = lib.mkForce 5;
-    };
   };
 
   services.nginx.virtualHosts."convos.internal.kempkens.network" = {

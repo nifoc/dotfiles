@@ -22,10 +22,6 @@
   systemd.services.podman-prowlarr = {
     bindsTo = [ "wg.service" ];
     after = lib.mkForce [ "wg.service" ];
-
-    serviceConfig = {
-      TimeoutStopSec = lib.mkForce 5;
-    };
   };
 
   services.nginx.virtualHosts."prowlarr.internal.kempkens.network" = {

@@ -25,14 +25,6 @@
     };
   };
 
-  systemd.services.podman-proxitok-web.serviceConfig = {
-    TimeoutStopSec = lib.mkForce 5;
-  };
-
-  systemd.services.podman-proxitok-signer.serviceConfig = {
-    TimeoutStopSec = lib.mkForce 5;
-  };
-
   systemd.tmpfiles.rules = [
     "d /etc/container-proxitok/cache 0755 33 33"
   ];

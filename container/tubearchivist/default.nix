@@ -43,19 +43,7 @@
     {
       requires = lib.mkAfter mounts;
       after = lib.mkAfter mounts;
-
-      serviceConfig = {
-        TimeoutStopSec = lib.mkForce 30;
-      };
     };
-
-  systemd.services.podman-archivist-redis.serviceConfig = {
-    TimeoutStopSec = lib.mkForce 30;
-  };
-
-  systemd.services.podman-archivist-es.serviceConfig = {
-    TimeoutStopSec = lib.mkForce 30;
-  };
 
   services.nginx.virtualHosts."tubearchivist.internal.kempkens.network" = {
     quic = true;

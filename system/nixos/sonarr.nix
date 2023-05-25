@@ -36,10 +36,6 @@
       requires = lib.mkAfter mounts;
       bindsTo = [ "wg.service" ];
       after = lib.mkForce ([ "wg.service" ] ++ mounts);
-
-      serviceConfig = {
-        TimeoutStopSec = lib.mkForce 5;
-      };
     };
 
   services.nginx.virtualHosts."sonarr.internal.kempkens.network" = {

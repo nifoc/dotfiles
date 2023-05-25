@@ -45,10 +45,6 @@
       requires = lib.mkAfter depends;
       bindsTo = [ "wg.service" ];
       after = lib.mkForce ([ "wg.service" ] ++ depends);
-
-      serviceConfig = {
-        TimeoutStopSec = lib.mkForce 10;
-      };
     };
 
   systemd.services.podman-omegabrr =
@@ -59,10 +55,6 @@
       requires = lib.mkAfter depends;
       bindsTo = [ "wg.service" ];
       after = lib.mkForce ([ "wg.service" ] ++ depends);
-
-      serviceConfig = {
-        TimeoutStopSec = lib.mkForce 10;
-      };
     };
 
   services.nginx.virtualHosts."autobrr.internal.kempkens.network" = {
