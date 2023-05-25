@@ -20,6 +20,11 @@ in
     ];
   };
 
+  systemd.services.podman-weewx.restartTriggers = [
+    "${config.age.secrets.weewx-config.file}"
+    "${config.age.secrets.weewx-skin.file}"
+  ];
+
   systemd.tmpfiles.rules = [
     "d ${data-dir} 0755 421 421"
     "d ${data-dir}/html 0755 421 421"
