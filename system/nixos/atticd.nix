@@ -1,4 +1,4 @@
-{ pkgs, config, secret, ... }:
+{ pkgs, config, lib, secret, ... }:
 
 let
   fqdn = "attic.cache.daniel.sx";
@@ -37,6 +37,11 @@ in
         default-retention-period = "2 weeks";
       };
     };
+  };
+
+  systemd.services.atticd = {
+    after = lib.mkForce [ "network.target" "network-online.target" ];
+    wants = [ "network.target" "network-online.target" ];
   };
 
   services.nginx.virtualHosts."${fqdn}" = {
