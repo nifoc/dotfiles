@@ -27,16 +27,11 @@
         "mnt-media-Movies.mount"
         "mnt-downloads.mount"
       ];
-
-      depends = [
-        "podman-sabnzbd.service"
-        "podman-qbittorrent.service"
-      ];
     in
     {
-      requires = lib.mkAfter (mounts ++ depends);
+      requires = lib.mkAfter mounts;
       bindsTo = [ "wg.service" ];
-      after = lib.mkForce ([ "wg.service" ] ++ mounts ++ depends);
+      after = lib.mkForce ([ "wg.service" ] ++ mounts);
     };
 
   services.nginx.virtualHosts."radarr.internal.kempkens.network" = {

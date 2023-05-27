@@ -38,23 +38,15 @@
   };
 
   systemd.services.podman-autobrr =
-    let
-      depends = [ "podman-sonarr.service" "podman-radarr.service" ];
-    in
     {
-      requires = lib.mkAfter depends;
       bindsTo = [ "wg.service" ];
-      after = lib.mkForce ([ "wg.service" ] ++ depends);
+      after = lib.mkForce [ "wg.service" ];
     };
 
   systemd.services.podman-omegabrr =
-    let
-      depends = [ "podman-autobrr.service" ];
-    in
     {
-      requires = lib.mkAfter depends;
       bindsTo = [ "wg.service" ];
-      after = lib.mkForce ([ "wg.service" ] ++ depends);
+      after = lib.mkForce [ "wg.service" ];
     };
 
   services.nginx.virtualHosts."autobrr.internal.kempkens.network" = {
