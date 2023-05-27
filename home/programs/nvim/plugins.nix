@@ -122,8 +122,8 @@ in
     src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "nvim-ts-rainbow2";
-      rev = "a9937f8a90e08a2a856cfce87eb40e4b90a8ef47";
-      sha256 = "1vqww1zhr7wjsikms7yg13r9qc6id1qnja5qf77wg3a37wb2h2a4";
+      rev = "5a094ada60b5f99f4f6ccf6ad4c712a392aea44c";
+      sha256 = "1ynlzyl6d6ryfvy91dx15qgvx2h93apsbynms96wwvkka5lknb1s";
       fetchSubmodules = false;
     };
   };
@@ -576,8 +576,8 @@ in
     src = fetchFromGitHub {
       owner = "folke";
       repo = "noice.nvim";
-      rev = "3e1400f172cf67041f6845d86413de56fb90e685";
-      sha256 = "0q628i7wawjxrp7sd9ihrx84d9ch2hnac7k9j4ri5hby6ldaihsj";
+      rev = "06db69ad185b7a67d9a711e910b5b89c1844e443";
+      sha256 = "0wabw5dsjnrgyvz2ygs3447jljwwgszllvjsmq5qda2f9v5a7hfy";
       fetchSubmodules = false;
     };
   };
