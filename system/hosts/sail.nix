@@ -48,6 +48,8 @@ in
     ../../container/weewx
     ../../container/matrix
     ../../container/proxitok
+
+    (import ../nixos/fedifetcher.nix (args // { inherit secret; }))
   ];
 
   system.stateVersion = "22.11";
