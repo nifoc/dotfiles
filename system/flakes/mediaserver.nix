@@ -49,6 +49,7 @@ rec {
     hostname = "mediaserver";
     sshUser = "root";
     remoteBuild = true;
+    confirmTimeout = 600;
 
     profiles.system = {
       path = deploy-rs.lib.${default-system}.activate.nixos system;
