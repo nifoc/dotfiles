@@ -33,7 +33,6 @@
   systemd.services.podman-auto-update-custom = {
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
-    wantedBy = [ "default.target" ];
 
     serviceConfig =
       let

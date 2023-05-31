@@ -2,9 +2,10 @@
 
 {
   systemd.services.fedifetcher = {
-    wants = [ "mastodon-web.service" "mastodon-sidekiq.service" ];
+    description = "FediFetcher";
     after = [ "mastodon-web.service" "mastodon-sidekiq.service" ];
-    wantedBy = [ "default.target" ];
+    wantedBy = [ "multi-user.target" ];
+    startAt = "*:0/25";
 
     serviceConfig =
       let
@@ -16,17 +17,7 @@
       in
       {
         Type = "oneshot";
-        ExecStart = "${podman}/bin/podman run -v ${data} --rm ${image} --access-token=${token} --server=${server} --home-timeline-length=50 --max-followings=5 --from-notifications=1";
+        ExecStart = "${podman}/bin/podman run --name fedifetcher -v ${data} --rm ${image} --access-token=${token} --server=${server} --home-timeline-length=50 --max-followings=5 --from-notifications=1";
       };
-  };
-
-  systemd.timers.fedifetcher = {
-    wantedBy = [ "timers.target" ];
-
-    timerConfig = {
-      OnUnitInactiveSec = "15minutes";
-      RandomizedDelaySec = 30;
-      Persistent = true;
-    };
   };
 }
