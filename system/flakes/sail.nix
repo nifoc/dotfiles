@@ -49,7 +49,8 @@ rec {
     hostname = "sail";
     sshUser = "root";
     remoteBuild = true;
-    confirmTimeout = 600;
+    autoRollback = false;
+    magicRollback = false;
 
     profiles.system = {
       path = deploy-rs.lib.${default-system}.activate.nixos system;
