@@ -31,8 +31,10 @@
 
   # It looks like there is no way to activate the "built-in" service and timer ...
   systemd.services.podman-auto-update-custom = {
+    description = "Run podman auto-update daily";
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
+    startAt = "daily";
 
     serviceConfig =
       let
@@ -43,15 +45,5 @@
         ExecStart = "${podman}/bin/podman auto-update";
         ExecStartPost = "${podman}/bin/podman image prune -f";
       };
-  };
-
-  systemd.timers.podman-auto-update-custom = {
-    wantedBy = [ "timers.target" ];
-
-    timerConfig = {
-      OnCalendar = "daily";
-      RandomizedDelaySec = 900;
-      Persistent = true;
-    };
   };
 }
