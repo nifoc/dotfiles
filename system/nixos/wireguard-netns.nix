@@ -41,8 +41,9 @@
   systemd.services.wg = {
     description = "wg network interface";
     bindsTo = [ "netns@wg.service" ];
-    requires = [ "network-online.target" ];
-    after = [ "netns@wg.service" "run-agenix.d.mount" ];
+    wants = [ "network-online.target" ];
+    after = [ "netns@wg.service" "network-online.target" "run-agenix.d.mount" ];
+    environment.WG_ENDPOINT_RESOLUTION_RETRIES = "infinity";
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
