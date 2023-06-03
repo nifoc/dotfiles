@@ -209,12 +209,12 @@ in
   };
   telescope-undo-nvim = buildVimPluginFrom2Nix {
     pname = "telescope-undo.nvim";
-    version = "2023-03-26";
+    version = "2023-06-03";
     src = fetchFromGitHub {
       owner = "debugloop";
       repo = "telescope-undo.nvim";
-      rev = "231b5ebb4328d2768c830c9a8d1b9c696116848d";
-      sha256 = "1qvn1yamhv6gvbxgmin1yi3rqnmx1611gslrddhsfjkzc246pyzz";
+      rev = "3dec002ea3e7952071d26fbb5d01e2038a58a554";
+      sha256 = "1331qgsfxy1qsvxlkss2g713qlj2ri02ywbhiwwy5cyl8bc0rl76";
       fetchSubmodules = false;
     };
   };
