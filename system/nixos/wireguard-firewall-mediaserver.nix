@@ -53,6 +53,7 @@ let
     ip46tables -A wg-fw -p tcp --dport 7878 -j wg-fw-accept -i vethwgns0
     ip46tables -A wg-fw -p tcp --dport 8071 -j wg-fw-accept -i vethwgns0
     ip46tables -A wg-fw -p tcp --dport 8080 -j wg-fw-accept -i vethwgns0
+    ip46tables -A wg-fw -p tcp --dport 8191 -j wg-fw-accept -i vethwgns0
     ip46tables -A wg-fw -p tcp --dport 8989 -j wg-fw-accept -i vethwgns0
     ip46tables -A wg-fw -p tcp --dport 9696 -j wg-fw-accept -i vethwgns0
     ip46tables -A wg-fw -p tcp --dport 9999 -j wg-fw-accept -i vethwgns0

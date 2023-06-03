@@ -33,6 +33,7 @@ in
     ../nixos/radarr.nix
     ../nixos/sabnzbd.nix
     ../nixos/qbittorrent.nix
+    ../nixos/flaresolverr.nix
     ../nixos/jellyfin.nix
     ../nixos/aria2.nix
 
