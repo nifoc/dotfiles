@@ -3,7 +3,8 @@
 {
   systemd.services.fedifetcher = {
     description = "FediFetcher";
-    after = [ "mastodon-web.service" "mastodon-sidekiq.service" ];
+    wants = [ "mastodon-web.service" ];
+    after = [ "mastodon-web.service" ];
     wantedBy = [ "multi-user.target" ];
     startAt = "*:0/25";
 
