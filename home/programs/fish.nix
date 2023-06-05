@@ -94,7 +94,6 @@ in
       lg = "exa --long --all --group --header --git";
       lt = "exa --long --all --group --header --tree --level ";
 
-      mysqld-direnv-init = "mysql_install_db --user $USER --datadir=$PWD/.direnv/mysql/data --auth-root-authentication-method=normal";
       mysqld-direnv = "mysqld --datadir=$PWD/.direnv/mysql/data --bind-address=127.0.0.1 --socket=$PWD/.direnv/mysql/mysqld.sock --gdb";
       postgres-direnv-init = "initdb --username $USER --pgdata $PWD/.direnv/postgres/data --auth trust";
       postgres-direnv = "postgres -D $PWD/.direnv/postgres/data";
@@ -136,6 +135,14 @@ in
       aria-browser = ''
         set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
         aria2c -U "$user_agent" --file-allocation none -x 2 $argv
+      '';
+
+      mysqld-direnv-init = ''
+        if type -q mysql_install_db
+          mysql_install_db --user $USER --datadir=$PWD/.direnv/mysql/data --auth-root-authentication-method=normal
+        else
+          mysqld --initialize-insecure --user $USER --datadir=$PWD/.direnv/mysql/data
+        end
       '';
     };
 
