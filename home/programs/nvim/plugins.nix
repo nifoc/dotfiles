@@ -111,8 +111,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "a034c7aa25a2dca0ab2c0b82d8e325f248d52e74";
-      sha256 = "1axj2xdrwcb4d9b0jwcwfk09kwaczsyzwshnxvv9nxq1gs241g3d";
+      rev = "1b5a7334bb9862abafcf6676d2a2a6973d15ae3a";
+      sha256 = "0rf603j2i7a1y1xli2yvv2ddl82qnr2sraii5mc442k1lmwbbk8d";
       fetchSubmodules = false;
     };
   };
@@ -561,12 +561,12 @@ in
   };
   nvim-notify = buildVimPluginFrom2Nix {
     pname = "nvim-notify";
-    version = "2023-05-13";
+    version = "2023-06-05";
     src = fetchFromGitHub {
       owner = "rcarriga";
       repo = "nvim-notify";
-      rev = "f3024b912073774111202f5fa6518b0cd2a74432";
-      sha256 = "05hwq6yvjblngvh9r5rkdxx320a9iqb79gjqzdzxsnlb2pzp5jsq";
+      rev = "ea9c8ce7a37f2238f934e087c255758659948e0f";
+      sha256 = "0lh49bln2s840x08f5a967569k597cnnrl5vclys7lrbw77avga6";
       fetchSubmodules = false;
     };
   };
