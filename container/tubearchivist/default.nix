@@ -3,6 +3,7 @@
 {
   systemd.tmpfiles.rules = [
     "d /var/lib/tubearchivist 0755 root root"
+    "d /var/lib/tubearchivist/cache 0755 media_user media_group"
     "d /var/lib/tubearchivist/redis 0755 root root"
     "d /var/lib/tubearchivist/es 0755 1000 root"
   ];
@@ -15,7 +16,9 @@
       environmentFiles = [ config.age.secrets.tubearchivist-environment-ta.path ];
       volumes = [
         "/mnt/media/YTDL/Downloads:/youtube"
-        "/mnt/media/YTDL/Cache:/cache"
+        "/var/lib/tubearchivist/cache:/cache"
+        "/mnt/media/YTDL/Cache/backup:/cache/backup"
+        "/mnt/media/YTDL/Cache/import:/cache/import"
       ];
     };
 
