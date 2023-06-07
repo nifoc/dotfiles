@@ -12,6 +12,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,6 +58,11 @@
         inherit inputs;
       };
 
+      argon = import ./system/flakes/argon.nix {
+        inherit (inputs) nixpkgs nixos-hardware deploy-rs home-manager agenix;
+        inherit inputs;
+      };
+
       adsb-antenna = import ./system/flakes/adsb-antenna.nix {
         inherit (inputs) nixpkgs deploy-rs home-manager;
         inherit inputs;
@@ -70,6 +77,7 @@
         sail = sail.system;
         attic = attic.system;
         mediaserver = mediaserver.system;
+        argon = argon.system;
         adsb-antenna = adsb-antenna.system;
       };
 
@@ -77,6 +85,7 @@
         sail = sail.deployment;
         attic = attic.deployment;
         mediaserver = mediaserver.deployment;
+        argon = argon.deployment;
         adsb-antenna = adsb-antenna.deployment;
       };
     };

@@ -23,5 +23,13 @@
       identityFile = "~/.ssh/LAN.pub";
       identitiesOnly = true;
     };
+
+    "builder-argon" = {
+      hostname = "argon.ts.kempkens.network";
+      port = 22;
+      user = "root";
+      identityFile = "~/.ssh/LAN.pub";
+      identitiesOnly = true;
+    };
   };
 }

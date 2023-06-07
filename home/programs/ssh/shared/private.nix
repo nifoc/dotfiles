@@ -75,5 +75,14 @@
       identityFile = "~/.ssh/LAN.pub";
       identitiesOnly = true;
     };
+
+    "argon" = {
+      hostname = "argon.ts.kempkens.network";
+      port = 22;
+      user = "daniel";
+      forwardAgent = true;
+      identityFile = "~/.ssh/LAN.pub";
+      identitiesOnly = true;
+    };
   };
 }

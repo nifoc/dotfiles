@@ -4,10 +4,12 @@ let
   system-sail = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJMs1BqZ+MC7XBwV+dZW8EmaZt2cOg/xcOBPS9KSzIl";
   system-attic = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHe6N3LfPxu7KNsyuI8YE3R0OHLTxNw5+WhuQjKL6PUr";
   system-mediaserver = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlB0cL5CtTOyARWSE2yUsNU4JHUPmr71710mZHzsmbX";
+  system-argon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPP9ygczyi6g8abvj1I0eAj7N2Rli9UMlkC8VT6SnWLU";
 
   sail = [ user-daniel system-sail ];
   attic = [ user-daniel system-attic ];
   mediaserver = [ user-daniel system-mediaserver ];
+  argon = [ user-daniel system-argon ];
 in
 {
   # sail
@@ -71,4 +73,13 @@ in
   "agenix/hosts/mediaserver/aria2/config.age".publicKeys = mediaserver;
 
   "agenix/hosts/mediaserver/unpackerr/config.age".publicKeys = mediaserver;
+
+  # argon
+  "agenix/hosts/argon/user/danielPassword.age".publicKeys = argon;
+
+  "agenix/hosts/argon/acme/credentials.age".publicKeys = argon;
+
+  "agenix/hosts/argon/tailscale/authkey.age".publicKeys = argon;
+
+  "agenix/hosts/argon/weewx-proxy/environment.age".publicKeys = argon;
 }

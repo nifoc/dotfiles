@@ -1,22 +1,29 @@
-args@{ pkgs, lib, ... }:
+args@{ pkgs, config, lib, ... }:
 
 let
-  secret = import ../../secret/hosts/adsb-antenna.nix;
+  secret = import ../../secret/hosts/argon.nix;
   ssh-keys = import ../shared/ssh-keys.nix;
 in
 {
   imports = [
-    ../../hardware/hosts/adsb-antenna.nix
+    ../../hardware/hosts/argon.nix
+    ../../agenix/hosts/argon/config.nix
     ../shared/show-update-changelog.nix
     ../nixos/raspberry.nix
     ../nixos/ssh.nix
 
     ../nixos/git.nix
 
+    ../nixos/acme-argon.nix
+    ../nixos/nginx.nix
+
+    (import ../nixos/adguardhome.nix (args // { inherit secret; }))
+
     ../nixos/attic.nix
 
-    ../nixos/container.nix
-    ../../container/adsb
+    ../nixos/tailscale.nix
+
+    ../nixos/weewx-proxy.nix
   ];
 
   system.stateVersion = "22.11";
@@ -66,14 +73,72 @@ in
   };
 
   networking = {
-    hostName = "adsb-antenna";
+    hostName = "argon";
+    useNetworkd = true;
+  };
 
-    dhcpcd.denyInterfaces = [ "veth*" ];
+  systemd.network = {
+    enable = true;
 
-    timeServers = [
-      "ptbtime1.ptb.de"
-      "ptbtime2.ptb.de"
-      "ptbtime3.ptb.de"
+    netdevs = {
+      "20-vlan10" = {
+        netdevConfig = {
+          Kind = "vlan";
+          Name = "vlan51";
+        };
+        vlanConfig.Id = 51;
+      };
+
+      "20-vlan20" = {
+        netdevConfig = {
+          Kind = "vlan";
+          Name = "vlan777";
+        };
+        vlanConfig.Id = 777;
+      };
+    };
+
+    networks = {
+      "10-lan" = {
+        matchConfig.Name = "end0";
+        vlan = [ "vlan51" "vlan777" ];
+        networkConfig = {
+          DHCP = "yes";
+          IPv6AcceptRA = true;
+          IPv6PrivacyExtensions = true;
+        };
+        linkConfig.RequiredForOnline = "routable";
+
+        ntp = [
+          "ptbtime1.ptb.de"
+          "ptbtime2.ptb.de"
+          "ptbtime3.ptb.de"
+        ];
+      };
+
+      "20-iot" = {
+        matchConfig.Name = "vlan51";
+        networkConfig = {
+          DHCP = "no";
+          IPv6AcceptRA = false;
+        };
+        address = [ "10.0.51.5/24" ];
+        linkConfig.RequiredForOnline = "routable";
+      };
+
+      "30-modem" = {
+        matchConfig.Name = "vlan777";
+        networkConfig = {
+          DHCP = "no";
+          IPv6AcceptRA = false;
+        };
+        address = [ "192.168.1.5/24" ];
+        linkConfig.RequiredForOnline = "routable";
+      };
+    };
+
+    wait-online.extraArgs = [
+      "--interface=end0"
     ];
   };
 
@@ -86,6 +151,7 @@ in
     doc.enable = false;
   };
 
+  services.hardware.argonone.enable = true;
   programs.fish.enable = true;
 
   users.users = {
@@ -94,7 +160,7 @@ in
     };
 
     daniel = {
-      hashedPassword = secret.users.daniel.hashedPassword;
+      passwordFile = config.age.secrets.user-daniel-password.path;
       isNormalUser = true;
       home = "/home/daniel";
       description = "Daniel";
