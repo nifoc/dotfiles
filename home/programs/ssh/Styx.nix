@@ -26,7 +26,7 @@ in
     extraConfig = ''
       IdentityAgent "${auth-socket}"
       UpdateHostKeys ask
-      VerifyHostKeyDNS yes
+      # VerifyHostKeyDNS yes
     '';
 
     matchBlocks = shared-private.matchBlocks // shared-builder.matchBlocks // shared-work.matchBlocks;

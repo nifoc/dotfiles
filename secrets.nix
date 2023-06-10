@@ -81,5 +81,7 @@ in
 
   "agenix/hosts/argon/tailscale/authkey.age".publicKeys = argon;
 
+  "agenix/hosts/argon/adguardhome-sync/environment.age".publicKeys = argon;
+
   "agenix/hosts/argon/weewx-proxy/environment.age".publicKeys = argon;
 }

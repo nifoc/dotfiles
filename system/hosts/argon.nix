@@ -24,6 +24,9 @@ in
     ../nixos/tailscale.nix
 
     ../nixos/weewx-proxy.nix
+
+    ../nixos/container.nix
+    ../nixos/adguardhome-sync.nix
   ];
 
   system.stateVersion = "22.11";
@@ -76,6 +79,17 @@ in
     hostName = "argon";
     useNetworkd = true;
   };
+
+  environment.etc."resolv.conf".text = lib.mkForce ''
+    nameserver 127.0.0.1
+    nameserver 10.0.0.110
+    options edns0 trust-ad
+    search .
+  '';
+
+  services.resolved.extraConfig = ''
+    DNSStubListener=no
+  '';
 
   systemd.network = {
     enable = true;

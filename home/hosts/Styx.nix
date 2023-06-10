@@ -49,6 +49,7 @@ args@{ pkgs, config, lib, ... }:
       curlHTTP3
       dasel
       deploy-rs
+      dig
       exa
       exiftool
       fd

@@ -18,7 +18,7 @@
       debug_pprof = false;
 
       dns = {
-        bind_hosts = [ "127.0.0.1" "10.0.0.5" ];
+        bind_hosts = secret.adguardhome.bind_hosts;
         port = 53;
 
         bootstrap_dns = [
@@ -54,7 +54,9 @@
           })
         (builtins.filter builtins.isString interfaces));
 
-  services.nginx.virtualHosts."agh.internal.kempkens.network" = {
+  virtualisation.podman.defaultNetwork.settings.dns_enabled = lib.mkForce secret.adguardhome.podmanDNS;
+
+  services.nginx.virtualHosts."${secret.adguardhome.domain_prefix}.internal.kempkens.network" = {
     serverAliases = [ "dns.internal.kempkens.network" ];
 
     listen = [

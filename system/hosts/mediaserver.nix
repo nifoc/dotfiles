@@ -16,6 +16,8 @@ in
     ../nixos/acme-mediaserver.nix
     ../nixos/nginx.nix
 
+    (import ../nixos/adguardhome.nix (args // { inherit secret; }))
+
     ../nixos/attic.nix
 
     ../nixos/bdfr-browser.nix

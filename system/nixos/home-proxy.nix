@@ -22,8 +22,18 @@
 
     upstreams.dns = {
       servers = {
-        "${secret.nginx.upstream.dns.primary.hostname}:${builtins.toString secret.nginx.upstream.dns.primary.upstreamPort}" = { };
+        "${secret.nginx.upstream.dns.primary.hostname}:${builtins.toString secret.nginx.upstream.dns.primary.upstreamPort}" = {
+          fail_timeout = "5s";
+        };
+
+        "${secret.nginx.upstream.dns.secondary.hostname}:${builtins.toString secret.nginx.upstream.dns.secondary.upstreamPort}" = {
+          backup = true;
+        };
       };
+
+      extraConfig = ''
+        keepalive 8;
+      '';
     };
 
     virtualHosts."${secret.nginx.upstream.dns.fqdn}" = {
