@@ -145,7 +145,7 @@ in
       description = "Daniel";
       extraGroups = [ "wheel" ];
       shell = pkgs.fish;
-      openssh.authorizedKeys.keys = [ ssh-keys.LAN ];
+      openssh.authorizedKeys.keys = [ ssh-keys.LAN ssh-keys.ShellFish ];
     };
   };
 }
