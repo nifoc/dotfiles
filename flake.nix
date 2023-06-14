@@ -64,6 +64,11 @@
         inherit inputs;
       };
 
+      weather-sdr = import ./system/flakes/weather-sdr.nix {
+        inherit (inputs) nixpkgs deploy-rs home-manager agenix;
+        inherit inputs;
+      };
+
       adsb-antenna = import ./system/flakes/adsb-antenna.nix {
         inherit (inputs) nixpkgs deploy-rs home-manager;
         inherit inputs;
@@ -79,6 +84,7 @@
         attic = attic.system;
         mediaserver = mediaserver.system;
         argon = argon.system;
+        weather-sdr = weather-sdr.system;
         adsb-antenna = adsb-antenna.system;
       };
 
@@ -87,6 +93,7 @@
         attic = attic.deployment;
         mediaserver = mediaserver.deployment;
         argon = argon.deployment;
+        weather-sdr = weather-sdr.deployment;
         adsb-antenna = adsb-antenna.deployment;
       };
     };

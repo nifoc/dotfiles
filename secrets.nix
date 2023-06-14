@@ -5,11 +5,13 @@ let
   system-attic = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHe6N3LfPxu7KNsyuI8YE3R0OHLTxNw5+WhuQjKL6PUr";
   system-mediaserver = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlB0cL5CtTOyARWSE2yUsNU4JHUPmr71710mZHzsmbX";
   system-argon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPP9ygczyi6g8abvj1I0eAj7N2Rli9UMlkC8VT6SnWLU";
+  system-weather-sdr = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBHuAdx5u9R2DyK065DUxdwhEOi0at1WNkY5f4JtrOzk";
 
   sail = [ user-daniel system-sail ];
   attic = [ user-daniel system-attic ];
   mediaserver = [ user-daniel system-mediaserver ];
   argon = [ user-daniel system-argon ];
+  weather-sdr = [ user-daniel system-weather-sdr ];
 in
 {
   # sail
@@ -84,4 +86,9 @@ in
   "agenix/hosts/argon/adguardhome-sync/environment.age".publicKeys = argon;
 
   "agenix/hosts/argon/weewx-proxy/environment.age".publicKeys = argon;
+
+  # weather-sdr
+  "agenix/hosts/weather-sdr/user/danielPassword.age".publicKeys = weather-sdr;
+
+  "agenix/hosts/weather-sdr/mosquitto/passwordWeewxProxy.age".publicKeys = weather-sdr;
 }

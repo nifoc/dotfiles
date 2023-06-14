@@ -1,22 +1,21 @@
-args@{ pkgs, lib, ... }:
+args@{ pkgs, config, lib, ... }:
 
 let
-  secret = import ../../secret/hosts/adsb-antenna.nix;
   ssh-keys = import ../shared/ssh-keys.nix;
 in
 {
   imports = [
-    ../../hardware/hosts/adsb-antenna.nix
+    ../../hardware/hosts/weather-sdr.nix
+    ../../agenix/hosts/weather-sdr/config.nix
     ../shared/show-update-changelog.nix
     ../nixos/raspberry.nix
     ../nixos/ssh.nix
 
     ../nixos/git.nix
 
-    ../nixos/attic.nix
+    ../nixos/mosquitto.nix
 
-    ../nixos/container.nix
-    ../../container/adsb
+    ../nixos/rtl_433.nix
   ];
 
   system.stateVersion = "22.11";
@@ -66,14 +65,32 @@ in
   };
 
   networking = {
-    hostName = "adsb-antenna";
+    hostName = "weather-sdr";
+    useNetworkd = true;
+  };
 
-    dhcpcd.denyInterfaces = [ "veth*" ];
+  systemd.network = {
+    enable = true;
 
-    timeServers = [
-      "ptbtime1.ptb.de"
-      "ptbtime2.ptb.de"
-      "ptbtime3.ptb.de"
+    networks = {
+      "10-iot" = {
+        matchConfig.Name = "enu1u1u1";
+        networkConfig = {
+          DHCP = "yes";
+          IPv6AcceptRA = false;
+        };
+        linkConfig.RequiredForOnline = "routable";
+
+        ntp = [
+          "ptbtime1.ptb.de"
+          "ptbtime2.ptb.de"
+          "ptbtime3.ptb.de"
+        ];
+      };
+    };
+
+    wait-online.extraArgs = [
+      "--interface=enu1u1u1"
     ];
   };
 
@@ -86,6 +103,7 @@ in
     doc.enable = false;
   };
 
+  services.hardware.argonone.enable = true;
   programs.fish.enable = true;
 
   users.users = {
@@ -94,7 +112,7 @@ in
     };
 
     daniel = {
-      hashedPassword = secret.users.daniel.hashedPassword;
+      passwordFile = config.age.secrets.user-daniel-password.path;
       isNormalUser = true;
       home = "/home/daniel";
       description = "Daniel";

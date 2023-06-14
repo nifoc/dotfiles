@@ -33,15 +33,17 @@
       identitiesOnly = true;
     };
 
-    "piboat.lan" = {
+    "adsb-antenna" = {
+      hostname = "adsb-antenna.laniot";
       port = 22;
-      user = "pi";
+      user = "daniel";
+      forwardAgent = true;
       identityFile = "~/.ssh/LAN.pub";
       identitiesOnly = true;
     };
 
-    "adsb-antenna" = {
-      hostname = "adsb-antenna.laniot";
+    "weather-sdr" = {
+      hostname = "weather-sdr.laniot";
       port = 22;
       user = "daniel";
       forwardAgent = true;
