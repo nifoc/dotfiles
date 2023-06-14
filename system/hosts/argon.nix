@@ -27,6 +27,7 @@ in
 
     ../nixos/container.nix
     ../nixos/adguardhome-sync.nix
+    ../nixos/homebridge.nix
   ];
 
   system.stateVersion = "22.11";
