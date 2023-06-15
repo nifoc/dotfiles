@@ -107,12 +107,12 @@ in
   };
   nvim-treesitter = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2023-06-14";
+    version = "2023-06-15";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "5822a8c6886f0238a315b57e5e96acdd74d04448";
-      sha256 = "1vdv12nj2jrlp5li31cq2m5dlfqwsyfa1cqiq2zs9z05hgdcfhs0";
+      rev = "10b0da9f931c734b531eb095ea01cce53984205c";
+      sha256 = "0qp2026zs9npaz00w7bgpaf1mga7x4zvgina1wdlvb4yhmr4n3n5";
       fetchSubmodules = false;
     };
   };
@@ -122,8 +122,8 @@ in
     src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "nvim-ts-rainbow2";
-      rev = "f3c70493bb23f83eee7b29aa6043c5caa38d111e";
-      sha256 = "1cky3q6al0zay1kk75f74c12q6nnj206gv96hlgphk339vadfyvw";
+      rev = "9e228dc94d083cb2dfddac64d524483f452dab40";
+      sha256 = "13q9kpiwmydf39dfk47inaas2r49scsvrqb1v7rnimjmjxp2654d";
       fetchSubmodules = false;
     };
   };
@@ -297,23 +297,23 @@ in
   };
   LuaSnip = buildVimPluginFrom2Nix {
     pname = "LuaSnip";
-    version = "2023-06-07";
+    version = "2023-06-14";
     src = fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "a13af80734eb28f744de6c875330c9d3c24b5f3b";
-      sha256 = "050f0rh8mb7v6zg0d779i7hxl3l2bmbjg608rsb34hr8h0qkk5qd";
+      rev = "bfbd03952f428db6e28bb199c713b1b25576cec9";
+      sha256 = "0rnlwcxr0ggmyi0qxffd1q0p7vr1pigi3sjpl9ppmm92p7x2jfzq";
       fetchSubmodules = false;
     };
   };
   friendly-snippets = buildVimPluginFrom2Nix {
     pname = "friendly-snippets";
-    version = "2023-06-11";
+    version = "2023-06-15";
     src = fetchFromGitHub {
       owner = "rafamadriz";
       repo = "friendly-snippets";
-      rev = "49ca2a0e0e26427b550b1f64272d7fe7e4d7d51b";
-      sha256 = "1bdavn7sw4kxyad8667am7vsam4p4aq88ii618sp1xy6r7n5qf4w";
+      rev = "b3cd8d77feb7871d8b04bb45bcd8154120a796a1";
+      sha256 = "1vsjccdjp4pn5b801pydm4v3cg1b8pv1z4x8bk16l4z2l3mrs66a";
       fetchSubmodules = false;
     };
   };
@@ -543,8 +543,8 @@ in
     src = fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "f1c5aa10509e8e109f449499b69567191d25320f";
-      sha256 = "0jb1w22ma01h3q0bhyjk8baq86dw3flk2j446kbh3nrlwa73x9k9";
+      rev = "4f8f66da9816ec4c4847653c9ab9bcb9c609508c";
+      sha256 = "1s87s5llm6r9kb3jli9v5rh1bvgmyn0ig3rrxn02myi79a6npw1n";
       fetchSubmodules = false;
     };
   };
