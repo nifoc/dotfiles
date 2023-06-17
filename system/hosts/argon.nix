@@ -23,6 +23,8 @@ in
 
     ../nixos/tailscale.nix
 
+    ../nixos/uptime-kuma.nix
+
     ../nixos/weewx-proxy.nix
 
     ../nixos/container.nix

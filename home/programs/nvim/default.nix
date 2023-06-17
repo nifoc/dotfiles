@@ -31,7 +31,7 @@ in
       nodePackages.dockerfile-language-server-nodejs
       nodePackages.svelte-language-server
       nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
+      # nodePackages.vscode-langservers-extracted
       nodePackages.yaml-language-server
       lua-language-server
       taplo-lsp

@@ -9,7 +9,9 @@
     }
 
     server {
-      listen ${builtins.toString secret.nginx.upstream.video.externalPort};
+      listen *:${builtins.toString secret.nginx.upstream.video.externalPort};
+      listen [::]:${builtins.toString secret.nginx.upstream.video.externalPort};
+
       proxy_protocol on;
       proxy_pass video;
     }
