@@ -43,7 +43,7 @@
       http3 = true;
 
       onlySSL = true;
-      useACMEHost = "cache.daniel.sx";
+      useACMEHost = "daniel.sx";
 
       locations."/${secret.adguardhome.auth}/dns-query" = {
         recommendedProxySettings = true;
@@ -58,7 +58,7 @@
     };
   };
 
-  networking.firewall.interfaces."enp1s0".allowedTCPPorts = [
+  networking.firewall.interfaces."enp41s0".allowedTCPPorts = [
     secret.nginx.upstream.video.externalPort
   ];
 }

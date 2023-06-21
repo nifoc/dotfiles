@@ -9,7 +9,8 @@ in
   systemd.services.nitter = {
     description = "Nitter (An alternative Twitter front-end)";
     wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" "network-online.target" ];
+    requires = [ "redis-nitter.service" ];
+    after = [ "network.target" "network-online.target" "redis-nitter.service" ];
     serviceConfig = {
       DynamicUser = true;
       StateDirectory = "nitter";
@@ -47,8 +48,18 @@ in
     };
   };
 
+  services.redis.servers.nitter = {
+    enable = true;
+    bind = "127.0.0.1";
+    port = 6380;
+
+    databases = 1;
+    save = [ ];
+    appendFsync = "no";
+  };
+
   services.nginx.virtualHosts."${secret.nginx.hostnames.nitter}" = {
-    listenAddresses = [ "100.113.242.85" "[fd7a:115c:a1e0:ab12:4843:cd96:6271:f255]" ];
+    listenAddresses = [ "100.108.165.26" "[fd7a:115c:a1e0:ab12:4843:cd96:626c:a51a]" ];
     quic = true;
     http3 = true;
 

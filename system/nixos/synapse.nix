@@ -12,7 +12,7 @@
 
       listeners = [
         {
-          bind_addresses = [ "127.0.0.1" "10.99.99.2" ];
+          bind_addresses = [ "127.0.0.1" "10.88.0.1" ];
           port = 8008;
           tls = false;
           type = "http";
@@ -29,7 +29,7 @@
       database = {
         name = "psycopg2";
         args = {
-          host = "10.99.99.3";
+          host = "127.0.0.1";
         };
       };
 
@@ -44,6 +44,7 @@
       url_preview_enabled = true;
       url_preview_ip_range_blacklist = [
         "10.0.0.0/8"
+        "94.130.142.168/32"
         "100.64.0.0/10"
         "127.0.0.0/8"
         "157.90.18.162/32"
@@ -65,6 +66,7 @@
         "ff00::/8"
         "2001:db8::/32"
         "2a01:4f8:c2c:989c::/64"
+        "2a01:4f8:13b:2d81::/64"
       ];
 
       enable_registration = false;
@@ -73,8 +75,8 @@
       report_stats = false;
 
       app_service_config_files = [
-        "/etc/container-matrix/signal/registration.yaml"
-        "/etc/container-matrix/whatsapp/registration.yaml"
+        "/var/lib/matrix-bridges/signal/registration.yaml"
+        "/var/lib/matrix-bridges/whatsapp/registration.yaml"
       ];
 
       experimental_features = {
@@ -87,7 +89,7 @@
     extraConfigFiles = [ config.age.secrets.synapse-extra-config.path ];
   };
 
-  networking.firewall.allowedTCPPorts = [ 8008 ];
+  networking.firewall.interfaces."podman+".allowedTCPPorts = [ 8008 ];
 
   services.nginx.virtualHosts."matrix.kempkens.io" = {
     quic = true;

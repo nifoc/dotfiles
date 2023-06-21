@@ -2,7 +2,7 @@
 
 let
   secret = import ../../secret/container/weewx;
-  data-dir = "/etc/container-weewx";
+  data-dir = "/var/lib/weewx";
 in
 {
   virtualisation.oci-containers.containers.weewx = {
@@ -71,7 +71,7 @@ in
       mosquittoPorts = [ 1883 ];
     in
     {
-      "enp7s0".allowedTCPPorts = mosquittoPorts;
+      "enp41s0".allowedTCPPorts = mosquittoPorts;
       "tailscale0".allowedTCPPorts = mosquittoPorts;
       "podman+".allowedTCPPorts = mosquittoPorts;
     };

@@ -60,6 +60,15 @@
       identitiesOnly = true;
     };
 
+    "tanker" = {
+      hostname = "tanker.ts.kempkens.network";
+      port = 22;
+      user = "daniel";
+      forwardAgent = true;
+      identityFile = "~/.ssh/Hetzner.pub";
+      identitiesOnly = true;
+    };
+
     "attic" = {
       hostname = "attic.ts.kempkens.network";
       port = 22;

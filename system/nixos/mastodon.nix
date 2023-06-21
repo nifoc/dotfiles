@@ -1,4 +1,4 @@
-{ config, secret, ... }:
+{ config, ... }:
 
 let
   web-domain = "mastodon.kempkens.io";
@@ -26,22 +26,15 @@ in
     vapidPrivateKeyFile = config.age.secrets.mastodon-vapid-private-key.path;
 
     database = {
-      createLocally = false;
-      host = "10.99.99.3";
-      port = 5432;
-      name = "mastodon";
-      inherit (secret.mastodon.database) user;
-      passwordFile = config.age.secrets.mastodon-database-password.path;
+      createLocally = true;
     };
 
     redis = {
-      createLocally = false;
-      host = "10.99.99.3";
-      port = 6379;
+      createLocally = true;
     };
 
     elasticsearch = {
-      host = "10.99.99.3";
+      host = "127.0.0.1";
       port = 9200;
     };
 
@@ -51,7 +44,7 @@ in
       host = "smtp.mailgun.org";
       port = 587;
       fromAddress = "mastodon@mg.kempkens.io";
-      inherit (secret.mastodon.smtp) user;
+      user = "postmaster@mg.kempkens.io";
       passwordFile = config.age.secrets.mastodon-smtp-password.path;
     };
 

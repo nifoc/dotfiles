@@ -11,10 +11,7 @@ in
     port = 8007;
 
     database = {
-      createLocally = false;
-      host = "10.99.99.3";
-      port = 5432;
-      passwordFile = config.age.secrets.invidious-database-password.path;
+      createLocally = true;
     };
 
     settings = {
@@ -40,11 +37,13 @@ in
       channel_refresh_interval = "15m";
     };
 
+    extraSettingsFile = config.age.secrets.invidious-extra-settings.path;
+
     nginx.enable = false;
   };
 
   services.nginx.virtualHosts."${fqdn}" = {
-    listenAddresses = [ "100.113.242.85" "[fd7a:115c:a1e0:ab12:4843:cd96:6271:f255]" ];
+    listenAddresses = [ "100.108.165.26" "[fd7a:115c:a1e0:ab12:4843:cd96:626c:a51a]" ];
     quic = true;
     http3 = true;
 

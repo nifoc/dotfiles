@@ -25,8 +25,8 @@
   };
 
   networking.firewall.interfaces."podman+" = {
-    allowedUDPPorts = [ 53 ];
-    allowedTCPPorts = [ 53 ];
+    allowedUDPPorts = [ 53 443 ];
+    allowedTCPPorts = [ 53 443 5432 ];
   };
 
   # It looks like there is no way to activate the "built-in" service and timer ...

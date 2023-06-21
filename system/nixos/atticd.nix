@@ -39,17 +39,12 @@ in
     };
   };
 
-  systemd.services.atticd = {
-    after = lib.mkForce [ "network.target" "network-online.target" ];
-    wants = [ "network.target" "network-online.target" ];
-  };
-
   services.nginx.virtualHosts."${fqdn}" = {
     quic = true;
     http3 = true;
 
     onlySSL = true;
-    useACMEHost = "cache.daniel.sx";
+    useACMEHost = "daniel.sx";
 
     extraConfig = ''
       client_max_body_size 0;

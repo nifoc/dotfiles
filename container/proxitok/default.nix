@@ -29,8 +29,24 @@
     "d /etc/container-proxitok/cache 0755 33 33"
   ];
 
+  services.redis.servers.proxitok = {
+    enable = true;
+    bind = "10.88.0.1";
+    port = 6381;
+
+    databases = 1;
+    save = [ ];
+    appendFsync = "no";
+
+    settings = {
+      protected-mode = "no";
+    };
+  };
+
+  networking.firewall.interfaces."podman+".allowedTCPPorts = [ 6381 ];
+
   services.nginx.virtualHosts."tictac.daniel.sx" = {
-    listenAddresses = [ "100.113.242.85" "[fd7a:115c:a1e0:ab12:4843:cd96:6271:f255]" ];
+    listenAddresses = [ "100.108.165.26" "[fd7a:115c:a1e0:ab12:4843:cd96:626c:a51a]" ];
     quic = true;
     http3 = true;
 

@@ -1,7 +1,11 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    #nixpkgs.url = "github:nixos/nixpkgs?rev=22467e240f390f029d6c745ce031f0ffbdc40916";
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     darwin = {
       url = "github:lnl7/nix-darwin";
@@ -44,13 +48,8 @@
         inherit inputs;
       };
 
-      sail = import ./system/flakes/sail.nix {
-        inherit (inputs) nixpkgs deploy-rs home-manager agenix;
-        inherit inputs;
-      };
-
-      attic = import ./system/flakes/attic.nix {
-        inherit (inputs) nixpkgs deploy-rs home-manager agenix attic;
+      tanker = import ./system/flakes/tanker.nix {
+        inherit (inputs) nixpkgs disko deploy-rs home-manager agenix attic;
         inherit inputs;
       };
 
@@ -80,8 +79,7 @@
       };
 
       nixosConfigurations = {
-        sail = sail.system;
-        attic = attic.system;
+        tanker = tanker.system;
         mediaserver = mediaserver.system;
         argon = argon.system;
         weather-sdr = weather-sdr.system;
@@ -89,8 +87,7 @@
       };
 
       deploy.nodes = {
-        sail = sail.deployment;
-        attic = attic.deployment;
+        tanker = tanker.deployment;
         mediaserver = mediaserver.deployment;
         argon = argon.deployment;
         weather-sdr = weather-sdr.deployment;
