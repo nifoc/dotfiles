@@ -52,12 +52,12 @@ in
   };
   yanky-nvim = buildVimPluginFrom2Nix {
     pname = "yanky.nvim";
-    version = "2023-05-31";
+    version = "2023-06-21";
     src = fetchFromGitHub {
       owner = "gbprod";
       repo = "yanky.nvim";
-      rev = "16884855e65931cdec3937d60bfb942530535e9c";
-      sha256 = "1zcxgh49a87ah77rav26m8zlgvx0k2q32m70i74x7pd3y0b3jjs7";
+      rev = "b12561386a25645adb7504e0e6a8c5dc8b31e6da";
+      sha256 = "0s2ssd1rg6bblbq50p2yx9vzip4vra4rsy6rsjkxlagw4y6qx4ss";
       fetchSubmodules = false;
     };
   };
