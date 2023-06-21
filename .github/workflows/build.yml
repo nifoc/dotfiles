@@ -18,9 +18,9 @@ jobs:
       with:
         name: nifoc
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: nix build '.#nixosConfigurations.attic.pkgs.attic-server'
-    - run: nix build '.#nixosConfigurations.attic.pkgs.attic-client'
-    - run: nix build '.#nixosConfigurations.attic.pkgs.deploy-rs'
+    - run: nix build '.#nixosConfigurations.tanker.pkgs.attic-server'
+    - run: nix build '.#nixosConfigurations.tanker.pkgs.attic-client'
+    - run: nix build '.#nixosConfigurations.tanker.pkgs.deploy-rs'
 
   build-arm64-linux:
     runs-on: buildjet-2vcpu-ubuntu-2204-arm
