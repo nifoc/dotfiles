@@ -74,7 +74,7 @@
     };
   };
 
-  documentation.enable = false;
+  documentation.doc.enable = false;
 
   users = {
     users.daniel = {

@@ -9,7 +9,7 @@
     description = "FediFetcher";
     wants = [ "mastodon-web.service" ];
     after = [ "mastodon-web.service" ];
-    wantedBy = [ "multi-user.target" ];
+    # wantedBy = [ "multi-user.target" ];
     startAt = "*:0/25";
 
     serviceConfig =

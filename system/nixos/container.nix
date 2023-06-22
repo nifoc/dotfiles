@@ -29,6 +29,18 @@
     allowedTCPPorts = [ 53 443 5432 ];
   };
 
+  # For services that listen on podman0
+  systemd.services.podman-wait-for-host-interface = {
+    description = "Wait for podman0 to be available";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.bash}/bin/bash -c 'until ${pkgs.iproute2}/bin/ip address show podman0; do sleep 1; done'";
+    };
+  };
+
   # It looks like there is no way to activate the "built-in" service and timer ...
   systemd.services.podman-auto-update-custom = {
     description = "Run podman auto-update daily";

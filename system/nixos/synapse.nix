@@ -89,6 +89,8 @@
     extraConfigFiles = [ config.age.secrets.synapse-extra-config.path ];
   };
 
+  systemd.services.matrix-synapse.after = [ "podman-wait-for-host-interface.service" ];
+
   networking.firewall.interfaces."podman+".allowedTCPPorts = [ 8008 ];
 
   services.nginx.virtualHosts."matrix.kempkens.io" = {

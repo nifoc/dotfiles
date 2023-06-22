@@ -11,6 +11,8 @@
                                        bufnr args.buf]
                                    (when (client.supports_method :textDocument/documentSymbol)
                                      (navic.attach client bufnr))
+                                   (when (client.supports_method :textDocument/inlayHint)
+                                     (vim.lsp.buf.inlay_hint bufnr true))
                                    (diagnostic.maybe-enable-lsp client bufnr)
                                    (formatting.maybe-enable-lsp client bufnr)))
                      :group augroup
