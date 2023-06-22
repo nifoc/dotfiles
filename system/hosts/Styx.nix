@@ -43,15 +43,9 @@
 
     buildMachines = [
       {
-        hostName = "builder-sail";
+        hostName = "builder-tanker";
         systems = [ "x86_64-linux" "aarch64-linux" ];
-        maxJobs = 1;
-      }
-
-      {
-        hostName = "builder-attic";
-        systems = [ "x86_64-linux" "aarch64-linux" ];
-        maxJobs = 1;
+        maxJobs = 2;
       }
 
       {
