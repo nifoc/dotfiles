@@ -1,8 +1,9 @@
 #!/usr/bin/env fish
 
-set -f os (uname)
+set -f nix_os (uname)
+set -f nix_hostname (hostname -s)
 
-switch $os
+switch $nix_os
     case Darwin
         set -f config_dir "$HOME/.config/nixpkgs"
     case Linux
@@ -15,10 +16,11 @@ end
 pushd "$config_dir"
 rm -rf result
 
-switch $os
+switch $nix_os
     case Darwin
         git pull
-        env TERM=xterm-256color darwin-rebuild switch --flake .
+        nom build ".#darwinConfigurations.$nix_hostname.config.system.build.toplevel"
+        env TERM=xterm-256color darwin-rebuild switch --flake ".#$nix_hostname"
     case Linux
         sudo git pull
         sudo nixos-rebuild switch --flake .

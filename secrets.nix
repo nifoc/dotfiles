@@ -19,6 +19,8 @@ in
 
   "agenix/hosts/tanker/tailscale/authkey.age".publicKeys = tanker;
 
+  "agenix/hosts/tanker/msmtp/password.age".publicKeys = tanker;
+
   "agenix/hosts/tanker/atuin/environment.age".publicKeys = tanker;
 
   "agenix/hosts/tanker/atticd/environment.age".publicKeys = tanker;

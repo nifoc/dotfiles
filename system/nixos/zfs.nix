@@ -8,5 +8,12 @@
 
       monthly = 3;
     };
+
+    autoScrub = {
+      enable = true;
+      interval = "monthly";
+
+      pools = [ "zroot" ];
+    };
   };
 }

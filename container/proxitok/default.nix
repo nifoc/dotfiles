@@ -25,6 +25,10 @@
     };
   };
 
+  systemd.services.podman-proxitok-web.restartTriggers = [
+    "${config.age.secrets.proxitok-environment.file}"
+  ];
+
   systemd.tmpfiles.rules = [
     "d /etc/container-proxitok/cache 0755 33 33"
   ];

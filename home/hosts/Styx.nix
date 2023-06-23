@@ -59,6 +59,7 @@ args@{ pkgs, config, lib, ... }:
       hyperfine
       lnav
       mtr
+      nix-output-monitor
       nurl
       parallel
       q
@@ -75,4 +76,6 @@ args@{ pkgs, config, lib, ... }:
   programs = {
     zoxide.enable = true;
   };
+
+  manual.manpages.enable = false;
 }

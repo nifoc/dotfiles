@@ -32,6 +32,20 @@
     };
   };
 
+  systemd.services = {
+    podman-signald.restartTriggers = [
+      "${config.age.secrets.signald-environment.file}"
+    ];
+
+    podman-matrix-signal.restartTriggers = [
+      "${config.age.secrets.mautrix-signal-config.file}"
+    ];
+
+    podman-matrix-whatsapp.restartTriggers = [
+      "${config.age.secrets.mautrix-whatsapp-config.file}"
+    ];
+  };
+
   systemd.tmpfiles.rules = [
     "d /var/lib/matrix-bridges/signald 0775 0 0"
     "d /var/lib/matrix-bridges/signal 0775 1337 1337"

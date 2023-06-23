@@ -11,6 +11,7 @@ in
     ../../agenix/hosts/tanker/config.nix
     ../shared/show-update-changelog.nix
     ../nixos/ssh.nix
+    ../nixos/msmtp.nix
 
     ../nixos/git.nix
 

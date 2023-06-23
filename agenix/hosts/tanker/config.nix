@@ -14,6 +14,10 @@
       file = ./tailscale/authkey.age;
     };
 
+    msmtp-password = {
+      file = ./msmtp/password.age;
+    };
+
     atuin-environment = {
       file = ./atuin/environment.age;
     };
