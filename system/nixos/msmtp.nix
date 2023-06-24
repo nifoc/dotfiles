@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.msmtp = {
@@ -16,7 +16,7 @@
         port = 465;
         tls_starttls = false;
         user = "postmaster@mg.kempkens.io";
-        passwordeval = "cat ${config.age.secrets.msmtp-password.path}";
+        passwordeval = "${pkgs.coreutils}/bin/cat ${config.age.secrets.msmtp-password.path}";
 
         set_from_header = true;
         from = "tanker@mg.kempkens.io";

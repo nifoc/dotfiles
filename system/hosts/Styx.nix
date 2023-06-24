@@ -45,7 +45,7 @@
       {
         hostName = "builder-tanker";
         systems = [ "x86_64-linux" "aarch64-linux" ];
-        maxJobs = 2;
+        maxJobs = 4;
       }
 
       {
@@ -57,7 +57,7 @@
       {
         hostName = "builder-argon";
         systems = [ "aarch64-linux" ];
-        maxJobs = 1;
+        maxJobs = 2;
       }
     ];
 

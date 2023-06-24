@@ -12,6 +12,7 @@ in
     ../shared/show-update-changelog.nix
     ../nixos/ssh.nix
     ../nixos/msmtp.nix
+    ../nixos/smartd.nix
 
     ../nixos/git.nix
 

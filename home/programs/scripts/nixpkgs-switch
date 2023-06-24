@@ -2,6 +2,7 @@
 
 set -f nix_os (uname)
 set -f nix_hostname (hostname -s)
+set -f other_hostname $argv[1]
 
 switch $nix_os
     case Darwin
@@ -16,14 +17,20 @@ end
 pushd "$config_dir"
 rm -rf result
 
-switch $nix_os
-    case Darwin
-        git pull
-        nom build ".#darwinConfigurations.$nix_hostname.config.system.build.toplevel"
-        env TERM=xterm-256color darwin-rebuild switch --flake ".#$nix_hostname"
-    case Linux
-        sudo git pull
-        sudo nixos-rebuild switch --flake .
+if test "$other_hostname" = ""
+    switch $nix_os
+        case Darwin
+            git pull
+            nom build ".#darwinConfigurations.$nix_hostname.config.system.build.toplevel"
+            env TERM=xterm-256color darwin-rebuild switch --flake ".#$nix_hostname"
+        case Linux
+            sudo git pull
+            sudo nixos-rebuild switch --flake .
+    end
+else
+    git pull
+    nom build --eval-store auto --store "ssh-ng://builder-$other_hostname" ".#nixosConfigurations.$other_hostname.config.system.build.toplevel"
+    deploy --skip-checks ".#$other_hostname"
 end
 
 rm -f result
