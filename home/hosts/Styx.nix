@@ -76,6 +76,4 @@ args@{ pkgs, config, lib, ... }:
   programs = {
     zoxide.enable = true;
   };
-
-  manual.manpages.enable = false;
 }
