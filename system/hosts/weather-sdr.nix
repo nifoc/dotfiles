@@ -13,6 +13,8 @@ in
 
     ../nixos/git.nix
 
+    ../nixos/attic.nix
+
     ../nixos/mosquitto.nix
 
     ../nixos/rtl_433.nix
@@ -49,7 +51,6 @@ in
       experimental-features = nix-command flakes
       keep-derivations = true
       keep-outputs = true
-      post-build-hook = ${../../home/programs/scripts/attic-system-cache}
     '';
   };
 

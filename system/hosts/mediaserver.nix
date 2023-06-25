@@ -77,7 +77,6 @@ in
       extra-platforms = aarch64-linux
       keep-derivations = true
       keep-outputs = true
-      post-build-hook = ${../../home/programs/scripts/attic-system-cache}
     '';
   };
 

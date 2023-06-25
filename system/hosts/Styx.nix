@@ -33,10 +33,6 @@
       trusted-users = [ "@admin" ];
     };
 
-    extraOptions = ''
-      post-build-hook = ${../../home/programs/scripts/attic-system-cache}
-    '';
-
     configureBuildUsers = true;
 
     distributedBuilds = true;

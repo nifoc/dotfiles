@@ -33,6 +33,14 @@ else
     deploy --skip-checks ".#$other_hostname"
 end
 
+if test $status -eq 0
+    if test "$other_hostname" = ""
+        attic push nifoc-systems /run/current-system
+    else
+        ssh -t "$other_hostname" attic push nifoc-systems /run/current-system
+    end
+end
+
 rm -f result
 
 popd

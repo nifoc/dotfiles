@@ -50,7 +50,6 @@ in
       experimental-features = nix-command flakes
       keep-derivations = true
       keep-outputs = true
-      post-build-hook = ${../../home/programs/scripts/attic-system-cache}
     '';
   };
 
