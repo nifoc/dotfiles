@@ -12,6 +12,8 @@ args@{ pkgs, ... }:
 
     ../programs/bat.nix
 
+    ../programs/btop.nix
+
     ../programs/fzf.nix
 
     ../programs/jq.nix

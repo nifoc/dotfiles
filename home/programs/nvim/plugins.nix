@@ -144,8 +144,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "219584a6efd32d0478dcd62b501c348bc44d9d43";
-      sha256 = "0g0bidfvp93p0rs0lbzybik528rzigjx3mysnvxys5xkfqi6lxj5";
+      rev = "6074847b6ee4b725747c8fc540d9b6b128ac8a12";
+      sha256 = "1glqmvk5q6k3qa55lq2a39qkqbsh7hkfqx7kssl143z76g7f1w04";
       fetchSubmodules = false;
     };
   };
