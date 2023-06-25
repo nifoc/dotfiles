@@ -47,6 +47,8 @@ in
   "agenix/hosts/tanker/invidious/databasePassword.age".publicKeys = tanker;
   "agenix/hosts/tanker/invidious/extraSettings.age".publicKeys = tanker;
 
+  "agenix/hosts/tanker/linkding/environment.age".publicKeys = tanker;
+
   "agenix/hosts/tanker/proxitok/environment.age".publicKeys = tanker;
 
   "agenix/hosts/tanker/synapse/extraConfig.age".publicKeys = tanker;

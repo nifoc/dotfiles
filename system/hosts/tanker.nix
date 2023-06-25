@@ -37,6 +37,8 @@ in
 
     (import ../nixos/libreddit.nix (args // { inherit secret; }))
 
+    ../nixos/linkding.nix
+
     ../nixos/mastodon.nix
 
     ../nixos/miniflux.nix

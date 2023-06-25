@@ -32,6 +32,10 @@
       path = "/var/lib/fedifetcher/config.json";
     };
 
+    linkding-environment = {
+      file = ./linkding/environment.age;
+    };
+
     mastodon-database-password = {
       file = ./mastodon/databasePassword.age;
       owner = "mastodon";
