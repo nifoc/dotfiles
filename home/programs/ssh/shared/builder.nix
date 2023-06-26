@@ -23,5 +23,21 @@
       identityFile = "~/.ssh/LAN.pub";
       identitiesOnly = true;
     };
+
+    "builder-adsb-antenna" = {
+      hostname = "adsb-antenna.laniot";
+      port = 22;
+      user = "root";
+      identityFile = "~/.ssh/LAN.pub";
+      identitiesOnly = true;
+    };
+
+    "builder-weather-sdr" = {
+      hostname = "weather-sdr.laniot";
+      port = 22;
+      user = "root";
+      identityFile = "~/.ssh/LAN.pub";
+      identitiesOnly = true;
+    };
   };
 }

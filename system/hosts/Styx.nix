@@ -55,6 +55,18 @@
         systems = [ "aarch64-linux" ];
         maxJobs = 2;
       }
+
+      {
+        hostName = "builder-adsb-antenna";
+        systems = [ "aarch64-linux" ];
+        maxJobs = 1;
+      }
+
+      {
+        hostName = "builder-weather-sdr";
+        systems = [ "aarch64-linux" ];
+        maxJobs = 1;
+      }
     ];
 
     gc = {

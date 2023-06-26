@@ -14,6 +14,7 @@
     (colorscheme :dracula)
     ;; LSP
     (highlight-link :LspCodeLens :Comment)
+    (highlight-link :LspInlayHint :Comment)
     ;; Tabline
     (highlight :TabLine {:fg mod.colors.comment :bg mod.colors.black})
     (highlight :TabLineSel {:fg mod.colors.white :bg mod.colors.bg})

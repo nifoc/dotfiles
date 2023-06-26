@@ -32,7 +32,7 @@ in
 
     mlathub = {
       image = "ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest";
-      dependsOn = [ "readsb" "piaware" ];
+      # dependsOn = [ "readsb" "piaware" ];
       environment = {
         "TZ" = "Europe/Berlin";
         "DISABLE_PERFORMANCE_GRAPHS" = "true";
@@ -53,7 +53,7 @@ in
 
     tar1090 = {
       image = "ghcr.io/sdr-enthusiasts/docker-tar1090:latest";
-      dependsOn = [ "readsb" "mlathub" ];
+      # dependsOn = [ "readsb" "mlathub" ];
       ports = [ "8081:80" ];
       environment = {
         "TZ" = "Europe/Berlin";
@@ -80,7 +80,7 @@ in
 
     fr24feed = {
       image = "ghcr.io/sdr-enthusiasts/docker-flightradar24:latest";
-      dependsOn = [ "readsb" ];
+      # dependsOn = [ "readsb" ];
       environment = {
         "TZ" = "Europe/Berlin";
         "BEASTHOST" = "readsb";
@@ -98,7 +98,7 @@ in
 
     piaware = {
       image = "ghcr.io/sdr-enthusiasts/docker-piaware:latest";
-      dependsOn = [ "readsb" ];
+      # dependsOn = [ "readsb" ];
       environment = {
         "TZ" = "Europe/Berlin";
         "RECEIVER_TYPE" = "relay";
