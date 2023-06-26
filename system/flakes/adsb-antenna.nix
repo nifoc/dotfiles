@@ -1,4 +1,4 @@
-{ nixpkgs, deploy-rs, home-manager, inputs, ... }:
+{ nixpkgs, nixos-hardware, deploy-rs, home-manager, inputs, ... }:
 
 let
   default-system = "aarch64-linux";
@@ -29,6 +29,8 @@ rec {
     system = default-system;
     modules = [
       ../hosts/adsb-antenna.nix
+
+      nixos-hardware.nixosModules.raspberry-pi-4
 
       home-manager.nixosModules.home-manager
 
