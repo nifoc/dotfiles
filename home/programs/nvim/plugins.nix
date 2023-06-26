@@ -517,12 +517,12 @@ in
   };
   toggleterm-nvim = buildVimPluginFrom2Nix {
     pname = "toggleterm.nvim";
-    version = "2023-05-30";
+    version = "2023-06-26";
     src = fetchFromGitHub {
       owner = "akinsho";
       repo = "toggleterm.nvim";
-      rev = "cf146a267a6a7db62b1e2aff40414b20081048a1";
-      sha256 = "12windxwl9icn1g9yh36nw4brsmlb2cx16ay68p0dk16axvnhf22";
+      rev = "4cac5c96445df3a97f162a0f810e38fde1eb525e";
+      sha256 = "0l8rjr53m5q386gm70x2m21001lphipp0gjq0w4rygm648ds6h1j";
       fetchSubmodules = false;
     };
   };
