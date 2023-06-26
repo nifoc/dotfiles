@@ -3,7 +3,7 @@
     ../shared/show-update-changelog.nix
 
     ../darwin/defaults.nix
-    ../darwin/fonts.nix
+    #../darwin/fonts.nix
     ../darwin/sudo.nix
     ../darwin/fish.nix
     ../darwin/attic.nix

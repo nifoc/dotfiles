@@ -2,6 +2,8 @@ args@{ pkgs, config, lib, ... }:
 
 {
   imports = [
+    ../config/fonts.nix
+
     ../programs/fish.nix
     ../programs/atuin.nix
     ../programs/starship.nix

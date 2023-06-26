@@ -89,8 +89,8 @@ in
     src = fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "3004104180391328fca40339587f254d835a9527";
-      sha256 = "1slpbs7x72xijbzmbhmlzylhpq02a4y98rnnk3lnsk3n37pfmn82";
+      rev = "c390eab0950ea01a0d118c2c3c29db7781430b33";
+      sha256 = "1pminnalq75r4cw0j8f4mh0qhvzakzgmr106p9c3qhj54km22jsp";
       fetchSubmodules = false;
     };
   };
@@ -462,12 +462,12 @@ in
   };
   nvim-treesitter-textobjects = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter-textobjects";
-    version = "2023-06-19";
+    version = "2023-06-26";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "83c59ed1eeae70a55605990993cf4d208948fdf7";
-      sha256 = "1780104ap415dlnvik1s027vhd0ikvly23lcb4dq2d2smlkymjgf";
+      rev = "52f1f3280d9092bfaee5c45be5962fabee3d9654";
+      sha256 = "1k0065mn4hb3ama3qxrln24rf7cqziysddvw4anxws85dan5x9sj";
       fetchSubmodules = false;
     };
   };
