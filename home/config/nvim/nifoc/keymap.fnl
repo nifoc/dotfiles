@@ -21,7 +21,7 @@
     (keymap.set :n :<leader>s #(telescope-builtin.live_grep telescope-ivy)
                 {:desc "Live Grep"})
     (keymap.set :n :<leader>fn :<cmd>enew<CR> {:desc "New File"})
-    (keymap.set :n :<leader>u :<cmd>UrlView<CR> {:desc "Open UrlView"})
+    (keymap.set :n :<leader>u "<cmd>UrlView buffer<CR>" {:desc "Open UrlView"})
     (keymap.set :n :<leader>ut "<cmd>Telescope undo<CR>"
                 {:desc "Toggle Undotree"})
     (keymap.set :n :<leader>c repl.toggle-shell {:desc "Toggle Shell"})
