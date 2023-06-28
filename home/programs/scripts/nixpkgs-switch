@@ -22,7 +22,9 @@ if test "$other_hostname" = ""
         case Darwin
             git pull
             nom build ".#darwinConfigurations.$nix_hostname.config.system.build.toplevel"
-            env TERM=xterm-256color darwin-rebuild switch --flake ".#$nix_hostname"
+            if test $status -eq 0
+                env TERM=xterm-256color darwin-rebuild switch --flake ".#$nix_hostname"
+            end
         case Linux
             sudo git pull
             sudo nixos-rebuild switch --flake .
@@ -30,7 +32,9 @@ if test "$other_hostname" = ""
 else
     git pull
     nom build --eval-store auto --store "ssh-ng://builder-$other_hostname" ".#nixosConfigurations.$other_hostname.config.system.build.toplevel"
-    deploy --skip-checks ".#$other_hostname"
+    if test $status -eq 0
+        deploy --skip-checks ".#$other_hostname"
+    end
 end
 
 if test $status -eq 0
