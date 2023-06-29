@@ -40,4 +40,5 @@
   };
 
   hardware.cpu.intel.updateMicrocode = false;
+  powerManagement.enable = false;
 }

@@ -1,4 +1,4 @@
-{ pkgs, modulesPath, ... }:
+{ pkgs, lib, modulesPath, ... }:
 
 {
   imports = [
@@ -34,4 +34,6 @@
       "vm.overcommit_memory" = 1;
     };
   };
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 }
