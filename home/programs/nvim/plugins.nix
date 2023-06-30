@@ -111,8 +111,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "0522bbe90d6f9bb7080621fe70f8ab565e072b98";
-      sha256 = "1vr08whh9z9nqjjcyyss0ia1qn2fxfwjcmvmnsx25hrlmasaay71";
+      rev = "393bc5bec591caeedb0a4c696d15946c5d6c2de8";
+      sha256 = "0nl5vn7i5qaxnsdf1vycfn6f761kgbplin0pgdxf0fg75w3pnm0v";
       fetchSubmodules = false;
     };
   };
@@ -140,12 +140,12 @@ in
   };
   telescope-nvim = buildVimPluginFrom2Nix {
     pname = "telescope.nvim";
-    version = "2023-06-29";
+    version = "2023-06-30";
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "e651c3731749f71a36d414e7cbb6b36bcf30aee6";
-      sha256 = "0h4wgx2zpv0wwvj7ynl98xj0v5ai7z6kmawf64lc1376scyja7mm";
+      rev = "c5b11f4fe780f4acd6ed0d58575d3cb7af3e893a";
+      sha256 = "11ccs7vvaa20i1lnqswqmch5sxgswwg6w4s1x5syzy9yzknxfbrk";
       fetchSubmodules = false;
     };
   };
@@ -319,12 +319,12 @@ in
   };
   nvim-cmp = buildVimPluginFrom2Nix {
     pname = "nvim-cmp";
-    version = "2023-06-23";
+    version = "2023-06-30";
     src = fetchFromGitHub {
       owner = "hrsh7th";
       repo = "nvim-cmp";
-      rev = "e1f1b40790a8cb7e64091fb12cc5ffe350363aa0";
-      sha256 = "1gz02cy11r5bdrr0bz0xl0cmph6kpb3fv4xdnsbnxzq5jwia24m9";
+      rev = "2743dd989e9b932e1b4813a4927d7b84272a14e2";
+      sha256 = "13k2y9ggfvpzm463dhivy70j8vpzbv8j2nmscqs1l5y0rad93bww";
       fetchSubmodules = false;
     };
   };
@@ -455,8 +455,8 @@ in
     src = fetchFromGitHub {
       owner = "andymass";
       repo = "vim-matchup";
-      rev = "a5ca7ef39828d2bc92c9a39599c378bc0dea3cfc";
-      sha256 = "0m422cqph4qffvgxldbyzb5nfxdy9gy2szz2y6xqhvmnjvvpk9a5";
+      rev = "61cef7921ecbb412f341a6d1a7f9ad1ca55243de";
+      sha256 = "0jrrvx7a6v7gxkyvyrh9wkhaaqlvww90v2lijvxwgys9iy79c4nz";
       fetchSubmodules = false;
     };
   };
@@ -572,12 +572,12 @@ in
   };
   noice-nvim = buildVimPluginFrom2Nix {
     pname = "noice.nvim";
-    version = "2023-06-26";
+    version = "2023-06-30";
     src = fetchFromGitHub {
       owner = "folke";
       repo = "noice.nvim";
-      rev = "4f4a1702a3b2677878e68111af95cc4e775322e1";
-      sha256 = "0pi6hnx92d8p2bc5vrbhxqigs5qlkiiz79wpb7k5z8n0hckyvcgi";
+      rev = "2cb37edea88b7baa45324ac7b791f1f1b4e48316";
+      sha256 = "0xi78d2px2fx4ihnhbaqwpd8awicy6m5dfrcfdg77wra88xl65r9";
       fetchSubmodules = false;
     };
   };
