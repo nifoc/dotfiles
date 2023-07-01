@@ -55,6 +55,8 @@ in
 
     ../nixos/websites-tanker.nix
 
+    ../nixos/wefwef.nix
+
     ../../container/matrix
     ../../container/proxitok
     ../../container/weewx
