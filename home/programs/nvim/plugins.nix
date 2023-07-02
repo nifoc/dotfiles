@@ -107,12 +107,12 @@ in
   };
   nvim-treesitter = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2023-07-01";
+    version = "2023-07-02";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "3fde1587d0850d46b5a1473e5d1e59254e947496";
-      sha256 = "12lahz1rdb2509xxjzjhwhprvjk40311ks7x53nwl9dc9cg5gzhy";
+      rev = "254f3da6832252d579962ca6dcafae9c164de4ed";
+      sha256 = "08ji930xj9fvyz2v7qm102q75cvgrs88bw5cl66qa7x7grkikkcm";
       fetchSubmodules = false;
     };
   };
@@ -308,12 +308,12 @@ in
   };
   friendly-snippets = buildVimPluginFrom2Nix {
     pname = "friendly-snippets";
-    version = "2023-06-28";
+    version = "2023-07-01";
     src = fetchFromGitHub {
       owner = "rafamadriz";
       repo = "friendly-snippets";
-      rev = "1723ae01d83f3b3ac1530f1ae22b7b9d5da7749b";
-      sha256 = "1vkdfzyjsjg3j34l7byxsiai9izqcijcdmxm8ynlf54gigihzzpz";
+      rev = "ad7cef5d538b023ee3af0fe3170cadb096171b1f";
+      sha256 = "1r9fw78krp8vhw6prbxnmqlv91jhh53cs3z9mhfzyizlgr112469";
       fetchSubmodules = false;
     };
   };
@@ -418,12 +418,12 @@ in
   };
   neoformat = buildVimPluginFrom2Nix {
     pname = "neoformat";
-    version = "2023-06-30";
+    version = "2023-07-01";
     src = fetchFromGitHub {
       owner = "sbdchd";
       repo = "neoformat";
-      rev = "1dd282cd64f03418ef9cc345a12ca82b8dcf6e73";
-      sha256 = "0sly3hspfia8hpgdqq2dc6lylc5qbil3cxmlph27j3yy01yl1f52";
+      rev = "b35ae45f9425c817126be4cc946a950c1cffe6fa";
+      sha256 = "1qcrladfl3zvci58aiv4w6bq6dc8ibfjgp95l4q10bx8gjkdipkq";
       fetchSubmodules = false;
     };
   };
