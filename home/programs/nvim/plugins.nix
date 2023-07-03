@@ -85,12 +85,12 @@ in
   };
   leap-nvim = buildVimPluginFrom2Nix {
     pname = "leap.nvim";
-    version = "2023-06-28";
+    version = "2023-07-02";
     src = fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "f41de5c1cfeb146e4b8c5ed20e5b32230457ff25";
-      sha256 = "0wga34195dg19x4y01mhs2pipxlkmhdlzjhp6qybwd860d696hhi";
+      rev = "aadf42e0ab97b38715e6233f253cd571dd3bb96c";
+      sha256 = "0454wh5fdrx0k2y53sshh9f98ar5f1cfslsz7rqp3c0kpwczs2k5";
       fetchSubmodules = false;
     };
   };
@@ -107,12 +107,12 @@ in
   };
   nvim-treesitter = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2023-07-02";
+    version = "2023-07-03";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "254f3da6832252d579962ca6dcafae9c164de4ed";
-      sha256 = "08ji930xj9fvyz2v7qm102q75cvgrs88bw5cl66qa7x7grkikkcm";
+      rev = "c42a8f96d37be82cf32934c4351150d7736f93f5";
+      sha256 = "0zk7zs6w941adjq8dcn0z3ashnf30nqixy4ga6pydsqy4bqswi0r";
       fetchSubmodules = false;
     };
   };
@@ -140,12 +140,12 @@ in
   };
   telescope-nvim = buildVimPluginFrom2Nix {
     pname = "telescope.nvim";
-    version = "2023-07-01";
+    version = "2023-07-02";
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "b14de80d1cdf66f988f6550ca8577c43bb3797cd";
-      sha256 = "1b2fsls9hnaa17fp08206pwx6krlgr8bryhk2mnw30w0zgb8bqfr";
+      rev = "0e0600908d1ad5ac4992fa0ab578e23e9d9d6f37";
+      sha256 = "0nf1pc84mk6cncb120j6dwcynkbxf2s6crji30aq99zs92n3wi0w";
       fetchSubmodules = false;
     };
   };
@@ -308,12 +308,12 @@ in
   };
   friendly-snippets = buildVimPluginFrom2Nix {
     pname = "friendly-snippets";
-    version = "2023-07-01";
+    version = "2023-07-02";
     src = fetchFromGitHub {
       owner = "rafamadriz";
       repo = "friendly-snippets";
-      rev = "ad7cef5d538b023ee3af0fe3170cadb096171b1f";
-      sha256 = "1r9fw78krp8vhw6prbxnmqlv91jhh53cs3z9mhfzyizlgr112469";
+      rev = "c85153a188b260b908bc35ffedff64810a930b64";
+      sha256 = "038xfax1jxj7svaz54if43sjn86dlj9g162mya0vd810hhl09g2f";
       fetchSubmodules = false;
     };
   };
