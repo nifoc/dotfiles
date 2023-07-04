@@ -48,7 +48,7 @@ rec {
   };
 
   deployment = {
-    hostname = "94.130.142.168";
+    hostname = "tanker";
     sshUser = "root";
     remoteBuild = true;
     autoRollback = false;

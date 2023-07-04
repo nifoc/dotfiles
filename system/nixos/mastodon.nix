@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 let
   web-domain = "mastodon.kempkens.io";
@@ -61,6 +61,18 @@ in
     };
 
     extraEnvFiles = [ config.age.secrets.mastodon-extra-config.path ];
+  };
+
+  # For services that connect to Mastodon 
+  systemd.services.mastodon-wait-for-available = {
+    description = "Wait for Mastodon to be available";
+    after = [ "mastodon-web.service" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.bash}/bin/bash -c 'until ${pkgs.curl}/bin/curl --fail --silent https://${web-domain} > /dev/null; do sleep 1; done'";
+    };
   };
 
   services.nginx.virtualHosts."${web-domain}" = {
