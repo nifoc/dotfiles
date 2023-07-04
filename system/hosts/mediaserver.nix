@@ -88,7 +88,10 @@ in
     binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
 
-  zramSwap.enable = true;
+  zramSwap = {
+    enable = true;
+    memoryPercent = 25;
+  };
 
   networking = {
     hostName = "mediaserver";
@@ -131,6 +134,7 @@ in
   };
 
   programs.fish.enable = true;
+  programs.htop.enable = true;
 
   users.users = {
     root = {

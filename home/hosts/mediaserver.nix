@@ -13,6 +13,8 @@ args@{ pkgs, ... }:
 
     ../programs/bat.nix
 
+    ../programs/btop.nix
+
     ../programs/fzf.nix
 
     ../programs/gallery-dl.nix
