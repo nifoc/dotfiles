@@ -5,6 +5,7 @@ on:
     branches: ['master']
     paths:
       - 'flake.lock'
+  workflow_dispatch:
 
 jobs:
   build-x86_64-linux:
