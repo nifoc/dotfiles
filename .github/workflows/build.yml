@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Check Flake
+      uses: DeterminateSystems/flake-checker-action@v5
+      with:
+        send-statistics: false
     - name: Install Nix
       uses: DeterminateSystems/nix-installer-action@v4
     - name: Run the Magic Nix Cache
