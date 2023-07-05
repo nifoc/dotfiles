@@ -5,6 +5,7 @@ on:
     branches: ['master']
     paths:
       - 'flake.lock'
+      - 'home/programs/nvim/plugins.nix'
   workflow_dispatch:
 
 jobs:
