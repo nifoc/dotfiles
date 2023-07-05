@@ -71,7 +71,6 @@ in
       mosquittoPorts = [ 1883 ];
     in
     {
-      "enp41s0".allowedTCPPorts = mosquittoPorts;
       "tailscale0".allowedTCPPorts = mosquittoPorts;
       "podman+".allowedTCPPorts = mosquittoPorts;
     };

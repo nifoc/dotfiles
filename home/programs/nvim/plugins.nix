@@ -111,8 +111,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "0b81ed9f18333949a74586a1ea0497ae4cbb7cd4";
-      sha256 = "1bfz64fg0zc9mckd9gqjh098c688aja1422wd0znfgm68w30n3b7";
+      rev = "1bf573896c7854ca5827074685cd53e81eb30cef";
+      sha256 = "1c7af7r9a7kjijwj2j17rhnc2szs2q2ggrrcjqs4nnkkwxlsxf8g";
       fetchSubmodules = false;
     };
   };
@@ -301,8 +301,8 @@ in
     src = fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "db0aba4a39b28ff5564def07c25bb4bd06a78fdc";
-      sha256 = "16khnc2zakxfiy6ikdd5afyfp0knplw3l95adzb98m61h4cvfnhi";
+      rev = "a658ae2906344a1d2b9c507738e585cf68e685c7";
+      sha256 = "1ffrm03aq6xnxm8jh34m81qr3s5hfx2idbyvmi1kgfqgv8h5azdl";
       fetchSubmodules = false;
     };
   };

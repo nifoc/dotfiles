@@ -1,5 +1,5 @@
 (let [mod {}
-      cache {}
+      cache {:diagnostics {} :gitsigns {}}
       api vim.api
       o vim.opt
       b vim.b
@@ -11,14 +11,15 @@
       aucmd vim.api.nvim_create_autocmd]
   ;; Cache
 
-  (fn maybe-setup-buffer-cache! [bufnr key]
-    (when (= (. cache bufnr) nil)
-      (tset cache bufnr {}))
-    (when (= (. cache bufnr key) nil)
-      (tset cache bufnr key {})))
+  (fn cached-sign [key bufnr lnum]
+    (?. cache key bufnr lnum))
 
-  (fn clear-cache! [bufnr key]
-    (tset cache bufnr key {}))
+  (fn maybe-setup-buffer-cache! [key bufnr]
+    (when (= (. cache key bufnr) nil)
+      (tset cache key bufnr {})))
+
+  (fn clear-cache! [key bufnr]
+    (tset cache key bufnr {}))
 
   (fn cache-filter [func t]
     (let [ret-tab {}]
@@ -26,40 +27,36 @@
       ret-tab))
 
   (fn clear-diagnostics-cache! [bufnr diagnostics]
-    (let [key :diagnostics
-          namespaces (vim.tbl_map #$1.namespace diagnostics)
-          current-cache (. cache bufnr key)
+    (let [namespaces (vim.tbl_map #$1.namespace diagnostics)
+          current-cache (. cache :diagnostics bufnr)
           new-cache (cache-filter #(not (vim.tbl_contains namespaces $1.ns))
                                   current-cache)]
-      (tset cache bufnr key new-cache)))
+      (tset cache :diagnostics bufnr new-cache)))
 
   (fn update-cache-diagnostics [bufnr diagnostics]
-    (maybe-setup-buffer-cache! bufnr :diagnostics)
+    (maybe-setup-buffer-cache! :diagnostics bufnr)
     (clear-diagnostics-cache! bufnr diagnostics)
     (each [_ diagnostic (pairs diagnostics)]
       (let [lnum (+ diagnostic.lnum 1)
-            current (. cache bufnr :diagnostics lnum)]
+            current (cached-sign :diagnostics bufnr lnum)]
         (when (or (= current nil) (> diagnostic.severity current.severity))
-          (tset cache bufnr :diagnostics lnum
+          (tset cache :diagnostics bufnr lnum
                 {:severity diagnostic.severity
                  :col diagnostic.col
                  :ns diagnostic.namespace})))))
 
   (fn update-cache-gitsigns [bufnr]
-    (maybe-setup-buffer-cache! bufnr :gitsigns)
-    (clear-cache! bufnr :gitsigns)
+    (maybe-setup-buffer-cache! :gitsigns bufnr)
+    (clear-cache! :gitsigns bufnr)
     (let [signs (?. (vim.fn.sign_getplaced bufnr
                                            {:group :gitsigns_vimfn_signs_})
                     1 :signs)]
       (when (not= signs nil)
         (each [_ sign (pairs signs)]
           (let [lnum sign.lnum
-                current (. cache bufnr :gitsigns lnum)]
+                current (cached-sign :gitsigns bufnr lnum)]
             (when (= current nil)
-              (tset cache bufnr :gitsigns lnum sign)))))))
-
-  (fn cached-sign [bufnr key lnum]
-    (?. cache bufnr key lnum))
+              (tset cache :gitsigns bufnr lnum sign)))))))
 
   (aucmd :DiagnosticChanged
          {:callback #(update-cache-diagnostics $1.buf $1.data.diagnostics)
@@ -69,8 +66,10 @@
                 :callback #(update-cache-gitsigns $1.buf)
                 :group augroup
                 :desc "Update cached gitsigns signs"})
-  (aucmd :BufWipeout
-         {:callback #(tset cache $1.buf nil)
+  (aucmd [:BufWipeout :BufWritePre]
+         {:callback (fn [args]
+                      (tset cache :diagnostics args.buf nil)
+                      (tset cache :gitsigns args.buf nil))
           :group augroup
           :desc "Clear sign cache for current buffer"})
   ;; Line Number
@@ -90,7 +89,7 @@
   (set mod.gitsigns {:condition #(= b.nifoc_gitsigns_enabled 1)
                      :init (fn [self]
                              (let [bufnr (api.nvim_get_current_buf)
-                                   sign (cached-sign bufnr :gitsigns v.lnum)]
+                                   sign (cached-sign :gitsigns bufnr v.lnum)]
                                (set self.sign sign)
                                (set self.has_sign (not= sign nil))))
                      :provider " ▏"
@@ -123,7 +122,7 @@
                            diagnostic.severity.HINT :DiagnosticSignHint}}
         :init (fn [self]
                 (let [bufnr (api.nvim_get_current_buf)
-                      sign (cached-sign bufnr :diagnostics v.lnum)]
+                      sign (cached-sign :diagnostics bufnr v.lnum)]
                   (set self.sign sign)
                   (set self.has_sign (not= sign nil))))
         :provider #(if $1.has_sign

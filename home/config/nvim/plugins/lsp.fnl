@@ -6,10 +6,10 @@
       augroup (vim.api.nvim_create_augroup :NifocLsp {:clear true})
       aucmd vim.api.nvim_create_autocmd]
   (fn setup-inlay-hint-toggle [bufnr]
-    (aucmd :InsertEnter {:callback #(vim.lsp.buf.inlay_hint bufnr false)
+    (aucmd :InsertEnter {:callback #(vim.lsp.inlay_hint bufnr false)
                          :buffer bufnr
                          :group augroup})
-    (aucmd :InsertLeave {:callback #(vim.lsp.buf.inlay_hint bufnr true)
+    (aucmd :InsertLeave {:callback #(vim.lsp.inlay_hint bufnr true)
                          :buffer bufnr
                          :group augroup}))
 
@@ -20,7 +20,7 @@
                                    (when (client.supports_method :textDocument/documentSymbol)
                                      (navic.attach client bufnr))
                                    (when (client.supports_method :textDocument/inlayHint)
-                                     (vim.lsp.buf.inlay_hint bufnr true)
+                                     (vim.lsp.inlay_hint bufnr true)
                                      (setup-inlay-hint-toggle bufnr))
                                    (diagnostic.maybe-enable-lsp client bufnr)
                                    (formatting.maybe-enable-lsp client bufnr)))
