@@ -37,3 +37,4 @@ jobs:
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - run: nix build '.#nixosConfigurations.argon.pkgs.attic-client'
     - run: nix build '.#nixosConfigurations.argon.pkgs.deploy-rs'
+    - run: nix build '.#nixosConfigurations.argon.config.home-manager.users.daniel.programs.neovim.finalPackage'
