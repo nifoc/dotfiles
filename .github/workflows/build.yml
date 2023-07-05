@@ -22,7 +22,7 @@ jobs:
     - run: nix build '.#nixosConfigurations.tanker.pkgs.attic-server'
     - run: nix build '.#nixosConfigurations.tanker.pkgs.attic-client'
     - run: nix build '.#nixosConfigurations.tanker.pkgs.deploy-rs'
-    - run: nix build '.#nixosConfigurations.tanker.config.home-manager.users.daniel.programs.neovim'
+    - run: nix build '.#nixosConfigurations.tanker.config.home-manager.users.daniel.programs.neovim.finalPackage'
 
   build-arm64-linux:
     runs-on: buildjet-2vcpu-ubuntu-2204-arm
