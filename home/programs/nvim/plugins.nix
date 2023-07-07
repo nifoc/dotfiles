@@ -499,8 +499,8 @@ in
     src = fetchFromGitHub {
       owner = "lukas-reineke";
       repo = "indent-blankline.nvim";
-      rev = "fedad189e6ab1037939b79d32b7acaf05a0d4fb0";
-      sha256 = "0v29jg8hm388r9w537ij1r96n4i8zh1y7yipdr875xdkdfrvia20";
+      rev = "4541d690816cb99a7fc248f1486aa87f3abce91c";
+      sha256 = "1f83fwbd97a26wsnfilv7fq2a3vb19yi5012j4xsmbyv329i3wvr";
       fetchSubmodules = false;
     };
   };

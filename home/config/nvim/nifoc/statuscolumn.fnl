@@ -66,12 +66,16 @@
                 :callback #(update-cache-gitsigns $1.buf)
                 :group augroup
                 :desc "Update cached gitsigns signs"})
-  (aucmd [:BufWipeout :BufWritePre]
+  (aucmd :BufWipeout
          {:callback (fn [args]
                       (tset cache :diagnostics args.buf nil)
                       (tset cache :gitsigns args.buf nil))
           :group augroup
           :desc "Clear sign cache for current buffer"})
+  (aucmd :BufWritePre
+         {:callback #(tset cache :diagnostics $1.buf nil)
+          :group augroup
+          :desc "Reset diagnostic signs on save"})
   ;; Line Number
   (set mod.line-number {:condition #(or (o.number:get) (o.relativenumber:get))
                         1 statusline.push-right

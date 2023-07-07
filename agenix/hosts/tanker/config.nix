@@ -28,8 +28,6 @@
 
     fedifetcher-config = {
       file = ./fedifetcher/config.age;
-      symlink = false;
-      path = "/var/lib/fedifetcher/config.json";
     };
 
     linkding-environment = {

@@ -26,6 +26,7 @@ in
 
       # LSP
       fennel-ls
+      lua-language-server
       nil
       nodePackages.bash-language-server
       nodePackages.dockerfile-language-server-nodejs
@@ -33,7 +34,7 @@ in
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.yaml-language-server
-      lua-language-server
+      nixd
       taplo-lsp
 
       # Diagnostic Tools

@@ -61,6 +61,7 @@ args@{ pkgs, config, lib, ... }:
       hyperfine
       lnav
       mtr
+      nix-tree
       nix-output-monitor
       nurl
       parallel
