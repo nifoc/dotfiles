@@ -7,6 +7,8 @@ in
   services.mastodon = {
     enable = true;
 
+    package = pkgs.pkgs-master.mastodon;
+
     configureNginx = false;
 
     localDomain = "kempkens.io";
@@ -120,28 +122,40 @@ in
     };
   };
 
-  services.nginx.virtualHosts."mastodon-cdn.kempkens.io" = {
-    quic = true;
-    http3 = true;
-    kTLS = true;
+  services.nginx.virtualHosts."mastodon-cdn.kempkens.io" =
+    let
+      lib-base = "/var/lib/mastodon/public-system";
+    in
+    {
+      quic = true;
+      http3 = true;
+      kTLS = true;
 
-    root = "${config.services.mastodon.package}/public/";
-    forceSSL = true;
-    useACMEHost = "kempkens.io";
+      root = "${config.services.mastodon.package}/public/";
+      forceSSL = true;
+      useACMEHost = "kempkens.io";
 
-    extraConfig = ''
-      add_header Access-Control-Allow-Origin https://mastodon.kempkens.io;
-      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-    '';
+      extraConfig = ''
+        add_header Access-Control-Allow-Origin https://mastodon.kempkens.io;
+        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+      '';
 
-    locations."/system/".alias = "/var/lib/mastodon/public-system/";
+      locations."/system/" = {
+        alias = "${lib-base}/";
 
-    # "Old" CDN paths
-    locations."/accounts/".alias = "/var/lib/mastodon/public-system/accounts/";
-    locations."/cache/".alias = "/var/lib/mastodon/public-system/cache/";
-    locations."/custom_emojis/".alias = "/var/lib/mastodon/public-system/custom_emojis/";
-    locations."/media_attachments/".alias = "/var/lib/mastodon/public-system/media_attachments/";
-  };
+        extraConfig = ''
+          add_header Cache-Control "public, max-age=2419200, immutable";
+          add_header X-Content-Type-Options nosniff;
+          add_header Content-Security-Policy "default-src 'none'; form-action 'none'";
+        '';
+      };
+
+      # "Old" CDN paths
+      locations."/accounts/".alias = "${lib-base}/accounts/";
+      locations."/cache/".alias = "${lib-base}/cache/";
+      locations."/custom_emojis/".alias = "${lib-base}/custom_emojis/";
+      locations."/media_attachments/".alias = "${lib-base}/media_attachments/";
+    };
 
   users.groups.mastodon.members = [ config.services.nginx.user ];
 }
