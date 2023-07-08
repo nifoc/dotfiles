@@ -22,6 +22,8 @@ args@{ pkgs, ... }:
     ../programs/jq.nix
 
     ../programs/scripts.nix
+
+    ../programs/ssh/mediaserver.nix
   ];
 
   home = {

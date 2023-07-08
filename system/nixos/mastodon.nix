@@ -7,7 +7,7 @@ in
   services.mastodon = {
     enable = true;
 
-    package = pkgs.pkgs-master.mastodon;
+    # package = pkgs.pkgs-master.mastodon;
 
     configureNginx = false;
 
