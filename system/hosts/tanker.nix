@@ -53,9 +53,9 @@ in
 
     ../nixos/tailscale.nix
 
-    ../nixos/websites-tanker.nix
+    ../nixos/voyager.nix
 
-    ../nixos/wefwef.nix
+    ../nixos/websites-tanker.nix
 
     ../../container/matrix
     ../../container/proxitok

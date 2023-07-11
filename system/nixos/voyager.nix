@@ -1,6 +1,6 @@
 {
-  virtualisation.oci-containers.containers.wefwef = {
-    image = "ghcr.io/aeharding/wefwef:latest";
+  virtualisation.oci-containers.containers.voyager = {
+    image = "ghcr.io/aeharding/voyager:latest";
     ports = [ "127.0.0.1:8014:5314" ];
     extraOptions = [
       "--label=com.centurylinklabs.watchtower.enable=true"
@@ -8,7 +8,7 @@
     ];
   };
 
-  services.nginx.virtualHosts."wefwef.daniel.sx" = {
+  services.nginx.virtualHosts."voyager.daniel.sx" = {
     listenAddresses = [ "100.108.165.26" "[fd7a:115c:a1e0:ab12:4843:cd96:626c:a51a]" ];
     quic = true;
     http3 = true;
