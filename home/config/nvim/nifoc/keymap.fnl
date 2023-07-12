@@ -61,7 +61,6 @@
     ;; Other Mappings
     (keymap.set :n :<CR> ":nohlsearch<CR><CR>" {:silent true})
     (keymap.set :i :<CR> npairs.autopairs_cr {:expr true :silent true})
-    (keymap.set :n :F formatting.maybe-format-buffer {:desc "Format Buffer"})
     (keymap.set :n :<A-Left> :b)
     (keymap.set :n :<A-Right> :w)
     (keymap.set :n :<S-Left> "^")

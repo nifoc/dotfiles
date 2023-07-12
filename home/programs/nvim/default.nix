@@ -247,8 +247,8 @@ in
 
         # Formatting
         {
-          plugin = neoformat;
-          config = builtins.readFile ../../config/nvim/plugins/neoformat.fnl;
+          plugin = formatter-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/formatter.fnl;
           type = "fennel";
         }
 

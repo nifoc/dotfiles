@@ -2,7 +2,8 @@
       b vim.b
       cmd vim.cmd
       api vim.api
-      set-bufvar vim.api.nvim_buf_set_var]
+      set-bufvar vim.api.nvim_buf_set_var
+      treefmt-exists (vim.fn.executable :treefmt)]
   (fn mod.setup []
     (let [usercmd vim.api.nvim_create_user_command
           augroup (vim.api.nvim_create_augroup :NifocFormatting {:clear true})
@@ -11,14 +12,21 @@
                {:desc "Disable Formatting for the current buffer"})
       (usercmd :FormatEnableBuffer mod.enable-for-buffer
                {:desc "Enable Formatting for the current buffer"})
-      (aucmd :BufWritePre {:callback mod.maybe-format-buffer
-                           :group augroup
-                           :desc "Run Formatter"})))
+      (aucmd :BufWritePre
+             {:callback mod.maybe-format-buffer-pre
+              :group augroup
+              :desc "Run Formatter before saving"})
+      (aucmd :BufWritePost
+             {:callback mod.maybe-format-buffer-post
+              :group augroup
+              :desc "Run Formatter after saving"})))
 
-  (fn run-neoformat [formatprg]
-    (let [neoformat (.. "Neoformat " formatprg)]
-      (cmd (.. "try | undojoin | " neoformat " | catch /E790/ | " neoformat
-               " | endtry"))))
+  (fn has-formatter-config? [ft]
+    (let [formatter-fts (vim.tbl_keys (. (require :formatter.config) :values
+                                         :filetype))]
+      (vim.tbl_contains formatter-fts ft)))
+
+  (fn run-formatter-exe [] (cmd :FormatWriteLock))
 
   (fn run-lsp-format []
     (if (not= b.nifoc_formatter_filter_lsp_client nil)
@@ -34,10 +42,12 @@
     (set-bufvar 0 :nifoc_formatter_disabled 1))
 
   (fn mod.active? []
-    (if (= b.nifoc_formatter_disabled 1) false
-        (= b.nifoc_lsp_formatter_enabled 1) true
-        (not= (vim.opt_local.formatprg:get) "") true
-        false))
+    (let [ft vim.bo.filetype]
+      (if (= b.nifoc_formatter_disabled 1) false
+          (= treefmt-exists 1) true
+          (= b.nifoc_lsp_formatter_enabled 1) true
+          (has-formatter-config? ft) true
+          false)))
 
   (fn mod.maybe-enable-lsp [client bufnr]
     (when (client.supports_method :textDocument/rangeFormatting)
@@ -45,13 +55,17 @@
     (when (client.supports_method :textDocument/formatting)
       (set-bufvar bufnr :nifoc_lsp_formatter_enabled 1)))
 
-  (fn mod.maybe-format-buffer []
-    (let [formatprg (vim.opt_local.formatprg:get)
-          formatprg-exe (-> formatprg (vim.split " " {:trimempty true}) (. 1))]
+  (fn mod.maybe-format-buffer-pre []
+    (if (= b.nifoc_formatter_disabled 1) nil
+        (= treefmt-exists 1) nil
+        (= b.nifoc_lsp_formatter_enabled 1) (run-lsp-format)))
+
+  (fn mod.maybe-format-buffer-post []
+    (let [ft vim.bo.filetype]
       (if (= b.nifoc_formatter_disabled 1) nil
-          (= b.nifoc_formatter_force_formatprg 1) (run-neoformat formatprg-exe)
-          (= b.nifoc_lsp_formatter_enabled 1) (run-lsp-format)
-          (not= formatprg-exe nil) (run-neoformat formatprg-exe))))
+          (= treefmt-exists 1) (run-formatter-exe)
+          (= b.nifoc_lsp_formatter_enabled 1) nil
+          (has-formatter-config? ft) (run-formatter-exe))))
 
   mod)
 

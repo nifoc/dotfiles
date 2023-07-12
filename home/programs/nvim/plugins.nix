@@ -107,12 +107,12 @@ in
   };
   nvim-treesitter = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2023-07-11";
+    version = "2023-07-12";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "b4b94ec387525cb9df4b56eb1a8bf33231a0df47";
-      sha256 = "0z3nqqwvnfvi6nqjl9cjpik7cw3xf8armmgn627v9l8jqgz3a6lv";
+      rev = "575f5a4b1fcb60c1ac4f560c46a5171454d674ca";
+      sha256 = "0i9rn6gz09rk49gpq305p740xza4mgpb3nwmi2zm4rg9psxamcsr";
       fetchSubmodules = false;
     };
   };
@@ -416,14 +416,14 @@ in
       fetchSubmodules = false;
     };
   };
-  neoformat = buildVimPluginFrom2Nix {
-    pname = "neoformat";
-    version = "2023-07-01";
+  formatter-nvim = buildVimPluginFrom2Nix {
+    pname = "formatter.nvim";
+    version = "2023-04-30";
     src = fetchFromGitHub {
-      owner = "sbdchd";
-      repo = "neoformat";
-      rev = "b35ae45f9425c817126be4cc946a950c1cffe6fa";
-      sha256 = "1qcrladfl3zvci58aiv4w6bq6dc8ibfjgp95l4q10bx8gjkdipkq";
+      owner = "mhartington";
+      repo = "formatter.nvim";
+      rev = "fa4f2729cc2909db599169f22d8e55632d4c8d59";
+      sha256 = "0hv79gdg7cgqr3a8vw1ysc48f6i3b8xabbglxspm5mbpf22c8xbk";
       fetchSubmodules = false;
     };
   };
@@ -451,12 +451,12 @@ in
   };
   vim-matchup = buildVimPluginFrom2Nix {
     pname = "vim-matchup";
-    version = "2023-07-11";
+    version = "2023-07-12";
     src = fetchFromGitHub {
       owner = "andymass";
       repo = "vim-matchup";
-      rev = "3c4ccc489002fe72b5d2e2ffc4b3b5a7d3ab65d8";
-      sha256 = "0mpvqlk8a7vms2j29mpfpkqa1pxsncqr7flsg6q6z3cdqcrgh1j2";
+      rev = "17cc05867cb3314761e4baa20115a27120f8e82c";
+      sha256 = "0hxp9akqxz7h2ly1qpiviqbgbk52mbxk88vvq6rxf2kb12sgbiag";
       fetchSubmodules = false;
     };
   };

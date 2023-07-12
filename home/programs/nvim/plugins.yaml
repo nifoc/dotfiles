@@ -59,7 +59,7 @@
 - src: hrsh7th/cmp-nvim-lsp-document-symbol
 
 # Formatting
-- src: sbdchd/neoformat
+- src: mhartington/formatter.nvim
 
 # Pairs
 - src: windwp/nvim-autopairs
