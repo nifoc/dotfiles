@@ -96,12 +96,12 @@ in
   };
   dracula-nvim = buildVimPluginFrom2Nix {
     pname = "dracula.nvim";
-    version = "2023-07-10";
+    version = "2023-07-12";
     src = fetchFromGitHub {
       owner = "Mofiqul";
       repo = "dracula.nvim";
-      rev = "608ebc389514674213a74f1d173c00f85bebc008";
-      sha256 = "0h43r4zlh14pwxzm8d76xm68vaxwdpn6z56ybzzmv7vcr9kpgm50";
+      rev = "253b7fcee27564b2adfa7e7cea80c74cfbe04787";
+      sha256 = "1hgs93lcncmb7afi126vkfpmi5r0z727hg232d2d2vyhnkd77ary";
       fetchSubmodules = false;
     };
   };
@@ -111,8 +111,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "3af1220e18034eb2ce7d1c8e77055bc3bf3c1c36";
-      sha256 = "0qbgh8hvnjb0dg8fqv9w5025sv2z8b9lwcgqpbdcsgqih2g6k84r";
+      rev = "b4b94ec387525cb9df4b56eb1a8bf33231a0df47";
+      sha256 = "0z3nqqwvnfvi6nqjl9cjpik7cw3xf8armmgn627v9l8jqgz3a6lv";
       fetchSubmodules = false;
     };
   };
@@ -308,12 +308,12 @@ in
   };
   friendly-snippets = buildVimPluginFrom2Nix {
     pname = "friendly-snippets";
-    version = "2023-07-09";
+    version = "2023-07-12";
     src = fetchFromGitHub {
       owner = "rafamadriz";
       repo = "friendly-snippets";
-      rev = "6e0afe3be0ba43ef03d495a529de8fb22721c0d0";
-      sha256 = "1rzipwl5slmv56fb84yy2isxfqydjydx2ns8sxydkhkk0pz25wrp";
+      rev = "ca668b7a4a2913ad1109b5e4aaf0013651956b13";
+      sha256 = "0cmy9khkrq8jwv2mpl40lyv6amkr11ij2asd433s3lz4sccp4ync";
       fetchSubmodules = false;
     };
   };
