@@ -35,7 +35,7 @@ for plugin in "${plugin_array[@]}"; do
 
   echo "Updating ${owner}/${repo} ..."
 
-  if [[ "$raw_src" = http* ]]; then
+  if [[ $raw_src == http* ]]; then
     clone_src="$raw_src"
   else
     clone_src="https://github.com/${owner}/${repo}.git"

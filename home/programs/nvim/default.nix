@@ -49,6 +49,7 @@ in
       shfmt
       statix
       yamllint
+      yamlfmt
     ] ++ optionals isDarwin [
       xcbuild
     ];

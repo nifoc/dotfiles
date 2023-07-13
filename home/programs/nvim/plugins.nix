@@ -89,8 +89,8 @@ in
     src = fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "059cc61437ae8479768025ba837f3caee16a65e6";
-      sha256 = "1kr3agfhz8mplycnnlqwav2s0rylbrn0iz762hr9hdmraj18rjr2";
+      rev = "bfb20783d951cf349ee8bab7e0f468351176dd75";
+      sha256 = "0igwm79nsl72i5ygh5q9q0jpd8xhdrjv5n0py2j4q9ar1r1ly391";
       fetchSubmodules = false;
     };
   };
@@ -279,8 +279,8 @@ in
     src = fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-lint";
-      rev = "eecf96bf2fbd12042933bb1e6193c358749e2b9b";
-      sha256 = "0mlhmrlxbhgzy1dfff2v9rbl8abxfsdxwjbdw4fwmc246crxdld1";
+      rev = "808e8fdbee02ed2c6efc17e70c7453fccf5d5a1d";
+      sha256 = "1q0ryrsmiil2l2dfhlxnkgahxw5jnfbiv1b48ly2iscqldrsm9sb";
       fetchSubmodules = false;
     };
   };
@@ -418,12 +418,12 @@ in
   };
   formatter-nvim = buildVimPluginFrom2Nix {
     pname = "formatter.nvim";
-    version = "2023-04-30";
+    version = "2023-07-13";
     src = fetchFromGitHub {
       owner = "mhartington";
       repo = "formatter.nvim";
-      rev = "fa4f2729cc2909db599169f22d8e55632d4c8d59";
-      sha256 = "0hv79gdg7cgqr3a8vw1ysc48f6i3b8xabbglxspm5mbpf22c8xbk";
+      rev = "9bf2e7e294b00bac87c6123c889828ee08dc9b46";
+      sha256 = "0hmlh6qcra7sfq0i989cxs5jmgk6774bljzvq9m17ybwj3imb14f";
       fetchSubmodules = false;
     };
   };

@@ -8,6 +8,8 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
+    flake-root.url = "github:srid/flake-root";
+
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -111,6 +113,7 @@
         };
 
       imports = [
+        inputs.flake-root.flakeModule
         inputs.treefmt-nix.flakeModule
       ];
 
@@ -122,12 +125,13 @@
 
       perSystem = { config, pkgs, ... }: {
         treefmt = {
-          projectRootFile = "flake.nix";
+          inherit (config.flake-root) projectRootFile;
 
           programs = {
             fnlfmt.enable = true;
             nixpkgs-fmt.enable = true;
             shfmt.enable = true;
+            yamlfmt.enable = true;
           };
         };
 
@@ -135,6 +139,7 @@
           name = "dotfiles";
 
           inputsFrom = [
+            config.flake-root.devShell
             config.treefmt.build.devShell
           ];
         };

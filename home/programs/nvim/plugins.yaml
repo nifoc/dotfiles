@@ -1,24 +1,19 @@
----
 # Utils
 - src: nvim-lua/popup.nvim
 - src: nvim-lua/plenary.nvim
 - src: kyazdani42/nvim-web-devicons
-
 # Keybindings
 - src: ojroques/nvim-osc52
 - src: gbprod/yanky.nvim
 - src: gbprod/cutlass.nvim
 - src: gbprod/substitute.nvim
 - src: ggandor/leap.nvim
-
 # Themes
 - src: Mofiqul/dracula.nvim
-
 # Syntax
 - src: nvim-treesitter/nvim-treesitter
 - src: HiPhish/nvim-ts-rainbow2
 - src: nvim-treesitter/playground
-
 # Telescope
 - src: nvim-telescope/telescope.nvim
 - src: nvim-telescope/telescope-fzf-native.nvim
@@ -29,24 +24,19 @@
 - src: nvim-telescope/telescope-ui-select.nvim
 - src: "https://git.sr.ht/~havi/telescope-toggleterm.nvim"
 - src: debugloop/telescope-undo.nvim
-
 # LSP
 - src: neovim/nvim-lspconfig
 - src: mfussenegger/nvim-jdtls
 - src: onsails/lspkind.nvim
 - src: SmiteshP/nvim-navic
 - src: RRethy/vim-illuminate
-
 # Linter
 - src: mfussenegger/nvim-lint
-
 # Comments
 - src: numtostr/comment.nvim
-
 # Snippets
 - src: L3MON4D3/LuaSnip
 - src: rafamadriz/friendly-snippets
-
 # cmp
 - src: hrsh7th/nvim-cmp
 - src: hrsh7th/cmp-nvim-lsp
@@ -57,19 +47,15 @@
 - src: ray-x/cmp-treesitter
 - src: hrsh7th/cmp-cmdline
 - src: hrsh7th/cmp-nvim-lsp-document-symbol
-
 # Formatting
 - src: mhartington/formatter.nvim
-
 # Pairs
 - src: windwp/nvim-autopairs
 - src: windwp/nvim-ts-autotag
 - src: andymass/vim-matchup
-
 # Textobjects
 - src: nvim-treesitter/nvim-treesitter-textobjects
 - src: kylechui/nvim-surround
-
 # UI
 - src: rebelot/heirline.nvim
 - src: lukas-reineke/indent-blankline.nvim
