@@ -133,6 +133,10 @@
             shfmt.enable = true;
             yamlfmt.enable = true;
           };
+
+          settings.formatter = {
+            nixpkgs-fmt.excludes = [ "secret/**/*.nix" ];
+          };
         };
 
         devShells.default = pkgs.mkShell {
