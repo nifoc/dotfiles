@@ -25,6 +25,7 @@ jobs:
       with:
         name: nifoc
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+    - run: nix flake check
     - run: nix build '.#nixosConfigurations.tanker.pkgs.attic-server'
     - run: nix build '.#nixosConfigurations.tanker.pkgs.attic-client'
     - run: nix build '.#nixosConfigurations.tanker.pkgs.deploy-rs'
@@ -41,6 +42,7 @@ jobs:
       with:
         name: nifoc
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+    - run: nix flake check
     - run: nix build '.#nixosConfigurations.argon.pkgs.attic-client'
     - run: nix build '.#nixosConfigurations.argon.pkgs.deploy-rs'
     - run: nix build '.#nixosConfigurations.argon.config.services.nginx.package'
