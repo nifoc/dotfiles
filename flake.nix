@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    darwin = {
+    nix-darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -24,7 +24,7 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.darwin.follows = "darwin";
+      inputs.darwin.follows = "nix-darwin";
     };
 
     attic = {
@@ -46,7 +46,7 @@
   outputs = inputs@{ self, ... }:
     let
       Styx = import ./system/flakes/Styx.nix {
-        inherit (inputs) nixpkgs home-manager darwin;
+        inherit (inputs) nixpkgs home-manager nix-darwin;
         inherit inputs;
       };
 

@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, darwin, inputs, ... }:
+{ nixpkgs, home-manager, nix-darwin, inputs, ... }:
 
 let
   default-system = "aarch64-darwin";
@@ -25,7 +25,7 @@ let
   };
 in
 {
-  system = darwin.lib.darwinSystem {
+  system = nix-darwin.lib.darwinSystem {
     system = default-system;
     modules = [
       ../hosts/Styx.nix

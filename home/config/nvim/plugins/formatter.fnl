@@ -17,8 +17,16 @@
 
   (formatter.setup {:logging true
                     :log_level vim.log.levels.WARN
-                    :filetype {:fennel [#{:exe :fnlfmt :args ["-"] :stdin true}]
+                    :filetype {:css [(prefer-treefmt :css :prettier)]
+                               :fennel [#{:exe :fnlfmt :args ["-"] :stdin true}]
                                :fish [(builtin-formatter :fish :fishindent)]
+                               :html [(prefer-treefmt :html :prettier)]
+                               :javascript [(prefer-treefmt :javascript
+                                                            :prettier)]
+                               :json [(prefer-treefmt :json :prettier)]
+                               :nix [(prefer-treefmt :nix :nixpkgs_fmt)]
                                :sh [(prefer-treefmt :sh :shfmt)]
-                               :typescript [treefmt-formatter]}}))
+                               :toml [(prefer-treefmt :toml :taplo)]
+                               :typescript [(prefer-treefmt :typescript
+                                                            :prettier)]}}))
 

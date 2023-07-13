@@ -26,6 +26,9 @@
                                          :filetype))]
       (vim.tbl_contains formatter-fts ft)))
 
+  (fn has-treefmt-config? [ft]
+    (and (= treefmt-exists 1) (has-formatter-config? ft)))
+
   (fn run-formatter-exe [] (cmd :FormatWriteLock))
 
   (fn run-lsp-format []
@@ -44,7 +47,6 @@
   (fn mod.active? []
     (let [ft vim.bo.filetype]
       (if (= b.nifoc_formatter_disabled 1) false
-          (= treefmt-exists 1) true
           (= b.nifoc_lsp_formatter_enabled 1) true
           (has-formatter-config? ft) true
           false)))
@@ -56,14 +58,15 @@
       (set-bufvar bufnr :nifoc_lsp_formatter_enabled 1)))
 
   (fn mod.maybe-format-buffer-pre []
-    (if (= b.nifoc_formatter_disabled 1) nil
-        (= treefmt-exists 1) nil
-        (= b.nifoc_lsp_formatter_enabled 1) (run-lsp-format)))
+    (let [ft vim.bo.filetype]
+      (if (= b.nifoc_formatter_disabled 1) nil
+          (has-treefmt-config? ft) nil
+          (= b.nifoc_lsp_formatter_enabled 1) (run-lsp-format))))
 
   (fn mod.maybe-format-buffer-post []
     (let [ft vim.bo.filetype]
       (if (= b.nifoc_formatter_disabled 1) nil
-          (= treefmt-exists 1) (run-formatter-exe)
+          (has-treefmt-config? ft) (run-formatter-exe)
           (= b.nifoc_lsp_formatter_enabled 1) nil
           (has-formatter-config? ft) (run-formatter-exe))))
 
