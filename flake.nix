@@ -135,7 +135,7 @@
           };
 
           settings.formatter = {
-            nixpkgs-fmt.excludes = [ "secret/**/*.nix" ];
+            nixpkgs-fmt.excludes = [ "**/secret/**/*.nix" ];
           };
         };
 
