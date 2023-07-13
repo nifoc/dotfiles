@@ -96,12 +96,12 @@ in
   };
   dracula-nvim = buildVimPluginFrom2Nix {
     pname = "dracula.nvim";
-    version = "2023-07-12";
+    version = "2023-07-13";
     src = fetchFromGitHub {
       owner = "Mofiqul";
       repo = "dracula.nvim";
-      rev = "253b7fcee27564b2adfa7e7cea80c74cfbe04787";
-      sha256 = "1hgs93lcncmb7afi126vkfpmi5r0z727hg232d2d2vyhnkd77ary";
+      rev = "9db13329e205aaee089e25be8113bd1faeca674e";
+      sha256 = "1f79jazw5kp0ica4hdxpjry79qii8q6a0shg2rqkhpd0a8ydb8rg";
       fetchSubmodules = false;
     };
   };
@@ -429,12 +429,12 @@ in
   };
   nvim-autopairs = buildVimPluginFrom2Nix {
     pname = "nvim-autopairs";
-    version = "2023-06-18";
+    version = "2023-07-13";
     src = fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-autopairs";
-      rev = "e8f7dd7a72de3e7b6626c050a802000e69d53ff0";
-      sha256 = "0lk78zvmf5cyyq4nmrzybi7dbpbwx499r0la4wza9h1gp4l7xvy7";
+      rev = "a16989a5453e0a0a8250deab340f429353876da4";
+      sha256 = "107yfxwr2lf7zksshsp58gp1qj2p848azim4xw8kvvdksba2092z";
       fetchSubmodules = false;
     };
   };

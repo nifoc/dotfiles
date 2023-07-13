@@ -34,7 +34,7 @@ in
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.yaml-language-server
-      nixd
+      # nixd
       taplo-lsp
 
       # Diagnostic Tools
