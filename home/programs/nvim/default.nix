@@ -112,6 +112,12 @@ in
         plenary-nvim
         nvim-web-devicons
 
+        {
+          plugin = wezterm-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/wezterm.fnl;
+          type = "fennel";
+        }
+
         # Keybindings
         {
           plugin = nvim-osc52;

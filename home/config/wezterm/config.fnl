@@ -11,8 +11,13 @@
               ; Icons
               :elixir "#A074C4"
               :nix "#7EBAE4"
+              :reddit "#FA4400"
               :ssh "#F4C82D"}]
   ;; Event: Tab format
+
+  (fn extract-tab-title [tab]
+    (let [title tab.tab_title]
+      (if (and title (> (length title) 0)) title tab.active_pane.title)))
 
   (fn extract-tab-info [title]
     (match title
@@ -34,13 +39,20 @@
       (where t (t:find :^instagram-)) {: title :icon " " :color "#FB2179"}
       (where t (t:find "^gallery-dl%s"))
       {:title (t:gsub "^gallery-dl%s(.*)" "%1") :icon " " :color "#009900"}
+      (where t (t:find "^bdfr%s"))
+      {:title (t:gsub "^bdfr%s(.*)" "%1") :icon " " :color colors.reddit}
+      (where t (t:find "^bdfr-raw%s")) {:title (t:gsub "^bdfr-raw%s(.*)" "%1")
+                                        :icon " "
+                                        :color colors.reddit}
       (where t (t:find :^redis-)) {: title :icon " " :color "#DC372C"}
       (where t (t:find "^%[%w+%]%s")) {: title :icon " " :color colors.ssh}
+      (where t (t:find "^%w+-dl%s")) {: title :icon " " :color "#22BC00"}
       _ {: title :icon " " :color "#F8F8F2"}))
 
   (wezterm.on :format-tab-title
               (fn [tab tabs panes config hover max-width]
-                (let [tab-info (extract-tab-info tab.active_pane.title)
+                (let [raw-title (extract-tab-title tab)
+                      tab-info (extract-tab-info raw-title)
                       title (wezterm.truncate_right tab-info.title
                                                     (- max-width 5))]
                   (if tab.is_active
@@ -85,7 +97,7 @@
    :use_fancy_tab_bar true
    :hide_tab_bar_if_only_one_tab false
    :tab_bar_at_bottom false
-   :tab_max_width 32
+   :tab_max_width 42
    :window_frame {:active_titlebar_bg colors.frame-background
                   :inactive_titlebar_bg colors.frame-background
                   :font (wezterm.font {:family "JetBrains Mono"
@@ -148,5 +160,6 @@
    ;; Launch Menu
    :launch_menu [{:label :Btop++ :args [_G.programs.btop]}]
    ;; Other
+   :front_end :WebGpu
    :check_for_updates false})
 

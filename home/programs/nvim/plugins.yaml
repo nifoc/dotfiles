@@ -2,6 +2,7 @@
 - src: nvim-lua/popup.nvim
 - src: nvim-lua/plenary.nvim
 - src: kyazdani42/nvim-web-devicons
+- src: willothy/wezterm.nvim
 # Keybindings
 - src: ojroques/nvim-osc52
 - src: gbprod/yanky.nvim
