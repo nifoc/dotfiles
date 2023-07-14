@@ -1,11 +1,12 @@
 (let [wezterm (require :wezterm)
       window-padding 15
-      colors {:active-background "#282A36"
+      colors {:frame-background "#282A36"
+              :active-background "#282A36"
               :active-foreground "#ABB2BF"
               :active-indicator "#BD93F9"
-              :inactive-background "#191A21"
+              :inactive-background "#282A36"
               :inactive-foreground "#6272A4"
-              :hover-background "#BD93F9"
+              :hover-background "#242530"
               :hover-foreground "#191A21"
               ; Icons
               :elixir "#A074C4"
@@ -66,6 +67,7 @@
                        {:Foreground {:Color tab-info.color}}
                        {:Text tab-info.icon}
                        {:Foreground {:Color colors.inactive-foreground}}
+                       {:Attribute {:Italic false}}
                        {:Text title}
                        ; Right
                        {:Text " "}]))))
@@ -73,29 +75,28 @@
   {:default_prog [_G.shells.fish :--interactive]
    ;; Appearance
    :color_scheme "Dracula (Official)"
-   :window_decorations :RESIZE
+   :window_decorations :INTEGRATED_BUTTONS|RESIZE
    :window_padding {:left window-padding
                     :right window-padding
-                    :top window-padding
-                    :bottom window-padding}
+                    :top (math.floor (/ window-padding 2))
+                    :bottom (math.floor (/ window-padding 2))}
    ;; Tabs
    :enable_tab_bar true
-   :use_fancy_tab_bar false
-   :hide_tab_bar_if_only_one_tab true
-   :tab_bar_at_bottom true
+   :use_fancy_tab_bar true
+   :hide_tab_bar_if_only_one_tab false
+   :tab_bar_at_bottom false
    :tab_max_width 32
-   :colors {:tab_bar {:background colors.inactive-background
+   :window_frame {:active_titlebar_bg colors.frame-background
+                  :inactive_titlebar_bg colors.frame-background
+                  :font (wezterm.font {:family "JetBrains Mono"
+                                       :weight :Medium})
+                  :font_size 11}
+   :colors {:tab_bar {:background colors.frame-background
+                      :inactive_tab_edge colors.frame-background
                       :new_tab {:bg_color colors.inactive-background
-                                :fg_color colors.inactive-foreground
-                                :italic false
-                                :intensity :Bold}
+                                :fg_color colors.inactive-foreground}
                       :new_tab_hover {:bg_color colors.hover-background
-                                      :fg_color colors.hover-foreground
-                                      :italic false
-                                      :intensity :Bold}
-                      :inactive_tab_hover {:bg_color colors.inactive-background
-                                           :fg_color colors.inactive-foreground
-                                           :italic false}}}
+                                      :fg_color colors.hover-foreground}}}
    ;; Fonts
    :font (wezterm.font_with_fallback [{:family "JetBrains Mono"
                                        :weight :Medium}
