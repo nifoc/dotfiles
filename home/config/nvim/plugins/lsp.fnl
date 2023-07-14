@@ -45,12 +45,15 @@
     (each [_ name (pairs default-servers)]
       ((. lsp name :setup) default-config))
     ;; Custom
-    (lsp.elixirls.setup (->> {:cmd [:elixir-ls]}
-                             (vim.tbl_extend :force default-config)))
-    (lsp.nil_ls.setup (->> {:settings {:nil {:formatting {:command [:nixpkgs-fmt]}}}}
-                           (vim.tbl_extend :force default-config)))
-    ;; (lsp.nixd.setup (->> {:settings {:formatting {:command [:nixpkgs-fmt]}}}
-    ;;                      (vim.tbl_extend :force default-config)))
+    (when (= (vim.fn.executable :elixir-ls) 1)
+      (lsp.elixirls.setup (->> {:cmd [:elixir-ls]}
+                               (vim.tbl_extend :force default-config))))
+    (when (= (vim.fn.executable :nil) 1)
+      (lsp.nil_ls.setup (->> {:settings {:nil {:formatting {:command [:nixpkgs-fmt]}}}}
+                             (vim.tbl_extend :force default-config))))
+    (when (= (vim.fn.executable :nixd) 1)
+      (lsp.nixd.setup (->> {:settings {:formatting {:command [:nixpkgs-fmt]}}}
+                           (vim.tbl_extend :force default-config))))
     (let [inlay-hints {:includeInlayParameterNameHints :all
                        :includeInlayParameterNameHintsWhenArgumentMatchesName false
                        :includeInlayFunctionParameterTypeHints true
