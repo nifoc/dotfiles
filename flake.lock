@@ -359,11 +359,11 @@
         "weewx-proxy-flake": "weewx-proxy-flake"
       },
       "locked": {
-        "lastModified": 1689409261,
-        "narHash": "sha256-qKi4nnB/+2ITt/Bys8HIeq1bWNSR6jZ0B5g674ftIFI=",
+        "lastModified": 1689452297,
+        "narHash": "sha256-usMjvr3hFKi7aYnPHlNU5VGz+qs/dN3zR+8QdjjeJtE=",
         "owner": "nifoc",
         "repo": "nix-overlay",
-        "rev": "3f67827eec64a4bfdad16d677b9bfa663015ab18",
+        "rev": "d4c3e35ede8aefbb34ce83504e8e79cf7cbdf45f",
         "type": "github"
       },
       "original": {
