@@ -264,12 +264,12 @@ in
   };
   nvim-navic = buildVimPluginFrom2Nix {
     pname = "nvim-navic";
-    version = "2023-07-08";
+    version = "2023-07-15";
     src = fetchFromGitHub {
       owner = "SmiteshP";
       repo = "nvim-navic";
-      rev = "6e8850a524307814decc1b195a2c8a51482a9886";
-      sha256 = "1js5vdjc9rs2gi0g7b2lkwxs9assnykbc9i2f144b3ky7yhiisbw";
+      rev = "e6da6f74d89de65258ea7e98e22103ff5de6dcf5";
+      sha256 = "00nhcfhqsvaaaa94a7yxm29ass92k7a7q4g7khm7v8bsm6prxi3x";
       fetchSubmodules = false;
     };
   };
