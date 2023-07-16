@@ -1,4 +1,4 @@
-{ pkgs, config, secret, ... }:
+{ secret, ... }:
 
 {
   services.nginx.streamConfig = ''

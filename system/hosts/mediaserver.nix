@@ -1,4 +1,4 @@
-args@{ pkgs, config, lib, ... }:
+args@{ pkgs, config, ... }:
 
 let
   secret = import ../../secret/hosts/mediaserver.nix;
@@ -132,6 +132,9 @@ in
     nixos.enable = false;
     doc.enable = false;
   };
+
+  fonts.fontconfig.enable = false;
+  sound.enable = false;
 
   programs.fish.enable = true;
   programs.htop.enable = true;

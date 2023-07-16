@@ -27,14 +27,13 @@
     (highlight :IlluminatedWordText {:bg mod.colors.selection})
     (highlight :IlluminatedWordRead {:bg mod.colors.selection})
     (highlight :IlluminatedWordWrite {:bg mod.colors.selection :underline true})
-    ;; nvim-ts-rainbow2
-    (highlight :TSRainbowRed {:fg mod.colors.red})
-    (highlight :TSRainbowYellow {:fg mod.colors.yellow})
-    (highlight :TSRainbowBlue {:fg mod.colors.purple})
-    (highlight :TSRainbowOrange {:fg mod.colors.orange})
-    (highlight :TSRainbowGreen {:fg mod.colors.green})
-    (highlight :TSRainbowViolet {:fg mod.colors.pink})
-    (highlight :TSRainbowCyan {:fg mod.colors.cyan}))
+    ;; rainbow-delimiters
+    (highlight :RainbowDelimiterRed {:fg mod.colors.red})
+    (highlight :RainbowDelimiterYellow {:fg mod.colors.yellow})
+    (highlight :RainbowDelimiterBlue {:fg mod.colors.purple})
+    (highlight :RainbowDelimiterOrange {:fg mod.colors.orange})
+    (highlight :RainbowDelimiterGreen {:fg mod.colors.green})
+    (highlight :RainbowDelimiterViolet {:fg mod.colors.pink})
+    (highlight :RainbowDelimiterCyan {:fg mod.colors.cyan}))
 
   mod)
-

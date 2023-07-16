@@ -1,4 +1,4 @@
-{ config, secret, ... }:
+{ secret, ... }:
 
 {
   services.libreddit = {

@@ -48,17 +48,9 @@
                                                              :if "@function.inner"
                                                              :ac "@conditional.outer"
                                                              :ic "@conditional.inner"}}}
-                            :rainbow {:enable true
-                                      :disable (vim.tbl_filter (fn [parser]
-                                                                 (not (vim.tbl_contains rainbow-parsers
-                                                                                        parser)))
-                                                               install-parsers)
-                                      :query :rainbow-parens
-                                      :strategy (require :ts-rainbow.strategy.global)}
                             :matchup {:enable true :disable disable-parsers}
                             :autopairs {:enable true :disable disable-parsers}
                             :autotag {:enable true :disable disable-parsers}
                             :playground {:enable true}
                             :nifoc_hooks {:enable true
                                           :disable disable-parsers}}))
-

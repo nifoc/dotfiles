@@ -1,4 +1,4 @@
-args@{ pkgs, config, lib, ... }:
+{ pkgs, ... }:
 
 {
   imports = [

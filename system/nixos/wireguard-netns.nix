@@ -1,4 +1,4 @@
-{ pkgs, lib, config, secret, ... }:
+{ pkgs, config, secret, ... }:
 
 {
   environment.systemPackages = with pkgs; [ ldns tcpdump wireguard-tools ];

@@ -107,12 +107,12 @@ in
   };
   dracula-nvim = buildVimPluginFrom2Nix {
     pname = "dracula.nvim";
-    version = "2023-07-13";
+    version = "2023-07-16";
     src = fetchFromGitHub {
       owner = "Mofiqul";
       repo = "dracula.nvim";
-      rev = "9db13329e205aaee089e25be8113bd1faeca674e";
-      sha256 = "1f79jazw5kp0ica4hdxpjry79qii8q6a0shg2rqkhpd0a8ydb8rg";
+      rev = "948d237241b91389c8c2f109885b91cd2574b8bb";
+      sha256 = "09cgyskfmqnp0gl1qbwfij8a6r6c0frgbj39zjx15frbhraygpdb";
       fetchSubmodules = false;
     };
   };
@@ -127,14 +127,14 @@ in
       fetchSubmodules = false;
     };
   };
-  nvim-ts-rainbow2 = buildVimPluginFrom2Nix {
-    pname = "nvim-ts-rainbow2";
-    version = "2023-07-12";
+  rainbow-delimiters-nvim = buildVimPluginFrom2Nix {
+    pname = "rainbow-delimiters.nvim";
+    version = "2023-07-16";
     src = fetchFromGitHub {
       owner = "HiPhish";
-      repo = "nvim-ts-rainbow2";
-      rev = "b3120cd5ae9ca524af9cb602f41e12e301fa985f";
-      sha256 = "0mjg0pkd8wv8cfar30lkyywdrd3g5lz36bbsfb7lrqi7kbksyzxv";
+      repo = "rainbow-delimiters.nvim";
+      rev = "a9f2bb9777a4b2a5178df09fcb7c30e5664949bc";
+      sha256 = "0l542mlncq6c3p8d866zlzx12g3wil39xy4bq99nxlsjsmyhin7g";
       fetchSubmodules = false;
     };
   };
@@ -286,12 +286,12 @@ in
   };
   nvim-lint = buildVimPluginFrom2Nix {
     pname = "nvim-lint";
-    version = "2023-07-13";
+    version = "2023-07-16";
     src = fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-lint";
-      rev = "808e8fdbee02ed2c6efc17e70c7453fccf5d5a1d";
-      sha256 = "1q0ryrsmiil2l2dfhlxnkgahxw5jnfbiv1b48ly2iscqldrsm9sb";
+      rev = "a9d46f7f8173250567854d81ef2ead1256789b0e";
+      sha256 = "1z53rlm4p8s90clr4biqaxnpfsr87889lxwp4wnazl4137hi4b9c";
       fetchSubmodules = false;
     };
   };
@@ -583,12 +583,12 @@ in
   };
   noice-nvim = buildVimPluginFrom2Nix {
     pname = "noice.nvim";
-    version = "2023-07-01";
+    version = "2023-07-16";
     src = fetchFromGitHub {
       owner = "folke";
       repo = "noice.nvim";
-      rev = "6c87c1d11c38180fb72bf8f45518a0a3e081afc1";
-      sha256 = "0y0fwll3a421r0px9x2d8mq2nj00w6ahilwmrvmhvnazjgqd074j";
+      rev = "26394ed09d47160a493d4e9e754f5f78d4556a6b";
+      sha256 = "08b2yn27ljy3jf88qj3gi86rvy4ijrip3hha2dbnzhdsziq897k4";
       fetchSubmodules = false;
     };
   };

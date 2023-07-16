@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
 {
   services.elasticsearch = {
     enable = true;

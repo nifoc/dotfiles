@@ -1,4 +1,4 @@
-args@{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   secret = import ../../secret/hosts/adsb-antenna.nix;
@@ -93,7 +93,7 @@ in
     };
 
     daniel = {
-      hashedPassword = secret.users.daniel.hashedPassword;
+      inherit (secret.users.daniel) hashedPassword;
       isNormalUser = true;
       home = "/home/daniel";
       description = "Daniel";

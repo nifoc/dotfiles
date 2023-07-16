@@ -106,7 +106,7 @@ in
       let
         customPlugins = import ./plugins.nix { inherit pkgs; };
       in
-      (with customPlugins; [
+      with customPlugins; [
         # Utils
         popup-nvim
         plenary-nvim
@@ -162,7 +162,12 @@ in
           type = "fennel";
         }
 
-        nvim-ts-rainbow2
+        {
+          plugin = rainbow-delimiters-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/rainbow-delimiters.fnl;
+          type = "fennel";
+        }
+
         playground
 
         # Telescope
@@ -338,7 +343,7 @@ in
           config = builtins.readFile ../../config/nvim/plugins/noice.fnl;
           type = "fennel";
         }
-      ]);
+      ];
   };
 
   xdg.configFile."nvim" = {

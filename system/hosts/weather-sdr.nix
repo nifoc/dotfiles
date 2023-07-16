@@ -1,4 +1,4 @@
-args@{ pkgs, config, lib, ... }:
+{ pkgs, config, ... }:
 
 let
   ssh-keys = import ../shared/ssh-keys.nix;

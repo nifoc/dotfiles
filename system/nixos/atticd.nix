@@ -1,4 +1,4 @@
-{ pkgs, config, lib, secret, ... }:
+{ pkgs, config, secret, ... }:
 
 let
   fqdn = "attic.cache.daniel.sx";

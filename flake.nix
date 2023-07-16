@@ -15,6 +15,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    pre-commit-hooks-nix = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Overlays
 
     disko = {
@@ -115,6 +120,7 @@
       imports = [
         inputs.flake-root.flakeModule
         inputs.treefmt-nix.flakeModule
+        inputs.pre-commit-hooks-nix.flakeModule
       ];
 
       systems = [
@@ -135,12 +141,29 @@
           };
         };
 
+        pre-commit = {
+          settings = {
+            excludes = [ "\\.direnv\\/" ];
+
+            hooks = {
+              deadnix.enable = true;
+              statix.enable = true;
+              treefmt.enable = true;
+            };
+
+            settings = {
+              statix.ignore = [ ".direnv/**/*.nix" ];
+            };
+          };
+        };
+
         devShells.default = pkgs.mkShell {
           name = "dotfiles";
 
           inputsFrom = [
             config.flake-root.devShell
             config.treefmt.build.devShell
+            config.pre-commit.devShell
           ];
         };
       };

@@ -18,7 +18,7 @@
       debug_pprof = false;
 
       dns = {
-        bind_hosts = secret.adguardhome.bind_hosts;
+        inherit (secret.adguardhome) bind_hosts;
         port = 53;
 
         bootstrap_dns = [
@@ -40,7 +40,7 @@
 
   networking.firewall.interfaces =
     let
-      interfaces = lib.mapAttrsToList (_: value: lib.attrsets.attrByPath [ "matchConfig" "Name" ] null value) config.systemd.network.networks;
+      interfaces = lib.mapAttrsToList (_: lib.attrsets.attrByPath [ "matchConfig" "Name" ] null) config.systemd.network.networks;
     in
     builtins.listToAttrs
       (builtins.map
