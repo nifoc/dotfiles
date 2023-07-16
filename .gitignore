@@ -2,3 +2,4 @@
 *.auth
 result
 key
+.direnv/

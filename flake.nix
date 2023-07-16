@@ -150,10 +150,6 @@
               statix.enable = true;
               treefmt.enable = true;
             };
-
-            settings = {
-              statix.ignore = [ ".direnv/**/*.nix" ];
-            };
           };
         };
 
