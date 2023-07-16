@@ -1,5 +1,6 @@
 .DS_Store
 *.auth
+.pre-commit-config.yaml
 result
 key
 .direnv/
