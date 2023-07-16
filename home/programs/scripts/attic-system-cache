@@ -6,7 +6,7 @@ export IFS=' '
 
 echo "Uploading $OUT_PATHS ..."
 
-if /run/current-system/sw/bin/attic push nifoc-systems $OUT_PATHS; then
+if /run/current-system/sw/bin/attic push nifoc-systems "$OUT_PATHS"; then
   exit 0
 else
   echo "Ignoring error ..."
