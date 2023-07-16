@@ -59,7 +59,7 @@
                      (not (. vim :bo self.bufnr :modified)))
         :update [:WinNew :WinClosed :BufEnter]
         1 mod.space
-        2 {:provider ""
+        2 {:provider "󰅖"
            :hl (fn [self]
                  (if self.is_active {:fg fg-active :bg bg-active}
                      {:fg fg-inactive :bg bg-inactive}))

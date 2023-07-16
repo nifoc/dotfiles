@@ -217,7 +217,7 @@
                            :hl {:fg colors.cyan}}
                         5 {:provider (fn [self]
                                        (when (> self.hints 0)
-                                         (.. " " self.hints)))
+                                         (.. "󰅺 " self.hints)))
                            :hl {:fg colors.cyan}}})
   ;; Current Function
   (set mod.current-function
@@ -306,9 +306,9 @@
            :provider " "
            :on_click {:name :heirline_buffer_options_lsp
                       :callback #(deferred_cmd {:cmd :LspInfo} 200)}}
-        3 {:condition #(formatting.active?) :provider " "}
+        3 {:condition #(formatting.active?) :provider "󰉼 "}
         4 {:condition #(nifoc-treesitter.active?) :provider " "}
-        5 {:condition #vim.wo.spell :provider "暈"}
+        5 {:condition #vim.wo.spell :provider "󰓆"}
         6 {:provider (fn [self]
                        (let [f vim.bo.fileformat]
                          (.. (. self :format f) " ")))}})

@@ -1,7 +1,8 @@
-{ pkgs, lib, modulesPath, ... }:
+{ pkgs, lib, config, modulesPath, ... }:
 
 {
   imports = [
+    "${modulesPath}/installer/scan/not-detected.nix"
     ../disko/tanker.nix
   ];
 
@@ -18,7 +19,7 @@
 
     initrd = {
       availableKernelModules = [ "xhci_pci" "ahci" "nvme" "sd_mod" ];
-      kernelModules = [ "tls" ];
+      kernelModules = [ "kvm-amd" "tls" ];
     };
 
     kernelPackages = pkgs.zfs.latestCompatibleLinuxPackages;
@@ -34,6 +35,8 @@
       "vm.overcommit_memory" = 1;
     };
   };
+
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 }

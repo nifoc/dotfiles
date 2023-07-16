@@ -115,40 +115,54 @@ in
     '';
   };
 
-  systemd.network = {
-    enable = true;
+  systemd = {
+    enableEmergencyMode = false;
 
-    networks = {
-      "10-wan" = {
-        matchConfig.Name = "enp41s0";
-        address = [
-          "94.130.142.168/26"
-          "2a01:4f8:13b:2d81::2/64"
-        ];
-        gateway = [
-          "94.130.142.129"
-          "fe80::1"
-        ];
-        linkConfig.RequiredForOnline = "routable";
-
-        dns = [
-          "185.12.64.1"
-          "185.12.64.2"
-          "2a01:4ff:ff00::add:1"
-          "2a01:4ff:ff00::add:2"
-        ];
-
-        ntp = [
-          "ntp1.hetzner.de"
-          "ntp2.hetzner.com"
-          "ntp3.hetzner.net"
-        ];
-      };
+    watchdog = {
+      runtimeTime = "20s";
+      rebootTime = "30s";
     };
 
-    wait-online.extraArgs = [
-      "--interface=enp41s0"
-    ];
+    network = {
+      enable = true;
+
+      networks = {
+        "10-wan" = {
+          matchConfig.Name = "enp41s0";
+          address = [
+            "94.130.142.168/26"
+            "2a01:4f8:13b:2d81::2/64"
+          ];
+          gateway = [
+            "94.130.142.129"
+            "fe80::1"
+          ];
+          linkConfig.RequiredForOnline = "routable";
+
+          dns = [
+            "185.12.64.1"
+            "185.12.64.2"
+            "2a01:4ff:ff00::add:1"
+            "2a01:4ff:ff00::add:2"
+          ];
+
+          ntp = [
+            "ntp1.hetzner.de"
+            "ntp2.hetzner.com"
+            "ntp3.hetzner.net"
+          ];
+        };
+      };
+
+      wait-online.extraArgs = [
+        "--interface=enp41s0"
+      ];
+    };
+
+    sleep.extraConfig = ''
+      AllowSuspend=no
+      AllowHibernation=no
+    '';
   };
 
   services.journald.extraConfig = ''
@@ -161,6 +175,9 @@ in
     nixos.enable = false;
     doc.enable = false;
   };
+
+  fonts.fontconfig.enable = false;
+  sound.enable = false;
 
   programs.fish.enable = true;
   programs.htop.enable = true;
