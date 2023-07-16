@@ -143,8 +143,6 @@
 
         pre-commit = {
           settings = {
-            excludes = [ "\\.direnv\\/" ];
-
             hooks = {
               deadnix.enable = true;
               shellcheck.enable = true;
