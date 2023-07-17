@@ -52,12 +52,12 @@
       };
 
       package = {
-        symbol = " ";
+        symbol = " ";
         format = "\\[[$symbol$version]($style)\\]";
       };
 
       php = {
-        symbol = " ";
+        symbol = " ";
         format = "\\[[$symbol($version)]($style)\\]";
       };
 

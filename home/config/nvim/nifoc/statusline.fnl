@@ -257,7 +257,7 @@
                            :Event "@keyword"
                            :Operator "@operator"
                            :TypeParameter "@type"}
-                 :separator "  "
+                 :separator "  "
                  :enc (fn [line col winnr]
                         (let [enc-line (bit.lshift line 16)
                               enc-col (bit.lshift col 6)]
@@ -279,7 +279,7 @@
                                {:provider (truncate-string (string.gsub d.name
                                                                         "%%"
                                                                         "%%%%")
-                                                           45 "…")
+                                                           45 "󰇘")
                                 :on_click {:name :heirline_navic
                                            :minwid pos
                                            :callback (fn [_ minwid]
