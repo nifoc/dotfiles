@@ -22,9 +22,9 @@
   (fn extract-tab-info [title]
     (match title
       (where t (t:find "^nvim%s"))
-      {:title (t:gsub "^nvim%s(.*)" "%1") :icon " " :color "#019833"}
+      {:title (t:gsub "^nvim%s(.*)" "%1") :icon " " :color "#019833"}
       (where t (t:find "^git%s"))
-      {:title (t:gsub "^git%s(.*)" "%1") :icon " " :color "#41535B"}
+      {:title (t:gsub "^git%s(.*)" "%1") :icon "󰊢 " :color "#F25029"}
       (where t (t:find "^mix%s"))
       {:title (t:gsub "^mix%s(.*)" "%1") :icon " " :color colors.elixir}
       (where t (t:find "^iex%s")) {: title :icon " " :color colors.elixir}
@@ -32,6 +32,8 @@
       (where t (t:find "^upp%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^nrsw%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^ngc%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^nix%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^nix-%w+%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^deploy%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^ssh%s")) {: title :icon " " :color colors.ssh}
       (where t (t:find "^scp%s")) {: title :icon " " :color colors.ssh}
@@ -46,6 +48,7 @@
                                         :color colors.reddit}
       (where t (t:find :^redis-)) {: title :icon " " :color "#DC372C"}
       (where t (t:find "^%[%w+%]%s")) {: title :icon " " :color colors.ssh}
+      (where t (t:find "^%w+-dev")) {: title :icon " " :color "#0099CC"}
       (where t (t:find "^%w+-dl%s")) {: title :icon " " :color "#22BC00"}
       _ {: title :icon " " :color "#F8F8F2"}))
 
@@ -162,4 +165,3 @@
    ;; Other
    :front_end :WebGpu
    :check_for_updates false})
-
