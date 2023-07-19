@@ -49,7 +49,7 @@
 - src: hrsh7th/cmp-cmdline
 - src: hrsh7th/cmp-nvim-lsp-document-symbol
 # Formatting
-- src: mhartington/formatter.nvim
+- src: seblj/nvim-formatter
 # Pairs
 - src: windwp/nvim-autopairs
 - src: windwp/nvim-ts-autotag

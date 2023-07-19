@@ -427,14 +427,14 @@ in
       fetchSubmodules = false;
     };
   };
-  formatter-nvim = buildVimPluginFrom2Nix {
-    pname = "formatter.nvim";
-    version = "2023-07-13";
+  nvim-formatter = buildVimPluginFrom2Nix {
+    pname = "nvim-formatter";
+    version = "2023-07-10";
     src = fetchFromGitHub {
-      owner = "mhartington";
-      repo = "formatter.nvim";
-      rev = "9bf2e7e294b00bac87c6123c889828ee08dc9b46";
-      sha256 = "0hmlh6qcra7sfq0i989cxs5jmgk6774bljzvq9m17ybwj3imb14f";
+      owner = "seblj";
+      repo = "nvim-formatter";
+      rev = "a77c61eb3967668839a0ae91f4f8f43938bfae82";
+      sha256 = "1d5q3xg7bf10xfipml42ji9pwp0cl9rnjs12xqdjac8hm6sq469a";
       fetchSubmodules = false;
     };
   };
@@ -583,12 +583,12 @@ in
   };
   noice-nvim = buildVimPluginFrom2Nix {
     pname = "noice.nvim";
-    version = "2023-07-18";
+    version = "2023-07-19";
     src = fetchFromGitHub {
       owner = "folke";
       repo = "noice.nvim";
-      rev = "74f9155f2ff2f7172d5709c8df9357ba69b834db";
-      sha256 = "0nlql9pg7a2fav6hgsd1s1wj90hvh5giy55j33x1249zsk3yrbaq";
+      rev = "dba8ac8e1239f541df1bba7d177eb09e51262ac4";
+      sha256 = "19jnp8jdslrfhafwqxm7sx4rpnl7lqxbz2r1chbpq6xlfzj57wv0";
       fetchSubmodules = false;
     };
   };

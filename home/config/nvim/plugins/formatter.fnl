@@ -1,35 +1,33 @@
 (let [formatter (require :formatter)
-      formatter-utils (require :formatter.util)
-      treefmt-exists (vim.fn.executable :treefmt)
-      treefmt-formatter #{:exe :treefmt :stdin false :tempfile_prefix :treefmt}]
-  (fn builtin-formatter [ft formatter]
-    (let [file (.. :formatter.filetypes. ft)]
-      (. (require file) formatter)))
+      api vim.api]
+  (fn buffer-filename [] (api.nvim_buf_get_name 0))
 
-  (fn other-formatter [ft-or-fn formatter]
-    (if (= (type ft-or-fn) :function) (ft-or-fn)
-        ((builtin-formatter ft-or-fn formatter))))
+  (fn args-prettier [parser]
+    {:args [:--stdin-filepath (buffer-filename) :--parser parser]})
 
-  (fn prefer-treefmt [ft-or-fn formatter]
-    (if (= treefmt-exists 1)
-        (treefmt-formatter)
-        (other-formatter ft-or-fn formatter)))
+  (fn args-shfmt []
+    (let [shiftwidth (vim.opt.shiftwidth:get)]
+      {:args [:-i shiftwidth]}))
 
-  (formatter.setup {:logging true
-                    :log_level vim.log.levels.WARN
-                    :filetype {:css [(prefer-treefmt :css :prettier)]
-                               :fennel [#{:exe :fnlfmt :args ["-"] :stdin true}]
-                               :fish [(builtin-formatter :fish :fishindent)]
-                               :html [(prefer-treefmt :html :prettier)]
-                               :javascript [(prefer-treefmt :javascript
-                                                            :prettier)]
-                               :json [(prefer-treefmt :json :prettier)]
-                               :nix [(prefer-treefmt :nix :nixpkgs_fmt)]
-                               :sh [(prefer-treefmt :sh :shfmt)]
-                               :toml [(prefer-treefmt :toml :taplo)]
-                               :typescript [(prefer-treefmt :typescript
-                                                            :prettier)]
-                               :yaml [(prefer-treefmt #{:exe :yamlfmt
-                                                        :args [:-in]
-                                                        :stdin true})]}}))
+  (fn do-format [exe opts]
+    (if (= (vim.fn.executable exe) 1)
+        (vim.tbl_extend :keep opts {: exe})
+        {:exe :ls :cond #false}))
+
+  (formatter.setup {:format_on_save #(not= vim.b.nifoc_formatter_disabled 1)
+                    :filetype {:css #(do-format :prettier (args-prettier :css))
+                               :fennel #(do-format :fnlfmt {:args ["-"]})
+                               :fish #(do-format :fish_indent {})
+                               :html #(do-format :prettier
+                                                 (args-prettier :html))
+                               :javascript #(do-format :prettier
+                                                       (args-prettier :javascript))
+                               :json #(do-format :prettier
+                                                 (args-prettier :json))
+                               :sh #(do-format :shfmt (args-shfmt))
+                               :toml #(do-format :taplo {:args [:fmt "-"]})
+                               :typescript #(do-format :prettier
+                                                       (args-prettier :typescript))
+                               :yaml #(do-format :yamlfmt {:args [:-in]})}
+                    :lsp [:elixirls :nil_ls]}))
 

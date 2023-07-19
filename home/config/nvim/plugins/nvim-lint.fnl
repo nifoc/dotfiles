@@ -39,8 +39,7 @@
                            :fish [:fish]
                            :java [:checkstyle]
                            :nix [:deadnix :nix :statix]
-                           :sh [:shellcheck]
-                           :yaml [:yamllint]})
+                           :sh [:shellcheck]})
 
   (fn setup-linting [opts]
     (diagnostic.maybe-enable-diagnostics opts.buf)

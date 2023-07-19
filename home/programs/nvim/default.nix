@@ -43,13 +43,8 @@ in
       nodePackages.eslint_d
       hadolint
       luajitPackages.fennel
-      fnlfmt
-      nixpkgs-fmt
       shellcheck
-      shfmt
       statix
-      yamllint
-      yamlfmt
     ] ++ optionals isDarwin [
       xcbuild
     ];
@@ -259,7 +254,7 @@ in
 
         # Formatting
         {
-          plugin = formatter-nvim;
+          plugin = nvim-formatter;
           config = builtins.readFile ../../config/nvim/plugins/formatter.fnl;
           type = "fennel";
         }
