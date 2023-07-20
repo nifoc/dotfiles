@@ -1,16 +1,33 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
+  programs.yt-dlp = {
+    enable = true;
+
+    settings = {
+      format = "'bestvideo+bestaudio/best'";
+      # Metadata
+      add-metadata = true;
+      embed-subs = true;
+      xattrs = true;
+      # Subtitles
+      write-sub = true;
+      sub-format = "best";
+      sub-lang = "en,de";
+      # Downloader
+      downloader = "aria2c";
+      downloader-args = "aria2c:'--async-dns=false --max-download-limit=6M --min-split-size=1M --max-connection-per-server=4 --split=4'";
+      # Other
+      no-overwrites = true;
+      no-call-home = true;
+    };
+  };
+
   home.packages = with pkgs; [
+    aria2
     atomicparsley
     rtmpdump
-    yt-dlp
   ];
-
-  xdg.configFile.yt-dlp = {
-    source = ../config/yt-dlp;
-    recursive = true;
-  };
 
   programs.fish = {
     shellAliases = {
@@ -20,7 +37,7 @@
     };
 
     functions.ytdl_with_options = ''
-      yt-dlp --config-location "$HOME/.config/yt-dlp/config" --download-archive "$HOME/.config/yt-dlp/archive" $argv
+      ${config.programs.yt-dlp.package}/bin/yt-dlp --config-location "$HOME/.config/yt-dlp/config" --download-archive "$HOME/.config/yt-dlp/archive" $argv
     '';
   };
 }
