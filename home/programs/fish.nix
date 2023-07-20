@@ -129,12 +129,12 @@ in
 
       wget-browser = ''
         set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
-        wget -U "$user_agent" $argv
+        ${pkgs.wget}/bin/wget -U "$user_agent" $argv
       '';
 
       aria-browser = ''
         set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
-        aria2c -U "$user_agent" --file-allocation none --async-dns false -x 2 $argv
+        ${pkgs.aria2}/bin/aria2c -U "$user_agent" --file-allocation none --async-dns false -x 2 $argv
       '';
 
       mysqld-direnv-init = ''

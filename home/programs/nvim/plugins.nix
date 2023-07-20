@@ -587,8 +587,8 @@ in
     src = fetchFromGitHub {
       owner = "folke";
       repo = "noice.nvim";
-      rev = "c0917d2775b0d77b0297af16936aaf96abb678ac";
-      sha256 = "1zg08svl7bvw3dl1fj1ags1gvw9m04889yg03mqgaqwh43xaq1p8";
+      rev = "679740982682018a0805a5c813b19e4c7540f7a9";
+      sha256 = "1wk475y5pakffriz09kldj1p4kg05ryrkxzcj03c1slj8c7widgr";
       fetchSubmodules = false;
     };
   };
