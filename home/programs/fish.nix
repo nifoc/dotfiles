@@ -134,7 +134,7 @@ in
 
       aria-browser = ''
         set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
-        aria2c -U "$user_agent" --file-allocation none -x 2 $argv
+        aria2c -U "$user_agent" --file-allocation none --async-dns false -x 2 $argv
       '';
 
       mysqld-direnv-init = ''
