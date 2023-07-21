@@ -15,7 +15,7 @@ in
     withRuby = false;
     withPython3 = false;
 
-    extraLuaPackages = luaPkgs: with luaPkgs; [ jsregexp readline ];
+    extraLuaPackages = luaPkgs: with luaPkgs; [ jsregexp lua-toml readline ];
 
     extraPackages = with pkgs; [
       git

@@ -160,6 +160,8 @@
             config.treefmt.build.devShell
             config.pre-commit.devShell
           ];
+
+          TREEFMT_CONFIG_FILE = config.treefmt.build.configFile;
         };
       };
     };
