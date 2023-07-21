@@ -14,7 +14,7 @@
 
   (fn remove-option [opts removeable]
     (let [new-opts []]
-      (each [i v (ipairs opts)]
+      (each [_ v (ipairs opts)]
         (when (not= v removeable) (table.insert new-opts v)))
       new-opts))
 

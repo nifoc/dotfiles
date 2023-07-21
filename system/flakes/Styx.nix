@@ -34,11 +34,16 @@ in
 
       {
         nixpkgs = nixpkgsConfig;
-        nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
-        nix.registry.nixpkgs.flake = nixpkgs;
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users.daniel = import ../../home/hosts/Styx.nix;
+        nix = {
+          nixPath = [ "nixpkgs=${nixpkgs}" ];
+          registry.nixpkgs.flake = nixpkgs;
+        };
+
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          users.daniel = import ../../home/hosts/Styx.nix;
+        };
       }
     ];
   };
