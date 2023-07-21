@@ -45,14 +45,12 @@
     packages = with pkgs; [
       agenix
       agilebits-op
-      aria2
       arp-scan
       awscli2
       curlHTTP3
       dasel
       deploy-rs
       dig
-      exa
       exiftool
       fd
       ffmpeg

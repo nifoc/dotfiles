@@ -90,9 +90,9 @@ in
 
       j = "z";
       ji = "zi";
-      la = "exa --long --all --group --header --group-directories-first --sort=type --icons";
-      lg = "exa --long --all --group --header --git";
-      lt = "exa --long --all --group --header --tree --level ";
+      la = "${pkgs.exa}/bin/exa --long --all --group --header --group-directories-first --sort=type --icons";
+      lg = "${pkgs.exa}/bin/exa --long --all --group --header --git";
+      lt = "${pkgs.exa}/bin/exa --long --all --group --header --tree --level ";
 
       mysqld-direnv = "mysqld --datadir=$PWD/.direnv/mysql/data --bind-address=127.0.0.1 --socket=$PWD/.direnv/mysql/mysqld.sock --gdb";
       postgres-direnv-init = "initdb --username $USER --pgdata $PWD/.direnv/postgres/data --auth trust";

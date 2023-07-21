@@ -25,8 +25,6 @@
 
   home.packages = with pkgs; [
     aria2
-    atomicparsley
-    rtmpdump
   ];
 
   programs.fish = {
