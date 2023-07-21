@@ -5,7 +5,7 @@
     enable = true;
 
     settings = {
-      base-url = secret.ntfy.baseUrl;
+      base-url = "https://ntfy.kempkens.io";
       listen-http = "127.0.0.1:8004";
       behind-proxy = true;
 
@@ -17,6 +17,9 @@
 
       upstream-base-url = "https://ntfy.sh";
       keepalive-interval = "45s";
+
+      inherit (secret.ntfy) web-push-public-key web-push-private-key web-push-email-address;
+      web-push-file = "/var/lib/ntfy-sh/webpush.db";
     };
   };
 
