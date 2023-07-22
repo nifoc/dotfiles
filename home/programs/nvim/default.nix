@@ -26,7 +26,6 @@ in
 
       # LSP
       fennel-ls
-      lua-language-server
       nil
       nodePackages.bash-language-server
       nodePackages.dockerfile-language-server-nodejs

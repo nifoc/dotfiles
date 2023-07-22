@@ -71,14 +71,15 @@
                                (vim.tbl_extend :force default-config))))
     (lsp.solargraph.setup (->> {:settings {:solargraph {:diagnostics true}}}
                                (vim.tbl_extend :force default-config)))
-    (lsp.lua_ls.setup (->> {:cmd [:lua-language-server]
-                            :root_dir (or (lsp.util.root_pattern :init.vim
-                                                                 :init.lua :.git)
-                                          (vim.loop.os_homedir))
-                            :settings {:Lua {:runtime {:version :LuaJIT
-                                                       :path (vim.split package.path
-                                                                        ";")}
-                                             :diagnostics {:globals [:vim]}
-                                             :telemetry {:enable false}}}}
-                           (vim.tbl_extend :force default-config)))))
-
+    (when (= (vim.fn.executable :lua-language-server) 1)
+      (lsp.lua_ls.setup (->> {:cmd [:lua-language-server]
+                              :root_dir (or (lsp.util.root_pattern :init.vim
+                                                                   :init.lua
+                                                                   :.git)
+                                            (vim.loop.os_homedir))
+                              :settings {:Lua {:runtime {:version :LuaJIT
+                                                         :path (vim.split package.path
+                                                                          ";")}
+                                               :diagnostics {:globals [:vim]}
+                                               :telemetry {:enable false}}}}
+                             (vim.tbl_extend :force default-config))))))
