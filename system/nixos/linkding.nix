@@ -12,6 +12,7 @@ in
       "${data-dir}:/etc/linkding/data"
     ];
     extraOptions = [
+      "--no-healthcheck"
       "--label=com.centurylinklabs.watchtower.enable=true"
       "--label=io.containers.autoupdate=registry"
     ];
