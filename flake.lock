@@ -414,11 +414,11 @@
         "weewx-proxy-flake": "weewx-proxy-flake"
       },
       "locked": {
-        "lastModified": 1690100298,
-        "narHash": "sha256-paS+0D04NtsgTn7XLjoi3mKO9f/DOOXsDTIjCM+um98=",
+        "lastModified": 1690129280,
+        "narHash": "sha256-JkDEZVgGLCr/aVffmie+6kxW39Dv67tPLVln/Y+jOAk=",
         "owner": "nifoc",
         "repo": "nix-overlay",
-        "rev": "0d0f1a7a5f7fb255764794d4759ca5736d94080e",
+        "rev": "62cbcf5be67187a9c1c91e85a163c9046593b386",
         "type": "github"
       },
       "original": {
@@ -465,11 +465,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1690054889,
-        "narHash": "sha256-6C54QTmFFvos8jgkEcAXiBi+Tz6dzir67zgqUHUTupM=",
+        "lastModified": 1690083312,
+        "narHash": "sha256-I3egwgNXavad1eIjWu1kYyi0u73di/sMmlnQIuzQASk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "883fd35c940aa304654f9bc796e6d53ad627a9c8",
+        "rev": "af8cd5ded7735ca1df1a1174864daab75feeb64a",
         "type": "github"
       },
       "original": {

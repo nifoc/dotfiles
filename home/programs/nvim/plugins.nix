@@ -100,8 +100,8 @@ in
     src = fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "4f1696ae1d36ae2b22c0953d1222d4b847f4d999";
-      sha256 = "121ik6p96vby26fh3sd7xmd5mi83ycr5zm2i9hk0gbk1bh1q2h3h";
+      rev = "5efe985cf68fac3b6a6dfe7a75fbfaca8db2af9c";
+      sha256 = "093fzf1bki2ll3lrqbnrw9w7i7aajbma4zq83c2nkxwi5gj5jqgl";
       fetchSubmodules = false;
     };
   };
