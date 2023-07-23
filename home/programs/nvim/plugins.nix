@@ -427,14 +427,25 @@ in
       fetchSubmodules = false;
     };
   };
-  nvim-formatter = buildVimPluginFrom2Nix {
-    pname = "nvim-formatter";
-    version = "2023-07-10";
+  core-nvim = buildVimPluginFrom2Nix {
+    pname = "core.nvim";
+    version = "2023-07-18";
     src = fetchFromGitHub {
-      owner = "seblj";
-      repo = "nvim-formatter";
-      rev = "a77c61eb3967668839a0ae91f4f8f43938bfae82";
-      sha256 = "1d5q3xg7bf10xfipml42ji9pwp0cl9rnjs12xqdjac8hm6sq469a";
+      owner = "niuiic";
+      repo = "core.nvim";
+      rev = "d0843388db6a6747ec1a1c2aea873da0efca2cac";
+      sha256 = "0b47bsbwd1f0635r6jzsmp2d449cxgir93p50hbqlzn25kfvw43q";
+      fetchSubmodules = false;
+    };
+  };
+  format-nvim = buildVimPluginFrom2Nix {
+    pname = "format.nvim";
+    version = "2023-07-20";
+    src = fetchFromGitHub {
+      owner = "niuiic";
+      repo = "format.nvim";
+      rev = "d06a60bcc2b33aace2d448279d763ed559960925";
+      sha256 = "1vf28f3pxif97gsx6f6p7nlfx918jlf2hrl9as8n4szs6mm0lhig";
       fetchSubmodules = false;
     };
   };
@@ -473,12 +484,12 @@ in
   };
   nvim-treesitter-textobjects = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter-textobjects";
-    version = "2023-06-26";
+    version = "2023-07-23";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "52f1f3280d9092bfaee5c45be5962fabee3d9654";
-      sha256 = "1k0065mn4hb3ama3qxrln24rf7cqziysddvw4anxws85dan5x9sj";
+      rev = "ef32a5c24b767d165ed63fd2b24ac8dc52742521";
+      sha256 = "1jrg79hliagz408200vl4926a61c462lz5rv59xjfp70x5pbdjjd";
       fetchSubmodules = false;
     };
   };

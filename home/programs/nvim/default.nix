@@ -252,8 +252,11 @@ in
         cmp-nvim-lsp-document-symbol
 
         # Formatting
+
+        core-nvim
+
         {
-          plugin = nvim-formatter;
+          plugin = format-nvim;
           config = builtins.readFile ../../config/nvim/plugins/formatter.fnl;
           type = "fennel";
         }

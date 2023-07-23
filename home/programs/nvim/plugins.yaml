@@ -49,7 +49,8 @@
 - src: hrsh7th/cmp-cmdline
 - src: hrsh7th/cmp-nvim-lsp-document-symbol
 # Formatting
-- src: seblj/nvim-formatter
+- src: niuiic/core.nvim
+- src: niuiic/format.nvim
 # Pairs
 - src: windwp/nvim-autopairs
 - src: windwp/nvim-ts-autotag
