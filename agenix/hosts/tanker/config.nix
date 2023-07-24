@@ -18,10 +18,6 @@
       file = ./msmtp/password.age;
     };
 
-    atuin-environment = {
-      file = ./atuin/environment.age;
-    };
-
     atticd-environment = {
       file = ./atticd/environment.age;
     };

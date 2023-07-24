@@ -13,7 +13,7 @@ in
 
     settings = {
       listen = "127.0.0.1:8080";
-      database.url = secret.atticd.database-url;
+      database.url = "postgresql:///attic?host=/run/postgresql";
 
       allowed-hosts = [ "${fqdn}" ];
       api-endpoint = "https://${fqdn}/";
@@ -37,6 +37,19 @@ in
         default-retention-period = "2 weeks";
       };
     };
+  };
+
+  services.postgresql = {
+    ensureDatabases = [ "attic" ];
+
+    ensureUsers = [
+      {
+        name = "atticd";
+        ensurePermissions = {
+          "DATABASE attic" = "ALL PRIVILEGES";
+        };
+      }
+    ];
   };
 
   services.nginx.virtualHosts."${fqdn}" = {

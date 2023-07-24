@@ -32,7 +32,11 @@ in
       database = {
         name = "psycopg2";
         args = {
-          host = "127.0.0.1";
+          host = "/run/postgresql";
+          user = "matrix-synapse";
+          database = "synapse";
+          cp_min = 5;
+          cp_max = 10;
         };
       };
 
@@ -103,7 +107,7 @@ in
     };
   };
 
-  systemd.services.matrix-synapse.after = [ "podman-wait-for-host-interface.service" ];
+  systemd.services.matrix-synapse.after = [ "postgresql.service" "podman-wait-for-host-interface.service" ];
 
   networking.firewall.interfaces."podman+".allowedTCPPorts = [ 8008 ];
 

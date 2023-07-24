@@ -21,8 +21,6 @@ in
 
   "agenix/hosts/tanker/msmtp/password.age".publicKeys = tanker;
 
-  "agenix/hosts/tanker/atuin/environment.age".publicKeys = tanker;
-
   "agenix/hosts/tanker/atticd/environment.age".publicKeys = tanker;
 
   "agenix/hosts/tanker/fedifetcher/config.age".publicKeys = tanker;

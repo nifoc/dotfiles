@@ -1,21 +1,11 @@
-{ pkgs, config, ... }:
-
 {
-  systemd.services.atuin-sync = {
-    description = "atuin sync server";
+  services.atuin = {
+    enable = true;
 
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" "network-online.target" ];
-    wants = [ "network.target" "network-online.target" ];
-
-    serviceConfig = {
-      ExecStart = "${pkgs.atuin}/bin/atuin server start";
-      EnvironmentFile = [ config.age.secrets.atuin-environment.path ];
-      Restart = "on-failure";
-      DynamicUser = true;
-      RuntimeDirectory = "atuin";
-      RuntimeDirectoryMode = "0700";
-    };
+    host = "127.0.0.1";
+    port = 8015;
+    openRegistration = false;
+    openFirewall = false;
   };
 
   services.nginx.virtualHosts."atuin-sync.kempkens.io" = {
