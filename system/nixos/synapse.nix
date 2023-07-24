@@ -1,5 +1,8 @@
 { config, ... }:
 
+let
+  fqdn = "matrix.kempkens.io";
+in
 {
   services.matrix-synapse = {
     enable = true;
@@ -8,7 +11,7 @@
 
     settings = {
       server_name = "kempkens.io";
-      public_baseurl = "https://matrix.kempkens.io/";
+      public_baseurl = "https://${fqdn}/";
 
       listeners = [
         {
@@ -87,13 +90,24 @@
     };
 
     extraConfigFiles = [ config.age.secrets.synapse-extra-config.path ];
+
+    sliding-sync = {
+      enable = true;
+
+      settings = {
+        SYNCV3_SERVER = "https://${fqdn}";
+        SYNCV3_BINDADDR = "127.0.0.1:8009";
+      };
+
+      environmentFile = config.age.secrets.synapse-sliding-sync-config.path;
+    };
   };
 
   systemd.services.matrix-synapse.after = [ "podman-wait-for-host-interface.service" ];
 
   networking.firewall.interfaces."podman+".allowedTCPPorts = [ 8008 ];
 
-  services.nginx.virtualHosts."matrix.kempkens.io" = {
+  services.nginx.virtualHosts."${fqdn}" = {
     quic = true;
     http3 = true;
 
@@ -102,17 +116,29 @@
 
     extraConfig = ''
       add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-    '';
 
-    locations."~ ^(/_matrix|/_synapse/client)" = {
-      recommendedProxySettings = true;
-      proxyPass = "http://127.0.0.1:8008";
-      proxyWebsockets = true;
+      location ~* ^/(client/|_matrix/client/unstable/org.matrix.msc3575/sync) {
+        proxy_pass http://127.0.0.1:8009;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+      }
 
-      extraConfig = ''
+      location ~* ^(\/_matrix|\/_synapse\/client) {
+        proxy_pass http://127.0.0.1:8008;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+
         client_max_body_size 50m;
         proxy_force_ranges on;
-      '';
-    };
+      }
+    '';
   };
 }

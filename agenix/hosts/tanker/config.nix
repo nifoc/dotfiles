@@ -128,6 +128,10 @@
       group = "matrix-synapse";
     };
 
+    synapse-sliding-sync-config = {
+      file = ./synapse/slidingSyncConfig.age;
+    };
+
     mautrix-whatsapp-config = {
       file = ./mautrix-whatsapp/config.age;
       symlink = false;

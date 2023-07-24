@@ -52,6 +52,7 @@ in
   "agenix/hosts/tanker/proxitok/environment.age".publicKeys = tanker;
 
   "agenix/hosts/tanker/synapse/extraConfig.age".publicKeys = tanker;
+  "agenix/hosts/tanker/synapse/slidingSyncConfig.age".publicKeys = tanker;
 
   "agenix/hosts/tanker/mautrix-signal/config.age".publicKeys = tanker;
 
