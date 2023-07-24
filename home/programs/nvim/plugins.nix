@@ -319,12 +319,12 @@ in
   };
   friendly-snippets = buildVimPluginFrom2Nix {
     pname = "friendly-snippets";
-    version = "2023-07-22";
+    version = "2023-07-24";
     src = fetchFromGitHub {
       owner = "rafamadriz";
       repo = "friendly-snippets";
-      rev = "4aed1a0ca605cb1c87f59799a0cc4afe00a40272";
-      sha256 = "122pjsjq7hmzv1n53m6vmvnva19kzymzyi8r55pg3ql1n436klaq";
+      rev = "bc38057e513458cb2486b6cd82d365fa294ee398";
+      sha256 = "1l2czwjsskcywjvayx1wcg5538fs2pfp88shx14c9s5q4h0v247m";
       fetchSubmodules = false;
     };
   };
@@ -440,12 +440,12 @@ in
   };
   format-nvim = buildVimPluginFrom2Nix {
     pname = "format.nvim";
-    version = "2023-07-20";
+    version = "2023-07-24";
     src = fetchFromGitHub {
       owner = "niuiic";
       repo = "format.nvim";
-      rev = "d06a60bcc2b33aace2d448279d763ed559960925";
-      sha256 = "1vf28f3pxif97gsx6f6p7nlfx918jlf2hrl9as8n4szs6mm0lhig";
+      rev = "2959389fc6a621001af3d3e42562e323ac61e8f3";
+      sha256 = "0qsk6zbyr7gsfmb3nvfn5i6ygnr7madhyqjs1wj1vfzk521glbl7";
       fetchSubmodules = false;
     };
   };
@@ -528,12 +528,12 @@ in
   };
   virt-column-nvim = buildVimPluginFrom2Nix {
     pname = "virt-column.nvim";
-    version = "2023-01-20";
+    version = "2023-07-24";
     src = fetchFromGitHub {
       owner = "lukas-reineke";
       repo = "virt-column.nvim";
-      rev = "93b40ea038f676f5a72d7d1f2336fe7b051fc0ce";
-      sha256 = "02r90cqx31ja7cglfliqw0wbsm8fxh5q784wapk82zlv1p7c8ip8";
+      rev = "1917bfb519729dea7b4f5d13aa9c810c9579b0ea";
+      sha256 = "08brm8by7fzwqzgzcgcrzk7vq1dmknh5r4wxisc725rwkxjzmfkl";
       fetchSubmodules = false;
     };
   };
