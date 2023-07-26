@@ -231,12 +231,12 @@ in
   };
   nvim-lspconfig = buildVimPluginFrom2Nix {
     pname = "nvim-lspconfig";
-    version = "2023-07-25";
+    version = "2023-07-26";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "6f426c34c8e21af2f934e56be9d1198a507ecc9f";
-      sha256 = "167d9df5a3sh69frklk70ff3aw9ks33cc1v6y32iky8i16479zfi";
+      rev = "b6091272422bb0fbd729f7f5d17a56d37499c54f";
+      sha256 = "1miar4bdf60s4gp55rc9918v0k33w2mnqym9b44mqkxzn2fbsrh2";
       fetchSubmodules = false;
     };
   };
