@@ -286,12 +286,12 @@ in
   };
   nvim-lint = buildVimPluginFrom2Nix {
     pname = "nvim-lint";
-    version = "2023-07-20";
+    version = "2023-07-26";
     src = fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-lint";
-      rev = "606d1eb9506627253b98cba3fd7efad255e33ee4";
-      sha256 = "1hshhzvhfd033nq03h09jkl88m3b6zcssvr1xdzzxhgx3533a7yi";
+      rev = "0cd1ac2801303470bf9ec0164d00f45dc901c83f";
+      sha256 = "1ipkpsp9xnncjnqw2zg23rvlb8nhhpkwv9p50rvfp7z83rp3vml7";
       fetchSubmodules = false;
     };
   };
@@ -308,12 +308,12 @@ in
   };
   LuaSnip = buildVimPluginFrom2Nix {
     pname = "LuaSnip";
-    version = "2023-07-18";
+    version = "2023-07-26";
     src = fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "0b4950a237ce441a6a3a947d501622453f6860ea";
-      sha256 = "0hvn104hvrxx10aw5h71jfn1cpxkibzklgl8l2rjkav3v19hq13f";
+      rev = "e81cbe6004051c390721d8570a4a0541ceb0df10";
+      sha256 = "0hq6v320sfr02ph7kki9dc3n55cbihlm46cl50lij7651qxc52dz";
       fetchSubmodules = false;
     };
   };
