@@ -1,0 +1,13 @@
+#!/usr/bin/env nix-shell
+#!nix-shell -i bash -p fd jq
+# shellcheck disable=SC1008
+
+jq -cr ".variables.pkgsBuildHost.value[]" "$(fd '^flake-profile-[a-z0-9]+$' ./.direnv/)" | while read -r dir; do
+  echo "Uploading $dir ..."
+
+  if attic push nedeco:devshells "$dir"; then
+    continue
+  else
+    echo "Ignoring error ..."
+  fi
+done

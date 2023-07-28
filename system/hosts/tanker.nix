@@ -53,8 +53,6 @@ in
 
     ../nixos/tailscale.nix
 
-    ../nixos/voyager.nix
-
     ../nixos/websites-tanker.nix
 
     ../../container/matrix

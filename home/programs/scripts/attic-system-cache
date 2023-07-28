@@ -12,4 +12,3 @@ else
   echo "Ignoring error ..."
   exit 0
 fi
-
