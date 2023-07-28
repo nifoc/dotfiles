@@ -1,13 +1,20 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i bash -p fd jq
+#!nix-shell -i bash -p git fd jq rg
 # shellcheck disable=SC1008
 
-jq -cr ".variables.pkgsBuildHost.value[]" "$(fd '^flake-profile-[a-z0-9]+$' ./.direnv/)" | while read -r dir; do
-  echo "Uploading $dir ..."
+if git remote -v | rg -q nedeco; then
+  jq -cr ".variables.pkgsBuildHost.value[]" "$(fd '^flake-profile-[a-z0-9]+$' ./.direnv/)" | while read -r dir; do
+    echo "Uploading $dir ..."
 
-  if attic push nedeco:devshells "$dir"; then
-    continue
-  else
-    echo "Ignoring error ..."
-  fi
-done
+    if attic push nedeco:devshells "$dir"; then
+      continue
+    else
+      echo "Ignoring error ..."
+    fi
+  done
+else
+  echo "Doesn't look like a work repository"
+  exit 1
+fi
+
+# vim: set ft=sh:

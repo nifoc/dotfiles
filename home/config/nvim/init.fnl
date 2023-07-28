@@ -6,7 +6,7 @@
   ;; Various Options
   (set o.spelllang [:en :de])
   (set o.showmode false)
-  (set o.modeline false)
+  (set o.modeline true)
   (set o.ruler false)
   (set o.cursorline true)
   (set o.list true)
@@ -99,4 +99,3 @@
                          :group augroup})
     (aucmd :InsertLeave {:callback #(ls.maybe-set-relativenumber true)
                          :group augroup})))
-

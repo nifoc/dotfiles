@@ -14,3 +14,5 @@ rm -rf ./.gitlab
 rm -f ./.gitlab-ci.yml
 
 cd "$current" || exit
+
+# vim: set ft=sh:
