@@ -122,8 +122,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "5e27645a2b7ecce1f8e0971d78f55de0f392ba23";
-      sha256 = "1mrvqdn713hl1y4ai7ywgifrvw13x3nbk354l98557ay2icax89y";
+      rev = "db0ccd920b3cf7e96a0a9b43aac0f367decd231a";
+      sha256 = "18c99b2zlv33ndsrhnwibxlcb21zpzn4fqx1jljh9cmrx4l78man";
       fetchSubmodules = false;
     };
   };
@@ -187,12 +187,12 @@ in
   };
   todo-comments-nvim = buildVimPluginFrom2Nix {
     pname = "todo-comments.nvim";
-    version = "2023-05-22";
+    version = "2023-07-28";
     src = fetchFromGitHub {
       owner = "folke";
       repo = "todo-comments.nvim";
-      rev = "09b0b17d824d2d56f02ff15967e8a2499a89c731";
-      sha256 = "0iz0xingbfxlqxwm11hy77cf2awgr1610i2snrafmr346hdn0ywl";
+      rev = "3094ead8edfa9040de2421deddec55d3762f64d1";
+      sha256 = "0qmx94fq1pllwnwzav87fi3v9d64sm8ggv9jgs19flr6r8kh0vs2";
       fetchSubmodules = false;
     };
   };
@@ -473,12 +473,12 @@ in
   };
   vim-matchup = buildVimPluginFrom2Nix {
     pname = "vim-matchup";
-    version = "2023-07-27";
+    version = "2023-07-28";
     src = fetchFromGitHub {
       owner = "andymass";
       repo = "vim-matchup";
-      rev = "0646093e07b1f89b16536cfb3dc4993e3f0ac653";
-      sha256 = "117zdg6ibnnnpl03r6dhb71hm3dw6h0y2lxbkj8kl5b0gk8lapph";
+      rev = "4f426d15ae10f496ee5e519441bc53cae1b7eba1";
+      sha256 = "0srqmhgd61y87cmx7vvl0d90lwkf5ri94wwaqzrjl6a9b98528yz";
       fetchSubmodules = false;
     };
   };
