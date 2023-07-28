@@ -129,7 +129,7 @@
         "aarch64-linux"
       ];
 
-      perSystem = { config, pkgs, ... }: {
+      perSystem = { config, pkgs, inputs', ... }: {
         treefmt = {
           inherit (config.flake-root) projectRootFile;
 
@@ -159,6 +159,11 @@
             config.flake-root.devShell
             config.treefmt.build.devShell
             config.pre-commit.devShell
+          ];
+
+          packages = [
+            inputs'.agenix.packages.agenix
+            inputs'.deploy-rs.packages.deploy-rs
           ];
 
           TREEFMT_CONFIG_FILE = config.treefmt.build.configFile;

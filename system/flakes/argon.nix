@@ -4,13 +4,11 @@ let
   default-system = "aarch64-linux";
 
   overlay-attic = inputs.attic.overlays.default;
-  overlay-deploy-rs = _: _: { inherit (inputs.deploy-rs.packages.${default-system}) deploy-rs; };
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
     overlays = [
       overlay-attic
-      overlay-deploy-rs
       overlay-nifoc
     ];
 

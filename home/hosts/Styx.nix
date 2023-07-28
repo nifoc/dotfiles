@@ -43,13 +43,11 @@
     stateVersion = "22.11";
 
     packages = with pkgs; [
-      agenix
       agilebits-op
       arp-scan
       awscli2
       curlHTTP3
       dasel
-      deploy-rs
       dig
       exiftool
       fd
