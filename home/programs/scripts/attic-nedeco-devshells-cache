@@ -1,9 +1,9 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i bash -p git fd jq rg
+#!nix-shell -i bash -p git fd ripgrep
 # shellcheck disable=SC1008
 
 if git remote -v | rg -q nedeco; then
-  jq -cr ".variables.pkgsBuildHost.value[]" "$(fd '^flake-profile-[a-z0-9]+$' ./.direnv/)" | while read -r dir; do
+  nix path-info -r "$(fd '^flake-profile-[a-z0-9]+$' ./.direnv/)" | while read -r dir; do
     echo "Uploading $dir ..."
 
     if attic push nedeco:devshells "$dir"; then

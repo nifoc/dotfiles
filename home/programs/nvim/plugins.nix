@@ -107,23 +107,23 @@ in
   };
   dracula-nvim = buildVimPluginFrom2Nix {
     pname = "dracula.nvim";
-    version = "2023-07-16";
+    version = "2023-07-29";
     src = fetchFromGitHub {
       owner = "Mofiqul";
       repo = "dracula.nvim";
-      rev = "948d237241b91389c8c2f109885b91cd2574b8bb";
-      sha256 = "09cgyskfmqnp0gl1qbwfij8a6r6c0frgbj39zjx15frbhraygpdb";
+      rev = "9fe831e685a76e1a1898a694623b33247c4d036c";
+      sha256 = "03mrsy17fvdislkf50hfxp87kw2k53zfyygc21ln11792k2nmfc1";
       fetchSubmodules = false;
     };
   };
   nvim-treesitter = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2023-07-28";
+    version = "2023-07-29";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "db0ccd920b3cf7e96a0a9b43aac0f367decd231a";
-      sha256 = "18c99b2zlv33ndsrhnwibxlcb21zpzn4fqx1jljh9cmrx4l78man";
+      rev = "ee107fc759647293a84ad42b867f518331364fbe";
+      sha256 = "084cgf3cq9nnsxgkbc48ysr72zjzgs9ljzxc13pjqdsl2c6vkk3s";
       fetchSubmodules = false;
     };
   };
