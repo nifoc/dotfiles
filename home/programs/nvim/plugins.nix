@@ -290,8 +290,8 @@ in
     src = fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-lint";
-      rev = "107fa76843fbb0b04870dab1147296a210df568b";
-      sha256 = "0r45kg4x9hbgh8lcxh6qvcd8drjhsy93y9n19lxbkldqkgnqpp5c";
+      rev = "4744fc04c3a869c9eaa137fec13d992aea7da7ee";
+      sha256 = "1f4gkp7fmlnalmsixin880c6lrbh9q7d1dhn2hmlymxi7jl4xz37";
       fetchSubmodules = false;
     };
   };
