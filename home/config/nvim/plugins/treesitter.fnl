@@ -1,40 +1,5 @@
-(let [treesitter (require :nvim-treesitter)
-      treesitter-config (require :nvim-treesitter.configs)
-      treesitter-parsers (require :nvim-treesitter.parsers)
+(let [treesitter-config (require :nvim-treesitter.configs)
       nifoc-treesitter (require :nifoc.treesitter)
-      install-parsers [:bash
-                       :comment
-                       :css
-                       :dockerfile
-                       :eex
-                       :elixir
-                       :erlang
-                       :fennel
-                       :fish
-                       :heex
-                       :html
-                       :http
-                       :java
-                       :javascript
-                       :jsdoc
-                       :json
-                       :lua
-                       :make
-                       :markdown
-                       :markdown_inline
-                       :nix
-                       :query
-                       :regex
-                       :ruby
-                       :scss
-                       :sql
-                       :svelte
-                       :toml
-                       :tsx
-                       :typescript
-                       :vim
-                       :yaml]
-      rainbow-parsers [:css :fennel :json :query :yaml]
       disable-parsers []]
   (nifoc-treesitter.setup)
   (treesitter-config.setup {:ensure_installed []

@@ -55,6 +55,7 @@
       glow
       hexyl
       hyperfine
+      just
       lnav
       mtr
       nix-tree

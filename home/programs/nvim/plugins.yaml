@@ -13,6 +13,7 @@
 - src: Mofiqul/dracula.nvim
 # Syntax
 - src: nvim-treesitter/nvim-treesitter
+- src: NoahTheDuke/vim-just
 - src: HiPhish/rainbow-delimiters.nvim
 - src: nvim-treesitter/playground
 # Telescope

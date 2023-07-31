@@ -127,6 +127,17 @@ in
       fetchSubmodules = false;
     };
   };
+  vim-just = buildVimPluginFrom2Nix {
+    pname = "vim-just";
+    version = "2023-07-30";
+    src = fetchFromGitHub {
+      owner = "NoahTheDuke";
+      repo = "vim-just";
+      rev = "9129b096a6b43e0a47e405cc7b3fb55bc0e31c42";
+      sha256 = "04sh6xdnmb89gw31wjd1zd4jwl4cwb4731qpkgz59rh5cdiv27qr";
+      fetchSubmodules = false;
+    };
+  };
   rainbow-delimiters-nvim = buildVimPluginFrom2Nix {
     pname = "rainbow-delimiters.nvim";
     version = "2023-07-30";

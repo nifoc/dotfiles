@@ -156,6 +156,8 @@ in
           type = "fennel";
         }
 
+        vim-just
+
         {
           plugin = rainbow-delimiters-nvim;
           config = builtins.readFile ../../config/nvim/plugins/rainbow-delimiters.fnl;
