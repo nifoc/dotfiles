@@ -107,11 +107,6 @@
 
     mautrix-signal-config = {
       file = ./mautrix-signal/config.age;
-      symlink = false;
-      path = "/var/lib/matrix-bridges/signal/config.yaml";
-      mode = "640";
-      owner = "1337";
-      group = "1337";
     };
 
     signald-environment = {
@@ -130,11 +125,6 @@
 
     mautrix-whatsapp-config = {
       file = ./mautrix-whatsapp/config.age;
-      symlink = false;
-      path = "/var/lib/matrix-bridges/whatsapp/config.yaml";
-      mode = "640";
-      owner = "1337";
-      group = "1337";
     };
 
     weewx-config = {

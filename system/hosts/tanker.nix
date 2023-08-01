@@ -49,13 +49,12 @@ in
 
     ../nixos/rimgo.nix
 
-    ../nixos/synapse.nix
+    ../nixos/matrix
 
     ../nixos/tailscale.nix
 
     ../nixos/websites-tanker.nix
 
-    ../../container/matrix
     ../../container/proxitok
     ../../container/weewx
   ];

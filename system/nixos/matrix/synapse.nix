@@ -15,7 +15,7 @@ in
 
       listeners = [
         {
-          bind_addresses = [ "127.0.0.1" "10.88.0.1" ];
+          bind_addresses = [ "127.0.0.1" ];
           port = 8008;
           tls = false;
           type = "http";
@@ -81,11 +81,6 @@ in
       enable_metrics = false;
       report_stats = false;
 
-      app_service_config_files = [
-        "/var/lib/matrix-bridges/signal/registration.yaml"
-        "/var/lib/matrix-bridges/whatsapp/registration.yaml"
-      ];
-
       experimental_features = {
         msc3202_device_masquerading = true;
         msc3202_transaction_extensions = true;
@@ -107,9 +102,7 @@ in
     };
   };
 
-  systemd.services.matrix-synapse.after = [ "postgresql.service" "podman-wait-for-host-interface.service" ];
-
-  networking.firewall.interfaces."podman+".allowedTCPPorts = [ 8008 ];
+  systemd.services.matrix-synapse.after = [ "postgresql.service" ];
 
   services.nginx.virtualHosts."${fqdn}" = {
     quic = true;
