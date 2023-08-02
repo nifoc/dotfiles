@@ -41,12 +41,12 @@ in
   };
   wezterm-nvim = buildVimPluginFrom2Nix {
     pname = "wezterm.nvim";
-    version = "2023-04-23";
+    version = "2023-08-02";
     src = fetchFromGitHub {
       owner = "willothy";
       repo = "wezterm.nvim";
-      rev = "9e209cb4afb2b785c116bbe2d9777cb82d700671";
-      sha256 = "1hv55frfgl8qaxdpl90lj82ydlkazgdm33ja4jsmkr83bschc98p";
+      rev = "918da25519311f04134a8b36a96429a2b8785c53";
+      sha256 = "1x1ywfpqhh9gzkc8ssjlxaynx0y51qr3rdyvyf6ch5wxqw8nc99g";
       fetchSubmodules = false;
     };
   };
@@ -129,23 +129,23 @@ in
   };
   vim-just = buildVimPluginFrom2Nix {
     pname = "vim-just";
-    version = "2023-08-01";
+    version = "2023-08-02";
     src = fetchFromGitHub {
       owner = "NoahTheDuke";
       repo = "vim-just";
-      rev = "875c910392b0d791270592c35f0887a2395b87e1";
-      sha256 = "0yik1iqxs4xb75xrahdbbl3ayrzp5ha6d1gy0dsr1myjaq46h3zw";
+      rev = "0f1798c8d8ab2d4aa445cf73d70c7e287219cf3d";
+      sha256 = "11dnhb4i12gcb7f52b4phgy5rfjf664h6bfrmai5h0nr01ig90xk";
       fetchSubmodules = false;
     };
   };
   rainbow-delimiters-nvim = buildVimPluginFrom2Nix {
     pname = "rainbow-delimiters.nvim";
-    version = "2023-07-30";
+    version = "2023-08-01";
     src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "rainbow-delimiters.nvim";
-      rev = "f6bcc8d1b31702edcf3852f531bdab8191c7c5f0";
-      sha256 = "19ipja1gif3gz8vgr56ag6rf2x9jdkbif80nziplx3rc4q5jsgw5";
+      rev = "c6380e218a2b4ffcc957a71606900a24e5c7b618";
+      sha256 = "1r0ws77n012wf0y12kql28fqqr8x3ywhllw1r5ywp519r8zag1ql";
       fetchSubmodules = false;
     };
   };
@@ -312,8 +312,8 @@ in
     src = fetchFromGitHub {
       owner = "numtostr";
       repo = "comment.nvim";
-      rev = "bacbed6346d1c5a095897f3fde3451a9a08e7f7d";
-      sha256 = "19s2kmflga4v0dqwjb79imbv4aa4hcck340159rbzdb8a3bfhrji";
+      rev = "bbbc8b4de73aa9933754528cd95507384f600ed6";
+      sha256 = "0qbnixdmc7gl01bf955jlc2lbrp29axxfihf2y0xys93vg934a24";
       fetchSubmodules = false;
     };
   };
@@ -550,12 +550,12 @@ in
   };
   toggleterm-nvim = buildVimPluginFrom2Nix {
     pname = "toggleterm.nvim";
-    version = "2023-07-17";
+    version = "2023-08-02";
     src = fetchFromGitHub {
       owner = "akinsho";
       repo = "toggleterm.nvim";
-      rev = "00c13dccc78c09fa5da4c5edda990a363e75035e";
-      sha256 = "0fvz9rp8rr63pimhpzyx5a05qbgyzixbbglpvkd137bpvya2xigy";
+      rev = "0e4e89aff78ad178e1f3cf5d565a6b4155fbb45b";
+      sha256 = "0pbqj7sg5m7r6lwmm8lx494s7v3lq9zs4pdlcp06lr1xkcacbfrf";
       fetchSubmodules = false;
     };
   };
