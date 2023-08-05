@@ -162,12 +162,12 @@ in
   };
   telescope-nvim = buildVimPluginFrom2Nix {
     pname = "telescope.nvim";
-    version = "2023-08-01";
+    version = "2023-08-05";
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "d2e17ba18a6840b7e7079764b282616c3188e0de";
-      sha256 = "0dg9iw672fqvm6mw1c7bz4chpq2nkldczrw3bl061cbc94vyrna6";
+      rev = "31b05ad3c313210039fae6958fb00449d72c259e";
+      sha256 = "03c1yn8mlkwcvvq4cqfhr2xkkr4xf4g82rgdcr22csr34ddfwxka";
       fetchSubmodules = false;
     };
   };
