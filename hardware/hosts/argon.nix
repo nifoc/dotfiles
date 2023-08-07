@@ -13,6 +13,7 @@
       "net.ipv4.tcp_timestamps" = 1;
       "net.ipv4.tcp_window_scaling" = 1;
       "net.core.rmem_max" = 2500000;
+      "net.core.wmem_max" = 2500000;
     };
   };
 

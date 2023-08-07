@@ -4,38 +4,42 @@
   services.adguardhome = {
     enable = true;
 
-    settings = {
-      bind_host = "127.0.0.1";
-      bind_port = 3000;
+    mutableSettings = true;
+    settings = null;
 
-      users = [
-        {
-          inherit (secret.adguardhome.users.daniel) name password;
-        }
-      ];
-
-      auth_attempts = 3;
-      debug_pprof = false;
-
-      dns = {
-        inherit (secret.adguardhome) bind_hosts;
-        port = 53;
-
-        bootstrap_dns = [
-          "9.9.9.11"
-          "149.112.112.11"
-          "2620:fe::11"
-          "2620:fe::fe:11"
-        ];
-      };
-
-      tls = {
-        enabled = false;
-        allow_unencrypted_doh = true;
-      };
-
-      dhcp.enabled = false;
-    };
+    # settings = {
+    #   schema_version = 20;
+    #   bind_host = "127.0.0.1";
+    #   bind_port = 3000;
+    #
+    #   users = [
+    #     {
+    #       inherit (secret.adguardhome.users.daniel) name password;
+    #     }
+    #   ];
+    #
+    #   auth_attempts = 3;
+    #   debug_pprof = false;
+    #
+    #   dns = {
+    #     inherit (secret.adguardhome) bind_hosts;
+    #     port = 53;
+    #
+    #     bootstrap_dns = [
+    #       "9.9.9.11"
+    #       "149.112.112.11"
+    #       "2620:fe::11"
+    #       "2620:fe::fe:11"
+    #     ];
+    #   };
+    #
+    #   tls = {
+    #     enabled = false;
+    #     allow_unencrypted_doh = true;
+    #   };
+    #
+    #   dhcp.enabled = false;
+    # };
   };
 
   networking.firewall.interfaces =
