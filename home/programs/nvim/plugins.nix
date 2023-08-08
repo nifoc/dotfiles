@@ -118,12 +118,12 @@ in
   };
   nvim-treesitter = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2023-08-07";
+    version = "2023-08-08";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "d9e75a1736a960a104ff3086fc553a054f51835b";
-      sha256 = "1rv91rpij9gvlnhp9anhvxca038q9c999yvwqlggzycxjcxxbpfp";
+      rev = "a9ce9fb7cccf59e0c2f65d26a14942356c93948e";
+      sha256 = "0agl2wl6x378dfa4am36vcd2gdrflb98fssaywicdzlghw9yba4k";
       fetchSubmodules = false;
     };
   };
@@ -572,12 +572,12 @@ in
   };
   gitsigns-nvim = buildVimPluginFrom2Nix {
     pname = "gitsigns.nvim";
-    version = "2023-08-06";
+    version = "2023-08-08";
     src = fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "31178496552584e84fa9e74e087dec1f6c347f5d";
-      sha256 = "0j7n0kcy26g7kpi2wmy8qzja2pbw6fb8w2v771g0dv1wq77fccqn";
+      rev = "287fffb410ce82d19da2d503a1f1570adf7b7874";
+      sha256 = "00cg45dascmbnfmb0lhvxcm82f597bmmy5sh003c0amsn0zc7k30";
       fetchSubmodules = false;
     };
   };
