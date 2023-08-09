@@ -3,7 +3,13 @@
       format-core (require :core)
       toml (require :toml)
       treefmt-config-file vim.env.TREEFMT_CONFIG_FILE
-      treefmt-exts []]
+      treefmt-exts []
+      level vim.log.levels]
+  (var latest-used-formatter :unknown)
+
+  (fn notify [msg lvl]
+    (vim.notify (.. msg " [" latest-used-formatter "]") lvl {:title :Format}))
+
   (fn read-file [file]
     (with-open [f (io.open file :rb)]
       (f:read :*all)))
@@ -17,12 +23,16 @@
     (let [ext (format-core.file.extension file-path)
           ext-glob (.. "*." ext)]
       (if (vim.list_contains treefmt-exts ext-glob)
-          [{:cmd :treefmt
-            :args [file-path]
-            :ignore_err (fn [err data]
-                          (and (= err nil) (not (string.find data :Error))))}]
+          (do
+            (set latest-used-formatter :treefmt)
+            [{:cmd :treefmt
+              :args [file-path]
+              :ignore_err (fn [err data]
+                            (and (= err nil) (not (string.find data :Error))))}])
           (= (vim.fn.executable fallback.cmd) 1)
-          [fallback]
+          (do
+            (set latest-used-formatter fallback.cmd)
+            [fallback])
           [])))
 
   (fn formatter-prettier [file-path]
@@ -58,21 +68,8 @@
                              :yaml (fn [file-path]
                                      (treefmt-or-fallback file-path
                                                           {:cmd :yamlfmt
-                                                           :args [file-path]}))}})
-  ;; (formatter.setup {:format_on_save #(not= vim.b.nifoc_formatter_disabled 1)
-  ;;                   :filetype {:css #(do-format :prettier (args-prettier :css))
-  ;;                              :fennel #(do-format :fnlfmt {:args ["-"]})
-  ;;                              :fish #(do-format :fish_indent {})
-  ;;                              :html #(do-format :prettier
-  ;;                                                (args-prettier :html))
-  ;;                              :javascript #(do-format :prettier
-  ;;                                                      (args-prettier :javascript))
-  ;;                              :json #(do-format :prettier
-  ;;                                                (args-prettier :json))
-  ;;                              :sh #(do-format :shfmt (args-shfmt))
-  ;;                              :toml #(do-format :taplo {:args [:fmt "-"]})
-  ;;                              :typescript #(do-format :prettier
-  ;;                                                      (args-prettier :typescript))
-  ;;                              :yaml #(do-format :yamlfmt {:args [:-in]})}
-  ;;                   :lsp [:elixirls :nil_ls]})
+                                                           :args [file-path]}))}
+                 :hooks {:on_success #(notify "Formatting Succeed" level.INFO)
+                         :on_err #(notify "Formatting Failed" level.ERROR)
+                         :on_timeout #(notify "Formatting Timeout" level.ERROR)}})
   M)
