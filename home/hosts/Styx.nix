@@ -61,6 +61,7 @@
       nix-tree
       nix-output-monitor
       nurl
+      ouch
       parallel
       q
       ripgrep
