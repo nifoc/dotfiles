@@ -15,6 +15,7 @@ in
 
     ../nixos/acme-mediaserver.nix
     ../nixos/nginx.nix
+    ../nixos/postgresql.nix
 
     (import ../nixos/adguardhome.nix (args // { inherit secret; }))
 

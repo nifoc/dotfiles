@@ -118,12 +118,12 @@ in
   };
   nvim-treesitter = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2023-08-13";
+    version = "2023-08-14";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "bc52938ddde0ff6b3d51ff215d2c66f2e39b7099";
-      sha256 = "14rqwbcbw7zya4f6k6pmgq4h42bvbcbnaizj0xr4nih1jbllbsgk";
+      rev = "93ee00cd9daf8d2e3fbaa2a18b8b9adcb4471b16";
+      sha256 = "17wl41myiz80s9sv2lw9lkr5z57wca0qwqlizzrxp9w9pqs4dd4k";
       fetchSubmodules = false;
     };
   };
@@ -319,23 +319,23 @@ in
   };
   LuaSnip = buildVimPluginFrom2Nix {
     pname = "LuaSnip";
-    version = "2023-08-04";
+    version = "2023-08-13";
     src = fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "99a94cc35ec99bf06263d0346128e908a204575c";
-      sha256 = "0b4c0kgm1dcngyfhh5dk875sjkagqvj8aqz5hb7hxvqpipkv6vy7";
+      rev = "409535b8fc54c650eb845b0c35e0cc7f08810284";
+      sha256 = "0w898yhw1r263xz9ih20cs1amdkjhmbmi5lgnzwfamwvgdqf5nf3";
       fetchSubmodules = false;
     };
   };
   friendly-snippets = buildVimPluginFrom2Nix {
     pname = "friendly-snippets";
-    version = "2023-07-24";
+    version = "2023-08-14";
     src = fetchFromGitHub {
       owner = "rafamadriz";
       repo = "friendly-snippets";
-      rev = "bc38057e513458cb2486b6cd82d365fa294ee398";
-      sha256 = "1l2czwjsskcywjvayx1wcg5538fs2pfp88shx14c9s5q4h0v247m";
+      rev = "377d45475b49e37460a902d6d569d2093d4037d0";
+      sha256 = "0yk612n3ayn0kv1smv945hz8rl395ask4wp45iqymvzia6jp6k4a";
       fetchSubmodules = false;
     };
   };
