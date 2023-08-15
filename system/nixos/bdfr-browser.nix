@@ -2,32 +2,32 @@
 
 let
   baseDirectory = "/mnt/media-scraper/Reddit";
+  chatDirectory = "/mnt/media-scraper/RedditChat";
+  workingDirectory = "/var/lib/bdfr-browser";
 in
 {
   systemd.services.bdfr-browser = {
     description = "A crude BDFR browser UI";
     wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
+    after = [ "network.target" "postgresql.service" ];
+    path = with pkgs; [ busybox inotify-tools ];
     serviceConfig = {
       DynamicUser = true;
       StateDirectory = "bdfr-browser";
+      WorkingDirectory = workingDirectory;
       Environment = [
         "BDFR_BROWSER_BASE_DIRECTORY=${baseDirectory}"
-        "BDFR_BROWSER_CHAT_DIRECTORY=/mnt/media-scraper/RedditChat"
+        "BDFR_BROWSER_CHAT_DIRECTORY=${chatDirectory}"
+        "BDFR_BROWSER_WATCH_DIRECTORIES=false"
         "BDFR_BROWSER_REPO_DATABASE=bdfr-browser"
         "BDFR_BROWSER_REPO_SOCKET_DIR=/run/postgresql"
+        "RELEASE_TMP=${workingDirectory}"
         "RELEASE_DISTRIBUTION=none"
         "RELEASE_COOKIE=no_dist_anyway"
       ];
       ExecStart = "${pkgs.bdfr-browser}/bin/bdfr_browser start";
-      ExecStop = "${pkgs.bdfr-browser}/bin/bdfr_browser stop";
-      ExecReload = "${pkgs.bdfr-browser}/bin/bdfr_browser restart";
-      Type = "notify";
-      WatchdogSec = "10s";
+      Type = "exec";
       Restart = "on-failure";
-      RestartSec = 5;
-      StartLimitBurst = 3;
-      StartLimitInterval = 10;
     };
   };
 
@@ -44,5 +44,7 @@ in
     };
 
     locations."/media/".alias = "${baseDirectory}/";
+
+    locations."/chat_media/".alias = "${chatDirectory}/images/";
   };
 }
