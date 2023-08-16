@@ -62,6 +62,10 @@ project_ruby() {
   PATH_add $GEM_HOME/bin
 }
 
+project_rust() {
+  export CARGO_HOME=$(direnv_layout_dir)/cargo
+}
+
 # Frameworks
 
 project_rails() {

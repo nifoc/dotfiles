@@ -30,12 +30,12 @@ in
   };
   nvim-web-devicons = buildVimPluginFrom2Nix {
     pname = "nvim-web-devicons";
-    version = "2023-08-10";
+    version = "2023-08-17";
     src = fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
-      rev = "ab899311f8ae00a47eae8e0879506cead8eb1561";
-      sha256 = "16v6dxg30jnrx1ldpk3xx9jn79qlybphaw0lpr5hfd76xkqqr8yn";
+      rev = "cfc8824cc1db316a276b36517f093baccb8e799a";
+      sha256 = "0p9qwxh7syzr8fqn42bbcjrpawlgjqq8l302zyyhwc5v91nrjaza";
       fetchSubmodules = false;
     };
   };
@@ -118,12 +118,12 @@ in
   };
   nvim-treesitter = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2023-08-15";
+    version = "2023-08-16";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "11d79aa0f731439f2cd05579a64ac13857002f16";
-      sha256 = "15m6f8kv40pinbwh6gnrxrhj0bs86853cg6nvnfy8gamhimmh56s";
+      rev = "a3b2e0dcdb7ce0beb1459e5a3fde4bd975c35fc5";
+      sha256 = "17iihqnpxsmg3zl6dvgcn71zdvkw8g8mz2vmkz1j2di1y0x0sa7v";
       fetchSubmodules = false;
     };
   };
@@ -140,12 +140,12 @@ in
   };
   rainbow-delimiters-nvim = buildVimPluginFrom2Nix {
     pname = "rainbow-delimiters.nvim";
-    version = "2023-08-10";
+    version = "2023-08-16";
     src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "rainbow-delimiters.nvim";
-      rev = "b5bb251e057d099ee8186d2521f865cd98c51ead";
-      sha256 = "1kjq91w70rq1bzyds4x4sqnrgkqbmvqdbw6l8af1fgx1k6jl490b";
+      rev = "f86a3bcaff6ec8f2bf24304e233ad54659686657";
+      sha256 = "1h9p2smqamlnd2714pglhzv4h4xm0v1qc1xn44rj94634zjr1lkv";
       fetchSubmodules = false;
     };
   };
