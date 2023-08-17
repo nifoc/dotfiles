@@ -21,6 +21,7 @@ in
         "BDFR_BROWSER_WATCH_DIRECTORIES=false"
         "BDFR_BROWSER_REPO_DATABASE=bdfr-browser"
         "BDFR_BROWSER_REPO_SOCKET_DIR=/run/postgresql"
+        "BDFR_BROWSER_CONFIG_FILE=${workingDirectory}/config.yml"
         "RELEASE_TMP=${workingDirectory}"
         "RELEASE_DISTRIBUTION=none"
         "RELEASE_COOKIE=no_dist_anyway"
