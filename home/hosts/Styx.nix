@@ -64,7 +64,6 @@
       ouch
       parallel
       q
-      rexit
       ripgrep
       socat
       tokei
