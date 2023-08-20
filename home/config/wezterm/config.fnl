@@ -43,9 +43,10 @@
       {:title (t:gsub "^gallery-dl%s(.*)" "%1") :icon " " :color "#009900"}
       (where t (t:find "^bdfr%s"))
       {:title (t:gsub "^bdfr%s(.*)" "%1") :icon " " :color colors.reddit}
-      (where t (t:find "^bdfr-raw%s")) {:title (t:gsub "^bdfr-raw%s(.*)" "%1")
+      (where t (t:find "^bdfr-%w+%s")) {: title
                                         :icon " "
                                         :color colors.reddit}
+      (where t (t:find "^rexit%s")) {: title :icon " " :color colors.reddit}
       (where t (t:find :^redis-)) {: title :icon " " :color "#DC372C"}
       (where t (t:find "^%[%w+%]%s")) {: title :icon " " :color colors.ssh}
       (where t (t:find "^%w+-dev")) {: title :icon " " :color "#0099CC"}
