@@ -61,6 +61,9 @@ in
 
     extraConfig = ''
       client_max_body_size 0;
+
+      proxy_read_timeout 300s;
+      proxy_send_timeout 300s;
     '';
 
     locations."/" = {

@@ -25,6 +25,8 @@ in
 
     ../nixos/tailscale.nix
 
+    ../nixos/unbound.nix
+
     ../nixos/container.nix
     ../nixos/mediaserver-setup.nix
     (import ../nixos/wireguard-netns.nix (args // { inherit secret; }))
