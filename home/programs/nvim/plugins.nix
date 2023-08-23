@@ -118,12 +118,12 @@ in
   };
   nvim-treesitter = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2023-08-21";
+    version = "2023-08-23";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "46dee161d3934433b9f47f0459899427103a3477";
-      sha256 = "1zd5nxw91l1h3m4a2pmjs3vppm3cr254xc8svhayjnd5bmr9vxii";
+      rev = "05fe2c38a3bd4f889ac13f1735685ab348d95346";
+      sha256 = "0fsx1d8fhb7dpb6p85c35vnanz1xyfcbr0p93ixwk9w1hz2b3sz2";
       fetchSubmodules = false;
     };
   };
@@ -242,12 +242,12 @@ in
   };
   nvim-lspconfig = buildVimPluginFrom2Nix {
     pname = "nvim-lspconfig";
-    version = "2023-08-19";
+    version = "2023-08-23";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "67f151e84daddc86cc65f5d935e592f76b9f4496";
-      sha256 = "1wxlk3ymrm53ippw203q43rqvbc27zjy1ncda1qyhrl00dzgvv0p";
+      rev = "1cfb96490c3889a2c57d1ef5e1acc59e9b47c455";
+      sha256 = "0nkzp80llimjfppb82ag67af799cc50fqyr091ravra1yyxnhk6m";
       fetchSubmodules = false;
     };
   };
@@ -528,12 +528,12 @@ in
   };
   indent-blankline-nvim = buildVimPluginFrom2Nix {
     pname = "indent-blankline.nvim";
-    version = "2023-07-07";
+    version = "2023-08-22";
     src = fetchFromGitHub {
       owner = "lukas-reineke";
       repo = "indent-blankline.nvim";
-      rev = "4541d690816cb99a7fc248f1486aa87f3abce91c";
-      sha256 = "1f83fwbd97a26wsnfilv7fq2a3vb19yi5012j4xsmbyv329i3wvr";
+      rev = "9637670896b68805430e2f72cf5d16be5b97a22a";
+      sha256 = "01h49q9j3hh5mi3hxsaipfsc03ypgg14r79fbm6sy63rh8a66jnl";
       fetchSubmodules = false;
     };
   };
