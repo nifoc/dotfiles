@@ -19,12 +19,12 @@ in
   };
   plenary-nvim = buildVimPluginFrom2Nix {
     pname = "plenary.nvim";
-    version = "2023-07-17";
+    version = "2023-08-24";
     src = fetchFromGitHub {
       owner = "nvim-lua";
       repo = "plenary.nvim";
-      rev = "267282a9ce242bbb0c5dc31445b6d353bed978bb";
-      sha256 = "10pw38dfzjrwzwkby9jmghafwwcph3az5z3h9c8v5kjh8iqls6x1";
+      rev = "0dbe561ae023f02c2fb772b879e905055b939ce3";
+      sha256 = "0j42b4q25l8yypa92zkdf9jargjszyvw5f83l3qxbh0vy9ly1j2d";
       fetchSubmodules = false;
     };
   };
@@ -140,12 +140,12 @@ in
   };
   rainbow-delimiters-nvim = buildVimPluginFrom2Nix {
     pname = "rainbow-delimiters.nvim";
-    version = "2023-08-21";
+    version = "2023-08-24";
     src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "rainbow-delimiters.nvim";
-      rev = "f11af94bab92e11609e418fe019c6441b39c66f0";
-      sha256 = "13qsih44jmfdnkqxqy6ck8mv88bch7rc2h7k1hqr52d2bldkmc7q";
+      rev = "698a4396623a479fb1bfd3ad5fd23d244996cbeb";
+      sha256 = "0vkkkdn4v0snyqb6vhhs65zkyl1lf7nc9mw09qv1ax6s9rpx811m";
       fetchSubmodules = false;
     };
   };
