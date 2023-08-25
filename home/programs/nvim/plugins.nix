@@ -576,8 +576,8 @@ in
     src = fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "2e23db475cb64299b58a40fe1c807da015d0781b";
-      sha256 = "019gnn1aaaqpdagcs1vm7g4hvxks4nc9r488kxppnv4clnxbcdrc";
+      rev = "79127db3b127f5d125f35e0d44ba60715edf2842";
+      sha256 = "1dhgvcrnx9mph46mjc1m7h49xyny5gzmwbrii8v0cc40hbqgqnwq";
       fetchSubmodules = false;
     };
   };
