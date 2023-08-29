@@ -5,7 +5,7 @@
     proxitok-web = {
       image = "ghcr.io/pablouser1/proxitok:master";
       dependsOn = [ "proxitok-signer" ];
-      ports = [ "127.0.0.1:8005:80" ];
+      ports = [ "127.0.0.1:8005:8080" ];
       environmentFiles = [ config.age.secrets.proxitok-environment.path ];
       volumes = [
         "/etc/container-proxitok/cache:/cache"
