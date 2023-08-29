@@ -162,12 +162,12 @@ in
   };
   telescope-nvim = buildVimPluginFrom2Nix {
     pname = "telescope.nvim";
-    version = "2023-08-28";
+    version = "2023-08-29";
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "1dfa66b845673effc8771f9ebe511bb36a09f560";
-      sha256 = "05893dr0x8miv069gpli4zrxqlfb4030wqsi5fij8dnm9pmdsv49";
+      rev = "83133f66c8c265cfe41ee21828c88222c776cf18";
+      sha256 = "0a26hfhq4lwyq2bjrswzca2926jhxwklnbhfr4i61irpp89k9wfr";
       fetchSubmodules = false;
     };
   };
@@ -583,12 +583,12 @@ in
   };
   nui-nvim = buildVimPluginFrom2Nix {
     pname = "nui.nvim";
-    version = "2023-08-27";
+    version = "2023-08-29";
     src = fetchFromGitHub {
       owner = "MunifTanjim";
       repo = "nui.nvim";
-      rev = "0f913a3ae1a24c8a4487fbf111b4044cc22b1b0d";
-      sha256 = "1kv29n7ny7jlb340wkwmk6wks50s6lil22br2qh9lvqi85mk1xns";
+      rev = "aa1b4c1e05983ff7debd2b4b2788651db099de2f";
+      sha256 = "1ray6dk61n1g0vjfvdp9ln98pmf54gjrwrffazfv2gwbwllkj9jf";
       fetchSubmodules = false;
     };
   };
@@ -605,12 +605,12 @@ in
   };
   noice-nvim = buildVimPluginFrom2Nix {
     pname = "noice.nvim";
-    version = "2023-08-26";
+    version = "2023-08-29";
     src = fetchFromGitHub {
       owner = "folke";
       repo = "noice.nvim";
-      rev = "791c7adda821fd03529f995df2ee284ad591dabd";
-      sha256 = "0syr6hps69qm91ljzipavn8mf82zs4splxfas59x4hh8xvpaywcn";
+      rev = "c8a9b712ac7e7d07b9e90444299858c4a520a74c";
+      sha256 = "05ip63n94p7j3q1scbin8yg1cqd1yaa7mdh7k3fb4p9wz58w759w";
       fetchSubmodules = false;
     };
   };

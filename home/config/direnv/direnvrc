@@ -64,11 +64,18 @@ project_ruby() {
 
 project_rust() {
   export CARGO_HOME=$(direnv_layout_dir)/cargo
+
+  PATH_add $CARGO_HOME/bin
 }
 
 # Frameworks
 
 project_rails() {
   project_ruby
+  project_node
+}
+
+project_tauri() {
+  project_rust
   project_node
 }
