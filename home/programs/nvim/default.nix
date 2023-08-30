@@ -27,21 +27,21 @@ in
       # LSP
       fennel-ls
       lexical
-      nil
+      #nil
       nodePackages.bash-language-server
       nodePackages.dockerfile-language-server-nodejs
       nodePackages.svelte-language-server
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.yaml-language-server
-      # nixd
+      nixd
       taplo-lsp
 
       # Diagnostic Tools
       checkstyle
       deadnix
       nodePackages.eslint_d
-      # hadolint
+      #hadolint
       luajitPackages.fennel
       shellcheck
       statix
