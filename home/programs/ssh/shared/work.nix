@@ -43,5 +43,12 @@
         PreferredAuthentications = "password";
       };
     };
+
+    "192.168.8.141" = {
+      port = 22;
+      user = "root";
+      identityFile = "~/.ssh/nedeco.pub";
+      identitiesOnly = true;
+    };
   } // secret.ssh.matchBlocks.work;
 }
