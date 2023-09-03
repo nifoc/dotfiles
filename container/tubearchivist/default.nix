@@ -23,7 +23,7 @@
     };
 
     archivist-redis = {
-      image = "docker.io/redis/redis-stack-server:latest";
+      image = "docker.io/redis/redis-stack-server:6.2.6-v9";
       volumes = [
         "/var/lib/tubearchivist/redis:/data"
       ];
