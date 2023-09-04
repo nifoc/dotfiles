@@ -80,17 +80,26 @@
         addr = "0.0.0.0";
         port = 9053;
         ssl = true;
+        extraParameters = [
+          "fastopen=63"
+          "backlog=1023"
+          "deferred"
+        ];
       }
 
       {
         addr = "[::0]";
         port = 9053;
         ssl = true;
+        extraParameters = [
+          "fastopen=63"
+          "backlog=1023"
+          "deferred"
+        ];
       }
     ];
 
-    quic = true;
-    http3 = true;
+    quic = false;
 
     onlySSL = true;
     useACMEHost = "internal.kempkens.network";

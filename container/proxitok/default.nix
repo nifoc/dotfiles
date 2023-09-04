@@ -30,7 +30,7 @@
   ];
 
   systemd.tmpfiles.rules = [
-    "d /etc/container-proxitok/cache 0755 33 33"
+    "d /etc/container-proxitok/cache 0755 nobody nogroup"
   ];
 
   services.redis.servers.proxitok = {

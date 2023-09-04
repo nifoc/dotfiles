@@ -9,8 +9,8 @@
     }
 
     server {
-      listen *:${builtins.toString secret.nginx.upstream.video.externalPort};
-      listen [::]:${builtins.toString secret.nginx.upstream.video.externalPort};
+      listen *:${builtins.toString secret.nginx.upstream.video.externalPort} fastopen=63 backlog=1023;
+      listen [::]:${builtins.toString secret.nginx.upstream.video.externalPort} fastopen=63 backlog=1023;
 
       proxy_protocol on;
       proxy_pass video;

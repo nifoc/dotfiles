@@ -18,6 +18,7 @@ in
 
     ../nixos/acme-tanker.nix
     ../nixos/nginx.nix
+    ../nixos/nginx-tanker.nix
     ../nixos/postgresql.nix
     ../nixos/elasticsearch.nix
     ../nixos/mosquitto.nix

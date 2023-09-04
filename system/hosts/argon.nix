@@ -16,6 +16,7 @@ in
 
     ../nixos/acme-argon.nix
     ../nixos/nginx.nix
+    ../nixos/nginx-argon.nix
 
     (import ../nixos/adguardhome.nix (args // { inherit secret; }))
 

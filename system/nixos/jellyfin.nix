@@ -63,9 +63,16 @@
         addr = "0.0.0.0";
         port = 9921;
         ssl = true;
-        extraParameters = [ "proxy_protocol" ];
+        extraParameters = [
+          "proxy_protocol"
+          "fastopen=63"
+          "backlog=1023"
+          "deferred"
+        ];
       }
     ];
+
+    quic = false;
 
     onlySSL = true;
     useACMEHost = "internal.kempkens.network";

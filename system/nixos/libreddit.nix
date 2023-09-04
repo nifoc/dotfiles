@@ -9,7 +9,31 @@
   };
 
   services.nginx.virtualHosts."${secret.nginx.hostnames.libreddit}" = {
+    # listen = [
+    #   {
+    #     addr = "100.108.165.26";
+    #     port = 443;
+    #     ssl = true;
+    #     extraParameters = [
+    #       "fastopen=63"
+    #       "backlog=1023"
+    #       "deferred"
+    #     ];
+    #   }
+    #
+    #   {
+    #     addr = "[fd7a:115c:a1e0:ab12:4843:cd96:626c:a51a]";
+    #     port = 443;
+    #     ssl = true;
+    #     extraParameters = [
+    #       "fastopen=63"
+    #       "backlog=1023"
+    #     ];
+    #   }
+    # ];
+
     listenAddresses = [ "100.108.165.26" "[fd7a:115c:a1e0:ab12:4843:cd96:626c:a51a]" ];
+
     quic = true;
     http3 = true;
 
