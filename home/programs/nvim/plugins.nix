@@ -118,12 +118,12 @@ in
   };
   nvim-treesitter = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2023-09-04";
+    version = "2023-09-05";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "30604fd7dde5abcba7ca8f5761894dfa61febe51";
-      sha256 = "0mzl92jdgdjr36gy58pvdsca91k0lxf6pzcf3cw86h01rai2lmfg";
+      rev = "95d02cdafe704fa5b86eac81f2eb1de3d8f52330";
+      sha256 = "0qjm772883hy9k6ys5a0nn8kwkfi5y79bd9ckd2jh0d10pxmw50l";
       fetchSubmodules = false;
     };
   };
@@ -166,8 +166,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "6b79d7a6a45adc1508a7afee5bc973173ec22f59";
-      sha256 = "15lr5b7922w6wrzky0gy5sgscmw5axvhyajkfdqgrlpl98acqfgp";
+      rev = "20a37e43bb43c74c6091f9fea6551af0964ad45a";
+      sha256 = "0n8g9m44d250wdncv9cy71irsj10r78g3hdz1x72bpbx6ixlckyz";
       fetchSubmodules = false;
     };
   };
@@ -242,12 +242,12 @@ in
   };
   nvim-lspconfig = buildVimPluginFrom2Nix {
     pname = "nvim-lspconfig";
-    version = "2023-08-26";
+    version = "2023-09-05";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "a27356f1ef9c11e1f459cc96a3fcac5c265e72d6";
-      sha256 = "17xq7h9d9zx0pbnhhxxqsp2n6rlz16dvdg6cjaylrm7r60ll9215";
+      rev = "499314f76fa6e8f82f7cfd116578906d61ba2560";
+      sha256 = "131a1f8cvsilrlbywhiyhanzkh4y17fcl60b0bmp4sdmafwfwkrf";
       fetchSubmodules = false;
     };
   };
@@ -462,12 +462,12 @@ in
   };
   nvim-autopairs = buildVimPluginFrom2Nix {
     pname = "nvim-autopairs";
-    version = "2023-09-02";
+    version = "2023-09-05";
     src = fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-autopairs";
-      rev = "a52fc6eeec116746110b703381777c46d89d9e27";
-      sha256 = "0bjn6zqjq23w9hp47yrv96074lq3gnr0ncs4bli21kkdvd7hy051";
+      rev = "35493556b895f54c129918aca43ae9a63af42a1f";
+      sha256 = "13j8m902cblfddwbhjcqrqgshc39476xgrar57mayw1id7025nn4";
       fetchSubmodules = false;
     };
   };
