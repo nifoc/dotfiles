@@ -3,10 +3,13 @@
     ../shared/show-update-changelog.nix
 
     ../darwin/defaults.nix
-    #../darwin/fonts.nix
     ../darwin/sudo.nix
+
     ../darwin/fish.nix
     ../darwin/attic.nix
+
+    ../darwin/skhd.nix
+    ../darwin/yabai.nix
   ];
 
   nix = {

@@ -1,10 +1,13 @@
 { pkgs, ... }:
 
+let
+  wezterm-pkg = pkgs.wezterm;
+in
 {
   programs.wezterm = {
     enable = true;
 
-    package = pkgs.wezterm;
+    package = wezterm-pkg;
 
     extraConfig = ''
       _G.shells = {
