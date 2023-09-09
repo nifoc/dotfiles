@@ -162,7 +162,10 @@
    ;; Scrollback
    :scrollback_lines 5000
    ;; Launch Menu
-   :launch_menu [{:label :Btop++ :args [_G.programs.btop]}]
+   :launch_menu [{:label :Btop++ :args [_G.programs.btop]}
+                 {:label :bash :args [_G.shells.bash]}
+                 {:label :fish :args [_G.shells.fish]}
+                 {:label :nushell :args [_G.shells.nushell]}]
    ;; Other
    :front_end :WebGpu
    :check_for_updates false})

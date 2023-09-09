@@ -5,9 +5,12 @@
     ../config/fonts.nix
 
     ../programs/fish.nix
+    ../programs/nushell.nix
     ../programs/atuin.nix
-    ../programs/starship.nix
     ../programs/direnv.nix
+    ../programs/starship.nix
+    ../programs/zoxide.nix
+
     ../programs/wezterm.nix
 
     ../programs/nvim
@@ -72,9 +75,5 @@
       xxHash
       xz
     ];
-  };
-
-  programs = {
-    zoxide.enable = true;
   };
 }

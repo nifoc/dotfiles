@@ -24,15 +24,18 @@ in
 
     config = {
       layout = "bsp";
-      window_placement = "second_child";
       top_padding = 5;
       bottom_padding = 5;
       left_padding = 5;
       right_padding = 5;
       window_gap = 5;
+
+      window_placement = "second_child";
+      split_type = "auto";
     };
 
     extraConfig = ''
+      yabai -m rule --add app='^Dato$' manage=off
       yabai -m rule --add app='^Mona$' manage=off
       yabai -m rule --add app='^System.*einstellungen$' manage=off
 
@@ -63,6 +66,8 @@ in
 
     meh - f : ${yabai-bin} -m window --toggle zoom-fullscreen
 
+    meh - t : ${yabai-bin} -m window --toggle float; ${yabai-bin} -m window --grid 6:6:1:1:4:4
+
     meh - g : ${yabai-bin} -m window --resize bottom:0:40
     meh - s : ${yabai-bin} -m window --resize bottom:0:-40
 
@@ -70,5 +75,7 @@ in
     hyper - j : ${yabai-bin} -m window --warp south
     hyper - k : ${yabai-bin} -m window --warp north
     hyper - l : ${yabai-bin} -m window --warp east
+
+    hyper - f : ${yabai-bin} -m window --toggle native-fullscreen
   '';
 }

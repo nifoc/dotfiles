@@ -1,7 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let
   wezterm-pkg = pkgs.wezterm;
+
+  wezterm-nushell = pkgs.writeShellScript "wezterm-nushell.sh" ''
+    source /etc/static/bashrc
+    source ${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh
+
+    exec ${pkgs.nushell.outPath}/bin/nu
+  '';
 in
 {
   programs.wezterm = {
@@ -11,7 +18,9 @@ in
 
     extraConfig = ''
       _G.shells = {
+        bash = '${pkgs.bash.outPath}/bin/bash',
         fish = '${pkgs.fish.outPath}/bin/fish',
+        nushell = '${wezterm-nushell}',
       };
 
       _G.programs = {
