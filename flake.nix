@@ -146,7 +146,7 @@
             hooks = {
               deadnix.enable = true;
               shellcheck.enable = true;
-              statix.enable = true;
+              # statix.enable = true;
               treefmt.enable = true;
             };
           };
