@@ -122,8 +122,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "d5f57cd4794d8f0a541f140229e5764e2f41d63a";
-      sha256 = "02srqq8h551yijq8vws7bb2jr7p5vsvbfm3dp9i5n723gcv4mxfm";
+      rev = "96a50241987531fdb8a516998b72c19f563ccd6c";
+      sha256 = "1cmyah4bzq9d6jywr386m10g0jyzz6rz94a7sjpcvyancs2k6y5j";
       fetchSubmodules = false;
     };
   };
@@ -598,8 +598,8 @@ in
     src = fetchFromGitHub {
       owner = "rcarriga";
       repo = "nvim-notify";
-      rev = "4a0da37b881c764a237f6ea07ca99fc4eb70e343";
-      sha256 = "1nqlb36z7wfaki4szjxnac29867aarwcfb8irfa0phvy71yrvd56";
+      rev = "94859430020f5cf32a1b97ddd9e596fed9db7981";
+      sha256 = "04fcm8277csv8davwirndinm0cpnb5h8azr2cxnw1szgqry2yh7k";
       fetchSubmodules = false;
     };
   };
