@@ -7,7 +7,7 @@ let
 in
 {
 
-  home.packages = with pkgs; [ ] ++ optionals isDarwin [
+  home.packages = with pkgs; optionals isDarwin [
     terminal-notifier
   ];
 
