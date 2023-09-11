@@ -63,12 +63,12 @@ in
   };
   yanky-nvim = buildVimPluginFrom2Nix {
     pname = "yanky.nvim";
-    version = "2023-08-30";
+    version = "2023-09-11";
     src = fetchFromGitHub {
       owner = "gbprod";
       repo = "yanky.nvim";
-      rev = "ef70e4e44095a17ab8611cb6630b727ccee0a271";
-      sha256 = "09i4gl2g19gjx30had1wwcfjww80pdfa6fjpr9ifvkh1vq8p5r9a";
+      rev = "4c85d8d6808d9859e72f8bd6c25302199e6a5eac";
+      sha256 = "0ph1mc7nlfsx0aaybnvg6wwpx7hv2ks621qkjcrl3hf8dbc173xs";
       fetchSubmodules = false;
     };
   };
@@ -118,12 +118,12 @@ in
   };
   nvim-treesitter = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2023-09-10";
+    version = "2023-09-11";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "96a50241987531fdb8a516998b72c19f563ccd6c";
-      sha256 = "1cmyah4bzq9d6jywr386m10g0jyzz6rz94a7sjpcvyancs2k6y5j";
+      rev = "15d327fe6324d8269451131ec34ad4f2a8ef1e01";
+      sha256 = "0hyw21nd9rakyviskcbk7h3pyv5j27145d9sa83li3fdf61hafrc";
       fetchSubmodules = false;
     };
   };
@@ -550,12 +550,12 @@ in
   };
   toggleterm-nvim = buildVimPluginFrom2Nix {
     pname = "toggleterm.nvim";
-    version = "2023-09-07";
+    version = "2023-09-11";
     src = fetchFromGitHub {
       owner = "akinsho";
       repo = "toggleterm.nvim";
-      rev = "f2c720746238bc3ec620fe4bf92b58368317c266";
-      sha256 = "0npiya5wazgp94qjzz4csndbm9d7k35p78h32p2mfd6lm6my6202";
+      rev = "0427b908ebefcb3701c7f2cfbdafa37d11afe71a";
+      sha256 = "1wxrwl530kxm8k8ymgk3w77av770ndr1hhzfk315jgl2p5hqmqm0";
       fetchSubmodules = false;
     };
   };
