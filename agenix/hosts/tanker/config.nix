@@ -16,6 +16,7 @@
 
     msmtp-password = {
       file = ./msmtp/password.age;
+      mode = "444";
     };
 
     atticd-environment = {

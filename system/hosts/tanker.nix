@@ -32,6 +32,8 @@ in
 
     ../nixos/fedifetcher.nix
 
+    ../nixos/forgejo.nix
+
     (import ../nixos/home-proxy.nix (args // { inherit secret; }))
 
     ../nixos/invidious.nix

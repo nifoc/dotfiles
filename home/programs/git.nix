@@ -59,6 +59,27 @@
     includes = [
       # Private
       {
+        condition = "hasconfig:remote.*.url:gitea@git.kempkens.io:*/**";
+        contents = {
+          user = {
+            signingKey = "~/.ssh/GitHub.pub";
+          };
+
+          commit = {
+            gpgSign = true;
+          };
+
+          tag = {
+            gpgSign = true;
+          };
+
+          gpg = {
+            format = "ssh";
+          };
+        };
+      }
+
+      {
         condition = "hasconfig:remote.*.url:git@github.com:*/**";
         contents = {
           user = {

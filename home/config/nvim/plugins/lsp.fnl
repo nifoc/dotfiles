@@ -28,6 +28,7 @@
                      :group augroup
                      :desc "Automatic LSP setup"})
   ;; Servers
+  (vim.lsp.set_log_level :OFF)
   (let [capabilities (cmp.default_capabilities)
         flags {:allow_incremental_sync true :debounce_text_changes 700}
         default-config {: capabilities : flags}

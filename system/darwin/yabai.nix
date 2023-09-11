@@ -36,6 +36,7 @@ in
 
     extraConfig = ''
       yabai -m rule --add app='^Dato$' manage=off
+      yabai -m rule --add app='^Dash$' manage=off
       yabai -m rule --add app='^Mona$' manage=off
       yabai -m rule --add app='^System.*einstellungen$' manage=off
 
@@ -67,9 +68,16 @@ in
     meh - f : ${yabai-bin} -m window --toggle zoom-fullscreen
 
     meh - t : ${yabai-bin} -m window --toggle float; ${yabai-bin} -m window --grid 6:6:1:1:4:4
+    meh - m : ${yabai-bin} -m window --grid 6:6:1:1:4:4
+    meh - left : ${yabai-bin} -m window --grid 1:2:0:0:1:1
+    meh - down : ${yabai-bin} -m window --grid 2:2:0:1:2:1
+    meh - up : ${yabai-bin} -m window --grid 2:2:0:0:2:1
+    meh - right : ${yabai-bin} -m window --grid 1:2:1:0:1:1
 
     meh - g : ${yabai-bin} -m window --resize bottom:0:40
     meh - s : ${yabai-bin} -m window --resize bottom:0:-40
+
+    meh - b : ${yabai-bin} -m space --balance
 
     hyper - h : ${yabai-bin} -m window --warp west
     hyper - j : ${yabai-bin} -m window --warp south

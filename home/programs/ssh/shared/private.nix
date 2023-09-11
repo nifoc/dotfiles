@@ -16,6 +16,14 @@
       compression = true;
     };
 
+    "git.kempkens.io" = {
+      port = 22;
+      user = "gitea";
+      identityFile = "~/.ssh/GitHub.pub";
+      identitiesOnly = true;
+      compression = true;
+    };
+
     "router" = {
       hostname = "10.0.0.1";
       port = 22;

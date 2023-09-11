@@ -162,6 +162,15 @@
               atime = "off";
             };
           };
+
+          forgejo = {
+            type = "zfs_fs";
+            mountpoint = "/var/lib/forgejo";
+            options = {
+              compression = "zstd";
+              atime = "off";
+            };
+          };
         };
       };
     };

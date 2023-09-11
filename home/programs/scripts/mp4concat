@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -eu
+
+tmpfile="_mp4-concat.tmp"
+printf '' >"$tmpfile"
+
+for f in "$@"; do
+  echo "file '$f'" >>"$tmpfile"
+done
+
+ffmpeg -f concat -safe 0 -i "$tmpfile" -c copy mp4concat_output.mp4
+rm -f "$tmpfile"
