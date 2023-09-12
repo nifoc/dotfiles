@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixos-stable.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     # Tools
@@ -24,7 +24,7 @@
 
     disko = {
       url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixos-unstable";
     };
 
     nix-darwin = {
@@ -34,15 +34,18 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixos-unstable";
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     agenix = {
       url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.darwin.follows = "nix-darwin";
+      inputs = {
+        nixpkgs.follows = "nixos-unstable";
+        darwin.follows = "nix-darwin";
+        home-manager.follows = "home-manager";
+      };
     };
 
     attic = {
@@ -71,27 +74,37 @@
           };
 
           tanker = import ./system/flakes/tanker.nix {
-            inherit (inputs) nixpkgs nixos-stable disko deploy-rs home-manager agenix attic;
+            nixpkgs = inputs.nixos-unstable;
+
+            inherit (inputs) disko deploy-rs home-manager agenix attic;
             inherit inputs;
           };
 
           mediaserver = import ./system/flakes/mediaserver.nix {
-            inherit (inputs) nixpkgs deploy-rs home-manager agenix;
+            nixpkgs = inputs.nixos-unstable;
+
+            inherit (inputs) deploy-rs home-manager agenix;
             inherit inputs;
           };
 
           argon = import ./system/flakes/argon.nix {
-            inherit (inputs) nixpkgs nixos-hardware deploy-rs home-manager agenix;
+            nixpkgs = inputs.nixos-unstable;
+
+            inherit (inputs) nixos-hardware deploy-rs home-manager agenix;
             inherit inputs;
           };
 
           weather-sdr = import ./system/flakes/weather-sdr.nix {
-            inherit (inputs) nixpkgs deploy-rs home-manager agenix;
+            nixpkgs = inputs.nixos-unstable;
+
+            inherit (inputs) deploy-rs home-manager agenix;
             inherit inputs;
           };
 
           adsb-antenna = import ./system/flakes/adsb-antenna.nix {
-            inherit (inputs) nixpkgs nixos-hardware deploy-rs home-manager;
+            nixpkgs = inputs.nixos-unstable;
+
+            inherit (inputs) nixos-hardware deploy-rs home-manager;
             inherit inputs;
           };
         in

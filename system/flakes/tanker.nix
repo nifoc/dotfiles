@@ -1,15 +1,13 @@
-{ nixpkgs, nixos-stable, disko, deploy-rs, home-manager, agenix, attic, inputs, ... }:
+{ nixpkgs, disko, deploy-rs, home-manager, agenix, attic, inputs, ... }:
 
 let
   default-system = "x86_64-linux";
 
-  overlay-stable = _: _: { pkgs-stable = import nixos-stable { system = default-system; }; };
   # overlay-master = _: _: { pkgs-master = import inputs.nixpkgs-master { system = default-system; }; };
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
     overlays = [
-      overlay-stable
       # overlay-master
       overlay-nifoc
     ];
