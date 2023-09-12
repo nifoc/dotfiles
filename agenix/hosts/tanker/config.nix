@@ -27,6 +27,10 @@
       file = ./fedifetcher/config.age;
     };
 
+    forgejo-actions-token = {
+      file = ./forgejo-actions/token.age;
+    };
+
     linkding-environment = {
       file = ./linkding/environment.age;
     };

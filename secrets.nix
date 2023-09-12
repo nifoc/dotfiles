@@ -25,6 +25,8 @@ in
 
   "agenix/hosts/tanker/fedifetcher/config.age".publicKeys = tanker;
 
+  "agenix/hosts/tanker/forgejo-actions/token.age".publicKeys = tanker;
+
   "agenix/hosts/tanker/mastodon/databasePassword.age".publicKeys = tanker;
   "agenix/hosts/tanker/mastodon/smtpPassword.age".publicKeys = tanker;
   "agenix/hosts/tanker/mastodon/otpSecret.age".publicKeys = tanker;

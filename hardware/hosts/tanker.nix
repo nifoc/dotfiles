@@ -22,6 +22,13 @@
       kernelModules = [ "kvm-amd" "tls" ];
     };
 
+    swraid = {
+      enable = true;
+      mdadmConf = ''
+        MAILADDR daniel+tanker@kempkens.io
+      '';
+    };
+
     kernelPackages = pkgs.zfs.latestCompatibleLinuxPackages;
     kernelModules = [ "tcp_bbr" ];
 
