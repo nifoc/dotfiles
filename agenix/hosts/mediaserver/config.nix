@@ -4,6 +4,10 @@
       file = ./user/danielPassword.age;
     };
 
+    smb-haven-credentials = {
+      file = ./smb/havenCredentials.age;
+    };
+
     acme-credentials = {
       file = ./acme/credentials.age;
       owner = "acme";

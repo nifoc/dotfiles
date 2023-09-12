@@ -19,12 +19,12 @@ in
   };
   plenary-nvim = buildVimPluginFrom2Nix {
     pname = "plenary.nvim";
-    version = "2023-09-10";
+    version = "2023-09-12";
     src = fetchFromGitHub {
       owner = "nvim-lua";
       repo = "plenary.nvim";
-      rev = "0232372b906f275f76ac42029eba25eaf95e76b9";
-      sha256 = "0z7sag0jqskf7qcdnsczxa3y3rjlnx4k0an23p8zmv5dikbgqkx5";
+      rev = "4cd4c29e39dd02efd906f98c03d2879237f50956";
+      sha256 = "0g3higbx5v20bkn3h6gjxjgjj9yjwnvggmbbzs7k77i39993hgs5";
       fetchSubmodules = false;
     };
   };
@@ -246,8 +246,8 @@ in
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "5efcd06dc9c45c1654d3f84655fd4ee2f5328f3b";
-      sha256 = "1l00vf1pyb1942ycb0wv4jy9qkpjbrn48hwsr89g1p3zzw063zgq";
+      rev = "360a895125ac4f39df6aa8f763635eff07e69fff";
+      sha256 = "0sy9w8bl46i9krikxkbnsryrnnccji2hrw29k3ccihnn8nrxwvsl";
       fetchSubmodules = false;
     };
   };

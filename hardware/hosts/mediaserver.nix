@@ -14,7 +14,7 @@
       kernelModules = [ "tls" ];
     };
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages;
     kernelModules = [ "kvm-intel" "tcp_bbr" ];
 
     kernel.sysctl = {
