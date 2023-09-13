@@ -109,10 +109,6 @@ in
     hostName = "tanker";
     hostId = "d89f488a";
     useNetworkd = true;
-
-    extraHosts = ''
-      127.0.0.1 attic.cache.daniel.sx
-    '';
   };
 
   systemd = {

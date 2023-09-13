@@ -1,3 +1,5 @@
+{ lib, config, ... }:
+
 {
   services.nginx.virtualHosts."default.kempkens.io" = {
     listen = [
@@ -34,4 +36,20 @@
       return = "418";
     };
   };
+
+  networking.firewall.interfaces =
+    let
+      interfaces = lib.mapAttrsToList (_: lib.attrsets.attrByPath [ "matchConfig" "Name" ] null) config.systemd.network.networks ++ [ "tailscale0" ];
+    in
+    builtins.listToAttrs
+      (builtins.map
+        (iface:
+          {
+            name = iface;
+            value = {
+              allowedTCPPorts = [ 80 443 ];
+              allowedUDPPorts = [ 443 ];
+            };
+          })
+        (builtins.filter builtins.isString interfaces));
 }

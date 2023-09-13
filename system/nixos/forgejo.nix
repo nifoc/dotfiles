@@ -42,10 +42,6 @@ in
           SAME_SITE = "strict";
         };
 
-        repository = {
-          DISABLE_HTTP_GIT = true;
-        };
-
         actions = {
           ENABLED = true;
         };
@@ -68,8 +64,7 @@ in
           tokenFile = config.age.secrets.forgejo-actions-token.path;
 
           labels = [
-            "debian-bullseye:docker://node:18-bullseye"
-            "debian-bookworm:docker://node:18-bookworm"
+            "ubuntu-latest-amd64:docker://ghcr.io/catthehacker/ubuntu:act-latest"
           ];
         };
       };
