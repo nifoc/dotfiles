@@ -55,7 +55,7 @@ in
           name = "treesitter-parsers";
           paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
             p.bash
-            p.comment
+            #p.comment # slow
             p.css
             p.dockerfile
             p.eex
