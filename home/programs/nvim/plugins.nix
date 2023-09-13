@@ -23,8 +23,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-lua";
       repo = "plenary.nvim";
-      rev = "4cd4c29e39dd02efd906f98c03d2879237f50956";
-      sha256 = "0g3higbx5v20bkn3h6gjxjgjj9yjwnvggmbbzs7k77i39993hgs5";
+      rev = "9ce85b0f7dcfe5358c0be937ad23e456907d410b";
+      sha256 = "0772bqmfkx27b6kfn8x28v8ll0qr2zvdclynansraprrzllsqymk";
       fetchSubmodules = false;
     };
   };
@@ -122,8 +122,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "0ba881b7a2af0e24962e4522cf15ebd642261a90";
-      sha256 = "1ii19mhqy2czwmbi1rvj5r1b3hddx7f9cfcqgvbzj52ymsrqyr8q";
+      rev = "9567185621e532a9e29a671c66a11011334b80ea";
+      sha256 = "131d07lk7wgmbnq7phxcgvrqhrwqn9q7ib9zgw42mj1wjlxdz6b1";
       fetchSubmodules = false;
     };
   };
