@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 let
   fqdn = "git.kempkens.io";
@@ -24,6 +24,7 @@ in
           PROTOCOL = "http+unix";
           DOMAIN = fqdn;
           ROOT_URL = "https://${fqdn}/";
+          LANDING_PAGE = "explore";
         };
 
         service = {
@@ -48,24 +49,7 @@ in
 
         other = {
           SHOW_FOOTER_VERSION = false;
-        };
-      };
-    };
-
-    gitea-actions-runner = {
-      package = pkgs.forgejo-actions-runner;
-
-      instances = {
-        tanker = {
-          enable = true;
-          url = "https://${fqdn}";
-
-          name = "tanker";
-          tokenFile = config.age.secrets.forgejo-actions-token.path;
-
-          labels = [
-            "ubuntu-latest-amd64:docker://ghcr.io/catthehacker/ubuntu:act-latest"
-          ];
+          SHOW_FOOTER_TEMPLATE_LOAD_TIME = false;
         };
       };
     };

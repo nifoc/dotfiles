@@ -87,6 +87,8 @@ in
 
   "agenix/hosts/argon/acme/credentials.age".publicKeys = argon;
 
+  "agenix/hosts/argon/forgejo-actions/token.age".publicKeys = argon;
+
   "agenix/hosts/argon/tailscale/authkey.age".publicKeys = argon;
 
   "agenix/hosts/argon/adguardhome-sync/environment.age".publicKeys = argon;

@@ -18,6 +18,10 @@
       file = ./adguardhome-sync/environment.age;
     };
 
+    forgejo-actions-token = {
+      file = ./forgejo-actions/token.age;
+    };
+
     weewx-proxy-environment = {
       file = ./weewx-proxy/environment.age;
     };
