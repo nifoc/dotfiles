@@ -6,6 +6,7 @@ on:
     paths:
       - 'flake.lock'
       - 'home/programs/nvim/plugins.nix'
+      - '.forgejo/workflows/build.yml'
 
 jobs:
   build-amd64-linux:
