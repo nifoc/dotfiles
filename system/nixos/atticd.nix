@@ -33,8 +33,8 @@ in
       };
 
       garbage-collection = {
-        interval = "12 hours";
-        default-retention-period = "2 weeks";
+        interval = "24 hours";
+        default-retention-period = "6 weeks";
       };
     };
   };
