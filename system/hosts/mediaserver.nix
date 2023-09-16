@@ -149,7 +149,7 @@ in
     };
 
     daniel = {
-      passwordFile = config.age.secrets.user-daniel-password.path;
+      hashedPasswordFile = config.age.secrets.user-daniel-password.path;
       isNormalUser = true;
       home = "/home/daniel";
       description = "Daniel";
