@@ -323,8 +323,8 @@ in
     src = fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "a86bcf6bd729ca1ee90312bce9ca66a44f806764";
-      sha256 = "10yzwxbnl8chcakr3hlc86jxhi1d8i9hbp5swfywabp4dhbyhbbv";
+      rev = "3657c3f3cb2214a681fc7e95b6ffb509d076ebfb";
+      sha256 = "1w7jzcwkyikl4v5irb5yc0v5vs0k758mdwvgnscc9zzwsg6vs642";
       fetchSubmodules = false;
     };
   };
