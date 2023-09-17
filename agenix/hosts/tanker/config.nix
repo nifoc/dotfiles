@@ -97,6 +97,11 @@
       file = ./nitter/config.age;
     };
 
+    nitter-guest-accounts = {
+      file = ./nitter/guestAccounts.age;
+      mode = "555";
+    };
+
     anonymous-overflow-config = {
       file = ./anonymous-overflow/config.age;
     };

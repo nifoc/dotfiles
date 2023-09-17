@@ -41,6 +41,7 @@ in
   "agenix/hosts/tanker/mosquitto/passwordWeewx.age".publicKeys = tanker;
 
   "agenix/hosts/tanker/nitter/config.age".publicKeys = tanker;
+  "agenix/hosts/tanker/nitter/guestAccounts.age".publicKeys = tanker;
 
   "agenix/hosts/tanker/anonymous-overflow/config.age".publicKeys = tanker;
 
