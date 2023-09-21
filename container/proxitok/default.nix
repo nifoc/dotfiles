@@ -52,7 +52,7 @@
   networking.firewall.interfaces."podman+".allowedTCPPorts = [ 6381 ];
 
   services.nginx.virtualHosts."tictac.daniel.sx" = {
-    listenAddresses = [ "100.108.165.26" "[fd7a:115c:a1e0:ab12:4843:cd96:626c:a51a]" ];
+    listenAddresses = [ "100.64.10.2" "[fd7a:115c:a1e0:1010::2]" ];
     quic = true;
     http3 = true;
 

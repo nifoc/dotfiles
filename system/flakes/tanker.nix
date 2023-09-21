@@ -1,15 +1,15 @@
-{ nixpkgs, disko, deploy-rs, home-manager, agenix, attic, inputs, ... }:
+{ nixpkgs, nixpkgs-master, disko, deploy-rs, home-manager, agenix, attic, inputs, ... }:
 
 let
   default-system = "x86_64-linux";
 
-  # overlay-master = _: _: { pkgs-master = import inputs.nixpkgs-master { system = default-system; }; };
+  overlay-master = _: _: { pkgs-master = import inputs.nixpkgs-master { system = default-system; }; };
   overlay-deploy-rs = _: _: { inherit (inputs.deploy-rs.packages.${default-system}) deploy-rs; };
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
     overlays = [
-      # overlay-master
+      overlay-master
       overlay-deploy-rs
       overlay-nifoc
     ];

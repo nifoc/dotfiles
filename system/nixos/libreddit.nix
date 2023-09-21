@@ -11,7 +11,7 @@
   services.nginx.virtualHosts."${secret.nginx.hostnames.libreddit}" = {
     # listen = [
     #   {
-    #     addr = "100.108.165.26";
+    #     addr = "100.64.10.2";
     #     port = 443;
     #     ssl = true;
     #     extraParameters = [
@@ -22,7 +22,7 @@
     #   }
     #
     #   {
-    #     addr = "[fd7a:115c:a1e0:ab12:4843:cd96:626c:a51a]";
+    #     addr = "[fd7a:115c:a1e0:1010::2]";
     #     port = 443;
     #     ssl = true;
     #     extraParameters = [
@@ -32,7 +32,7 @@
     #   }
     # ];
 
-    listenAddresses = [ "100.108.165.26" "[fd7a:115c:a1e0:ab12:4843:cd96:626c:a51a]" ];
+    listenAddresses = [ "100.64.10.2" "[fd7a:115c:a1e0:1010::2]" ];
 
     quic = true;
     http3 = true;

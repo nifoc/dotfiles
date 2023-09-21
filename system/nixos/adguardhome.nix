@@ -105,8 +105,8 @@
     useACMEHost = "internal.kempkens.network";
 
     extraConfig = ''
-      set_real_ip_from 100.108.165.26/32;
-      set_real_ip_from fd7a:115c:a1e0:ab12:4843:cd96:626c:a51a/128;
+      set_real_ip_from 100.64.10.2/32;
+      set_real_ip_from fd7a:115c:a1e0:1010::2/128;
       real_ip_header X-Forwarded-For;
     '';
 

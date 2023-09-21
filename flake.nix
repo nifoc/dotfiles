@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     # Tools
 
@@ -76,7 +76,7 @@
           tanker = import ./system/flakes/tanker.nix {
             nixpkgs = inputs.nixos-unstable;
 
-            inherit (inputs) disko deploy-rs home-manager agenix attic;
+            inherit (inputs) nixpkgs-master disko deploy-rs home-manager agenix attic;
             inherit inputs;
           };
 

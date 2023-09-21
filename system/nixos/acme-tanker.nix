@@ -27,6 +27,10 @@
       "nifoc.pw" = {
         domain = "*.nifoc.pw";
       };
+
+      "headscale.kempkens.network" = {
+        domain = "*.headscale.kempkens.network";
+      };
     };
   };
 }

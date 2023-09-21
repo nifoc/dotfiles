@@ -27,6 +27,9 @@ in
 
   "agenix/hosts/tanker/forgejo-actions/token.age".publicKeys = tanker;
 
+  "agenix/hosts/tanker/headscale/dbPassword.age".publicKeys = tanker;
+  "agenix/hosts/tanker/headscale/acls.age".publicKeys = tanker;
+
   "agenix/hosts/tanker/mastodon/databasePassword.age".publicKeys = tanker;
   "agenix/hosts/tanker/mastodon/smtpPassword.age".publicKeys = tanker;
   "agenix/hosts/tanker/mastodon/otpSecret.age".publicKeys = tanker;
