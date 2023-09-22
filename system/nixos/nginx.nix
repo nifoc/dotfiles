@@ -25,8 +25,9 @@
       access_log /var/log/nginx/access.log combined_anon buffer=32k flush=5m;
     '';
 
-    appendConfig = ''
-      worker_processes auto;
-    '';
+    # Currently breaks HTTP3
+    # appendConfig = ''
+    #   worker_processes auto;
+    # '';
   };
 }
