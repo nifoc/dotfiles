@@ -63,12 +63,12 @@ in
   };
   yanky-nvim = buildVimPluginFrom2Nix {
     pname = "yanky.nvim";
-    version = "2023-09-19";
+    version = "2023-09-22";
     src = fetchFromGitHub {
       owner = "gbprod";
       repo = "yanky.nvim";
-      rev = "4f5f15829fbad15ed703e7cb072cdf2a488cf5e7";
-      sha256 = "0gqzaifbvaj7l9x3l5m2wwn52r2a3giysdbzvmnkyjkj53jn3ya6";
+      rev = "51dfc7721cfa4bb5b1baf5f365b8a39394d89eb2";
+      sha256 = "1dl9rylwpbcxh7d3h5sal8viqipiiyy4prdkgdip5hy08sh9y6mv";
       fetchSubmodules = false;
     };
   };
@@ -118,12 +118,12 @@ in
   };
   nvim-treesitter = buildVimPluginFrom2Nix {
     pname = "nvim-treesitter";
-    version = "2023-09-21";
+    version = "2023-09-22";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "b7f2dd5dfbd24a1239844e15637b637b990df164";
-      sha256 = "199hp19b8wp9fxzcb7pakcs4djbsnghbkv5914llc57w6ybhdqdb";
+      rev = "fc93fa5c07df7cd578a3ea82d7c075c0460a6884";
+      sha256 = "0dn3yfyb58kvdnmigw45j3c6mdvmzrf0d2qjfik2kg71xy2pbbd7";
       fetchSubmodules = false;
     };
   };
@@ -301,8 +301,8 @@ in
     src = fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-lint";
-      rev = "75a837ce983c0fb94c1abd81a11371dc62c404a8";
-      sha256 = "1wq18qamr5a3khyx52jgaz597cbizpc007cv45cffn11q0sy15s4";
+      rev = "67f74e630a84ecfa73a82783c487bdedd8cecdc3";
+      sha256 = "1rmpyjbv7a4ipy9nndarp5xv0azkqpw3c51fjw6fpx0yhlk72slc";
       fetchSubmodules = false;
     };
   };
@@ -572,12 +572,12 @@ in
   };
   gitsigns-nvim = buildVimPluginFrom2Nix {
     pname = "gitsigns.nvim";
-    version = "2023-09-17";
+    version = "2023-09-22";
     src = fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "bce4576a9047085a528c479a7fe1e2f6b787b6c1";
-      sha256 = "1s296391qc33m5j90gfcgn4dn9c2hbdjj6674afdibjildza0m2v";
+      rev = "94656269a37957dd85c4bf760375002750f870c7";
+      sha256 = "04n97idfa21smz8brifrp588bbfglvkp8gm4hhw8szm10w764d94";
       fetchSubmodules = false;
     };
   };
