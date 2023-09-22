@@ -44,7 +44,7 @@
 
   networking.firewall.interfaces =
     let
-      interfaces = lib.mapAttrsToList (_: lib.attrsets.attrByPath [ "matchConfig" "Name" ] null) config.systemd.network.networks;
+      interfaces = lib.mapAttrsToList (_: lib.attrsets.attrByPath [ "matchConfig" "Name" ] null) config.systemd.network.networks ++ [ "tailscale0" ];
     in
     builtins.listToAttrs
       (builtins.map

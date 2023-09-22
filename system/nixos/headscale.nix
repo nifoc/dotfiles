@@ -25,6 +25,17 @@ in
 
       server_url = "https://${fqdn}";
       acl_policy_path = config.age.secrets.headscale-acls.path;
+
+      dns_config = {
+        override_local_dns = false;
+
+        nameservers = [
+          "100.64.10.1"
+          "100.64.10.6"
+        ];
+
+        base_domain = "mesh.kempkens.network";
+      };
     };
   };
 
