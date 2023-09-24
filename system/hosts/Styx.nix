@@ -1,5 +1,6 @@
 {
   imports = [
+    ../../agenix/hosts/Styx/config.nix
     ../shared/show-update-changelog.nix
 
     ../darwin/defaults.nix
@@ -86,7 +87,6 @@
 
   environment = {
     darwinConfig = "$HOME/.config/nixpkgs/system/hosts/Styx.nix";
-    etc."nix/netrc".source = ../../secret/shared/nix-netrc;
   };
 
   services = {

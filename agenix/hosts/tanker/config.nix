@@ -1,5 +1,11 @@
 {
   age.secrets = {
+    nix-netrc = {
+      file = ../all/nix/netrc.age;
+      path = "/etc/nix/netrc";
+      mode = "444";
+    };
+
     user-daniel-password = {
       file = ./user/danielPassword.age;
     };

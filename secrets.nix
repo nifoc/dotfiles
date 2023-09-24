@@ -10,8 +10,12 @@ let
   mediaserver = [ user-daniel system-mediaserver ];
   argon = [ user-daniel system-argon ];
   weather-sdr = [ user-daniel system-weather-sdr ];
+  all-systems = [ user-daniel system-tanker system-mediaserver system-argon system-weather-sdr ];
 in
 {
+  # all
+  "agenix/hosts/all/nix/netrc.age".publicKeys = all-systems;
+
   # tanker
   "agenix/hosts/tanker/user/danielPassword.age".publicKeys = tanker;
 

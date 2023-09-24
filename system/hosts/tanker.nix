@@ -102,8 +102,6 @@ in
     '';
   };
 
-  environment.etc."nix/netrc".source = ../../secret/shared/nix-netrc;
-
   boot = {
     tmp.cleanOnBoot = true;
 

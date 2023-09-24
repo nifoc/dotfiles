@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, nix-darwin, inputs, ... }:
+{ nixpkgs, home-manager, nix-darwin, agenix, inputs, ... }:
 
 let
   default-system = "aarch64-darwin";
@@ -29,6 +29,8 @@ in
       ../hosts/Styx.nix
 
       home-manager.darwinModules.home-manager
+
+      agenix.darwinModules.default
 
       {
         nixpkgs = nixpkgsConfig;

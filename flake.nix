@@ -69,7 +69,7 @@
       flake =
         let
           Styx = import ./system/flakes/Styx.nix {
-            inherit (inputs) nixpkgs home-manager nix-darwin;
+            inherit (inputs) nixpkgs home-manager nix-darwin agenix;
             inherit inputs;
           };
 
