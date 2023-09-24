@@ -572,12 +572,12 @@ in
   };
   gitsigns-nvim = buildVimPluginFrom2Nix {
     pname = "gitsigns.nvim";
-    version = "2023-09-23";
+    version = "2023-09-24";
     src = fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "9bec6e1ef5542e33974e5b4f982c8c063b981974";
-      sha256 = "0pm9nw0mrqmgyx3accy89x83rykaqy65syiwlfip8vadb89kifk1";
+      rev = "bdeba1cec3faddd89146690c10b9a87949c0ee66";
+      sha256 = "0amphagvmvdjrp13nxzl8jjs38dy1qicv71g91h998yjfc7av42l";
       fetchSubmodules = false;
     };
   };
