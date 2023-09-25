@@ -25,7 +25,7 @@
     upstreams.dns = {
       servers = {
         "${secret.nginx.upstream.dns.primary.hostname}:${builtins.toString secret.nginx.upstream.dns.primary.upstreamPort}" = {
-          fail_timeout = "5s";
+          fail_timeout = "2s";
         };
 
         "${secret.nginx.upstream.dns.secondary.hostname}:${builtins.toString secret.nginx.upstream.dns.secondary.upstreamPort}" = {
