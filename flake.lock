@@ -109,11 +109,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1695660337,
-        "narHash": "sha256-4ceXFNIUphgqFo4BR0bUEKh65Lud4x5DF/mB/eDdqEI=",
+        "lastModified": 1695795547,
+        "narHash": "sha256-/ZxvDCpNqCSJ3qYJK82CUSbHzQHP2OmheL/0tiGzs7k=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "fbfd7567c224134b57ee64a663e95285fe7fe048",
+        "rev": "78fba3983dab3593afdc7fcd579dad8a3b1c6326",
         "type": "github"
       },
       "original": {
@@ -300,11 +300,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1695708052,
-        "narHash": "sha256-QiWOrZcCmY+zH2NVM6/opZaMRMgam9u+qVYycKLqL10=",
+        "lastModified": 1695738267,
+        "narHash": "sha256-LTNAbTQ96xSj17xBfsFrFS9i56U2BMLpD0BduhrsVkU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "dd88dbc69438384bd94f8282584a86798750028c",
+        "rev": "0f4e5b4999fd6a42ece5da8a3a2439a50e48e486",
         "type": "github"
       },
       "original": {
@@ -323,11 +323,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1695714224,
-        "narHash": "sha256-li/wYMQDTIQDESBlIAHWuZRCe9H1/6iKjkz4LEUbwbo=",
+        "lastModified": 1695782894,
+        "narHash": "sha256-U1H7h/cf0V3RKHzcRPsEU3sC/fcFymI91DsnQgQFpfw=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "4db77017fb7ab9321817674a5f5533df4cd03f3f",
+        "rev": "dfa8b582a64aa22d3c57261bfcdc970b26cb58f3",
         "type": "github"
       },
       "original": {
@@ -346,11 +346,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1695722306,
-        "narHash": "sha256-aQex3+9wFssQrBuXM/Cw8w12ICzsC5I1tZIOfzYD3V0=",
+        "lastModified": 1695795049,
+        "narHash": "sha256-w0se+68uoK28pya5ThvBA9UvE09VX2CT62ERWdAJuao=",
         "ref": "refs/heads/master",
-        "rev": "949f5945beed2e2d82c86d7a9743462fedb5bcf4",
-        "revCount": 502,
+        "rev": "a9687a0c1aa325bf7a8bd904a3a489cd7e9e9b9c",
+        "revCount": 503,
         "type": "git",
         "url": "https://git.kempkens.io/daniel/nix-overlay"
       },
@@ -397,11 +397,11 @@
     },
     "nixos-unstable": {
       "locked": {
-        "lastModified": 1695360818,
-        "narHash": "sha256-JlkN3R/SSoMTa+CasbxS1gq+GpGxXQlNZRUh9+LIy/0=",
+        "lastModified": 1695644571,
+        "narHash": "sha256-asS9dCCdlt1lPq0DLwkVBbVoEKuEuz+Zi3DG7pR/RxA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e35dcc04a3853da485a396bdd332217d0ac9054f",
+        "rev": "6500b4580c2a1f3d0f980d32d285739d8e156d92",
         "type": "github"
       },
       "original": {
