@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     podman
+    podman-compose
     qemu
     gvproxy
     skopeo
