@@ -3,7 +3,7 @@
        {:strategy {"" (. rainbow-delimiters :strategy :global)
                    :vim (. rainbow-delimiters :strategy :local)}
         :query {"" :rainbow-delimiters :lua :rainbow-blocks}
-        :highlight [:RainbowDelimite
+        :highlight [:RainbowDelimiterRed
                     :RainbowDelimiterYellow
                     :RainbowDelimiterBlue
                     :RainbowDelimiterOrange

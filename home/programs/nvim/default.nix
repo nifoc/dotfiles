@@ -91,7 +91,7 @@ in
       in
       ''
         vim.loader.enable()
-        vim.opt.runtimepath:append("${treesitter-parsers}")
+        vim.opt.runtimepath:prepend("${treesitter-parsers}")
 
         require('nifoc.nix')
         require('configuration.init')
