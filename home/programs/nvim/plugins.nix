@@ -297,12 +297,12 @@ in
   };
   nvim-lint = buildVimPluginFrom2Nix {
     pname = "nvim-lint";
-    version = "2023-09-21";
+    version = "2023-09-30";
     src = fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-lint";
-      rev = "67f74e630a84ecfa73a82783c487bdedd8cecdc3";
-      sha256 = "1rmpyjbv7a4ipy9nndarp5xv0azkqpw3c51fjw6fpx0yhlk72slc";
+      rev = "1065763f115a7765ef237347ad676ba348d7193a";
+      sha256 = "0wlfq7xpi60nrqxx2v0h2pjv9jhx5alir8z9q1h7vcnf2hykj45c";
       fetchSubmodules = false;
     };
   };
