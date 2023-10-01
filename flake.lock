@@ -313,6 +313,26 @@
         "type": "github"
       }
     },
+    "mkalias": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1678761502,
+        "narHash": "sha256-tL3C/b2BPOGQpV287wECDCDWmKwwPvezAAN3qz7N07M=",
+        "owner": "reckenrode",
+        "repo": "mkalias",
+        "rev": "8a5478cdb646f137ebc53cb9d235f8e5892ea00a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "reckenrode",
+        "repo": "mkalias",
+        "type": "github"
+      }
+    },
     "neovim-flake": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -528,6 +548,7 @@
         "flake-parts": "flake-parts",
         "flake-root": "flake-root",
         "home-manager": "home-manager",
+        "mkalias": "mkalias",
         "nifoc-overlay": "nifoc-overlay",
         "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",

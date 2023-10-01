@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   imports = [
@@ -42,6 +42,8 @@
     ../programs/yt-dlp.nix
   ];
 
+  disabledModules = [ "targets/darwin/linkapps.nix" ];
+
   home = {
     stateVersion = "22.11";
 
@@ -75,5 +77,35 @@
       xxHash
       xz
     ];
+
+    activation.aliasApplications = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin (
+      let
+        apps = pkgs.buildEnv {
+          name = "home-manager-applications";
+          paths = config.home.packages;
+          pathsToLink = "/Applications";
+        };
+
+        lastAppsFile = "${config.xdg.stateHome}/nix/.apps";
+      in
+      lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        last_apps=$(cat "${lastAppsFile}" 2>/dev/null || echo "")
+        next_apps=$(readlink -f ${apps}/Applications/* | sort)
+
+        if [ "$last_apps" != "$next_apps" ]; then
+          echo "Apps have changed. Updating macOS aliases..."
+
+          apps_path="$HOME/Applications/Home Manager Apps"
+          $DRY_RUN_CMD mkdir -p "$apps_path"
+
+          $DRY_RUN_CMD ${pkgs.fd}/bin/fd \
+            -t l -d 1 . ${apps}/Applications \
+            -x $DRY_RUN_CMD "${pkgs.mkalias}/bin/mkalias" \
+            -L {} "$apps_path/{/}"
+
+          [ -z "$DRY_RUN_CMD" ] && echo "$next_apps" > "${lastAppsFile}"
+        fi
+      ''
+    );
   };
 }
