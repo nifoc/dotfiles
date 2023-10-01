@@ -89,7 +89,7 @@ in
           ])).dependencies;
         };
       in
-      ''
+        /* lua */ ''
         vim.loader.enable()
         vim.opt.runtimepath:prepend("${treesitter-parsers}")
 
@@ -140,7 +140,7 @@ in
 
         {
           plugin = leap-nvim;
-          config = ''
+          config = /* fennel */ ''
             (let [leap (require :leap)]
               (leap.set_default_keymaps))
           '';
@@ -273,7 +273,7 @@ in
 
         {
           plugin = nvim-ts-autotag;
-          config = ''
+          config = /* fennel */ ''
             (let [ts-autotag (require :nvim-ts-autotag)]
               (ts-autotag.setup))
           '';
@@ -310,7 +310,7 @@ in
 
         {
           plugin = virt-column-nvim;
-          config = ''
+          config = /* fennel */ ''
             (let [virt-column (require :virt-column)]
               (virt-column.setup))
           '';

@@ -99,11 +99,11 @@ in
     };
 
     functions = {
-      base64decode = ''
+      base64decode = /* fish */ ''
         echo "$argv" | base64 --decode
       '';
 
-      upn = ''
+      upn = /* fish */ ''
         set -f os (uname)
 
         switch $os
@@ -117,7 +117,7 @@ in
         end
       '';
 
-      upp = ''
+      upp = /* fish */ ''
         if not test -f ./.envrc; or rg --quiet '^use flake$' ./.envrc
           nix flake update ./ -v
         else
@@ -125,17 +125,17 @@ in
         end
       '';
 
-      wget-browser = ''
+      wget-browser = /* fish */ ''
         set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
         ${pkgs.wget}/bin/wget -U "$user_agent" $argv
       '';
 
-      aria-browser = ''
+      aria-browser = /* fish */ ''
         set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
         ${pkgs.aria2}/bin/aria2c -U "$user_agent" --file-allocation none --async-dns=false -x 2 $argv
       '';
 
-      mysqld-direnv-init = ''
+      mysqld-direnv-init = /* fish */ ''
         if type -q mysql_install_db
           mysql_install_db --user $USER --datadir=$PWD/.direnv/mysql/data --auth-root-authentication-method=normal
         else
@@ -144,7 +144,7 @@ in
       '';
     };
 
-    shellInit = ''
+    shellInit = /* fish */ ''
       # Disable greeting
       set fish_greeting
 

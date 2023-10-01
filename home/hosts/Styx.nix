@@ -88,7 +88,7 @@
 
         lastAppsFile = "${config.xdg.stateHome}/nix/.apps";
       in
-      lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      lib.hm.dag.entryAfter [ "writeBoundary" ] /* bash */ ''
         last_apps=$(cat "${lastAppsFile}" 2>/dev/null || echo "")
         next_apps=$(readlink -f ${apps}/Applications/* | sort)
 

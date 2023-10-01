@@ -16,7 +16,7 @@ in
 
     package = wezterm-pkg;
 
-    extraConfig = ''
+    extraConfig = /* lua */ ''
       _G.shells = {
         bash = '${pkgs.bash.outPath}/bin/bash',
         fish = '${pkgs.fish.outPath}/bin/fish',
