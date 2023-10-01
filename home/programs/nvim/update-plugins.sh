@@ -1,5 +1,6 @@
 #!/usr/bin/env nix-shell
 #!nix-shell update-shell.nix -i bash
+# shellcheck shell=bash disable=SC2154
 
 set -eEuo pipefail
 
@@ -22,7 +23,7 @@ rm -f "$nix_new_file"
   echo 'let'
   echo 'inherit (pkgs) fetchFromGitHub;'
   echo 'inherit (pkgs) fetchFromSourcehut;'
-  echo 'inherit (pkgs.vimUtils) buildVimPluginFrom2Nix;'
+  echo 'inherit (pkgs.vimUtils) buildVimPlugin;'
   echo 'in'
   echo '{'
 } >>"$nix_new_file"
@@ -31,7 +32,7 @@ for plugin in "${plugin_array[@]}"; do
   raw_src="$(echo "$plugin" | dasel -r json -w - '.src')"
   owner="$(echo "$raw_src" | awk -F'/' '{ print $(NF-1) }')"
   repo="$(echo "$raw_src" | awk -F'/' '{ print $(NF) }')"
-  name="$(echo "$repo" | tr [.] '-')"
+  name="$(echo "$repo" | tr '.' '-')"
 
   echo "Updating ${owner}/${repo} ..."
 
@@ -58,6 +59,7 @@ for plugin in "${plugin_array[@]}"; do
     nix_prefetch_flags+=" --branch-name $branch"
   fi
 
+  # shellcheck disable=SC2086
   src_json="$(nix-prefetch-git $nix_prefetch_flags "$clone_src")"
   src="{
     owner = \"${owner}\";
@@ -90,7 +92,7 @@ for plugin in "${plugin_array[@]}"; do
   #  ;;
   *)
     {
-      echo "${name} = buildVimPluginFrom2Nix {"
+      echo "${name} = buildVimPlugin {"
       echo "pname = \"${repo}\";"
     } >>"$nix_new_file"
     close_block="};"

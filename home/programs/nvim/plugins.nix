@@ -3,10 +3,10 @@
 let
   inherit (pkgs) fetchFromGitHub;
   inherit (pkgs) fetchFromSourcehut;
-  inherit (pkgs.vimUtils) buildVimPluginFrom2Nix;
+  inherit (pkgs.vimUtils) buildVimPlugin;
 in
 {
-  popup-nvim = buildVimPluginFrom2Nix {
+  popup-nvim = buildVimPlugin {
     pname = "popup.nvim";
     version = "2021-11-18";
     src = fetchFromGitHub {
@@ -17,7 +17,7 @@ in
       fetchSubmodules = false;
     };
   };
-  plenary-nvim = buildVimPluginFrom2Nix {
+  plenary-nvim = buildVimPlugin {
     pname = "plenary.nvim";
     version = "2023-09-12";
     src = fetchFromGitHub {
@@ -28,7 +28,7 @@ in
       fetchSubmodules = false;
     };
   };
-  nvim-web-devicons = buildVimPluginFrom2Nix {
+  nvim-web-devicons = buildVimPlugin {
     pname = "nvim-web-devicons";
     version = "2023-09-25";
     src = fetchFromGitHub {
@@ -39,7 +39,7 @@ in
       fetchSubmodules = false;
     };
   };
-  wezterm-nvim = buildVimPluginFrom2Nix {
+  wezterm-nvim = buildVimPlugin {
     pname = "wezterm.nvim";
     version = "2023-09-14";
     src = fetchFromGitHub {
@@ -50,7 +50,7 @@ in
       fetchSubmodules = false;
     };
   };
-  nvim-osc52 = buildVimPluginFrom2Nix {
+  nvim-osc52 = buildVimPlugin {
     pname = "nvim-osc52";
     version = "2023-05-15";
     src = fetchFromGitHub {
@@ -61,7 +61,7 @@ in
       fetchSubmodules = false;
     };
   };
-  yanky-nvim = buildVimPluginFrom2Nix {
+  yanky-nvim = buildVimPlugin {
     pname = "yanky.nvim";
     version = "2023-09-28";
     src = fetchFromGitHub {
@@ -72,7 +72,7 @@ in
       fetchSubmodules = false;
     };
   };
-  cutlass-nvim = buildVimPluginFrom2Nix {
+  cutlass-nvim = buildVimPlugin {
     pname = "cutlass.nvim";
     version = "2023-05-01";
     src = fetchFromGitHub {
@@ -83,7 +83,7 @@ in
       fetchSubmodules = false;
     };
   };
-  substitute-nvim = buildVimPluginFrom2Nix {
+  substitute-nvim = buildVimPlugin {
     pname = "substitute.nvim";
     version = "2023-07-20";
     src = fetchFromGitHub {
@@ -94,7 +94,7 @@ in
       fetchSubmodules = false;
     };
   };
-  leap-nvim = buildVimPluginFrom2Nix {
+  leap-nvim = buildVimPlugin {
     pname = "leap.nvim";
     version = "2023-07-23";
     src = fetchFromGitHub {
@@ -105,7 +105,7 @@ in
       fetchSubmodules = false;
     };
   };
-  dracula-nvim = buildVimPluginFrom2Nix {
+  dracula-nvim = buildVimPlugin {
     pname = "dracula.nvim";
     version = "2023-07-29";
     src = fetchFromGitHub {
@@ -116,7 +116,7 @@ in
       fetchSubmodules = false;
     };
   };
-  nvim-treesitter = buildVimPluginFrom2Nix {
+  nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
     version = "2023-10-01";
     src = fetchFromGitHub {
@@ -127,7 +127,7 @@ in
       fetchSubmodules = false;
     };
   };
-  vim-just = buildVimPluginFrom2Nix {
+  vim-just = buildVimPlugin {
     pname = "vim-just";
     version = "2023-08-02";
     src = fetchFromGitHub {
@@ -138,7 +138,7 @@ in
       fetchSubmodules = false;
     };
   };
-  rainbow-delimiters-nvim = buildVimPluginFrom2Nix {
+  rainbow-delimiters-nvim = buildVimPlugin {
     pname = "rainbow-delimiters.nvim";
     version = "2023-09-28";
     src = fetchFromGitHub {
@@ -149,7 +149,7 @@ in
       fetchSubmodules = false;
     };
   };
-  playground = buildVimPluginFrom2Nix {
+  playground = buildVimPlugin {
     pname = "playground";
     version = "2023-09-15";
     src = fetchFromGitHub {
@@ -160,7 +160,7 @@ in
       fetchSubmodules = false;
     };
   };
-  telescope-nvim = buildVimPluginFrom2Nix {
+  telescope-nvim = buildVimPlugin {
     pname = "telescope.nvim";
     version = "2023-09-29";
     src = fetchFromGitHub {
@@ -171,7 +171,7 @@ in
       fetchSubmodules = false;
     };
   };
-  telescope-fzf-native-nvim = buildVimPluginFrom2Nix {
+  telescope-fzf-native-nvim = buildVimPlugin {
     pname = "telescope-fzf-native.nvim";
     version = "2023-09-10";
     src = fetchFromGitHub {
@@ -185,7 +185,7 @@ in
       make
     '';
   };
-  project-nvim = buildVimPluginFrom2Nix {
+  project-nvim = buildVimPlugin {
     pname = "project.nvim";
     version = "2023-04-04";
     src = fetchFromGitHub {
@@ -196,7 +196,7 @@ in
       fetchSubmodules = false;
     };
   };
-  todo-comments-nvim = buildVimPluginFrom2Nix {
+  todo-comments-nvim = buildVimPlugin {
     pname = "todo-comments.nvim";
     version = "2023-07-28";
     src = fetchFromGitHub {
@@ -207,7 +207,7 @@ in
       fetchSubmodules = false;
     };
   };
-  telescope-ui-select-nvim = buildVimPluginFrom2Nix {
+  telescope-ui-select-nvim = buildVimPlugin {
     pname = "telescope-ui-select.nvim";
     version = "2022-04-30";
     src = fetchFromGitHub {
@@ -218,7 +218,7 @@ in
       fetchSubmodules = false;
     };
   };
-  telescope-toggleterm-nvim = buildVimPluginFrom2Nix {
+  telescope-toggleterm-nvim = buildVimPlugin {
     pname = "telescope-toggleterm.nvim";
     version = "2022-02-10";
     src = fetchFromSourcehut {
@@ -229,7 +229,7 @@ in
       fetchSubmodules = false;
     };
   };
-  telescope-undo-nvim = buildVimPluginFrom2Nix {
+  telescope-undo-nvim = buildVimPlugin {
     pname = "telescope-undo.nvim";
     version = "2023-06-03";
     src = fetchFromGitHub {
@@ -240,18 +240,18 @@ in
       fetchSubmodules = false;
     };
   };
-  nvim-lspconfig = buildVimPluginFrom2Nix {
+  nvim-lspconfig = buildVimPlugin {
     pname = "nvim-lspconfig";
     version = "2023-10-01";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "7ec2ab0cb8f529708dba55964fb0a59d3cc21853";
-      sha256 = "0fzmjwgl8icpi85348nsl7mzd04b1zhjgcqqzpb03j6l29bb2vqk";
+      rev = "eb1b53162755888ff75e495797071644d983bff7";
+      sha256 = "04kgsf3rhr0wk3vyx6lawlxj5icvaryx925flh72f234vkhigmq2";
       fetchSubmodules = false;
     };
   };
-  nvim-jdtls = buildVimPluginFrom2Nix {
+  nvim-jdtls = buildVimPlugin {
     pname = "nvim-jdtls";
     version = "2023-09-19";
     src = fetchFromGitHub {
@@ -262,7 +262,7 @@ in
       fetchSubmodules = false;
     };
   };
-  lspkind-nvim = buildVimPluginFrom2Nix {
+  lspkind-nvim = buildVimPlugin {
     pname = "lspkind.nvim";
     version = "2023-05-05";
     src = fetchFromGitHub {
@@ -273,7 +273,7 @@ in
       fetchSubmodules = false;
     };
   };
-  nvim-navic = buildVimPluginFrom2Nix {
+  nvim-navic = buildVimPlugin {
     pname = "nvim-navic";
     version = "2023-09-18";
     src = fetchFromGitHub {
@@ -284,7 +284,7 @@ in
       fetchSubmodules = false;
     };
   };
-  vim-illuminate = buildVimPluginFrom2Nix {
+  vim-illuminate = buildVimPlugin {
     pname = "vim-illuminate";
     version = "2023-09-26";
     src = fetchFromGitHub {
@@ -295,7 +295,7 @@ in
       fetchSubmodules = false;
     };
   };
-  nvim-lint = buildVimPluginFrom2Nix {
+  nvim-lint = buildVimPlugin {
     pname = "nvim-lint";
     version = "2023-09-30";
     src = fetchFromGitHub {
@@ -306,7 +306,7 @@ in
       fetchSubmodules = false;
     };
   };
-  comment-nvim = buildVimPluginFrom2Nix {
+  comment-nvim = buildVimPlugin {
     pname = "comment.nvim";
     version = "2023-08-07";
     src = fetchFromGitHub {
@@ -317,7 +317,7 @@ in
       fetchSubmodules = false;
     };
   };
-  LuaSnip = buildVimPluginFrom2Nix {
+  LuaSnip = buildVimPlugin {
     pname = "LuaSnip";
     version = "2023-09-25";
     src = fetchFromGitHub {
@@ -328,7 +328,7 @@ in
       fetchSubmodules = false;
     };
   };
-  friendly-snippets = buildVimPluginFrom2Nix {
+  friendly-snippets = buildVimPlugin {
     pname = "friendly-snippets";
     version = "2023-10-01";
     src = fetchFromGitHub {
@@ -339,7 +339,7 @@ in
       fetchSubmodules = false;
     };
   };
-  nvim-cmp = buildVimPluginFrom2Nix {
+  nvim-cmp = buildVimPlugin {
     pname = "nvim-cmp";
     version = "2023-08-26";
     src = fetchFromGitHub {
@@ -350,7 +350,7 @@ in
       fetchSubmodules = false;
     };
   };
-  cmp-nvim-lsp = buildVimPluginFrom2Nix {
+  cmp-nvim-lsp = buildVimPlugin {
     pname = "cmp-nvim-lsp";
     version = "2023-06-23";
     src = fetchFromGitHub {
@@ -361,7 +361,7 @@ in
       fetchSubmodules = false;
     };
   };
-  cmp-nvim-lsp-signature-help = buildVimPluginFrom2Nix {
+  cmp-nvim-lsp-signature-help = buildVimPlugin {
     pname = "cmp-nvim-lsp-signature-help";
     version = "2023-02-03";
     src = fetchFromGitHub {
@@ -372,7 +372,7 @@ in
       fetchSubmodules = false;
     };
   };
-  cmp_luasnip = buildVimPluginFrom2Nix {
+  cmp_luasnip = buildVimPlugin {
     pname = "cmp_luasnip";
     version = "2022-10-28";
     src = fetchFromGitHub {
@@ -383,7 +383,7 @@ in
       fetchSubmodules = false;
     };
   };
-  cmp-path = buildVimPluginFrom2Nix {
+  cmp-path = buildVimPlugin {
     pname = "cmp-path";
     version = "2022-10-03";
     src = fetchFromGitHub {
@@ -394,7 +394,7 @@ in
       fetchSubmodules = false;
     };
   };
-  cmp-buffer = buildVimPluginFrom2Nix {
+  cmp-buffer = buildVimPlugin {
     pname = "cmp-buffer";
     version = "2022-08-10";
     src = fetchFromGitHub {
@@ -405,7 +405,7 @@ in
       fetchSubmodules = false;
     };
   };
-  cmp-treesitter = buildVimPluginFrom2Nix {
+  cmp-treesitter = buildVimPlugin {
     pname = "cmp-treesitter";
     version = "2023-04-06";
     src = fetchFromGitHub {
@@ -416,7 +416,7 @@ in
       fetchSubmodules = false;
     };
   };
-  cmp-cmdline = buildVimPluginFrom2Nix {
+  cmp-cmdline = buildVimPlugin {
     pname = "cmp-cmdline";
     version = "2023-06-08";
     src = fetchFromGitHub {
@@ -427,7 +427,7 @@ in
       fetchSubmodules = false;
     };
   };
-  cmp-nvim-lsp-document-symbol = buildVimPluginFrom2Nix {
+  cmp-nvim-lsp-document-symbol = buildVimPlugin {
     pname = "cmp-nvim-lsp-document-symbol";
     version = "2023-04-01";
     src = fetchFromGitHub {
@@ -438,7 +438,7 @@ in
       fetchSubmodules = false;
     };
   };
-  core-nvim = buildVimPluginFrom2Nix {
+  core-nvim = buildVimPlugin {
     pname = "core.nvim";
     version = "2023-09-09";
     src = fetchFromGitHub {
@@ -449,7 +449,7 @@ in
       fetchSubmodules = false;
     };
   };
-  format-nvim = buildVimPluginFrom2Nix {
+  format-nvim = buildVimPlugin {
     pname = "format.nvim";
     version = "2023-09-17";
     src = fetchFromGitHub {
@@ -460,7 +460,7 @@ in
       fetchSubmodules = false;
     };
   };
-  nvim-autopairs = buildVimPluginFrom2Nix {
+  nvim-autopairs = buildVimPlugin {
     pname = "nvim-autopairs";
     version = "2023-09-23";
     src = fetchFromGitHub {
@@ -471,7 +471,7 @@ in
       fetchSubmodules = false;
     };
   };
-  nvim-ts-autotag = buildVimPluginFrom2Nix {
+  nvim-ts-autotag = buildVimPlugin {
     pname = "nvim-ts-autotag";
     version = "2023-06-16";
     src = fetchFromGitHub {
@@ -482,7 +482,7 @@ in
       fetchSubmodules = false;
     };
   };
-  vim-matchup = buildVimPluginFrom2Nix {
+  vim-matchup = buildVimPlugin {
     pname = "vim-matchup";
     version = "2023-09-02";
     src = fetchFromGitHub {
@@ -493,7 +493,7 @@ in
       fetchSubmodules = false;
     };
   };
-  nvim-treesitter-textobjects = buildVimPluginFrom2Nix {
+  nvim-treesitter-textobjects = buildVimPlugin {
     pname = "nvim-treesitter-textobjects";
     version = "2023-08-30";
     src = fetchFromGitHub {
@@ -504,7 +504,7 @@ in
       fetchSubmodules = false;
     };
   };
-  nvim-surround = buildVimPluginFrom2Nix {
+  nvim-surround = buildVimPlugin {
     pname = "nvim-surround";
     version = "2023-08-18";
     src = fetchFromGitHub {
@@ -515,7 +515,7 @@ in
       fetchSubmodules = false;
     };
   };
-  heirline-nvim = buildVimPluginFrom2Nix {
+  heirline-nvim = buildVimPlugin {
     pname = "heirline.nvim";
     version = "2023-09-03";
     src = fetchFromGitHub {
@@ -526,7 +526,7 @@ in
       fetchSubmodules = false;
     };
   };
-  indent-blankline-nvim = buildVimPluginFrom2Nix {
+  indent-blankline-nvim = buildVimPlugin {
     pname = "indent-blankline.nvim";
     version = "2023-10-01";
     src = fetchFromGitHub {
@@ -537,7 +537,7 @@ in
       fetchSubmodules = false;
     };
   };
-  virt-column-nvim = buildVimPluginFrom2Nix {
+  virt-column-nvim = buildVimPlugin {
     pname = "virt-column.nvim";
     version = "2023-09-19";
     src = fetchFromGitHub {
@@ -548,7 +548,7 @@ in
       fetchSubmodules = false;
     };
   };
-  toggleterm-nvim = buildVimPluginFrom2Nix {
+  toggleterm-nvim = buildVimPlugin {
     pname = "toggleterm.nvim";
     version = "2023-09-25";
     src = fetchFromGitHub {
@@ -559,7 +559,7 @@ in
       fetchSubmodules = false;
     };
   };
-  urlview-nvim = buildVimPluginFrom2Nix {
+  urlview-nvim = buildVimPlugin {
     pname = "urlview.nvim";
     version = "2023-09-19";
     src = fetchFromGitHub {
@@ -570,18 +570,18 @@ in
       fetchSubmodules = false;
     };
   };
-  gitsigns-nvim = buildVimPluginFrom2Nix {
+  gitsigns-nvim = buildVimPlugin {
     pname = "gitsigns.nvim";
     version = "2023-10-01";
     src = fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "e2ca739be75447fb5ccc9bfeb64f7afbc2cee5e6";
-      sha256 = "0x9mwarz61xggw4xdxllzgardi2qxp33bk24x59rqpkb8135bjrz";
+      rev = "19654d963e4f1d6d6543f38ab9802092393508c2";
+      sha256 = "1w2kjiiz5ac0qkp6q33gk70lghahxm41f0hjf6mkbk0x74aqj7ks";
       fetchSubmodules = false;
     };
   };
-  nui-nvim = buildVimPluginFrom2Nix {
+  nui-nvim = buildVimPlugin {
     pname = "nui.nvim";
     version = "2023-09-06";
     src = fetchFromGitHub {
@@ -592,7 +592,7 @@ in
       fetchSubmodules = false;
     };
   };
-  nvim-notify = buildVimPluginFrom2Nix {
+  nvim-notify = buildVimPlugin {
     pname = "nvim-notify";
     version = "2023-09-28";
     src = fetchFromGitHub {
@@ -603,7 +603,7 @@ in
       fetchSubmodules = false;
     };
   };
-  noice-nvim = buildVimPluginFrom2Nix {
+  noice-nvim = buildVimPlugin {
     pname = "noice.nvim";
     version = "2023-09-25";
     src = fetchFromGitHub {
