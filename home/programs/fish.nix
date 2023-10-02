@@ -21,8 +21,8 @@ in
         src = fetchFromGitHub {
           owner = "dracula";
           repo = "fish";
-          rev = "0e51af5e5346e5d24efabd43fb4631e2a8fd1b70";
-          hash = "sha256-YXh6pPJ9dJDPpq1kX5xd1edoOaH6jDq8pDOkx3k03/0=";
+          rev = "269cd7d76d5104fdc2721db7b8848f6224bdf554";
+          hash = "sha256-Hyq4EfSmWmxwCYhp3O8agr7VWFAflcUe8BUKh50fNfY=";
         };
       }
 
@@ -32,8 +32,8 @@ in
         src = fetchFromGitHub {
           owner = "franciscolourenco";
           repo = "done";
-          rev = "1.16.5";
-          sha256 = "sha256-E0wveeDw1VzEH2kzn63q9hy1xkccfxQHBV2gVpu2IdQ=";
+          rev = "1.17.1";
+          sha256 = "sha256-aYKTkx5v7tB6k/UBcS0NOgA6SiRrjzn1lUTH/Xp5DFM=";
         };
       }
 
@@ -43,8 +43,8 @@ in
         src = fetchFromGitHub {
           owner = "PatrickF1";
           repo = "fzf.fish";
-          rev = "v9.7";
-          sha256 = "sha256-haNSqXJzLL3JGvD4JrASVmhLJz6i9lna6/EdojXdFOo=";
+          rev = "v10.0";
+          hash = "sha256-CqRSkwNqI/vdxPKrShBykh+eHQq9QIiItD6jWdZ/DSM=";
         };
       }
 
