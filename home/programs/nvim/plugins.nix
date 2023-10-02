@@ -162,12 +162,12 @@ in
   };
   telescope-nvim = buildVimPlugin {
     pname = "telescope.nvim";
-    version = "2023-10-01";
+    version = "2023-10-02";
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "7d51950854a3f8853c5c0d570757095e9a5af313";
-      sha256 = "00rg07x67g1pv6fnqdixbhqfviz3zfdw5gcp1vpiirnp5fspmclc";
+      rev = "8c69f58427f98b2ca39a90a36db830c06e30351c";
+      sha256 = "00hh8v7nlvw800cjvz3j86myb6m4i6irss4kylbg15ypsp5p9yx9";
       fetchSubmodules = false;
     };
   };
@@ -554,8 +554,8 @@ in
     src = fetchFromGitHub {
       owner = "akinsho";
       repo = "toggleterm.nvim";
-      rev = "ef1bbff59c9ab5b468062c33ca183541a3849547";
-      sha256 = "1m06bvk02av5byb5yp2z3r3ylzwab7py31kf3dwmla15pki3a98w";
+      rev = "c80844fd52ba76f48fabf83e2b9f9b93273f418d";
+      sha256 = "19rbq39m7c1v9yrfmlwmfmxgv5d9bwcjbgjdp3cin409fnl4rv6b";
       fetchSubmodules = false;
     };
   };
@@ -576,8 +576,8 @@ in
     src = fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "8aedc8b15a2429802114f18da6eadc04ae92efb2";
-      sha256 = "08ywcdz14i5apblzgzbj087cfc7628qv1b50y9dskki9ibsfmfbs";
+      rev = "b14b9fba7d085ed8c11392aa51e575de84822bb1";
+      sha256 = "0mw9fb9mgvh6hfc18n871c3kbdwhyms0jxpj07glxhxb3qrw34yg";
       fetchSubmodules = false;
     };
   };
