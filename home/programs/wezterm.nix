@@ -47,8 +47,8 @@ in
       # Change PWD to config directory
       cd "$config_store_path"
 
-      # Init
-      echo "Compiling init.fnl ..."
+      # Config
+      echo "Compiling config.fnl ..."
       $fennel "$config_store_path/config.fnl" > "$out/config.lua"
 
       stylua "$out/"
