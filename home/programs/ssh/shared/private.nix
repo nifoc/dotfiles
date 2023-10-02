@@ -18,7 +18,7 @@
 
     "git.kempkens.io" = {
       port = 22;
-      user = "gitea";
+      user = "forgejo";
       identityFile = "~/.ssh/GitHub.pub";
       identitiesOnly = true;
       compression = true;

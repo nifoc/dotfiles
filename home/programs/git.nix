@@ -59,7 +59,7 @@
     includes = [
       # Private
       {
-        condition = "hasconfig:remote.*.url:gitea@git.kempkens.io:*/**";
+        condition = "hasconfig:remote.*.url:forgejo@git.kempkens.io:*/**";
         contents = {
           user = {
             signingKey = "~/.ssh/GitHub.pub";
