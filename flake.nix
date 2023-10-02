@@ -55,7 +55,10 @@
 
     nifoc-overlay = {
       url = "git+https://git.kempkens.io/daniel/nix-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
 
     deploy-rs = {
