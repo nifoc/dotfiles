@@ -5,9 +5,8 @@ let
 in
 {
   services = {
-    gitea = {
+    forgejo = {
       enable = true;
-      package = pkgs.forgejo;
 
       stateDir = "/var/lib/forgejo";
 
@@ -17,9 +16,11 @@ in
 
       lfs.enable = true;
 
-      appName = "kempkens.io Forge";
-
       settings = {
+        DEFAULT = {
+          APP_NAME = "kempkens.io Forge";
+        };
+
         server = {
           PROTOCOL = "http+unix";
           DOMAIN = fqdn;
@@ -67,7 +68,7 @@ in
 
       locations."/" = {
         recommendedProxySettings = true;
-        proxyPass = "http://unix:/run/gitea/gitea.sock";
+        proxyPass = "http://unix:/run/forgejo/forgejo.sock";
       };
     };
   };
