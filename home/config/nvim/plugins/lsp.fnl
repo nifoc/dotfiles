@@ -1,6 +1,6 @@
 (let [lsp (require :lspconfig)
       lsp-configs (require :lspconfig.configs)
-      cmp (require :cmp_nvim_lsp)
+      coq (require :coq)
       navic (require :nvim-navic)
       diagnostic (require :nifoc.diagnostic)
       formatting (require :nifoc.formatting)
@@ -29,9 +29,8 @@
                      :desc "Automatic LSP setup"})
   ;; Servers
   (vim.lsp.set_log_level :OFF)
-  (let [capabilities (cmp.default_capabilities)
-        flags {:allow_incremental_sync true :debounce_text_changes 700}
-        default-config {: capabilities : flags}
+  (let [flags {:allow_incremental_sync true :debounce_text_changes 700}
+        default-config (coq.lsp_ensure_capabilities {: flags})
         default-servers [:bashls
                          :cssls
                          :dockerls

@@ -13,7 +13,7 @@ in
 
     withNodeJs = false;
     withRuby = false;
-    withPython3 = false;
+    withPython3 = true;
 
     extraLuaPackages = luaPkgs: with luaPkgs; [ jsregexp lua-toml readline ];
 
@@ -23,6 +23,7 @@ in
       tree-sitter
       fd
       ripgrep
+      universal-ctags
 
       # LSP
       fennel-ls
@@ -192,6 +193,15 @@ in
         telescope-toggleterm-nvim
         telescope-undo-nvim
 
+        # Completion
+        {
+          plugin = coq_nvim;
+          config = builtins.readFile ../../config/nvim/plugins/coq.fnl;
+          type = "fennel";
+        }
+
+        coq-artifacts
+
         # LSP
         {
           plugin = nvim-lspconfig;
@@ -200,8 +210,6 @@ in
         }
 
         nvim-jdtls
-
-        lspkind-nvim
 
         {
           plugin = nvim-navic;
@@ -228,31 +236,6 @@ in
           config = builtins.readFile ../../config/nvim/plugins/comment.fnl;
           type = "fennel";
         }
-
-        # Snippets
-        {
-          plugin = LuaSnip;
-          config = builtins.readFile ../../config/nvim/plugins/luasnip.fnl;
-          type = "fennel";
-        }
-
-        friendly-snippets
-
-        # cmp
-        {
-          plugin = nvim-cmp;
-          config = builtins.readFile ../../config/nvim/plugins/cmp.fnl;
-          type = "fennel";
-        }
-
-        cmp-nvim-lsp
-        # cmp-nvim-lsp-signature-help
-        cmp_luasnip
-        cmp-path
-        cmp-buffer
-        cmp-treesitter
-        cmp-cmdline
-        cmp-nvim-lsp-document-symbol
 
         # Formatting
 
@@ -336,13 +319,6 @@ in
         }
 
         nvim-notify
-        nui-nvim
-
-        {
-          plugin = noice-nvim;
-          config = builtins.readFile ../../config/nvim/plugins/noice.fnl;
-          type = "fennel";
-        }
       ];
   };
 

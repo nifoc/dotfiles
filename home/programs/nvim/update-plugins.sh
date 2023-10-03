@@ -90,6 +90,10 @@ for plugin in "${plugin_array[@]}"; do
   #  echo "${name} = pkgs.vimPlugins.nvim-treesitter.overrideAttrs (_: {" >>"$nix_new_file"
   #  close_block="});"
   #  ;;
+  coq_nvim)
+    echo "${name} = pkgs.vimPlugins.coq_nvim.overrideAttrs (_: {" >>"$nix_new_file"
+    close_block="});"
+    ;;
   *)
     {
       echo "${name} = buildVimPlugin {"

@@ -29,26 +29,17 @@
 # LSP
 - src: neovim/nvim-lspconfig
 - src: mfussenegger/nvim-jdtls
-- src: onsails/lspkind.nvim
 - src: SmiteshP/nvim-navic
 - src: RRethy/vim-illuminate
 # Linter
 - src: mfussenegger/nvim-lint
 # Comments
 - src: numtostr/comment.nvim
-# Snippets
-- src: L3MON4D3/LuaSnip
-- src: rafamadriz/friendly-snippets
-# cmp
-- src: hrsh7th/nvim-cmp
-- src: hrsh7th/cmp-nvim-lsp
-- src: hrsh7th/cmp-nvim-lsp-signature-help
-- src: saadparwaiz1/cmp_luasnip
-- src: hrsh7th/cmp-path
-- src: hrsh7th/cmp-buffer
-- src: ray-x/cmp-treesitter
-- src: hrsh7th/cmp-cmdline
-- src: hrsh7th/cmp-nvim-lsp-document-symbol
+# Completion
+- src: ms-jpq/coq_nvim
+  branch: coq
+- src: ms-jpq/coq.artifacts
+  branch: artifacts
 # Formatting
 - src: niuiic/core.nvim
 - src: niuiic/format.nvim
@@ -66,6 +57,4 @@
 - src: akinsho/toggleterm.nvim
 - src: axieax/urlview.nvim
 - src: lewis6991/gitsigns.nvim
-- src: MunifTanjim/nui.nvim
 - src: rcarriga/nvim-notify
-- src: folke/noice.nvim

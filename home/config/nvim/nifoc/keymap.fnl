@@ -7,7 +7,6 @@
       telescope-toggleterm (require :telescope-toggleterm)
       telescope-ivy (telescope-themes.get_ivy)
       telescope-dropdown (telescope-themes.get_dropdown)
-      noice (require :noice)
       npairs (require :nvim-autopairs)
       gitsigns (require :gitsigns)
       repl (require :nifoc.repl)
@@ -56,8 +55,8 @@
                 {:desc "Show Diagnostics"})
     (keymap.set :n :<leader>dtp :<cmd>TSPlaygroundToggle<CR>
                 {:desc "Toggle Treetsitter Playground"})
-    (keymap.set :n :<leader>dn #(noice.cmd :telescope)
-                {:desc "Display Notifications"})
+    ; (keymap.set :n :<leader>dn #(noice.cmd :telescope)
+    ;             {:desc "Display Notifications"})
     ;; Other Mappings
     (keymap.set :n :<CR> ":nohlsearch<CR><CR>" {:silent true})
     (keymap.set :i :<CR> npairs.autopairs_cr {:expr true :silent true})
