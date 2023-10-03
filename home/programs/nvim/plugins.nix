@@ -63,12 +63,12 @@ in
   };
   yanky-nvim = buildVimPlugin {
     pname = "yanky.nvim";
-    version = "2023-09-28";
+    version = "2023-10-03";
     src = fetchFromGitHub {
       owner = "gbprod";
       repo = "yanky.nvim";
-      rev = "590a713b0372485f595eea36e7e3ab2069946794";
-      sha256 = "1mrygmziy880ic91ffr8lyaxd4zb7pgna18ib8qb5a8abfysz9hz";
+      rev = "c54a43cb377710b17907be8c863967fee1ffc4ee";
+      sha256 = "06jfhdxvvzs2jamf7g4nin9yxlhiy52fx5602k6ccvid0bbk85b5";
       fetchSubmodules = false;
     };
   };
@@ -478,6 +478,17 @@ in
       repo = "nvim-notify";
       rev = "e4a2022f4fec2d5ebc79afa612f96d8b11c627b3";
       sha256 = "1a7s4y8xd1plcidnzs29rhqw7mfbj1q01bqffqjmimii9v6azmfn";
+      fetchSubmodules = false;
+    };
+  };
+  nvim-lsp-notify = buildVimPlugin {
+    pname = "nvim-lsp-notify";
+    version = "2023-03-19";
+    src = fetchFromGitHub {
+      owner = "mrded";
+      repo = "nvim-lsp-notify";
+      rev = "9986955e0423f2f5cdb3bd4f824bc980697646a0";
+      sha256 = "06zaydcsmmdblqvrkiv827lv3z9smf90v57f62fqgbxn5rhx38r7";
       fetchSubmodules = false;
     };
   };
