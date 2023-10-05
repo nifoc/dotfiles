@@ -3,7 +3,9 @@
 {
   services.nginx = {
     enable = true;
-    package = pkgs.nginxQuic;
+    package = pkgs.nginxQuic.override {
+      withKTLS = true;
+    };
 
     recommendedOptimisation = true;
     recommendedGzipSettings = true;
