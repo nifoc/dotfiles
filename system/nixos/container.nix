@@ -43,8 +43,6 @@
 
   # It looks like there is no way to activate the "built-in" service and timer ...
   systemd.services.podman-auto-update-custom = {
-    enable = false;
-
     description = "Run podman auto-update daily";
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
