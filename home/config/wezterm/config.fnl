@@ -104,8 +104,8 @@
    :tab_max_width 42
    :window_frame {:active_titlebar_bg colors.frame-background
                   :inactive_titlebar_bg colors.frame-background
-                  :font (wezterm.font {:family "JetBrains Mono"
-                                       :weight :Medium})
+                  :font (wezterm.font {:family "Berkeley Mono"
+                                       :weight :Regular})
                   :font_size 11}
    :colors {:tab_bar {:background colors.frame-background
                       :inactive_tab_edge colors.frame-background
@@ -114,8 +114,8 @@
                       :new_tab_hover {:bg_color colors.hover-background
                                       :fg_color colors.hover-foreground}}}
    ;; Fonts
-   :font (wezterm.font_with_fallback [{:family "JetBrains Mono"
-                                       :weight :Medium}
+   :font (wezterm.font_with_fallback [{:family "Berkeley Mono"
+                                       :weight :Regular}
                                       "Symbols Nerd Font"
                                       "Apple Symbols"
                                       "Apple Color Emoji"
