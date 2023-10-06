@@ -275,12 +275,12 @@ in
   };
   vim-illuminate = buildVimPlugin {
     pname = "vim-illuminate";
-    version = "2023-09-26";
+    version = "2023-10-06";
     src = fetchFromGitHub {
       owner = "RRethy";
       repo = "vim-illuminate";
-      rev = "1b5d70332a51a1de05f281069851865a2bb1e6d7";
-      sha256 = "0dbbak53d5hi8jkp0wxcb3x6kysdi7ry2w1k9n0lj64qkmp5afnb";
+      rev = "3bd2ab64b5d63b29e05691e624927e5ebbf0fb86";
+      sha256 = "0x3li63dijw9z4imbajpxbrclw32649810bsnx5cawrqgbc7kl99";
       fetchSubmodules = false;
     };
   };
@@ -384,12 +384,12 @@ in
   };
   nvim-treesitter-textobjects = buildVimPlugin {
     pname = "nvim-treesitter-textobjects";
-    version = "2023-08-30";
+    version = "2023-10-06";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "bd103502252027434ec42f628d2dbf54821d4ce6";
-      sha256 = "030z020v4g140a72mv1q7l6bshhrkgisbd6w3hiwlv9a1mgz4bbc";
+      rev = "4724694bc03ce1148860a46d9d77c3664d8188ab";
+      sha256 = "0ndd08a1s8cifw0w9gg26r8nvzfrky746ip70zg9x4qzg99915vb";
       fetchSubmodules = false;
     };
   };

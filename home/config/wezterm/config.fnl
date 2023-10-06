@@ -63,7 +63,7 @@
                       [; Left
                        {:Background {:Color colors.active-background}}
                        {:Foreground {:Color colors.active-indicator}}
-                       {:Text "┃ "}
+                       {:Text "│ "}
                        ; Center
                        {:Foreground {:Color tab-info.color}}
                        {:Text tab-info.icon}
@@ -105,7 +105,10 @@
    :window_frame {:active_titlebar_bg colors.frame-background
                   :inactive_titlebar_bg colors.frame-background
                   :font (wezterm.font {:family "Berkeley Mono"
-                                       :weight :Regular})
+                                       :weight :Regular
+                                       :harfbuzz_features [:calt=0
+                                                           :clig=0
+                                                           :liga=0]})
                   :font_size 11}
    :colors {:tab_bar {:background colors.frame-background
                       :inactive_tab_edge colors.frame-background

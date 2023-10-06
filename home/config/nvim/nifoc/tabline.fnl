@@ -74,7 +74,7 @@
   ;; Indicator
   (set mod.active-indicator
        {:provider (fn [self]
-                    (if self.is_active "┃ " "  "))
+                    (if self.is_active "│ " "  "))
         :hl (fn [self]
               (if self.is_active {:fg colors.purple :bg bg-active :bold true}
                   {:fg fg-inactive :bg bg-inactive :bold true}))})

@@ -401,19 +401,26 @@ in
     recursive = true;
   };
 
-  home.file =
-    let
-      nvim-spell-directory = "${config.xdg.configHome}/nvim/spell";
-    in
-    {
-      "${nvim-spell-directory}/de.utf-8.spl".source = builtins.fetchurl {
-        url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl";
-        sha256 = "73c7107ea339856cdbe921deb92a45939c4de6eb9c07261da1b9dd19f683a3d1";
+  home = {
+    file =
+      let
+        nvim-spell-directory = "${config.xdg.configHome}/nvim/spell";
+      in
+      {
+        "${nvim-spell-directory}/de.utf-8.spl".source = builtins.fetchurl {
+          url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl";
+          sha256 = "73c7107ea339856cdbe921deb92a45939c4de6eb9c07261da1b9dd19f683a3d1";
+        };
+
+        "${nvim-spell-directory}/de.utf-8.sug".source = builtins.fetchurl {
+          url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.sug";
+          sha256 = "13d0ecf92863d89ef60cd4a8a5eb2a5a13a0e8f9ba8d1c6abe47aba85714a948";
+        };
       };
 
-      "${nvim-spell-directory}/de.utf-8.sug".source = builtins.fetchurl {
-        url = "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.sug";
-        sha256 = "13d0ecf92863d89ef60cd4a8a5eb2a5a13a0e8f9ba8d1c6abe47aba85714a948";
-      };
-    };
+    activation.neovimCache = lib.hm.dag.entryAfter [ "linkGeneration" ] /* bash */ ''
+      $VERBOSE_ECHO "Resetting loader"
+      $DRY_RUN_CMD ${config.programs.neovim.finalPackage}/bin/nvim -l <(echo "vim.loader.reset()")
+    '';
+  };
 }
