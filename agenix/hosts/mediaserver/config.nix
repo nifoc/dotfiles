@@ -36,6 +36,14 @@
       group = "media_group";
     };
 
+    recyclarr-config = {
+      file = ./recyclarr/config.age;
+      symlink = false;
+      path = "/var/lib/recyclarr/recyclarr.yml";
+      owner = "1000";
+      group = "1000";
+    };
+
     unpackerr-config = {
       file = ./unpackerr/config.age;
       owner = "media_user";

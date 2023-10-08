@@ -88,6 +88,8 @@ in
 
   "agenix/hosts/mediaserver/aria2/config.age".publicKeys = mediaserver;
 
+  "agenix/hosts/mediaserver/recyclarr/config.age".publicKeys = mediaserver;
+
   "agenix/hosts/mediaserver/unpackerr/config.age".publicKeys = mediaserver;
 
   # argon

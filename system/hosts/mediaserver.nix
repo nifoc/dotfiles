@@ -37,6 +37,7 @@ in
     ../nixos/unpackerr.nix
     ../nixos/sonarr.nix
     ../nixos/radarr.nix
+    ../nixos/recyclarr.nix
     ../nixos/sabnzbd.nix
     ../nixos/qbittorrent.nix
     ../nixos/flaresolverr.nix

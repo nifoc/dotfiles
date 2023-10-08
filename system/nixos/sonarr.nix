@@ -2,7 +2,7 @@
 
 {
   virtualisation.oci-containers.containers.sonarr = {
-    image = "lscr.io/linuxserver/sonarr:latest";
+    image = "lscr.io/linuxserver/sonarr:develop";
     ports = [ "192.168.42.2:8989:8989" ];
     environment = {
       "PUID" = "1001";

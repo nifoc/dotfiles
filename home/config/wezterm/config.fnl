@@ -126,7 +126,7 @@
                                       "Noto Sans Symbols2"
                                       :Unifont])
    :font_size 13
-   :line_height 0.9
+   :line_height 0.95
    :freetype_load_target :Light
    ;:freetype_render_target :HorizontalLcd
    :allow_square_glyphs_to_overflow_width :WhenFollowedBySpace
