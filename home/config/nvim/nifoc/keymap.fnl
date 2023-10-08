@@ -7,14 +7,11 @@
       telescope-toggleterm (require :telescope-toggleterm)
       telescope-ivy (telescope-themes.get_ivy)
       telescope-dropdown (telescope-themes.get_dropdown)
-      npairs (require :nvim-autopairs)
       gitsigns (require :gitsigns)
       repl (require :nifoc.repl)
       formatting (require :nifoc.formatting)]
   (fn mod.setup []
     (keymap.set :n :<space> :<nop> {:noremap true})
-    (set vim.g.mapleader " ")
-    (set vim.opt.timeoutlen 400)
     ;; Leader Mappings
     (keymap.set :n :<leader>o telescope-nifoc.find-files {:desc "Find Files"})
     (keymap.set :n :<leader>s #(telescope-builtin.live_grep telescope-ivy)
@@ -58,8 +55,7 @@
     ; (keymap.set :n :<leader>dn #(noice.cmd :telescope)
     ;             {:desc "Display Notifications"})
     ;; Other Mappings
-    (keymap.set :n :<CR> ":nohlsearch<CR><CR>" {:silent true})
-    (keymap.set :i :<CR> npairs.autopairs_cr {:expr true :silent true})
+    ; (keymap.set :n :<CR> ":nohlsearch<CR><CR>" {:silent true})
     (keymap.set :n :F formatting.maybe-format-buffer {:desc "Format Buffer"})
     (keymap.set :n :<A-Left> :b)
     (keymap.set :n :<A-Right> :w)

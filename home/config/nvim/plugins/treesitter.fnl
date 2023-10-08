@@ -14,8 +14,6 @@
                                                              :ac "@conditional.outer"
                                                              :ic "@conditional.inner"}}}
                             :matchup {:enable true :disable disable-parsers}
-                            :autopairs {:enable true :disable disable-parsers}
-                            :autotag {:enable true :disable disable-parsers}
                             :playground {:enable true}
                             :nifoc_hooks {:enable true
                                           :disable disable-parsers}}))

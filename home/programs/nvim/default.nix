@@ -106,6 +106,13 @@ in
         # Utils
         popup-nvim
         plenary-nvim
+
+        {
+          plugin = mini-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/mini.fnl;
+          type = "fennel";
+        }
+
         nvim-web-devicons
 
         {
@@ -136,15 +143,6 @@ in
         {
           plugin = substitute-nvim;
           config = builtins.readFile ../../config/nvim/plugins/substitute.fnl;
-          type = "fennel";
-        }
-
-        {
-          plugin = leap-nvim;
-          config = /* fennel */ ''
-            (let [leap (require :leap)]
-              (leap.set_default_keymaps))
-          '';
           type = "fennel";
         }
 
@@ -195,12 +193,12 @@ in
 
         # Completion
         {
-          plugin = coq_nvim;
+          plugin = pkgs.vimPlugins.coq_nvim;
           config = builtins.readFile ../../config/nvim/plugins/coq.fnl;
           type = "fennel";
         }
 
-        coq-artifacts
+        pkgs.vimPlugins.coq-artifacts
 
         # LSP
         {
@@ -230,13 +228,6 @@ in
           type = "fennel";
         }
 
-        # Comments
-        {
-          plugin = comment-nvim;
-          config = builtins.readFile ../../config/nvim/plugins/comment.fnl;
-          type = "fennel";
-        }
-
         # Formatting
 
         core-nvim
@@ -249,21 +240,6 @@ in
 
         # Pairs
         {
-          plugin = nvim-autopairs;
-          config = builtins.readFile ../../config/nvim/plugins/autopairs.fnl;
-          type = "fennel";
-        }
-
-        {
-          plugin = nvim-ts-autotag;
-          config = /* fennel */ ''
-            (let [ts-autotag (require :nvim-ts-autotag)]
-              (ts-autotag.setup))
-          '';
-          type = "fennel";
-        }
-
-        {
           plugin = vim-matchup;
           config = builtins.readFile ../../config/nvim/plugins/matchup.fnl;
           type = "fennel";
@@ -271,12 +247,6 @@ in
 
         # Textobjects
         nvim-treesitter-textobjects
-
-        {
-          plugin = nvim-surround;
-          config = builtins.readFile ../../config/nvim/plugins/surround.fnl;
-          type = "fennel";
-        }
 
         # UI
         {

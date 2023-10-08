@@ -64,6 +64,8 @@
   (let [theme (require :nifoc.theme)]
     (theme.setup))
   ;; Plugins
+  (set g.mapleader " ") ; Some plugins need this, so set it before the keymap is loaded
+  (set o.timeoutlen 400)
   (set g.loaded_python_provider 0) ; Disable built-in providers
   (set g.loaded_ruby_provider 0)
   (set g.loaded_node_provider 0)

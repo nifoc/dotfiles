@@ -1,6 +1,7 @@
 # Utils
 - src: nvim-lua/popup.nvim
 - src: nvim-lua/plenary.nvim
+- src: echasnovski/mini.nvim
 - src: kyazdani42/nvim-web-devicons
 - src: willothy/wezterm.nvim
 # Keybindings
@@ -8,7 +9,6 @@
 - src: gbprod/yanky.nvim
 - src: gbprod/cutlass.nvim
 - src: gbprod/substitute.nvim
-- src: ggandor/leap.nvim
 # Themes
 - src: Mofiqul/dracula.nvim
 # Syntax
@@ -33,23 +33,13 @@
 - src: RRethy/vim-illuminate
 # Linter
 - src: mfussenegger/nvim-lint
-# Comments
-- src: numtostr/comment.nvim
-# Completion
-- src: ms-jpq/coq_nvim
-  branch: coq
-- src: ms-jpq/coq.artifacts
-  branch: artifacts
 # Formatting
 - src: niuiic/core.nvim
 - src: niuiic/format.nvim
 # Pairs
-- src: windwp/nvim-autopairs
-- src: windwp/nvim-ts-autotag
 - src: andymass/vim-matchup
 # Textobjects
 - src: nvim-treesitter/nvim-treesitter-textobjects
-- src: kylechui/nvim-surround
 # UI
 - src: rebelot/heirline.nvim
 - src: lukas-reineke/indent-blankline.nvim
