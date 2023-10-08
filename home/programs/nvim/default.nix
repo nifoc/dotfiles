@@ -181,12 +181,6 @@ in
           type = "fennel";
         }
 
-        {
-          plugin = todo-comments-nvim;
-          config = builtins.readFile ../../config/nvim/plugins/todo-comments.fnl;
-          type = "fennel";
-        }
-
         telescope-ui-select-nvim
         telescope-toggleterm-nvim
         telescope-undo-nvim

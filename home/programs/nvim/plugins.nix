@@ -196,17 +196,6 @@ in
       fetchSubmodules = false;
     };
   };
-  todo-comments-nvim = buildVimPlugin {
-    pname = "todo-comments.nvim";
-    version = "2023-07-28";
-    src = fetchFromGitHub {
-      owner = "folke";
-      repo = "todo-comments.nvim";
-      rev = "3094ead8edfa9040de2421deddec55d3762f64d1";
-      sha256 = "0qmx94fq1pllwnwzav87fi3v9d64sm8ggv9jgs19flr6r8kh0vs2";
-      fetchSubmodules = false;
-    };
-  };
   telescope-ui-select-nvim = buildVimPlugin {
     pname = "telescope-ui-select.nvim";
     version = "2022-04-30";
