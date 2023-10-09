@@ -275,12 +275,12 @@ in
   };
   nvim-lint = buildVimPlugin {
     pname = "nvim-lint";
-    version = "2023-10-06";
+    version = "2023-10-09";
     src = fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-lint";
-      rev = "edb0a845bcc04e4f0c99950a360314df9111822d";
-      sha256 = "1sg52x48qlk5i3s3agsvkm7dabbay1d8ff3xnima57i393llksmb";
+      rev = "79ffe0f63d1e7545157f246e7eaa74e07fea1612";
+      sha256 = "0di2izyk8vic11yfxdcasfmajyzlmsbdp1jz25bygzw078zd2spl";
       fetchSubmodules = false;
     };
   };
@@ -290,8 +290,8 @@ in
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "conform.nvim";
-      rev = "38da505fb0339f68734b659460ad49d4a60ecf34";
-      sha256 = "16k2afb0kr7h5f643isngnkpm3dj3q77kar58nsxy0qryvwwdd4x";
+      rev = "9bd169029ac7fac5d0b3899a47556549d113a4c2";
+      sha256 = "1jp0pdg1hbm1pms7cxiy6mpi2kdk23m4g0fpbfr1v2n8ql19196s";
       fetchSubmodules = false;
     };
   };
