@@ -52,10 +52,7 @@
                 {:desc "Show Diagnostics"})
     (keymap.set :n :<leader>dtp :<cmd>TSPlaygroundToggle<CR>
                 {:desc "Toggle Treetsitter Playground"})
-    ; (keymap.set :n :<leader>dn #(noice.cmd :telescope)
-    ;             {:desc "Display Notifications"})
     ;; Other Mappings
-    ; (keymap.set :n :<CR> ":nohlsearch<CR><CR>" {:silent true})
     (keymap.set :n :F formatting.maybe-format-buffer {:desc "Format Buffer"})
     (keymap.set :n :<A-Left> :b)
     (keymap.set :n :<A-Right> :w)
@@ -109,4 +106,3 @@
       (keymap.set :t :<C-l> "<C-\\><C-n><C-W>l" map-opts)))
 
   mod)
-

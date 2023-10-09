@@ -3,7 +3,6 @@
       coq (require :coq)
       navic (require :nvim-navic)
       diagnostic (require :nifoc.diagnostic)
-      formatting (require :nifoc.formatting)
       augroup (vim.api.nvim_create_augroup :NifocLsp {:clear true})
       aucmd vim.api.nvim_create_autocmd]
   (fn setup-inlay-hint-toggle [bufnr]
@@ -24,7 +23,6 @@
                                      (vim.lsp.inlay_hint bufnr true)
                                      (setup-inlay-hint-toggle bufnr))
                                    (diagnostic.maybe-enable-lsp client bufnr)
-                                   (formatting.maybe-enable-lsp client bufnr)
                                    ((. (require :lsp-notify) :setup) {})))
                      :group augroup
                      :desc "Automatic LSP setup"})

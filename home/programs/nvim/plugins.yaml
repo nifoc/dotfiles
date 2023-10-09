@@ -33,8 +33,7 @@
 # Linter
 - src: mfussenegger/nvim-lint
 # Formatting
-- src: niuiic/core.nvim
-- src: niuiic/format.nvim
+- src: stevearc/conform.nvim
 # Pairs
 - src: andymass/vim-matchup
 # Textobjects

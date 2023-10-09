@@ -224,10 +224,8 @@ in
 
         # Formatting
 
-        core-nvim
-
         {
-          plugin = format-nvim;
+          plugin = conform-nvim;
           config = builtins.readFile ../../config/nvim/plugins/formatter.fnl;
           type = "fennel";
         }
@@ -321,7 +319,7 @@ in
       for fnlfile in $nifoc_store_fnl; do
         file_out_path="$(echo "$fnlfile" | sed "s|$nifoc_store_path/||" | sed "s/.fnl$/.lua/")"
 
-        echo "Compiling $fnlfile ..."
+        echo "Compiling $fnlfile -> $out/lua/nifoc/$file_out_path"
         $fennel "$fnlfile" > "$out/lua/nifoc/$file_out_path"
       done
 
@@ -332,7 +330,7 @@ in
       for fnlfile in $ftplugin_store_fnl; do
         file_out_path="$(echo "$fnlfile" | sed "s|$ftplugin_store_path/||" | sed "s/.fnl$/.lua/")"
 
-        echo "Compiling $fnlfile ..."
+        echo "Compiling $fnlfile -> $out/ftplugin/$file_out_path"
         $fennel "$fnlfile" > "$out/ftplugin/$file_out_path"
       done
 
@@ -343,7 +341,7 @@ in
       for fnlfile in $after_store_fnl; do
         file_out_path="$(echo "$fnlfile" | sed "s|$after_store_path/||" | sed "s/.fnl$/.lua/")"
 
-        echo "Compiling $fnlfile ..."
+        echo "Compiling $fnlfile -> $out/after/$file_out_path"
         $fennel "$fnlfile" > "$out/after/$file_out_path"
       done
 
@@ -354,7 +352,9 @@ in
       ${config.programs.neovim.generatedConfigs.fennel}
       nil
       EOF
-      } | $fennel - > "$out/lua/configuration/plugins.lua"
+      } > "$out/lua/configuration/plugins.fnl"
+      $fennel "$out/lua/configuration/plugins.fnl" > "$out/lua/configuration/plugins.lua"
+      rm -f "$out/lua/configuration/plugins.fnl"
 
       # Other
       echo "Copying tree-sitter queries ..."

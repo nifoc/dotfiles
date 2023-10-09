@@ -2,24 +2,22 @@
       b vim.b
       api vim.api
       set-bufvar vim.api.nvim_buf_set_var
-      format (require :format)]
+      conform (require :conform)]
   (fn mod.setup []
-    (let [usercmd vim.api.nvim_create_user_command
-          augroup (vim.api.nvim_create_augroup :NifocFormatting {:clear true})
-          aucmd vim.api.nvim_create_autocmd]
+    (let [usercmd api.nvim_create_user_command
+          augroup (api.nvim_create_augroup :NifocFormatting {:clear true})
+          aucmd api.nvim_create_autocmd]
       (usercmd :FormatDisableBuffer mod.disable-for-buffer
                {:desc "Disable Formatting for the current buffer"})
       (usercmd :FormatEnableBuffer mod.enable-for-buffer
                {:desc "Enable Formatting for the current buffer"})
-      ;; (aucmd :BufWritePre
-      ;;       {:callback mod.maybe-format-buffer
-      ;;        :group augroup
-      ;;        :desc "Run Formatter before saving"})
-      ))
+      (aucmd :BufWritePre
+             {:callback mod.maybe-format-buffer
+              :group augroup
+              :desc "Run Formatter before saving"})))
 
   (fn has-formatter-config? [ft]
-    (let [cfg (. (require :format.static) :config)
-          fts (. cfg :filetypes)]
+    (let [fts conform.formatters_by_ft]
       (not= (. fts ft) nil)))
 
   (fn format-with-lsp? [ft]
@@ -35,17 +33,11 @@
   (fn mod.active? []
     (let [ft vim.bo.filetype]
       (if (= b.nifoc_formatter_disabled 1) false
-          (has-formatter-config? ft))))
-
-  (fn mod.maybe-enable-lsp [client bufnr]
-    (when (client.supports_method :textDocument/rangeFormatting)
-      (api.nvim_buf_set_option bufnr :formatexpr "v:lua.vim.lsp.formatexpr()")))
+          (or (has-formatter-config? ft) (format-with-lsp? ft)))))
 
   (fn mod.maybe-format-buffer []
     (let [ft vim.bo.filetype]
       (if (= b.nifoc_formatter_disabled 1) nil
-          (format-with-lsp? ft) (vim.lsp.buf.format)
-          (has-formatter-config? ft) (format.format)
-          nil)))
+          (conform.format {:lsp_fallback (format-with-lsp? ft)}))))
 
   mod)
