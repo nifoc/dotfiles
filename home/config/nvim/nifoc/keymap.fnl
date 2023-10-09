@@ -53,7 +53,7 @@
     (keymap.set :n :<leader>dtp :<cmd>TSPlaygroundToggle<CR>
                 {:desc "Toggle Treetsitter Playground"})
     ;; Other Mappings
-    (keymap.set :n :F formatting.maybe-format-buffer {:desc "Format Buffer"})
+    (keymap.set :n :F #(formatting.maybe-format-buffer 0) {:desc "Format Buffer"})
     (keymap.set :n :<A-Left> :b)
     (keymap.set :n :<A-Right> :w)
     (keymap.set :n :<S-Left> "^")

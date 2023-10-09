@@ -25,7 +25,10 @@
   ((. (require :mini.jump2d) :setup) {:hooks {:before_start (fn []
                                                               (vim.cmd :nohlsearch))}})
   ;; https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-move.md
-  ((. (require :mini.move) :setup) {})
+  ((. (require :mini.move) :setup) {:mappings {:down :<A-Down>
+                                               :up :<A-Up>
+                                               :line_down :<A-Down>
+                                               :line_up :<A-Up>}})
   ;; https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-surround.md
   ((. (require :mini.surround) :setup) {})
   ;; https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-pairs.md

@@ -12,7 +12,7 @@
       (usercmd :FormatEnableBuffer mod.enable-for-buffer
                {:desc "Enable Formatting for the current buffer"})
       (aucmd :BufWritePre
-             {:callback mod.maybe-format-buffer
+             {:callback #(mod.maybe-format-buffer $1.buf)
               :group augroup
               :desc "Run Formatter before saving"})))
 
@@ -35,9 +35,9 @@
       (if (= b.nifoc_formatter_disabled 1) false
           (or (has-formatter-config? ft) (format-with-lsp? ft)))))
 
-  (fn mod.maybe-format-buffer []
+  (fn mod.maybe-format-buffer [bufnr]
     (let [ft vim.bo.filetype]
       (if (= b.nifoc_formatter_disabled 1) nil
-          (conform.format {:lsp_fallback (format-with-lsp? ft)}))))
+          (conform.format {: bufnr :lsp_fallback (format-with-lsp? ft)}))))
 
   mod)
