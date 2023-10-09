@@ -237,9 +237,6 @@ in
           type = "fennel";
         }
 
-        # Textobjects
-        nvim-treesitter-textobjects
-
         # UI
         {
           plugin = heirline-nvim;

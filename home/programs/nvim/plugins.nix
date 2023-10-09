@@ -122,8 +122,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "dfd4fb330f75595813e2a2f83000580a36dd10ff";
-      sha256 = "08lvg3xxfdm4im5q63ahpnn2y22apznvy12ka599q89ilg20mj6b";
+      rev = "1d1c32b64b17b866152f29a3676a719cb6078028";
+      sha256 = "1m1lmkxsrag3zdqd2f7ghk7wsjjrrx9fmsffjkphsdwdfq7q3vy0";
       fetchSubmodules = false;
     };
   };
@@ -303,17 +303,6 @@ in
       repo = "vim-matchup";
       rev = "6dbe108230c7dbbf00555b7d4d9f6a891837ef07";
       sha256 = "1c0rkdr0pjrrplvr5adnb0q9vkq11kr7m5mvlggm633g45khjw5l";
-      fetchSubmodules = false;
-    };
-  };
-  nvim-treesitter-textobjects = buildVimPlugin {
-    pname = "nvim-treesitter-textobjects";
-    version = "2023-10-07";
-    src = fetchFromGitHub {
-      owner = "nvim-treesitter";
-      repo = "nvim-treesitter-textobjects";
-      rev = "76c7a89b41de77a4f83fb77fa072c5ad7605fe3b";
-      sha256 = "0438xz3k77xfmnvi210sxn4wda89nnw63a45ab2c5hvnhny9m0vm";
       fetchSubmodules = false;
     };
   };

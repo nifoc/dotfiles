@@ -36,8 +36,6 @@
 - src: stevearc/conform.nvim
 # Pairs
 - src: andymass/vim-matchup
-# Textobjects
-- src: nvim-treesitter/nvim-treesitter-textobjects
 # UI
 - src: rebelot/heirline.nvim
 - src: lukas-reineke/indent-blankline.nvim

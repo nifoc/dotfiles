@@ -27,6 +27,7 @@
           [])))
 
   (conform.setup {:formatters_by_ft {:css [:treefmt_or_prettier]
+                                     :elixir [:mix]
                                      :fennel [:treefmt_or_fnlfmt]
                                      :fish [:fish_indent]
                                      :html [:treefmt_or_prettier]

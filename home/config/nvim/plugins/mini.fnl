@@ -1,5 +1,7 @@
 (let [miniclue (require :mini.clue)
       hipatterns (require :mini.hipatterns)]
+  ;; https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md
+  ((. (require :mini.ai) :setup) {})
   ;; https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-clue.md
   (miniclue.setup {:triggers [; Leader
                               {:mode :n :keys :<leader>}
