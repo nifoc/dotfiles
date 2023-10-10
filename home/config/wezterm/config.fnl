@@ -12,7 +12,11 @@
               :elixir "#A074C4"
               :nix "#7EBAE4"
               :reddit "#FA4400"
-              :ssh "#F4C82D"}]
+              :ssh "#F4C82D"}
+      enable-ligatures-flags [:calt=1 :clig=1 :liga=1]
+      disable-ligatures-flags [:calt=0 :clig=0 :liga=0]]
+  (var ligature-panes [])
+  (var latest-pane-update nil)
   ;; Event: Tab format
 
   (fn extract-tab-title [tab]
@@ -87,6 +91,36 @@
                        {:Text title}
                        ; Right
                        {:Text " "}]))))
+  (wezterm.on :update-status
+              (fn [window pane]
+                (local pane-id (pane:pane_id))
+                (when (not= latest-pane-update pane-id)
+                  (let [overrides (or (window:get_config_overrides) {})]
+                    (set latest-pane-update pane-id)
+                    (if (. ligature-panes pane-id)
+                        (do
+                          (set overrides.harfbuzz_features
+                               enable-ligatures-flags)
+                          (window:set_config_overrides overrides))
+                        (do
+                          (set overrides.harfbuzz_features
+                               disable-ligatures-flags)
+                          (window:set_config_overrides overrides)))))))
+  (wezterm.on :user-var-changed
+              (fn [window pane name value]
+                (let [overrides (or (window:get_config_overrides) {})
+                      pane-id (pane:pane_id)]
+                  (case [name value]
+                    [:enable-ligatures :t] (do
+                                             (set overrides.harfbuzz_features
+                                                  enable-ligatures-flags)
+                                             (tset ligature-panes pane-id true)
+                                             (window:set_config_overrides overrides))
+                    [:enable-ligatures :f] (do
+                                             (set overrides.harfbuzz_features
+                                                  disable-ligatures-flags)
+                                             (tset ligature-panes pane-id nil)
+                                             (window:set_config_overrides overrides))))))
   ;; Configuration
   {:default_prog [_G.shells.fish :--interactive]
    ;; Appearance
@@ -106,9 +140,7 @@
                   :inactive_titlebar_bg colors.frame-background
                   :font (wezterm.font {:family "Berkeley Mono"
                                        :weight :Regular
-                                       :harfbuzz_features [:calt=0
-                                                           :clig=0
-                                                           :liga=0]})
+                                       :harfbuzz_features disable-ligatures-flags})
                   :font_size 11}
    :colors {:tab_bar {:background colors.frame-background
                       :inactive_tab_edge colors.frame-background
@@ -129,6 +161,7 @@
    :line_height 0.95
    :freetype_load_target :Light
    ;:freetype_render_target :HorizontalLcd
+   :harfbuzz_features disable-ligatures-flags
    :allow_square_glyphs_to_overflow_width :WhenFollowedBySpace
    ;; Keys
    :keys [{:key :UpArrow

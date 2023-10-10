@@ -12,5 +12,9 @@
                                                   "")]
                                     (wezterm.set_tab_title title)))
                       :group augroup})
-    (aucmd :VimLeavePre {:callback #(wezterm.set_tab_title "") :group augroup})))
-
+    (aucmd :VimEnter {:callback #(wezterm.set_user_var :enable-ligatures :t)
+                      :group augroup})
+    (aucmd :VimLeavePre {:callback (fn []
+                                     (wezterm.set_user_var :enable-ligatures :f)
+                                     (wezterm.set_tab_title ""))
+                         :group augroup})))
