@@ -19,12 +19,12 @@ in
   };
   plenary-nvim = buildVimPlugin {
     pname = "plenary.nvim";
-    version = "2023-09-12";
+    version = "2023-10-11";
     src = fetchFromGitHub {
       owner = "nvim-lua";
       repo = "plenary.nvim";
-      rev = "9ce85b0f7dcfe5358c0be937ad23e456907d410b";
-      sha256 = "0772bqmfkx27b6kfn8x28v8ll0qr2zvdclynansraprrzllsqymk";
+      rev = "50012918b2fc8357b87cff2a7f7f0446e47da174";
+      sha256 = "1sn7vpsbwpyndsjyxb4af8fvz4sfhlbavvw6jjsv3h18sdvkh7nd";
       fetchSubmodules = false;
     };
   };
@@ -166,8 +166,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "550055e640fd6eea88430ba5da3a3bc08679cf94";
-      sha256 = "1ia7nwb80bdi7y7vvpsrxgcii8b1z6y9v58cqd6ldygzi4jjlqzw";
+      rev = "74ce793a60759e3db0d265174f137fb627430355";
+      sha256 = "1m4v097y8ypjm572k1qqii3z56w4x1dsjxd6gp0z24xqyvd4kpa4";
       fetchSubmodules = false;
     };
   };
@@ -198,12 +198,12 @@ in
   };
   telescope-ui-select-nvim = buildVimPlugin {
     pname = "telescope-ui-select.nvim";
-    version = "2022-04-30";
+    version = "2023-10-11";
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope-ui-select.nvim";
-      rev = "62ea5e58c7bbe191297b983a9e7e89420f581369";
-      sha256 = "09mbi1x2r2xsbgfmmpb7113jppjmfwym4sr7nfvpc9glgqlkd4zw";
+      rev = "b0015e6e4b46a64192c64b68dec9a9ac5a4e5690";
+      sha256 = "1r8c29c6gd870ch7iyiln83y01hp73sgyh2rzq3cfzj4nx7fvgg2";
       fetchSubmodules = false;
     };
   };
@@ -275,12 +275,12 @@ in
   };
   nvim-lint = buildVimPlugin {
     pname = "nvim-lint";
-    version = "2023-10-10";
+    version = "2023-10-11";
     src = fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-lint";
-      rev = "7d273c3963c923a194bfd31ab498dfd6c0b2cae8";
-      sha256 = "1xmfbfp6a69fz0k4mh84ysm4rzkzp84zdf6cjdh6y5xbd890fd7x";
+      rev = "aa95105d8b0c14920599e094407b0a4955a843b5";
+      sha256 = "1l1z6m7y2kqjhnp6s7zsam5inp8n06dw30400mskacf2ncmgh54y";
       fetchSubmodules = false;
     };
   };
