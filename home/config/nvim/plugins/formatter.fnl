@@ -3,7 +3,7 @@
       toml (require :toml)
       treefmt-config-file vim.env.TREEFMT_CONFIG_FILE
       treefmt-exts []
-      tmp-filename "\$FILENAME"]
+      tmp-filename (.. "$" :FILENAME)]
   (fn read-file [file]
     (with-open [f (io.open file :rb)]
       (f:read :*all)))
@@ -24,7 +24,9 @@
            :require_cwd true}
           (= (vim.fn.executable fallback.command) 1)
           fallback
-          [])))
+          {:command fallback.command
+           :available false
+           :available_msg "Executable not found"})))
 
   (conform.setup {:formatters_by_ft {:css [:treefmt_or_prettier]
                                      :elixir [:mix]
