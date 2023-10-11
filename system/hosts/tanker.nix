@@ -166,6 +166,7 @@ in
 
   services.journald.extraConfig = ''
     SystemMaxUse=4G
+    MaxRetentionSec=30day
   '';
 
   services.zfs.autoScrub.enable = true;

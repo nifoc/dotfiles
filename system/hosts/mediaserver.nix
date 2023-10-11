@@ -133,6 +133,7 @@ in
 
   services.journald.extraConfig = ''
     SystemMaxUse=1G
+    MaxRetentionSec=30day
   '';
 
   documentation = {

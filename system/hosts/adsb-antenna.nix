@@ -80,6 +80,7 @@ in
 
   services.journald.extraConfig = ''
     SystemMaxUse=512M
+    MaxRetentionSec=7day
   '';
 
   documentation = {
