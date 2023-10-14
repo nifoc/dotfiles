@@ -22,8 +22,7 @@
                                    (when (client.supports_method :textDocument/inlayHint)
                                      (vim.lsp.inlay_hint bufnr true)
                                      (setup-inlay-hint-toggle bufnr))
-                                   (diagnostic.maybe-enable-lsp client bufnr)
-                                   ((. (require :lsp-notify) :setup) {})))
+                                   (diagnostic.maybe-enable-lsp client bufnr)))
                      :group augroup
                      :desc "Automatic LSP setup"})
   ;; Servers

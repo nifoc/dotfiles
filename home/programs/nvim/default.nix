@@ -282,8 +282,6 @@ in
           config = builtins.readFile ../../config/nvim/plugins/notify.fnl;
           type = "fennel";
         }
-
-        nvim-lsp-notify
       ];
   };
 
