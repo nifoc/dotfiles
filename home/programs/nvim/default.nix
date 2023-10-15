@@ -182,7 +182,6 @@ in
         }
 
         telescope-ui-select-nvim
-        telescope-toggleterm-nvim
         telescope-undo-nvim
 
         # Completion
@@ -256,12 +255,6 @@ in
             (let [virt-column (require :virt-column)]
               (virt-column.setup))
           '';
-          type = "fennel";
-        }
-
-        {
-          plugin = toggleterm-nvim;
-          config = builtins.readFile ../../config/nvim/plugins/toggleterm.fnl;
           type = "fennel";
         }
 

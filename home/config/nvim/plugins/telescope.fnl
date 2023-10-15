@@ -31,7 +31,6 @@
                                        :case_mode :smart_case}}})
   (telescope.load_extension :fzf)
   (telescope.load_extension :ui-select)
-  (telescope.load_extension :toggleterm)
   (telescope.load_extension :yank_history)
   (telescope.load_extension :undo)
   (let [augroup (vim.api.nvim_create_augroup :NifocTelescope {:clear true})
@@ -47,4 +46,3 @@
                                       (set vim.opt_local.relativenumber false)
                                       (set vim.opt_local.wrap true))
                          :group augroup})))
-

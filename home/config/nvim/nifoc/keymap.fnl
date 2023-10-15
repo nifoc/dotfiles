@@ -4,7 +4,6 @@
       telescope-builtin (require :telescope.builtin)
       telescope-themes (require :telescope.themes)
       telescope-nifoc (require :nifoc.telescope)
-      telescope-toggleterm (require :telescope-toggleterm)
       telescope-ivy (telescope-themes.get_ivy)
       telescope-dropdown (telescope-themes.get_dropdown)
       gitsigns (require :gitsigns)
@@ -20,10 +19,8 @@
     (keymap.set :n :<leader>u "<cmd>UrlView buffer<CR>" {:desc "Open UrlView"})
     (keymap.set :n :<leader>ut "<cmd>Telescope undo<CR>"
                 {:desc "Toggle Undotree"})
-    (keymap.set :n :<leader>c repl.toggle-shell {:desc "Toggle Shell"})
-    (keymap.set :n :<leader>cs #(telescope-toggleterm.open telescope-dropdown)
-                {:desc "Select Terminal"})
-    (keymap.set :n :<leader>r repl.toggle-repl {:desc "Toggle REPL"})
+    (keymap.set :n :<leader>c repl.open-shell {:desc "Open Shell"})
+    (keymap.set :n :<leader>r repl.open-repl {:desc "Open REPL"})
     (keymap.set :n :<leader>bl #(telescope-builtin.buffers telescope-dropdown)
                 {:desc "List Buffers"})
     (keymap.set :n :<leader>bf
@@ -40,8 +37,6 @@
                 {:desc "List VCS Branches"})
     (keymap.set :n :<leader>vl #(gitsigns.blame_line {:full true})
                 {:desc "Blame Line"})
-    (keymap.set :n :<leader>vc #(repl.toggle-specific-shell :vcs)
-                {:desc "Toggle VCS Shell"})
     (keymap.set :n :<leader>lk telescope-builtin.keymaps
                 {:desc "Show Keymappings"})
     (keymap.set :n :<leader>ld #(telescope-builtin.diagnostics telescope-ivy)

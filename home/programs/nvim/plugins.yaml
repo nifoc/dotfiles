@@ -23,7 +23,6 @@
     make
 - src: ahmedkhalf/project.nvim
 - src: nvim-telescope/telescope-ui-select.nvim
-- src: "https://git.sr.ht/~havi/telescope-toggleterm.nvim"
 - src: debugloop/telescope-undo.nvim
 # LSP
 - src: neovim/nvim-lspconfig
@@ -40,7 +39,6 @@
 - src: rebelot/heirline.nvim
 - src: lukas-reineke/indent-blankline.nvim
 - src: lukas-reineke/virt-column.nvim
-- src: akinsho/toggleterm.nvim
 - src: axieax/urlview.nvim
 - src: lewis6991/gitsigns.nvim
 - src: rcarriga/nvim-notify

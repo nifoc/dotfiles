@@ -12,8 +12,7 @@
       (usercmd :FormatEnableBuffer mod.enable-for-buffer
                {:desc "Enable Formatting for the current buffer"})
       (aucmd :BufWritePre
-             {:pattern "*"
-              :callback #(mod.maybe-format-buffer $1.buf)
+             {:callback #(mod.maybe-format-buffer $1.buf)
               :group augroup
               :desc "Run Formatter before saving"})))
 
@@ -42,6 +41,7 @@
           (conform.format {: bufnr
                            :async false
                            :timeout_ms 1000
-                           :lsp_fallback (format-with-lsp? ft)}))))
+                           :lsp_fallback (format-with-lsp? ft)}))
+      nil))
 
   mod)

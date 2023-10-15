@@ -2,7 +2,6 @@
 { pkgs, ... }:
 let
   inherit (pkgs) fetchFromGitHub;
-  inherit (pkgs) fetchFromSourcehut;
   inherit (pkgs.vimUtils) buildVimPlugin;
 in
 {
@@ -122,8 +121,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "f8fcb0da0618be551560a57fa1457dc6f889e568";
-      sha256 = "0nalh47rqfqhrhbpn6v2x9yijfln1kvxd2m676lr2mwf8362ppjc";
+      rev = "43694a240cce2fbaf3f573bd5e0864eefaf32e4f";
+      sha256 = "1kibm65xl762gs3vizqz5vgffb3l2r3z5css03smginnssd98y8l";
       fetchSubmodules = false;
     };
   };
@@ -204,17 +203,6 @@ in
       repo = "telescope-ui-select.nvim";
       rev = "b0015e6e4b46a64192c64b68dec9a9ac5a4e5690";
       sha256 = "1r8c29c6gd870ch7iyiln83y01hp73sgyh2rzq3cfzj4nx7fvgg2";
-      fetchSubmodules = false;
-    };
-  };
-  telescope-toggleterm-nvim = buildVimPlugin {
-    pname = "telescope-toggleterm.nvim";
-    version = "2022-02-10";
-    src = fetchFromSourcehut {
-      owner = "~havi";
-      repo = "telescope-toggleterm.nvim";
-      rev = "5c1402507f0ad01711196e5d27e9f0606f78b7d0";
-      sha256 = "04vn8807gmhahhap55xjbabarlmqf05ygwqycsfkdcbm5jpcxdnw";
       fetchSubmodules = false;
     };
   };
@@ -336,17 +324,6 @@ in
       repo = "virt-column.nvim";
       rev = "9c82009c53e5f9d43b6c0f5e8cb69c53663b786a";
       sha256 = "17ja20ya03jg9qrg3pnhzq33j2vqp99837ikky4di9i7akly4k30";
-      fetchSubmodules = false;
-    };
-  };
-  toggleterm-nvim = buildVimPlugin {
-    pname = "toggleterm.nvim";
-    version = "2023-10-02";
-    src = fetchFromGitHub {
-      owner = "akinsho";
-      repo = "toggleterm.nvim";
-      rev = "c80844fd52ba76f48fabf83e2b9f9b93273f418d";
-      sha256 = "19rbq39m7c1v9yrfmlwmfmxgv5d9bwcjbgjdp3cin409fnl4rv6b";
       fetchSubmodules = false;
     };
   };
