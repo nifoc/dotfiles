@@ -71,6 +71,7 @@
       q
       ripgrep
       socat
+      ssh-audit
       tokei
       viddy
       wget
