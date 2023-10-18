@@ -37,17 +37,6 @@ in
         };
       }
 
-      # https://github.com/PatrickF1/fzf.fish/releases
-      {
-        name = "fzf-fish";
-        src = fetchFromGitHub {
-          owner = "PatrickF1";
-          repo = "fzf.fish";
-          rev = "v10.0";
-          hash = "sha256-CqRSkwNqI/vdxPKrShBykh+eHQq9QIiItD6jWdZ/DSM=";
-        };
-      }
-
       # https://github.com/jorgebucaran/autopair.fish/releases
       {
         name = "autopair-fish";
