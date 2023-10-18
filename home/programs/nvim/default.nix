@@ -184,15 +184,6 @@ in
         telescope-ui-select-nvim
         telescope-undo-nvim
 
-        # Completion
-        {
-          plugin = pkgs.vimPlugins.coq_nvim;
-          config = builtins.readFile ../../config/nvim/plugins/coq.fnl;
-          type = "fennel";
-        }
-
-        pkgs.vimPlugins.coq-artifacts
-
         # LSP
         {
           plugin = nvim-lspconfig;

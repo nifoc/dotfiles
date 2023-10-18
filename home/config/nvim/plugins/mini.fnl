@@ -11,6 +11,15 @@
                    :clues [(miniclue.gen_clues.builtin_completion)]})
   ;; https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-comment.md
   ((. (require :mini.comment) :setup) {})
+  ;; https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-completion.md
+  ((. (require :mini.completion) :setup) {:window {:info {:height 25
+                                                          :width 80
+                                                          :border :rounded}
+                                                   :signature {:height 25
+                                                               :width 80
+                                                               :border :rounded}}
+                                          :lsp_completion {:source_func :omnifunc
+                                                           :auto_setup false}})
   ;; https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-hipatterns.md
   (hipatterns.setup {:highlighters {:fixme {:pattern "%f[%w]()FIXME()%f[%W]"
                                             :group :MiniHipatternsFixme}

@@ -9,6 +9,14 @@
       gitsigns (require :gitsigns)
       repl (require :nifoc.repl)
       formatting (require :nifoc.formatting)]
+  (set _G.mini_cr_action
+       (fn []
+         (if (not= (vim.fn.pumvisible) 0)
+             (if (not= (. (vim.fn.complete_info) :selected) -1)
+                 (vim.api.nvim_replace_termcodes :<C-y> true true true)
+                 (vim.api.nvim_replace_termcodes :<C-y><CR> true true true))
+             ((. (require :mini.pairs) :cr)))))
+
   (fn mod.setup []
     (keymap.set :n :<space> :<nop> {:noremap true})
     ;; Leader Mappings
@@ -48,7 +56,8 @@
     (keymap.set :n :<leader>dtp :<cmd>TSPlaygroundToggle<CR>
                 {:desc "Toggle Treetsitter Playground"})
     ;; Other Mappings
-    (keymap.set :n :F #(formatting.maybe-format-buffer 0) {:desc "Format Buffer"})
+    (keymap.set :n :F #(formatting.maybe-format-buffer 0)
+                {:desc "Format Buffer"})
     (keymap.set :n :<A-Left> :b)
     (keymap.set :n :<A-Right> :w)
     (keymap.set :n :<S-Left> "^")
@@ -66,7 +75,13 @@
     (keymap.set :x :gp "<Plug>(YankyGPutAfter)")
     (keymap.set :x :gP "<Plug>(YankyGPutBefore)")
     (keymap.set :n :y "<Plug>(YankyYank)")
-    (keymap.set :x :y "<Plug>(YankyYank)"))
+    (keymap.set :x :y "<Plug>(YankyYank)")
+    ;; Completion
+    (keymap.set :i :<Tab> "pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\""
+                {:expr true})
+    (keymap.set :i :<S-Tab> "pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\""
+                {:expr true})
+    (keymap.set :i :<CR> "v:lua._G.mini_cr_action()" {:expr true}))
 
   (fn mod.lsp-attach [client bufnr]
     (keymap.set :n :<leader>t
