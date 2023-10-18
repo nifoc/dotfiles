@@ -42,7 +42,7 @@ in
       checkstyle
       deadnix
       nodePackages.eslint_d
-      #hadolint
+      hadolint
       luajitPackages.fennel
       shellcheck
       statix
