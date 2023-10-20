@@ -340,14 +340,13 @@
                                                       "🭺"
                                                       "🭻"]}
                       :provider (fn [self]
-                                  (let [i (+ (math.floor (* (/ (- self.current-line
+                                  (let [scrollbar-icons self.scrollbar-icons-block
+                                        i (+ (math.floor (* (/ (- self.current-line
                                                                   1)
                                                                self.total-lines)
-                                                            (length self.scrollbar-icons-block)))
+                                                            (length scrollbar-icons)))
                                              1)
-                                        new-scrollbar (. self
-                                                         :scrollbar-icons-block
-                                                         i)]
+                                        new-scrollbar (. scrollbar-icons i)]
                                     (string.rep new-scrollbar 2)))
                       :hl {:fg colors.purple}})
   ;; Search count
@@ -385,4 +384,3 @@
      :hl {:fg (. colors fg) :bg (. colors bg) :bold true}})
 
   mod)
-

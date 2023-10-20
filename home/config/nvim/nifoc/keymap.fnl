@@ -81,7 +81,9 @@
                 {:expr true})
     (keymap.set :i :<S-Tab> "pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\""
                 {:expr true})
-    (keymap.set :i :<CR> "v:lua._G.mini_cr_action()" {:expr true}))
+    (keymap.set :i :<CR> "v:lua._G.mini_cr_action()" {:expr true})
+    (keymap.set :i :<esc> "pumvisible() ? \"\\<C-y>\" : \"\\<esc>\""
+                {:expr true}))
 
   (fn mod.lsp-attach [client bufnr]
     (keymap.set :n :<leader>t

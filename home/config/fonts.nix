@@ -25,7 +25,6 @@ in
     berkeley-mono
     jetbrains-mono
     noto-fonts
-    unifont
 
     (nerdfonts.override {
       fonts = [

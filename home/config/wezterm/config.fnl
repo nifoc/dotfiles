@@ -155,8 +155,7 @@
                                       "Apple Symbols"
                                       "Apple Color Emoji"
                                       "Noto Sans Symbols"
-                                      "Noto Sans Symbols2"
-                                      :Unifont])
+                                      "Noto Sans Symbols 2"])
    :font_size 13
    :line_height 0.95
    :freetype_load_target :Light
