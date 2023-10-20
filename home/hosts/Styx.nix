@@ -21,8 +21,6 @@
 
     ../programs/btop.nix
 
-    ../programs/fzf.nix
-
     ../programs/gallery-dl.nix
 
     ../programs/gpg.nix

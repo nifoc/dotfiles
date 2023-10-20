@@ -15,8 +15,6 @@
 
     ../programs/btop.nix
 
-    ../programs/fzf.nix
-
     ../programs/gallery-dl.nix
 
     ../programs/jq.nix

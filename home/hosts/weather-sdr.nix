@@ -9,8 +9,6 @@
 
     ../programs/bat.nix
 
-    ../programs/fzf.nix
-
     ../programs/jq.nix
 
     ../programs/scripts.nix
