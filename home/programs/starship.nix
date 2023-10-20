@@ -51,6 +51,16 @@
         format = "\\[[$symbol($version)]($style)\\]";
       };
 
+      os = {
+        disabled = true;
+        format = "$symbol";
+
+        symbols = {
+          Macos = " ";
+          NixOS = " ";
+        };
+      };
+
       package = {
         symbol = " ";
         format = "\\[[$symbol$version]($style)\\]";
