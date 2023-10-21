@@ -29,12 +29,12 @@ in
   };
   mini-nvim = buildVimPlugin {
     pname = "mini.nvim";
-    version = "2023-10-20";
+    version = "2023-10-21";
     src = fetchFromGitHub {
       owner = "echasnovski";
       repo = "mini.nvim";
-      rev = "b94d010c61ba46474af78536873db89492b251a4";
-      sha256 = "1p0llmf9xbbf1d9ijh8wwx4pxddak0hs97bqdjkf7amvkf89myvz";
+      rev = "a9cc3cce0f0b62f760630579da6094fdca79cb1e";
+      sha256 = "1mcb96qxcx6100w51n6vs0aj3k4wzr5jsidl7ry3443xsnxw6ngf";
       fetchSubmodules = false;
     };
   };
@@ -121,8 +121,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "f636d58c8d5780e5fe79a8de5691b1712c758b05";
-      sha256 = "03hcizw0znm67c22889rjamb0hiyqfrdy38mbnfc9nfrv33xwiqd";
+      rev = "bb3f8f40b1443fb40665263e1b5b0658bc24be03";
+      sha256 = "0j7cdn1i8pldfpyjz7i90hk9vkwajf8j97zdqbdf0avj3kjnbwvw";
       fetchSubmodules = false;
     };
   };
