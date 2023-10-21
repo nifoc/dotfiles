@@ -16,7 +16,7 @@
 
     certs = {
       "kempkens.io" = {
-        domain = "*.kempkens.io";
+        extraDomainNames = [ "*.kempkens.io" ];
       };
 
       "daniel.sx" = {
