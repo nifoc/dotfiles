@@ -55,4 +55,3 @@
                       :callback setup-linting
                       :group augroup
                       :desc "Setup Linter"})))
-

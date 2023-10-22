@@ -7,6 +7,7 @@
       statusline (require :nifoc.statusline)
       diagnostic vim.diagnostic
       gitsigns (require :gitsigns)
+      gitsigns-ns (api.nvim_create_namespace :gitsigns_extmark_signs_)
       augroup (vim.api.nvim_create_augroup :NifocStatuscolumn {:clear true})
       aucmd vim.api.nvim_create_autocmd]
   ;; Cache
@@ -27,11 +28,12 @@
       ret-tab))
 
   (fn clear-diagnostics-cache! [bufnr diagnostics]
-    (let [namespaces (vim.tbl_map #$1.namespace diagnostics)
-          current-cache (. cache :diagnostics bufnr)
-          new-cache (cache-filter #(not (vim.tbl_contains namespaces $1.ns))
-                                  current-cache)]
-      (tset cache :diagnostics bufnr new-cache)))
+    (if (vim.tbl_isempty diagnostics) (tset cache :diagnostics bufnr nil)
+        (let [namespaces (vim.tbl_map #$1.namespace diagnostics)
+              current-cache (. cache :diagnostics bufnr)
+              new-cache (cache-filter #(not (vim.tbl_contains namespaces $1.ns))
+                                      current-cache)]
+          (tset cache :diagnostics bufnr new-cache))))
 
   (fn update-cache-diagnostics [bufnr diagnostics]
     (maybe-setup-buffer-cache! :diagnostics bufnr)
@@ -48,20 +50,34 @@
   (fn update-cache-gitsigns [bufnr]
     (maybe-setup-buffer-cache! :gitsigns bufnr)
     (clear-cache! :gitsigns bufnr)
-    (let [signs (?. (vim.fn.sign_getplaced bufnr
-                                           {:group :gitsigns_vimfn_signs_})
-                    1 :signs)]
-      (when (not= signs nil)
-        (each [_ sign (pairs signs)]
-          (let [lnum sign.lnum
+    (let [signs (api.nvim_buf_get_extmarks bufnr gitsigns-ns 0 -1
+                                           {:details true})]
+      (when (not (vim.tbl_isempty signs))
+        (each [_ [_id row _col details] (pairs signs)]
+          (let [lnum (+ row 1)
                 current (cached-sign :gitsigns bufnr lnum)]
             (when (= current nil)
-              (tset cache :gitsigns bufnr lnum sign)))))))
+              (tset cache :gitsigns bufnr lnum {:name details.sign_hl_group})))))))
 
   (aucmd :DiagnosticChanged
-         {:callback #(update-cache-diagnostics $1.buf $1.data.diagnostics)
+         {:callback #(let [full-mode (. (api.nvim_get_mode) :mode)
+                           mode (full-mode:sub 1 1)]
+                       (when (not= mode :i)
+                         (update-cache-diagnostics $1.buf $1.data.diagnostics)))
           :group augroup
           :desc "Update cached diagnostic signs"})
+  (aucmd :CursorHold
+         {:callback #(update-cache-diagnostics $1.buf
+                                               (vim.diagnostic.get $1.buf))
+          :group augroup
+          :desc "Periodically update cached diagnostics"})
+  (aucmd :InsertLeave
+         {:callback (fn [args]
+                      (vim.defer_fn #(update-cache-diagnostics args.buf
+                                                               (vim.diagnostic.get args.buf))
+                        1000))
+          :group augroup
+          :desc "Update diagnostics after leaving insert mode"})
   (aucmd :User {:pattern :GitSignsUpdate
                 :callback #(update-cache-gitsigns $1.buf)
                 :group augroup
@@ -99,7 +115,7 @@
                      :provider " ▏"
                      :hl #(if $1.has_sign $1.sign.name :StatusLineNC)
                      :on_click {:name :heirline_statuscolumn_gitsigns
-                                :callback (fn [self]
+                                :callback (fn [_self]
                                             (let [mouse (vim.fn.getmousepos)
                                                   cursor-pos [mouse.line 0]]
                                               (api.nvim_win_set_cursor mouse.winid
@@ -114,8 +130,11 @@
                             mod.gitsigns])
   ;; Diagnostic signs
   (set mod.diagnostic-signs
-       {:condition #(and (= b.nifoc_diagnostics_enabled 1)
-                         (> (length (vim.diagnostic.get 0)) 0))
+       {:condition #(let [bufnr (api.nvim_get_current_buf)
+                          buf-diagnostics (. cache :diagnostics bufnr)]
+                      (and (= b.nifoc_diagnostics_enabled 1)
+                           (not= buf-diagnostics nil)
+                           (not (vim.tbl_isempty buf-diagnostics))))
         :static {:sign-text {diagnostic.severity.ERROR " "
                              diagnostic.severity.WARN " "
                              diagnostic.severity.INFO " "
@@ -146,6 +165,5 @@
                                                                             :scope :line})
                                    100)))}})
   ;; Debug
-  (set mod._debug_cache #cache)
+  (set mod._debug_cache #{: cache})
   mod)
-
