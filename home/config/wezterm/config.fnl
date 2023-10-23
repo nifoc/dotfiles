@@ -58,7 +58,7 @@
       _ {: title :icon " " :color "#F8F8F2"}))
 
   (wezterm.on :format-tab-title
-              (fn [tab tabs panes config hover max-width]
+              (fn [tab _tabs _panes _config _hover max-width]
                 (let [raw-title (extract-tab-title tab)
                       tab-info (extract-tab-info raw-title)
                       title (wezterm.truncate_right tab-info.title
@@ -91,6 +91,7 @@
                        {:Text title}
                        ; Right
                        {:Text " "}]))))
+  ;; Event: Ligatures
   (wezterm.on :update-status
               (fn [window pane]
                 (local pane-id (pane:pane_id))
@@ -121,6 +122,20 @@
                                                   disable-ligatures-flags)
                                              (tset ligature-panes pane-id nil)
                                              (window:set_config_overrides overrides))))))
+  ;; Event: Screen options
+  (wezterm.on :window-resized
+              (fn [window _pane]
+                (let [overrides (or (window:get_config_overrides) {})
+                      current-screen (. (wezterm.gui.screens) :active :name)]
+                  (case current-screen
+                    :S34J55x (do
+                               (set overrides.line_height 1)
+                               (set overrides.freetype_load_target :Normal)
+                               (window:set_config_overrides overrides))
+                    _ (do
+                        (set overrides.line_height 0.95)
+                        (set overrides.freetype_load_target :Light)
+                        (window:set_config_overrides overrides))))))
   ;; Configuration
   {:default_prog [_G.shells.fish :--interactive]
    ;; Appearance
