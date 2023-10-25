@@ -58,6 +58,11 @@ in
         "nifoc.cachix.org-1:ymuftq7RgN/lf/iWXFK8gpwDSAGFaGBeliWe9u6q8II="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
+
+      trusted-users = [
+        "root"
+        "nix-remote-builder"
+      ];
     };
 
     gc = {
@@ -176,7 +181,12 @@ in
   };
 
   services.hardware.argonone.enable = true;
-  programs.fish.enable = true;
+
+  programs = {
+    fish.enable = true;
+    zsh.enable = true;
+    htop.enable = true;
+  };
 
   users.users = {
     root = {
@@ -191,6 +201,14 @@ in
       extraGroups = [ "wheel" ];
       shell = pkgs.fish;
       openssh.authorizedKeys.keys = [ ssh-keys.LAN ];
+    };
+
+    nix-remote-builder = {
+      isNormalUser = true;
+      home = "/home/nix-remote-builder";
+      description = "Nix Remote Builder";
+      shell = pkgs.zsh;
+      openssh.authorizedKeys.keys = [ ssh-keys.NixRemoteBuilder ];
     };
   };
 }

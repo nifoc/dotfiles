@@ -51,7 +51,6 @@ rec {
       targetHost = "adsb-antenna";
       targetPort = 22;
       targetUser = "root";
-      buildOnTarget = true;
     };
 
     nixpkgs.system = default-system;

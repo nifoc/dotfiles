@@ -8,7 +8,6 @@ let
   signers-directory = "${ssh-directory}/allowed_signers";
 
   shared-private = import ./shared/private.nix;
-  shared-builder = import ./shared/builder.nix;
   shared-work = import ./shared/work.nix { inherit secret; };
 
   ssh-keys = import ../../../system/shared/ssh-keys.nix;
@@ -29,7 +28,7 @@ in
       # VerifyHostKeyDNS yes
     '';
 
-    matchBlocks = shared-private.matchBlocks // shared-builder.matchBlocks // shared-work.matchBlocks;
+    matchBlocks = shared-private.matchBlocks // shared-work.matchBlocks;
 
     includes = [
       "~/.ssh/config_work"

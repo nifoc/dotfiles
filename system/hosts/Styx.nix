@@ -1,3 +1,6 @@
+let
+  homeDir = "/Users/daniel";
+in
 {
   imports = [
     ../../agenix/hosts/Styx/config.nix
@@ -40,33 +43,21 @@
 
     buildMachines = [
       {
-        hostName = "builder-tanker";
+        hostName = "mediaserver.ts.kempkens.network";
+        protocol = "ssh-ng";
         systems = [ "x86_64-linux" "aarch64-linux" ];
-        maxJobs = 4;
-      }
-
-      {
-        hostName = "builder-mediaserver";
-        systems = [ "x86_64-linux" "aarch64-linux" ];
-        maxJobs = 1;
-      }
-
-      {
-        hostName = "builder-argon";
-        systems = [ "aarch64-linux" ];
+        sshUser = "nix-remote-builder";
+        sshKey = "${homeDir}/.ssh/id_nix_remote_builder";
         maxJobs = 2;
       }
 
       {
-        hostName = "builder-adsb-antenna";
+        hostName = "argon.ts.kempkens.network";
+        protocol = "ssh-ng";
         systems = [ "aarch64-linux" ];
-        maxJobs = 1;
-      }
-
-      {
-        hostName = "builder-weather-sdr";
-        systems = [ "aarch64-linux" ];
-        maxJobs = 1;
+        sshUser = "nix-remote-builder";
+        sshKey = "${homeDir}/.ssh/id_nix_remote_builder";
+        maxJobs = 2;
       }
     ];
 
@@ -81,7 +72,7 @@
 
   users = {
     users.daniel = {
-      home = "/Users/daniel";
+      home = homeDir;
     };
   };
 
@@ -90,6 +81,9 @@
   };
 
   services = {
-    nix-daemon.enable = true;
+    nix-daemon = {
+      enable = true;
+      logFile = "/var/log/nix-daemon.log";
+    };
   };
 }
