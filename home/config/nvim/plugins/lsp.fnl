@@ -29,8 +29,12 @@
                      :desc "Automatic LSP setup"})
   ;; Servers
   (vim.lsp.set_log_level :OFF)
-  (let [flags {:allow_incremental_sync true :debounce_text_changes 700}
-        default-config {: flags}
+  (let [handlers {:textDocument/hover (vim.lsp.with vim.lsp.handlers.hover
+                                        {:border :rounded})
+                  :textDocument/signatureHelp (vim.lsp.with vim.lsp.handlers.signature_help
+                                                {:border :rounded})}
+        flags {:allow_incremental_sync true :debounce_text_changes 700}
+        default-config {: handlers : flags}
         default-servers [:bashls
                          :cssls
                          :dockerls
@@ -58,7 +62,7 @@
     (if (= (vim.fn.executable :elixir-ls) 1)
         (lsp.elixirls.setup (->> {:cmd [:elixir-ls]}
                                  (vim.tbl_extend :force default-config)))
-        (lsp.lexical.setup {}))
+        (lsp.lexical.setup default-config))
     (when (= (vim.fn.executable :nil) 1)
       (lsp.nil_ls.setup (->> {:settings {:nil {:formatting {:command [:nixpkgs-fmt]}}}}
                              (vim.tbl_extend :force default-config))))

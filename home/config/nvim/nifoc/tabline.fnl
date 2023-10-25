@@ -77,7 +77,7 @@
                     (if self.is_active "│ " "  "))
         :hl (fn [self]
               (if self.is_active {:fg colors.purple :bg bg-active :bold true}
-                  {:fg fg-inactive :bg bg-inactive :bold true}))})
+                  {:fg fg-inactive :bg bg-inactive}))})
   (set mod.os-indicator {:static {:uname (. (vim.loop.os_uname) :sysname)
                                   :os {:Darwin "" :Linux ""}
                                   :os-color {:Darwin colors.white
@@ -99,4 +99,3 @@
                            2 (heirline-utils.make_tablist mod.tabpage)
                            3 mod.close-tabpage})
   mod)
-

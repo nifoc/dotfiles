@@ -85,7 +85,7 @@
     (keymap.set :i :<esc> "pumvisible() ? \"\\<C-y>\" : \"\\<esc>\""
                 {:expr true}))
 
-  (fn mod.lsp-attach [client bufnr]
+  (fn mod.lsp-attach [_client bufnr]
     (keymap.set :n :<leader>t
                 #(telescope-builtin.lsp_document_symbols telescope-dropdown)
                 {:buffer bufnr :desc "LSP Document Symbols"})
