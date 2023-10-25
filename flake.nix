@@ -61,18 +61,13 @@
       };
     };
 
-    deploy-rs = {
-      url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     mkalias = {
       url = "github:reckenrode/mkalias";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ flake-parts, ... }:
+  outputs = inputs@{ self, flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       flake =
         let
@@ -84,35 +79,35 @@
           tanker = import ./system/flakes/tanker.nix {
             nixpkgs = inputs.nixos-unstable;
 
-            inherit (inputs) disko deploy-rs home-manager agenix attic;
+            inherit (inputs) disko home-manager agenix attic;
             inherit inputs;
           };
 
           mediaserver = import ./system/flakes/mediaserver.nix {
             nixpkgs = inputs.nixos-unstable;
 
-            inherit (inputs) deploy-rs home-manager agenix;
+            inherit (inputs) home-manager agenix;
             inherit inputs;
           };
 
           argon = import ./system/flakes/argon.nix {
             nixpkgs = inputs.nixos-unstable;
 
-            inherit (inputs) nixos-hardware deploy-rs home-manager agenix;
+            inherit (inputs) nixos-hardware home-manager agenix;
             inherit inputs;
           };
 
           weather-sdr = import ./system/flakes/weather-sdr.nix {
             nixpkgs = inputs.nixos-unstable;
 
-            inherit (inputs) deploy-rs home-manager agenix;
+            inherit (inputs) home-manager agenix;
             inherit inputs;
           };
 
           adsb-antenna = import ./system/flakes/adsb-antenna.nix {
             nixpkgs = inputs.nixos-unstable;
 
-            inherit (inputs) nixos-hardware deploy-rs home-manager;
+            inherit (inputs) nixos-hardware home-manager;
             inherit inputs;
           };
         in
@@ -129,13 +124,27 @@
             adsb-antenna = adsb-antenna.system;
           };
 
-          deploy.nodes = {
-            tanker = tanker.deployment;
-            mediaserver = mediaserver.deployment;
-            argon = argon.deployment;
-            weather-sdr = weather-sdr.deployment;
-            adsb-antenna = adsb-antenna.deployment;
-          };
+          colmena =
+            let
+              nixosConf = self.nixosConfigurations;
+            in
+            {
+              meta = {
+                # Since I'm only deploying from Styx ...
+                nixpkgs = import inputs.nixpkgs {
+                  system = "aarch64-darwin";
+                };
+
+                nodeNixpkgs = builtins.mapAttrs (_name: value: value.pkgs) nixosConf;
+                nodeSpecialArgs = builtins.mapAttrs (_name: value: value._module.specialArgs) nixosConf;
+              };
+
+              tanker = tanker.colmena;
+              mediaserver = mediaserver.colmena;
+              argon = argon.colmena;
+              weather-sdr = weather-sdr.colmena;
+              adsb-antenna = adsb-antenna.colmena;
+            };
         };
 
       imports = [
@@ -184,7 +193,8 @@
 
           packages = [
             inputs'.agenix.packages.agenix
-            inputs'.deploy-rs.packages.deploy-rs
+            pkgs.colmena
+            pkgs.nix-output-monitor
           ];
 
           TREEFMT_CONFIG_FILE = config.treefmt.build.configFile;

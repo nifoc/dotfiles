@@ -35,10 +35,7 @@ if test "$other_hostname" = ""
     end
 else
     git pull
-    nom build --eval-store auto --store "ssh-ng://builder-$other_hostname" ".#nixosConfigurations.$other_hostname.config.system.build.toplevel"
-    if test $status -eq 0
-        deploy --skip-checks ".#$other_hostname"
-    end
+    colmena apply --on $other_hostname
 end
 
 if test $status -eq 0

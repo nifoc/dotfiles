@@ -1,16 +1,14 @@
-{ nixpkgs, disko, deploy-rs, home-manager, agenix, attic, inputs, ... }:
+{ nixpkgs, disko, home-manager, agenix, attic, inputs, ... }:
 
 let
   default-system = "x86_64-linux";
 
   # overlay-master = _: _: { pkgs-master = import inputs.nixpkgs-master { system = default-system; }; };
-  overlay-deploy-rs = _: _: { inherit (deploy-rs.packages.${default-system}) deploy-rs; };
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
     overlays = [
       # overlay-master
-      overlay-deploy-rs
       overlay-nifoc
     ];
 
@@ -52,15 +50,15 @@ rec {
     ];
   };
 
-  deployment = {
-    hostname = "tanker";
-    sshUser = "root";
-    remoteBuild = true;
-    autoRollback = false;
-    magicRollback = false;
-
-    profiles.system = {
-      path = deploy-rs.lib.${default-system}.activate.nixos system;
+  colmena = {
+    deployment = {
+      targetHost = "tanker";
+      targetPort = 22;
+      targetUser = "root";
+      buildOnTarget = true;
     };
+
+    nixpkgs.system = default-system;
+    imports = system._module.args.modules;
   };
 }

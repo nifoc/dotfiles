@@ -1,16 +1,14 @@
-{ nixpkgs, nixos-hardware, deploy-rs, home-manager, agenix, inputs, ... }:
+{ nixpkgs, nixos-hardware, home-manager, agenix, inputs, ... }:
 
 let
   default-system = "aarch64-linux";
 
   overlay-attic = inputs.attic.overlays.default;
-  overlay-deploy-rs = _: _: { inherit (inputs.deploy-rs.packages.${default-system}) deploy-rs; };
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
     overlays = [
       overlay-attic
-      overlay-deploy-rs
       overlay-nifoc
     ];
 
@@ -50,15 +48,15 @@ rec {
     ];
   };
 
-  deployment = {
-    hostname = "argon";
-    sshUser = "root";
-    remoteBuild = true;
-    autoRollback = false;
-    magicRollback = false;
-
-    profiles.system = {
-      path = deploy-rs.lib.${default-system}.activate.nixos system;
+  colmena = {
+    deployment = {
+      targetHost = "argon";
+      targetPort = 22;
+      targetUser = "root";
+      buildOnTarget = true;
     };
+
+    nixpkgs.system = default-system;
+    imports = system._module.args.modules;
   };
 }

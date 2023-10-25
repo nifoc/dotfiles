@@ -62,7 +62,6 @@
       lnav
       mtr
       nix-tree
-      nix-output-monitor
       nurl
       ouch
       parallel
