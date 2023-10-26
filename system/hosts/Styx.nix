@@ -77,7 +77,7 @@ in
   };
 
   environment = {
-    darwinConfig = "$HOME/.config/nixpkgs/system/hosts/Styx.nix";
+    darwinConfig = "${homeDir}/.config/nixpkgs/system/hosts/Styx.nix";
   };
 
   services = {
