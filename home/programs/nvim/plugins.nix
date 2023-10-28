@@ -307,12 +307,12 @@ in
   };
   indent-blankline-nvim = buildVimPlugin {
     pname = "indent-blankline.nvim";
-    version = "2023-10-24";
+    version = "2023-10-28";
     src = fetchFromGitHub {
       owner = "lukas-reineke";
       repo = "indent-blankline.nvim";
-      rev = "046e2cf04e08ece927bacbfb87c5b35c0b636546";
-      sha256 = "18vvqpbjbl3xqgkglc24y3hff4y0m5wzsngp5fwkfqlkqskiw6kf";
+      rev = "64fdadb3ada61c4297452f7662789b01ee82ffcb";
+      sha256 = "0dwv91x63c47r0xyxcwc7vlc9b9b2baqad2xgm6r865gmx1fh31b";
       fetchSubmodules = false;
     };
   };

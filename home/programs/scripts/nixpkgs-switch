@@ -35,7 +35,7 @@ if test "$other_hostname" = ""
     end
 else
     git pull
-    colmena apply --on $other_hostname
+    colmena apply --on $other_hostname -v
 end
 
 if test $status -eq 0
