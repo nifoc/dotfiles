@@ -1,5 +1,6 @@
 (let [lsp (require :lspconfig)
       lsp-configs (require :lspconfig.configs)
+      cmp (require :cmp_nvim_lsp)
       navic (require :nvim-navic)
       diagnostic (require :nifoc.diagnostic)
       augroup (vim.api.nvim_create_augroup :NifocLsp {:clear true})
@@ -21,20 +22,14 @@
                                    (when (client.supports_method :textDocument/inlayHint)
                                      (vim.lsp.inlay_hint bufnr true)
                                      (setup-inlay-hint-toggle bufnr))
-                                   (when (client.supports_method :textDocument/completion)
-                                     (set vim.opt_local.omnifunc
-                                          "v:lua.MiniCompletion.completefunc_lsp"))
                                    (diagnostic.maybe-enable-lsp client bufnr)))
                      :group augroup
                      :desc "Automatic LSP setup"})
   ;; Servers
   (vim.lsp.set_log_level :OFF)
-  (let [handlers {:textDocument/hover (vim.lsp.with vim.lsp.handlers.hover
-                                        {:border :rounded})
-                  :textDocument/signatureHelp (vim.lsp.with vim.lsp.handlers.signature_help
-                                                {:border :rounded})}
+  (let [capabilities (cmp.default_capabilities)
         flags {:allow_incremental_sync true :debounce_text_changes 700}
-        default-config {: handlers : flags}
+        default-config {: capabilities : flags}
         default-servers [:bashls
                          :cssls
                          :dockerls

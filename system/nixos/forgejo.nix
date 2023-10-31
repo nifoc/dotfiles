@@ -63,6 +63,8 @@ in
       useACMEHost = "kempkens.io";
 
       extraConfig = ''
+        client_max_body_size 0;
+
         add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
       '';
 

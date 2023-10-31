@@ -193,6 +193,8 @@ in
 
         nvim-jdtls
 
+        lspkind-nvim
+
         {
           plugin = nvim-navic;
           config = builtins.readFile ../../config/nvim/plugins/navic.fnl;
@@ -212,6 +214,36 @@ in
           type = "fennel";
         }
 
+        # Comments
+        {
+          plugin = comment-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/comment.fnl;
+          type = "fennel";
+        }
+
+        # Snippets
+        {
+          plugin = LuaSnip;
+          config = builtins.readFile ../../config/nvim/plugins/luasnip.fnl;
+          type = "fennel";
+        }
+
+        friendly-snippets
+
+        # cmp
+        {
+          plugin = nvim-cmp;
+          config = builtins.readFile ../../config/nvim/plugins/cmp.fnl;
+          type = "fennel";
+        }
+
+        cmp-nvim-lsp
+        cmp_luasnip
+        cmp-path
+        cmp-buffer
+        cmp-cmdline
+        cmp-nvim-lsp-document-symbol
+
         # Formatting
 
         {
@@ -222,8 +254,21 @@ in
 
         # Pairs
         {
+          plugin = nvim-autopairs;
+          config = builtins.readFile ../../config/nvim/plugins/autopairs.fnl;
+          type = "fennel";
+        }
+
+        {
           plugin = vim-matchup;
           config = builtins.readFile ../../config/nvim/plugins/matchup.fnl;
+          type = "fennel";
+        }
+
+        # Textobjects
+        {
+          plugin = nvim-surround;
+          config = builtins.readFile ../../config/nvim/plugins/surround.fnl;
           type = "fennel";
         }
 

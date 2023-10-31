@@ -27,14 +27,31 @@
 # LSP
 - src: neovim/nvim-lspconfig
 - src: mfussenegger/nvim-jdtls
+- src: onsails/lspkind.nvim
 - src: SmiteshP/nvim-navic
 - src: RRethy/vim-illuminate
 # Linter
 - src: mfussenegger/nvim-lint
+# Comments
+- src: numtostr/comment.nvim
+# Snippets
+- src: L3MON4D3/LuaSnip
+- src: rafamadriz/friendly-snippets
+# cmp
+- src: hrsh7th/nvim-cmp
+- src: hrsh7th/cmp-nvim-lsp
+- src: saadparwaiz1/cmp_luasnip
+- src: hrsh7th/cmp-path
+- src: hrsh7th/cmp-buffer
+- src: hrsh7th/cmp-cmdline
+- src: hrsh7th/cmp-nvim-lsp-document-symbol
 # Formatting
 - src: stevearc/conform.nvim
 # Pairs
+- src: windwp/nvim-autopairs
 - src: andymass/vim-matchup
+# Textobjects
+- src: kylechui/nvim-surround
 # UI
 - src: rebelot/heirline.nvim
 - src: lukas-reineke/indent-blankline.nvim

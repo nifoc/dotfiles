@@ -75,6 +75,11 @@ project_rust() {
 
 # Frameworks
 
+project_phoenix() {
+  project_elixir
+  project_node
+}
+
 project_rails() {
   project_ruby
   project_node
