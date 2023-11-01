@@ -128,12 +128,12 @@ in
   };
   vim-just = buildVimPlugin {
     pname = "vim-just";
-    version = "2023-10-20";
+    version = "2023-11-01";
     src = fetchFromGitHub {
       owner = "NoahTheDuke";
       repo = "vim-just";
-      rev = "3029bdda0da9674682fe46bd6c4b946ad229dcaa";
-      sha256 = "0m8dbdr9pdisjnfh6x6nfs27zslnzq7wq1h9jndp810b8prngai3";
+      rev = "f25560bd859b0a67f4a0d6de8b64d2169d7e8519";
+      sha256 = "00agr6n5m9zqi6frmm4f7h4gi7gjznqwg9jpa94wg2n8vdwbl1iw";
       fetchSubmodules = false;
     };
   };
@@ -230,12 +230,12 @@ in
   };
   nvim-jdtls = buildVimPlugin {
     pname = "nvim-jdtls";
-    version = "2023-10-13";
+    version = "2023-11-01";
     src = fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-jdtls";
-      rev = "a09f8cdd75c546eb024d0f0b5b3ad185f05b738f";
-      sha256 = "1ck1f55y19m049bqwb3j77sq5glwafy48w7b01z324qdj68vhy6n";
+      rev = "503a399e0d0b5d432068ab5ae24b9848891b0d53";
+      sha256 = "0qq8sr32k9wv92km71h5clpmhsnck3i0dj40qapabb3iaw8iwhwf";
       fetchSubmodules = false;
     };
   };
