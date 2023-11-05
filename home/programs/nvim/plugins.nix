@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2023-11-04";
+    version = "2023-11-05";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "bef2c24e23d0da62a8542b1f08b1ac87ec43e93f";
-      sha256 = "0xgbrkgj0cwds1igiidlc9nflnzf4p2iqwq364v2gv85rvi7b9jx";
+      rev = "b3d2c36254aa79fe531ac94c475a5a57580d2907";
+      sha256 = "0pb5f2q2wp4zsz2a7qsxcv2zm7bscr4jny1anrj3r15ikin4yl3p";
       fetchSubmodules = false;
     };
   };
@@ -274,12 +274,12 @@ in
   };
   nvim-lint = buildVimPlugin {
     pname = "nvim-lint";
-    version = "2023-11-03";
+    version = "2023-11-04";
     src = fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-lint";
-      rev = "8d2bd9a2d1f0b41c96dfa0c998cc22ba152935ed";
-      sha256 = "124ckf0n3fjlw1f9rf1c8mv6jn1qxja5nfpb7l8p2zms8xssaksd";
+      rev = "7746f952827dabfb70194518c99c93d5651b8f19";
+      sha256 = "02703pgyjhjckkkiiyi5c82raiwhahv8wlan6hr563f6xry99brc";
       fetchSubmodules = false;
     };
   };
@@ -399,8 +399,8 @@ in
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "conform.nvim";
-      rev = "893b139e6dcdb55dee4c98215d9217d3a1ec69eb";
-      sha256 = "01y2ja4h1njqnidnf4b20z4fxsn47lqwc7dd9xjipp9651g4gx9f";
+      rev = "0bbe83830be5a07a1161bb1a23d7280310656177";
+      sha256 = "08y5xwf8h79l8ms3pjynaclvi1i55jzz5ffbq31cnilm98xsars8";
       fetchSubmodules = false;
     };
   };
@@ -417,12 +417,12 @@ in
   };
   vim-matchup = buildVimPlugin {
     pname = "vim-matchup";
-    version = "2023-09-02";
+    version = "2023-11-05";
     src = fetchFromGitHub {
       owner = "andymass";
       repo = "vim-matchup";
-      rev = "6dbe108230c7dbbf00555b7d4d9f6a891837ef07";
-      sha256 = "1c0rkdr0pjrrplvr5adnb0q9vkq11kr7m5mvlggm633g45khjw5l";
+      rev = "d30b72d20f01478a8486f15a57c89fe3177373db";
+      sha256 = "0zlficdwybcz8mvzv70vp4mkzrwpmvp3v0dq88fyimyajyxi1aqp";
       fetchSubmodules = false;
     };
   };
