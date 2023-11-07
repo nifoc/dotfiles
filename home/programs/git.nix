@@ -40,6 +40,10 @@
         whitespace = "fix";
       };
 
+      merge = {
+        conflictStyle = "zdiff3";
+      };
+
       rerere = {
         enabled = true;
       };
