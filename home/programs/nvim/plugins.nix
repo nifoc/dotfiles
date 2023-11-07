@@ -29,12 +29,12 @@ in
   };
   mini-nvim = buildVimPlugin {
     pname = "mini.nvim";
-    version = "2023-11-06";
+    version = "2023-11-07";
     src = fetchFromGitHub {
       owner = "echasnovski";
       repo = "mini.nvim";
-      rev = "8e18eb9ba849d737acac1873cd78fc8058c1700a";
-      sha256 = "0s40jdg2z1wqb5wy0i4d31mrn9gw9136hq8kkwyqif43lgizz4h3";
+      rev = "36940b8f18e2557c1c47b1333618e31d8828c30c";
+      sha256 = "0635a6bcl2m5l9ms25k44syh29pkngijhismf4yc0pxdwyd1r7c6";
       fetchSubmodules = false;
     };
   };
