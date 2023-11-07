@@ -1,13 +1,20 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -eu
 
-tmpfile="_mp4-concat.tmp"
-printf '' >"$tmpfile"
+tmpext="_mp4-concat.tmp.ts"
+TMP_FILES=()
 
 for f in "$@"; do
-  echo "file '$f'" >>"$tmpfile"
+  TMP_FILES+=("$f$tmpext")
+  ffmpeg -i "$f" -c copy -bsf:v h264_mp4toannexb -f mpegts "$f$tmpext"
 done
 
-ffmpeg -f concat -safe 0 -i "$tmpfile" -c copy mp4concat_output.mp4
-rm -f "$tmpfile"
+concat_files=$(printf "|%s" "${TMP_FILES[@]}")
+concat_files=${concat_files:1}
+
+ffmpeg -i "concat:$concat_files" -c copy -bsf:a aac_adtstoasc "mp4concat_${RANDOM}.mp4"
+
+for f in "${TMP_FILES[@]}"; do
+  rm "$f"
+done
