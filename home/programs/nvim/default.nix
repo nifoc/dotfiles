@@ -64,6 +64,7 @@ in
             p.erlang
             p.fennel
             p.fish
+            p.graphql
             p.heex
             p.html
             p.http
