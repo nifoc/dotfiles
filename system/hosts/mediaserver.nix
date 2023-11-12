@@ -141,6 +141,8 @@ in
     MaxRetentionSec=30day
   '';
 
+  security.sudo.enable = true;
+
   documentation = {
     nixos.enable = false;
     doc.enable = false;

@@ -169,6 +169,8 @@ in
     MaxRetentionSec=30day
   '';
 
+  security.sudo.enable = true;
+
   services.zfs.autoScrub.enable = true;
 
   documentation = {

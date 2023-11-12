@@ -83,6 +83,8 @@ in
     MaxRetentionSec=7day
   '';
 
+  security.sudo.enable = true;
+
   documentation = {
     nixos.enable = false;
     doc.enable = false;
