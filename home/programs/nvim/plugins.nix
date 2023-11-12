@@ -139,12 +139,12 @@ in
   };
   rainbow-delimiters-nvim = buildVimPlugin {
     pname = "rainbow-delimiters.nvim";
-    version = "2023-11-11";
+    version = "2023-11-12";
     src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "rainbow-delimiters.nvim";
-      rev = "a5e8fb4960f905a52031b28113cf43088cfeae22";
-      sha256 = "0d3yfy7a7jc0g4y3x6fff2skbkhp3hjjk0p4q2a66s6rm626pg6z";
+      rev = "9492c13ca9ef0b96bc9fac2b2724f5b20096df51";
+      sha256 = "0jjg7g3r6a7g8rbijah038r4gx2a72szx5p2w65lnhmi26b3ps3v";
       fetchSubmodules = false;
     };
   };
@@ -208,12 +208,12 @@ in
   };
   telescope-undo-nvim = buildVimPlugin {
     pname = "telescope-undo.nvim";
-    version = "2023-11-10";
+    version = "2023-11-12";
     src = fetchFromGitHub {
       owner = "debugloop";
       repo = "telescope-undo.nvim";
-      rev = "a3dcb6e32a3a59a5570a7cda33171eeef9753345";
-      sha256 = "1vx3zfb2mc56ggk1j2kh9xzpnid963wvg2ibhq1c7vzf0d3wigc0";
+      rev = "13c33c173e53f14df7eec5155c52a3d2ab022d8d";
+      sha256 = "0bc3c447491pbp6l20gn4kwd9n7wm4ayac0imsvswpmnvlrh0ibn";
       fetchSubmodules = false;
     };
   };
