@@ -56,8 +56,7 @@
                                                                :nvim_lsp "[LSP]"
                                                                :nvim_lsp_document_symbol "[Symbol]"
                                                                :nvim_lua "[Lua]"
-                                                               :path "[Path]"}})}
-              :experimental {:ghost_text true}})
+                                                               :path "[Path]"}})}})
   (cmp.setup.cmdline "/"
                      {:sources (cmp.config.sources [{:name :nvim_lsp_document_symbol}]
                                                    [{:name :buffer}])

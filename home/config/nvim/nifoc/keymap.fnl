@@ -78,7 +78,9 @@
     (keymap.set :n :<leader>tw
                 #(telescope-builtin.lsp_dynamic_workspace_symbols telescope-dropdown)
                 {:buffer bufnr :desc "LSP Workspace Symbols"})
-    (keymap.set :n :<leader>th #(vim.lsp.inlay_hint bufnr nil)
+    (keymap.set :n :<leader>th
+                #(vim.lsp.inlay_hint.enable bufnr
+                                            (not (vim.lsp.inlay_hint.is_enabled bufnr)))
                 {:buffer bufnr :desc "Toggle Inlay Hints"})
     (keymap.set :n :<leader>lca
                 #(telescope-builtin.lsp_code_actions telescope-dropdown)

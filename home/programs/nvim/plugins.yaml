@@ -58,4 +58,4 @@
 - src: lukas-reineke/virt-column.nvim
 - src: axieax/urlview.nvim
 - src: lewis6991/gitsigns.nvim
-- src: rcarriga/nvim-notify
+- src: j-hui/fidget.nvim

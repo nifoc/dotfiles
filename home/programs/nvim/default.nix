@@ -308,8 +308,8 @@ in
         }
 
         {
-          plugin = nvim-notify;
-          config = builtins.readFile ../../config/nvim/plugins/notify.fnl;
+          plugin = fidget-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/fidget.fnl;
           type = "fennel";
         }
       ];
