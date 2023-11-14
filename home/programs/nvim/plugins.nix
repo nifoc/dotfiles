@@ -29,12 +29,12 @@ in
   };
   mini-nvim = buildVimPlugin {
     pname = "mini.nvim";
-    version = "2023-11-11";
+    version = "2023-11-14";
     src = fetchFromGitHub {
       owner = "echasnovski";
       repo = "mini.nvim";
-      rev = "f2b89efbbad1943657e43f474fe308fceb63597e";
-      sha256 = "1yyqb3plmzmfpidcij66j3mcg37ysf3bs1s5wyyi7hxqw6hqqhk4";
+      rev = "abd7aa3ec50350ec3c986fcdd7328e3d23948b89";
+      sha256 = "188dqyddsj2rzz212n8kswxqn8mxa0n38j681r912z4yf4vbmjqi";
       fetchSubmodules = false;
     };
   };
@@ -44,8 +44,8 @@ in
     src = fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
-      rev = "71cf9bfd1b2d36c6942ba80f24c382d057e6b567";
-      sha256 = "1li8bbkwxznh1kr1filrwki19jzyp75580q22m7rgj7axz6aix8c";
+      rev = "11eb26fc166742db8d1e8a6f5a7de9df37b09aae";
+      sha256 = "0xshsc1wxgsvdb09klsddz0ipf43vimsya4rc4zi22xxjgj40dyh";
       fetchSubmodules = false;
     };
   };
@@ -117,23 +117,23 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2023-11-13";
+    version = "2023-11-14";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "2241f81d74a3de7f8ae1517bbfc24c319218d9a0";
-      sha256 = "0896lms66dwax4sxn8hz49275agx01jdzxiyakpfnjl64kn5767s";
+      rev = "c0da2013d1cef768c00f3f0b7f365fe19a10bca3";
+      sha256 = "19kvpxd4vssdrpznrp4prx7v5n7qy5v1mm5nnc8lmfbrp5qzls8m";
       fetchSubmodules = false;
     };
   };
   vim-just = buildVimPlugin {
     pname = "vim-just";
-    version = "2023-11-08";
+    version = "2023-11-14";
     src = fetchFromGitHub {
       owner = "NoahTheDuke";
       repo = "vim-just";
-      rev = "743cbe28d8e6acd82eb7db6bac11c50661ec16a9";
-      sha256 = "16vdabnq8rxkbi5bccr0fjxjhm0n7d3r1sdx1459s4b5h6his9bw";
+      rev = "8fa4691bc3b593b6deaf885a3af80aafb12f338b";
+      sha256 = "0gic7vfd3jbz5pwn0cchhx4xs05vil590mc90kfkvf97ksr94965";
       fetchSubmodules = false;
     };
   };
@@ -219,12 +219,12 @@ in
   };
   nvim-lspconfig = buildVimPlugin {
     pname = "nvim-lspconfig";
-    version = "2023-11-12";
+    version = "2023-11-14";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "90a28fd7637b66e055af62387ecee06f7cbd3173";
-      sha256 = "0vzvbw8fh2j1l1sjkk5dfj5l5yghp5fk9pparvar1cyadpa6mcsh";
+      rev = "fa04d48113d7db6223c52b98c049995ecce3456e";
+      sha256 = "0sapa53g91hy9w2rnzvd4560is9vp1qv6fk3w4w9la5yw4snmbda";
       fetchSubmodules = false;
     };
   };
