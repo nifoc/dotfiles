@@ -139,12 +139,12 @@ in
   };
   rainbow-delimiters-nvim = buildVimPlugin {
     pname = "rainbow-delimiters.nvim";
-    version = "2023-11-14";
+    version = "2023-11-15";
     src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "rainbow-delimiters.nvim";
-      rev = "a3cfa42deb8ff13ef41e1fe81f2e60ab06150b7d";
-      sha256 = "1p0yxsdpyy6bvgwbj1k3ha45qv0z7h1rgkm4r2gcflg40gjh6k8g";
+      rev = "ffb31befabb165812360ba70072e04c2101317d7";
+      sha256 = "1a4gwggn131zyiigv7zvpbriqs2f2z7kslds9xpc6rgskd873kkd";
       fetchSubmodules = false;
     };
   };
@@ -498,8 +498,8 @@ in
     src = fetchFromGitHub {
       owner = "j-hui";
       repo = "fidget.nvim";
-      rev = "98047f30e454dd36da00eb354506517166cfec7d";
-      sha256 = "08ib7dzcsn8rgnvfcsj5id6m1rhfd94fhh6s943k2631sc34kq0w";
+      rev = "f10103f8f30fed80a7ab07fff5756164fea87c70";
+      sha256 = "1qw2ib10mca7a8hjpr6sl792shrgn4zmybab3ldzw31v8wk1s24g";
       fetchSubmodules = false;
     };
   };
