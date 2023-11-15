@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, lib, config, ... }:
 
 let
   web-domain = "mastodon.kempkens.io";
@@ -7,16 +7,16 @@ let
     mastodonModules = pkgs.mastodon.mastodonModules.overrideAttrs (oldMods:
       let
         # https://github.com/ronilaukkarinen/mastodon-bird-ui
-        birdui-version = "1.6.4";
+        birdui-version = "1.8.2";
 
         birdui-single-column = builtins.fetchurl {
           url = "https://raw.githubusercontent.com/ronilaukkarinen/mastodon-bird-ui/${birdui-version}/layout-single-column.css";
-          sha256 = "05wfq7v1vznq0jv12jm4h4nxg76rz6digjycc63rf3rh6jdz5dn9";
+          sha256 = "0xlnykliqm7qrkw6ym14mxdvx3mb1mmyvjyq7ly32kkx3i2mcc47";
         };
 
         birdui-multi-column = builtins.fetchurl {
           url = "https://raw.githubusercontent.com/ronilaukkarinen/mastodon-bird-ui/${birdui-version}/layout-multiple-columns.css";
-          sha256 = "17p5mg09kwfpn0xfhwpqax32k7zzr660agkfp36b95333hdy4cwa";
+          sha256 = "0wz0kj3p1sa7lf00qj6l83hnl42zrfkb90s085m0q896hy42za9i";
         };
       in
       {
@@ -74,7 +74,7 @@ in
 
     localDomain = "kempkens.io";
 
-    streamingPort = 55000;
+    streamingProcesses = 2;
     webPort = 55001;
     sidekiqPort = 55002;
     enableUnixSocket = true;
@@ -138,85 +138,102 @@ in
     };
   };
 
-  services.nginx.virtualHosts."${web-domain}" = {
-    quic = true;
-    http3 = true;
-
-    root = "${config.services.mastodon.package}/public/";
-    forceSSL = true;
-    useACMEHost = "kempkens.io";
-
-    extraConfig = ''
-      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-    '';
-
-    locations."/system/" = {
+  services.nginx = {
+    upstreams.mastodon-streaming = {
       extraConfig = ''
-        rewrite ^/system/?(.*)$ https://mastodon-cdn.kempkens.io/$1 permanent;
+        least_conn;
       '';
+      servers = builtins.listToAttrs
+        (map
+          (i: {
+            name = "unix:/run/mastodon-streaming/streaming-${toString i}.socket";
+            value = { };
+          })
+          (lib.range 1 config.services.mastodon.streamingProcesses));
     };
 
-    locations."/" = {
-      tryFiles = "$uri @proxy";
-    };
+    virtualHosts = {
+      "${web-domain}" = {
+        quic = true;
+        http3 = true;
 
-    locations."@proxy" = {
-      recommendedProxySettings = true;
-      proxyPass = "http://unix:/run/mastodon-web/web.socket";
-      proxyWebsockets = true;
-
-      extraConfig = ''
-        proxy_hide_header Strict-Transport-Security;
-        proxy_force_ranges on;
-      '';
-    };
-
-    locations."/api/v1/streaming/" = {
-      recommendedProxySettings = true;
-      proxyPass = "http://unix:/run/mastodon-streaming/streaming.socket";
-      proxyWebsockets = true;
-
-      extraConfig = ''
-        proxy_hide_header Strict-Transport-Security;
-        proxy_force_ranges on;
-      '';
-    };
-  };
-
-  services.nginx.virtualHosts."mastodon-cdn.kempkens.io" =
-    let
-      lib-base = "/var/lib/mastodon/public-system";
-    in
-    {
-      quic = true;
-      http3 = true;
-      kTLS = true;
-
-      root = "${config.services.mastodon.package}/public/";
-      forceSSL = true;
-      useACMEHost = "kempkens.io";
-
-      extraConfig = ''
-        add_header Access-Control-Allow-Origin https://mastodon.kempkens.io;
-        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-      '';
-
-      locations."/system/" = {
-        alias = "${lib-base}/";
+        root = "${config.services.mastodon.package}/public/";
+        forceSSL = true;
+        useACMEHost = "kempkens.io";
 
         extraConfig = ''
-          add_header Cache-Control "public, max-age=2419200, immutable";
-          add_header X-Content-Type-Options nosniff;
-          add_header Content-Security-Policy "default-src 'none'; form-action 'none'";
+          add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
         '';
+
+        locations."/system/" = {
+          extraConfig = ''
+            rewrite ^/system/?(.*)$ https://mastodon-cdn.kempkens.io/$1 permanent;
+          '';
+        };
+
+        locations."/" = {
+          tryFiles = "$uri @proxy";
+        };
+
+        locations."@proxy" = {
+          recommendedProxySettings = true;
+          proxyPass = "http://unix:/run/mastodon-web/web.socket";
+          proxyWebsockets = true;
+
+          extraConfig = ''
+            proxy_hide_header Strict-Transport-Security;
+            proxy_force_ranges on;
+          '';
+        };
+
+        locations."/api/v1/streaming/" = {
+          recommendedProxySettings = true;
+          proxyPass = "http://mastodon-streaming";
+          proxyWebsockets = true;
+
+          extraConfig = ''
+            proxy_hide_header Strict-Transport-Security;
+            proxy_force_ranges on;
+          '';
+        };
       };
 
-      # "Old" CDN paths
-      locations."/accounts/".alias = "${lib-base}/accounts/";
-      locations."/cache/".alias = "${lib-base}/cache/";
-      locations."/custom_emojis/".alias = "${lib-base}/custom_emojis/";
-      locations."/media_attachments/".alias = "${lib-base}/media_attachments/";
+      "mastodon-cdn.kempkens.io" =
+        let
+          lib-base = "/var/lib/mastodon/public-system";
+        in
+        {
+          quic = true;
+          http3 = true;
+          kTLS = true;
+
+          root = "${config.services.mastodon.package}/public/";
+          forceSSL = true;
+          useACMEHost = "kempkens.io";
+
+          extraConfig = ''
+            add_header Access-Control-Allow-Origin https://mastodon.kempkens.io;
+            add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+          '';
+
+          locations."/system/" = {
+            alias = "${lib-base}/";
+
+            extraConfig = ''
+              add_header Cache-Control "public, max-age=2419200, immutable";
+              add_header X-Content-Type-Options nosniff;
+              add_header Content-Security-Policy "default-src 'none'; form-action 'none'";
+            '';
+          };
+
+          # "Old" CDN paths
+          locations."/accounts/".alias = "${lib-base}/accounts/";
+          locations."/cache/".alias = "${lib-base}/cache/";
+          locations."/custom_emojis/".alias = "${lib-base}/custom_emojis/";
+          locations."/media_attachments/".alias = "${lib-base}/media_attachments/";
+        };
     };
+  };
 
   users.groups.mastodon.members = [ config.services.nginx.user ];
 }
