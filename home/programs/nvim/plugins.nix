@@ -40,12 +40,12 @@ in
   };
   nvim-web-devicons = buildVimPlugin {
     pname = "nvim-web-devicons";
-    version = "2023-11-13";
+    version = "2023-11-16";
     src = fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
-      rev = "11eb26fc166742db8d1e8a6f5a7de9df37b09aae";
-      sha256 = "0xshsc1wxgsvdb09klsddz0ipf43vimsya4rc4zi22xxjgj40dyh";
+      rev = "3523d6e6d40ab11fd66c1b2732b3d6b60affa951";
+      sha256 = "0lycvmfhx97gjdmjc7qchhllzv42jarm6j9y8pcfpvgaj5dqdq4w";
       fetchSubmodules = false;
     };
   };
@@ -95,12 +95,12 @@ in
   };
   substitute-nvim = buildVimPlugin {
     pname = "substitute.nvim";
-    version = "2023-10-11";
+    version = "2023-11-16";
     src = fetchFromGitHub {
       owner = "gbprod";
       repo = "substitute.nvim";
-      rev = "cf35db50188f3d7de624ae391c9bb9f2e9de5610";
-      sha256 = "0v1svihxdh74ip1hmbc2aj95znlgvgb8z7ifxyz5sb1bk774460h";
+      rev = "00b7b71a4d767babec04b1ca72b4d1b7e7a76d58";
+      sha256 = "07ig248gxc241zv5x5cv2kr4sbqbb84ylgcb4pivp1pbnqcv8csj";
       fetchSubmodules = false;
     };
   };
@@ -128,12 +128,12 @@ in
   };
   vim-just = buildVimPlugin {
     pname = "vim-just";
-    version = "2023-11-14";
+    version = "2023-11-16";
     src = fetchFromGitHub {
       owner = "NoahTheDuke";
       repo = "vim-just";
-      rev = "8fa4691bc3b593b6deaf885a3af80aafb12f338b";
-      sha256 = "0gic7vfd3jbz5pwn0cchhx4xs05vil590mc90kfkvf97ksr94965";
+      rev = "fda7259fc3b16af1d16e467c1482aac3bcc4df9a";
+      sha256 = "0rfj8hknzwjp59x51wf99j4ymda4gnc2ly1rl3185dw4p3v7n4ph";
       fetchSubmodules = false;
     };
   };
@@ -161,12 +161,12 @@ in
   };
   telescope-nvim = buildVimPlugin {
     pname = "telescope.nvim";
-    version = "2023-11-15";
+    version = "2023-11-16";
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "721cdcae134eb5c564cb6c9df6c317c3854528ad";
-      sha256 = "12kizqyhknpp4931n2fkbdxhb04afpcnxyw6s4z7mf1vsfjz39w2";
+      rev = "18774ec7929c8a8003a91e9e1f69f6c32258bbfe";
+      sha256 = "1vihb6l5xiqbrs1g4c1blpkd0c995hwv2w6sr5b86zzmk70g0c7k";
       fetchSubmodules = false;
     };
   };
@@ -208,12 +208,12 @@ in
   };
   telescope-undo-nvim = buildVimPlugin {
     pname = "telescope-undo.nvim";
-    version = "2023-11-12";
+    version = "2023-11-16";
     src = fetchFromGitHub {
       owner = "debugloop";
       repo = "telescope-undo.nvim";
-      rev = "13c33c173e53f14df7eec5155c52a3d2ab022d8d";
-      sha256 = "0bc3c447491pbp6l20gn4kwd9n7wm4ayac0imsvswpmnvlrh0ibn";
+      rev = "d3afc1c105535a90caec092ce27a113f77ba7b84";
+      sha256 = "0cpkjl6pffwdrh1hawpd042gpnyqbg2r8f1nz0fwdk175bgsx2s8";
       fetchSubmodules = false;
     };
   };
