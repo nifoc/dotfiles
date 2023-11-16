@@ -59,6 +59,9 @@
   (set o.swapfile false)
   (set o.undofile true)
   (set o.undodir (.. (os.getenv :HOME) :/.local/share/nvim/undo//))
+  ;; Clipboard
+  (let [clipboard (require :nifoc.clipboard)]
+    (clipboard.setup))
   ;; Theme
   (let [theme (require :nifoc.theme)]
     (theme.setup))

@@ -35,7 +35,7 @@ in
   xdg.configFile."wezterm" = {
     source = pkgs.runCommand "wezterm-fennel-files"
       {
-        nativeBuildInputs = with pkgs; [ lua53Packages.fennel stylua ];
+        nativeBuildInputs = with pkgs; [ lua53Packages.fennel ];
       } ''
       mkdir -p $out
 
@@ -50,8 +50,6 @@ in
       # Config
       echo "Compiling config.fnl ..."
       $fennel "$config_store_path/config.fnl" > "$out/config.lua"
-
-      stylua "$out/"
     '';
     recursive = true;
   };

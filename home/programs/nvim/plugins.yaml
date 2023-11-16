@@ -5,7 +5,6 @@
 - src: kyazdani42/nvim-web-devicons
 - src: willothy/wezterm.nvim
 # Keybindings
-- src: ojroques/nvim-osc52
 - src: gbprod/yanky.nvim
 - src: gbprod/cutlass.nvim
 - src: gbprod/substitute.nvim

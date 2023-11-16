@@ -124,12 +124,6 @@ in
 
         # Keybindings
         {
-          plugin = nvim-osc52;
-          config = builtins.readFile ../../config/nvim/plugins/osc52.fnl;
-          type = "fennel";
-        }
-
-        {
           plugin = yanky-nvim;
           config = builtins.readFile ../../config/nvim/plugins/yanky.fnl;
           type = "fennel";
@@ -318,7 +312,7 @@ in
   xdg.configFile."nvim" = {
     source = pkgs.runCommand "nvim-fennel-files"
       {
-        nativeBuildInputs = with pkgs; [ luajitPackages.fennel stylua ];
+        nativeBuildInputs = with pkgs; [ luajitPackages.fennel ];
       } ''
       mkdir -p $out/lua/configuration
       mkdir -p $out/lua/nifoc/utils
@@ -384,8 +378,6 @@ in
       # Other
       echo "Copying tree-sitter queries ..."
       cp -r "$after_store_path/queries" "$out/after/"
-
-      stylua "$out/"
     '';
     recursive = true;
   };
