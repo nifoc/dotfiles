@@ -45,19 +45,12 @@
     (each [_ name (pairs default-servers)]
       ((. lsp name :setup) default-config))
     ;; Custom
-    (when (not lsp-configs.lexical)
-      (set lsp-configs.lexical
-           {:default_config {:filetypes [:elixir :eelixir]
-                             :cmd [:lexical :start]
-                             :root_dir (fn [fname]
-                                         (or ((lsp.util.root_pattern :mix.exs
-                                                                     :.git) fname)
-                                             (vim.loop.os_homedir)))
-                             :settings {}}}))
-    (if (= (vim.fn.executable :elixir-ls) 1)
-        (lsp.elixirls.setup (->> {:cmd [:elixir-ls]}
-                                 (vim.tbl_extend :force default-config)))
-        (lsp.lexical.setup default-config))
+    (when (= (vim.fn.executable :elixir-ls) 1)
+      (lsp.elixirls.setup (->> {:cmd [:elixir-ls]}
+                               (vim.tbl_extend :force default-config))))
+    (when (= (vim.fn.executable :lexical) 1)
+      (lsp.lexical.setup (->> {:cmd [:lexical :start]}
+                              (vim.tbl_extend :force default-config))))
     (when (= (vim.fn.executable :nil) 1)
       (lsp.nil_ls.setup (->> {:settings {:nil {:formatting {:command [:nixpkgs-fmt]}}}}
                              (vim.tbl_extend :force default-config))))

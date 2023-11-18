@@ -44,6 +44,7 @@ in
       nodePackages.eslint_d
       hadolint
       luajitPackages.fennel
+      nixpkgs-fmt
       shellcheck
       statix
     ] ++ optionals isDarwin [

@@ -5,7 +5,7 @@
   (fn mod.setup []
     (if (= uname.sysname :Darwin)
         (set vim.g.clipboard {:name clip-name
-                              :copy {:+ osc52.copy :* osc52.copy}
+                              :copy {:+ :pbcopy :* :pbcopy}
                               :paste {:+ :pbpaste :* :pbpaste}
                               :cache_enabled 0})
         ;; Other OS
