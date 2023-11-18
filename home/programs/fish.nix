@@ -32,8 +32,8 @@ in
         src = fetchFromGitHub {
           owner = "franciscolourenco";
           repo = "done";
-          rev = "1.17.1";
-          sha256 = "sha256-aYKTkx5v7tB6k/UBcS0NOgA6SiRrjzn1lUTH/Xp5DFM=";
+          rev = "1.19.1";
+          hash = "sha256-BGHfwKoMfOZUsa05kEt8W2luc1aC3Su/OyaGmcb4UiI=";
         };
       }
 
@@ -45,17 +45,6 @@ in
           repo = "autopair.fish";
           rev = "1.0.4";
           sha256 = "sha256-s1o188TlwpUQEN3X5MxUlD/2CFCpEkWu83U9O+wg3VU=";
-        };
-      }
-
-      # https://github.com/nickeb96/puffer-fish
-      {
-        name = "puffer-fish";
-        src = fetchFromGitHub {
-          owner = "nickeb96";
-          repo = "puffer-fish";
-          rev = "5d3cb25e0d63356c3342fb3101810799bb651b64";
-          hash = "sha256-aPxEHSXfiJJXosIm7b3Pd+yFnyz43W3GXyUB5BFAF54=";
         };
       }
 

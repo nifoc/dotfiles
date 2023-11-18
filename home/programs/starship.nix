@@ -1,7 +1,10 @@
+{ lib, config, ... }:
+
 {
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
+    enableTransience = true;
 
     settings = {
       add_newline = true;
@@ -101,4 +104,10 @@
       };
     };
   };
+
+  programs.fish.interactiveShellInit = lib.mkIf config.programs.starship.enableTransience ''
+    function starship_transient_prompt_func
+      starship module character
+    end
+  '';
 }
