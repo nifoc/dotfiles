@@ -48,7 +48,6 @@
     packages = with pkgs; [
       agilebits-op
       arp-scan
-      awscli2
       curlHTTP3
       dasel
       dig
@@ -69,7 +68,6 @@
       ripgrep
       socat
       ssh-audit
-      tokei
       viddy
       wget
       xxHash
