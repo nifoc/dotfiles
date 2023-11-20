@@ -224,8 +224,6 @@ in
           type = "fennel";
         }
 
-        friendly-snippets
-
         # cmp
         {
           plugin = nvim-cmp;
@@ -269,6 +267,15 @@ in
         }
 
         # UI
+        {
+          plugin = oil-nvim;
+          config = /* fennel */ ''
+            (let [oil (require :oil)]
+              (oil.setup))
+          '';
+          type = "fennel";
+        }
+
         {
           plugin = heirline-nvim;
           config = builtins.readFile ../../config/nvim/plugins/heirline.fnl;
