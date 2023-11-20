@@ -46,9 +46,7 @@ in
       ensureUsers = [
         {
           name = "headscale";
-          ensurePermissions = {
-            "DATABASE headscale" = "ALL PRIVILEGES";
-          };
+          ensureDBOwnership = true;
         }
       ];
     };
