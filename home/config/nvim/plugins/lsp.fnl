@@ -28,8 +28,12 @@
   ;; Servers
   (vim.lsp.set_log_level :OFF)
   (let [capabilities (cmp.default_capabilities)
+        handlers {:textDocument/hover (vim.lsp.with vim.lsp.handlers.hover
+                                        {:border :rounded})
+                  :textDocument/signatureHelp (vim.lsp.with vim.lsp.handlers.signature_help
+                                                {:border :rounded})}
         flags {:allow_incremental_sync true :debounce_text_changes 700}
-        default-config {: capabilities : flags}
+        default-config {: capabilities : handlers : flags}
         default-servers [:bashls
                          :cssls
                          :dockerls

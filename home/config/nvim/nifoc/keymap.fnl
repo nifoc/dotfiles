@@ -49,7 +49,8 @@
     (keymap.set :n :<leader>dtp :<cmd>TSPlaygroundToggle<CR>
                 {:desc "Toggle Treetsitter Playground"})
     ;; Other Mappings
-    (keymap.set :i :<CR> npairs.autopairs_cr {:expr true :silent true})
+    (keymap.set :i :<CR> npairs.autopairs_cr
+                {:expr true :replace_keycodes false :silent true})
     (keymap.set :n :F #(formatting.maybe-format-buffer 0)
                 {:desc "Format Buffer"})
     (keymap.set :n :<A-Left> :b)
@@ -69,7 +70,8 @@
     (keymap.set :x :gp "<Plug>(YankyGPutAfter)")
     (keymap.set :x :gP "<Plug>(YankyGPutBefore)")
     (keymap.set :n :y "<Plug>(YankyYank)")
-    (keymap.set :x :y "<Plug>(YankyYank)"))
+    (keymap.set :x :y "<Plug>(YankyYank)")
+    (keymap.set :n "-" :<cmd>Oil<CR> {:desc "Open Oil"}))
 
   (fn mod.lsp-attach [_client bufnr]
     (keymap.set :n :<leader>t

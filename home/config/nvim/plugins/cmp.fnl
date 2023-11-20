@@ -22,7 +22,6 @@
         (fallback)))
 
   (cmp.setup {:sources (cmp.config.sources [{:name :nvim_lsp}
-                                            ;{:name :nvim_lsp_signature_help}
                                             {:name :luasnip}
                                             {:name :treesitter
                                              :keyword_length 3}
@@ -44,19 +43,28 @@
                                                    :<C-Space> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert
                                                                                     :select true})
                                                    :<CR> (cmp.mapping.confirm {:select true})})
-              :window {:documentation (cmp.config.window.bordered)}
+              :window {:completion {:winhighlight "Normal:Pmenu,FloatBorder:Pmenu,Search:None"
+                                    :col_offset -3
+                                    :side_padding 0}
+                       :documentation (cmp.config.window.bordered)}
+              :view {:entries {:name :custom :selection_order :near_cursor}}
               :completion {:keyword_length 2
                            :completeopt "menu,menuone,noinsert"}
               :snippet {:expand (fn [args]
                                   (luasnip.lsp_expand args.body))}
-              :formatting {:format (lspkind.cmp_format {:mode :symbol_text
-                                                        :menu {:buffer "[Buffer]"
-                                                               :cmdline "[Cmd]"
-                                                               :luasnip "[LuaSnip]"
-                                                               :nvim_lsp "[LSP]"
-                                                               :nvim_lsp_document_symbol "[Symbol]"
-                                                               :nvim_lua "[Lua]"
-                                                               :path "[Path]"}})}})
+              :formatting {:fields [:kind :abbr :menu]
+                           :format (fn [entry vim-item]
+                                     (let [kind-fn (lspkind.cmp_format {:mode :symbol_text
+                                                                        :maxwidth 50})
+                                           kind (kind-fn entry vim-item)
+                                           strings (vim.split kind.kind "%s"
+                                                              {:trimempty true})]
+                                       (set kind.kind
+                                            (.. " " (or (. strings 1) "") " "))
+                                       (set kind.menu
+                                            (.. "    (" (or (. strings 2) "")
+                                                ")"))
+                                       kind))}})
   (cmp.setup.cmdline "/"
                      {:sources (cmp.config.sources [{:name :nvim_lsp_document_symbol}]
                                                    [{:name :buffer}])

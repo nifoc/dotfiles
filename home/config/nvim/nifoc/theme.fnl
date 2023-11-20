@@ -1,10 +1,16 @@
-(import-macros {: colorscheme : highlight : highlight-link} :../macros/cmd)
+(import-macros {: colorscheme
+                : highlight
+                : highlight-link
+                : highlight-get-field} :../macros/cmd)
 
 (let [mod {}
       o vim.opt
       g vim.g
       dracula (require :dracula)
       dracula-colors (dracula.colors)]
+  (fn swap-bg-with-fg [fg group]
+    (highlight group {: fg :bg (highlight-get-field group :fg)}))
+
   (set mod.colors dracula-colors)
 
   (fn mod.setup []
@@ -34,6 +40,39 @@
     (highlight :RainbowDelimiterOrange {:fg mod.colors.orange})
     (highlight :RainbowDelimiterGreen {:fg mod.colors.green})
     (highlight :RainbowDelimiterViolet {:fg mod.colors.pink})
-    (highlight :RainbowDelimiterCyan {:fg mod.colors.cyan}))
+    (highlight :RainbowDelimiterCyan {:fg mod.colors.cyan})
+    ;; cmp
+    (highlight :CmpItemAbbr {:fg mod.colors.white :bg :NONE})
+    (highlight :CmpItemAbbrMatch {:fg mod.colors.cyan :bg :NONE :bold true})
+    (highlight :CmpItemAbbrMatchFuzzy
+               {:fg mod.colors.cyan :bg :NONE :bold true})
+    (highlight :CmpItemMenu {:fg mod.colors.purple :bg :NONE :italic true})
+    (let [cmp-groups [:CmpItemKindField
+                      :CmpItemKindProperty
+                      :CmpItemKindEvent
+                      :CmpItemKindText
+                      :CmpItemKindEnum
+                      :CmpItemKindKeyword
+                      :CmpItemKindConstant
+                      :CmpItemKindConstructor
+                      :CmpItemKindReference
+                      :CmpItemKindFunction
+                      :CmpItemKindStruct
+                      :CmpItemKindClass
+                      :CmpItemKindModule
+                      :CmpItemKindOperator
+                      :CmpItemKindVariable
+                      :CmpItemKindFile
+                      :CmpItemKindUnit
+                      :CmpItemKindSnippet
+                      :CmpItemKindFolder
+                      :CmpItemKindMethod
+                      :CmpItemKindValue
+                      :CmpItemKindEnumMember
+                      :CmpItemKindInterface
+                      :CmpItemKindColor
+                      :CmpItemKindTypeParameter]]
+      (each [_ group (pairs cmp-groups)]
+        (swap-bg-with-fg mod.colors.black group))))
 
   mod)
