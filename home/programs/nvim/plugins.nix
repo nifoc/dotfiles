@@ -285,12 +285,12 @@ in
   };
   LuaSnip = buildVimPlugin {
     pname = "LuaSnip";
-    version = "2023-11-13";
+    version = "2023-11-20";
     src = fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "1f4ad8bb72bdeb60975e98652636b991a9b7475d";
-      sha256 = "1ymg2rbywvmpxnhvxrs09ic0d09h98x413d7q5sgc1vxbi6gf7z6";
+      rev = "cab667e2674881001a86a7478fff7dc7791c63f5";
+      sha256 = "10ij1bd3rdbyc87rlnq89h59gxmz6kfpq4wqbdhy9cml996ixpkp";
       fetchSubmodules = false;
     };
   };
@@ -483,12 +483,12 @@ in
   };
   fidget-nvim = buildVimPlugin {
     pname = "fidget.nvim";
-    version = "2023-11-18";
+    version = "2023-11-20";
     src = fetchFromGitHub {
       owner = "j-hui";
       repo = "fidget.nvim";
-      rev = "bd0b8b644d4fb293dc4df2718b1f2df3abd90767";
-      sha256 = "15kchq7qmlrr15s0g2zxaq4nr4q1i773210564h4a42lmmql5xv7";
+      rev = "a1493d94ecb3464ab3ae4d5855765310566dace4";
+      sha256 = "09hr2l3y0b4j3r308xqmj0pa8nqsx13x1g2ar3bpyj5dz42m8kgg";
       fetchSubmodules = false;
     };
   };
