@@ -233,7 +233,7 @@ in
 
         cmp-nvim-lsp
         cmp_luasnip
-        cmp-path
+        cmp-async-path
         cmp-buffer
         cmp-cmdline
         cmp-nvim-lsp-document-symbol

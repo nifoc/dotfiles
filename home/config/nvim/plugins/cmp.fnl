@@ -26,7 +26,7 @@
                                             {:name :treesitter
                                              :keyword_length 3}
                                             {:name :buffer :keyword_length 3}
-                                            {:name :path}])
+                                            {:name :async_path}])
               :mapping (cmp.mapping.preset.insert {:<C-e> (cmp.mapping {:i (cmp.mapping.abort)
                                                                         :c (cmp.mapping.close)})
                                                    :<esc> (cmp.mapping {:i (cmp.mapping.abort)})
@@ -70,7 +70,7 @@
                                                    [{:name :buffer}])
                       :mapping (cmp.mapping.preset.cmdline)})
   (cmp.setup.cmdline ":"
-                     {:sources (cmp.config.sources [{:name :path}]
+                     {:sources (cmp.config.sources [{:name :async_path}]
                                                    [{:name :cmdline}])
                       :mapping (cmp.mapping.preset.cmdline)})
   (cmp.event:on :confirm_done (npairs.on_confirm_done)))
