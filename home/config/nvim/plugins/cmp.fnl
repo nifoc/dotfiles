@@ -23,6 +23,7 @@
 
   (cmp.setup {:sources (cmp.config.sources [{:name :nvim_lsp}
                                             {:name :luasnip}
+                                            {:name :cmp_tabnine}
                                             {:name :treesitter
                                              :keyword_length 3}
                                             {:name :buffer :keyword_length 3}
@@ -59,11 +60,17 @@
                                            kind (kind-fn entry vim-item)
                                            strings (vim.split kind.kind "%s"
                                                               {:trimempty true})]
-                                       (set kind.kind
-                                            (.. " " (or (. strings 1) "") " "))
-                                       (set kind.menu
-                                            (.. "    (" (or (. strings 2) "")
-                                                ")"))
+                                       (if (= entry.source.name :cmp_tabnine)
+                                           (do
+                                             (set kind.kind " 󱜚 ")
+                                             (set kind.menu "    (TabNine)"))
+                                           (do
+                                             (set kind.kind
+                                                  (.. " " (or (. strings 1) "")
+                                                      " "))
+                                             (set kind.menu
+                                                  (.. "    ("
+                                                      (or (. strings 2) "") ")"))))
                                        kind))}})
   (cmp.setup.cmdline "/"
                      {:sources (cmp.config.sources [{:name :nvim_lsp_document_symbol}]

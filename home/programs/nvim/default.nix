@@ -237,6 +237,7 @@ in
         cmp-buffer
         cmp-cmdline
         cmp-nvim-lsp-document-symbol
+        pkgs.vimPlugins.cmp-tabnine
 
         # Formatting
 

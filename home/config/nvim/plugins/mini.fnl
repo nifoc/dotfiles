@@ -5,9 +5,7 @@
   ;; https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-clue.md
   (miniclue.setup {:triggers [; Leader
                               {:mode :n :keys :<leader>}
-                              {:mode :x :keys :<leader>}
-                              ; Built-in
-                              {:mode :i :keys :<C-x>}]
+                              {:mode :x :keys :<leader>}]
                    :clues [(miniclue.gen_clues.builtin_completion)]})
   ;; https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-hipatterns.md
   (hipatterns.setup {:highlighters {:fixme {:pattern "%f[%w]()FIXME()%f[%W]"

@@ -62,7 +62,6 @@
                       :CmpItemKindModule
                       :CmpItemKindOperator
                       :CmpItemKindVariable
-                      :CmpItemKindFile
                       :CmpItemKindUnit
                       :CmpItemKindSnippet
                       :CmpItemKindFolder
@@ -73,6 +72,9 @@
                       :CmpItemKindColor
                       :CmpItemKindTypeParameter]]
       (each [_ group (pairs cmp-groups)]
-        (swap-bg-with-fg mod.colors.black group))))
+        (swap-bg-with-fg mod.colors.black group)))
+    (highlight :CmpItemKindFile {:fg mod.colors.white :bg mod.colors.black})
+    (highlight :CmpItemKindTabNine
+               {:fg mod.colors.black :bg mod.colors.bright_magenta}))
 
   mod)
