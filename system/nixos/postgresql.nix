@@ -3,7 +3,8 @@
 {
   services.postgresql = {
     enable = true;
-    package = pkgs.postgresql_15;
+    package = pkgs.postgresql_15_jit;
+    enableJIT = true;
 
     enableTCPIP = true;
 
@@ -11,6 +12,10 @@
       full_page_writes = "off";
       wal_init_zero = "off";
       wal_recycle = "off";
+
+      track_activities = "on";
+      track_counts = "on";
+      autovacuum = "on";
     };
 
     authentication = ''
