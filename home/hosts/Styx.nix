@@ -62,7 +62,6 @@
       mtr
       nix-tree
       nurl
-      ollama
       ouch
       parallel
       q
