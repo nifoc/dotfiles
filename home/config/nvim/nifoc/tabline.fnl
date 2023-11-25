@@ -1,12 +1,14 @@
+(import-macros {: highlight-get-field} :../macros/cmd)
+
 (let [mod {}
       api vim.api
       heirline-utils (require :heirline.utils)
       colors (. (require :nifoc.theme) :colors)
       statusline (require :nifoc.statusline)
-      fg-active (. (heirline-utils.get_highlight :TabLineSel) :fg)
-      fg-inactive (. (heirline-utils.get_highlight :TabLine) :fg)
-      bg-active (. (heirline-utils.get_highlight :TabLineSel) :bg)
-      bg-inactive (. (heirline-utils.get_highlight :TabLine) :bg)]
+      fg-active (highlight-get-field :TabLineSel :fg)
+      fg-inactive (highlight-get-field :TabLine :fg)
+      bg-active (highlight-get-field :TabLineSel :bg)
+      bg-inactive (highlight-get-field :TabLine :bg)]
   ;; Utils
   (set mod.space
        {:provider " "

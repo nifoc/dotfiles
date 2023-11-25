@@ -237,7 +237,6 @@ in
         cmp-buffer
         cmp-cmdline
         cmp-nvim-lsp-document-symbol
-        pkgs.vimPlugins.cmp-tabnine
 
         # Formatting
 
@@ -315,6 +314,8 @@ in
           config = builtins.readFile ../../config/nvim/plugins/fidget.fnl;
           type = "fennel";
         }
+      ] ++ optionals isDarwin [
+        pkgs.vimPlugins.cmp-tabnine
       ];
   };
 

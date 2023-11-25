@@ -1,7 +1,10 @@
 (let [cmp (require :cmp)
       luasnip (require :luasnip)
       lspkind (require :lspkind)
-      npairs (require :nvim-autopairs.completion.cmp)]
+      npairs (require :nvim-autopairs.completion.cmp)
+      maybe-tabnine (if (pcall require :cmp_tabnine.config)
+                        [{:name :cmp_tabnine}]
+                        [])]
   (fn has-words-before? []
     (let [(line col) (-> 0 (vim.api.nvim_win_get_cursor) (unpack))]
       (if (not= col 0)
@@ -21,13 +24,14 @@
         (luasnip.jumpable -1) (luasnip.jump -1)
         (fallback)))
 
-  (cmp.setup {:sources (cmp.config.sources [{:name :nvim_lsp}
-                                            {:name :luasnip}
-                                            {:name :cmp_tabnine}
-                                            {:name :treesitter
-                                             :keyword_length 3}
-                                            {:name :buffer :keyword_length 3}
-                                            {:name :async_path}])
+  (cmp.setup {:sources (cmp.config.sources (vim.list_extend [{:name :nvim_lsp}
+                                                             {:name :luasnip}
+                                                             {:name :treesitter
+                                                              :keyword_length 3}
+                                                             {:name :buffer
+                                                              :keyword_length 3}
+                                                             {:name :async_path}]
+                                                            maybe-tabnine))
               :mapping (cmp.mapping.preset.insert {:<C-e> (cmp.mapping {:i (cmp.mapping.abort)
                                                                         :c (cmp.mapping.close)})
                                                    :<esc> (cmp.mapping {:i (cmp.mapping.abort)})
