@@ -106,12 +106,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2023-11-25";
+    version = "2023-11-26";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "d8a71826a20dfc9ed3d8a43e28a00611a302b456";
-      sha256 = "1lc43vij0li4dwpbylvxksk7ls4vzv0wwhx8p9rnlgglc3idbvr1";
+      rev = "9d91101f71cc64cdef923a3b14130db82985bac6";
+      sha256 = "0k5yi04r9bk5w69n1ivll7jzfs4xkr8fzfy4qpzmv696lp0g0608";
       fetchSubmodules = false;
     };
   };
@@ -128,12 +128,12 @@ in
   };
   rainbow-delimiters-nvim = buildVimPlugin {
     pname = "rainbow-delimiters.nvim";
-    version = "2023-11-25";
+    version = "2023-11-26";
     src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "rainbow-delimiters.nvim";
-      rev = "c7472dc1cb02156befa7bc02033b98db4d69f0f2";
-      sha256 = "056ny9jk4l0maggi3m4m7kvpwfzzxx6hfw0gm2wzl4qdvag87y1l";
+      rev = "6aaaf119e32ccf707c439aeac67041221359f031";
+      sha256 = "0jg4acr3icbaixbfygsj83805rs2bw6b85g6jbacl2n02rcsm276";
       fetchSubmodules = false;
     };
   };
@@ -150,12 +150,12 @@ in
   };
   telescope-nvim = buildVimPlugin {
     pname = "telescope.nvim";
-    version = "2023-11-16";
+    version = "2023-11-26";
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "18774ec7929c8a8003a91e9e1f69f6c32258bbfe";
-      sha256 = "1vihb6l5xiqbrs1g4c1blpkd0c995hwv2w6sr5b86zzmk70g0c7k";
+      rev = "e4c62dedd760d339bea5b8325c2d918d87476d00";
+      sha256 = "0lsaqhhrs40djcqs2670xqazi6kx1x4vpgrlh1wwvi1y3jqh3849";
       fetchSubmodules = false;
     };
   };
