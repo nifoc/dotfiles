@@ -1,10 +1,29 @@
 (let [cmp (require :cmp)
       luasnip (require :luasnip)
       lspkind (require :lspkind)
-      npairs (require :nvim-autopairs.completion.cmp)
-      maybe-tabnine (if (pcall require :cmp_tabnine.config)
-                        [{:name :cmp_tabnine}]
-                        [])]
+      npairs (require :nvim-autopairs.completion.cmp)]
+  (fn main-sources []
+    (let [maybe-tabnine (if (pcall require :cmp_tabnine.config)
+                            [{:name :cmp_tabnine}]
+                            [])]
+      (vim.list_extend (vim.list_extend [{:name :nvim_lsp}] maybe-tabnine)
+                       [{:name :async_path} {:name :luasnip}])))
+
+  (fn comparator-list []
+    (let [compare (require :cmp.config.compare)
+          maybe-tabnine (if (pcall require :cmp_tabnine.compare)
+                            [(require :cmp_tabnine.compare)]
+                            [])]
+      (vim.list_extend (vim.list_extend [compare.offset
+                                         compare.exact
+                                         compare.score]
+                                        maybe-tabnine)
+                       [compare.recently_used
+                        compare.locality
+                        compare.kind
+                        compare.length
+                        compare.order])))
+
   (fn has-words-before? []
     (let [(line col) (-> 0 (vim.api.nvim_win_get_cursor) (unpack))]
       (if (not= col 0)
@@ -24,14 +43,11 @@
         (luasnip.jumpable -1) (luasnip.jump -1)
         (fallback)))
 
-  (cmp.setup {:sources (cmp.config.sources (vim.list_extend [{:name :nvim_lsp}
-                                                             {:name :luasnip}
-                                                             {:name :treesitter
-                                                              :keyword_length 3}
-                                                             {:name :buffer
-                                                              :keyword_length 3}
-                                                             {:name :async_path}]
-                                                            maybe-tabnine))
+  (cmp.setup {:sources (cmp.config.sources (main-sources)
+                                           [{:name :treesitter
+                                             :keyword_length 3}
+                                            {:name :buffer :keyword_length 3}])
+              :sorting {:priority_weight 2 :comparators (comparator-list)}
               :mapping (cmp.mapping.preset.insert {:<C-e> (cmp.mapping {:i (cmp.mapping.abort)
                                                                         :c (cmp.mapping.close)})
                                                    :<esc> (cmp.mapping {:i (cmp.mapping.abort)})
@@ -50,7 +66,8 @@
                                                    :<CR> (cmp.mapping.confirm {:select true})})
               :window {:completion {:winhighlight "Normal:Pmenu,FloatBorder:Pmenu,Search:None"
                                     :col_offset -3
-                                    :side_padding 0}
+                                    :side_padding 0
+                                    :scrollbar true}
                        :documentation (cmp.config.window.bordered)}
               :view {:entries {:name :custom :selection_order :near_cursor}}
               :completion {:keyword_length 2

@@ -315,7 +315,11 @@ in
           type = "fennel";
         }
       ] ++ optionals isDarwin [
-        pkgs.vimPlugins.cmp-tabnine
+        {
+          plugin = pkgs.vimPlugins.cmp-tabnine;
+          config = builtins.readFile ../../config/nvim/plugins/cmp_tabnine.fnl;
+          type = "fennel";
+        }
       ];
   };
 
