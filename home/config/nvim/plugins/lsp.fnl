@@ -70,10 +70,7 @@
                        :includeInlayPropertyDeclarationTypeHints true
                        :includeInlayFunctionLikeReturnTypeHints true
                        :includeInlayEnumMemberValueHints true}]
-      (lsp.tsserver.setup (->> {:cmd [:typescript-language-server
-                                      :--stdio
-                                      :--tsserver-path
-                                      :tsserver]
+      (lsp.tsserver.setup (->> {:cmd [:typescript-language-server :--stdio]
                                 :settings {:typescript {:inlayHints inlay-hints}
                                            :javascript {:inlayHints inlay-hints}}}
                                (vim.tbl_extend :force default-config))))
