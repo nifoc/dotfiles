@@ -42,6 +42,8 @@
     (highlight :RainbowDelimiterViolet {:fg mod.colors.pink})
     (highlight :RainbowDelimiterCyan {:fg mod.colors.cyan})
     ;; cmp
+    (highlight :PmenuSel {:fg mod.colors.white :bg "#363848"})
+    (highlight :CmpCursorLine {:bg "#363848"})
     (highlight :CmpItemAbbr {:fg mod.colors.white :bg :NONE})
     (highlight :CmpItemAbbrMatch {:fg mod.colors.cyan :bg :NONE :bold true})
     (highlight :CmpItemAbbrMatchFuzzy
@@ -73,7 +75,8 @@
                       :CmpItemKindTypeParameter]]
       (each [_ group (pairs cmp-groups)]
         (swap-bg-with-fg mod.colors.black group)))
-    (highlight :CmpItemKindFile {:fg mod.colors.white :bg mod.colors.black})
+    (highlight :CmpItemKindFile {:fg mod.colors.black :bg mod.colors.white})
+    (highlight :CmpItemKindFolder {:fg mod.colors.black :bg mod.colors.white})
     (highlight :CmpItemKindTabNine
                {:fg mod.colors.black :bg mod.colors.bright_magenta}))
 

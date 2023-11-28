@@ -73,6 +73,7 @@ in
             p.javascript
             p.jsdoc
             p.json
+            p.kotlin
             p.lua
             p.make
             p.markdown
@@ -189,6 +190,8 @@ in
 
         nvim-jdtls
 
+        schemastore-nvim
+
         lspkind-nvim
 
         {
@@ -237,6 +240,7 @@ in
         cmp-buffer
         cmp-cmdline
         cmp-nvim-lsp-document-symbol
+        cmp_yanky
 
         # Formatting
 

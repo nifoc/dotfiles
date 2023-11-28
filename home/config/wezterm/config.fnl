@@ -26,7 +26,7 @@
   (fn extract-tab-info [title]
     (match title
       (where t (t:find "^nvim%s"))
-      {:title (t:gsub "^nvim%s(.*)" "%1") :icon " " :color "#019833"}
+      {:title (t:gsub "^nvim%s(.*)" "%1") :icon " " :color "#019833"}
       (where t (t:find "^git%s"))
       {:title (t:gsub "^git%s(.*)" "%1") :icon "󰊢 " :color "#F25029"}
       (where t (t:find "^mix%s"))

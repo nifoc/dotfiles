@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../config/fonts.nix
+    ../config/fonts
 
     ../programs/fish.nix
     ../programs/nushell.nix

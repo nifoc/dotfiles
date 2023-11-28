@@ -1,5 +1,6 @@
 (let [lsp (require :lspconfig)
       cmp (require :cmp_nvim_lsp)
+      schemastore (require :schemastore)
       navic (require :nvim-navic)
       diagnostic (require :nifoc.diagnostic)
       augroup (vim.api.nvim_create_augroup :NifocLsp {:clear true})
@@ -44,8 +45,7 @@
                          :html
                          :jsonls
                          :svelte
-                         :taplo
-                         :yamlls]]
+                         :taplo]]
     ;; Default
     (each [_ name (pairs default-servers)]
       ((. lsp name :setup) default-config))
@@ -53,9 +53,24 @@
     (when (= (vim.fn.executable :elixir-ls) 1)
       (lsp.elixirls.setup (->> {:cmd [:elixir-ls]}
                                (vim.tbl_extend :force default-config))))
+    (lsp.jsonls.setup (->> {:settings {:json {:schemas (schemastore.json.schemas)
+                                              :validate {:enable true}}}}
+                           (vim.tbl_extend :force default-config)))
     (when (= (vim.fn.executable :lexical) 1)
       (lsp.lexical.setup (->> {:cmd [:lexical :start]}
                               (vim.tbl_extend :force default-config))))
+    (when (= (vim.fn.executable :lua-language-server) 1)
+      (lsp.lua_ls.setup (->> {:cmd [:lua-language-server]
+                              :root_dir (or (lsp.util.root_pattern :init.vim
+                                                                   :init.lua
+                                                                   :.git)
+                                            (vim.loop.os_homedir))
+                              :settings {:Lua {:runtime {:version :LuaJIT
+                                                         :path (vim.split package.path
+                                                                          ";")}
+                                               :diagnostics {:globals [:vim]}
+                                               :telemetry {:enable false}}}}
+                             (vim.tbl_extend :force default-config))))
     (when (= (vim.fn.executable :nil) 1)
       (lsp.nil_ls.setup (->> {:settings {:nil {:formatting {:command [:nixpkgs-fmt]}}}}
                              (vim.tbl_extend :force default-config))))
@@ -76,15 +91,7 @@
                                (vim.tbl_extend :force default-config))))
     (lsp.solargraph.setup (->> {:settings {:solargraph {:diagnostics true}}}
                                (vim.tbl_extend :force default-config)))
-    (when (= (vim.fn.executable :lua-language-server) 1)
-      (lsp.lua_ls.setup (->> {:cmd [:lua-language-server]
-                              :root_dir (or (lsp.util.root_pattern :init.vim
-                                                                   :init.lua
-                                                                   :.git)
-                                            (vim.loop.os_homedir))
-                              :settings {:Lua {:runtime {:version :LuaJIT
-                                                         :path (vim.split package.path
-                                                                          ";")}
-                                               :diagnostics {:globals [:vim]}
-                                               :telemetry {:enable false}}}}
-                             (vim.tbl_extend :force default-config))))))
+    (lsp.yamlls.setup (->> {:settings {:yaml {:schemaStore {:enable false
+                                                            :url ""}
+                                              :schemas (schemastore.yaml.schemas)}}}
+                           (vim.tbl_extend :force default-config)))))

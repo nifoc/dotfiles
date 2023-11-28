@@ -7,7 +7,9 @@
                             [{:name :cmp_tabnine}]
                             [])]
       (vim.list_extend (vim.list_extend [{:name :nvim_lsp}] maybe-tabnine)
-                       [{:name :async_path} {:name :luasnip}])))
+                       [{:name :async_path}
+                        {:name :luasnip}
+                        {:name :cmp_yanky :option {:minLength 3}}])))
 
   (fn comparator-list []
     (let [compare (require :cmp.config.compare)
@@ -46,7 +48,7 @@
   (cmp.setup {:sources (cmp.config.sources (main-sources)
                                            [{:name :treesitter
                                              :keyword_length 3}
-                                            {:name :buffer :keyword_length 3}])
+                                            {:name :buffer}])
               :sorting {:priority_weight 2 :comparators (comparator-list)}
               :mapping (cmp.mapping.preset.insert {:<C-e> (cmp.mapping {:i (cmp.mapping.abort)
                                                                         :c (cmp.mapping.close)})
@@ -64,7 +66,7 @@
                                                    :<C-Space> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert
                                                                                     :select true})
                                                    :<CR> (cmp.mapping.confirm {:select true})})
-              :window {:completion {:winhighlight "Normal:Pmenu,FloatBorder:Pmenu,Search:None"
+              :window {:completion {:winhighlight "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:CmpCursorLine,Search:None"
                                     :col_offset -3
                                     :side_padding 0
                                     :scrollbar true}
