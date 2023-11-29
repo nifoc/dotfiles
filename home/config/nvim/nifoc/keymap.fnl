@@ -8,6 +8,7 @@
       telescope-dropdown (telescope-themes.get_dropdown)
       npairs (require :nvim-autopairs)
       gitsigns (require :gitsigns)
+      wk (require :which-key)
       repl (require :nifoc.repl)
       formatting (require :nifoc.formatting)]
   (fn mod.setup []
@@ -61,6 +62,11 @@
     (keymap.set :i :<A-Right> :<C-o>w)
     (keymap.set :i :<S-Left> :<C-o>^)
     (keymap.set :i :<S-Right> :<C-o>$)
+    (keymap.set :n :<A-Up> "<cmd>MoveLine -1<CR>" {:noremap true :silent true})
+    (keymap.set :n :<A-Down> "<cmd>MoveLine 1<CR>" {:noremap true :silent true})
+    (keymap.set :x :<A-Up> "<cmd>MoveBlock -1<CR>" {:noremap true :silent true})
+    (keymap.set :x :<A-Down> "<cmd>MoveBlock 1<CR>"
+                {:noremap true :silent true})
     (keymap.set :n :p "<Plug>(YankyPutAfter)")
     (keymap.set :n :P "<Plug>(YankyPutBefore)")
     (keymap.set :x :p substitute.visual)
@@ -71,7 +77,11 @@
     (keymap.set :x :gP "<Plug>(YankyGPutBefore)")
     (keymap.set :n :y "<Plug>(YankyYank)")
     (keymap.set :x :y "<Plug>(YankyYank)")
-    (keymap.set :n "-" :<cmd>Oil<CR> {:desc "Open Oil"}))
+    (keymap.set :n "-" :<cmd>Oil<CR> {:desc "Open Oil"})
+    ;; Label
+    (wk.register {:<leader>v {:name :+vcs}
+                  :<leader>l {:name :+list/lsp}
+                  :<leader>d {:name :+debug}}))
 
   (fn mod.lsp-attach [_client bufnr]
     (keymap.set :n :<leader>t

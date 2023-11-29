@@ -110,12 +110,6 @@ in
         popup-nvim
         plenary-nvim
 
-        {
-          plugin = mini-nvim;
-          config = builtins.readFile ../../config/nvim/plugins/mini.fnl;
-          type = "fennel";
-        }
-
         nvim-web-devicons
 
         {
@@ -123,6 +117,8 @@ in
           config = builtins.readFile ../../config/nvim/plugins/wezterm.fnl;
           type = "fennel";
         }
+
+        vim-cool
 
         # Keybindings
         {
@@ -143,6 +139,8 @@ in
           type = "fennel";
         }
 
+        move-nvim
+
         # Themes
         dracula-nvim
 
@@ -158,6 +156,12 @@ in
         {
           plugin = rainbow-delimiters-nvim;
           config = builtins.readFile ../../config/nvim/plugins/rainbow-delimiters.fnl;
+          type = "fennel";
+        }
+
+        {
+          plugin = todo-comments-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/todo-comments.fnl;
           type = "fennel";
         }
 
@@ -316,6 +320,12 @@ in
         {
           plugin = fidget-nvim;
           config = builtins.readFile ../../config/nvim/plugins/fidget.fnl;
+          type = "fennel";
+        }
+
+        {
+          plugin = which-key-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/which-key.fnl;
           type = "fennel";
         }
       ] ++ optionals isDarwin [
