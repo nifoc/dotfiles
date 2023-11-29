@@ -4,7 +4,8 @@
       navic (require :nvim-navic)
       diagnostic (require :nifoc.diagnostic)
       augroup (vim.api.nvim_create_augroup :NifocLsp {:clear true})
-      aucmd vim.api.nvim_create_autocmd]
+      aucmd vim.api.nvim_create_autocmd
+      ns (vim.api.nvim_create_namespace :nifoc_lsp_float)]
   (fn setup-inlay-hint-toggle [bufnr]
     (aucmd :InsertEnter {:callback #(vim.lsp.inlay_hint.enable bufnr false)
                          :buffer bufnr
@@ -94,4 +95,38 @@
     (lsp.yamlls.setup (->> {:settings {:yaml {:schemaStore {:enable false
                                                             :url ""}
                                               :schemas (schemastore.yaml.schemas)}}}
-                           (vim.tbl_extend :force default-config)))))
+                           (vim.tbl_extend :force default-config))))
+  ;; Hacks
+
+  (fn add-inline-highlights [bufnr]
+    (let [lines (vim.api.nvim_buf_get_lines bufnr 0 -1 false)
+          mapping {"@%S+" "@parameter"
+                   "^%s*(Parameters:)" "@text.title"
+                   "^%s*(Return:)" "@text.title"
+                   "^%s*(See also:)" "@text.title"
+                   "{%S-}" "@parameter"
+                   "|%S-|" "@text.reference"}]
+      (each [l line (ipairs lines)]
+        (each [pattern hl_group (pairs mapping)]
+          (var from 1)
+          (while from
+            (var to nil)
+            (set (from to) (line:find pattern from))
+            (when from
+              (vim.api.nvim_buf_set_extmark bufnr ns (- l 1) (- from 1)
+                                            {:end_col to : hl_group}))
+            (set from (if to (+ to 1) nil)))))))
+
+  ;; https://github.com/MariaSolOs/dotfiles/blob/b4516aa30c2912011a7b9c9857f01dee1ba5b57f/.config/nvim/lua/lsp.lua#L260C1-L260C1
+  (set vim.lsp.util.stylize_markdown
+       (fn [bufnr raw-contents opts]
+         (var contents raw-contents)
+         (set contents
+              (vim.lsp.util._normalize_markdown contents
+                                                {:width (vim.lsp.util._make_floating_popup_size contents
+                                                                                                opts)}))
+         (tset vim :bo bufnr :filetype :markdown)
+         (vim.treesitter.start bufnr)
+         (vim.api.nvim_buf_set_lines bufnr 0 -1 false contents)
+         (add-inline-highlights bufnr)
+         contents)))

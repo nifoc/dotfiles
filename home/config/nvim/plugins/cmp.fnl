@@ -87,6 +87,10 @@
                                            (do
                                              (set kind.kind " 󱜚 ")
                                              (set kind.menu "    (TabNine)"))
+                                           (= entry.source.name :cmp_yanky)
+                                           (do
+                                             (set kind.kind " 󰅌 ")
+                                             (set kind.menu "    (Clipboard)"))
                                            (do
                                              (set kind.kind
                                                   (.. " " (or (. strings 1) "")
