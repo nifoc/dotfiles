@@ -121,8 +121,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "93750d388162f5658cfdb77bdcfe80711e637647";
-      sha256 = "12dvr02pfbgckgpmpb5gjbafl3dwip247i1yfgkxbhp3jf2j9gpj";
+      rev = "1e64838ff575405c32b447b68762649289e8d73c";
+      sha256 = "0pk4w81fn82chz5jn7cymkb1z0adaxca1xbdz09h18szdbcbx2h1";
       fetchSubmodules = false;
     };
   };
@@ -252,12 +252,12 @@ in
   };
   schemastore-nvim = buildVimPlugin {
     pname = "schemastore.nvim";
-    version = "2023-11-26";
+    version = "2023-11-30";
     src = fetchFromGitHub {
       owner = "b0o";
       repo = "schemastore.nvim";
-      rev = "54a4ea14b70cd3fc9db8217bb4ac9e1f78bfa390";
-      sha256 = "0zbdh40pknm3p6llndf87fr6l28yx7cyaa6307gskfhpia105nwg";
+      rev = "5bfeb36550018438c2c7ef58f91174f79d99a28a";
+      sha256 = "192rq8dzfckyz9vpvf489zbqxmd33r8mw6frdrm8fa9xq1q1i0ab";
       fetchSubmodules = false;
     };
   };
