@@ -43,6 +43,8 @@
                 {:desc "Show Keymappings"})
     (keymap.set :n :<leader>ld #(telescope-builtin.diagnostics telescope-ivy)
                 {:desc "Show Diagnostics"})
+    (keymap.set :n :<leader>lt "<cmd>TodoTelescope theme=ivy<CR>"
+                {:desc "Show Todo Comments"})
     (keymap.set :n :<leader>dli :<cmd>LspInfo<CR> {:desc "LSP Info"})
     (keymap.set :n :<leader>dlr :<cmd>LspRestart<CR> {:desc "Restart LSP"})
     (keymap.set :n :<leader>ds #(vim.diagnostic.open_float {:scope :line})
