@@ -1,7 +1,7 @@
 { pkgs, config, secret, ... }:
 
 let
-  nitter-pkg = pkgs.nitter-unstable;
+  nitter-pkg = pkgs.nitter;
 in
 {
   # Based on: https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/misc/nitter.nix
