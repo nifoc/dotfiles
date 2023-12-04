@@ -92,7 +92,11 @@ in
     '';
   };
 
-  environment.etc."nix/netrc".source = ../../secret/shared/nix-netrc;
+  environment = {
+    etc."nix/netrc".source = ../../secret/shared/nix-netrc;
+
+    noXlibs = true;
+  };
 
   boot = {
     tmp.cleanOnBoot = true;
