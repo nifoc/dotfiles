@@ -62,7 +62,6 @@
       mtr
       nix-tree
       nurl
-      ouch
       parallel
       q
       ripgrep
