@@ -33,7 +33,7 @@ in
     ../nixos/fedifetcher.nix
 
     ../nixos/forgejo.nix
-    (import ../nixos/forgejo-runner.nix (args // { name = "tanker"; tag = "ubuntu-latest-amd64"; }))
+    (import ../nixos/forgejo-runner.nix (args // { name = "tanker"; tag = "ubuntu-latest-amd64"; nixTag = "amd64"; }))
 
     ../nixos/headscale.nix
 

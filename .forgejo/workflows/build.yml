@@ -8,41 +8,46 @@ on:
       - '.forgejo/workflows/build.yml'
 jobs:
   build-amd64-linux:
-    runs-on: ubuntu-latest-amd64
+    runs-on: nix-amd64
     steps:
-      - uses: actions/checkout@v3
-      - name: Install Nix
-        uses: https://github.com/DeterminateSystems/nix-installer-action@v4
-        with:
-          init: none
-          planner: linux
-          github-token: null
-      - name: Setup Attic
-        uses: https://github.com/ryanccn/attic-action@v0
-        with:
-          endpoint: ${{ secrets.ATTIC_ENDPOINT }}
-          cache: ${{ secrets.ATTIC_CACHE }}
-          token: ${{ secrets.ATTIC_TOKEN }}
-      - run: nix build '.#nixosConfigurations.tanker.pkgs.attic-server'
-      - run: nix build '.#nixosConfigurations.tanker.pkgs.attic-client'
-      - run: nix build '.#nixosConfigurations.tanker.config.services.nginx.package'
-      - run: nix build '.#nixosConfigurations.tanker.config.home-manager.users.daniel.programs.neovim.finalPackage'
+      - uses: actions/checkout@v4
+      - name: Cache Login
+        run: |
+          echo "Logging in ..."
+          attic login --set-default attic ${{ secrets.ATTIC_ENDPOINT }} ${{ secrets.ATTIC_TOKEN }}
+      - name: Build attic-server
+        run: |
+          nix build '.#nixosConfigurations.tanker.pkgs.attic-server'
+          attic push ${{ secrets.ATTIC_CACHE }} ./result
+      - name: Build attic-client
+        run: |
+          nix build '.#nixosConfigurations.tanker.pkgs.attic-client'
+          attic push ${{ secrets.ATTIC_CACHE }} ./result
+      - name: Build nginx
+        run: |
+          nix build '.#nixosConfigurations.tanker.config.services.nginx.package'
+          attic push ${{ secrets.ATTIC_CACHE }} ./result
+      - name: Build neovim
+        run: |
+          nix build '.#nixosConfigurations.tanker.config.home-manager.users.daniel.programs.neovim.finalPackage'
+          attic push ${{ secrets.ATTIC_CACHE }} ./result
   build-arm64-linux:
-    runs-on: ubuntu-latest-arm64
+    runs-on: nix-arm64
     steps:
-      - uses: actions/checkout@v3
-      - name: Install Nix
-        uses: https://github.com/DeterminateSystems/nix-installer-action@v4
-        with:
-          init: none
-          planner: linux
-          github-token: null
-      - name: Setup Attic
-        uses: https://github.com/ryanccn/attic-action@v0
-        with:
-          endpoint: ${{ secrets.ATTIC_ENDPOINT }}
-          cache: ${{ secrets.ATTIC_CACHE }}
-          token: ${{ secrets.ATTIC_TOKEN }}
-      - run: nix build '.#nixosConfigurations.argon.pkgs.attic-client'
-      - run: nix build '.#nixosConfigurations.argon.config.services.nginx.package'
-      - run: nix build '.#nixosConfigurations.argon.config.home-manager.users.daniel.programs.neovim.finalPackage'
+      - uses: actions/checkout@v4
+      - name: Cache Login
+        run: |
+          echo "Logging in ..."
+          attic login --set-default attic ${{ secrets.ATTIC_ENDPOINT }} ${{ secrets.ATTIC_TOKEN }}
+      - name: Build attic-client
+        run: |
+          nix build '.#nixosConfigurations.argon.pkgs.attic-client'
+          attic push ${{ secrets.ATTIC_CACHE }} ./result
+      - name: Build nginx
+        run: |
+          nix build '.#nixosConfigurations.argon.config.services.nginx.package'
+          attic push ${{ secrets.ATTIC_CACHE }} ./result
+      - name: Build neovim
+        run: |
+          nix build '.#nixosConfigurations.argon.config.home-manager.users.daniel.programs.neovim.finalPackage'
+          attic push ${{ secrets.ATTIC_CACHE }} ./result
