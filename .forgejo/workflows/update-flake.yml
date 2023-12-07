@@ -1,0 +1,20 @@
+name: Update Flake
+on:
+  schedule:
+    - cron: '0 4 * * *'
+jobs:
+  update-flake:
+    runs-on: nix-amd64
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+      - run: nix flake update
+      - uses: https://github.com/stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "[automation] Update flake"
+          commit_user_name: Actions Bot
+          commit_user_email: daniel+actions-bot@kempkens.io
+          commit_author: Actions Bot <daniel+actions-bot@kempkens.io>
