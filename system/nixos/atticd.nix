@@ -39,6 +39,10 @@ in
     };
   };
 
+  systemd.services.atticd.serviceConfig = {
+    Restart = "on-failure";
+  };
+
   services.postgresql = {
     ensureDatabases = [ "attic" ];
 
