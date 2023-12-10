@@ -6,7 +6,7 @@ let
 in
 {
   virtualisation.oci-containers.containers.weewx = {
-    image = "ghcr.io/nifoc/weewx-docker:master";
+    image = "git.kempkens.io/daniel/weewx-docker:latest";
     ports = [ "127.0.0.1:8000:8000" ];
     environment = {
       "TZ" = "Europe/Berlin";
