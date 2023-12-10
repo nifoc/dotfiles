@@ -13,7 +13,7 @@ in
 
     withNodeJs = false;
     withRuby = false;
-    withPython3 = true;
+    withPython3 = false;
 
     extraLuaPackages = luaPkgs: with luaPkgs; [ jsregexp lua-toml readline ];
 
