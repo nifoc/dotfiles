@@ -15,7 +15,7 @@
       autoPrune = {
         enable = true;
         dates = "weekly";
-        flags = [ "--all" ];
+        flags = [ "--all" "--filter=label!=io.kempkens.keepImage" ];
       };
     };
 
@@ -55,7 +55,7 @@
       {
         Type = "oneshot";
         ExecStart = "${podman}/bin/podman auto-update";
-        ExecStartPost = "${podman}/bin/podman image prune -f";
+        ExecStartPost = "${podman}/bin/podman image prune -f --filter=label!=io.kempkens.keepImage";
       };
   };
 }

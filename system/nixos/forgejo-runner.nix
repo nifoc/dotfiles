@@ -56,7 +56,7 @@ in
         NSSWITCH
 
         tar -cv . | tar -tvf -
-        tar -cv . | podman import - forgejo-runner-nix
+        tar -cv . | podman import --change "LABEL io.kempkens.keepImage=true" - forgejo-runner-nix
       '';
       serviceConfig = {
         RuntimeDirectory = "forgejo-runner-nix-image";
