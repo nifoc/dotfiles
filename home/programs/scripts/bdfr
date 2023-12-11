@@ -1,0 +1,10 @@
+#!/usr/bin/env nu
+
+def main [
+  --subreddit: string
+  --sort: string = "hot"
+] {
+  let url = $"https://media-browser.internal.kempkens.network/management/jobs/BdfrDownload/run?args[subreddit]=($subreddit)&args[sort]=($sort)"
+
+  http get $url | ignore
+}
