@@ -48,6 +48,8 @@
     (highlight :CmpItemAbbrMatch {:fg mod.colors.cyan :bg :NONE :bold true})
     (highlight :CmpItemAbbrMatchFuzzy
                {:fg mod.colors.cyan :bg :NONE :bold true})
+    (highlight :CmpItemAbbrDeprecated
+               {:fg mod.colors.white :bg :NONE :strikethrough true})
     (highlight :CmpItemMenu {:fg mod.colors.purple :bg :NONE :italic true})
     (let [cmp-groups [:CmpItemKindField
                       :CmpItemKindProperty

@@ -7,9 +7,7 @@
                             [{:name :cmp_tabnine}]
                             [])]
       (vim.list_extend (vim.list_extend [{:name :nvim_lsp}] maybe-tabnine)
-                       [{:name :async_path}
-                        {:name :luasnip}
-                        {:name :cmp_yanky :option {:minLength 3}}])))
+                       [{:name :async_path} {:name :luasnip}])))
 
   (fn comparator-list []
     (let [compare (require :cmp.config.compare)

@@ -56,15 +56,21 @@ in
         treesitter-parsers = pkgs.symlinkJoin {
           name = "treesitter-parsers";
           paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
+            p.angular
             p.bash
             #p.comment # slow
             p.css
+            p.diff
             p.dockerfile
             p.eex
             p.elixir
             p.erlang
             p.fennel
             p.fish
+            p.git_rebase
+            p.gitattributes
+            p.gitcommit
+            p.gitignore
             p.graphql
             p.heex
             p.html
@@ -77,8 +83,9 @@ in
             p.lua
             p.make
             p.markdown
-            p.markdown-inline
+            p.markdown_inline
             p.nix
+            p.python
             p.query
             p.regex
             p.ruby
@@ -244,7 +251,6 @@ in
         cmp-buffer
         cmp-cmdline
         cmp-nvim-lsp-document-symbol
-        cmp_yanky
 
         # Formatting
 
@@ -268,6 +274,8 @@ in
         }
 
         # Textobjects
+        nvim-treesitter-textobjects
+
         {
           plugin = nvim-surround;
           config = builtins.readFile ../../config/nvim/plugins/surround.fnl;
