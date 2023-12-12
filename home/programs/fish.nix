@@ -66,14 +66,9 @@ in
       ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
       nsr = "sudo nix-store --verify --check-contents --repair";
 
-      la = "${pkgs.eza}/bin/eza --long --all --group --header --group-directories-first --sort=type --icons";
-      lg = "${pkgs.eza}/bin/eza --long --all --group --header --git";
-      lt = "${pkgs.eza}/bin/eza --long --all --group --header --tree --level ";
-
-      mysqld-direnv = "mysqld --datadir=$PWD/.direnv/mysql/data --bind-address=127.0.0.1 --socket=$PWD/.direnv/mysql/mysqld.sock --gdb";
-      postgres-direnv-init = "initdb --username $USER --pgdata $PWD/.direnv/postgres/data --auth trust";
-      postgres-direnv = "postgres -D $PWD/.direnv/postgres/data";
-      redis-direnv = "redis-server --dir $PWD/.direnv/redis --bind 127.0.0.1";
+      la = "${lib.getExe pkgs.eza} --long --all --group --header --group-directories-first --sort=type --icons";
+      lg = "${lib.getExe pkgs.eza} --long --all --group --header --git";
+      lt = "${lib.getExe pkgs.eza} --long --all --group --header --tree --level ";
     };
 
     functions = {
@@ -105,20 +100,12 @@ in
 
       wget-browser = /* fish */ ''
         set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
-        ${pkgs.wget}/bin/wget -U "$user_agent" $argv
+        ${lib.getExe pkgs.wget} -U "$user_agent" $argv
       '';
 
       aria-browser = /* fish */ ''
         set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
-        ${pkgs.aria2}/bin/aria2c -U "$user_agent" --file-allocation none --async-dns=false -x 2 $argv
-      '';
-
-      mysqld-direnv-init = /* fish */ ''
-        if type -q mysql_install_db
-          mysql_install_db --user $USER --datadir=$PWD/.direnv/mysql/data --auth-root-authentication-method=normal
-        else
-          mysqld --initialize-insecure --user $USER --datadir=$PWD/.direnv/mysql/data
-        end
+        ${lib.getExe pkgs.aria2} -U "$user_agent" --file-allocation none --async-dns=false -x 2 $argv
       '';
     };
 

@@ -93,7 +93,7 @@
           apps_path="$HOME/Applications/Home Manager Apps"
           $DRY_RUN_CMD mkdir -p "$apps_path"
 
-          $DRY_RUN_CMD ${pkgs.fd}/bin/fd \
+          $DRY_RUN_CMD ${lib.getExe pkgs.fd} \
             -t l -d 1 . ${apps}/Applications \
             -x $DRY_RUN_CMD "${pkgs.mkalias}/bin/mkalias" \
             -L {} "$apps_path/{/}"
