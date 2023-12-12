@@ -128,12 +128,12 @@ in
   };
   vim-just = buildVimPlugin {
     pname = "vim-just";
-    version = "2023-12-08";
+    version = "2023-12-12";
     src = fetchFromGitHub {
       owner = "NoahTheDuke";
       repo = "vim-just";
-      rev = "ee884dc7d45251d92f5972c4556c12fc101419c0";
-      sha256 = "1lxb62wscfn50kpikz39q6fmywn8xdy46yc1ll5chmllrg48w8kq";
+      rev = "a9761618b04ee1bf22005661cc8f598398d7b8d9";
+      sha256 = "0hyqqk87fijraknkwwx9wzlvb6lpmn0wzrfzfb3j7as7rzbrb8gp";
       fetchSubmodules = false;
     };
   };
@@ -417,12 +417,12 @@ in
   };
   conform-nvim = buildVimPlugin {
     pname = "conform.nvim";
-    version = "2023-12-10";
+    version = "2023-12-11";
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "conform.nvim";
-      rev = "fb9b0500270ba05b89cc27cd8b7762443bcfae22";
-      sha256 = "0acy9r36p6xh4xyh0p7a3sw3mmfih8bgixx3qb9ikq3sbmdqmnh3";
+      rev = "8b407bb6175846cdc4c499e2a8d28109615a2089";
+      sha256 = "1lxm759ig6qi4l1ffw5kdy1agfwv8c8r91gs9iilc2igj90lxwwj";
       fetchSubmodules = false;
     };
   };
