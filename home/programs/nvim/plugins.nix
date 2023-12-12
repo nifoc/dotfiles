@@ -527,12 +527,12 @@ in
   };
   fidget-nvim = buildVimPlugin {
     pname = "fidget.nvim";
-    version = "2023-12-09";
+    version = "2023-12-12";
     src = fetchFromGitHub {
       owner = "j-hui";
       repo = "fidget.nvim";
-      rev = "7dc62b9ce32ac0f21cfb510f243644ce28a39299";
-      sha256 = "15llm2qy0bgsb0gbyk0p841182cyx3rxa3m3ij378av9kcmcr9kf";
+      rev = "7b9c383438a2e490e37d57b07ddeae3ab4f4cf69";
+      sha256 = "01pj57fhyac3bid8f66gs5g9b64v5jjzgpfnn3nb5scf0bchlzbk";
       fetchSubmodules = false;
     };
   };
