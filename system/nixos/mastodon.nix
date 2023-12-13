@@ -134,7 +134,7 @@ in
 
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.bash}/bin/bash -c 'until ${pkgs.curl}/bin/curl --fail --silent https://${web-domain} > /dev/null; do sleep 1; done'";
+      ExecStart = "${lib.getExe pkgs.bash} -c 'until ${lib.getExe pkgs.curl} --fail --silent https://${web-domain} > /dev/null; do sleep 1; done'";
     };
   };
 

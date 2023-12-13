@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   services.signald.enable = true;
@@ -16,7 +16,7 @@
       User = config.services.signald.user;
       Group = config.services.signald.group;
       LoadCredential = [ "config:${config.age.secrets.mautrix-signal-config.path}" ];
-      ExecStart = "${pkgs.mautrix-signal}/bin/mautrix-signal --config=%d/config --no-update";
+      ExecStart = "${lib.getExe pkgs.mautrix-signal} --config=%d/config --no-update";
       Restart = "on-failure";
       RestartSec = "5s";
 

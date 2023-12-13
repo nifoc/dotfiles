@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   systemd.services.fedifetcher = {
@@ -13,7 +13,7 @@
       DynamicUser = true;
       StateDirectory = "fedifetcher";
       LoadCredential = "config.json:${config.age.secrets.fedifetcher-config.path}";
-      ExecStart = "${pkgs.fedifetcher}/bin/fedifetcher --config=%d/config.json";
+      ExecStart = "${lib.getExe pkgs.fedifetcher} --config=%d/config.json";
     };
   };
 }

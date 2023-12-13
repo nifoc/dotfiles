@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   virtualisation = {
@@ -37,7 +37,7 @@
 
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.bash}/bin/bash -c 'until ${pkgs.iproute2}/bin/ip address show podman0; do sleep 1; done'";
+      ExecStart = "${lib.getExe pkgs.bash} -c 'until ${pkgs.iproute2}/bin/ip address show podman0; do sleep 1; done'";
     };
   };
 

@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   programs.yt-dlp = {
@@ -35,7 +35,7 @@
     };
 
     functions.ytdl_with_options = ''
-      ${config.programs.yt-dlp.package}/bin/yt-dlp --config-location "$HOME/.config/yt-dlp/config" --download-archive "$HOME/.config/yt-dlp/archive" $argv
+      ${lib.getExe config.programs.yt-dlp.package} --config-location "$HOME/.config/yt-dlp/config" --download-archive "$HOME/.config/yt-dlp/archive" $argv
     '';
   };
 }

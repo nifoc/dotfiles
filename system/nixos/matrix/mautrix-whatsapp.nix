@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   systemd.services.mautrix-whatsapp = {
@@ -11,7 +11,7 @@
       DynamicUser = true;
       StateDirectory = "mautrix-whatsapp";
       LoadCredential = [ "config:${config.age.secrets.mautrix-whatsapp-config.path}" ];
-      ExecStart = "${pkgs.mautrix-whatsapp}/bin/mautrix-whatsapp --config=%d/config --no-update";
+      ExecStart = "${lib.getExe pkgs.mautrix-whatsapp} --config=%d/config --no-update";
       Restart = "on-failure";
       RestartSec = "5s";
 

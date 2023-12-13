@@ -10,7 +10,7 @@ in
     show-update-changelog = mkIf isLinux ''
       if [[ -e /run/current-system ]]; then
         echo "[show-update-changelog] System Changelog"
-        ${pkgs.nvd}/bin/nvd --nix-bin-dir='${config.nix.package}/bin' diff /run/current-system "$systemConfig"
+        ${lib.getExe pkgs.nvd} --nix-bin-dir='${config.nix.package}/bin' diff /run/current-system "$systemConfig"
       fi
     '';
 
@@ -18,7 +18,7 @@ in
       text = ''
         if [[ -e /run/current-system ]]; then
           echo "[show-update-changelog] System Changelog"
-          sudo -H ${pkgs.nvd}/bin/nvd --nix-bin-dir='${config.nix.package}/bin' diff /run/current-system "$systemConfig"
+          sudo -H ${lib.getExe pkgs.nvd} --nix-bin-dir='${config.nix.package}/bin' diff /run/current-system "$systemConfig"
         fi
       '';
     };

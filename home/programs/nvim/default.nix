@@ -433,7 +433,7 @@ in
 
     activation.neovimCache = lib.hm.dag.entryAfter [ "linkGeneration" ] /* bash */ ''
       $VERBOSE_ECHO "Resetting loader"
-      $DRY_RUN_CMD ${config.programs.neovim.finalPackage}/bin/nvim -l <(echo "vim.loader.reset()")
+      $DRY_RUN_CMD ${lib.getExe config.programs.neovim.finalPackage} -l <(echo "vim.loader.reset()")
     '';
   };
 }
