@@ -1,10 +1,24 @@
 #!/usr/bin/env nu
 
-def main [
-  --subreddit: string
+let base_url = "https://media-browser.internal.kempkens.network/management/jobs/BdfrDownload/run?"
+
+def "main subreddit" [
+  subreddit: string
   --sort: string = "hot"
+  --limit: int = 999
 ] {
-  let url = $"https://media-browser.internal.kempkens.network/management/jobs/BdfrDownload/run?args[subreddit]=($subreddit)&args[sort]=($sort)"
+  let url = $"($base_url)args[subreddit]=($subreddit)&args[sort]=($sort)&args[limit]=($limit)"
 
   http get $url | ignore
 }
+
+def "main user" [
+  user: string
+  --limit: int = 9999
+] {
+  let url = $"($base_url)args[user]=($user)&args[limit]=($limit)"
+
+  http get $url | ignore
+}
+
+def main [] {}
