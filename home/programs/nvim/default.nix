@@ -67,10 +67,6 @@ in
             p.erlang
             p.fennel
             p.fish
-            p.git_rebase
-            p.gitattributes
-            p.gitcommit
-            p.gitignore
             p.graphql
             p.heex
             p.html
