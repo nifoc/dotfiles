@@ -29,7 +29,7 @@ in
   };
   nvim-web-devicons = buildVimPlugin {
     pname = "nvim-web-devicons";
-    version = "2023-12-09";
+    version = "2023-12-08";
     src = fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
@@ -139,12 +139,12 @@ in
   };
   rainbow-delimiters-nvim = buildVimPlugin {
     pname = "rainbow-delimiters.nvim";
-    version = "2023-12-10";
+    version = "2023-12-12";
     src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "rainbow-delimiters.nvim";
-      rev = "cc5f3a00819b3bef2789f95443057613ed7c42f8";
-      sha256 = "054ivgg3ybrbacyz0blcsj3idy5is040vmljm2w61r6v80rf6h69";
+      rev = "cc1783ca5f1f9bfed18bfc051bb88e0e4faaf17a";
+      sha256 = "174fx4ijyjczqb2lg6s1i3g4m4mvph02s7wfdk2jf0png7dg2mq4";
       fetchSubmodules = false;
     };
   };
@@ -428,7 +428,7 @@ in
   };
   vim-matchup = buildVimPlugin {
     pname = "vim-matchup";
-    version = "2023-11-25";
+    version = "2023-11-24";
     src = fetchFromGitHub {
       owner = "andymass";
       repo = "vim-matchup";
@@ -483,7 +483,7 @@ in
   };
   indent-blankline-nvim = buildVimPlugin {
     pname = "indent-blankline.nvim";
-    version = "2023-12-07";
+    version = "2023-12-06";
     src = fetchFromGitHub {
       owner = "lukas-reineke";
       repo = "indent-blankline.nvim";
