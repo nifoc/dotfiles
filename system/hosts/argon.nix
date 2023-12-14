@@ -46,16 +46,14 @@ in
       auto-optimise-store = true;
 
       substituters = [
-        "https://attic.cache.daniel.sx/nifoc-systems"
-        "https://attic.cache.daniel.sx/nifoc-ci"
-        "https://nifoc.cachix.org"
-        "https://nix-community.cachix.org"
+        "https://attic.cache.daniel.sx/nifoc-systems?priority=1"
+        "https://attic.cache.daniel.sx/nifoc-ci?priority=2"
+        "https://nix-community.cachix.org?priority=3"
       ];
 
       trusted-public-keys = [
         "nifoc-systems:eDDqVP5BFR6/1KvXbF9oUL8JahDdmbrsYtxlQ57LOTU="
         "nifoc-ci:JpD9zqVQi8JuS7B8htPDOQZh08rhInMnGFS9RVhiuwk="
-        "nifoc.cachix.org-1:ymuftq7RgN/lf/iWXFK8gpwDSAGFaGBeliWe9u6q8II="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
 
