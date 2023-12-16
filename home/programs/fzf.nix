@@ -22,8 +22,8 @@
       header = "#6272a4";
     };
 
-    enableBashIntegration = true;
-    enableZshIntegration = true;
-    enableFishIntegration = true;
+    enableBashIntegration = false;
+    enableZshIntegration = false;
+    enableFishIntegration = false;
   };
 }

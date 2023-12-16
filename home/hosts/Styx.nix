@@ -8,6 +8,7 @@
     ../programs/nushell.nix
     ../programs/atuin.nix
     ../programs/direnv.nix
+    ../programs/fzf.nix
     ../programs/starship.nix
     ../programs/zoxide.nix
 
