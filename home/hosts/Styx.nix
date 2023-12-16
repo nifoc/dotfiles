@@ -62,6 +62,7 @@
       lnav
       mtr
       nix-tree
+      nix-update
       nurl
       parallel
       q
