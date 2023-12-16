@@ -80,7 +80,7 @@ in
       };
     };
 
-    forgejo-runner-nix = {
+    gitea-runner-nix = {
       after = [ "forgejo-runner-nix-image.service" ];
       requires = [ "forgejo-runner-nix-image.service" ];
 
