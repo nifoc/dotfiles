@@ -5,9 +5,23 @@
 let
   forgejoUrl = "https://git.kempkens.io";
 
+  storeDepsBins = [
+    pkgs.attic-client
+    pkgs.coreutils
+    pkgs.findutils
+    pkgs.gnugrep
+    pkgs.gawk
+    pkgs.git
+    pkgs.nixVersions.stable
+    pkgs.nix-update
+    pkgs.bash
+    pkgs.jq
+    pkgs.nodejs
+  ];
+
   storeDeps = pkgs.runCommand "store-deps" { } ''
     mkdir -p $out/bin
-    for dir in ${toString [ pkgs.attic-client pkgs.coreutils pkgs.findutils pkgs.gnugrep pkgs.gawk pkgs.git pkgs.nixVersions.stable pkgs.bash pkgs.jq pkgs.nodejs ]}; do
+    for dir in ${toString storeDepsBins}; do
       for bin in "$dir"/bin/*; do
         ln -s "$bin" "$out/bin/$(basename "$bin")"
       done
