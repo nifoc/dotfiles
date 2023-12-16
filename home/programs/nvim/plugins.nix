@@ -428,7 +428,7 @@ in
   };
   vim-matchup = buildVimPlugin {
     pname = "vim-matchup";
-    version = "2023-11-25";
+    version = "2023-11-24";
     src = fetchFromGitHub {
       owner = "andymass";
       repo = "vim-matchup";
@@ -483,12 +483,12 @@ in
   };
   indent-blankline-nvim = buildVimPlugin {
     pname = "indent-blankline.nvim";
-    version = "2023-12-15";
+    version = "2023-12-16";
     src = fetchFromGitHub {
       owner = "lukas-reineke";
       repo = "indent-blankline.nvim";
-      rev = "5a433f0e274e28c6da8b71ec1f86711345cf3f54";
-      sha256 = "0i8w04h6m8pi99m9w5p3ggy0b8ns0mcapp01pcbkc8yci0zhw8gh";
+      rev = "d4c718467d35bc93714425a7102d82e7e5065280";
+      sha256 = "1y29bn4s0x96ir8fsaxnygi3mrrjfjxxsv5cj4v85yrhb4dpqnck";
       fetchSubmodules = false;
     };
   };
