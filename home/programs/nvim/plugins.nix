@@ -296,12 +296,12 @@ in
   };
   nvim-lint = buildVimPlugin {
     pname = "nvim-lint";
-    version = "2023-12-15";
+    version = "2023-12-16";
     src = fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-lint";
-      rev = "5b42e12f397e9fd2629e6f0ce1c780a12b9e6597";
-      sha256 = "0y0nx8960fnfwj6j59a1qd63ylia4wvpcxpqg9lcnhsf78vczis2";
+      rev = "74d979fc5fed08cd61fdbb3440d76ce200f8dadd";
+      sha256 = "0v9ld7dl1fnsca5cpywp2a7ql2crq92m7kp3s93q73241q6khxzv";
       fetchSubmodules = false;
     };
   };
@@ -428,7 +428,7 @@ in
   };
   vim-matchup = buildVimPlugin {
     pname = "vim-matchup";
-    version = "2023-11-25";
+    version = "2023-11-24";
     src = fetchFromGitHub {
       owner = "andymass";
       repo = "vim-matchup";
