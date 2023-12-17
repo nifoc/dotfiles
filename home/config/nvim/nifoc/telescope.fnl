@@ -13,7 +13,9 @@
                                                     :--exclude
                                                     :.git
                                                     :--exclude
-                                                    :node_modules]})]
+                                                    :node_modules
+                                                    :--exclude
+                                                    :.direnv]})]
       (builtin.find_files find-opts)))
 
   (fn mod.project-files []
@@ -23,4 +25,3 @@
         (mod.find-files))))
 
   mod)
-
