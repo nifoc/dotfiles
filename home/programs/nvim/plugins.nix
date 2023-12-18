@@ -128,12 +128,12 @@ in
   };
   vim-just = buildVimPlugin {
     pname = "vim-just";
-    version = "2023-12-13";
+    version = "2023-12-17";
     src = fetchFromGitHub {
       owner = "NoahTheDuke";
       repo = "vim-just";
-      rev = "db122b74305993402150e18fad9568a5a0b542e8";
-      sha256 = "0d1m1nda6r8wpbywl27xg3dwjfxnxy1vwiq9pp3m77d9blcnwgwf";
+      rev = "e2e42ae765f53569efb7178a7bbb9a6977d269e2";
+      sha256 = "0a930prjv6b09qkn2zwmn5bxs73sad48v3mr8g9b7f0i4528iklz";
       fetchSubmodules = false;
     };
   };
@@ -428,7 +428,7 @@ in
   };
   vim-matchup = buildVimPlugin {
     pname = "vim-matchup";
-    version = "2023-11-25";
+    version = "2023-11-24";
     src = fetchFromGitHub {
       owner = "andymass";
       repo = "vim-matchup";
