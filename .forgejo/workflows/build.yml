@@ -13,6 +13,8 @@ jobs:
     runs-on: nix-amd64
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: master
       - name: Cache Login
         run: |
           echo "Logging in ..."
@@ -37,6 +39,8 @@ jobs:
     runs-on: nix-arm64
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: master
       - name: Cache Login
         run: |
           echo "Logging in ..."
