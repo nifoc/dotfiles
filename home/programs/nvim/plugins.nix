@@ -117,29 +117,29 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2023-12-19";
+    version = "2023-12-20";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "0dfbf5e48e8551212c2a9f1c74cb080c8e76b5d1";
-      sha256 = "1vy1xgxi696j4as5l9831jpy1v1x3kfn1mak7gn0fyv97a987b25";
+      rev = "cdb2ec999c1fb173500e2f9ab4dcd9aa62506c72";
+      sha256 = "0i9pqqcarzv7scxl8qw1d07a0qqnfz2fy20hahnj4y48cjv5mk17";
       fetchSubmodules = false;
     };
   };
   vim-just = buildVimPlugin {
     pname = "vim-just";
-    version = "2023-12-17";
+    version = "2023-12-20";
     src = fetchFromGitHub {
       owner = "NoahTheDuke";
       repo = "vim-just";
-      rev = "e2e42ae765f53569efb7178a7bbb9a6977d269e2";
-      sha256 = "0a930prjv6b09qkn2zwmn5bxs73sad48v3mr8g9b7f0i4528iklz";
+      rev = "0039f3b1670092e5000d60d9437a7ae3b74470e2";
+      sha256 = "1rcrl499zgxm51fibw2xlzyyxfhp68pv4s9qcqmnmfcmz10a06a3";
       fetchSubmodules = false;
     };
   };
   rainbow-delimiters-nvim = buildVimPlugin {
     pname = "rainbow-delimiters.nvim";
-    version = "2023-12-19";
+    version = "2023-12-20";
     src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "rainbow-delimiters.nvim";
@@ -172,7 +172,7 @@ in
   };
   telescope-nvim = buildVimPlugin {
     pname = "telescope.nvim";
-    version = "2023-12-19";
+    version = "2023-12-20";
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
@@ -230,12 +230,12 @@ in
   };
   nvim-lspconfig = buildVimPlugin {
     pname = "nvim-lspconfig";
-    version = "2023-12-19";
+    version = "2023-12-20";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "e85816c5803410cacb52e9b4fbdb72a1f1a6bd11";
-      sha256 = "03yvhgm80lzrn7x4j3qvjwcz8yvnc0db926bw3yw7537samqn5g5";
+      rev = "a2e84ddef8d17a71dc8115f72e264c97328f5d33";
+      sha256 = "19cgid5723n4sk6n4nnc67xbkjdrmyq9fyxd62i3alflk3pxiw15";
       fetchSubmodules = false;
     };
   };

@@ -78,11 +78,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1702862583,
-        "narHash": "sha256-WXsUhQxFBkivItTteAeQ7j7kRdL7zFU4NOmdZ8KLHuc=",
+        "lastModified": 1703063214,
+        "narHash": "sha256-OgrRZKb7IkSSlIshUDaD7plxe0xIQauMA1y+OirtEWo=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "e74526b33421a52ce06b2ccadbe670d25012eb01",
+        "rev": "b4104fcaea42037b04c199a5d6784682a15be254",
         "type": "github"
       },
       "original": {
@@ -303,11 +303,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1703037675,
-        "narHash": "sha256-bA46KV2MxJE0IvKXE67GvNhOnHiEcbQxeLFwsv20PN4=",
+        "lastModified": 1703073260,
+        "narHash": "sha256-pItZkHK1zaY5Rv7d6eEyJ81t/Evp37xKy+BX4C/QofI=",
         "ref": "refs/heads/master",
-        "rev": "0e03adb60af33ebfe043d35e2661e792f72eacde",
-        "revCount": 637,
+        "rev": "a97a551be340f07ccfb958d52f4047f30b150b08",
+        "revCount": 639,
         "type": "git",
         "url": "https://git.kempkens.io/daniel/nix-overlay"
       },
