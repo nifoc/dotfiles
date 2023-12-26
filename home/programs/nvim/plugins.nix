@@ -128,12 +128,12 @@ in
   };
   vim-just = buildVimPlugin {
     pname = "vim-just";
-    version = "2023-12-24";
+    version = "2023-12-25";
     src = fetchFromGitHub {
       owner = "NoahTheDuke";
       repo = "vim-just";
-      rev = "d77886e9e237bb89bcae1360a16166bac9ace617";
-      sha256 = "1py5yv0czn8x41ykfdhm6xrywfj1drh4c84vpglwx63ia30imizd";
+      rev = "bc965c8a00cd94cdf36416cb9e4c5ad8185e3292";
+      sha256 = "084yjj7cp2bx76iq87rybmnkgnqml4g3zsvq0a33r1kqrgv8h3vn";
       fetchSubmodules = false;
     };
   };
@@ -172,12 +172,12 @@ in
   };
   telescope-nvim = buildVimPlugin {
     pname = "telescope.nvim";
-    version = "2023-12-24";
+    version = "2023-12-25";
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "9907deaed23e4db65eb7453bdb4b3c78acdc096e";
-      sha256 = "131gvh9rshqwgxvxg7c1id1ljsafpa01mwbvs8jpjsfp419b0075";
+      rev = "ae6708a90b89a686f85b51288f488f4186dff2d4";
+      sha256 = "1ygx8sjx3i52hps8zc234c7v3fmqv5bajnysb5g61gs28cafkm3v";
       fetchSubmodules = false;
     };
   };
@@ -263,12 +263,12 @@ in
   };
   lspkind-nvim = buildVimPlugin {
     pname = "lspkind.nvim";
-    version = "2023-12-22";
+    version = "2023-12-25";
     src = fetchFromGitHub {
       owner = "onsails";
       repo = "lspkind.nvim";
-      rev = "d11d58c3fc3edbd8c0112b5850ef4ed553d98752";
-      sha256 = "0gjn22b07vv223si5g50421vz42s0vn9l4vs1g0zsg8skkzlmls4";
+      rev = "7f26cf5e27e2bd910ce0ea00c514da2bf97423b8";
+      sha256 = "1hyglyp8w0xvypwzkdil27781a1gzg2gjnj2x59lkg0gz2n8gi1x";
       fetchSubmodules = false;
     };
   };
@@ -439,12 +439,12 @@ in
   };
   nvim-treesitter-textobjects = buildVimPlugin {
     pname = "nvim-treesitter-textobjects";
-    version = "2023-12-24";
+    version = "2023-12-25";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "bb020f6133f90c8adfd8ca28eb48f0516638abec";
-      sha256 = "1jzzbka12n90bgm11yh659k1ls16zxiqdkc5qbb4mrgjz8i4cb66";
+      rev = "0e2d5bd4cbe75849a013901555d436a48c6680cb";
+      sha256 = "1j1894p7kfsvwa5dbadhw23kkh4089dq5d9fmy298xrc2dwc0180";
       fetchSubmodules = false;
     };
   };
@@ -527,12 +527,12 @@ in
   };
   fidget-nvim = buildVimPlugin {
     pname = "fidget.nvim";
-    version = "2023-12-21";
+    version = "2023-12-25";
     src = fetchFromGitHub {
       owner = "j-hui";
       repo = "fidget.nvim";
-      rev = "1ba4ed7e4ee114df803ccda7ffedaf7ad2c26239";
-      sha256 = "1qy4wdxpggyihrniahxchzp3jnl45h82imlfzcnhs7h39849hgic";
+      rev = "c08abd008619376e7d0ba6db9fb36871bea7787c";
+      sha256 = "0hvdmvxd9basyh57ik214dij0m5hjwrz2d5c4asdmbw5bicc84gl";
       fetchSubmodules = false;
     };
   };
