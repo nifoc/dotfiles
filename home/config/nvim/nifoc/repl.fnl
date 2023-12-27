@@ -7,7 +7,11 @@
           program (program-fn)]
       (each [_ value (ipairs program)]
         (table.insert args value))
-      (wezterm.exec args)))
+      (wezterm.exec args
+                    (fn [result]
+                      (when (not= result.code 0)
+                        (vim.notify "wezterm: Error opening split window"
+                                    vim.log.levels.ERROR []))))))
 
   (local elixir #[(exe :iex)])
   (local erlang #[(exe :erl)])
