@@ -98,6 +98,10 @@ in
         end
       '';
 
+      wezssh = /* fish */ ''
+        wezterm cli spawn --domain-name "SSH:$argv"
+      '';
+
       wget-browser = /* fish */ ''
         set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
         ${lib.getExe pkgs.wget} -U "$user_agent" $argv

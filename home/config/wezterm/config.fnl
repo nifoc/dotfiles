@@ -53,6 +53,7 @@
       (where t (t:find "^rexit%s")) {: title :icon " " :color colors.reddit}
       (where t (t:find :^redis-)) {: title :icon " " :color "#DC372C"}
       (where t (t:find "^%[%w+%]%s")) {: title :icon " " :color colors.ssh}
+      (where t (t:find "^%w+@%w+:%s")) {: title :icon " " :color colors.ssh}
       (where t (t:find "^%w+-dev")) {: title :icon " " :color "#0099CC"}
       (where t (t:find "^%w+-dl%s")) {: title :icon " " :color "#22BC00"}
       _ {: title :icon " " :color "#F8F8F2"}))
