@@ -41,7 +41,7 @@ in
 
     ../nixos/invidious.nix
 
-    (import ../nixos/libreddit.nix (args // { inherit secret; }))
+    (import ../nixos/redlib.nix (args // { inherit secret; }))
 
     ../nixos/linkding.nix
 
