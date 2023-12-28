@@ -8,6 +8,7 @@ in
     enable = true;
 
     domain = fqdn;
+    address = "127.0.0.1";
     port = 8007;
 
     database = {
@@ -20,7 +21,6 @@ in
         dbname = "invidious";
       };
 
-      host_binding = "127.0.0.1";
       external_port = 443;
       https_only = true;
 
