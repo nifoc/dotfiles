@@ -24,10 +24,17 @@
          {:condition (fn []
                        (conditions.buffer_matches {:filetype [:TelescopePrompt]}))
           1 (ns.custom-mode :Telescope :black :green)})
-  (local neogit-statusline
-         {:condition (fn []
-                       (conditions.buffer_matches {:filetype [:NeogitStatus]}))
-          1 (ns.custom-mode :Neogit :black :purple)})
+  (local neogit-statusline {:condition (fn []
+                                         (conditions.buffer_matches {:filetype [:NeogitBranchDescription
+                                                                                :NeogitCommitMessage
+                                                                                :NeogitCommitView
+                                                                                :NeogitLogView
+                                                                                :NeogitMergeMessage
+                                                                                :NeogitPopup
+                                                                                :NeogitStatus
+                                                                                :NeogitTagMessage]}))
+                            1 (ns.custom-mode :Neogit :black :purple)
+                            2 ns.git})
   (local shell-statusline
          {:condition #(not= vim.b.nifoc_shell_mode nil)
           1 ns.vi-mode
