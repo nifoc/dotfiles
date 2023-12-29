@@ -236,11 +236,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1703754036,
-        "narHash": "sha256-JpJdcj9Tg4lMuYikXDpajA8wOp+rHyn9RD2rKBEM4cQ=",
+        "lastModified": 1703808179,
+        "narHash": "sha256-svlFDbozZlZJwnnSoeh5yE9jEnCmgmuRMRX866CL4J0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c24c298562fe41b39909f632c5a7151bbf6b4628",
+        "rev": "77c698fa4b3081b6019ad77d1bfedf06dbbde0db",
         "type": "github"
       },
       "original": {
@@ -279,11 +279,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1703728633,
-        "narHash": "sha256-34YA4spyiNqjGyXGaQ/BljQ+oDd0q2ifk01dAEV6Fxk=",
+        "lastModified": 1703807649,
+        "narHash": "sha256-Cqm5aejScs6pxEFCwwiHisF9Qg1BbGihcYIFtaXHAjk=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "46ceefb52be6b014dd27b6adfbca3e1c9dff0c0c",
+        "rev": "1ef60ea6513be72a03958ed6239bfe474c85a7a3",
         "type": "github"
       },
       "original": {
@@ -304,11 +304,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1703766857,
-        "narHash": "sha256-PAUS+G8gHypPACYo74zDFEwGm/CQGVOryGerA0ayMWs=",
+        "lastModified": 1703815271,
+        "narHash": "sha256-CSzCY/MHABlz/lOl8h+BCAcATIO/UeKPF6DPwAJl0As=",
         "ref": "refs/heads/master",
-        "rev": "89030cc0dd349a81a2c9129fa08d7cafd824414b",
-        "revCount": 649,
+        "rev": "9079ea38c435ab6db32749bf2087b13c2d006be2",
+        "revCount": 650,
         "type": "git",
         "url": "https://git.kempkens.io/daniel/nix-overlay"
       },
