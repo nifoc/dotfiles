@@ -72,7 +72,7 @@
                                   (vim.cmd.redrawtabline))
                       :minwid (fn [self]
                                 self.bufnr)}}})
-  (set mod.close-tabpage {:provider "%999X  %X" :hl :TabLine})
+  (set mod.close-tabpage {:provider "%999X  %X" :hl :TabLine})
   ;; Indicator
   (set mod.active-indicator
        {:provider (fn [self]
