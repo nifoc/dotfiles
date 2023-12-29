@@ -8,6 +8,7 @@
       telescope-dropdown (telescope-themes.get_dropdown)
       npairs (require :nvim-autopairs)
       gitsigns (require :gitsigns)
+      neogit (require :neogit)
       wk (require :which-key)
       repl (require :nifoc.repl)
       formatting (require :nifoc.formatting)]
@@ -32,7 +33,7 @@
                 #(telescope-builtin.treesitter telescope-dropdown)
                 {:desc "Find via Treesitter"})
     (keymap.set :n :<leader>pt :<cmd>TodoTelescope<CR> {:desc "TODO Comments"})
-    (keymap.set :n :<leader>vs #(telescope-builtin.git_status telescope-ivy)
+    (keymap.set :n :<leader>vs #(neogit.open {:kind :split})
                 {:desc "VCS Status"})
     (keymap.set :n :<leader>vb
                 #(telescope-builtin.git_branches telescope-dropdown)

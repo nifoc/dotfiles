@@ -332,6 +332,12 @@ in
           config = builtins.readFile ../../config/nvim/plugins/which-key.fnl;
           type = "fennel";
         }
+
+        {
+          plugin = neogit;
+          config = builtins.readFile ../../config/nvim/plugins/neogit.fnl;
+          type = "fennel";
+        }
       ] ++ optionals isDarwin [
         {
           plugin = pkgs.vimPlugins.cmp-tabnine;
