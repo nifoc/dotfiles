@@ -54,11 +54,6 @@ for plugin in "${plugin_array[@]}"; do
     nix_prefetch_flags+=" --rev $rev"
   fi
 
-  branch="$(echo "$plugin" | jq -r '.branch // empty')"
-  if [ -n "$branch" ]; then
-    nix_prefetch_flags+=" --branch-name $branch"
-  fi
-
   # shellcheck disable=SC2086
   src_json="$(nix-prefetch-git $nix_prefetch_flags "$clone_src")"
   src="{
@@ -86,14 +81,6 @@ for plugin in "${plugin_array[@]}"; do
   esac
 
   case "$name" in
-  #nvim-treesitter)
-  #  echo "${name} = pkgs.vimPlugins.nvim-treesitter.overrideAttrs (_: {" >>"$nix_new_file"
-  #  close_block="});"
-  #  ;;
-  coq_nvim)
-    echo "${name} = pkgs.vimPlugins.coq_nvim.overrideAttrs (_: {" >>"$nix_new_file"
-    close_block="});"
-    ;;
   *)
     {
       echo "${name} = buildVimPlugin {"

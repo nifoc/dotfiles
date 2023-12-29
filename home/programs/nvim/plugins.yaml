@@ -63,3 +63,4 @@
 - src: lewis6991/gitsigns.nvim
 - src: j-hui/fidget.nvim
 - src: folke/which-key.nvim
+- src: NeogitOrg/neogit
