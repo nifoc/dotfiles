@@ -8,7 +8,8 @@
       colors (. (require :nifoc.theme) :colors)
       formatting (require :nifoc.formatting)
       nifoc-treesitter (require :nifoc.treesitter)
-      navic (require :nvim-navic)]
+      navic (require :nvim-navic)
+      neogit (require :neogit)]
   (fn buffer-variable-exists? [key]
     (not= (. vim :b key) nil))
 
@@ -162,6 +163,8 @@
                   (set self.check-length (length self.git-head))))
         1 mod.space-if-count-or-length
         2 {:provider #(.. "  " $1.git-head " ")
+           :on_click {:name :heirline_git_branch
+                      :callback #(neogit.open {:kind :split})}
            :hl {:fg colors.black :bg colors.orange :bold true}}
         3 mod.space
         4 {:provider #(.. " " $1.git-added " ")

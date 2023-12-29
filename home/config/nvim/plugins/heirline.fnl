@@ -24,6 +24,10 @@
          {:condition (fn []
                        (conditions.buffer_matches {:filetype [:TelescopePrompt]}))
           1 (ns.custom-mode :Telescope :black :green)})
+  (local neogit-statusline
+         {:condition (fn []
+                       (conditions.buffer_matches {:filetype [:NeogitStatus]}))
+          1 (ns.custom-mode :Neogit :black :purple)})
   (local shell-statusline
          {:condition #(not= vim.b.nifoc_shell_mode nil)
           1 ns.vi-mode
@@ -34,8 +38,9 @@
   (local statusline {:hl ns.default-hl
                      :fallthrough false
                      1 telescope-statusline
-                     2 shell-statusline
-                     3 default-statusline})
+                     2 neogit-statusline
+                     3 shell-statusline
+                     4 default-statusline})
   (local winbar nil)
   (local tabline [nt.os-indicator
                   (utils.make_buflist nt.buffer-block nt.truncate-left
@@ -46,4 +51,3 @@
   (set vim.opt.laststatus 3)
   (set vim.opt.showtabline 2)
   (heirline.setup {: statusline : winbar : tabline : statuscolumn}))
-
