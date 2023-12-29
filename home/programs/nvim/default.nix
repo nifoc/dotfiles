@@ -321,6 +321,14 @@ in
           type = "fennel";
         }
 
+        diffview-nvim
+
+        {
+          plugin = neogit;
+          config = builtins.readFile ../../config/nvim/plugins/neogit.fnl;
+          type = "fennel";
+        }
+
         {
           plugin = fidget-nvim;
           config = builtins.readFile ../../config/nvim/plugins/fidget.fnl;
@@ -330,12 +338,6 @@ in
         {
           plugin = which-key-nvim;
           config = builtins.readFile ../../config/nvim/plugins/which-key.fnl;
-          type = "fennel";
-        }
-
-        {
-          plugin = neogit;
-          config = builtins.readFile ../../config/nvim/plugins/neogit.fnl;
           type = "fennel";
         }
       ] ++ optionals isDarwin [

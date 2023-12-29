@@ -61,6 +61,7 @@
 - src: lukas-reineke/virt-column.nvim
 - src: axieax/urlview.nvim
 - src: lewis6991/gitsigns.nvim
+- src: sindrets/diffview.nvim
+- src: NeogitOrg/neogit
 - src: j-hui/fidget.nvim
 - src: folke/which-key.nvim
-- src: NeogitOrg/neogit

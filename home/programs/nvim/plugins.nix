@@ -525,6 +525,28 @@ in
       fetchSubmodules = false;
     };
   };
+  neogit = buildVimPlugin {
+    pname = "neogit";
+    version = "2023-12-28";
+    src = fetchFromGitHub {
+      owner = "NeogitOrg";
+      repo = "neogit";
+      rev = "3718664bb62e89930f0c3c836188c2a4f44fa119";
+      sha256 = "09idnas2cnpkbgk685pbk6kpmpj5xm8p622kldak5dq4nlh63zwa";
+      fetchSubmodules = false;
+    };
+  };
+  diffview-nvim = buildVimPlugin {
+    pname = "diffview.nvim";
+    version = "2023-11-20";
+    src = fetchFromGitHub {
+      owner = "sindrets";
+      repo = "diffview.nvim";
+      rev = "3dc498c9777fe79156f3d32dddd483b8b3dbd95f";
+      sha256 = "1zvgm0icmc4z48vnd6pn7pvl6sg89mm4symr0rwiix8s942nfiyw";
+      fetchSubmodules = false;
+    };
+  };
   fidget-nvim = buildVimPlugin {
     pname = "fidget.nvim";
     version = "2023-12-28";
@@ -544,17 +566,6 @@ in
       repo = "which-key.nvim";
       rev = "4433e5ec9a507e5097571ed55c02ea9658fb268a";
       sha256 = "1inm7szfhji6l9k4khq9fvddbwj348gilgbd6b8nlygd7wz23y5s";
-      fetchSubmodules = false;
-    };
-  };
-  neogit = buildVimPlugin {
-    pname = "neogit";
-    version = "2023-12-28";
-    src = fetchFromGitHub {
-      owner = "NeogitOrg";
-      repo = "neogit";
-      rev = "3718664bb62e89930f0c3c836188c2a4f44fa119";
-      sha256 = "09idnas2cnpkbgk685pbk6kpmpj5xm8p622kldak5dq4nlh63zwa";
       fetchSubmodules = false;
     };
   };
