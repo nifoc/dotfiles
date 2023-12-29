@@ -33,6 +33,8 @@
                 #(telescope-builtin.treesitter telescope-dropdown)
                 {:desc "Find via Treesitter"})
     (keymap.set :n :<leader>pt :<cmd>TodoTelescope<CR> {:desc "TODO Comments"})
+    (keymap.set :n :<leader>g #(neogit.open {:kind :split})
+                {:desc "Open Neogit"})
     (keymap.set :n :<leader>vs #(neogit.open {:kind :split})
                 {:desc "VCS Status"})
     (keymap.set :n :<leader>vb
