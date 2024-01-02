@@ -42,6 +42,7 @@
                 {:desc "List VCS Branches"})
     (keymap.set :n :<leader>vl #(gitsigns.blame_line {:full true})
                 {:desc "Blame Line"})
+    (keymap.set :n :<leader>vd :<cmd>DiffviewOpen<CR> {:desc "Open DiffView"})
     (keymap.set :n :<leader>lk telescope-builtin.keymaps
                 {:desc "Show Keymappings"})
     (keymap.set :n :<leader>ld #(telescope-builtin.diagnostics telescope-ivy)

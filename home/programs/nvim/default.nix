@@ -321,7 +321,11 @@ in
           type = "fennel";
         }
 
-        diffview-nvim
+        {
+          plugin = diffview-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/diffview.fnl;
+          type = "fennel";
+        }
 
         {
           plugin = neogit;
