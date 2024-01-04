@@ -15,7 +15,4 @@
                     :group augroup})
   (aucmd :User {:pattern :NeogitCommitComplete
                 :callback #(gitsigns.refresh)
-                :group augroup})
-  (aucmd :User {:pattern :NeogitPushComplete
-                :callback neogit.close
                 :group augroup}))
