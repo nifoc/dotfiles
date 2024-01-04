@@ -6,6 +6,10 @@
     package = pkgs.postgresql_16_jit;
     enableJIT = true;
 
+    extraPlugins = ps: with ps; [
+      pgroonga
+    ];
+
     enableTCPIP = true;
 
     settings = {
