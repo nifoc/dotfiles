@@ -33,14 +33,6 @@
     (highlight :IlluminatedWordText {:bg mod.colors.selection})
     (highlight :IlluminatedWordRead {:bg mod.colors.selection})
     (highlight :IlluminatedWordWrite {:bg mod.colors.selection :underline true})
-    ;; rainbow-delimiters
-    (highlight :RainbowDelimiterRed {:fg mod.colors.red})
-    (highlight :RainbowDelimiterYellow {:fg mod.colors.yellow})
-    (highlight :RainbowDelimiterBlue {:fg mod.colors.purple})
-    (highlight :RainbowDelimiterOrange {:fg mod.colors.orange})
-    (highlight :RainbowDelimiterGreen {:fg mod.colors.green})
-    (highlight :RainbowDelimiterViolet {:fg mod.colors.pink})
-    (highlight :RainbowDelimiterCyan {:fg mod.colors.cyan})
     ;; cmp
     (highlight :PmenuSel {:fg mod.colors.white :bg "#363848"})
     (highlight :CmpCursorLine {:bg "#363848"})
