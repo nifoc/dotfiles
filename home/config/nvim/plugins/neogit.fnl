@@ -13,6 +13,9 @@
                               :NeogitTagMessage]
                     :callback #(set vim.b.toggle_line_style 0)
                     :group augroup})
-  (aucmd :User {:pattern :NeogitCommitComplete
+  (aucmd :User {:pattern [:NeogitCommitComplete
+                          :NeogitPullComplete
+                          :NeogitPushComplete
+                          :NeogitStatusRefreshed]
                 :callback #(gitsigns.refresh)
                 :group augroup}))
