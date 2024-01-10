@@ -21,8 +21,6 @@ let
 
           cp -r ${tangerine-ui}/mastodon/app/javascript/styles/* $styleDir
 
-          ls -la $styleDir
-
           echo "tangerineui: styles/tangerineui.scss" >>$PWD/config/themes.yml
           echo "tangerineui-purple: styles/tangerineui-purple.scss" >>$PWD/config/themes.yml
         '';
