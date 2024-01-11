@@ -106,12 +106,12 @@ in
   };
   dracula-nvim = buildVimPlugin {
     pname = "dracula.nvim";
-    version = "2024-01-05";
+    version = "2024-01-10";
     src = fetchFromGitHub {
       owner = "Mofiqul";
       repo = "dracula.nvim";
-      rev = "392db4bba96849e70b28e1b411ce194979309e34";
-      sha256 = "1rdgx2kz5jkdzvihind396vka6kd1a312946vqmyfahwmw68hlxl";
+      rev = "8fc749e2479d62829c9c627867770035b74529a4";
+      sha256 = "14j3lz53vfz9w6iiw0zywqwknh0blsma9vzi10qqchq8cf1b6w1d";
       fetchSubmodules = false;
     };
   };
@@ -172,12 +172,12 @@ in
   };
   telescope-nvim = buildVimPlugin {
     pname = "telescope.nvim";
-    version = "2024-01-09";
+    version = "2024-01-11";
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "4367e05c06d19f28c514e1498bcd9410f4bc65b2";
-      sha256 = "1d7yw9fi2sf65r6syinw5qfx3q4g07r2yqdibwk0xlnlip4338l2";
+      rev = "b3ff5f33201f474d58f5be96244869f189bbc091";
+      sha256 = "1gndv00xb40qgph0xgjyd0jcpp1nqmh64gvnq8x43df5vgdbiyjb";
       fetchSubmodules = false;
     };
   };
@@ -538,12 +538,12 @@ in
   };
   neogit = buildVimPlugin {
     pname = "neogit";
-    version = "2024-01-09";
+    version = "2024-01-10";
     src = fetchFromGitHub {
       owner = "NeogitOrg";
       repo = "neogit";
-      rev = "faf78f21dcab87f92a8fd5021a3394257aeddc69";
-      sha256 = "0ad2lh6210yg7bclknak1kibam65ygxwb72dv0wjibbaiq4ibkzy";
+      rev = "e43e6824c6ccf1d1d246f0cda7870c4a8d9d6dad";
+      sha256 = "1mj7nkdfmqn1pa5g7k6sjcfas3nblx76gqxdrzbm98x3sv3x6i3m";
       fetchSubmodules = false;
     };
   };
