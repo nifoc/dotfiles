@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-01-15";
+    version = "2024-01-16";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "59d4c14a1a4262cf637ff2420032593afa062749";
-      sha256 = "02qq3389a49kk9q7jxssijj6fxbhkn8rhc8jnmn33idaf7w8dqzr";
+      rev = "97ba59c6f532072e456b3d1f2413560e689c132b";
+      sha256 = "03fyvxcxsishdr7v4z98jiwf71vwzhpr53lj4iv47jpqhayxqipr";
       fetchSubmodules = false;
     };
   };
@@ -139,12 +139,12 @@ in
   };
   rainbow-delimiters-nvim = buildVimPlugin {
     pname = "rainbow-delimiters.nvim";
-    version = "2024-01-15";
+    version = "2024-01-16";
     src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "rainbow-delimiters.nvim";
-      rev = "80ee86a2a81b5f029d5c8a85930cf549f9842635";
-      sha256 = "1gyfk4c698bwp1snzvix433950k2mcq2hrr7yjgky3ksq8xclgn5";
+      rev = "f39a9cd41a352a4fccc32a52bd27b317184252b0";
+      sha256 = "1ddv857b2wycl9p65mjpdz1kn16g8l1rfa13l6bp7vnb5dy0k66g";
       fetchSubmodules = false;
     };
   };
@@ -465,8 +465,8 @@ in
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "oil.nvim";
-      rev = "e71b6caa95bd29225536df64fdcd8fb0f758bb09";
-      sha256 = "1ly7n7fksycbjiwawwla1abj73ch91zii45rm4s9n1sp8s76bz58";
+      rev = "dd432e76d01eda08b8658415588d011009478469";
+      sha256 = "1dsiwyjpv8qygpn8pm1ys8jnlrszz0z7kyvyc48xh9z3m912l0fs";
       fetchSubmodules = false;
     };
   };
@@ -538,12 +538,12 @@ in
   };
   neogit = buildVimPlugin {
     pname = "neogit";
-    version = "2024-01-14";
+    version = "2024-01-16";
     src = fetchFromGitHub {
       owner = "NeogitOrg";
       repo = "neogit";
-      rev = "acd391ebb607cd6b8dd1c3e95c8fe8ebccfaf4fb";
-      sha256 = "028189yc7mq31m2q6xqhq6m9dr61njvcrf9wqxqmmsb8q8d1qsn9";
+      rev = "38dd297a905ec6869f4c20ea9184a3e514316e3b";
+      sha256 = "0jgp46dsj9drldbjvy2rgc1yyqbzk34ka14lpkzl13y1dcfhxysc";
       fetchSubmodules = false;
     };
   };
