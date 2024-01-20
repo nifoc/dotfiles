@@ -19,9 +19,6 @@
 - src: nvim-treesitter/playground
 # Telescope
 - src: nvim-telescope/telescope.nvim
-- src: nvim-telescope/telescope-fzf-native.nvim
-  buildPhase: |-
-    make
 - src: ahmedkhalf/project.nvim
 - src: nvim-telescope/telescope-ui-select.nvim
 - src: debugloop/telescope-undo.nvim

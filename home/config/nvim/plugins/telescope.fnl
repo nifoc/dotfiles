@@ -25,11 +25,13 @@
                                                    :--smart-case
                                                    :--trim]}
                     :extensions {:ui-select [(themes.get_dropdown {})]
-                                 :fzf {:fuzzy true
-                                       :override_generic_sorter true
-                                       :override_file_sorter true
-                                       :case_mode :smart_case}}})
-  (telescope.load_extension :fzf)
+                                 :zf-native {:file {:enable true
+                                                    :highlight_results true
+                                                    :match_filename true}
+                                             :generic {:enable true
+                                                       :highlight_results true
+                                                       :match_filename false}}}})
+  (telescope.load_extension :zf-native)
   (telescope.load_extension :ui-select)
   (telescope.load_extension :yank_history)
   (telescope.load_extension :undo)

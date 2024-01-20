@@ -181,20 +181,6 @@ in
       fetchSubmodules = false;
     };
   };
-  telescope-fzf-native-nvim = buildVimPlugin {
-    pname = "telescope-fzf-native.nvim";
-    version = "2023-09-10";
-    src = fetchFromGitHub {
-      owner = "nvim-telescope";
-      repo = "telescope-fzf-native.nvim";
-      rev = "6c921ca12321edaa773e324ef64ea301a1d0da62";
-      sha256 = "101dxn7jfyg2wdzkw5cnrw475mg0p3w475l1hplqfhghz33zb1hy";
-      fetchSubmodules = false;
-    };
-    buildPhase = ''
-      make
-    '';
-  };
   project-nvim = buildVimPlugin {
     pname = "project.nvim";
     version = "2023-04-04";
