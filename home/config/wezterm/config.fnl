@@ -10,6 +10,7 @@
               :hover-foreground "#191A21"
               ; Icons
               :elixir "#A074C4"
+              :et "#1C3062"
               :nix "#7EBAE4"
               :reddit "#FA4400"
               :ssh "#F4C82D"}
@@ -41,6 +42,7 @@
       (where t (t:find "^deploy%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^ssh%s")) {: title :icon " " :color colors.ssh}
       (where t (t:find "^scp%s")) {: title :icon " " :color colors.ssh}
+      (where t (t:find "^et%s")) {: title :icon " " :color colors.et}
       (where t (t:find :^ytdl)) {: title :icon " " :color "#FF0000"}
       (where t (t:find :^instagram-)) {: title :icon " " :color "#FB2179"}
       (where t (t:find "^gallery-dl%s"))
