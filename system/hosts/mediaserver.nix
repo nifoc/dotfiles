@@ -10,6 +10,7 @@ in
     ../../agenix/hosts/mediaserver/config.nix
     ../shared/show-update-changelog.nix
     ../nixos/ssh.nix
+    ../nixos/eternal-terminal.nix
 
     ../nixos/git.nix
 
@@ -167,7 +168,7 @@ in
       description = "Daniel";
       extraGroups = [ "wheel" ];
       shell = pkgs.fish;
-      openssh.authorizedKeys.keys = [ ssh-keys.LAN ssh-keys.ShellFish ];
+      openssh.authorizedKeys.keys = [ ssh-keys.LAN ssh-keys.DanielsPhone ];
     };
 
     nix-remote-builder = {

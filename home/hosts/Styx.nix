@@ -36,6 +36,7 @@
     ../programs/scripts.nix
 
     ../programs/ssh/Styx.nix
+    ../programs/eternal-terminal.nix
 
     ../programs/streamlink.nix
     ../programs/yt-dlp.nix
@@ -52,7 +53,6 @@
       curlHTTP3
       dasel
       dig
-      eternal-terminal
       exiftool
       fd
       ffmpeg
