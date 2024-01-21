@@ -172,12 +172,12 @@ in
   };
   telescope-nvim = buildVimPlugin {
     pname = "telescope.nvim";
-    version = "2024-01-20";
+    version = "2024-01-21";
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "24778fd72fcf39a0b1a6f7c6f4c4e01fef6359a2";
-      sha256 = "0n4y17syw7zg7qmyvpvv88955cj1k4i4bqgsgyjk5h8bdmdhwl9a";
+      rev = "0902bb39ebaf76e655addc65130eb79b29abe6d2";
+      sha256 = "0x21d4433ffxhy1iqjlv2pzz7gn34f621mp527var3bw1h6n6wl8";
       fetchSubmodules = false;
     };
   };
@@ -403,12 +403,12 @@ in
   };
   nvim-autopairs = buildVimPlugin {
     pname = "nvim-autopairs";
-    version = "2023-12-20";
+    version = "2024-01-21";
     src = fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-autopairs";
-      rev = "9fd41181693dd4106b3e414a822bb6569924de81";
-      sha256 = "1xwvw5j81rx7q5jmv14fnphxsjk9anzglf10j8ai8217gc9h530z";
+      rev = "eac31b4797ce4fa9dd546f7b98ec32305527b19e";
+      sha256 = "1ha2cqjvzphhib3s2grcr019b8aix6vlccfwwi8yh2ysrrj4qgnk";
       fetchSubmodules = false;
     };
   };
