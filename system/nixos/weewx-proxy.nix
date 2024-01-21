@@ -4,6 +4,7 @@
   systemd.services.weewx-proxy = {
     description = "A proxy service for WeeWX sources";
     wantedBy = [ "multi-user.target" ];
+    wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
     serviceConfig = {
       DynamicUser = true;

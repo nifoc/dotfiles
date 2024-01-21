@@ -11,6 +11,7 @@ in
     ../../agenix/hosts/tanker/config.nix
     ../shared/show-update-changelog.nix
     ../nixos/ssh.nix
+    ../nixos/eternal-terminal.nix
     ../nixos/msmtp.nix
     ../nixos/smartd.nix
 
@@ -194,7 +195,7 @@ in
       description = "Daniel";
       extraGroups = [ "wheel" ];
       shell = pkgs.fish;
-      openssh.authorizedKeys.keys = [ ssh-keys.Hetzner ];
+      openssh.authorizedKeys.keys = [ ssh-keys.Hetzner ssh-keys.DanielsPhone ];
     };
   };
 }

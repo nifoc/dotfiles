@@ -10,7 +10,8 @@ in
     description = "Nitter (An alternative Twitter front-end)";
     wantedBy = [ "multi-user.target" ];
     requires = [ "redis-nitter.service" ];
-    after = [ "network.target" "network-online.target" "redis-nitter.service" ];
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" "redis-nitter.service" ];
     serviceConfig = {
       DynamicUser = true;
       StateDirectory = "nitter";

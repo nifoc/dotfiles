@@ -11,6 +11,7 @@ in
     ../shared/show-update-changelog.nix
     ../nixos/raspberry.nix
     ../nixos/ssh.nix
+    ../nixos/eternal-terminal.nix
 
     ../nixos/git.nix
 
@@ -200,7 +201,7 @@ in
       description = "Daniel";
       extraGroups = [ "wheel" ];
       shell = pkgs.fish;
-      openssh.authorizedKeys.keys = [ ssh-keys.LAN ];
+      openssh.authorizedKeys.keys = [ ssh-keys.LAN ssh-keys.DanielsPhone ];
     };
 
     nix-remote-builder = {
