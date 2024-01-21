@@ -52,6 +52,7 @@
       curlHTTP3
       dasel
       dig
+      eternal-terminal
       exiftool
       fd
       ffmpeg
