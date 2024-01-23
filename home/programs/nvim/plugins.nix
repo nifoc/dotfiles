@@ -40,12 +40,12 @@ in
   };
   wezterm-nvim = buildVimPlugin {
     pname = "wezterm.nvim";
-    version = "2023-11-02";
+    version = "2024-01-23";
     src = fetchFromGitHub {
       owner = "willothy";
       repo = "wezterm.nvim";
-      rev = "2aacd6405c52ef4b865a7baf2598fa3d7b0bc25c";
-      sha256 = "1g43hyf7cmgr6vk59s7v4g5g4r0k8cm7bcki1klx40vqmlpq6rk5";
+      rev = "3455f419f9fd20c01bb5cda8c0dc726b18e083cf";
+      sha256 = "0zwgc22bgan66zkr5q7h053p8bacv3afka4sjwnhnjh8rvlww86p";
       fetchSubmodules = false;
     };
   };
@@ -106,23 +106,23 @@ in
   };
   dracula-nvim = buildVimPlugin {
     pname = "dracula.nvim";
-    version = "2024-01-10";
+    version = "2024-01-23";
     src = fetchFromGitHub {
       owner = "Mofiqul";
       repo = "dracula.nvim";
-      rev = "8fc749e2479d62829c9c627867770035b74529a4";
-      sha256 = "14j3lz53vfz9w6iiw0zywqwknh0blsma9vzi10qqchq8cf1b6w1d";
+      rev = "a6cb758d4b182d9f2b7e742910078d94877c1059";
+      sha256 = "1v6hwh225lh7jayq7y18d8lp8n8dk7scy21f0s5jyppy1rn7yrf8";
       fetchSubmodules = false;
     };
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-01-22";
+    version = "2024-01-23";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "cd4e0909948eb33d3959e133c16f837e4db122c6";
-      sha256 = "096rvmvr7bwl7g9cvzm92w6akpj3ycpy7dznh7pjgwb8mwf97r5j";
+      rev = "177a775fd8b2a9de97011a43f13c74ad8d3739c8";
+      sha256 = "1dbyk1c4qjvdpx5sc4kjw5ygzkmxs0z34r4xcwsmfjlmd50v82zr";
       fetchSubmodules = false;
     };
   };
@@ -502,12 +502,12 @@ in
   };
   gitsigns-nvim = buildVimPlugin {
     pname = "gitsigns.nvim";
-    version = "2024-01-20";
+    version = "2024-01-23";
     src = fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "c5ff7628e19a47ec14d3657294cc074ecae27b99";
-      sha256 = "1gwpiq3fdjg3b6hg82lq7i0cxfyyb89cr079jc9ja36ypwbkclkl";
+      rev = "300a306da9973e81c2c06460f71fd7a079df1f36";
+      sha256 = "1vy1p2cgcmfwzgfd011pnvib2vp1zgwv2kp59xlb0v3jxl8rnsvj";
       fetchSubmodules = false;
     };
   };
