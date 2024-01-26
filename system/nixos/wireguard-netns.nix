@@ -6,7 +6,8 @@
   environment.etc."netns/wg/resolv.conf" = {
     mode = "0644";
     text = ''
-      nameserver ${secret.wireguard.dns}
+      nameserver ${secret.wireguard.dnsv4}
+      nameserver ${secret.wireguard.dnsv6}
     '';
   };
 
@@ -44,6 +45,11 @@
     wants = [ "network-online.target" ];
     after = [ "netns@wg.service" "network-online.target" "run-agenix.d.mount" ];
     environment.WG_ENDPOINT_RESOLUTION_RETRIES = "infinity";
+
+    restartTriggers = [
+      "${config.age.secrets.wireguard-config.file}"
+    ];
+
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
