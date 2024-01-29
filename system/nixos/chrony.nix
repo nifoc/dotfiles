@@ -7,8 +7,14 @@
     servers = [
       "ptbtime1.ptb.de"
       "ptbtime2.ptb.de"
-      "time.cloudflare.com"
+      "ptbtime3.ptb.de"
+      "ntp1.rwth-aachen.de"
+      "ntp2.rwth-aachen.de"
+      "ntp3.rwth-aachen.de"
       "ntp1.hetzner.de"
+      "ntp2.hetzner.de"
+      "ntp3.hetzner.de"
+      "time.cloudflare.com"
     ];
 
     extraConfig = ''
@@ -18,11 +24,9 @@
     '';
   };
 
-  systemd.services.chronyd = {
-    after = lib.mkForce [ "network-online.target" "nss-lookup.target" ];
-  };
+  services.timesyncd.enable = lib.mkForce false;
 
-  networking.firewall.interfaces."end0" = {
+  networking.firewall = {
     allowedUDPPorts = [ 123 ];
     allowedTCPPorts = [ 123 ];
   };
