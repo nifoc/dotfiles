@@ -1,20 +1,23 @@
 { pkgs, config, lib, ... }:
 
 {
-  services.signald.enable = true;
-  systemd.services.signald.serviceConfig.EnvironmentFile = [
-    config.age.secrets.signald-environment.path
-  ];
+  # Re-use old signald user and group
+  users.users.signald = {
+    group = "signald";
+    isSystemUser = true;
+  };
+
+  users.groups.signald = { };
 
   systemd.services.mautrix-signal = {
     description = "A Matrix-Signal puppeting bridge";
     wantedBy = [ "multi-user.target" ];
-    requires = [ "matrix-synapse.service" "signald.service" ];
-    after = [ "matrix-synapse.service" "signald.service" ];
+    requires = [ "matrix-synapse.service" ];
+    after = [ "matrix-synapse.service" ];
     restartTriggers = [ "${config.age.secrets.mautrix-signal-config.file}" ];
     serviceConfig = {
-      User = config.services.signald.user;
-      Group = config.services.signald.group;
+      User = "signald";
+      Group = "signald";
       LoadCredential = [ "config:${config.age.secrets.mautrix-signal-config.path}" ];
       ExecStart = "${lib.getExe pkgs.mautrix-signal} --config=%d/config --no-update";
       Restart = "on-failure";

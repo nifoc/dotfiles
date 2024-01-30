@@ -61,8 +61,6 @@ in
 
   "agenix/hosts/tanker/mautrix-signal/config.age".publicKeys = tanker;
 
-  "agenix/hosts/tanker/signald/environment.age".publicKeys = tanker;
-
   "agenix/hosts/tanker/mautrix-whatsapp/config.age".publicKeys = tanker;
 
   "agenix/hosts/tanker/weewx/config.age".publicKeys = tanker;

@@ -128,10 +128,6 @@
       file = ./mautrix-signal/config.age;
     };
 
-    signald-environment = {
-      file = ./signald/environment.age;
-    };
-
     synapse-extra-config = {
       file = ./synapse/extraConfig.age;
       owner = "matrix-synapse";
