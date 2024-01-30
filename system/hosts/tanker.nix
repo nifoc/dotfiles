@@ -50,8 +50,6 @@ in
 
     ../nixos/miniflux.nix
 
-    (import ../nixos/nitter.nix (args // { inherit secret; }))
-
     (import ../nixos/ntfy-sh.nix (args // { inherit secret; }))
 
     ../nixos/rimgo.nix
