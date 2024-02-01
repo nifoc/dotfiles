@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-01-30";
+    version = "2024-02-01";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "ba6454783493ac3a5dd209c25e491640b07bd8de";
-      sha256 = "1916iixchcirkdwr7xcyhg2nzyp1hd1f8jw781i21wxslskiwkmr";
+      rev = "515b00598a4786631466d5c4b7c7fd0188ae1022";
+      sha256 = "025y8afn2222659pqyrmr6rjvlfw9j6j6rsli2smj1xymb3zr8s8";
       fetchSubmodules = false;
     };
   };
@@ -139,12 +139,12 @@ in
   };
   rainbow-delimiters-nvim = buildVimPlugin {
     pname = "rainbow-delimiters.nvim";
-    version = "2024-01-30";
+    version = "2024-01-31";
     src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "rainbow-delimiters.nvim";
-      rev = "6c7d918621e93a045671e8f85c6dcc01783b82d0";
-      sha256 = "15zcvkzygib6awqj2wqj56q20zrhk4y9f17kkc1zc75nkz39zv3y";
+      rev = "ca8d5ee2b4ee1eec491040a7601d366ddc8a2e02";
+      sha256 = "1jwqya4svr7xf5sim0l650a733bfsm648ic45sw90g4bih5iin0n";
       fetchSubmodules = false;
     };
   };
@@ -172,12 +172,12 @@ in
   };
   telescope-nvim = buildVimPlugin {
     pname = "telescope.nvim";
-    version = "2024-01-29";
+    version = "2024-02-01";
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "e54fbf4ab2b64640b639b75c006c23b4bc51c86f";
-      sha256 = "1788hzgqs42fwpfyw8gbg9664ysnwsyl7jj8i3d7yp6pa62gdbh0";
+      rev = "7b5c5f56a21e82fdcfe5b250278b8dfc4b1cbab4";
+      sha256 = "0yfavqaiq5dwzb7jyxnjg34r0mya4r53y4jhqqdx48lkx7a9p94i";
       fetchSubmodules = false;
     };
   };
@@ -220,19 +220,19 @@ in
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "d9e87768466f91c071375517b170da5fad7b41f5";
-      sha256 = "0g9k5wd56n6dh673xjas777ykvy0377ffz11jywhfw0r6038qcis";
+      rev = "1759ea68fbbb1303192020d3e59936189359e0ed";
+      sha256 = "025kamvrx8j362kszkqa028xm4d2gjxsb45rwzcp0jvx2ay74zxj";
       fetchSubmodules = false;
     };
   };
   nvim-jdtls = buildVimPlugin {
     pname = "nvim-jdtls";
-    version = "2023-11-28";
+    version = "2024-01-31";
     src = fetchFromGitHub {
       owner = "mfussenegger";
       repo = "nvim-jdtls";
-      rev = "66b5ace68a5d1c45fdfb1afa8d847e87af2aa1f8";
-      sha256 = "1cycasjvms1m58vcb3sk01dp4dzjjchds20yq0c6vq1s98wir0y6";
+      rev = "4f4de4d80e1df43d58e5e21677fca4c63676664d";
+      sha256 = "1n66wwqj2chm9yyqq1fksbhrdqln604sbycakfj4gf68iqi48w5a";
       fetchSubmodules = false;
     };
   };
