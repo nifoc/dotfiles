@@ -3,7 +3,27 @@
 let
   web-domain = "mastodon.kempkens.io";
 
-  pkg-mastodon = pkgs.mastodon.overrideAttrs (_: {
+  pkg-base = pkgs.mastodon.override {
+    srcOverride =
+      let
+        version = "4.2.5";
+      in
+      (
+        pkgs.applyPatches {
+          src = pkgs.fetchFromGitHub {
+            owner = "mastodon";
+            repo = "mastodon";
+            rev = "v${version}";
+            hash = "sha256-dgC5V/CVE9F1ORTjPWUWc/JVcWCEj/pb4eWpDV0WliY=";
+          };
+          patches = [ ];
+        }) // {
+        inherit version;
+        yarnHash = "sha256-qoLesubmSvRsXhKwMEWHHXcpcqRszqcdZgHQqnTpNPE=";
+      };
+  };
+
+  pkg-mastodon = pkg-base.overrideAttrs (_: {
     mastodonModules = pkgs.mastodon.mastodonModules.overrideAttrs (oldMods:
       let
         tangerine-ui = pkgs.fetchFromGitHub {
