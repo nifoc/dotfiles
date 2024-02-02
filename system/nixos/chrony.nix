@@ -18,6 +18,8 @@
     ];
 
     extraConfig = ''
+      makestep 1.0 3
+
       bindaddress 0.0.0.0
       port 123
       allow
