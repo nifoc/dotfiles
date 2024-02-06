@@ -29,6 +29,8 @@
 
     packages = with pkgs; [
       curlHTTP3
+      discordchatexporter-cli
+      discord-downloader-go
       lnav
       mtr
       parallel
