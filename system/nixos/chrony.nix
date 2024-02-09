@@ -18,7 +18,6 @@
     ];
 
     extraConfig = ''
-      burst 3/3
       makestep 1.0 3
 
       bindaddress 0.0.0.0
