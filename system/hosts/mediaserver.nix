@@ -23,7 +23,7 @@ in
 
     ../nixos/attic.nix
 
-    #../nixos/bdfr-browser.nix
+    ../nixos/ddg.nix
 
     ../nixos/tailscale.nix
 
