@@ -305,11 +305,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1707607104,
-        "narHash": "sha256-wCrwy9XBSgxrVdPDW5wWPwftKNnKHlh4DQA1Stmi9Ss=",
+        "lastModified": 1707616878,
+        "narHash": "sha256-lH3dtOn7N62gPriphyoFaGPhqhG9XPSv7KLT0OuaFKY=",
         "ref": "refs/heads/master",
-        "rev": "f08f3f58a5a3eba04d3e77395c9692ba126ceb75",
-        "revCount": 704,
+        "rev": "0ceb77bd40e3a815e4d7b45a7008bc309bdc2ce6",
+        "revCount": 705,
         "type": "git",
         "url": "https://git.kempkens.io/daniel/nix-overlay"
       },
