@@ -72,7 +72,7 @@ in
             p.html
             p.http
             p.java
-            p.javascript
+            #p.javascript
             p.jsdoc
             p.json
             p.kotlin
@@ -89,8 +89,8 @@ in
             p.sql
             p.svelte
             p.toml
-            p.tsx
-            p.typescript
+            #p.tsx
+            #p.typescript
             p.vim
             p.yaml
           ])).dependencies;
