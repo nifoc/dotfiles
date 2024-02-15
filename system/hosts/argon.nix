@@ -25,7 +25,7 @@ in
 
     ../nixos/chrony.nix
 
-    (import ../nixos/forgejo-runner.nix (args // { name = "argon"; tag = "ubuntu-latest-arm64"; nixTag = "arm64"; }))
+    (import ../nixos/forgejo-runner.nix (args // { inherit secret; name = "argon"; tag = "ubuntu-latest-arm64"; nixTag = "arm64"; }))
 
     ../nixos/grafana.nix
     ../nixos/loki.nix
