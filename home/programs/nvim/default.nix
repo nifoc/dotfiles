@@ -51,58 +51,14 @@ in
       xcbuild
     ];
 
-    extraLuaConfig =
-      let
-        treesitter-parsers = pkgs.symlinkJoin {
-          name = "treesitter-parsers";
-          paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
-            p.angular
-            p.bash
-            #p.comment # slow
-            p.css
-            p.diff
-            p.dockerfile
-            p.eex
-            p.elixir
-            p.erlang
-            p.fennel
-            p.fish
-            p.graphql
-            p.heex
-            p.html
-            p.http
-            p.java
-            p.javascript
-            p.jsdoc
-            p.json
-            p.kotlin
-            p.lua
-            p.make
-            p.markdown
-            p.markdown_inline
-            p.nix
-            p.python
-            p.query
-            p.regex
-            p.ruby
-            p.scss
-            p.sql
-            p.svelte
-            p.toml
-            p.tsx
-            p.typescript
-            p.vim
-            p.yaml
-          ])).dependencies;
-        };
-      in
-        /* lua */ ''
-        vim.loader.enable()
-        vim.opt.runtimepath:prepend("${treesitter-parsers}")
+    extraLuaConfig = /* lua */ ''
+      vim.loader.enable()
+      _G.nvim_treesitter_parser_directory = os.getenv("HOME") .. "/.local/share/nvim/nvim-treesitter_parser"
+      vim.opt.runtimepath:prepend(_G.nvim_treesitter_parser_directory)
 
-        require('nifoc.nix')
-        require('configuration.init')
-      '';
+      require('nifoc.nix')
+      require('configuration.init')
+    '';
 
     plugins =
       let
