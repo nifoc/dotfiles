@@ -4,7 +4,7 @@ let
   secret = import ../../../secret/hosts/Styx.nix;
 
   ssh-directory = "${config.home.homeDirectory}/.ssh";
-  auth-socket = "${ssh-directory}/1password.sock";
+  auth-socket = "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
   signers-directory = "${ssh-directory}/allowed_signers";
 
   shared-private = import ./shared/private.nix;
@@ -24,8 +24,7 @@ in
     serverAliveInterval = 60;
     extraConfig = ''
       IdentityAgent "${auth-socket}"
-      UpdateHostKeys ask
-      # VerifyHostKeyDNS yes
+      VerifyHostKeyDNS yes
     '';
 
     matchBlocks = shared-private.matchBlocks // shared-work.matchBlocks;
@@ -34,8 +33,6 @@ in
       "~/.ssh/config_work"
     ];
   };
-
-  home.sessionVariables.SSH_AUTH_SOCK = "${auth-socket}";
 
   home.file = {
     "${ssh-directory}/GitHub.pub".text = ssh-keys.GitHub;
@@ -46,6 +43,22 @@ in
     "${signers-directory}" = {
       source = ../../config/ssh/allowed_signers;
       recursive = true;
+    };
+  };
+
+  # Make agent available to all programs
+
+  home.sessionVariables.SSH_AUTH_SOCK = "${auth-socket}";
+
+  launchd.agents.SSH_AUTH_SOCK = {
+    enable = true;
+    config = {
+      ProgramArguments = [
+        "/bin/sh"
+        "-c"
+        "/bin/ln -sf \"${auth-socket}\" $SSH_AUTH_SOCK"
+      ];
+      RunAtLoad = true;
     };
   };
 }
