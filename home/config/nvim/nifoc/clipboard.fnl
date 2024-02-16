@@ -11,8 +11,8 @@
         ;; Other OS
         (set vim.g.clipboard
              {:name clip-name
-              :copy {:+ osc52.copy :* osc52.copy}
-              :paste {:+ osc52.paste :* osc52.paste}}))
+              :copy {:+ (osc52.copy "+") :* (osc52.copy "*")}
+              :paste {:+ (osc52.paste "+") :* (osc52.paste "*")}}))
     (vim.opt.clipboard:prepend :unnamedplus))
 
   mod)

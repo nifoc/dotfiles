@@ -18,6 +18,8 @@ in
     extraLuaPackages = luaPkgs: with luaPkgs; [ jsregexp lua-toml readline ];
 
     extraPackages = with pkgs; [
+      stdenv.cc
+
       git
       nodejs
       tree-sitter
