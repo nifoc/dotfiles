@@ -6,7 +6,7 @@ let
   pkg-base = pkgs.mastodon;
 
   pkg-mastodon = pkg-base.overrideAttrs (_: {
-    mastodonModules = pkgs.mastodon.mastodonModules.overrideAttrs (oldMods:
+    mastodonModules = pkg-base.mastodonModules.overrideAttrs (oldMods:
       let
         tangerine-ui = pkgs.fetchFromGitHub {
           owner = "nileane";
