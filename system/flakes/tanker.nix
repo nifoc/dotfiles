@@ -3,13 +3,13 @@
 let
   default-system = "x86_64-linux";
 
-  overlay-master = _: _: { pkgs-master = import inputs.nixpkgs-master { system = default-system; }; };
+  # overlay-master = _: _: { pkgs-master = import inputs.nixpkgs-master { system = default-system; }; };
   # overlay-unstable = _: _: { pkgs-unstable = import inputs.nixpkgs { system = default-system; }; };
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
     overlays = [
-      overlay-master
+      # overlay-master
       # overlay-unstable
       overlay-nifoc
     ];
