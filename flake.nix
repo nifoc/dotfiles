@@ -23,7 +23,7 @@
     # Overlays
 
     disko = {
-      url = "github:nix-community/disko";
+      url = "github:nix-community/disko?ref=refs/tags/v1.3.0";
       inputs.nixpkgs.follows = "nixos-unstable";
     };
 
