@@ -6,7 +6,7 @@
       inputs = {
         syslog = {
           server = "udp://:6514";
-          syslog_standard = "RFC3164";
+          syslog_standard = "RFC5424";
           best_effort = true;
         };
       };

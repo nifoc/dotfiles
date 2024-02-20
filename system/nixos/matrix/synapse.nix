@@ -89,17 +89,17 @@ in
     };
 
     extraConfigFiles = [ config.age.secrets.synapse-extra-config.path ];
+  };
 
-    sliding-sync = {
-      enable = true;
+  services.matrix-sliding-sync = {
+    enable = true;
 
-      settings = {
-        SYNCV3_SERVER = "https://${fqdn}";
-        SYNCV3_BINDADDR = "127.0.0.1:8009";
-      };
-
-      environmentFile = config.age.secrets.synapse-sliding-sync-config.path;
+    settings = {
+      SYNCV3_SERVER = "https://${fqdn}";
+      SYNCV3_BINDADDR = "127.0.0.1:8009";
     };
+
+    environmentFile = config.age.secrets.synapse-sliding-sync-config.path;
   };
 
   systemd.services.matrix-synapse.after = [ "postgresql.service" ];
