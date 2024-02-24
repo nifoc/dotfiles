@@ -1,39 +1,60 @@
-{ lib, config, ... }:
+{ pkgs, lib, config, ... }:
 
 {
-  services.nginx.virtualHosts."default.internal.kempkens.network" = {
-    listen = [
-      {
-        addr = "0.0.0.0";
-        port = 443;
-        ssl = true;
-        extraParameters = [
-          "fastopen=63"
-          "backlog=1023"
-          "deferred"
-        ];
-      }
-
-      {
-        addr = "[::0]";
-        port = 443;
-        ssl = true;
-        extraParameters = [
-          "fastopen=63"
-          "backlog=1023"
-          "deferred"
-        ];
-      }
+  services.nginx = {
+    additionalModules = with pkgs.nginxModules; [
+      vod
     ];
 
-    default = true;
-    quic = false;
+    appendHttpConfig = ''
+      aio on;
 
-    onlySSL = true;
-    useACMEHost = "internal.kempkens.network";
+      vod_mode                           local;
+      vod_metadata_cache                 metadata_cache 16m;
+      vod_response_cache                 response_cache 512m;
+      vod_last_modified_types            *;
+      vod_segment_duration               9000;
+      vod_align_segments_to_key_frames   on;
+      vod_dash_fragment_file_name_prefix "segment";
+      vod_hls_segment_file_name_prefix   "segment";
 
-    locations."/" = {
-      return = "418";
+      vod_manifest_segment_durations_mode accurate;
+    '';
+
+    virtualHosts."default.internal.kempkens.network" = {
+      listen = [
+        {
+          addr = "0.0.0.0";
+          port = 443;
+          ssl = true;
+          extraParameters = [
+            "fastopen=63"
+            "backlog=1023"
+            "deferred"
+          ];
+        }
+
+        {
+          addr = "[::0]";
+          port = 443;
+          ssl = true;
+          extraParameters = [
+            "fastopen=63"
+            "backlog=1023"
+            "deferred"
+          ];
+        }
+      ];
+
+      default = true;
+      quic = false;
+
+      onlySSL = true;
+      useACMEHost = "internal.kempkens.network";
+
+      locations."/" = {
+        return = "418";
+      };
     };
   };
 
