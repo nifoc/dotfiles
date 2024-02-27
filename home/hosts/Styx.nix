@@ -28,8 +28,7 @@
 
     ../programs/jq.nix
 
-    ../programs/texlive.nix
-    ../programs/pandoc.nix
+    ../programs/op.nix
 
     ../programs/podman.nix
 
@@ -39,6 +38,10 @@
     ../programs/eternal-terminal.nix
 
     ../programs/streamlink.nix
+
+    ../programs/texlive.nix
+    ../programs/pandoc.nix
+
     ../programs/yt-dlp.nix
   ];
 
@@ -48,7 +51,6 @@
     stateVersion = "22.11";
 
     packages = with pkgs; [
-      agilebits-op
       arp-scan
       curlHTTP3
       dasel
