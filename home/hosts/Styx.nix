@@ -28,8 +28,6 @@
 
     ../programs/jq.nix
 
-    ../programs/op.nix
-
     ../programs/podman.nix
 
     ../programs/scripts.nix
@@ -51,6 +49,7 @@
     stateVersion = "22.11";
 
     packages = with pkgs; [
+      _1password
       arp-scan
       curlHTTP3
       dasel
