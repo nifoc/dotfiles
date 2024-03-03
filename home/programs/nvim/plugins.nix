@@ -33,8 +33,8 @@ in
     src = fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
-      rev = "69fb193abc547c77be089c3e392d5fd6fcd3625a";
-      sha256 = "13h9iqz3fs5nyi49ycvnadx8v9nw1zgph4lp3ir50gm1szk9gzbm";
+      rev = "4adea17610d140a99c313e3f79a9dc01825d59ae";
+      sha256 = "0jm1i40m2n1x8qpzji1nkb0z4w6vlr9pbzsmwl45qy36iwn3x0ax";
       fetchSubmodules = false;
     };
   };
@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-03-01";
+    version = "2024-03-02";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "c2a265156d5799adbd9f9e7d5385735fa5d21776";
-      sha256 = "08cish176w59wj1j221q1k67mjgabdkl676v5kp79ig7b23hfzz5";
+      rev = "e3e5ff4ebddcbfa8f5798253ebd1f9b449e8ee69";
+      sha256 = "18mgx954hd4wwfy3inyrs8d3sbs57wf84h7f9pn1mm4nv60hmpzm";
       fetchSubmodules = false;
     };
   };
@@ -392,12 +392,12 @@ in
   };
   conform-nvim = buildVimPlugin {
     pname = "conform.nvim";
-    version = "2024-03-01";
+    version = "2024-03-02";
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "conform.nvim";
-      rev = "f882877f03ebd46067c6a5493d259c4b9a9280f0";
-      sha256 = "0pf02a67c27mkz8xbhcfk1sf90dhc9wzvrarp56ab1anix2l5swz";
+      rev = "34b81e70da83e26c048290204de44268eb59814e";
+      sha256 = "1pcmgp6y35ijb1rfjnihqx4yb6lrmkvxycdvkd325ip9wvw5m67p";
       fetchSubmodules = false;
     };
   };
@@ -447,12 +447,12 @@ in
   };
   oil-nvim = buildVimPlugin {
     pname = "oil.nvim";
-    version = "2024-02-23";
+    version = "2024-03-03";
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "oil.nvim";
-      rev = "132b4ea0740c417b9d717411cab4cf187e1fd095";
-      sha256 = "085n2mfsv0gmz4f31wpzld804033h73mm7zfhni6xa8ffd7vvldj";
+      rev = "c437f3c5b0da0a9cc6a222d87212cce11b80ba75";
+      sha256 = "0xjn813kskk0hmpl3c1zs77b92yz6bnh2cknkjgjddap38gybhky";
       fetchSubmodules = false;
     };
   };
