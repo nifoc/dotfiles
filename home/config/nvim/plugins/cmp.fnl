@@ -89,6 +89,11 @@
                                            (do
                                              (set kind.kind " 󰅌 ")
                                              (set kind.menu "    (Clipboard)"))
+                                           (= (. strings 1) :TypeParameter)
+                                           (do
+                                             (set kind.kind "  ")
+                                             (set kind.menu
+                                                  "    (TypeParameter)"))
                                            (do
                                              (set kind.kind
                                                   (.. " " (or (. strings 1) "")
