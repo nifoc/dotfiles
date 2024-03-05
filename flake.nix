@@ -39,6 +39,8 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    nurpkgs.url = "github:nix-community/NUR";
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs = {
