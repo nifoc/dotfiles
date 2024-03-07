@@ -1,5 +1,8 @@
-{ pkgs, lib, config, ... }:
+args@{ pkgs, lib, config, ... }:
 
+let
+  secret = import ../../secret/hosts/Styx.nix;
+in
 {
   imports = [
     ../config/fonts
@@ -27,6 +30,8 @@
     ../programs/gpg.nix
 
     ../programs/jq.nix
+
+    (import ../programs/firefox.nix (args // { inherit secret; }))
 
     ../programs/podman.nix
 
