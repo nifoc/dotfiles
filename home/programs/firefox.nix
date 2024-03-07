@@ -132,6 +132,8 @@
           "browser.tabs.loadDivertedInBackground" = true;
           "browser.tabs.loadBookmarksInBackground" = true;
 
+          "findbar.highlightAll" = true;
+
           "cookiebanners.service.mode" = 1;
           "cookiebanners.service.mode.privateBrowsing" = 1;
 
@@ -153,13 +155,14 @@
             "GitHub"
             "Hex"
             "Google"
+            "Brave"
           ];
 
           engines = {
-            "Bing".metaData.alias = "!b";
             "DuckDuckGo".metaData.alias = "!d";
             "Google".metaData.alias = "!g";
 
+            "Bing".metaData.hidden = true;
             "eBay".metaData.hidden = true;
             "Ecosia".metaData.hidden = true;
             "LEO Eng-Deu".metaData.hidden = true;
@@ -175,6 +178,19 @@
               iconUpdateURL = "https://assets.kagi.com/v1/favicon-32x32.png";
               updateInterval = 24 * 60 * 60 * 1000;
               definedAliases = [ "!k" ];
+            };
+
+            "Brave" = {
+              urls = [{
+                template = "https://search.brave.com/search";
+                params = [
+                  { name = "q"; value = "{searchTerms}"; }
+                ];
+              }];
+
+              iconUpdateURL = "https://cdn.search.brave.com/serp/v1/static/brand/eebf5f2ce06b0b0ee6bbd72d7e18621d4618b9663471d42463c692d019068072-brave-lion-favicon.png";
+              updateInterval = 24 * 60 * 60 * 1000;
+              definedAliases = [ "!b" ];
             };
 
             "GitHub" = {
@@ -231,6 +247,19 @@
               updateInterval = 24 * 60 * 60 * 1000;
               definedAliases = [ "!hex" ];
             };
+
+            "Emojipedia" = {
+              urls = [{
+                template = "https://emojipedia.org/search";
+                params = [
+                  { name = "q"; value = "{searchTerms}"; }
+                ];
+              }];
+
+              iconUpdateURL = "https://emojipedia.org/images/favicon-32x32.png";
+              updateInterval = 24 * 60 * 60 * 1000;
+              definedAliases = [ "!emoji" ];
+            };
           };
         };
 
@@ -246,6 +275,7 @@
           reddit-enhancement-suite
           sponsorblock
           streetpass-for-mastodon
+          substitoot
           tabliss
           tridactyl
           tubearchivist-companion
@@ -265,5 +295,9 @@
     in
       /* vim */ ''
       set editorcmd ${wezterm} -e ${nvim}
+
+      set smoothscroll true
+
+      bind x tabclose
     '';
 }
