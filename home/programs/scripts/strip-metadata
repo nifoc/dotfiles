@@ -1,0 +1,21 @@
+#!/usr/bin/env nu
+
+def main [path: string] {
+  glob $path | each { |item|
+    match ($item | path parse | get extension | str downcase) {
+      "jpg" | "jpeg" | "png" => {
+        exiftool -all= -overwrite_original_in_place $item
+      },
+      "mp4" => {
+        let tmp_item = $"($item)_out.mp4"
+
+        ffmpeg -i $item -map_metadata -1 -c:v copy -c:a copy $tmp_item
+        rm $item
+        mv $tmp_item $item
+      },
+      _ => {
+        error make { msg: 'Unsupported file extension' }
+      }
+    }
+  }
+}
