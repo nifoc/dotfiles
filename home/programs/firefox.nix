@@ -77,6 +77,9 @@
           "browser.urlbar.weather.featureGate" = false;
           "browser.formfill.enable" = false;
 
+          "browser.search.separatePrivateDefault" = true;
+          "browser.search.separatePrivateDefault.ui.enabled" = true;
+
           "browser.privatebrowsing.forceMediaMemoryCache" = true;
           "media.memory_cache_max_size" = 65536;
 
