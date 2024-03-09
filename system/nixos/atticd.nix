@@ -49,9 +49,6 @@ in
     ensureUsers = [
       {
         name = "atticd";
-        ensurePermissions = {
-          "DATABASE attic" = "ALL PRIVILEGES";
-        };
       }
     ];
   };
