@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 let
   homeDir = "/Users/daniel";
 in
@@ -14,6 +16,8 @@ in
   ];
 
   nix = {
+    package = pkgs.nixVersions.stable;
+
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       extra-platforms = [ "x86_64-darwin" ];
