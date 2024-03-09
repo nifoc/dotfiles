@@ -24,6 +24,7 @@
           "extensions.getAddons.showPane" = false;
           "extensions.htmlaboutaddons.recommendations.enabled" = false;
           "browser.discovery.enabled" = false;
+          "browser.shopping.experience2023.enabled" = false;
 
           "datareporting.policy.dataSubmissionEnabled" = false;
           "datareporting.healthreport.uploadEnabled" = false;
@@ -69,6 +70,11 @@
           "browser.urlbar.dnsResolveSingleWordsAfterSearch" = 0;
           "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
           "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+          "browser.urlbar.trending.featureGate" = false;
+          "browser.urlbar.addons.featureGate" = false;
+          "browser.urlbar.mdn.featureGate" = false;
+          "browser.urlbar.pocket.featureGate" = false;
+          "browser.urlbar.weather.featureGate" = false;
           "browser.formfill.enable" = false;
 
           "browser.privatebrowsing.forceMediaMemoryCache" = true;
@@ -88,6 +94,8 @@
 
           "security.ssl.treat_unsafe_negotiation_as_broken" = true;
           "browser.xul.error_pages.expert_bad_cert" = true;
+
+          "network.http.referer.XOriginTrimmingPolicy" = 2;
 
           "media.peerconnection.ice.proxy_only_if_behind_proxy" = true;
           "media.peerconnection.ice.default_address_only" = true;
