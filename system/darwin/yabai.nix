@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   yabai-pkg = pkgs.yabai;
@@ -14,6 +14,12 @@ let
         break
       fi
     done
+  '';
+
+  native-tab-apps = [ "Finder" ];
+  native-tab-action = ''
+    (yabai -m display --focus next && yabai -m display --focus prev) || \
+    (yabai -m display --focus prev && yabai -m display --focus next)
   '';
 in
 {
@@ -44,7 +50,15 @@ in
         yabai -m query --windows --window $YABAI_WINDOW_ID | ${jq-bin} -er ".\"can-resize\" or .\"is-floating\"" || \
         yabai -m window $YABAI_WINDOW_ID --toggle float
       '
-    '';
+    '' + lib.strings.concatMapStrings
+      # Hacky workaround for https://github.com/koekeishiya/yabai/issues/68
+      (app: ''
+        yabai -m signal --add event=window_created app="^${app}$" action='${native-tab-action}'
+        yabai -m signal --add event=window_destroyed app="^${app}$" action='${native-tab-action}'
+        yabai -m signal --add event=window_moved app="^${app}$" action='${native-tab-action}'
+        yabai -m signal --add event=window_resized app="^${app}$" action='${native-tab-action}'
+      '')
+      native-tab-apps;
   };
 
   services.skhd.skhdConfig = ''
@@ -56,10 +70,10 @@ in
     alt + shift - w : ${yabai-bin} -m display --focus west
     alt + shift - e : ${yabai-bin} -m display --focus east
 
-    meh - h : ${yabai-bin} -m window --swap west
-    meh - j : ${yabai-bin} -m window --swap south
-    meh - k : ${yabai-bin} -m window --swap north
-    meh - l : ${yabai-bin} -m window --swap east
+    meh - h : ${yabai-bin} -m window --warp west
+    meh - j : ${yabai-bin} -m window --warp south
+    meh - k : ${yabai-bin} -m window --warp north
+    meh - l : ${yabai-bin} -m window --warp east
     meh - c : ${script-cycle-clockwise}
 
     meh - w : ${yabai-bin} -m window --display west; ${yabai-bin} -m display --focus west
@@ -79,10 +93,10 @@ in
 
     meh - b : ${yabai-bin} -m space --balance
 
-    hyper - h : ${yabai-bin} -m window --warp west
-    hyper - j : ${yabai-bin} -m window --warp south
-    hyper - k : ${yabai-bin} -m window --warp north
-    hyper - l : ${yabai-bin} -m window --warp east
+    hyper - h : ${yabai-bin} -m window --swap west
+    hyper - j : ${yabai-bin} -m window --swap south
+    hyper - k : ${yabai-bin} -m window --swap north
+    hyper - l : ${yabai-bin} -m window --swap east
 
     hyper - f : ${yabai-bin} -m window --toggle native-fullscreen
   '';

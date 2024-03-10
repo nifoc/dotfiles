@@ -13,6 +13,9 @@ in
 
     ../darwin/fish.nix
     ../darwin/attic.nix
+
+    ../darwin/skhd.nix
+    ../darwin/yabai.nix
   ];
 
   nix = {
