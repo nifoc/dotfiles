@@ -70,6 +70,8 @@ in
     alt + shift - w : ${yabai-bin} -m display --focus west
     alt + shift - e : ${yabai-bin} -m display --focus east
 
+    alt + shift - s : ${yabai-bin} -m window --toggle split
+
     meh - h : ${yabai-bin} -m window --warp west
     meh - j : ${yabai-bin} -m window --warp south
     meh - k : ${yabai-bin} -m window --warp north
