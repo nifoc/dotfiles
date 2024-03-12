@@ -5,6 +5,17 @@ let
   yabai-bin = "${yabai-pkg}/bin/yabai";
   jq-bin = "${pkgs.jq}/bin/jq";
 
+  window_padding = 5;
+
+  native-tab-apps = [ "Finder" ];
+
+  unmanaged-apps = [
+    "Dash"
+    "Dato"
+    "Mona"
+    "System.*einstellungen"
+  ];
+
   script-cycle-clockwise = pkgs.writeShellScript "yabai-cycle-clockwise.sh" ''
     win=$(${yabai-bin} -m query --windows --window last | ${jq-bin} '.id')
 
@@ -16,10 +27,30 @@ let
     done
   '';
 
-  native-tab-apps = [ "Finder" ];
-  native-tab-action = ''
-    (yabai -m display --focus next && yabai -m display --focus prev) || \
-    (yabai -m display --focus prev && yabai -m display --focus next)
+  script-smart-padding = pkgs.writeShellScript "yabai-smart-padding.sh" ''
+    space_index=$(${yabai-bin} -m query --spaces --window $YABAI_WINDOW_ID | ${jq-bin} '.[].index')
+    [ -z "$space_index" ] && space_index="mouse"
+
+    count=$(${yabai-bin} -m query --windows --space $space_index | ${jq-bin} 'map(select((."is-visible") and (."is-floating" | not))) | length')
+    padding=${toString window_padding}
+    [ $count -eq 1 ] && padding=0
+
+    ${yabai-bin} -m config --space $space_index top_padding $padding
+    ${yabai-bin} -m config --space $space_index bottom_padding $padding
+    ${yabai-bin} -m config --space $space_index left_padding $padding
+    ${yabai-bin} -m config --space $space_index right_padding $padding
+    ${yabai-bin} -m config --space $space_index window_gap $padding
+  '';
+
+  script-native-tab-fix = pkgs.writeShellScript "yabai-native-tab-fix.sh" ''
+    app_display=$(${yabai-bin} -m query --windows --window $YABAI_WINDOW_ID | ${jq-bin} '.display')
+    [ -z "$app_display" ] && app_display=$(${yabai-bin} -m query --displays --display mouse | ${jq-bin} '.index')
+
+    if [ $app_display -eq 1 ]; then
+      ${yabai-bin} -m display --focus next && yabai -m display --focus prev
+    else
+      ${yabai-bin} -m display --focus prev && yabai -m display --focus next
+    fi
   '';
 in
 {
@@ -30,33 +61,32 @@ in
 
     config = {
       layout = "bsp";
-      top_padding = 5;
-      bottom_padding = 5;
-      left_padding = 5;
-      right_padding = 5;
-      window_gap = 5;
+      top_padding = window_padding;
+      bottom_padding = window_padding;
+      left_padding = window_padding;
+      right_padding = window_padding;
+      window_gap = window_padding;
 
       window_placement = "second_child";
       split_type = "auto";
     };
 
-    extraConfig = ''
-      yabai -m rule --add app='^Dato$' manage=off
-      yabai -m rule --add app='^Dash$' manage=off
-      yabai -m rule --add app='^Mona$' manage=off
-      yabai -m rule --add app='^System.*einstellungen$' manage=off
-
+    extraConfig = (lib.strings.concatMapStringsSep "\n" (app: "yabai -m rule --add app='^${app}$' manage=off") unmanaged-apps) + ''
       yabai -m signal --add event=window_created action='
         yabai -m query --windows --window $YABAI_WINDOW_ID | ${jq-bin} -er ".\"can-resize\" or .\"is-floating\"" || \
         yabai -m window $YABAI_WINDOW_ID --toggle float
       '
+
+      # Smart Gaps
+      yabai -m signal --add event=window_created action='${script-smart-padding}'
+      yabai -m signal --add event=window_destroyed action='${script-smart-padding}'
     '' + lib.strings.concatMapStrings
       # Hacky workaround for https://github.com/koekeishiya/yabai/issues/68
       (app: ''
-        yabai -m signal --add event=window_created app="^${app}$" action='${native-tab-action}'
-        yabai -m signal --add event=window_destroyed app="^${app}$" action='${native-tab-action}'
-        yabai -m signal --add event=window_moved app="^${app}$" action='${native-tab-action}'
-        yabai -m signal --add event=window_resized app="^${app}$" action='${native-tab-action}'
+        yabai -m signal --add event=window_created app="^${app}$" action='${script-native-tab-fix}'
+        yabai -m signal --add event=window_destroyed app="^${app}$" action='${script-native-tab-fix}'
+        yabai -m signal --add event=window_moved app="^${app}$" action='${script-native-tab-fix}'
+        yabai -m signal --add event=window_resized app="^${app}$" action='${script-native-tab-fix}'
       '')
       native-tab-apps;
   };
@@ -93,7 +123,7 @@ in
     meh - g : ${yabai-bin} -m window --resize bottom:0:40
     meh - s : ${yabai-bin} -m window --resize bottom:0:-40
 
-    meh - b : ${yabai-bin} -m space --balance
+    meh - b : ${yabai-bin} -m space --balance && ${script-smart-padding}
 
     hyper - h : ${yabai-bin} -m window --swap west
     hyper - j : ${yabai-bin} -m window --swap south

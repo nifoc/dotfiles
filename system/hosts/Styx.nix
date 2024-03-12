@@ -14,6 +14,8 @@ in
     ../darwin/fish.nix
     ../darwin/attic.nix
 
+    ../darwin/mas.nix
+
     ../darwin/skhd.nix
     ../darwin/yabai.nix
   ];
