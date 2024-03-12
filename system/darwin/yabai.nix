@@ -7,7 +7,7 @@ let
 
   window_padding = 5;
 
-  native-tab-apps = [ "Finder" ];
+  native-tab-apps = [ "Finder" "TablePlus" ];
 
   unmanaged-apps = [
     "Dash"
@@ -71,7 +71,8 @@ in
       split_type = "auto";
     };
 
-    extraConfig = (lib.strings.concatMapStringsSep "\n" (app: "yabai -m rule --add app='^${app}$' manage=off") unmanaged-apps) + ''
+    extraConfig = (lib.strings.concatMapStrings (app: "yabai -m rule --add app='^${app}$' manage=off\n") unmanaged-apps) + ''
+      # Auto-float certain windows
       yabai -m signal --add event=window_created action='
         yabai -m query --windows --window $YABAI_WINDOW_ID | ${jq-bin} -er ".\"can-resize\" or .\"is-floating\"" || \
         yabai -m window $YABAI_WINDOW_ID --toggle float
@@ -83,6 +84,7 @@ in
     '' + lib.strings.concatMapStrings
       # Hacky workaround for https://github.com/koekeishiya/yabai/issues/68
       (app: ''
+        # Native tab handling for ${app}
         yabai -m signal --add event=window_created app="^${app}$" action='${script-native-tab-fix}'
         yabai -m signal --add event=window_destroyed app="^${app}$" action='${script-native-tab-fix}'
         yabai -m signal --add event=window_moved app="^${app}$" action='${script-native-tab-fix}'
