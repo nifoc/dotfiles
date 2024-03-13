@@ -46,10 +46,14 @@ let
     app_display=$(${yabai-bin} -m query --windows --window $YABAI_WINDOW_ID | ${jq-bin} '.display')
     [ -z "$app_display" ] && app_display=$(${yabai-bin} -m query --displays --display mouse | ${jq-bin} '.index')
 
-    if [ $app_display -eq 1 ]; then
-      ${yabai-bin} -m display --focus next && yabai -m display --focus prev
-    else
-      ${yabai-bin} -m display --focus prev && yabai -m display --focus next
+    ql_windows=$(${yabai-bin} -m query --windows --display $app_display | ${jq-bin} 'map(select(.subrole == "Quick Look")) | length')
+
+    if [ $ql_windows -eq 0 ]; then
+      if [ $app_display -eq 1 ]; then
+        ${yabai-bin} -m display --focus next && yabai -m display --focus prev
+      else
+        ${yabai-bin} -m display --focus prev && yabai -m display --focus next
+      fi
     fi
   '';
 in
