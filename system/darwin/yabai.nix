@@ -48,10 +48,18 @@ let
 
     ql_windows=$(${yabai-bin} -m query --windows --display $app_display | ${jq-bin} 'map(select(.subrole == "Quick Look")) | length')
 
-    if [ $ql_windows -eq 0 ]; then
-      if [ $app_display -eq 1 ]; then
+    if [ $app_display -eq 1 ]; then
+      win_count=$(${yabai-bin} -m query --windows --display next | ${jq-bin} 'length')
+      [ -z "$win_count" ] && win_count=0
+
+      if [ $ql_windows -eq 0 ] && [ $win_count -gt 0 ]; then
         ${yabai-bin} -m display --focus next && yabai -m display --focus prev
-      else
+      fi
+    else
+      win_count=$(${yabai-bin} -m query --windows --display prev | ${jq-bin} 'length')
+      [ -z "$win_count" ] && win_count=0
+
+      if [ $ql_windows -eq 0 ] && [ $win_count -gt 0 ]; then
         ${yabai-bin} -m display --focus prev && yabai -m display --focus next
       fi
     fi

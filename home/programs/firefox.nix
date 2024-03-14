@@ -150,6 +150,7 @@
 
           # Themes
           "browser.compactmode.show" = true;
+          "layout.css.prefers-color-scheme.content-override" = 2;
         };
 
         search = {
@@ -275,6 +276,7 @@
         };
 
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          automatic-dark
           bypass-paywalls-clean
           cookie-quick-manager
           darkreader
@@ -292,6 +294,8 @@
           tubearchivist-companion
           ublock-origin
           video-downloadhelper
+
+          dracula-dark-colorscheme
 
           dictionary-german
         ];
