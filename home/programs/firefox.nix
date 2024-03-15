@@ -126,7 +126,6 @@
 
           # Custom
           "extensions.pocket.enabled" = false;
-          "extensions.update.enabled" = false;
 
           "privacy.globalprivacycontrol.functionality.enabled" = true;
           "privacy.globalprivacycontrol.enabled" = true;
@@ -274,31 +273,6 @@
             };
           };
         };
-
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-          automatic-dark
-          bypass-paywalls-clean
-          cookie-quick-manager
-          darkreader
-          firemonkey
-          libredirect
-          linkding-extension
-          multi-account-containers
-          onepassword-password-manager
-          reddit-enhancement-suite
-          sponsorblock
-          streetpass-for-mastodon
-          substitoot
-          tabliss
-          tridactyl
-          tubearchivist-companion
-          ublock-origin
-          video-downloadhelper
-
-          dracula-dark-colorscheme
-
-          dictionary-german
-        ];
       };
     };
   };
