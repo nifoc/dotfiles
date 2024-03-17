@@ -53,6 +53,12 @@ in
       recommendedProxySettings = true;
       proxyPass = "http://192.168.42.2:6801";
       proxyWebsockets = true;
+
+      extraConfig = ''
+        add_header Access-Control-Allow-Headers '*';
+        add_header Access-Control-Allow-Origin '*';
+        add_header Access-Control-Allow-Methods '*';
+      '';
     };
   };
 }
