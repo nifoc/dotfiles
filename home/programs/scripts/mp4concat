@@ -12,9 +12,12 @@ done
 
 concat_files=$(printf "|%s" "${TMP_FILES[@]}")
 concat_files=${concat_files:1}
+out_file="mp4concat_${RANDOM}.mp4"
 
-ffmpeg -i "concat:$concat_files" -c copy -bsf:a aac_adtstoasc "mp4concat_${RANDOM}.mp4"
+ffmpeg -i "concat:$concat_files" -c copy -bsf:a aac_adtstoasc "$out_file"
 
 for f in "${TMP_FILES[@]}"; do
   rm "$f"
 done
+
+strip-metadata "$out_file"
