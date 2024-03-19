@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-03-17";
+    version = "2024-03-18";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "6a2572c9ed0342ae9e1012b9c8a774a1ea009e71";
-      sha256 = "02bz86k8807ayqbwywid6av0nbr44ds0n141dlc09as8yhrsjrb8";
+      rev = "2014f8285e306f4c8a896c7d3af53fdd599e5a4f";
+      sha256 = "14155rpm91ipdwyxnfrmm7jj7kls7wjbzdzvazs8b248bk0pj6jf";
       fetchSubmodules = false;
     };
   };
@@ -176,8 +176,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "1fa3b801f034caa609e2570cd2e422cf9416819c";
-      sha256 = "07mm1yv7y881j7fqk2s2kslvxzffl8bzd44g0s8v4aqz7gvqmbxi";
+      rev = "c816406bd50ade6ec754474f08974154487d417c";
+      sha256 = "18cwdwxi3czn7p9blxp8yih99481wpx241n1cakyzrmsms9k0cp0";
       fetchSubmodules = false;
     };
   };
@@ -216,12 +216,12 @@ in
   };
   nvim-lspconfig = buildVimPlugin {
     pname = "nvim-lspconfig";
-    version = "2024-03-17";
+    version = "2024-03-18";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "1f3ef31d1bb967050c81420ca921a1a2ade10e77";
-      sha256 = "1ibvpqqd2pqijay4a1ymzhpw5pbpdkajp1why08j7n60gb1vv5ck";
+      rev = "8c1831817d40925d22cd8a555296c44c02fdaaf5";
+      sha256 = "0p871xd1vip947yhh8b44bnblcs8pdfcq81pnb40ys6n77aw42i6";
       fetchSubmodules = false;
     };
   };
@@ -392,12 +392,12 @@ in
   };
   conform-nvim = buildVimPlugin {
     pname = "conform.nvim";
-    version = "2024-03-17";
+    version = "2024-03-18";
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "conform.nvim";
-      rev = "7215c20f54205eb2c0de8ef763baba84d4617873";
-      sha256 = "0ma55xbfg9kwrq23ixjlcf4sg389xi9xy05w14rskm210zy77b2y";
+      rev = "41586cbc81b8d344a795264989a3db79d0a27615";
+      sha256 = "16g9m09f1vhyfk8b3zq01ir8kmhjbbhz70jl52jwrp7h0n2ly6qj";
       fetchSubmodules = false;
     };
   };
@@ -524,23 +524,23 @@ in
   };
   neogit = buildVimPlugin {
     pname = "neogit";
-    version = "2024-03-17";
+    version = "2024-03-18";
     src = fetchFromGitHub {
       owner = "NeogitOrg";
       repo = "neogit";
-      rev = "f30d052e86935266d1daa2bc3dc7b8746ac03f0f";
-      sha256 = "1i3bpzjxlggsrjfzwpgqk0cpsn0rzrg7d8ass8yqyx912b1n2dch";
+      rev = "55eb562bf4ef7d2c370291e3185421c3333999ee";
+      sha256 = "02vw7i751gnylig0510wddvbj8xhn59l1nsywi373y2gfyfx4284";
       fetchSubmodules = false;
     };
   };
   fidget-nvim = buildVimPlugin {
     pname = "fidget.nvim";
-    version = "2024-03-17";
+    version = "2024-03-18";
     src = fetchFromGitHub {
       owner = "j-hui";
       repo = "fidget.nvim";
-      rev = "910104a2d0a831ba8ac662cd23d3f1c685401cf6";
-      sha256 = "0wwax7h80zf208bqw8i3kl9199lcn3dknvgn8alzm626c6b45906";
+      rev = "ebb8e44d6c37337e3b4f9bce31842573fa96bf8d";
+      sha256 = "0kji5k7mwhsbjgimg1hch2b3yg5sv02jdnmjffxl0hz8v15p3g8v";
       fetchSubmodules = false;
     };
   };
