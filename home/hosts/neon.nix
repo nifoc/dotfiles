@@ -15,7 +15,7 @@
   ];
 
   home = {
-    stateVersion = "22.11";
+    stateVersion = "23.11";
 
     packages = with pkgs; [
       ripgrep

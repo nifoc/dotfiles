@@ -50,15 +50,6 @@
       identitiesOnly = true;
     };
 
-    "weather-sdr" = {
-      hostname = "weather-sdr.laniot";
-      port = 22;
-      user = "daniel";
-      forwardAgent = true;
-      identityFile = "~/.ssh/LAN.pub";
-      identitiesOnly = true;
-    };
-
     "tanker" = {
       hostname = "tanker.ts.kempkens.network";
       port = 22;
@@ -79,6 +70,15 @@
 
     "argon" = {
       hostname = "argon.ts.kempkens.network";
+      port = 22;
+      user = "daniel";
+      forwardAgent = true;
+      identityFile = "~/.ssh/LAN.pub";
+      identitiesOnly = true;
+    };
+
+    "neon" = {
+      hostname = "10.0.0.7";
       port = 22;
       user = "daniel";
       forwardAgent = true;

@@ -40,7 +40,7 @@
       mosquittoPorts = [ 1883 ];
     in
     {
-      "enu1u1u1".allowedTCPPorts = mosquittoPorts;
+      "end0".allowedTCPPorts = mosquittoPorts;
     };
 
   services.udev.extraRules = ''

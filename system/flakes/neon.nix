@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, agenix, inputs, ... }:
+{ nixpkgs, nixos-hardware, home-manager, agenix, inputs, ... }:
 
 let
   default-system = "aarch64-linux";
@@ -26,7 +26,9 @@ rec {
   system = nixpkgs.lib.nixosSystem {
     system = default-system;
     modules = [
-      ../hosts/weather-sdr.nix
+      ../hosts/neon.nix
+
+      nixos-hardware.nixosModules.raspberry-pi-4
 
       home-manager.nixosModules.home-manager
 
@@ -40,7 +42,7 @@ rec {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.daniel = import ../../home/hosts/weather-sdr.nix;
+          users.daniel = import ../../home/hosts/neon.nix;
         };
       }
     ];
@@ -48,9 +50,10 @@ rec {
 
   colmena = {
     deployment = {
-      targetHost = "weather-sdr";
+      targetHost = "neon";
       targetPort = 22;
       targetUser = "root";
+      buildOnTarget = true;
     };
 
     nixpkgs.system = default-system;

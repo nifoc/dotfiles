@@ -1,26 +1,34 @@
-{ pkgs, config, ... }:
+args@{ pkgs, config, ... }:
 
 let
+  secret = import ../../secret/hosts/neon.nix;
   ssh-keys = import ../shared/ssh-keys.nix;
 in
 {
   imports = [
-    ../../hardware/hosts/weather-sdr.nix
-    ../../agenix/hosts/weather-sdr/config.nix
+    ../../hardware/hosts/neon.nix
+    ../../agenix/hosts/neon/config.nix
     ../shared/show-update-changelog.nix
     ../nixos/raspberry.nix
     ../nixos/ssh.nix
+    ../nixos/eternal-terminal.nix
 
     ../nixos/git.nix
 
     ../nixos/attic.nix
 
+    ../nixos/chrony.nix
+
+    (import ../nixos/forgejo-runner.nix (args // { inherit secret; name = "neon"; tag = "ubuntu-latest-arm64"; nixTag = "arm64"; }))
+
     ../nixos/mosquitto.nix
 
     ../nixos/rtl_433.nix
+
+    ../nixos/container.nix
   ];
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.11";
 
   nix = {
     package = pkgs.nixVersions.stable;
@@ -44,7 +52,7 @@ in
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 7d";
+      options = "--delete-older-than 14d";
     };
 
     extraOptions = ''
@@ -66,7 +74,7 @@ in
   };
 
   networking = {
-    hostName = "weather-sdr";
+    hostName = "neon";
     useNetworkd = true;
   };
 
@@ -74,11 +82,13 @@ in
     enable = true;
 
     networks = {
-      "10-iot" = {
-        matchConfig.Name = "enu1u1u1";
+      "10-lan" = {
+        matchConfig.Name = "end0";
+        vlan = [ "vlan51" ];
         networkConfig = {
           DHCP = "yes";
-          IPv6AcceptRA = false;
+          IPv6AcceptRA = true;
+          IPv6PrivacyExtensions = true;
         };
         linkConfig.RequiredForOnline = "routable";
 
@@ -88,16 +98,26 @@ in
           "ptbtime3.ptb.de"
         ];
       };
+
+      "20-iot" = {
+        matchConfig.Name = "vlan51";
+        networkConfig = {
+          DHCP = "no";
+          IPv6AcceptRA = false;
+        };
+        address = [ "10.0.51.7/24" ];
+        linkConfig.RequiredForOnline = "routable";
+      };
     };
 
     wait-online.extraArgs = [
-      "--interface=enu1u1u1"
+      "--interface=end0"
     ];
   };
 
   services.journald.extraConfig = ''
     SystemMaxUse=512M
-    MaxRetentionSec=7day
+    MaxRetentionSec=30day
   '';
 
   security.sudo.enable = true;
@@ -108,7 +128,12 @@ in
   };
 
   services.hardware.argonone.enable = true;
-  programs.fish.enable = true;
+
+  programs = {
+    fish.enable = true;
+    zsh.enable = true;
+    htop.enable = true;
+  };
 
   users.users = {
     root = {

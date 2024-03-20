@@ -99,10 +99,10 @@
             inherit inputs;
           };
 
-          weather-sdr = import ./system/flakes/weather-sdr.nix {
+          neon = import ./system/flakes/neon.nix {
             nixpkgs = inputs.nixos-unstable;
 
-            inherit (inputs) home-manager agenix;
+            inherit (inputs) nixos-hardware home-manager agenix;
             inherit inputs;
           };
 
@@ -122,7 +122,7 @@
             tanker = tanker.system;
             mediaserver = mediaserver.system;
             argon = argon.system;
-            weather-sdr = weather-sdr.system;
+            neon = neon.system;
             adsb-antenna = adsb-antenna.system;
           };
 
@@ -144,7 +144,7 @@
               tanker = tanker.colmena;
               mediaserver = mediaserver.colmena;
               argon = argon.colmena;
-              weather-sdr = weather-sdr.colmena;
+              neon = neon.colmena;
               adsb-antenna = adsb-antenna.colmena;
             };
         };

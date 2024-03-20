@@ -4,13 +4,13 @@ let
   system-tanker = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILpnogLd3Ttmz/At0dXveaG1xF37vV7lz34ojDTIuCOi";
   system-mediaserver = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlB0cL5CtTOyARWSE2yUsNU4JHUPmr71710mZHzsmbX";
   system-argon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPP9ygczyi6g8abvj1I0eAj7N2Rli9UMlkC8VT6SnWLU";
-  system-weather-sdr = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBHuAdx5u9R2DyK065DUxdwhEOi0at1WNkY5f4JtrOzk";
+  system-neon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5Ht4KaRUvuGFmYLznTkVSnn6isjrcVplz1kKWkrnRQ";
 
   tanker = [ user-daniel system-tanker ];
   mediaserver = [ user-daniel system-mediaserver ];
   argon = [ user-daniel system-argon ];
-  weather-sdr = [ user-daniel system-weather-sdr ];
-  all-systems = [ user-daniel system-tanker system-mediaserver system-argon system-weather-sdr ];
+  neon = [ user-daniel system-neon ];
+  all-systems = [ user-daniel system-tanker system-mediaserver system-argon system-neon ];
 in
 {
   # all
@@ -100,8 +100,10 @@ in
 
   "agenix/hosts/argon/weewx-proxy/environment.age".publicKeys = argon;
 
-  # weather-sdr
-  "agenix/hosts/weather-sdr/user/danielPassword.age".publicKeys = weather-sdr;
+  # neon 
+  "agenix/hosts/neon/user/danielPassword.age".publicKeys = neon;
 
-  "agenix/hosts/weather-sdr/mosquitto/passwordWeewxProxy.age".publicKeys = weather-sdr;
+  "agenix/hosts/neon/forgejo-actions/token.age".publicKeys = neon;
+
+  "agenix/hosts/neon/mosquitto/passwordWeewxProxy.age".publicKeys = neon;
 }
