@@ -58,6 +58,8 @@ rec {
       targetPort = 22;
       targetUser = "root";
       buildOnTarget = true;
+
+      tags = [ "remote" ];
     };
 
     nixpkgs.system = default-system;

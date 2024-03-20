@@ -51,6 +51,8 @@ rec {
       targetHost = "adsb-antenna";
       targetPort = 22;
       targetUser = "root";
+
+      tags = [ "home" "rpi4" ];
     };
 
     nixpkgs.system = default-system;

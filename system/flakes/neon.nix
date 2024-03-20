@@ -54,6 +54,8 @@ rec {
       targetPort = 22;
       targetUser = "root";
       buildOnTarget = true;
+
+      tags = [ "home" "rpi4" ];
     };
 
     nixpkgs.system = default-system;
