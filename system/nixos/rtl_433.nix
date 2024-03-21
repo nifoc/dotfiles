@@ -1,6 +1,8 @@
 { pkgs, config, ... }:
 
 {
+  hardware.rtl-sdr.enable = true;
+
   systemd.services.rtl_433 = {
     description = "rtl_433 service";
     after = [ "mosquitto.service" ];
@@ -42,12 +44,4 @@
     {
       "end0".allowedTCPPorts = mosquittoPorts;
     };
-
-  services.udev.extraRules = ''
-    # original RTL2832U vid/pid (hama nano, for example)
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2832", ENV{ID_SOFTWARE_RADIO}="1", MODE="0660", GROUP="plugdev"
-
-    # RTL2832U OEM vid/pid, e.g. ezcap EzTV668 (E4000), Newsky TV28T (E4000/R820T) etc.
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", ENV{ID_SOFTWARE_RADIO}="1", MODE="0660", GROUP="plugdev"
-  '';
 }

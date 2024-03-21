@@ -4,6 +4,10 @@
       file = ./user/danielPassword.age;
     };
 
+    tailscale-authkey = {
+      file = ./tailscale/authkey.age;
+    };
+
     forgejo-actions-token = {
       file = ./forgejo-actions/token.age;
     };

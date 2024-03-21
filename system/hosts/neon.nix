@@ -25,6 +25,8 @@ in
 
     ../nixos/rtl_433.nix
 
+    ../nixos/tailscale-router.nix
+
     ../nixos/container.nix
   ];
 

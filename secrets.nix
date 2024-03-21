@@ -103,6 +103,8 @@ in
   # neon 
   "agenix/hosts/neon/user/danielPassword.age".publicKeys = neon;
 
+  "agenix/hosts/neon/tailscale/authkey.age".publicKeys = neon;
+
   "agenix/hosts/neon/forgejo-actions/token.age".publicKeys = neon;
 
   "agenix/hosts/neon/mosquitto/passwordWeewxProxy.age".publicKeys = neon;

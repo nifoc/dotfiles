@@ -25,7 +25,7 @@ in
     enable = true;
 
     skhdConfig = ''
-      cmd - return : ${script-open-wezterm}
+      alt + shift - return : ${script-open-wezterm}
     '';
   };
 }
