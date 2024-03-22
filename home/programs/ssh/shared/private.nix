@@ -78,7 +78,7 @@
     };
 
     "neon" = {
-      hostname = "10.0.0.7";
+      hostname = "neon.ts.kempkens.network";
       port = 22;
       user = "daniel";
       forwardAgent = true;
