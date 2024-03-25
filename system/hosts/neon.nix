@@ -83,6 +83,16 @@ in
   systemd.network = {
     enable = true;
 
+    netdevs = {
+      "20-vlan10" = {
+        netdevConfig = {
+          Kind = "vlan";
+          Name = "vlan51";
+        };
+        vlanConfig.Id = 51;
+      };
+    };
+
     networks = {
       "10-lan" = {
         matchConfig.Name = "end0";
