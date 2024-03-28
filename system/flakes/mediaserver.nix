@@ -3,12 +3,10 @@
 let
   default-system = "x86_64-linux";
 
-  overlay-attic = inputs.attic.overlays.default;
   overlay-nifoc = inputs.nifoc-overlay.overlay;
 
   nixpkgsConfig = {
     overlays = [
-      overlay-attic
       overlay-nifoc
     ];
 
