@@ -9,7 +9,6 @@ let
   nixpkgsConfig = {
     overlays = [
       overlay-x86
-      inputs.nurpkgs.overlay
       agenix.overlays.default
       inputs.attic.overlays.default
       overlay-mkalias
