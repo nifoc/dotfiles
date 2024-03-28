@@ -10,7 +10,6 @@ let
     overlays = [
       overlay-x86
       agenix.overlays.default
-      inputs.attic.overlays.default
       overlay-mkalias
       inputs.nifoc-overlay.overlay
     ];
