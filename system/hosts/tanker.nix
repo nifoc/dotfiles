@@ -52,8 +52,6 @@ in
 
     (import ../nixos/ntfy-sh.nix (args // { inherit secret; }))
 
-    ../nixos/rimgo.nix
-
     ../nixos/matrix
 
     ../nixos/tailscale.nix
