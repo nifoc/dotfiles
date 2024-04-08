@@ -33,8 +33,8 @@ in
     src = fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
-      rev = "93ddac6966d5d3416f96df728d7b92e27aaa4452";
-      sha256 = "0cmvs6jw65ivl91yj2gsal63gyzl5wcsgjx5yl1pmbfzrzspyss2";
+      rev = "20921d33c605ba24c8d0b76b379a54a9c83ba170";
+      sha256 = "1bf2lihpb4274yycqcrqc44jpgl1rbp0gqw9qwfrcwja3kdap7s0";
       fetchSubmodules = false;
     };
   };
@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-04-06";
+    version = "2024-04-07";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "a2d6678bb21052013d0dd7cb35dffbac13846c98";
-      sha256 = "00492d8nfwz6laivsa5cfchva6163zyx49mlczbpys23mvsivfz5";
+      rev = "11a3584b81c3249d2b6279305aee1c7ad273985a";
+      sha256 = "19f329nhmadns2g16r6j02m8amd2w78y8y7xklm59qdgdhiyzf6q";
       fetchSubmodules = false;
     };
   };
@@ -132,8 +132,8 @@ in
     src = fetchFromGitHub {
       owner = "NoahTheDuke";
       repo = "vim-just";
-      rev = "a40cc97179ff491f5f85a6799c09f5bdc792a9f5";
-      sha256 = "1vyxb884205n2q58m2vgk6iarqiccig5y8550x9aq9sq5yaa9cb9";
+      rev = "a9ee95f9baa37f0f290862f0055a661f6b4036ef";
+      sha256 = "1alyi0vf8p6iy87436c7w4pn7023majfnrh0mbk824l3jnry5hxl";
       fetchSubmodules = false;
     };
   };
@@ -425,12 +425,12 @@ in
   };
   nvim-treesitter-textobjects = buildVimPlugin {
     pname = "nvim-treesitter-textobjects";
-    version = "2024-04-04";
+    version = "2024-04-07";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "f5183cea0fda26126e22e789382c208e7b1120f4";
-      sha256 = "18jb36ghjmn18791m26z5pm118aj45x4icykc02i6y32l0f308cn";
+      rev = "2aa454e4037424c678a8ff033951a5be39e54b9c";
+      sha256 = "1vd43y3r6d36gzd1svlv0hqia3s11qdzya776rhc8s5hwqlfd6n0";
       fetchSubmodules = false;
     };
   };
@@ -502,12 +502,12 @@ in
   };
   gitsigns-nvim = buildVimPlugin {
     pname = "gitsigns.nvim";
-    version = "2024-04-05";
+    version = "2024-04-07";
     src = fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "81369ed5405ec0c5d55a9608b495dbf827415116";
-      sha256 = "0r7yfbwplwwqrm6f4s58zg58470rqlvar417q1n49bsv2j5m7grr";
+      rev = "1a50b94066def8591d5f65bd60a4233902e9def4";
+      sha256 = "100186hy9h5d21xqc9xalb6x9scs5knig4ayqk4nr9dvpaqksjs3";
       fetchSubmodules = false;
     };
   };
