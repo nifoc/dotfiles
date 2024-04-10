@@ -19,7 +19,12 @@
 
       history_filter = [
         "^base64decode"
+        "^instagram-dl"
       ];
     };
   };
+
+  programs.fish.shellInit = ''
+    set -x fish_history ""
+  '';
 }
