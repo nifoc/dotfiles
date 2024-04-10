@@ -18,9 +18,11 @@
   (aucmd :LspAttach {:callback (fn [args]
                                  (let [client (vim.lsp.get_client_by_id args.data.client_id)
                                        bufnr args.buf]
-                                   (when (client.supports_method :textDocument/documentSymbol)
+                                   (when (client.supports_method :textDocument/documentSymbol
+                                                                 {: bufnr})
                                      (navic.attach client bufnr))
-                                   (when (client.supports_method :textDocument/inlayHint)
+                                   (when (client.supports_method :textDocument/inlayHint
+                                                                 {: bufnr})
                                      (vim.lsp.inlay_hint.enable bufnr true)
                                      (setup-inlay-hint-toggle bufnr))
                                    (diagnostic.maybe-enable-lsp client bufnr)))
@@ -41,7 +43,6 @@
                          :cssls
                          :dockerls
                          :erlangls
-                         :eslint
                          :fennel_ls
                          :html
                          :jsonls

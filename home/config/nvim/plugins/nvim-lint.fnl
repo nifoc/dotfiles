@@ -33,13 +33,16 @@
            (.. project-root :/config/checkstyle/checkstyle.xml)))
     (set fennel.globals [:vim :wezterm]))
   ;; Configure Linters per FT
-  (set lint.linters_by_ft {:dockerfile [:hadolint]
-                           :elixir [:credo]
-                           :fennel [:fennel]
-                           :fish [:fish]
-                           :java [:checkstyle]
-                           :nix [:deadnix :nix :statix]
-                           :sh [:shellcheck]})
+  (set lint.linters_by_ft
+       {:dockerfile [:hadolint]
+        :elixir [:credo]
+        :fennel [:fennel]
+        :fish [:fish]
+        :java [:checkstyle]
+        :nix [:deadnix :nix :statix]
+        :sh [:shellcheck]
+        :typescript [:eslint]
+        :typescriptreact [:eslint]})
 
   (fn setup-linting [opts]
     (diagnostic.maybe-enable-diagnostics opts.buf)
