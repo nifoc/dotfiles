@@ -9,8 +9,14 @@
     settings = {
       add_newline = true;
 
+      character = {
+        success_symbol = "[󰘧](bold green)";
+        error_symbol = "[󰘧](bold red)";
+      };
+
       cmd_duration = {
-        format = "\\[[ $duration]($style)\\]";
+        style = "yellow";
+        format = "[ $duration]($style)";
       };
 
       docker_context = {
@@ -102,12 +108,19 @@
       username = {
         format = "\\[[ $user]($style)\\]";
       };
+
+      format = "$all";
+      right_format = "$cmd_duration";
     };
   };
 
   programs.fish.interactiveShellInit = lib.mkIf config.programs.starship.enableTransience ''
     function starship_transient_prompt_func
       starship module character
+    end
+
+    function starship_transient_rprompt_func
+      starship module cmd_duration
     end
   '';
 }
