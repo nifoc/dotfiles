@@ -20,6 +20,7 @@
       history_filter = [
         "^base64decode"
         "^instagram-dl"
+        "^mp4concat"
       ];
     };
   };
