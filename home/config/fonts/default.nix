@@ -22,7 +22,7 @@ let
 
   nerdfonts = pkgs.stdenvNoCC.mkDerivation rec {
     pname = "nerdfonts";
-    version = "3.1.1";
+    version = "3.2.1";
 
     src = ./NerdFonts;
 
