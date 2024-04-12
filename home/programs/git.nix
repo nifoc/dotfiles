@@ -18,6 +18,7 @@
     userEmail = "daniel+git@kempkens.io";
 
     aliases = {
+      pushf = "push --force-with-lease --force-if-includes";
       lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
     };
 
@@ -44,11 +45,23 @@
         conflictStyle = "zdiff3";
       };
 
+      rebase = {
+        updateRefs = true;
+      };
+
       rerere = {
         enabled = true;
       };
 
+      branch = {
+        sort = "-committerdate";
+      };
+
       color = {
+        ui = "auto";
+      };
+
+      column = {
         ui = "auto";
       };
     };
