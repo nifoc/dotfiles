@@ -19,7 +19,12 @@
 
     aliases = {
       pushf = "push --force-with-lease --force-if-includes";
-      lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
+      commend = "commit --amend --no-edit";
+      commedit = "commit --amend";
+      graph = "log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative";
+      rbi = "rebase --interactive --autosquash --autostash";
+      rbc = "rebase --continue";
+      rbabort = "rebase --abort";
     };
 
     extraConfig = {
@@ -37,8 +42,8 @@
         default = "simple";
       };
 
-      apply = {
-        whitespace = "fix";
+      branch = {
+        sort = "-committerdate";
       };
 
       merge = {
@@ -53,8 +58,8 @@
         enabled = true;
       };
 
-      branch = {
-        sort = "-committerdate";
+      init = {
+        defaultBranch = "master";
       };
 
       color = {
@@ -63,6 +68,10 @@
 
       column = {
         ui = "auto";
+      };
+
+      apply = {
+        whitespace = "fix";
       };
     };
 
