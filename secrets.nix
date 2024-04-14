@@ -108,4 +108,7 @@ in
   "agenix/hosts/neon/forgejo-actions/token.age".publicKeys = neon;
 
   "agenix/hosts/neon/mosquitto/passwordWeewxProxy.age".publicKeys = neon;
+
+  # Styx
+  "agenix/hosts/Styx/git/maintenance.age".publicKeys = [ user-daniel ];
 }

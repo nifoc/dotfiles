@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, ... }:
 
+let
+  inherit (lib) mkIf;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin;
+in
 {
   home.packages = with pkgs; [
     git-absorb
@@ -73,6 +77,13 @@
       apply = {
         whitespace = "fix";
       };
+
+      maintenance = mkIf isDarwin {
+        strategy = "incremental";
+        repo = let home = config.home.homeDirectory; in [
+          "${home}/.config/nixpkgs"
+        ];
+      };
     };
 
     ignores = [
@@ -83,6 +94,11 @@
     ];
 
     includes = [
+      # Maintenance
+      (mkIf isDarwin {
+        path = "${config.xdg.configHome}/git/maintenance-config";
+      })
+
       # Private
       {
         condition = "hasconfig:remote.*.url:forgejo@git.kempkens.io:*/**";
@@ -157,4 +173,49 @@
   };
 
   home.sessionVariables.GIT_CEILING_DIRECTORIES = "/Users";
+
+  launchd.agents = mkIf isDarwin (
+    let
+      gitExecPath = "${config.programs.git.package}/libexec/git-core";
+      git = "${gitExecPath}/git";
+
+      calendarInterval = schedule:
+        let
+          freq = {
+            "hourly" = [{ Minute = 0; }];
+            "daily" = [{
+              Hour = 0;
+              Minute = 0;
+            }];
+            "weekly" = [{
+              Weekday = 1;
+              Hour = 0;
+              Minute = 0;
+            }];
+          };
+        in
+        freq.${schedule};
+
+      launchdAgent = { schedule }: {
+        enable = true;
+        config = {
+          ProgramArguments = [
+            git
+            "--exec-path=${gitExecPath}"
+            "for-each-repo"
+            "--config=maintenance.repo"
+            "maintenance"
+            "run"
+            "--schedule=${schedule}"
+          ];
+          StartCalendarInterval = calendarInterval schedule;
+        };
+      };
+    in
+    {
+      git-maintenance-hourly = launchdAgent { schedule = "hourly"; };
+      git-maintenance-daily = launchdAgent { schedule = "daily"; };
+      git-maintenance-weekly = launchdAgent { schedule = "weekly"; };
+    }
+  );
 }
