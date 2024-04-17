@@ -21,4 +21,14 @@ def "main user" [
   http get $url | ignore
 }
 
+def "main search" [
+  subreddit: string
+  search: string
+  --limit: int = 9999
+] {
+  let url = $"($base_url)args[subreddit]=($subreddit)&args[search]=($search)&args[limit]=($limit)"
+
+  http get $url | ignore
+}
+
 def main [] {}
