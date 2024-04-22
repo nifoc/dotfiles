@@ -11,6 +11,7 @@
       neogit (require :neogit)
       wk (require :which-key)
       repl (require :nifoc.repl)
+      repo (require :nifoc.repo)
       formatting (require :nifoc.formatting)]
   (fn mod.setup []
     (keymap.set :n :<space> :<nop> {:noremap true})
@@ -43,6 +44,9 @@
     (keymap.set :n :<leader>vl #(gitsigns.blame_line {:full true})
                 {:desc "Blame Line"})
     (keymap.set :n :<leader>vd :<cmd>DiffviewOpen<CR> {:desc "Open DiffView"})
+    (keymap.set :n :<leader>vvr #(repo.open-repo) {:desc "Open repository"})
+    (keymap.set :n :<leader>vvm #(repo.open-merge-request) {:desc "Open MR"})
+    (keymap.set :n :<leader>vvc #(repo.open-ci) {:desc "Open CI"})
     (keymap.set :n :<leader>lk telescope-builtin.keymaps
                 {:desc "Show Keymappings"})
     (keymap.set :n :<leader>ld #(telescope-builtin.diagnostics telescope-ivy)

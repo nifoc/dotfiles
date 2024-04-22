@@ -7,6 +7,7 @@
       web-devicons (require :nvim-web-devicons)
       colors (. (require :nifoc.theme) :colors)
       formatting (require :nifoc.formatting)
+      repo (require :nifoc.repo)
       nifoc-treesitter (require :nifoc.treesitter)
       navic (require :nvim-navic)
       neogit (require :neogit)]
@@ -150,6 +151,11 @@
   ;; git
   (set mod.git
        {:condition heirline-conditions.is_git_repo
+        :static {:git-repo-type vim.env.REMOTE_REPO_TYPE
+                 :git-repo-icon {:github " " :gitlab " " :forgejo ""}
+                 :git-repo-color {:github "#f6f8fa"
+                                  :gitlab "#d15232"
+                                  :forgejo "#c22d15"}}
         :init (fn [self]
                 (let [git-status vim.b.gitsigns_status_dict]
                   (set self.git-head git-status.head)
@@ -167,11 +173,16 @@
                       :callback #(neogit.open {:kind :split})}
            :hl {:fg colors.black :bg colors.orange :bold true}}
         3 mod.space
-        4 {:provider #(.. " " $1.git-added " ")
+        4 {:condition #(not= $1.git-repo-type nil)
+           :provider #(.. (. $1.git-repo-icon $1.git-repo-type) " ")
+           :on_click {:name :heirline_git_repo_type
+                      :callback #(repo.open-repo)}
+           :hl #{:fg (. $1.git-repo-color $1.git-repo-type)}}
+        5 {:provider #(.. " " $1.git-added " ")
            :hl {:fg colors.bright_green}}
-        5 {:provider #(.. " " $1.git-removed " ")
+        6 {:provider #(.. " " $1.git-removed " ")
            :hl {:fg colors.bright_red}}
-        6 {:provider #(.. " " $1.git-changed) :hl {:fg colors.cyan}}})
+        7 {:provider #(.. " " $1.git-changed) :hl {:fg colors.cyan}}})
   ;; Diagnostics
   (set mod.diagnostics {:condition heirline-conditions.has_diagnostics
                         :init (fn [self]
