@@ -65,7 +65,7 @@ in
 
     plugins =
       let
-        customPlugins = import ./plugins.nix { inherit pkgs; };
+        customPlugins = import ./plugins.nix { inherit pkgs lib; };
       in
       with customPlugins; [
         # Utils

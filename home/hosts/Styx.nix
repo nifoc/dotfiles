@@ -62,6 +62,7 @@ in
       exiftool
       fd
       ffmpeg
+      glab
       glow
       hexyl
       hyperfine
