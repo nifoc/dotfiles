@@ -47,6 +47,7 @@
     (keymap.set :n :<leader>vvr #(repo.open-repo) {:desc "Open repository"})
     (keymap.set :n :<leader>vvm #(repo.open-merge-request) {:desc "Open MR"})
     (keymap.set :n :<leader>vvc #(repo.open-ci) {:desc "Open CI"})
+    (keymap.set :n :<leader>vtc #(repo.run-ci) {:desc "Trigger CI"})
     (keymap.set :n :<leader>lk telescope-builtin.keymaps
                 {:desc "Show Keymappings"})
     (keymap.set :n :<leader>ld #(telescope-builtin.diagnostics telescope-ivy)

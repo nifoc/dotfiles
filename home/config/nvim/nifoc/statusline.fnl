@@ -151,13 +151,15 @@
   ;; git
   (set mod.git
        {:condition heirline-conditions.is_git_repo
-        :static {:git-repo-type vim.env.REMOTE_REPO_TYPE
-                 :git-repo-icon {:github " " :gitlab " " :forgejo ""}
-                 :git-repo-color {:github "#f6f8fa"
-                                  :gitlab "#d15232"
-                                  :forgejo "#c22d15"}}
+        :static {:git-repo-type (or vim.env.REMOTE_REPO_TYPE :default)
+                 :git-repo-icons {:github ""
+                                  :gitlab ""
+                                  :forgejo ""
+                                  :default ""}}
         :init (fn [self]
                 (let [git-status vim.b.gitsigns_status_dict]
+                  (set self.git-repo-icon
+                       (. self.git-repo-icons self.git-repo-type))
                   (set self.git-head git-status.head)
                   (set self.git-added (or git-status.added 0))
                   (set self.git-removed (or git-status.removed 0))
@@ -168,16 +170,15 @@
                                     self.git-changed]))
                   (set self.check-length (length self.git-head))))
         1 mod.space-if-count-or-length
-        2 {:provider #(.. "  " $1.git-head " ")
+        2 {:provider #(.. " " $1.git-repo-icon " ")
+           :on_click {:name :heirline_git_repo_type
+                      :callback #(repo.open-repo)}
+           :hl {:fg colors.black :bg colors.orange :bold true}}
+        3 {:provider #(.. $1.git-head " ")
            :on_click {:name :heirline_git_branch
                       :callback #(neogit.open {:kind :split})}
            :hl {:fg colors.black :bg colors.orange :bold true}}
-        3 mod.space
-        4 {:condition #(not= $1.git-repo-type nil)
-           :provider #(.. (. $1.git-repo-icon $1.git-repo-type) " ")
-           :on_click {:name :heirline_git_repo_type
-                      :callback #(repo.open-repo)}
-           :hl #{:fg (. $1.git-repo-color $1.git-repo-type)}}
+        4 mod.space
         5 {:provider #(.. " " $1.git-added " ")
            :hl {:fg colors.bright_green}}
         6 {:provider #(.. " " $1.git-removed " ")
