@@ -77,6 +77,7 @@ in
       ripgrep
       socat
       ssh-audit
+      tea
       viddy
       wget
       xxHash

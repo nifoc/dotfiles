@@ -26,7 +26,7 @@
     (case vim.env.REMOTE_REPO_TYPE
       :github nil
       :gitlab (run-cmd [:glab :repo :view :--web])
-      :forgejo nil))
+      :forgejo (run-cmd [:tea :open])))
 
   (fn mod.open-merge-request []
     (case vim.env.REMOTE_REPO_TYPE
