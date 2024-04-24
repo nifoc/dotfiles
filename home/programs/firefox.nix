@@ -246,6 +246,18 @@
               definedAliases = [ "!nixopt" ];
             };
 
+            "Noogle" = {
+              urls = [{
+                template = "https://noogle.dev/q";
+                params = [
+                  { name = "term"; value = "{searchTerms}"; }
+                ];
+              }];
+
+              icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "!nfn" ];
+            };
+
             "Hex" = {
               urls = [{
                 template = "https://hex.pm/packages";
