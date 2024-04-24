@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-04-22";
+    version = "2024-04-23";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "c1d1b4084ef5239e2671f64d35962d184251aea4";
-      sha256 = "0jxyvipczh9771zsh58canjws4xqcvczc54inc8xah2zas7hy8vn";
+      rev = "dc71d94fe223763d28ab49ee3de4fd7081a84891";
+      sha256 = "1gn9ynnxz1zdgf5arvkn34a9xxrli80lm36br6z4ylldi3gn60nr";
       fetchSubmodules = false;
     };
   };
@@ -216,12 +216,12 @@ in
   };
   nvim-lspconfig = buildVimPlugin {
     pname = "nvim-lspconfig";
-    version = "2024-04-19";
+    version = "2024-04-23";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "ed8b8a15acc441aec669f97d75f2c1f2ac8c8aa5";
-      sha256 = "0rqjcksb0dcvvxnc0r4n499xlkviwp2sbn29r8b1bnf68d7qnapx";
+      rev = "cfa386fc4027e847156ee16141ea1f4c0bc2f0a4";
+      sha256 = "1j8538jh53jg7n40ml11g1nxvlchyijzjy3kb0yyxnk3f8i2iljm";
       fetchSubmodules = false;
     };
   };
@@ -238,12 +238,12 @@ in
   };
   schemastore-nvim = buildVimPlugin {
     pname = "schemastore.nvim";
-    version = "2024-04-18";
+    version = "2024-04-23";
     src = fetchFromGitHub {
       owner = "b0o";
       repo = "schemastore.nvim";
-      rev = "f7cae6f1b38cb296f48ce1a9c5ed1a419d912a42";
-      sha256 = "0mdriqqna37a9fjbilaq2qkkn4ik4jn2dz1x6ra51pgh42r86qhl";
+      rev = "a0dc19e5f9aaebdf2866fcbbf70809da53a4c62b";
+      sha256 = "133c7qx8ghv0d2px73r6s9ripcc7xy9ngsh0s8jga4fmzddnkxbn";
       fetchSubmodules = false;
     };
   };
@@ -392,12 +392,12 @@ in
   };
   conform-nvim = buildVimPlugin {
     pname = "conform.nvim";
-    version = "2024-04-17";
+    version = "2024-04-24";
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "conform.nvim";
-      rev = "a6965ac128eba75537ec2bc5ddd5d5e357062bdc";
-      sha256 = "00knvdl5msvn178skxqxb0ip722cnqrpp8xr1id4z6j5vbysmhiy";
+      rev = "475c096d24562cf1fa992731869e17ea6d75d2d9";
+      sha256 = "0fh8g1qqbkynsyw6w8v878h6kmyz4qzr9zlccbs2vb8vw6v2wxjy";
       fetchSubmodules = false;
     };
   };
@@ -447,12 +447,12 @@ in
   };
   oil-nvim = buildVimPlugin {
     pname = "oil.nvim";
-    version = "2024-04-21";
+    version = "2024-04-24";
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "oil.nvim";
-      rev = "f41a0f24c009f71c6f112fce9c1f5d6c1f31847e";
-      sha256 = "0ba53s9advcyb1id5q0s6daw0ixh05v2hcz5ndj1cv8g2afwr5vd";
+      rev = "6a7a10b6117aface6a25b54906140ad4f7fdabfc";
+      sha256 = "0gjy11bjcgi5c8x3fmg2y7d38nybjwg1p6rj0iqbzrq8j249c75w";
       fetchSubmodules = false;
     };
   };
