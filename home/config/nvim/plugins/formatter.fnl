@@ -18,8 +18,8 @@
           ext-glob (.. "*." ext)]
       (if (vim.list_contains treefmt-exts ext-glob)
           {:command :treefmt
-           :args [tmp-filename]
-           :stdin false
+           :args [:--stdin tmp-filename]
+           :stdin true
            :cwd (conform-util.root_file [:flake.nix :flake.lock])
            :require_cwd true}
           (= (vim.fn.executable fallback.command) 1)
