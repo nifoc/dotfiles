@@ -22,19 +22,19 @@ jobs:
       - name: Build attic-server
         run: |
           nix build '.#nixosConfigurations.tanker.pkgs.attic-server'
-          attic push ${{ secrets.ATTIC_CACHE }} ./result
+          attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
       - name: Build attic-client
         run: |
           nix build '.#nixosConfigurations.tanker.pkgs.attic-client'
-          attic push ${{ secrets.ATTIC_CACHE }} ./result
+          attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
       - name: Build nginx
         run: |
           nix build '.#nixosConfigurations.tanker.config.services.nginx.package'
-          attic push ${{ secrets.ATTIC_CACHE }} ./result
+          attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
       - name: Build neovim
         run: |
           nix build '.#nixosConfigurations.tanker.config.home-manager.users.daniel.programs.neovim.finalPackage'
-          attic push ${{ secrets.ATTIC_CACHE }} ./result
+          attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
   build-arm64-linux:
     runs-on: nix-arm64
     steps:
@@ -48,12 +48,12 @@ jobs:
       - name: Build attic-client
         run: |
           nix build '.#nixosConfigurations.argon.pkgs.attic-client'
-          attic push ${{ secrets.ATTIC_CACHE }} ./result
+          attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
       - name: Build nginx
         run: |
           nix build '.#nixosConfigurations.argon.config.services.nginx.package'
-          attic push ${{ secrets.ATTIC_CACHE }} ./result
+          attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
       - name: Build neovim
         run: |
           nix build '.#nixosConfigurations.argon.config.home-manager.users.daniel.programs.neovim.finalPackage'
-          attic push ${{ secrets.ATTIC_CACHE }} ./result
+          attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
