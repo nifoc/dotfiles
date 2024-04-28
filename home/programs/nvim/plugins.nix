@@ -29,12 +29,12 @@ in
   };
   nvim-web-devicons = buildVimPlugin {
     pname = "nvim-web-devicons";
-    version = "2024-04-21";
+    version = "2024-04-28";
     src = fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
-      rev = "beb6367ab8496c9e43f22e0252735fdadae1872d";
-      sha256 = "1qqwfzfk5w2sfaavfa2nn01caj753j272hpnhmvgwknfgvl9cv81";
+      rev = "27eac98fd6675d29d0e19d4d0622fd7a3968483a";
+      sha256 = "0fhfsrmrmz7bj7k52g4hphbz4rji132jcy33w089awpxpnxkk475";
       fetchSubmodules = false;
     };
   };
@@ -121,8 +121,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "ab3b3ff01028fef83cfb79b651bf65afb76ee062";
-      sha256 = "0hzi1cafjhwlkzjbdnyymxk0y96hd6f8y05p5s8pbrzxwx2n8i9i";
+      rev = "0883ff05655117a3fc79ab295a640c4984cfd415";
+      sha256 = "1xnnhzhklz5paffhhky1zhpg496z6s7075jfw8l15jys2zrrcng1";
       fetchSubmodules = false;
     };
   };
