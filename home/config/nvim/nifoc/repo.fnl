@@ -1,5 +1,12 @@
 (let [mod {}
-      wezterm (require :wezterm)]
+      wezterm (require :wezterm)
+      remote-origin (vim.fn.system "git remote get-url origin")]
+  (match remote-origin
+    (where r (r:find :git.kempkens.io)) (set mod.type :forgejo)
+    (where r (r:find :git.app.nedeco.de)) (set mod.type :gitlab)
+    (where r (r:find :github.com)) (set mod.type :github)
+    _ (set mod.type (or vim.env.REMOTE_REPO_TYPE :default)))
+
   (fn exe [bin] (vim.fn.exepath bin))
 
   (fn run-cmd [program]
@@ -23,25 +30,25 @@
                                     vim.log.levels.ERROR []))))))
 
   (fn mod.open-repo []
-    (case vim.env.REMOTE_REPO_TYPE
+    (case mod.type
       :github nil
       :gitlab (run-cmd [:glab :repo :view :--web])
       :forgejo (run-cmd [:tea :open])))
 
   (fn mod.open-merge-request []
-    (case vim.env.REMOTE_REPO_TYPE
+    (case mod.type
       :github nil
       :gitlab (run-cmd [:glab :mr :view :--web])
       :forgejo nil))
 
   (fn mod.open-ci []
-    (case vim.env.REMOTE_REPO_TYPE
+    (case mod.type
       :github nil
       :gitlab (open-split [(exe :glab) :pipeline :ci :view])
       :forgejo nil))
 
   (fn mod.run-ci []
-    (case vim.env.REMOTE_REPO_TYPE
+    (case mod.type
       :github nil
       :gitlab (do
                 (run-cmd [:glab :pipeline :run])

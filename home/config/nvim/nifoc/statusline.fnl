@@ -151,15 +151,13 @@
   ;; git
   (set mod.git
        {:condition heirline-conditions.is_git_repo
-        :static {:git-repo-type (or vim.env.REMOTE_REPO_TYPE :default)
-                 :git-repo-icons {:github ""
+        :static {:git-repo-icons {:github ""
                                   :gitlab ""
                                   :forgejo ""
                                   :default ""}}
         :init (fn [self]
                 (let [git-status vim.b.gitsigns_status_dict]
-                  (set self.git-repo-icon
-                       (. self.git-repo-icons self.git-repo-type))
+                  (set self.git-repo-icon (. self :git-repo-icons repo.type))
                   (set self.git-head git-status.head)
                   (set self.git-added (or git-status.added 0))
                   (set self.git-removed (or git-status.removed 0))
