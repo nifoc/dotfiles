@@ -41,7 +41,7 @@
       "net.ipv4.tcp_fastopen" = 3;
       "net.core.rmem_max" = 2500000;
       "net.core.wmem_max" = 2500000;
-      "vm.overcommit_memory" = 1;
+      "vm.overcommit_memory" = lib.mkForce 1;
     };
   };
 
