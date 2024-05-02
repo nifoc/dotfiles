@@ -60,5 +60,6 @@
 - src: lewis6991/gitsigns.nvim
 - src: sindrets/diffview.nvim
 - src: NeogitOrg/neogit
+  branch: nightly
 - src: j-hui/fidget.nvim
 - src: folke/which-key.nvim

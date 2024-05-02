@@ -49,6 +49,11 @@ for plugin in "${plugin_array[@]}"; do
     nix_prefetch_flags+=" --fetch-submodules"
   fi
 
+  branch="$(echo "$plugin" | jq -r '.branch // empty')"
+  if [ -n "$branch" ]; then
+    nix_prefetch_flags+=" --rev refs/heads/$branch"
+  fi
+
   rev="$(echo "$plugin" | jq -r '.rev // empty')"
   if [ -n "$rev" ]; then
     nix_prefetch_flags+=" --rev $rev"
