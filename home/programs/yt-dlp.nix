@@ -25,6 +25,7 @@
 
   home.packages = with pkgs; [
     aria2
+    rtmpdump
   ];
 
   programs.fish = {

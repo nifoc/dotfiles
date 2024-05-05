@@ -40,8 +40,6 @@ in
     ../programs/ssh/Styx.nix
     ../programs/eternal-terminal.nix
 
-    ../programs/streamlink.nix
-
     ../programs/texlive.nix
     ../programs/pandoc.nix
 
