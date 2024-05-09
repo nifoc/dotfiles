@@ -27,9 +27,9 @@ in
 
     (import ../nixos/forgejo-runner.nix (args // { inherit secret; name = "argon"; tag = "ubuntu-latest-arm64"; nixTag = "arm64"; }))
 
-    ../nixos/grafana.nix
-    ../nixos/loki.nix
-    ../nixos/telegraf.nix
+    # ../nixos/grafana.nix
+    # ../nixos/loki.nix
+    # ../nixos/telegraf.nix
 
     ../nixos/tailscale.nix
 
