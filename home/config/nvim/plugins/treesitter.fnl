@@ -37,6 +37,7 @@
                                                :ruby
                                                :scss
                                                :sql
+                                               :styled
                                                :svelte
                                                :toml
                                                :tsx
