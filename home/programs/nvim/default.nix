@@ -7,7 +7,7 @@ in
 {
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly;
+    package = pkgs.neovim-unwrapped;
 
     defaultEditor = true;
 
@@ -126,8 +126,6 @@ in
           config = builtins.readFile ../../config/nvim/plugins/todo-comments.fnl;
           type = "fennel";
         }
-
-        playground
 
         # Telescope
         {

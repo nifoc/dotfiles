@@ -16,7 +16,6 @@
 - src: NoahTheDuke/vim-just
 - src: HiPhish/rainbow-delimiters.nvim
 - src: folke/todo-comments.nvim
-- src: nvim-treesitter/playground
 # Telescope
 - src: nvim-telescope/telescope.nvim
 - src: ahmedkhalf/project.nvim
@@ -60,6 +59,6 @@
 - src: lewis6991/gitsigns.nvim
 - src: sindrets/diffview.nvim
 - src: NeogitOrg/neogit
-  branch: nightly
+  branch: master
 - src: j-hui/fidget.nvim
 - src: folke/which-key.nvim
