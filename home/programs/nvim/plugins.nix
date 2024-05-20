@@ -451,8 +451,8 @@ in
     src = fetchFromGitHub {
       owner = "rebelot";
       repo = "heirline.nvim";
-      rev = "7566440d5ac0953b7b6505b754d30f3f2469fad6";
-      sha256 = "1imyd30rvc3fjhg0jdyqi3yaihphca0r0hsjfd90ivw6ms26fdyx";
+      rev = "fe7a8e8a747f156f6eac86ec75122652cf9563f4";
+      sha256 = "1pl5w5aligzw9x71lv22f50hi7jfaynp8kxpr4jhc6c2gi2l65x0";
       fetchSubmodules = false;
     };
   };
