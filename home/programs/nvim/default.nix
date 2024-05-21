@@ -113,8 +113,6 @@ in
           type = "fennel";
         }
 
-        vim-just
-
         {
           plugin = rainbow-delimiters-nvim;
           config = builtins.readFile ../../config/nvim/plugins/rainbow-delimiters.fnl;
@@ -135,12 +133,6 @@ in
         }
 
         pkgs.vimPlugins.telescope-zf-native-nvim
-
-        {
-          plugin = project-nvim;
-          config = builtins.readFile ../../config/nvim/plugins/project.fnl;
-          type = "fennel";
-        }
 
         telescope-ui-select-nvim
         telescope-undo-nvim
@@ -179,7 +171,7 @@ in
 
         # Comments
         {
-          plugin = comment-nvim;
+          plugin = ts-comments-nvim;
           config = builtins.readFile ../../config/nvim/plugins/comment.fnl;
           type = "fennel";
         }

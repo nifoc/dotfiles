@@ -13,12 +13,10 @@
 - src: Mofiqul/dracula.nvim
 # Syntax
 - src: nvim-treesitter/nvim-treesitter
-- src: NoahTheDuke/vim-just
 - src: HiPhish/rainbow-delimiters.nvim
 - src: folke/todo-comments.nvim
 # Telescope
 - src: nvim-telescope/telescope.nvim
-- src: ahmedkhalf/project.nvim
 - src: nvim-telescope/telescope-ui-select.nvim
 - src: debugloop/telescope-undo.nvim
 # LSP
@@ -31,7 +29,7 @@
 # Linter
 - src: mfussenegger/nvim-lint
 # Comments
-- src: numtostr/comment.nvim
+- src: folke/ts-comments.nvim
 # Snippets
 - src: L3MON4D3/LuaSnip
 # cmp

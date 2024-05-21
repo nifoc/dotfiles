@@ -1,2 +1,2 @@
-(let [cmt (require :Comment)]
-  (cmt.setup {:padding true}))
+(let [cmt (require :ts-comments)]
+  (cmt.setup {}))

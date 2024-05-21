@@ -26,6 +26,7 @@
                                                :javascript
                                                :jsdoc
                                                :json
+                                               :just
                                                :lua
                                                :make
                                                :markdown
