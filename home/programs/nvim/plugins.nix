@@ -18,18 +18,18 @@ in
   };
   plenary-nvim = buildVimPlugin {
     pname = "plenary.nvim";
-    version = "2024-05-19";
+    version = "2024-05-20";
     src = fetchFromGitHub {
       owner = "nvim-lua";
       repo = "plenary.nvim";
-      rev = "b5c8de02a44ffeabff678090edd6a132ff8ab77d";
-      sha256 = "0flr90g6qrlyq21v1x7841v29lh511xiafbspg8gpz1pmkm34zk9";
+      rev = "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683";
+      sha256 = "0n2p8krzwiw682f0yb6n8faamffpp336rjy50pbqf3jmc6czd5z4";
       fetchSubmodules = false;
     };
   };
   nvim-web-devicons = buildVimPlugin {
     pname = "nvim-web-devicons";
-    version = "2024-05-14";
+    version = "2024-05-13";
     src = fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
@@ -139,12 +139,12 @@ in
   };
   rainbow-delimiters-nvim = buildVimPlugin {
     pname = "rainbow-delimiters.nvim";
-    version = "2024-05-11";
+    version = "2024-05-20";
     src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "rainbow-delimiters.nvim";
-      rev = "dd1156723eb8483e4403eb8765bbdff456b6981d";
-      sha256 = "11fjiz7zcvs4fbp71yw5ky7gscgdbq4vzdzfc5ladhh6h0jayix5";
+      rev = "9c6e2e23ecd8abd280ebd7dc55a9c29d8a911aa3";
+      sha256 = "1v7bd5ady7gwhrvm8nswiqyzizlahmvd61ksik42548x1j2fn0p6";
       fetchSubmodules = false;
     };
   };
@@ -227,7 +227,7 @@ in
   };
   schemastore-nvim = buildVimPlugin {
     pname = "schemastore.nvim";
-    version = "2024-05-20";
+    version = "2024-05-19";
     src = fetchFromGitHub {
       owner = "b0o";
       repo = "schemastore.nvim";
@@ -392,7 +392,7 @@ in
   };
   nvim-autopairs = buildVimPlugin {
     pname = "nvim-autopairs";
-    version = "2024-05-20";
+    version = "2024-05-19";
     src = fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-autopairs";
