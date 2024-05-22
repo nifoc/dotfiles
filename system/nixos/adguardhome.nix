@@ -60,59 +60,74 @@
 
   virtualisation.podman.defaultNetwork.settings.dns_enabled = lib.mkForce secret.adguardhome.podmanDNS;
 
-  services.nginx.virtualHosts."${secret.adguardhome.domain_prefix}.internal.kempkens.network" = {
-    serverAliases = [ "dns.internal.kempkens.network" ];
+  services.nginx = {
+    upstreams.adguardhome = {
+      servers = {
+        "127.0.0.1:3000" = {
+          fail_timeout = "2s";
+        };
+      };
 
-    listen = [
-      {
-        addr = "0.0.0.0";
-        port = 443;
-        ssl = true;
-      }
+      extraConfig = ''
+        keepalive 16;
+      '';
+    };
 
-      {
-        addr = "[::0]";
-        port = 443;
-        ssl = true;
-      }
+    virtualHosts."${secret.adguardhome.domain_prefix}.internal.kempkens.network" = {
+      serverAliases = [ "dns.internal.kempkens.network" ];
 
-      {
-        addr = "0.0.0.0";
-        port = 9053;
-        ssl = true;
-        extraParameters = [
-          "fastopen=63"
-          "backlog=1023"
-          "deferred"
-        ];
-      }
+      listen = [
+        {
+          addr = "0.0.0.0";
+          port = 443;
+          ssl = true;
+        }
 
-      {
-        addr = "[::0]";
-        port = 9053;
-        ssl = true;
-        extraParameters = [
-          "fastopen=63"
-          "backlog=1023"
-          "deferred"
-        ];
-      }
-    ];
+        {
+          addr = "[::0]";
+          port = 443;
+          ssl = true;
+        }
 
-    quic = false;
+        {
+          addr = "0.0.0.0";
+          port = 9053;
+          ssl = true;
+          extraParameters = [
+            "fastopen=63"
+            "backlog=1023"
+            "deferred"
+          ];
+        }
 
-    onlySSL = true;
-    useACMEHost = "internal.kempkens.network";
+        {
+          addr = "[::0]";
+          port = 9053;
+          ssl = true;
+          extraParameters = [
+            "fastopen=63"
+            "backlog=1023"
+            "deferred"
+          ];
+        }
+      ];
 
-    extraConfig = ''
-      set_real_ip_from 100.64.10.2/32;
-      set_real_ip_from fd7a:115c:a1e0:1010::2/128;
-      real_ip_header X-Forwarded-For;
-    '';
+      quic = true;
+      http3 = true;
 
-    locations."/" = {
-      recommendedProxySettings = true;
-      proxyPass = "http://127.0.0.1:3000";
+      onlySSL = true;
+      useACMEHost = "internal.kempkens.network";
+
+      extraConfig = ''
+        set_real_ip_from 100.64.10.2/32;
+        set_real_ip_from fd7a:115c:a1e0:1010::2/128;
+        real_ip_header X-Forwarded-For;
+      '';
+
+      locations."/" = {
+        recommendedProxySettings = true;
+        proxyPass = "http://adguardhome";
+      };
     };
   };
 }
