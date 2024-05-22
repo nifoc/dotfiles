@@ -19,6 +19,10 @@
         domain = "*.internal.kempkens.network";
         extraDomainNames = [ "jellyfin.home.kempkens.io" ];
       };
+
+      "dns.kempkens.network" = {
+        extraDomainNames = [ "*.dns.kempkens.network" ];
+      };
     };
   };
 }

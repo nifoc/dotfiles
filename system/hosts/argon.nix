@@ -32,6 +32,7 @@ in
     # ../nixos/telegraf.nix
 
     ../nixos/tailscale.nix
+    ../nixos/tailscale-argon.nix
 
     ../nixos/unbound.nix
 

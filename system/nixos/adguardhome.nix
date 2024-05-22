@@ -5,7 +5,29 @@
     enable = true;
 
     mutableSettings = true;
-    settings = null;
+    # settings = null;
+
+    settings =
+      let
+        inherit (config.security.acme) certs;
+      in
+      {
+        tls = {
+          enabled = true;
+
+          port_https = 10443;
+          port_dns_over_tls = 1053;
+          port_dns_over_quic = 1053;
+          port_dnscrypt = 0;
+
+          certificate_path = "${certs."dns.kempkens.network".directory}/fullchain.pem";
+          private_key_path = "${certs."dns.kempkens.network".directory}/key.pem";
+
+          server_name = "dns.kempkens.network";
+          allow_unencrypted_doh = true;
+          strict_sni_check = true;
+        };
+      };
 
     # settings = {
     #   schema_version = 20;
@@ -42,6 +64,10 @@
     # };
   };
 
+  systemd.services.adguardhome.serviceConfig = {
+    SupplementaryGroups = [ "nginx" ];
+  };
+
   networking.firewall.interfaces =
     let
       interfaces = lib.mapAttrsToList (_: lib.attrsets.attrByPath [ "matchConfig" "Name" ] null) config.systemd.network.networks ++ [ "tailscale0" ];
@@ -52,8 +78,8 @@
           {
             name = iface;
             value = {
-              allowedTCPPorts = [ 53 9053 ];
-              allowedUDPPorts = [ 53 9053 ];
+              allowedTCPPorts = [ 53 1053 9053 10443 ];
+              allowedUDPPorts = [ 53 1053 9053 10443 ];
             };
           })
         (builtins.filter builtins.isString interfaces));
@@ -74,7 +100,10 @@
     };
 
     virtualHosts."${secret.adguardhome.domain_prefix}.internal.kempkens.network" = {
-      serverAliases = [ "dns.internal.kempkens.network" ];
+      serverAliases = [
+        "${secret.adguardhome.domain_prefix}-direct.internal.kempkens.network"
+        "dns.internal.kempkens.network"
+      ];
 
       listen = [
         {

@@ -18,6 +18,11 @@
       "internal.kempkens.network" = {
         domain = "*.internal.kempkens.network";
       };
+
+      "dns.kempkens.network" = {
+        extraDomainNames = [ "*.dns.kempkens.network" ];
+        reloadServices = [ "adguardhome.service" ];
+      };
     };
   };
 }
