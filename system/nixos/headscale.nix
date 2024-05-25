@@ -28,7 +28,7 @@ in
         acl_policy_path = config.age.secrets.headscale-acls.path;
 
         dns_config = {
-          override_local_dns = false;
+          override_local_dns = true;
 
           nameservers = [
             "100.64.10.1"

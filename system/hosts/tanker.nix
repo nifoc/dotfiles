@@ -55,6 +55,7 @@ in
     ../nixos/matrix
 
     ../nixos/tailscale.nix
+    ../nixos/tailscale-nodns.nix
 
     ../nixos/websites-tanker.nix
 

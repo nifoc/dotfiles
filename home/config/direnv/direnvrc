@@ -11,7 +11,7 @@ project() {
 # Languages
 
 project_erlang() {
-  export ERL_AFLAGS="-kernel shell_history enabled"
+  export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_path '\"$(direnv_layout_dir)/erl_history\"'"
 
   export REBAR_CACHE_DIR=$(direnv_layout_dir)/rebar
   export REBAR_GLOBAL_CONFIG_DIR=$(direnv_layout_dir)/rebar/config

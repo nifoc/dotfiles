@@ -26,6 +26,7 @@ in
     ../nixos/ddg.nix
 
     ../nixos/tailscale.nix
+    ../nixos/tailscale-nodns.nix
 
     ../nixos/unbound.nix
 

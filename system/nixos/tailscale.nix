@@ -13,6 +13,7 @@ in
     extraUpFlags = [
       "--login-server"
       headscale
+      "--stateful-filtering"
     ];
   };
 }

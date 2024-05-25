@@ -27,6 +27,30 @@
           allow_unencrypted_doh = true;
           strict_sni_check = true;
         };
+
+        dns = {
+          # Based on: https://pkg.go.dev/github.com/Potterli20/golibs-fork/netutil#IsLocallyServed
+          private_networks = [
+            "10.0.0.0/8"
+            "127.0.0.0/8"
+            "169.254.0.0/16"
+            "172.16.0.0/12"
+            "192.0.2.0/24"
+            "192.168.0.0/16"
+            "198.51.100.0/24"
+            "203.0.113.0/24"
+            "255.255.255.255/32"
+
+            "::/128"
+            "::1/128"
+            "2001:db8::/32"
+            "fd00::/8"
+            "fe80::/10"
+
+            "100.64.10.0/24"
+            "fd7a:115c:a1e0:1010::/64"
+          ];
+        };
       };
 
     # settings = {
