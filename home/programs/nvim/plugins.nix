@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-05-25";
+    version = "2024-05-26";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "488e39a8f1fcb7935deaaf1852e3d6c28ca253d0";
-      sha256 = "013n67pjz4hv49hzc505fpmdbdaxj954m05a0vq1aiakl85hwcpj";
+      rev = "245da4eb2e52d14b034bbbedec9671e997ede764";
+      sha256 = "12434isfx1y1h1dszrd8vx778hlqi6q0b2xssn9m4q5ik3dabf6d";
       fetchSubmodules = false;
     };
   };
@@ -150,12 +150,12 @@ in
   };
   telescope-nvim = buildVimPlugin {
     pname = "telescope.nvim";
-    version = "2024-05-25";
+    version = "2024-05-27";
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
-      rev = "c2ce039188e22288449e43b77710036e69a45a70";
-      sha256 = "0cxd6zai11li2aqlp34yf899z2xplbsldxwc0pxfwkv926169p8q";
+      rev = "4c96370cf93e2ba287548da12d673442d0ffecc3";
+      sha256 = "1q4sfk9wk4qhsviinqqvw3w8h4nminnjbv4i1d0dgx5x61khw830";
       fetchSubmodules = false;
     };
   };
@@ -260,12 +260,12 @@ in
   };
   ts-comments-nvim = buildVimPlugin {
     pname = "ts-comments.nvim";
-    version = "2024-05-24";
+    version = "2024-05-26";
     src = fetchFromGitHub {
       owner = "folke";
       repo = "ts-comments.nvim";
-      rev = "dd4424521aa097d012290126eb08f8b6bf52146a";
-      sha256 = "1m5nrqd5gav1h3dgjacgsjps1823g68vg8qc7a2yc9c97q6203fr";
+      rev = "f7ded340b4c6b317593b867838bf7ace354a67d4";
+      sha256 = "1pajs8xsx65d5wzr6j98b0am52np2qijk8k7nc6dg6ibjfvwssyr";
       fetchSubmodules = false;
     };
   };
