@@ -1,5 +1,8 @@
 { pkgs, config, secret, ... }:
 
+let
+  profileName = "daniel";
+in
 {
   programs.firefox = {
     enable = true;
@@ -11,7 +14,7 @@
     ];
 
     profiles = {
-      "daniel" = {
+      "${profileName}" = {
         id = 0;
 
         settings = {
@@ -138,7 +141,6 @@
           "network.trr.custom_uri" = secret.firefox.settings.doh_uri;
           "network.dns.echconfig.enabled" = true;
 
-          "browser.uidensity" = 1;
           "browser.tabs.loadDivertedInBackground" = true;
           "browser.tabs.loadBookmarksInBackground" = true;
 
@@ -148,6 +150,7 @@
           "cookiebanners.service.mode.privateBrowsing" = 1;
 
           # Themes
+          "browser.uidensity" = 1;
           "browser.compactmode.show" = true;
           "layout.css.prefers-color-scheme.content-override" = 2;
         };
