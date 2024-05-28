@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  berkeley-mono = pkgs.stdenvNoCC.mkDerivation rec {
+  berkeley-mono = pkgs.stdenvNoCC.mkDerivation {
     pname = "berkeley-mono";
     version = "1.009";
 
@@ -20,7 +20,7 @@ let
     '';
   };
 
-  nerdfonts = pkgs.stdenvNoCC.mkDerivation rec {
+  nerdfonts = pkgs.stdenvNoCC.mkDerivation {
     pname = "nerdfonts";
     version = "3.2.1";
 
