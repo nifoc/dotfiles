@@ -7,8 +7,7 @@
     useRoutingFeatures = "server";
 
     extraUpFlags = [
-      "--advertise-routes"
-      "10.0.0.0/24"
+      "--advertise-routes=10.0.0.0/24"
     ];
   };
 }

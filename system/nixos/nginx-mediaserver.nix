@@ -2,6 +2,11 @@
 
 {
   services.nginx = {
+    package = lib.mkForce (pkgs.nginxQuic.override {
+      withKTLS = true;
+      withImageFilter = true;
+    });
+
     additionalModules = with pkgs.nginxModules; [
       vod
     ];

@@ -1,6 +1,5 @@
 {
   services.tailscale.extraUpFlags = [
-    "--accept-dns"
-    "false"
+    "--accept-dns=false"
   ];
 }

@@ -11,8 +11,7 @@ in
     authKeyFile = config.age.secrets.tailscale-authkey.path;
 
     extraUpFlags = [
-      "--login-server"
-      headscale
+      "--login-server=${headscale}"
       "--stateful-filtering"
     ];
   };
