@@ -12,6 +12,7 @@ let
   unmanaged-apps = [
     "Dash"
     "Dato"
+    "IINA"
     "Mona"
     "System.*einstellungen"
   ];

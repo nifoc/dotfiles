@@ -38,6 +38,7 @@
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${lib.getExe pkgs.bash} -c 'until ${pkgs.iproute2}/bin/ip address show podman0; do sleep 1; done'";
+      TimeoutStartSec = 30;
     };
   };
 

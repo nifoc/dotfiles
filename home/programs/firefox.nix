@@ -149,6 +149,9 @@ in
           "cookiebanners.service.mode" = 1;
           "cookiebanners.service.mode.privateBrowsing" = 1;
 
+          "browser.translations.select.enable" = true;
+          "network.dns.preferIPv6" = true;
+
           # Themes
           "browser.uidensity" = 1;
           "browser.compactmode.show" = true;
