@@ -18,6 +18,7 @@ in
 
     ../darwin/skhd.nix
     ../darwin/yabai.nix
+    ../darwin/jankyborders.nix
   ];
 
   nix = {

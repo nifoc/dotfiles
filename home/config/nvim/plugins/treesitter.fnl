@@ -10,6 +10,7 @@
                                                :dockerfile
                                                :eex
                                                :elixir
+                                               :elvish
                                                :erlang
                                                :fennel
                                                :fish
