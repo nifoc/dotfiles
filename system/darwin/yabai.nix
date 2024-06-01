@@ -5,7 +5,7 @@ let
   yabai-bin = "${yabai-pkg}/bin/yabai";
   jq-bin = "${pkgs.jq}/bin/jq";
 
-  window_padding = 5;
+  window_padding = 8;
 
   native-tab-apps = [ "Finder" "TablePlus" ];
 
@@ -13,6 +13,7 @@ let
     "Dash"
     "Dato"
     "IINA"
+    "LaunchBar"
     "Mona"
     "System.*einstellungen"
   ];
@@ -85,9 +86,12 @@ in
     };
 
     extraConfig = (lib.strings.concatMapStrings (app: "yabai -m rule --add app='^${app}$' manage=off\n") unmanaged-apps) + ''
+      # Float specific app windows
+      yabai -m rule --add app="^Finder$" title="^Infos zu|^Kopieren" manage=off
+
       # Auto-float certain windows
       yabai -m signal --add event=window_created action='
-        yabai -m query --windows --window $YABAI_WINDOW_ID | ${jq-bin} -er ".\"can-resize\" or .\"is-floating\"" || \
+        yabai -m query --windows --window $YABAI_WINDOW_ID | ${jq-bin} -er ".\"can-resize\"" || \
         yabai -m window $YABAI_WINDOW_ID --toggle float
       '
 
