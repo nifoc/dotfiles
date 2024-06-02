@@ -5,7 +5,7 @@ let
   yabai-bin = "${yabai-pkg}/bin/yabai";
   jq-bin = "${pkgs.jq}/bin/jq";
 
-  window_padding = 8;
+  window_padding = 10;
 
   native-tab-apps = [ "Finder" "TablePlus" ];
 

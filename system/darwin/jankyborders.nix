@@ -5,9 +5,9 @@ let
 
   borders-config = [
     "style=round"
-    "active_color=0xaaabb2bf"
-    "inactive_color=0xdd282a36"
-    "width=5.0"
+    "active_color=0xeebd93f9"
+    "inactive_color=0xeeabb2bf"
+    "width=7.0"
     "blur_radius=15.0"
     "hidpi=on"
     "ax_focus=on"
