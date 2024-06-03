@@ -5,12 +5,12 @@ let
 
   borders-config = [
     "style=round"
-    "active_color=0xeebd93f9"
-    "inactive_color=0xeeabb2bf"
+    "active_color=0xffbd93f9"
+    "inactive_color=0xffabb2bf"
     "width=7.0"
-    "blur_radius=15.0"
     "hidpi=on"
     "ax_focus=on"
+    "blacklist=\"Dropover,LaunchBar\""
   ];
 in
 {
