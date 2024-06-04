@@ -7,8 +7,6 @@ let
 
   window_padding = 10;
 
-  native-tab-apps = [ "Finder" "TablePlus" ];
-
   unmanaged-apps = [
     "Dash"
     "Dato"
@@ -43,29 +41,6 @@ let
     ${yabai-bin} -m config --space $space_index right_padding $padding
     ${yabai-bin} -m config --space $space_index window_gap $padding
   '';
-
-  script-native-tab-fix = pkgs.writeShellScript "yabai-native-tab-fix.sh" ''
-    app_display=$(${yabai-bin} -m query --windows --window $YABAI_WINDOW_ID | ${jq-bin} '.display')
-    [ -z "$app_display" ] && app_display=$(${yabai-bin} -m query --displays --display mouse | ${jq-bin} '.index')
-
-    ql_windows=$(${yabai-bin} -m query --windows --display $app_display | ${jq-bin} 'map(select(.subrole == "Quick Look")) | length')
-
-    if [ $app_display -eq 1 ]; then
-      win_count=$(${yabai-bin} -m query --windows --display next | ${jq-bin} 'length')
-      [ -z "$win_count" ] && win_count=0
-
-      if [ $ql_windows -eq 0 ] && [ $win_count -gt 0 ]; then
-        ${yabai-bin} -m display --focus next && yabai -m display --focus prev
-      fi
-    else
-      win_count=$(${yabai-bin} -m query --windows --display prev | ${jq-bin} 'length')
-      [ -z "$win_count" ] && win_count=0
-
-      if [ $ql_windows -eq 0 ] && [ $win_count -gt 0 ]; then
-        ${yabai-bin} -m display --focus prev && yabai -m display --focus next
-      fi
-    fi
-  '';
 in
 {
   services.yabai = {
@@ -98,16 +73,7 @@ in
       # Smart Gaps
       yabai -m signal --add event=window_created action='${script-smart-padding}'
       yabai -m signal --add event=window_destroyed action='${script-smart-padding}'
-    '' + lib.strings.concatMapStrings
-      # Hacky workaround for https://github.com/koekeishiya/yabai/issues/68
-      (app: ''
-        # Native tab handling for ${app}
-        yabai -m signal --add event=window_created app="^${app}$" action='${script-native-tab-fix}'
-        yabai -m signal --add event=window_destroyed app="^${app}$" action='${script-native-tab-fix}'
-        yabai -m signal --add event=window_moved app="^${app}$" action='${script-native-tab-fix}'
-        yabai -m signal --add event=window_resized app="^${app}$" action='${script-native-tab-fix}'
-      '')
-      native-tab-apps;
+    '';
   };
 
   services.skhd.skhdConfig = ''

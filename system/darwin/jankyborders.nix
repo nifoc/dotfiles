@@ -10,7 +10,7 @@ let
     "width=7.0"
     "hidpi=on"
     "ax_focus=on"
-    "blacklist=\"Dropover,LaunchBar\""
+    "blacklist='Dropover,LaunchBar'"
   ];
 in
 {
