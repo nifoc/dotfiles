@@ -205,12 +205,12 @@ in
   };
   schemastore-nvim = buildVimPlugin {
     pname = "schemastore.nvim";
-    version = "2024-05-27";
+    version = "2024-06-04";
     src = fetchFromGitHub {
       owner = "b0o";
       repo = "schemastore.nvim";
-      rev = "931f9f3b7b60ec976159cb01b4a40da3829ac2fd";
-      sha256 = "10qzfz0r72sp26fa9kvfa2qvswkkdl0q891gp648zjsqrz4gmykq";
+      rev = "1a4958e3d30c7dba8bf7c73bd57515edfba869cf";
+      sha256 = "0hxrd1mli5kppb1wxvl1kiwk2jdxzp7b15fkgjz9f570rvpxyrmn";
       fetchSubmodules = false;
     };
   };
@@ -271,12 +271,12 @@ in
   };
   LuaSnip = buildVimPlugin {
     pname = "LuaSnip";
-    version = "2024-05-24";
+    version = "2024-06-03";
     src = fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "878ace11983444d865a72e1759dbcc331d1ace4c";
-      sha256 = "1akapmh549jr8nc3maa56ni1z87wyxxwlv7q4z3awiqh2l5gbzjq";
+      rev = "2b6860d15aaab01d3fb90859c0ba97f20ad7bc5f";
+      sha256 = "1xfpvykk9agwaqj69vnvwy9pc702sg4i41lk0zs7591v6lr7888z";
       fetchSubmodules = false;
     };
   };
@@ -363,8 +363,8 @@ in
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "conform.nvim";
-      rev = "7159a23d19fb982269dae2e8147ebbe34965095b";
-      sha256 = "1j71pq5rvjhf5zs3dbyxsgdq0lv0zcp51r406hil1kpgxq6gxyk1";
+      rev = "88b699b595703f1ae9d9061c050e52b1fe7c33f1";
+      sha256 = "1sj5bj6hpssp41za7vfkqxh47xrmslqgs7jhm8yif99mk0gk059h";
       fetchSubmodules = false;
     };
   };
@@ -418,8 +418,8 @@ in
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "oil.nvim";
-      rev = "d3a365c950be31a0d46920ce4ff6f23e78939b67";
-      sha256 = "0kzjybyds13ycvrnc6xi0ask9mi84jm5n62z0n37l2bsvbrsfxlk";
+      rev = "bbc0e67eebc15342e73b146a50d9b52e6148161b";
+      sha256 = "15k0xwlq8yklvys4zr10h036s3nbfi00vn46j66mfjrzvj59r1vj";
       fetchSubmodules = false;
     };
   };
