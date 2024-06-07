@@ -5,7 +5,7 @@ let
   yabai-bin = "${yabai-pkg}/bin/yabai";
   jq-bin = "${pkgs.jq}/bin/jq";
 
-  window_padding = 10;
+  window_padding = 5;
 
   unmanaged-apps = [
     "Dash"
@@ -15,17 +15,6 @@ let
     "Mona"
     "System.*einstellungen"
   ];
-
-  script-cycle-clockwise = pkgs.writeShellScript "yabai-cycle-clockwise.sh" ''
-    win=$(${yabai-bin} -m query --windows --window last | ${jq-bin} '.id')
-
-    while : ; do
-      ${yabai-bin} -m window $win --swap prev &> /dev/null
-      if [[ $? -eq 1 ]]; then
-        break
-      fi
-    done
-  '';
 
   script-smart-padding = pkgs.writeShellScript "yabai-smart-padding.sh" ''
     space_index=$(${yabai-bin} -m query --spaces --window $YABAI_WINDOW_ID | ${jq-bin} '.[].index')
@@ -61,18 +50,15 @@ in
     };
 
     extraConfig = (lib.strings.concatMapStrings (app: "yabai -m rule --add app='^${app}$' manage=off\n") unmanaged-apps) + ''
-      # Float specific app windows
-      yabai -m rule --add app="^Finder$" title="^Infos zu|^Kopieren" manage=off
-
       # Auto-float certain windows
-      yabai -m signal --add event=window_created action='
-        yabai -m query --windows --window $YABAI_WINDOW_ID | ${jq-bin} -er ".\"can-resize\"" || \
-        yabai -m window $YABAI_WINDOW_ID --toggle float
+      ${yabai-bin} -m signal --add event=window_created action='
+        ${yabai-bin} -m query --windows --window $YABAI_WINDOW_ID | ${jq-bin} -er ".\"can-resize\" or .\"is-floating\"" || \
+        ${yabai-bin} -m window $YABAI_WINDOW_ID --toggle float
       '
 
       # Smart Gaps
-      yabai -m signal --add event=window_created action='${script-smart-padding}'
-      yabai -m signal --add event=window_destroyed action='${script-smart-padding}'
+      ${yabai-bin} -m signal --add event=window_created action='${script-smart-padding}'
+      ${yabai-bin} -m signal --add event=window_destroyed action='${script-smart-padding}'
     '';
   };
 
@@ -85,13 +71,10 @@ in
     alt + shift - w : ${yabai-bin} -m display --focus west
     alt + shift - e : ${yabai-bin} -m display --focus east
 
-    alt + shift - s : ${yabai-bin} -m window --toggle split
-
     meh - h : ${yabai-bin} -m window --warp west
     meh - j : ${yabai-bin} -m window --warp south
     meh - k : ${yabai-bin} -m window --warp north
     meh - l : ${yabai-bin} -m window --warp east
-    meh - c : ${script-cycle-clockwise}
 
     meh - w : ${yabai-bin} -m window --display west; ${yabai-bin} -m display --focus west
     meh - e : ${yabai-bin} -m window --display east; ${yabai-bin} -m display --focus east
@@ -104,11 +87,14 @@ in
     meh - down : ${yabai-bin} -m window --grid 2:2:0:1:2:1
     meh - up : ${yabai-bin} -m window --grid 2:2:0:0:2:1
     meh - right : ${yabai-bin} -m window --grid 1:2:1:0:1:1
+    meh - i : ${yabai-bin} -m window --grid 1:4:0:0:1:1
 
-    meh - g : ${yabai-bin} -m window --resize bottom:0:40
-    meh - s : ${yabai-bin} -m window --resize bottom:0:-40
+    meh - s : ${yabai-bin} -m window --toggle split
 
     meh - b : ${yabai-bin} -m space --balance && ${script-smart-padding}
+
+    hyper - g : ${yabai-bin} -m window --resize bottom:0:40
+    hyper - s : ${yabai-bin} -m window --resize bottom:0:-40
 
     hyper - h : ${yabai-bin} -m window --swap west
     hyper - j : ${yabai-bin} -m window --swap south
