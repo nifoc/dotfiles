@@ -6,6 +6,7 @@
     podman-compose
     qemu
     gvproxy
+    vfkit
     dive
     skopeo
   ];
