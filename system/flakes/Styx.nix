@@ -10,6 +10,7 @@ let
     overlays = [
       overlay-x86
       agenix.overlays.default
+      inputs.neovim-nightly-overlay.overlays.default
       inputs.nifoc-overlay.overlay
       overlay-mkalias
     ];

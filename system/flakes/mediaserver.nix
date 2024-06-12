@@ -3,11 +3,10 @@
 let
   default-system = "x86_64-linux";
 
-  overlay-nifoc = inputs.nifoc-overlay.overlay;
-
   nixpkgsConfig = {
     overlays = [
-      overlay-nifoc
+      inputs.neovim-nightly-overlay.overlays.default
+      inputs.nifoc-overlay.overlay
     ];
 
     config = {

@@ -53,6 +53,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        git-hooks.follows = "pre-commit-hooks-nix";
+      };
+    };
+
     nifoc-overlay = {
       url = "git+https://git.kempkens.io/daniel/nix-overlay";
       inputs = {
