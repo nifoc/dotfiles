@@ -139,12 +139,12 @@ in
   };
   todo-comments-nvim = buildVimPlugin {
     pname = "todo-comments.nvim";
-    version = "2024-06-10";
+    version = "2024-06-11";
     src = fetchFromGitHub {
       owner = "folke";
       repo = "todo-comments.nvim";
-      rev = "9c104cf7868f1c739b43a07e5593666cc9de2d67";
-      sha256 = "0js766asdwhimcq1yr1ql02d5jyrj49178cq2yjpi5bbn61b163x";
+      rev = "a9acb02e858fe5495857bd82b6b706dec56355aa";
+      sha256 = "0lz9rsx6bz782mxjflkl4a8y3c2105nscchzl316whcqvq0d7626";
       fetchSubmodules = false;
     };
   };
@@ -414,12 +414,12 @@ in
   };
   oil-nvim = buildVimPlugin {
     pname = "oil.nvim";
-    version = "2024-06-10";
+    version = "2024-06-11";
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "oil.nvim";
-      rev = "a62ec258d1c99d354b256a2ec39733ad9109d808";
-      sha256 = "1bn2g3argjfiiq3arrdhplm0sx47p1g0yl9vz2xwgxsy7rsvd3yi";
+      rev = "76bfc25520e4edc98d089d023b4ed06013639849";
+      sha256 = "0xwsi2yi6kl7lm558gp8fs3szzqk86inimp63h50lmhp53jnj6iz";
       fetchSubmodules = false;
     };
   };
