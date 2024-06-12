@@ -10,6 +10,10 @@
       group = "acme";
     };
 
+    cfdyndns-api-token = {
+      file = ./cfdyndns/apiToken.age;
+    };
+
     tailscale-authkey = {
       file = ./tailscale/authkey.age;
     };

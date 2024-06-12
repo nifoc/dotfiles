@@ -92,6 +92,8 @@ in
 
   "agenix/hosts/argon/acme/credentials.age".publicKeys = argon;
 
+  "agenix/hosts/argon/cfdyndns/apiToken.age".publicKeys = argon;
+
   "agenix/hosts/argon/forgejo-actions/token.age".publicKeys = argon;
 
   "agenix/hosts/argon/tailscale/authkey.age".publicKeys = argon;

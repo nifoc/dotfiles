@@ -20,6 +20,7 @@ in
     ../nixos/nginx-argon.nix
 
     (import ../nixos/adguardhome.nix (args // { inherit secret; }))
+    (import ../nixos/cfdyndns.nix (args // { inherit secret; }))
 
     ../nixos/attic.nix
 
