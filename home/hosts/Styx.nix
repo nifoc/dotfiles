@@ -15,6 +15,7 @@ in
     ../programs/starship.nix
     ../programs/zoxide.nix
 
+    ../programs/amethyst.nix
     ../programs/wezterm.nix
 
     ../programs/nvim

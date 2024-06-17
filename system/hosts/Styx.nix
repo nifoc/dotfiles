@@ -16,8 +16,8 @@ in
 
     ../darwin/mas.nix
 
-    ../darwin/skhd.nix
-    ../darwin/yabai.nix
+    #../darwin/skhd.nix
+    #../darwin/yabai.nix
   ];
 
   nix = {

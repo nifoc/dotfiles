@@ -28,11 +28,11 @@ in
       universal-ctags
 
       # LSP
+      bash-language-server
       #elixir-ls
       fennel-ls
       lexical
       nil
-      nodePackages.bash-language-server
       nodePackages.dockerfile-language-server-nodejs
       nodePackages.svelte-language-server
       nodePackages.typescript-language-server

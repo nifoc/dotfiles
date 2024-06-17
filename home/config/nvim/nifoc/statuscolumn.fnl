@@ -7,7 +7,7 @@
       statusline (require :nifoc.statusline)
       diagnostic vim.diagnostic
       gitsigns (require :gitsigns)
-      gitsigns-ns (api.nvim_create_namespace :gitsigns_extmark_signs_)
+      gitsigns-ns (api.nvim_create_namespace :gitsigns_signs_)
       augroup (vim.api.nvim_create_augroup :NifocStatuscolumn {:clear true})
       aucmd vim.api.nvim_create_autocmd]
   ;; Cache

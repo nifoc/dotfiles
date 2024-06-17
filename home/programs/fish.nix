@@ -111,6 +111,10 @@ in
         set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
         ${lib.getExe pkgs.aria2} -U "$user_agent" --file-allocation none --async-dns=false -x 2 $argv
       '';
+
+      macos-app-id = /* fish */ ''
+        osascript -e "id of app \"$argv\""
+      '';
     };
 
     shellInit = /* fish */ ''
