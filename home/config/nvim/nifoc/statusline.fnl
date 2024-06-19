@@ -10,7 +10,9 @@
       repo (require :nifoc.repo)
       nifoc-treesitter (require :nifoc.treesitter)
       navic (require :nvim-navic)
-      neogit (require :neogit)]
+      neogit (require :neogit)
+      telescope-builtin (require :telescope.builtin)
+      telescope-themes (require :telescope.themes)]
   (fn buffer-variable-exists? [key]
     (not= (. vim :b key) nil))
 
@@ -204,6 +206,8 @@
                                                     self.info
                                                     self.hints]))))
                         :update [:DiagnosticChanged :BufEnter]
+                        :on_click {:name :heirline_diagnostics_list
+                                   :callback #(telescope-builtin.diagnostics (telescope-themes.get_ivy {:bufnr 0}))}
                         1 mod.space-if-count
                         2 {:provider (fn [self]
                                        (let [spacer (if (or (> self.warnings 0)

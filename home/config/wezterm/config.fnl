@@ -180,6 +180,7 @@
    ;:freetype_render_target :HorizontalLcd
    :harfbuzz_features disable-ligatures-flags
    :allow_square_glyphs_to_overflow_width :WhenFollowedBySpace
+   :adjust_window_size_when_changing_font_size false
    ;; Keys
    :keys [{:key :UpArrow
            :mods :SHIFT

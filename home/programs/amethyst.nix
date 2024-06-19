@@ -14,6 +14,7 @@ let
       "wide"
       "two-pane"
       "column"
+      "bsp"
     ];
     enables-layout-hud = true;
     enables-layout-hud-on-space-change = true;
@@ -77,14 +78,26 @@ let
     toggle-float = { mod = "mod2"; key = "t"; };
 
     select-tall-layout = { mod = "mod2"; key = "a"; };
-    select-wide-layout = { mod = "mod2"; key = "s"; };
     select-fullscreen-layout = { mod = "mod2"; key = "f"; };
+    select-wide-layout = { mod = "mod2"; key = "s"; };
+    select-two-pane-layout = { mod = "mod2"; key = "2"; };
     select-column-layout = { mod = "mod2"; key = "c"; };
+    select-bsp-layout = { mod = "mod2"; key = "p"; };
     display-current-layout = { mod = "mod1"; key = "i"; };
     reevaluate-windows = { mod = "mod2"; key = "b"; };
 
     throw-space-left = disable-keybinding;
     throw-space-right = disable-keybinding;
+    throw-space-1 = disable-keybinding;
+    throw-space-2 = disable-keybinding;
+    throw-space-3 = disable-keybinding;
+    throw-space-4 = disable-keybinding;
+    throw-space-5 = disable-keybinding;
+    throw-space-6 = disable-keybinding;
+    throw-space-7 = disable-keybinding;
+    throw-space-8 = disable-keybinding;
+    throw-space-9 = disable-keybinding;
+    throw-space-10 = disable-keybinding;
 
     toggle-tiling = disable-keybinding;
 

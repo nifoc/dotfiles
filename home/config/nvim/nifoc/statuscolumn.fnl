@@ -41,7 +41,7 @@
     (each [_ diagnostic (pairs diagnostics)]
       (let [lnum (+ diagnostic.lnum 1)
             current (cached-sign :diagnostics bufnr lnum)]
-        (when (or (= current nil) (> diagnostic.severity current.severity))
+        (when (or (= current nil) (< diagnostic.severity current.severity))
           (tset cache :diagnostics bufnr lnum
                 {:severity diagnostic.severity
                  :col diagnostic.col
@@ -59,27 +59,14 @@
             (when (= current nil)
               (tset cache :gitsigns bufnr lnum {:name details.sign_hl_group})))))))
 
-  (aucmd :DiagnosticChanged
-         {:callback #(let [full-mode (. (api.nvim_get_mode) :mode)
-                           mode (full-mode:sub 1 1)]
-                       (when (not= mode :i)
-                         (update-cache-diagnostics $1.buf $1.data.diagnostics)))
-          :group augroup
-          :desc "Update cached diagnostic signs"})
-  (aucmd :CursorHold
+  (aucmd [:BufEnter :CursorHold :CursorHoldI :DiagnosticChanged]
          {:callback #(update-cache-diagnostics $1.buf
                                                (vim.diagnostic.get $1.buf))
           :group augroup
-          :desc "Periodically update cached diagnostics"})
-  (aucmd :InsertLeave
-         {:callback (fn [args]
-                      (vim.defer_fn #(update-cache-diagnostics args.buf
-                                                               (vim.diagnostic.get args.buf))
-                        1000))
-          :group augroup
-          :desc "Update diagnostics after leaving insert mode"})
+          :desc "Update cached diagnostic signs"})
   (aucmd :User {:pattern :GitSignsUpdate
-                :callback #(update-cache-gitsigns $1.buf)
+                :callback #(when (not= $1.data nil)
+                             (update-cache-gitsigns $1.data.buffer))
                 :group augroup
                 :desc "Update cached gitsigns signs"})
   (aucmd :BufWipeout
