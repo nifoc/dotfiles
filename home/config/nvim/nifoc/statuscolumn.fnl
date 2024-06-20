@@ -59,7 +59,7 @@
             (when (= current nil)
               (tset cache :gitsigns bufnr lnum {:name details.sign_hl_group})))))))
 
-  (aucmd [:BufEnter :CursorHold :CursorHoldI :DiagnosticChanged]
+  (aucmd [:BufEnter :InsertLeave :DiagnosticChanged]
          {:callback #(update-cache-diagnostics $1.buf
                                                (vim.diagnostic.get $1.buf))
           :group augroup

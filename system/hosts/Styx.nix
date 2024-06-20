@@ -36,9 +36,16 @@ in
         "https://nix-community.cachix.org?priority=2"
       ];
 
+      trusted-substituters = [
+        "https://attic.hosting.nedeco.mobi/devshells"
+      ];
+
       trusted-public-keys = [
         "nifoc-systems:eDDqVP5BFR6/1KvXbF9oUL8JahDdmbrsYtxlQ57LOTU="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+
+        # trusted-substituters
+        "devshells:YXtbU0DheB229oCr2D0H0qHjj2Ed/e2VZiLSXgQ1IVA="
       ];
 
       trusted-users = [ "@admin" ];
