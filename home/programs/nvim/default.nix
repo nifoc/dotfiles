@@ -29,9 +29,9 @@ in
 
       # LSP
       bash-language-server
-      #elixir-ls
+      elixir-ls
       fennel-ls
-      lexical
+      #lexical
       nil
       nodePackages.dockerfile-language-server-nodejs
       nodePackages.svelte-language-server
