@@ -9,6 +9,7 @@
       npairs (require :nvim-autopairs)
       gitsigns (require :gitsigns)
       neogit (require :neogit)
+      otter (require :otter)
       wk (require :which-key)
       repl (require :nifoc.repl)
       repo (require :nifoc.repo)
@@ -117,7 +118,7 @@
     (keymap.set :n :<leader>lfi
                 #(telescope-builtin.lsp_implementations telescope-dropdown)
                 {:buffer bufnr :desc "Find Implementations"})
-    (keymap.set :n :K vim.lsp.buf.hover
+    (keymap.set :n :K otter.ask_hover
                 {:buffer bufnr :desc "Show Documentation"}))
 
   (fn mod.terminal-open [bufnr]

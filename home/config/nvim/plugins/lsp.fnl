@@ -46,6 +46,7 @@
                          :fennel_ls
                          :html
                          :jsonls
+                         :marksman
                          :svelte
                          :taplo]]
     ;; Default

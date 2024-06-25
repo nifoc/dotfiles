@@ -33,6 +33,7 @@ in
       fennel-ls
       #lexical
       lua-language-server
+      marksman
       nil
       nodePackages.dockerfile-language-server-nodejs
       nodePackages.svelte-language-server

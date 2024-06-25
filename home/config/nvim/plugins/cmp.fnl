@@ -82,6 +82,7 @@
                                            kind (kind-fn entry vim-item)
                                            strings (vim.split kind.kind "%s"
                                                               {:trimempty true})]
+                                       (set kind.dup 0)
                                        (if (= entry.source.name :cmp_tabnine)
                                            (do
                                              (set kind.kind " 󱜚 ")
@@ -102,7 +103,8 @@
                                              (set kind.menu
                                                   (.. "    ("
                                                       (or (. strings 2) "") ")"))))
-                                       kind))}})
+                                       kind))}
+              :experimental {:ghost_text true}})
   (cmp.setup.cmdline "/"
                      {:sources (cmp.config.sources [{:name :nvim_lsp_document_symbol}]
                                                    [{:name :buffer}])
