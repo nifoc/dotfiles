@@ -6,7 +6,8 @@
     (let [maybe-tabnine (if (pcall require :cmp_tabnine.config)
                             [{:name :cmp_tabnine}]
                             [])]
-      (vim.list_extend (vim.list_extend [{:name :nvim_lsp}] maybe-tabnine)
+      (vim.list_extend (vim.list_extend [{:name :nvim_lsp} {:name :otter}]
+                                        maybe-tabnine)
                        [{:name :async_path} {:name :luasnip}])))
 
   (fn comparator-list []

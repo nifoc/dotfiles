@@ -40,7 +40,7 @@ in
   };
   wezterm-nvim = buildVimPlugin {
     pname = "wezterm.nvim";
-    version = "2024-06-01";
+    version = "2024-06-02";
     src = fetchFromGitHub {
       owner = "willothy";
       repo = "wezterm.nvim";
@@ -128,7 +128,7 @@ in
   };
   rainbow-delimiters-nvim = buildVimPlugin {
     pname = "rainbow-delimiters.nvim";
-    version = "2024-06-13";
+    version = "2024-06-14";
     src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "rainbow-delimiters.nvim";
@@ -244,6 +244,17 @@ in
       repo = "vim-illuminate";
       rev = "5eeb7951fc630682c322e88a9bbdae5c224ff0aa";
       sha256 = "0g86iv1mndcalrizdhl3z8ryj19jnqv139jwijpzyfk8gi677lhd";
+      fetchSubmodules = false;
+    };
+  };
+  otter-nvim = buildVimPlugin {
+    pname = "otter.nvim";
+    version = "2024-06-09";
+    src = fetchFromGitHub {
+      owner = "jmbuhr";
+      repo = "otter.nvim";
+      rev = "cbb1be0586eae18cbea38ada46af428d2bebf81a";
+      sha256 = "085lx5z7abbn7rq23pma5xmymzgjajp0slg0g42wafxpn7rby9kv";
       fetchSubmodules = false;
     };
   };
@@ -370,7 +381,7 @@ in
   };
   nvim-autopairs = buildVimPlugin {
     pname = "nvim-autopairs";
-    version = "2024-05-19";
+    version = "2024-05-20";
     src = fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-autopairs";

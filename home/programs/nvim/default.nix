@@ -32,6 +32,7 @@ in
       elixir-ls
       fennel-ls
       #lexical
+      lua-language-server
       nil
       nodePackages.dockerfile-language-server-nodejs
       nodePackages.svelte-language-server
@@ -159,6 +160,12 @@ in
         {
           plugin = vim-illuminate;
           config = builtins.readFile ../../config/nvim/plugins/illuminate.fnl;
+          type = "fennel";
+        }
+
+        {
+          plugin = otter-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/otter.fnl;
           type = "fennel";
         }
 
