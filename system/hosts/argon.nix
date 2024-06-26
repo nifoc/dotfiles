@@ -20,17 +20,13 @@ in
     ../nixos/nginx-argon.nix
 
     (import ../nixos/adguardhome.nix (args // { inherit secret; }))
-    (import ../nixos/cfdyndns.nix (args // { inherit secret; }))
+    #(import ../nixos/cfdyndns.nix (args // { inherit secret; }))
 
     ../nixos/attic.nix
 
     ../nixos/chrony.nix
 
     (import ../nixos/forgejo-runner.nix (args // { inherit secret; name = "argon"; tag = "ubuntu-latest-arm64"; nixTag = "arm64"; }))
-
-    # ../nixos/grafana.nix
-    # ../nixos/loki.nix
-    # ../nixos/telegraf.nix
 
     ../nixos/tailscale.nix
     ../nixos/tailscale-nodns.nix
