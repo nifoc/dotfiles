@@ -408,7 +408,6 @@ in
     activation.neovimTreeSitter = lib.hm.dag.entryAfter [ "writeBoundary" ] /* bash */ ''
       $VERBOSE_ECHO "Updating tree-sitter parsers"
       $DRY_RUN_CMD ${lib.getExe config.programs.neovim.finalPackage} -c 'TSUpdateSync | q' --headless
-      $VERBOSE_ECHO "\n"
     '';
   };
 }
