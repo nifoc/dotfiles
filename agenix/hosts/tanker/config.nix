@@ -144,20 +144,16 @@
 
     weewx-config = {
       file = ./weewx/config.age;
-      symlink = false;
-      path = "/var/lib/weewx/weewx.conf";
-      mode = "640";
-      owner = "421";
-      group = "421";
+      owner = "weewx";
+      group = "weewx";
     };
 
     weewx-skin = {
       file = ./weewx/skin.age;
       symlink = false;
-      path = "/var/lib/weewx/skin-wdc/skin.conf";
-      mode = "644";
-      owner = "421";
-      group = "421";
+      path = "/var/lib/weewx-weather/overlay/upper/skins/weewx-wdc/skin.conf";
+      owner = "weewx";
+      group = "weewx";
     };
   };
 }

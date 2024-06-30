@@ -5,25 +5,25 @@ let
   data-dir = "/var/lib/weewx";
 in
 {
-  virtualisation.oci-containers.containers.weewx = {
-    image = "git.kempkens.io/daniel/weewx-docker:latest";
-    ports = [ "127.0.0.1:8000:8000" ];
-    environment = {
-      "TZ" = "Europe/Berlin";
-    };
-    volumes = [
-      "${data-dir}:/data"
-    ];
-    extraOptions = [
-      "--label=com.centurylinklabs.watchtower.enable=true"
-      "--label=io.containers.autoupdate=registry"
-    ];
-  };
+  # virtualisation.oci-containers.containers.weewx = {
+  #   image = "git.kempkens.io/daniel/weewx-docker:latest";
+  #   ports = [ "127.0.0.1:8000:8000" ];
+  #   environment = {
+  #     "TZ" = "Europe/Berlin";
+  #   };
+  #   volumes = [
+  #     "${data-dir}:/data"
+  #   ];
+  #   extraOptions = [
+  #     "--label=com.centurylinklabs.watchtower.enable=true"
+  #     "--label=io.containers.autoupdate=registry"
+  #   ];
+  # };
 
-  systemd.services.podman-weewx.restartTriggers = [
-    "${config.age.secrets.weewx-config.file}"
-    "${config.age.secrets.weewx-skin.file}"
-  ];
+  # systemd.services.podman-weewx.restartTriggers = [
+  #   "${config.age.secrets.weewx-config.file}"
+  #   "${config.age.secrets.weewx-skin.file}"
+  # ];
 
   systemd.tmpfiles.rules = [
     "d ${data-dir} 0755 421 421"

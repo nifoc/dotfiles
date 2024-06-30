@@ -59,8 +59,10 @@ in
 
     ../nixos/websites-tanker.nix
 
+    ../nixos/weewx.nix
+
     ../../container/proxitok
-    ../../container/weewx
+    #../../container/weewx
   ];
 
   system.stateVersion = "22.11";
