@@ -150,7 +150,6 @@
 
     weewx-skin = {
       file = ./weewx/skin.age;
-      symlink = false;
       path = "/var/lib/weewx-weather/overlay/upper/skins/weewx-wdc/skin.conf";
       owner = "weewx";
       group = "weewx";

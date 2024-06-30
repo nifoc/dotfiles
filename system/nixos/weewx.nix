@@ -29,6 +29,11 @@ in
         TZ = "Europe/Berlin";
       };
 
+      restartTriggers = [
+        "${config.age.secrets.weewx-config.file}"
+        "${config.age.secrets.weewx-skin.file}"
+      ];
+
       serviceConfig = {
         WorkingDirectory = "${pkg}/home/weewx-data";
         User = "weewx";
