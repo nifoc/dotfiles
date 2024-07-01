@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, lib, config, ... }:
 
 let
   home = "/var/lib/weewx-weather";
@@ -40,6 +40,7 @@ in
         User = "weewx";
         Group = "weewx";
         ExecStart = "${pkg}/bin/weewxd --config=${config.age.secrets.weewx-config.path}";
+        ExecStopPost = "-!${lib.getExe pkgs.umount} ${home}/weewx-data";
       };
     };
 
