@@ -16,7 +16,8 @@ in
     in
     {
       description = "WeeWX";
-      requires = [ "time-sync.target" "mosquitto.service" ] ++ mounts;
+      requires = [ "time-sync.target" "mosquitto.service" ];
+      bindsTo = mounts;
       after = [ "network-online.target" "time-sync.target" "mosquitto.service" ] ++ mounts;
       wants = [ "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
