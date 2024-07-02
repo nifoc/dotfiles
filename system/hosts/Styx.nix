@@ -15,9 +15,6 @@ in
     ../darwin/attic.nix
 
     ../darwin/mas.nix
-
-    #../darwin/skhd.nix
-    #../darwin/yabai.nix
   ];
 
   nix = {
@@ -34,6 +31,7 @@ in
       substituters = [
         "https://attic.cache.daniel.sx/nifoc-systems?priority=1"
         "https://nix-community.cachix.org?priority=2"
+        "https://cache.garnix.io?priority=3"
       ];
 
       trusted-substituters = [
@@ -43,6 +41,7 @@ in
       trusted-public-keys = [
         "nifoc-systems:eDDqVP5BFR6/1KvXbF9oUL8JahDdmbrsYtxlQ57LOTU="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
 
         # trusted-substituters
         "devshells:YXtbU0DheB229oCr2D0H0qHjj2Ed/e2VZiLSXgQ1IVA="
