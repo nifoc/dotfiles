@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ config, ... }:
 
 {
   virtualisation = {
@@ -27,19 +27,6 @@
   networking.firewall.interfaces."podman+" = {
     allowedUDPPorts = [ 53 443 ];
     allowedTCPPorts = [ 53 443 5432 ];
-  };
-
-  # For services that listen on podman0
-  systemd.services.podman-wait-for-host-interface = {
-    description = "Wait for podman0 to be available";
-    after = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
-
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${lib.getExe pkgs.bash} -c 'until ${pkgs.iproute2}/bin/ip address show podman0; do sleep 1; done'";
-      TimeoutStartSec = 30;
-    };
   };
 
   # It looks like there is no way to activate the "built-in" service and timer ...

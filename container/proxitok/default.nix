@@ -47,8 +47,6 @@
     };
   };
 
-  systemd.services.redis-proxitok.after = [ "podman-wait-for-host-interface.service" ];
-
   networking.firewall.interfaces."podman+".allowedTCPPorts = [ 6381 ];
 
   services.nginx.virtualHosts."tictac.daniel.sx" = {

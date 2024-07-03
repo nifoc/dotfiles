@@ -44,8 +44,6 @@ in
 
     (import ../nixos/redlib.nix (args // { inherit secret; }))
 
-    ../nixos/linkding.nix
-
     ../nixos/mastodon.nix
 
     ../nixos/miniflux.nix
@@ -60,9 +58,6 @@ in
     ../nixos/websites-tanker.nix
 
     ../nixos/weewx.nix
-
-    ../../container/proxitok
-    #../../container/weewx
   ];
 
   system.stateVersion = "22.11";
