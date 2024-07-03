@@ -41,6 +41,27 @@ in
         Group = "weewx";
         ExecStart = "${pkg}/bin/weewxd --config=${config.age.secrets.weewx-config.path}";
         ExecStopPost = "-!${lib.getExe pkgs.umount} ${home}/weewx-data";
+
+        CapabilityBoundingSet = [ "" ];
+        DeviceAllow = [ "" ];
+        LockPersonality = true;
+        PrivateDevices = true;
+        PrivateUsers = true;
+        ProcSubset = "pid";
+        ProtectClock = true;
+        ProtectControlGroups = true;
+        ProtectHome = true;
+        ProtectHostname = true;
+        ProtectKernelLogs = true;
+        ProtectKernelModules = true;
+        ProtectKernelTunables = true;
+        ProtectProc = "invisible";
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" ];
+        RestrictNamespaces = true;
+        RestrictRealtime = true;
+        RestrictSUIDSGID = true;
+        SystemCallArchitectures = "native";
+        SystemCallFilter = [ "@system-service" "~@privileged" "~@resources" ];
       };
     };
 
