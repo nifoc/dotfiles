@@ -54,12 +54,14 @@ in
         "https://attic.cache.daniel.sx/nifoc-systems?priority=1"
         "https://attic.cache.daniel.sx/nifoc-ci?priority=2"
         "https://nix-community.cachix.org?priority=3"
+        "https://cache.garnix.io?priority=4"
       ];
 
       trusted-public-keys = [
         "nifoc-systems:eDDqVP5BFR6/1KvXbF9oUL8JahDdmbrsYtxlQ57LOTU="
         "nifoc-ci:JpD9zqVQi8JuS7B8htPDOQZh08rhInMnGFS9RVhiuwk="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       ];
 
       trusted-users = [
