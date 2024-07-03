@@ -29,7 +29,6 @@ in
 
       # LSP
       bash-language-server
-      elixir-ls
       fennel-ls
       #lexical
       lua-language-server
@@ -53,6 +52,7 @@ in
       shellcheck
       statix
     ] ++ optionals isDarwin [
+      elixir-ls
       xcbuild
     ];
 
