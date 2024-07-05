@@ -4,12 +4,10 @@ let
   default-system = "x86_64-linux";
 
   # overlay-master = _: _: { pkgs-master = import inputs.nixpkgs-master { system = default-system; }; };
-  # overlay-unstable = _: _: { pkgs-unstable = import inputs.nixpkgs { system = default-system; }; };
 
   nixpkgsConfig = {
     overlays = [
       # overlay-master
-      # overlay-unstable
       inputs.neovim-nightly-overlay.overlays.default
       inputs.nifoc-overlay.overlay
     ];
