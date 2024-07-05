@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-07-04";
+    version = "2024-07-05";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "fa611f612a7b04c239d07f61ba80e09cb95c5af4";
-      sha256 = "12kkblv9n6z30k1pd0j4shkiqnkkk65c76gnvrhdh2kvxg6fvwid";
+      rev = "f7c05e3e0510df7c742d455c802e27b6ee7ab384";
+      sha256 = "0ryjkz0rkk9zglfrd087mql0f4afl2w429ybirj1c6cvmscn4ys8";
       fetchSubmodules = false;
     };
   };
@@ -205,12 +205,12 @@ in
   };
   schemastore-nvim = buildVimPlugin {
     pname = "schemastore.nvim";
-    version = "2024-07-03";
+    version = "2024-07-04";
     src = fetchFromGitHub {
       owner = "b0o";
       repo = "schemastore.nvim";
-      rev = "4975192b5819bf1ced387e80ebd25bdbff5f2a95";
-      sha256 = "0j8n59fi155dx9l4xrgp5drwidns6jk1vv1v9bnbi2n0agrmm063";
+      rev = "30946db59edba23103c2f524e636910a7a2160df";
+      sha256 = "0r40vsq4gwiy7d7bccqj3symb5hr5pkd5pqf28fflnjlw3xq9r3c";
       fetchSubmodules = false;
     };
   };
@@ -249,12 +249,12 @@ in
   };
   otter-nvim = buildVimPlugin {
     pname = "otter.nvim";
-    version = "2024-07-01";
+    version = "2024-07-04";
     src = fetchFromGitHub {
       owner = "jmbuhr";
       repo = "otter.nvim";
-      rev = "e8787988f2f51dc4678aa13c4553613fff0132b5";
-      sha256 = "0a967hspxg2r8rzj02m8l0n8b6y47gg9p56jm9m5z9jgzn6s5039";
+      rev = "804a20a5a0b9dcb9419ad108621312d7e2fe6d88";
+      sha256 = "0yqhbhranw6l8mpv2sl9jphnqvzss4f3qap89241k77vfk90ii8w";
       fetchSubmodules = false;
     };
   };
