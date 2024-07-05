@@ -82,7 +82,7 @@
                                            kind (kind-fn entry vim-item)
                                            strings (vim.split kind.kind "%s"
                                                               {:trimempty true})]
-                                       (set kind.dup 0)
+                                       ;(set kind.dup 0)
                                        (if (= entry.source.name :cmp_tabnine)
                                            (do
                                              (set kind.kind " 󱜚 ")
