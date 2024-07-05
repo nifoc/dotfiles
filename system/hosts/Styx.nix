@@ -29,9 +29,9 @@ in
       keep-outputs = true;
 
       substituters = [
-        "https://attic.cache.daniel.sx/nifoc-systems?priority=1"
-        "https://nix-community.cachix.org?priority=2"
-        "https://cache.garnix.io?priority=3"
+        "https://attic.cache.daniel.sx/nifoc-systems?priority=30"
+        "https://nix-community.cachix.org?priority=50"
+        "https://cache.garnix.io?priority=60"
       ];
 
       trusted-substituters = [
