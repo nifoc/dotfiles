@@ -31,4 +31,13 @@ def "main search" [
   http get $url | ignore
 }
 
+def "main post" [
+  post: string
+] {
+  let reddit_url = $post | url encode
+  let url = $"($base_url)args[link]=($reddit_url)"
+
+  http get $url | ignore
+}
+
 def main [] {}
