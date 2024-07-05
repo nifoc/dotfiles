@@ -24,30 +24,35 @@ in
       experimental-features = [ "nix-command" "flakes" ];
       extra-platforms = [ "x86_64-darwin" ];
 
+      log-lines = 25;
       auto-optimise-store = true;
       keep-derivations = true;
       keep-outputs = true;
 
-      substituters = [
+      builders-use-substitutes = true;
+
+      extra-substituters = [
         "https://attic.cache.daniel.sx/nifoc-systems?priority=30"
         "https://nix-community.cachix.org?priority=50"
         "https://cache.garnix.io?priority=60"
       ];
 
-      trusted-substituters = [
+      extra-trusted-substituters = [
         "https://attic.hosting.nedeco.mobi/devshells"
       ];
 
-      trusted-public-keys = [
+      extra-trusted-public-keys = [
         "nifoc-systems:eDDqVP5BFR6/1KvXbF9oUL8JahDdmbrsYtxlQ57LOTU="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
 
-        # trusted-substituters
+        # extra-trusted-substituters
         "devshells:YXtbU0DheB229oCr2D0H0qHjj2Ed/e2VZiLSXgQ1IVA="
       ];
 
       trusted-users = [ "@admin" ];
+
+      connect-timeout = 5;
     };
 
     configureBuildUsers = true;

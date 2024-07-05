@@ -58,16 +58,22 @@ in
     package = pkgs.nixVersions.stable;
 
     settings = {
-      auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
+      extra-platforms = [ "aarch64-linux" ];
 
-      substituters = [
-        "https://attic.cache.daniel.sx/nifoc-systems?priority=1"
-        "https://attic.cache.daniel.sx/nifoc-ci?priority=2"
-        "https://nix-community.cachix.org?priority=3"
-        "https://cache.garnix.io?priority=4"
+      log-lines = 25;
+      auto-optimise-store = true;
+      keep-derivations = true;
+      keep-outputs = true;
+
+      extra-substituters = [
+        "https://attic.cache.daniel.sx/nifoc-systems?priority=30"
+        "https://attic.cache.daniel.sx/nifoc-ci?priority=35"
+        "https://nix-community.cachix.org?priority=50"
+        "https://cache.garnix.io?priority=60"
       ];
 
-      trusted-public-keys = [
+      extra-trusted-public-keys = [
         "nifoc-systems:eDDqVP5BFR6/1KvXbF9oUL8JahDdmbrsYtxlQ57LOTU="
         "nifoc-ci:JpD9zqVQi8JuS7B8htPDOQZh08rhInMnGFS9RVhiuwk="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -78,6 +84,8 @@ in
         "root"
         "nix-remote-builder"
       ];
+
+      connect-timeout = 5;
     };
 
     gc = {
@@ -85,13 +93,6 @@ in
       dates = "weekly";
       options = "--delete-older-than 14d";
     };
-
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      extra-platforms = aarch64-linux
-      keep-derivations = true
-      keep-outputs = true
-    '';
   };
 
   environment.etc."nix/netrc".source = ../../secret/shared/nix-netrc;
