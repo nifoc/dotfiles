@@ -69,6 +69,7 @@
         ${iproute}/bin/ip link set wg0 netns wg
         ${iproute}/bin/ip -n wg address add ${secret.wireguard.ipv4} dev wg0
         ${iproute}/bin/ip -n wg -6 address add ${secret.wireguard.ipv6} dev wg0
+        ${iproute}/bin/ip -n wg link set wg0 mtu 1320
         ${iproute}/bin/ip -n wg link set wg0 up
         ${iproute}/bin/ip -n wg route add default dev wg0
         ${iproute}/bin/ip -n wg -6 route add default dev wg0
