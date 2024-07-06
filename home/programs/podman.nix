@@ -9,6 +9,7 @@
     vfkit
     dive
     skopeo
+    manifest-tool
   ];
 
   xdg.configFile."containers/containers.conf.d/nix.conf".text = ''
