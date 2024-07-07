@@ -34,7 +34,7 @@ in
       {
         nixpkgs = nixpkgsConfig;
         nix = {
-          nixPath = [ "nixpkgs=${nixpkgs}" ];
+          # nixPath = [ "nixpkgs=${nixpkgs}" ];
           registry.nixpkgs.flake = nixpkgs;
         };
 
