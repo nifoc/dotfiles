@@ -4,6 +4,13 @@
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
     # nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
+    # Lix
+
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0-rc1.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Tools
 
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -81,7 +88,7 @@
       flake =
         let
           Styx = import ./system/flakes/Styx.nix {
-            inherit (inputs) nixpkgs home-manager nix-darwin agenix;
+            inherit (inputs) nixpkgs lix-module home-manager nix-darwin agenix;
             inherit inputs;
           };
 

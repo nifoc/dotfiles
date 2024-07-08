@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, nix-darwin, agenix, inputs, ... }:
+{ nixpkgs, lix-module, home-manager, nix-darwin, agenix, inputs, ... }:
 
 let
   default-system = "aarch64-darwin";
@@ -25,25 +25,28 @@ in
   system = nix-darwin.lib.darwinSystem {
     system = default-system;
     modules = [
-      ../hosts/Styx.nix
-
-      home-manager.darwinModules.home-manager
-
-      agenix.darwinModules.default
-
       {
         nixpkgs = nixpkgsConfig;
         nix = {
-          # nixPath = [ "nixpkgs=${nixpkgs}" ];
-          registry.nixpkgs.flake = nixpkgs;
+          registry.nixpkgs.to = { type = "path"; path = nixpkgs.outPath; };
+          nixPath = nixpkgs.lib.mkForce [ "nixpkgs=flake:nixpkgs" ];
         };
+      }
 
+      lix-module.nixosModules.default
+
+      home-manager.darwinModules.home-manager
+      {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
           users.daniel = import ../../home/hosts/Styx.nix;
         };
       }
+
+      agenix.darwinModules.default
+
+      ../hosts/Styx.nix
     ];
   };
 }
