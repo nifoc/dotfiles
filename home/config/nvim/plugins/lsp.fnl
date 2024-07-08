@@ -62,6 +62,9 @@
     (when (= (vim.fn.executable :lexical) 1)
       (lsp.lexical.setup (->> {:cmd [:lexical :start]}
                               (vim.tbl_extend :force default-config))))
+    (when (= (vim.fn.executable :nextls) 1)
+      (lsp.nextls.setup (->> {:cmd [:nextls]}
+                             (vim.tbl_extend :force default-config))))
     (when (= (vim.fn.executable :lua-language-server) 1)
       (lsp.lua_ls.setup (->> {:cmd [:lua-language-server]
                               :root_dir (or (lsp.util.root_pattern :init.vim

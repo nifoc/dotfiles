@@ -30,15 +30,7 @@ in
       # LSP
       bash-language-server
       fennel-ls
-      #lexical
-      lua-language-server
-      marksman
       nil
-      nodePackages.dockerfile-language-server-nodejs
-      nodePackages.svelte-language-server
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
-      nodePackages.yaml-language-server
       #nixd
       taplo-lsp
 
@@ -52,7 +44,19 @@ in
       shellcheck
       statix
     ] ++ optionals isDarwin [
+      # LSP
       elixir-ls
+      #lexical
+      lua-language-server
+      marksman
+      #next-ls
+      nodePackages.dockerfile-language-server-nodejs
+      nodePackages.svelte-language-server
+      nodePackages.typescript-language-server
+      nodePackages.vscode-langservers-extracted
+      nodePackages.yaml-language-server
+
+      # Other
       xcbuild
     ];
 
@@ -161,12 +165,6 @@ in
         {
           plugin = vim-illuminate;
           config = builtins.readFile ../../config/nvim/plugins/illuminate.fnl;
-          type = "fennel";
-        }
-
-        {
-          plugin = otter-nvim;
-          config = builtins.readFile ../../config/nvim/plugins/otter.fnl;
           type = "fennel";
         }
 

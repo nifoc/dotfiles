@@ -26,7 +26,6 @@
 - src: onsails/lspkind.nvim
 - src: SmiteshP/nvim-navic
 - src: RRethy/vim-illuminate
-- src: jmbuhr/otter.nvim
 # Linter
 - src: mfussenegger/nvim-lint
 # Comments
