@@ -54,6 +54,7 @@
 - src: lukas-reineke/indent-blankline.nvim
 - src: lukas-reineke/virt-column.nvim
 - src: axieax/urlview.nvim
+- src: lewis6991/hover.nvim
 - src: lewis6991/gitsigns.nvim
 - src: sindrets/diffview.nvim
 - src: NeogitOrg/neogit

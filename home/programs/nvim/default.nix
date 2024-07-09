@@ -271,6 +271,12 @@ in
         }
 
         {
+          plugin = hover-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/hover.fnl;
+          type = "fennel";
+        }
+
+        {
           plugin = gitsigns-nvim;
           config = builtins.readFile ../../config/nvim/plugins/gitsigns.fnl;
           type = "fennel";

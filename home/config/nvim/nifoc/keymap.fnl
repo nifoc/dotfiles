@@ -7,6 +7,7 @@
       telescope-ivy (telescope-themes.get_ivy)
       telescope-dropdown (telescope-themes.get_dropdown)
       npairs (require :nvim-autopairs)
+      hover (require :hover)
       gitsigns (require :gitsigns)
       neogit (require :neogit)
       wk (require :which-key)
@@ -89,6 +90,9 @@
     (keymap.set :n :y "<Plug>(YankyYank)")
     (keymap.set :x :y "<Plug>(YankyYank)")
     (keymap.set :n "-" :<cmd>Oil<CR> {:desc "Open Oil"})
+    ;; hover.nvim
+    (keymap.set :n :K hover.hover {:desc "Show Documentation"})
+    (keymap.set :n :gK hover.hover_select {:desc "hover.nvim selection"})
     ;; Label
     (wk.register {:<leader>v {:name :+vcs}
                   :<leader>l {:name :+list/lsp}
@@ -116,9 +120,7 @@
                 {:buffer bufnr :desc "Find Definitions"})
     (keymap.set :n :<leader>lfi
                 #(telescope-builtin.lsp_implementations telescope-dropdown)
-                {:buffer bufnr :desc "Find Implementations"})
-    (keymap.set :n :K vim.lsp.buf.hover
-                {:buffer bufnr :desc "Show Documentation"}))
+                {:buffer bufnr :desc "Find Implementations"}))
 
   (fn mod.terminal-open [bufnr]
     (let [map-opts {:buffer bufnr}]
