@@ -40,7 +40,7 @@ in
   };
   wezterm-nvim = buildVimPlugin {
     pname = "wezterm.nvim";
-    version = "2024-06-02";
+    version = "2024-06-01";
     src = fetchFromGitHub {
       owner = "willothy";
       repo = "wezterm.nvim";
@@ -205,12 +205,12 @@ in
   };
   schemastore-nvim = buildVimPlugin {
     pname = "schemastore.nvim";
-    version = "2024-07-06";
+    version = "2024-07-10";
     src = fetchFromGitHub {
       owner = "b0o";
       repo = "schemastore.nvim";
-      rev = "a1be387e7c5d5f4f503515b170b79626a0644b4a";
-      sha256 = "00shnllgp4i6a8v3i1s8r6qq2k5fhqkrsc170fq2wprlxksblvw8";
+      rev = "2dedaa4d2eccee7d645b69b9f85a64bedd11d8a9";
+      sha256 = "0k10yp59qwj67agwj5sdfqr4fn6wvh9cfhgcyn3p0i0b3md1rwl0";
       fetchSubmodules = false;
     };
   };
@@ -414,7 +414,7 @@ in
   };
   oil-nvim = buildVimPlugin {
     pname = "oil.nvim";
-    version = "2024-07-07";
+    version = "2024-07-06";
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "oil.nvim";
