@@ -39,10 +39,12 @@
       (where t (t:find "^ngc%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^nix%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^nix-%w+%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^colmena%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^deploy%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^ssh%s")) {: title :icon " " :color colors.ssh}
       (where t (t:find "^scp%s")) {: title :icon " " :color colors.ssh}
       (where t (t:find "^et%s")) {: title :icon " " :color colors.et}
+      (where t (t:find "^just%s")) {: title :icon " " :color "#C87D57"}
       (where t (t:find :^ytdl)) {: title :icon " " :color "#FF0000"}
       (where t (t:find :^instagram-)) {: title :icon " " :color "#FB2179"}
       (where t (t:find "^gallery-dl%s"))
