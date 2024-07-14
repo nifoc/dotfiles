@@ -46,6 +46,7 @@ in
           "browser.ping-centre.telemetry" = false;
           "browser.newtabpage.activity-stream.feeds.telemetry" = false;
           "browser.newtabpage.activity-stream.telemetry" = false;
+          "dom.private-attribution.submission.enabled" = false;
 
           "app.shield.optoutstudies.enabled" = false;
           "app.normandy.enabled" = false;

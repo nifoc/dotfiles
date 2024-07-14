@@ -17,5 +17,9 @@
       owner = "mosquitto";
       group = "mosquitto";
     };
+
+    deye-mqtt-config = {
+      file = ./deye-mqtt/config.age;
+    };
   };
 }

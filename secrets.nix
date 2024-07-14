@@ -111,6 +111,8 @@ in
 
   "agenix/hosts/neon/mosquitto/passwordWeewxProxy.age".publicKeys = neon;
 
+  "agenix/hosts/neon/deye-mqtt/config.age".publicKeys = neon;
+
   # Styx
   "agenix/hosts/Styx/git/maintenance.age".publicKeys = [ user-daniel ];
 }
