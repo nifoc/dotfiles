@@ -9,7 +9,7 @@
           "home-manager"
         ],
         "nixpkgs": [
-          "nixos-unstable"
+          "nixpkgs"
         ],
         "systems": "systems"
       },
@@ -75,7 +75,7 @@
     "disko": {
       "inputs": {
         "nixpkgs": [
-          "nixos-unstable"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -307,7 +307,7 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "nixos-unstable"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -506,34 +506,18 @@
         "type": "github"
       }
     },
-    "nixos-unstable": {
+    "nixpkgs": {
       "locked": {
-        "lastModified": 1720890539,
-        "narHash": "sha256-1K32XHPcQBo8XdLDQNybfLQc9I8hqSZdjA/Ur3zW/io=",
+        "lastModified": 1720933452,
+        "narHash": "sha256-HJhBuKZcmZSrAXukaIus9SsXahIVuo4/zdAhxSJrSQ4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "19116ccf234e32acf133863d430506da68008550",
+        "rev": "3e7eb6610f8b7003416b2bffdd8865b85326db18",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "ref": "nixos-unstable-small",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs": {
-      "locked": {
-        "lastModified": 1720875497,
-        "narHash": "sha256-1Al1qDC8Q/s4viPq4ln8jfHWZxYl+Nb49dNFISFpqBY=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "b729601a9e6c459fd8884dea513af143111bed54",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -644,7 +628,6 @@
         "nifoc-overlay": "nifoc-overlay",
         "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",
-        "nixos-unstable": "nixos-unstable",
         "nixpkgs": "nixpkgs",
         "pre-commit-hooks-nix": "pre-commit-hooks-nix",
         "treefmt-nix": "treefmt-nix_2"

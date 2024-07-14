@@ -1,7 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     # nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     # Lix
@@ -31,7 +30,7 @@
 
     disko = {
       url = "github:nix-community/disko?ref=refs/tags/v1.3.0";
-      inputs.nixpkgs.follows = "nixos-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-darwin = {
@@ -41,7 +40,7 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixos-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -49,7 +48,7 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs = {
-        nixpkgs.follows = "nixos-unstable";
+        nixpkgs.follows = "nixpkgs";
         darwin.follows = "nix-darwin";
         home-manager.follows = "home-manager";
       };
@@ -93,37 +92,27 @@
           };
 
           tanker = import ./system/flakes/tanker.nix {
-            nixpkgs = inputs.nixos-unstable;
-
-            inherit (inputs) disko home-manager agenix attic;
+            inherit (inputs) nixpkgs disko home-manager agenix attic;
             inherit inputs;
           };
 
           mediaserver = import ./system/flakes/mediaserver.nix {
-            nixpkgs = inputs.nixos-unstable;
-
-            inherit (inputs) home-manager agenix;
+            inherit (inputs) nixpkgs home-manager agenix;
             inherit inputs;
           };
 
           argon = import ./system/flakes/argon.nix {
-            nixpkgs = inputs.nixos-unstable;
-
-            inherit (inputs) nixos-hardware home-manager agenix;
+            inherit (inputs) nixpkgs nixos-hardware home-manager agenix;
             inherit inputs;
           };
 
           neon = import ./system/flakes/neon.nix {
-            nixpkgs = inputs.nixos-unstable;
-
-            inherit (inputs) nixos-hardware home-manager agenix;
+            inherit (inputs) nixpkgs nixos-hardware home-manager agenix;
             inherit inputs;
           };
 
           adsb-antenna = import ./system/flakes/adsb-antenna.nix {
-            nixpkgs = inputs.nixos-unstable;
-
-            inherit (inputs) nixos-hardware home-manager;
+            inherit (inputs) nixpkgs nixos-hardware home-manager;
             inherit inputs;
           };
         in

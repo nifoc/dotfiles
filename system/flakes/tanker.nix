@@ -15,10 +15,6 @@ let
     config = {
       allowUnfree = true;
       allowBroken = true;
-
-      permittedInsecurePackages = [
-        "openssl-1.1.1t"
-      ];
     };
   };
 in
@@ -26,27 +22,30 @@ rec {
   system = nixpkgs.lib.nixosSystem {
     system = default-system;
     modules = [
-      disko.nixosModules.disko
-
-      ../hosts/tanker.nix
-
-      home-manager.nixosModules.home-manager
-
-      agenix.nixosModules.default
-
-      attic.nixosModules.atticd
-
       {
         nixpkgs = nixpkgsConfig;
-        nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
-        nix.registry.nixpkgs.flake = nixpkgs;
+        nix = {
+          registry.nixpkgs.to = { type = "path"; path = nixpkgs.outPath; };
+          nixPath = nixpkgs.lib.mkForce [ "nixpkgs=flake:nixpkgs" ];
+        };
+      }
 
+      disko.nixosModules.disko
+
+      home-manager.nixosModules.home-manager
+      {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
           users.daniel = import ../../home/hosts/tanker.nix;
         };
       }
+
+      agenix.nixosModules.default
+
+      attic.nixosModules.atticd
+
+      ../hosts/tanker.nix
     ];
   };
 
