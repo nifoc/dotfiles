@@ -205,12 +205,12 @@ in
   };
   schemastore-nvim = buildVimPlugin {
     pname = "schemastore.nvim";
-    version = "2024-07-11";
+    version = "2024-07-14";
     src = fetchFromGitHub {
       owner = "b0o";
       repo = "schemastore.nvim";
-      rev = "37274739232b6a888be7c6ca5f1a2d58510a9a84";
-      sha256 = "0r0a854z0glxjqk5g8jx55j5363vm1ldp39gssd0svj2lgqcajnk";
+      rev = "82db29c48789e6b61bd2ba78df8ffd7bf66470d9";
+      sha256 = "1naxg45x14lry3j0jcrispbx0inww0di3iqbvgm396sj0mvj31yp";
       fetchSubmodules = false;
     };
   };
@@ -282,12 +282,12 @@ in
   };
   nvim-cmp = buildVimPlugin {
     pname = "nvim-cmp";
-    version = "2024-06-08";
+    version = "2024-07-14";
     src = fetchFromGitHub {
       owner = "hrsh7th";
       repo = "nvim-cmp";
-      rev = "a110e12d0b58eefcf5b771f533fc2cf3050680ac";
-      sha256 = "0qn7yz2nqp1k5p337nys0d2sr34ybs52s8sx4gg9krl76l91zlgf";
+      rev = "7e348da6e5085ac447144a2ef4b637220ba27209";
+      sha256 = "08zsm2bgi03vw18bkvv4yx0qp5fqmjn2dr52p5046s11b05dhjh4";
       fetchSubmodules = false;
     };
   };
@@ -502,12 +502,12 @@ in
   };
   neogit = buildVimPlugin {
     pname = "neogit";
-    version = "2024-07-03";
+    version = "2024-07-14";
     src = fetchFromGitHub {
       owner = "NeogitOrg";
       repo = "neogit";
-      rev = "a20031fb5d7d12148764764059243135085e5c9b";
-      sha256 = "0wl0v9p6gwyrnpl74msdmfmkrrrqndn5pgczn998z0vnjm9vjic1";
+      rev = "e33089bb430201a16e5d64e8adc37b99c37e1469";
+      sha256 = "103dvsm5hrj02nzlwf1vqb17rmqpbjzc2b4wr91qrshv3afvz230";
       fetchSubmodules = false;
     };
   };
@@ -524,12 +524,12 @@ in
   };
   which-key-nvim = buildVimPlugin {
     pname = "which-key.nvim";
-    version = "2024-07-13";
+    version = "2024-07-14";
     src = fetchFromGitHub {
       owner = "folke";
       repo = "which-key.nvim";
-      rev = "30cf839c82bcc0f90be951f8834c256c1cdc295c";
-      sha256 = "1yfcq30lp72833604vv5y26iiggg7ny5a6n9g9awjr4jz9q4nfri";
+      rev = "f0e99d48f33193526fe66e699174670d5856b6b8";
+      sha256 = "1yczbj22xg61x3kq8z4p8krjaq0k793wffqbk8wzv9nikz233qxv";
       fetchSubmodules = false;
     };
   };
