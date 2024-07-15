@@ -28,6 +28,7 @@ in
     ../nixos/tailscale-router.nix
 
     ../nixos/container.nix
+    ../../container/deye
   ];
 
   system.stateVersion = "23.11";
