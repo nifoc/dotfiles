@@ -435,11 +435,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1721071092,
-        "narHash": "sha256-QfeTOpgAwZASzURS1NseJoy07XwhDeI13WSWEt6Odx0=",
+        "lastModified": 1721095291,
+        "narHash": "sha256-CoG4B/f59u6gyMABpCNTOQEn2LWW6BdumC4/9QLt9VA=",
         "ref": "refs/heads/master",
-        "rev": "80d9114501e15b0221c13f7c1313e59c5728ee5e",
-        "revCount": 892,
+        "rev": "cd9509f408085bd956ca6c3fcfb2f490f1e6f53f",
+        "revCount": 893,
         "type": "git",
         "url": "https://git.kempkens.io/daniel/nix-overlay"
       },
@@ -455,11 +455,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1720845312,
-        "narHash": "sha256-yPhAsJTpyoIPQZJGC8Fw8W2lAXyhLoTn+HP20bmfkfk=",
+        "lastModified": 1721086468,
+        "narHash": "sha256-OF642LVDj5Icr0tXlY9P54vna4OP10IMhIhhiKwIRpw=",
         "owner": "lnl7",
         "repo": "nix-darwin",
-        "rev": "5ce8503cf402cf76b203eba4b7e402bea8e44abc",
+        "rev": "7522a30d328f885d20c2815bd05eb711bc69644c",
         "type": "github"
       },
       "original": {
@@ -578,11 +578,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1720947413,
-        "narHash": "sha256-ggBNou+oqHtRdilA6iFmPABF07zW8FWns5dWIjhBlMM=",
+        "lastModified": 1721039874,
+        "narHash": "sha256-XANsG9GYHip8pxZpbqKf/YGv8tIa0xTh289Y+WNBNfw=",
         "owner": "nix-community",
         "repo": "poetry2nix",
-        "rev": "54083f90fdd45b20d092ba947c58f952f10bf501",
+        "rev": "d11c01e58587e5f21037ed6477465a7f26a32e27",
         "type": "github"
       },
       "original": {
