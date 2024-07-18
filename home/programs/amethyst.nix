@@ -41,8 +41,8 @@ let
       "com.eltima.elmedia-setapp"
       "com.jonny.mona"
       "com.kapeli.dash-setapp"
-      "com.monarch.macos"
       "com.sindresorhus.Dato-setapp"
+      "com.tapbots.Ivory"
     ];
 
     new-windows-to-main = false;

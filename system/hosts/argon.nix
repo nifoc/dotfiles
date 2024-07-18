@@ -28,7 +28,7 @@ in
 
     (import ../nixos/forgejo-runner.nix (args // { inherit secret; name = "argon"; tag = "ubuntu-latest-arm64"; nixTag = "arm64"; }))
 
-    ../nixos/tailscale.nix
+    ../nixos/tailscale-router.nix
     ../nixos/tailscale-nodns.nix
 
     ../nixos/unbound.nix

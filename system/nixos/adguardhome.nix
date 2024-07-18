@@ -47,8 +47,8 @@
             "fd00::/8"
             "fe80::/10"
 
-            "100.64.10.0/24"
-            "fd7a:115c:a1e0:1010::/64"
+            "100.64.0.0/10"
+            "fd7a:115c:a1e0::/96"
           ];
         };
       };
@@ -172,8 +172,8 @@
       useACMEHost = "internal.kempkens.network";
 
       extraConfig = ''
-        set_real_ip_from 100.64.10.2/32;
-        set_real_ip_from fd7a:115c:a1e0:1010::2/128;
+        set_real_ip_from 100.122.253.109/32;
+        set_real_ip_from fd7a:115c:a1e0::3a01:fd6d/128;
         real_ip_header X-Forwarded-For;
       '';
 

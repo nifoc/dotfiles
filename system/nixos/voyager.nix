@@ -9,7 +9,7 @@
   };
 
   services.nginx.virtualHosts."voyager.daniel.sx" = {
-    listenAddresses = [ "100.64.10.2" "[fd7a:115c:a1e0:1010::2]" ];
+    listenAddresses = [ "100.122.253.109" "[fd7a:115c:a1e0::3a01:fd6d]" ];
     quic = true;
     http3 = true;
 

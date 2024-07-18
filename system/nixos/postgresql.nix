@@ -23,7 +23,7 @@
     };
 
     authentication = ''
-      host all all 100.64.10.3/32 md5
+      host all all 100.64.0.0/10 md5
       host all all 10.88.0.0/16 md5
     '';
   };
