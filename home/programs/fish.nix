@@ -4,6 +4,7 @@ let
   inherit (pkgs) fetchFromGitHub;
   inherit (pkgs.stdenv) isDarwin;
   inherit (lib) optionals;
+  inherit (lib.attrsets) optionalAttrs;
 in
 {
 
@@ -69,6 +70,8 @@ in
       la = "${lib.getExe pkgs.eza} --long --all --group --header --group-directories-first --sort=type --icons";
       lg = "${lib.getExe pkgs.eza} --long --all --group --header --git";
       lt = "${lib.getExe pkgs.eza} --long --all --group --header --tree --level ";
+    } // optionalAttrs isDarwin {
+      tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
     };
 
     functions = {
