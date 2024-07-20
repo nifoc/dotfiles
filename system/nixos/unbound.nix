@@ -1,3 +1,5 @@
+{ lib, ... }:
+
 {
   services.unbound = {
     enable = true;
@@ -39,16 +41,17 @@
         ];
       };
 
-      forward-zone = [
-        # {
-        #   name = "10.64.100.in-addr.arpa.";
-        #   forward-addr = "100.100.100.100";
-        # }
-        #
-        # {
-        #   name = "0.1.0.1.0.e.1.a.c.5.1.1.a.7.d.f.ip6.arpa.";
-        #   forward-addr = "100.100.100.100";
-        # }
+      forward-zone = (builtins.map
+        (octet:
+          {
+            name = "${builtins.toString octet}.100.in-addr.arpa.";
+            forward-addr = "100.100.100.100";
+          })
+        (lib.range 64 127)) ++ [
+        {
+          name = "0.0.0.0.0.0.0.0.0.0.0.0.0.e.1.a.c.5.1.1.a.7.d.f.ip6.arpa.";
+          forward-addr = "100.100.100.100";
+        }
 
         {
           name = "in-addr.arpa.";
