@@ -10,7 +10,7 @@
 
   virtualisation.oci-containers.containers = {
     tubearchivist = {
-      image = "docker.io/bbilly1/tubearchivist:v0.4.8";
+      image = "docker.io/bbilly1/tubearchivist:v0.4.9";
       dependsOn = [ "archivist-es" "archivist-redis" ];
       ports = [ "127.0.0.1:9887:8000" ];
       environmentFiles = [ config.age.secrets.tubearchivist-environment-ta.path ];
