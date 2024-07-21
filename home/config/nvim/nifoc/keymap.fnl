@@ -94,9 +94,9 @@
     (keymap.set :n :K hover.hover {:desc "Show Documentation"})
     (keymap.set :n :gK hover.hover_select {:desc "hover.nvim selection"})
     ;; Label
-    (wk.register {:<leader>v {:name :+vcs}
-                  :<leader>l {:name :+list/lsp}
-                  :<leader>d {:name :+debug}}))
+    (wk.add [{1 :<leader>v :group :vcs}
+             {1 :<leader>l :group :list/lsp}
+             {1 :<leader>d :group :debug}]))
 
   (fn mod.lsp-attach [_client bufnr]
     (keymap.set :n :<leader>t
