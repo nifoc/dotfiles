@@ -17,6 +17,8 @@
       wal_init_zero = "off";
       wal_recycle = "off";
 
+      work_mem = "12MB";
+
       track_activities = "on";
       track_counts = "on";
       autovacuum = "on";
