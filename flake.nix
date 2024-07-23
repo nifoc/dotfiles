@@ -16,6 +16,11 @@
 
     flake-root.url = "github:srid/flake-root";
 
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -82,12 +87,13 @@
     };
   };
 
-  outputs = inputs@{ self, flake-parts, ... }:
+  outputs = inputs@{ flake-parts, lix-module, deploy-rs, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       flake =
         let
           Styx = import ./system/flakes/Styx.nix {
-            inherit (inputs) nixpkgs lix-module home-manager nix-darwin agenix;
+            inherit (inputs) nixpkgs home-manager nix-darwin agenix;
+            inherit lix-module;
             inherit inputs;
           };
 
@@ -98,6 +104,7 @@
 
           mediaserver = import ./system/flakes/mediaserver.nix {
             inherit (inputs) nixpkgs home-manager agenix;
+            inherit lix-module;
             inherit inputs;
           };
 
@@ -107,8 +114,8 @@
           };
 
           neon = import ./system/flakes/neon.nix {
-            inherit (inputs) nixpkgs nixos-hardware home-manager agenix;
-            inherit inputs;
+            inherit (inputs) nixpkgs nixos-hardware home-manager agenix neovim-nightly-overlay nifoc-overlay;
+            inherit lix-module;
           };
 
           adsb-antenna = import ./system/flakes/adsb-antenna.nix {
@@ -129,26 +136,20 @@
             adsb-antenna = adsb-antenna.system;
           };
 
-          colmena =
+          deploy.nodes =
             let
-              nixosConf = self.nixosConfigurations;
+              mkDeployConfig = node: node.deployment // {
+                profiles.system = {
+                  path = deploy-rs.lib.${node.arch}.activate.nixos node.system;
+                };
+              };
             in
             {
-              meta = {
-                # Since I'm only deploying from Styx ...
-                nixpkgs = import inputs.nixpkgs {
-                  system = "aarch64-darwin";
-                };
-
-                nodeNixpkgs = builtins.mapAttrs (_name: value: value.pkgs) nixosConf;
-                nodeSpecialArgs = builtins.mapAttrs (_name: value: value._module.specialArgs) nixosConf;
-              };
-
-              tanker = tanker.colmena;
-              mediaserver = mediaserver.colmena;
-              argon = argon.colmena;
-              neon = neon.colmena;
-              adsb-antenna = adsb-antenna.colmena;
+              tanker = mkDeployConfig tanker;
+              mediaserver = mkDeployConfig mediaserver;
+              argon = mkDeployConfig argon;
+              neon = mkDeployConfig neon;
+              adsb-antenna = mkDeployConfig adsb-antenna;
             };
         };
 
@@ -199,7 +200,7 @@
 
           packages = [
             inputs'.agenix.packages.agenix
-            pkgs.colmena
+            inputs'.deploy-rs.packages.default
             pkgs.nix-output-monitor
           ];
 

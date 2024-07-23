@@ -20,7 +20,9 @@ let
     };
   };
 in
-rec {
+{
+  arch = default-system;
+
   system = nixpkgs.lib.nixosSystem {
     system = default-system;
     modules = [
@@ -44,16 +46,13 @@ rec {
     ];
   };
 
-  colmena = {
-    deployment = {
-      targetHost = "adsb-antenna";
-      targetPort = 22;
-      targetUser = "root";
+  deployment = {
+    hostname = "adsb-antenna";
+    sshUser = "root";
+    remoteBuild = false;
+    autoRollback = false;
+    magicRollback = false;
 
-      tags = [ "home" "rpi4" ];
-    };
-
-    nixpkgs.system = default-system;
-    imports = system._module.args.modules;
+    activationTimeout = 600;
   };
 }

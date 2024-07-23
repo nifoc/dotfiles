@@ -18,7 +18,9 @@ let
     };
   };
 in
-rec {
+{
+  arch = default-system;
+
   system = nixpkgs.lib.nixosSystem {
     system = default-system;
     modules = [
@@ -49,17 +51,11 @@ rec {
     ];
   };
 
-  colmena = {
-    deployment = {
-      targetHost = "tanker";
-      targetPort = 22;
-      targetUser = "root";
-      buildOnTarget = true;
-
-      tags = [ "remote" ];
-    };
-
-    nixpkgs.system = default-system;
-    imports = system._module.args.modules;
+  deployment = {
+    hostname = "tanker";
+    sshUser = "root";
+    remoteBuild = true;
+    autoRollback = false;
+    magicRollback = false;
   };
 }

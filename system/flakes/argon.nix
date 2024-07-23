@@ -3,7 +3,6 @@
 let
   default-system = "aarch64-linux";
 
-
   nixpkgsConfig = {
     overlays = [
       inputs.neovim-nightly-overlay.overlays.default
@@ -14,13 +13,13 @@ let
       allowUnfree = true;
       allowBroken = true;
 
-      permittedInsecurePackages = [
-        "openssl-1.1.1t"
-      ];
+      permittedInsecurePackages = [ ];
     };
   };
 in
-rec {
+{
+  arch = default-system;
+
   system = nixpkgs.lib.nixosSystem {
     system = default-system;
     modules = [
@@ -46,17 +45,11 @@ rec {
     ];
   };
 
-  colmena = {
-    deployment = {
-      targetHost = "argon";
-      targetPort = 22;
-      targetUser = "root";
-      buildOnTarget = true;
-
-      tags = [ "home" "rpi4" ];
-    };
-
-    nixpkgs.system = default-system;
-    imports = system._module.args.modules;
+  deployment = {
+    hostname = "argon";
+    sshUser = "root";
+    remoteBuild = true;
+    autoRollback = false;
+    magicRollback = false;
   };
 }

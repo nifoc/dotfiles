@@ -1,61 +1,60 @@
-{ nixpkgs, nixos-hardware, home-manager, agenix, inputs, ... }:
+{ nixpkgs, lix-module, nixos-hardware, home-manager, agenix, neovim-nightly-overlay, nifoc-overlay }:
 
 let
   default-system = "aarch64-linux";
 
   nixpkgsConfig = {
     overlays = [
-      inputs.neovim-nightly-overlay.overlays.default
-      inputs.nifoc-overlay.overlay
+      neovim-nightly-overlay.overlays.default
+      nifoc-overlay.overlay
     ];
 
     config = {
       allowUnfree = true;
       allowBroken = true;
 
-      permittedInsecurePackages = [
-        "openssl-1.1.1t"
-      ];
+      permittedInsecurePackages = [ ];
     };
   };
 in
-rec {
+{
+  arch = default-system;
+
   system = nixpkgs.lib.nixosSystem {
     system = default-system;
     modules = [
-      ../hosts/neon.nix
+      {
+        nixpkgs = nixpkgsConfig;
+        nix = {
+          registry.nixpkgs.to = { type = "path"; path = nixpkgs.outPath; };
+          nixPath = nixpkgs.lib.mkForce [ "nixpkgs=flake:nixpkgs" ];
+        };
+      }
 
       nixos-hardware.nixosModules.raspberry-pi-4
 
+      lix-module.nixosModules.default
+
       home-manager.nixosModules.home-manager
-
-      agenix.nixosModules.default
-
       {
-        nixpkgs = nixpkgsConfig;
-        nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
-        nix.registry.nixpkgs.flake = nixpkgs;
-
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
           users.daniel = import ../../home/hosts/neon.nix;
         };
       }
+
+      agenix.nixosModules.default
+
+      ../hosts/neon.nix
     ];
   };
 
-  colmena = {
-    deployment = {
-      targetHost = "neon";
-      targetPort = 22;
-      targetUser = "root";
-      buildOnTarget = true;
-
-      tags = [ "home" "rpi4" ];
-    };
-
-    nixpkgs.system = default-system;
-    imports = system._module.args.modules;
+  deployment = {
+    hostname = "neon";
+    sshUser = "root";
+    remoteBuild = true;
+    autoRollback = false;
+    magicRollback = false;
   };
 }

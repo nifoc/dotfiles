@@ -35,7 +35,10 @@ if test "$other_hostname" = ""
     end
 else
     git pull
-    colmena apply --on $other_hostname -v
+    nom build --eval-store auto --store "ssh-ng://$other_hostname.ts.kempkens.network" ".#nixosConfigurations.$other_hostname.config.system.build.toplevel"
+    if test $status -eq 0
+        deploy --skip-checks ".#$other_hostname"
+    end
 end
 
 if test $status -eq 0
