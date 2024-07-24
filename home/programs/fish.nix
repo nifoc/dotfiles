@@ -62,7 +62,6 @@ in
     ];
 
     shellAliases = {
-      nrsw = "nixpkgs-switch";
       upa = "nix flake update ~/.config/nixpkgs -v && upn";
       ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
       nsr = "sudo nix-store --verify --check-contents --repair";
@@ -77,6 +76,37 @@ in
     functions = {
       base64decode = /* fish */ ''
         echo "$argv" | base64 --decode
+      '';
+
+      nrsw = /* fish */ ''
+        set -f os (uname)
+        set -f other_hostname $argv[1]
+
+        switch $os
+            case Darwin
+                set -f config_dir "$HOME/.config/nixpkgs"
+            case Linux
+                set -f config_dir /etc/nixos
+            case '*'
+                echo "Unsupported OS"
+                exit 1
+        end
+
+        pushd "$config_dir"
+        rm -rf result
+
+        if test -z "$DIRENV_DIR"
+            eval (direnv export fish 2>/dev/null)
+        end
+
+        if test "$other_hostname" = ""
+            just deploy-local-machine (hostname -s)
+        else
+            just deploy-remote-machine "$other_hostname"
+        end
+
+        rm -f result
+        popd
       '';
 
       upn = /* fish */ ''

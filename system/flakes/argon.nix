@@ -1,12 +1,12 @@
-{ nixpkgs, nixos-hardware, home-manager, agenix, inputs, ... }:
+{ nixpkgs, lix-module, nixos-hardware, home-manager, agenix, neovim-nightly-overlay, nifoc-overlay }:
 
 let
   default-system = "aarch64-linux";
 
   nixpkgsConfig = {
     overlays = [
-      inputs.neovim-nightly-overlay.overlays.default
-      inputs.nifoc-overlay.overlay
+      neovim-nightly-overlay.overlays.default
+      nifoc-overlay.overlay
     ];
 
     config = {
@@ -23,25 +23,30 @@ in
   system = nixpkgs.lib.nixosSystem {
     system = default-system;
     modules = [
-      ../hosts/argon.nix
+      {
+        nixpkgs = nixpkgsConfig;
+        nix = {
+          registry.nixpkgs.to = { type = "path"; path = nixpkgs.outPath; };
+          nixPath = nixpkgs.lib.mkForce [ "nixpkgs=flake:nixpkgs" ];
+        };
+      }
 
       nixos-hardware.nixosModules.raspberry-pi-4
 
+      lix-module.nixosModules.default
+
       home-manager.nixosModules.home-manager
-
-      agenix.nixosModules.default
-
       {
-        nixpkgs = nixpkgsConfig;
-        nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
-        nix.registry.nixpkgs.flake = nixpkgs;
-
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
           users.daniel = import ../../home/hosts/argon.nix;
         };
       }
+
+      agenix.nixosModules.default
+
+      ../hosts/argon.nix
     ];
   };
 

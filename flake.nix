@@ -109,8 +109,8 @@
           };
 
           argon = import ./system/flakes/argon.nix {
-            inherit (inputs) nixpkgs nixos-hardware home-manager agenix;
-            inherit inputs;
+            inherit (inputs) nixpkgs nixos-hardware home-manager agenix neovim-nightly-overlay nifoc-overlay;
+            inherit lix-module;
           };
 
           neon = import ./system/flakes/neon.nix {
@@ -201,6 +201,7 @@
           packages = [
             inputs'.agenix.packages.agenix
             inputs'.deploy-rs.packages.default
+            pkgs.just
             pkgs.nix-output-monitor
           ];
 

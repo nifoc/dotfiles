@@ -45,8 +45,6 @@ in
   system.stateVersion = "22.11";
 
   nix = {
-    package = pkgs.nixVersions.stable;
-
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
 
@@ -60,6 +58,7 @@ in
         "https://attic.cache.daniel.sx/nifoc-ci?priority=35"
         "https://nix-community.cachix.org?priority=50"
         "https://cache.garnix.io?priority=60"
+        "https://cache.lix.systems?priority=70"
       ];
 
       extra-trusted-public-keys = [
@@ -67,6 +66,7 @@ in
         "nifoc-ci:JpD9zqVQi8JuS7B8htPDOQZh08rhInMnGFS9RVhiuwk="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+        "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
       ];
 
       trusted-users = [
