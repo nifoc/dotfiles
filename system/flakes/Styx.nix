@@ -1,18 +1,16 @@
-{ nixpkgs, lix-module, home-manager, nix-darwin, agenix, inputs, ... }:
+{ nixpkgs, lix-module, home-manager, nix-darwin, agenix, neovim-nightly-overlay, nifoc-overlay }:
 
 let
   default-system = "aarch64-darwin";
 
   overlay-x86 = _: _: { pkgs-x86 = import nixpkgs { system = "x86_64-darwin"; }; };
-  overlay-mkalias = _: _: { inherit (inputs.mkalias.packages.${default-system}) mkalias; };
 
   nixpkgsConfig = {
     overlays = [
       overlay-x86
       agenix.overlays.default
-      inputs.neovim-nightly-overlay.overlays.default
-      inputs.nifoc-overlay.overlay
-      overlay-mkalias
+      neovim-nightly-overlay.overlays.default
+      nifoc-overlay.overlay
     ];
 
     config = {

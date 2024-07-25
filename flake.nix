@@ -26,8 +26,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    pre-commit-hooks-nix = {
-      url = "github:cachix/pre-commit-hooks.nix";
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -69,7 +69,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
-        git-hooks.follows = "pre-commit-hooks-nix";
+        git-hooks.follows = "git-hooks";
       };
     };
 
@@ -80,11 +80,6 @@
         flake-parts.follows = "flake-parts";
       };
     };
-
-    mkalias = {
-      url = "github:reckenrode/mkalias";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs@{ flake-parts, lix-module, deploy-rs, ... }:
@@ -92,9 +87,8 @@
       flake =
         let
           Styx = import ./system/flakes/Styx.nix {
-            inherit (inputs) nixpkgs home-manager nix-darwin agenix;
+            inherit (inputs) nixpkgs home-manager nix-darwin agenix neovim-nightly-overlay nifoc-overlay;
             inherit lix-module;
-            inherit inputs;
           };
 
           tanker = import ./system/flakes/tanker.nix {
@@ -156,7 +150,7 @@
       imports = [
         inputs.flake-root.flakeModule
         inputs.treefmt-nix.flakeModule
-        inputs.pre-commit-hooks-nix.flakeModule
+        inputs.git-hooks.flakeModule
       ];
 
       systems = [

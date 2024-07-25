@@ -63,8 +63,6 @@ in
   system.stateVersion = "22.11";
 
   nix = {
-    package = pkgs.nixVersions.stable;
-
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       extra-platforms = [ "aarch64-linux" ];
