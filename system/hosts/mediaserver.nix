@@ -19,9 +19,9 @@ in
     ../nixos/nginx-mediaserver.nix
     ../nixos/postgresql.nix
 
-    (import ../nixos/adguardhome.nix (args // { inherit secret; }))
-
     ../nixos/attic.nix
+
+    (import ../nixos/controld.nix (args // { podmanDNS = true; }))
 
     ../nixos/ddg.nix
 

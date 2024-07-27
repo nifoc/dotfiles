@@ -77,6 +77,8 @@ in
 
   "agenix/hosts/mediaserver/wireguard/config.age".publicKeys = mediaserver;
 
+  "agenix/hosts/mediaserver/controld/config.age".publicKeys = mediaserver;
+
   "agenix/hosts/mediaserver/tubearchivist/environmentTA.age".publicKeys = mediaserver;
 
   "agenix/hosts/mediaserver/tubearchivist/environmentES.age".publicKeys = mediaserver;
@@ -93,6 +95,8 @@ in
   "agenix/hosts/argon/acme/credentials.age".publicKeys = argon;
 
   "agenix/hosts/argon/cfdyndns/apiToken.age".publicKeys = argon;
+
+  "agenix/hosts/argon/controld/config.age".publicKeys = argon;
 
   "agenix/hosts/argon/forgejo-actions/token.age".publicKeys = argon;
 

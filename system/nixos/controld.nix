@@ -7,7 +7,7 @@
       startLimitIntervalSec = 5;
       startLimitBurst = 10;
       serviceConfig = {
-        ExecStart = "${pkgs.controld}/bin/ctrld run -vvvv";
+        ExecStart = "${pkgs.controld}/bin/ctrld run";
         WorkingDirectory = "/var/lib/controld";
         RestartSec = 120;
         LimitMEMLOCK = "infinity";

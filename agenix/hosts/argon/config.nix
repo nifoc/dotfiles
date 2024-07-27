@@ -10,12 +10,13 @@
       group = "acme";
     };
 
-    cfdyndns-api-token = {
-      file = ./cfdyndns/apiToken.age;
-    };
-
     tailscale-authkey = {
       file = ./tailscale/authkey.age;
+    };
+
+    controld-config = {
+      file = ./controld/config.age;
+      path = "/var/lib/controld/ctrld.toml";
     };
 
     adguardhome-sync-environment = {

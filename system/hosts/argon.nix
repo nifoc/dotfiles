@@ -19,12 +19,11 @@ in
     ../nixos/nginx.nix
     ../nixos/nginx-argon.nix
 
-    (import ../nixos/adguardhome.nix (args // { inherit secret; }))
-    #(import ../nixos/cfdyndns.nix (args // { inherit secret; }))
-
     ../nixos/attic.nix
 
     ../nixos/chrony.nix
+
+    (import ../nixos/controld.nix (args // { podmanDNS = false; }))
 
     (import ../nixos/forgejo-runner.nix (args // { inherit secret; name = "argon"; tag = "ubuntu-latest-arm64"; nixTag = "arm64"; }))
 
@@ -38,7 +37,6 @@ in
     ../nixos/weewx-proxy.nix
 
     ../nixos/container.nix
-    ../nixos/adguardhome-sync.nix
     ../nixos/homebridge.nix
   ];
 

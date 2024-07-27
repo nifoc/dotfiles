@@ -22,6 +22,11 @@
       file = ./wireguard/config.age;
     };
 
+    controld-config = {
+      file = ./controld/config.age;
+      path = "/var/lib/controld/ctrld.toml";
+    };
+
     tubearchivist-environment-ta = {
       file = ./tubearchivist/environmentTA.age;
     };
