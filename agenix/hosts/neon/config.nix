@@ -8,6 +8,11 @@
       file = ./tailscale/authkey.age;
     };
 
+    controld-config = {
+      file = ./controld/config.age;
+      path = "/var/lib/controld/ctrld.toml";
+    };
+
     forgejo-actions-token = {
       file = ./forgejo-actions/token.age;
     };

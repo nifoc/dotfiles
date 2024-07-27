@@ -107,6 +107,8 @@ in
 
   "agenix/hosts/neon/tailscale/authkey.age".publicKeys = neon;
 
+  "agenix/hosts/neon/controld/config.age".publicKeys = neon;
+
   "agenix/hosts/neon/forgejo-actions/token.age".publicKeys = neon;
 
   "agenix/hosts/neon/mosquitto/passwordWeewxProxy.age".publicKeys = neon;

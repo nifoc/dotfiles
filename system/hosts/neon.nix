@@ -19,6 +19,8 @@ in
 
     ../nixos/chrony.nix
 
+    (import ../nixos/controld.nix (args // { podmanDNS = true; }))
+
     (import ../nixos/forgejo-runner.nix (args // { inherit secret; name = "neon"; tag = "ubuntu-latest-arm64"; nixTag = "arm64"; }))
 
     ../nixos/mosquitto.nix
@@ -26,6 +28,9 @@ in
     ../nixos/rtl_433.nix
 
     ../nixos/tailscale-router.nix
+    ../nixos/tailscale-nodns.nix
+
+    ../nixos/unbound.nix
 
     ../nixos/container.nix
     ../../container/deye
