@@ -117,23 +117,23 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-07-27";
+    version = "2024-07-28";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "f97e0de0053df1cb3b9f74b9b1239acced1b7d9a";
-      sha256 = "1knkpbda65bv1n63nk0773gbxk9hwadcap6yaidfz3lwm1ad9ig4";
+      rev = "2d5133f67429f82547ea5fad33a0b1e7d4f78a1c";
+      sha256 = "0ij32nkljw7a2k0kadx077nxwlfxymjdk984ngna9fzjg21m9wwq";
       fetchSubmodules = false;
     };
   };
   rainbow-delimiters-nvim = buildVimPlugin {
     pname = "rainbow-delimiters.nvim";
-    version = "2024-07-24";
+    version = "2024-07-28";
     src = fetchFromGitHub {
       owner = "HiPhish";
       repo = "rainbow-delimiters.nvim";
-      rev = "960cce4eba798748baff3892a62f2c2b210fb76b";
-      sha256 = "1306xq5jp3k365cjz3yncj0zjvs4qx2x3zcm9glx19rrwpi0nryh";
+      rev = "a727bd368e70808125b7cf589328cc595faf3d5a";
+      sha256 = "1mbsw1gxcdi57lsmvlyx3i8wfcqphgpvi7b5rdbspb9blliqrhg8";
       fetchSubmodules = false;
     };
   };
