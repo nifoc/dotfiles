@@ -41,6 +41,7 @@ let
       "com.eltima.elmedia-setapp"
       "com.jonny.mona"
       "com.kapeli.dash-setapp"
+      "com.runningwithcrayons.Alfred"
       "com.sindresorhus.Dato-setapp"
       "com.tapbots.Ivory"
     ];

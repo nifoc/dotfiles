@@ -80,6 +80,11 @@
         flake-parts.follows = "flake-parts";
       };
     };
+
+    mkalias = {
+      url = "github:reckenrode/mkalias";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ flake-parts, lix-module, deploy-rs, ... }:
@@ -87,7 +92,7 @@
       flake =
         let
           Styx = import ./system/flakes/Styx.nix {
-            inherit (inputs) nixpkgs home-manager nix-darwin agenix neovim-nightly-overlay nifoc-overlay;
+            inherit (inputs) nixpkgs home-manager nix-darwin agenix neovim-nightly-overlay mkalias nifoc-overlay;
             inherit lix-module;
           };
 

@@ -13,6 +13,7 @@ in
     ../darwin/attic.nix
 
     ../darwin/mas.nix
+    ../darwin/fake-homebrew.nix
   ];
 
   nix = {
