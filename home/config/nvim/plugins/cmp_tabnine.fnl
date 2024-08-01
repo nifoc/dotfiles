@@ -10,9 +10,12 @@
                              :*.js
                              :*.jsx
                              :*.kt
+                             :*.lua
                              :*.php
                              :*.py
                              :*.rb
                              :*.ts
-                             :*.tsx]
+                             :*.tsx
+                             :*.yaml
+                             :*.yml]
                    :group augroup}))

@@ -6,8 +6,7 @@
     (let [maybe-tabnine (if (pcall require :cmp_tabnine.config)
                             [{:name :cmp_tabnine}]
                             [])]
-      (vim.list_extend (vim.list_extend [{:name :nvim_lsp} {:name :otter}]
-                                        maybe-tabnine)
+      (vim.list_extend (vim.list_extend [{:name :nvim_lsp}] maybe-tabnine)
                        [{:name :async_path} {:name :luasnip}])))
 
   (fn comparator-list []
@@ -82,7 +81,6 @@
                                            kind (kind-fn entry vim-item)
                                            strings (vim.split kind.kind "%s"
                                                               {:trimempty true})]
-                                       ;(set kind.dup 0)
                                        (if (= entry.source.name :cmp_tabnine)
                                            (do
                                              (set kind.kind " 󱜚 ")
@@ -103,8 +101,7 @@
                                              (set kind.menu
                                                   (.. "    ("
                                                       (or (. strings 2) "") ")"))))
-                                       kind))}
-              :experimental {:ghost_text true}})
+                                       kind))}})
   (cmp.setup.cmdline "/"
                      {:sources (cmp.config.sources [{:name :nvim_lsp_document_symbol}]
                                                    [{:name :buffer}])
