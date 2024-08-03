@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-08-01";
+    version = "2024-08-02";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "d13f0183ba93f9b5aba7359146f294abfffff9c3";
-      sha256 = "1gzdd0nhcvs1wd1d12krlmzs24c534aw2nnkwpdl09lbxb221lf9";
+      rev = "09bad640e4507885fa0e7035348c7854c531b3d6";
+      sha256 = "1rlwq5abj388nbkanq5rz65g5cppfppv1h3drli5qrrli147zxq5";
       fetchSubmodules = false;
     };
   };
@@ -183,12 +183,12 @@ in
   };
   nvim-lspconfig = buildVimPlugin {
     pname = "nvim-lspconfig";
-    version = "2024-08-01";
+    version = "2024-08-02";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "e9b1c95d29ca9e479fc39896b31d24eed96b40a3";
-      sha256 = "0b07mami0qapbyqlvsv6v1ivw5dsa95qg05rif9xnw3i5rxfy8r2";
+      rev = "e6528f4613c8db2e04be908eb2b5886d63f62a98";
+      sha256 = "0b4p41kv6m0hi1rh2z0711s8mklrnjsdddx9fgvmjm2ajh3qcfh3";
       fetchSubmodules = false;
     };
   };
@@ -396,8 +396,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "115e3f13b1891ffd61bd18ba1b9353b28fd667ff";
-      sha256 = "16hswcqq5fk3nibmdlj0azm5pq867h9f73f6lglajq4l6mg766vv";
+      rev = "48128953949b51235ccada535f021a505fdaf3df";
+      sha256 = "0lg6q10dpgk7srwbc5aq8xgqyg1zx330k3cws9s36f2nq9zwr7id";
       fetchSubmodules = false;
     };
   };
@@ -480,12 +480,12 @@ in
   };
   gitsigns-nvim = buildVimPlugin {
     pname = "gitsigns.nvim";
-    version = "2024-07-25";
+    version = "2024-08-02";
     src = fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "f074844b60f9e151970fbcdbeb8a2cd52b6ef25a";
-      sha256 = "07q5mh82p9y6h047xifj0fpan6ny6cb56y4ghymrvq1ziahi0xcw";
+      rev = "0ed466953fe5885166e0d60799172a8b1f752d16";
+      sha256 = "10g0yh94gd65mg70pg3qalp47clzg2py9c7gqglsm5y256rvc4ns";
       fetchSubmodules = false;
     };
   };
