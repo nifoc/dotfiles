@@ -36,8 +36,6 @@ in
     ../nixos/forgejo.nix
     (import ../nixos/forgejo-runner.nix (args // { inherit secret; name = "tanker"; tag = "ubuntu-latest-amd64"; nixTag = "amd64"; }))
 
-    ../nixos/headscale.nix
-
     (import ../nixos/home-proxy.nix (args // { inherit secret; }))
 
     ../nixos/invidious.nix

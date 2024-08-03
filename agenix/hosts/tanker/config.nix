@@ -37,17 +37,17 @@
       file = ./forgejo-actions/token.age;
     };
 
-    headscale-database-password = {
-      file = ./headscale/dbPassword.age;
-      owner = "headscale";
-      group = "headscale";
-    };
-
-    headscale-acls = {
-      file = ./headscale/acls.age;
-      owner = "headscale";
-      group = "headscale";
-    };
+    # headscale-database-password = {
+    #   file = ./headscale/dbPassword.age;
+    #   owner = "headscale";
+    #   group = "headscale";
+    # };
+    #
+    # headscale-acls = {
+    #   file = ./headscale/acls.age;
+    #   owner = "headscale";
+    #   group = "headscale";
+    # };
 
     linkding-environment = {
       file = ./linkding/environment.age;
