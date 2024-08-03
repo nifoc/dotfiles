@@ -25,9 +25,14 @@
           acl = [ "write deye/#" ];
         };
 
+        bitshake = {
+          password = "didYouFindThis";
+          acl = [ "write bitshake/#" ];
+        };
+
         weewx-proxy = {
           hashedPasswordFile = config.age.secrets.mosquitto-password-weewx-proxy.path;
-          acl = [ "read deye/#" ];
+          acl = [ "read deye/#" "read bitshake/#" ];
         };
       };
     }
@@ -39,6 +44,7 @@
     in
     {
       "end0".allowedTCPPorts = mosquittoPorts;
+      "vlan51".allowedTCPPorts = mosquittoPorts;
       "podman+".allowedTCPPorts = mosquittoPorts;
     };
 }
