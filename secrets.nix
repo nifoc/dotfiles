@@ -100,6 +100,10 @@ in
 
   "agenix/hosts/argon/forgejo-actions/token.age".publicKeys = argon;
 
+  "agenix/hosts/argon/mosquitto/passwordWeewxProxy.age".publicKeys = argon;
+
+  "agenix/hosts/argon/mosquitto/passwordHomeAssistant.age".publicKeys = argon;
+
   "agenix/hosts/argon/tailscale/authkey.age".publicKeys = argon;
 
   "agenix/hosts/argon/adguardhome-sync/environment.age".publicKeys = argon;
@@ -116,6 +120,8 @@ in
   "agenix/hosts/neon/forgejo-actions/token.age".publicKeys = neon;
 
   "agenix/hosts/neon/mosquitto/passwordWeewxProxy.age".publicKeys = neon;
+
+  "agenix/hosts/neon/mosquitto/passwordHomeAssistant.age".publicKeys = neon;
 
   "agenix/hosts/neon/deye-mqtt/config.age".publicKeys = neon;
 

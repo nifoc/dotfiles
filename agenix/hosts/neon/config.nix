@@ -23,6 +23,12 @@
       group = "mosquitto";
     };
 
+    mosquitto-password-home-assistant = {
+      file = ./mosquitto/passwordHomeAssistant.age;
+      owner = "mosquitto";
+      group = "mosquitto";
+    };
+
     deye-mqtt-config = {
       file = ./deye-mqtt/config.age;
     };

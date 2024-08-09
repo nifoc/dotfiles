@@ -17,7 +17,50 @@
     };
   };
 
-  networking.firewall.interfaces."vlan51" = {
-    allowedTCPPorts = [ 4040 ];
-  };
+  services.mosquitto.listeners = [
+    {
+      address = "0.0.0.0";
+      port = 1883;
+
+      settings = {
+        protocol = "mqtt";
+      };
+
+      users = {
+        rtl = {
+          password = "didYouFindThis";
+          acl = [ "write rtl433" ];
+        };
+
+        deye = {
+          password = "didYouFindThis";
+          acl = [ "write deye/#" ];
+        };
+
+        bitshake = {
+          password = "didYouFindThis";
+          acl = [ "write bitshake/#" ];
+        };
+
+        weewx-proxy = {
+          hashedPasswordFile = config.age.secrets.mosquitto-password-weewx-proxy.path;
+          acl = [ "read rtl433" "read deye/#" "read bitshake/#" ];
+        };
+
+        home-assistant = {
+          passwordFile = config.age.secrets.mosquitto-password-home-assistant.path;
+          acl = [ "readwrite #" ];
+        };
+      };
+    }
+  ];
+
+  networking.firewall.interfaces =
+    let
+      mosquittoPorts = [ 1883 ];
+    in
+    {
+      "end0".allowedTCPPorts = mosquittoPorts;
+      "vlan51".allowedTCPPorts = [ 4040 ] ++ mosquittoPorts;
+    };
 }

@@ -23,8 +23,6 @@ in
 
     (import ../nixos/forgejo-runner.nix (args // { inherit secret; name = "neon"; tag = "ubuntu-latest-arm64"; nixTag = "arm64"; }))
 
-    ../nixos/mosquitto.nix
-
     ../nixos/rtl_433.nix
 
     ../nixos/tailscale-router.nix

@@ -27,6 +27,18 @@
       file = ./forgejo-actions/token.age;
     };
 
+    mosquitto-password-weewx-proxy = {
+      file = ./mosquitto/passwordWeewxProxy.age;
+      owner = "mosquitto";
+      group = "mosquitto";
+    };
+
+    mosquitto-password-home-assistant = {
+      file = ./mosquitto/passwordHomeAssistant.age;
+      owner = "mosquitto";
+      group = "mosquitto";
+    };
+
     weewx-proxy-environment = {
       file = ./weewx-proxy/environment.age;
     };
