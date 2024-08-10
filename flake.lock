@@ -497,11 +497,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1723255302,
-        "narHash": "sha256-UjBgvrE/IhNxumED2uqXBrviEVOYpmitA0xiD7ONFxI=",
+        "lastModified": 1723285809,
+        "narHash": "sha256-xRedVj05KtR7d1QyOqFYR3jeLnv5dixvFWeYZp9Xme4=",
         "ref": "refs/heads/master",
-        "rev": "240996f427a888866b699f64a75f2c995f835a0a",
-        "revCount": 924,
+        "rev": "bf10d8a9187caf42c86ad1ba54c782b24461b2d5",
+        "revCount": 925,
         "type": "git",
         "url": "https://git.kempkens.io/daniel/nix-overlay"
       },
@@ -570,11 +570,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1723232966,
-        "narHash": "sha256-mz2aBTzGDkXeby7slDtzlfheVrNTwBBiEV7t0A0LpXI=",
+        "lastModified": 1723274555,
+        "narHash": "sha256-gDCMNBju0BwYHUPp6RVVnqE0VnbXl53VMk21OT9fkFw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "23cbcfad3b2096470e5ab1faada54f1c4147f6e2",
+        "rev": "33c40979a7ccf487d6c0e1a420ecf8e4ac2b676e",
         "type": "github"
       },
       "original": {
