@@ -44,7 +44,7 @@
 
         weewx-proxy = {
           hashedPasswordFile = config.age.secrets.mosquitto-password-weewx-proxy.path;
-          acl = [ "read rtl433" "read deye/#" "read bitshake/#" ];
+          acl = [ "read rtl433" "read deye/#" "read bitshake/#" "write hadata/#" ];
         };
 
         home-assistant = {

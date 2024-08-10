@@ -17,17 +17,17 @@
       file = ./forgejo-actions/token.age;
     };
 
-    mosquitto-password-weewx-proxy = {
-      file = ./mosquitto/passwordWeewxProxy.age;
-      owner = "mosquitto";
-      group = "mosquitto";
-    };
-
-    mosquitto-password-home-assistant = {
-      file = ./mosquitto/passwordHomeAssistant.age;
-      owner = "mosquitto";
-      group = "mosquitto";
-    };
+    # mosquitto-password-weewx-proxy = {
+    #   file = ./mosquitto/passwordWeewxProxy.age;
+    #   owner = "mosquitto";
+    #   group = "mosquitto";
+    # };
+    #
+    # mosquitto-password-home-assistant = {
+    #   file = ./mosquitto/passwordHomeAssistant.age;
+    #   owner = "mosquitto";
+    #   group = "mosquitto";
+    # };
 
     deye-mqtt-config = {
       file = ./deye-mqtt/config.age;
