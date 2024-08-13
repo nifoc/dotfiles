@@ -6,7 +6,7 @@
     # Lix
 
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -44,7 +44,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager?rev=587fcca66e9d11c8e2357053c096a8a727c120ab";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
