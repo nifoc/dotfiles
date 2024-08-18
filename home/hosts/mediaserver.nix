@@ -35,7 +35,6 @@
       mtr
       parallel
       q
-      rexit
       ripgrep
     ];
   };

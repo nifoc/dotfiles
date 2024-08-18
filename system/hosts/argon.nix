@@ -39,7 +39,6 @@ in
     ../nixos/weewx-proxy.nix
 
     ../nixos/container.nix
-    ../nixos/homebridge.nix
   ];
 
   system.stateVersion = "22.11";
