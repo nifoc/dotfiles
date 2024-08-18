@@ -9,8 +9,8 @@ let
       domain = "git.kempkens.io";
       owner = "daniel";
       repo = "kempkens.io";
-      rev = "3d351cb5d5c32fc1f7e97af45846c977e16f39bf";
-      hash = "sha256-83tTDWJCbg5CEXjXiH+dpmBu/4pQsjHBOVMj4j7nsWc=";
+      rev = "da5e8119f0228f0fbffc06193f17b8148229affb";
+      hash = "sha256-F/i8ADHTEZZurrs0QFCvP/wBhz0im2jDXErg8sImlAI=";
       fetchSubmodules = true;
     };
 
