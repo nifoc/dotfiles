@@ -31,6 +31,7 @@
       curlHTTP3
       discordchatexporter-cli
       discord-downloader-go
+      instaloader
       lnav
       mtr
       parallel
