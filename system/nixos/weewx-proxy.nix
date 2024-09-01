@@ -17,43 +17,55 @@
     };
   };
 
-  services.mosquitto.listeners = [
-    {
-      address = "0.0.0.0";
-      port = 1883;
+  services.mosquitto = {
+    listeners = [
+      {
+        address = "0.0.0.0";
+        port = 1883;
 
+        settings = {
+          protocol = "mqtt";
+        };
+
+        users = {
+          rtl = {
+            password = "didYouFindThis";
+            acl = [ "write rtl433" ];
+          };
+
+          deye = {
+            password = "didYouFindThis";
+            acl = [ "write deye/#" ];
+          };
+
+          bitshake = {
+            password = "didYouFindThis";
+            acl = [ "write bitshake/#" ];
+          };
+
+          weewx-proxy = {
+            hashedPasswordFile = config.age.secrets.mosquitto-password-weewx-proxy.path;
+            acl = [ "read rtl433" "read deye/#" "read bitshake/#" "write hadata/#" ];
+          };
+
+          home-assistant = {
+            passwordFile = config.age.secrets.mosquitto-password-home-assistant.path;
+            acl = [ "readwrite #" ];
+          };
+        };
+      }
+    ];
+
+    bridges.home-assistant = {
+      addresses = [{ address = "10.0.0.230"; port = 1883; }];
       settings = {
-        protocol = "mqtt";
+        remote_username = "mqtt_bridge";
+        remote_password = "verySecurePassword";
+        try_private = true;
       };
-
-      users = {
-        rtl = {
-          password = "didYouFindThis";
-          acl = [ "write rtl433" ];
-        };
-
-        deye = {
-          password = "didYouFindThis";
-          acl = [ "write deye/#" ];
-        };
-
-        bitshake = {
-          password = "didYouFindThis";
-          acl = [ "write bitshake/#" ];
-        };
-
-        weewx-proxy = {
-          hashedPasswordFile = config.age.secrets.mosquitto-password-weewx-proxy.path;
-          acl = [ "read rtl433" "read deye/#" "read bitshake/#" "write hadata/#" ];
-        };
-
-        home-assistant = {
-          passwordFile = config.age.secrets.mosquitto-password-home-assistant.path;
-          acl = [ "readwrite #" ];
-        };
-      };
-    }
-  ];
+      topics = [ "hadata/# out" "deye/# out" ];
+    };
+  };
 
   networking.firewall.interfaces =
     let
