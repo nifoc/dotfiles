@@ -40,7 +40,7 @@ in
   };
   wezterm-nvim = buildVimPlugin {
     pname = "wezterm.nvim";
-    version = "2024-06-01";
+    version = "2024-06-02";
     src = fetchFromGitHub {
       owner = "willothy";
       repo = "wezterm.nvim";
@@ -359,7 +359,7 @@ in
   };
   conform-nvim = buildVimPlugin {
     pname = "conform.nvim";
-    version = "2024-08-30";
+    version = "2024-08-31";
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "conform.nvim";
@@ -379,24 +379,13 @@ in
       fetchSubmodules = false;
     };
   };
-  vim-matchup = buildVimPlugin {
-    pname = "vim-matchup";
-    version = "2024-05-29";
-    src = fetchFromGitHub {
-      owner = "andymass";
-      repo = "vim-matchup";
-      rev = "1535a769d5dca851fe7d41b0be95f7c7203a4bef";
-      sha256 = "0vw4fwyzkhg0fqavp90mq5smh95qcksjbld7cfpyrzqcj678h3fk";
-      fetchSubmodules = false;
-    };
-  };
   nvim-treesitter-textobjects = buildVimPlugin {
     pname = "nvim-treesitter-textobjects";
-    version = "2024-08-30";
+    version = "2024-09-04";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "3a3c6244553f13fdd92d312c82722b57ce6c4bec";
+      rev = "fe3deb7f67ce0cc4ebfe2ea6c1c7ae1c7a939d73";
       sha256 = "1p1y1fswkgwrc719lzn5if97zp4qnghjbyiirkc3j48h1ngv1ilk";
       fetchSubmodules = false;
     };
