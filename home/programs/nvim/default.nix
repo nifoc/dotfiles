@@ -218,12 +218,6 @@ in
           type = "fennel";
         }
 
-        {
-          plugin = vim-matchup;
-          config = builtins.readFile ../../config/nvim/plugins/matchup.fnl;
-          type = "fennel";
-        }
-
         # Textobjects
         nvim-treesitter-textobjects
 
