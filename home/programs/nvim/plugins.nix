@@ -40,7 +40,7 @@ in
   };
   wezterm-nvim = buildVimPlugin {
     pname = "wezterm.nvim";
-    version = "2024-06-02";
+    version = "2024-06-01";
     src = fetchFromGitHub {
       owner = "willothy";
       repo = "wezterm.nvim";
@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-09-03";
+    version = "2024-09-04";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "5b8b126de02ebfd92e46ed5986b3e58e870b85de";
-      sha256 = "1hjlp608mc4lpgf835brq3cg393v1nhss43jh4mn921qimmafnxg";
+      rev = "3826d0c42ac635f560479b5b6ab522f6627a3466";
+      sha256 = "1sjb5aqkb28843i9rgzs3cmfdwhryhp44h7z1vkcb1nrjbhdh3g9";
       fetchSubmodules = false;
     };
   };
@@ -205,12 +205,12 @@ in
   };
   schemastore-nvim = buildVimPlugin {
     pname = "schemastore.nvim";
-    version = "2024-09-02";
+    version = "2024-09-05";
     src = fetchFromGitHub {
       owner = "b0o";
       repo = "schemastore.nvim";
-      rev = "c97985bbe5a0988767216f9b54a8e05d70ce8505";
-      sha256 = "0agrd4zphvslzljvwvk1h9rssfqy0gwm12plsxq8d391ky8y84gl";
+      rev = "fe8b332804c77c810243494406e3e8014f338009";
+      sha256 = "120bjjghfyhy6g1jvjjwq9s4c6x7dr6c7c6rs0ciq5gm472is7kb";
       fetchSubmodules = false;
     };
   };
@@ -359,7 +359,7 @@ in
   };
   conform-nvim = buildVimPlugin {
     pname = "conform.nvim";
-    version = "2024-08-31";
+    version = "2024-08-30";
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "conform.nvim";
@@ -469,12 +469,12 @@ in
   };
   gitsigns-nvim = buildVimPlugin {
     pname = "gitsigns.nvim";
-    version = "2024-08-28";
+    version = "2024-09-04";
     src = fetchFromGitHub {
       owner = "lewis6991";
       repo = "gitsigns.nvim";
-      rev = "899e993850084ea33d001ec229d237bc020c19ae";
-      sha256 = "0hqr50w7y462wdwqkysnr446gvr5s8klf9kfs1wrscchdirlfbkp";
+      rev = "1ef74b546732f185d0f806860fa5404df7614f28";
+      sha256 = "1i1frmz9i65ivkkvb5rawwlr74xhxby2pp1chs443lymw9kbqz5k";
       fetchSubmodules = false;
     };
   };
