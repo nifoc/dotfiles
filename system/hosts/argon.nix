@@ -189,6 +189,30 @@ in
 
   services.hardware.argonone.enable = true;
 
+  power.ups = {
+    enable = true;
+    mode = "standalone";
+    openFirewall = true;
+
+    ups.primary = {
+      description = "APC Back-UPS BX - BX950U-GR";
+      driver = "usbhid-ups";
+      port = "auto";
+    };
+
+    users.upsmon = {
+      passwordFile = config.age.secrets.ups-primary-password.path;
+      upsmon = "primary";
+    };
+
+    upsd.listen = [
+      { address = "127.0.0.1"; }
+      { address = "10.0.0.5"; }
+    ];
+
+    upsmon.monitor.primary.user = "upsmon";
+  };
+
   programs = {
     fish.enable = true;
     zsh.enable = true;

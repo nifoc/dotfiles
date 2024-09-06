@@ -39,6 +39,10 @@
       group = "mosquitto";
     };
 
+    ups-primary-password = {
+      file = ./ups/primaryPassword.age;
+    };
+
     weewx-proxy-environment = {
       file = ./weewx-proxy/environment.age;
     };
