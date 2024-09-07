@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-09-05";
+    version = "2024-09-06";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "bfe74a4899882a4ef45abb80813f14644a110a34";
-      sha256 = "16226i6ls2cg9i0km40v5p3hczn0c5axfpf2srqp62nms1v0xrh2";
+      rev = "ccbaee59547425ef8b766433a6020ac191f3151f";
+      sha256 = "1hy3msc8ndajzszbwq3mgby66bn4rzmjf3gww7nrn19g32vhpk0v";
       fetchSubmodules = false;
     };
   };
