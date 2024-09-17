@@ -37,6 +37,7 @@ in
     ../nixos/uptime-kuma.nix
 
     ../nixos/weewx-proxy.nix
+    ../nixos/temper.nix
 
     ../nixos/container.nix
   ];
