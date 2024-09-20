@@ -16,6 +16,9 @@ in
     ../darwin/fake-homebrew.nix
   ];
 
+  system.stateVersion = 5;
+  ids.gids.nixbld = 30000;
+
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
