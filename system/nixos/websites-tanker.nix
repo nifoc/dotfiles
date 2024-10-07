@@ -32,14 +32,14 @@ let
 
   blog-kempkens-io = pkgs.stdenvNoCC.mkDerivation {
     pname = "website-blog-kempkens-io";
-    version = "2023-09-18";
+    version = "2024-10-05";
 
     src = pkgs.fetchFromGitea {
       domain = "git.kempkens.io";
       owner = "daniel";
       repo = "blog.kempkens.io";
-      rev = "781c9479051ec7a096a36f51b96030b8cd49b165";
-      hash = "sha256-H/To8dcbEbYklpZAr5mQxAjneNd7vPsNBhfeocJ9amo=";
+      rev = "4b38edfc4f2b606f001ae046a84bd46fc9e4078e";
+      hash = "sha256-VaJxlCix8JoQViC5PHZMlEpsqkjgRQNRUcIXQxs9JWk=";
       fetchSubmodules = true;
     };
 
