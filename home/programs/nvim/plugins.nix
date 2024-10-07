@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-10-05";
+    version = "2024-10-06";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "7821feb7e7d55a76b7ffeeb6b0bfb7b8f499ce94";
-      sha256 = "0vsm2177gbfg98vvshr6agm5h45drciv9nws27s4lrcjvqpxi5lc";
+      rev = "4f04fb7027ce786ac4adfd1c629ca40aea96ffec";
+      sha256 = "1vf5d7z98jxzl1r1ncl239nmkdnn023qszwcywrcrz0mgnf4giya";
       fetchSubmodules = false;
     };
   };
@@ -187,8 +187,8 @@ in
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "d78f318d71d504b183ea9db26907eab740e06dd6";
-      sha256 = "1dx9dh4gba59fgigcra80pksr5jcp7g02d8psmqkajywb2w97ya1";
+      rev = "cc5f97f4ee5f9f5ef9d98e9f7135dfada5c3794f";
+      sha256 = "1ydqdnyvxvgh8f21rvjld3ic533d9g3w4x0ahh29lsra8carb4fr";
       fetchSubmodules = false;
     };
   };
@@ -381,12 +381,12 @@ in
   };
   nvim-treesitter-textobjects = buildVimPlugin {
     pname = "nvim-treesitter-textobjects";
-    version = "2024-09-27";
+    version = "2024-10-06";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter-textobjects";
-      rev = "4a2d05ec24eaa6b655c7d19092a3b6c0219d46b9";
-      sha256 = "1a41b8klxz9rassb2v2ij74d719knj2c4zxi3ppkr1m5l533lnzc";
+      rev = "b91c98afa6c42819aea6cbc1ba38272f5456a5cf";
+      sha256 = "08chzl9943657f7mp8f83k95cic14br0d8n9233nj17fng0k127v";
       fetchSubmodules = false;
     };
   };
@@ -425,12 +425,12 @@ in
   };
   indent-blankline-nvim = buildVimPlugin {
     pname = "indent-blankline.nvim";
-    version = "2024-10-04";
+    version = "2024-10-07";
     src = fetchFromGitHub {
       owner = "lukas-reineke";
       repo = "indent-blankline.nvim";
-      rev = "3af6493bf69e4a857a8b1fab36f333629d413a18";
-      sha256 = "0dd8q75fjd0z4xq1l6k2h44bqf1hj798ss4kpbchs3slrblb2mx0";
+      rev = "e7a4442e055ec953311e77791546238d1eaae507";
+      sha256 = "1w02a7vz8cxmfnspgqkkp5rih01av0z7wpb78b8f7xhkp24mmarq";
       fetchSubmodules = false;
     };
   };
