@@ -11,8 +11,8 @@ let
         tangerine-ui = pkgs.fetchFromGitHub {
           owner = "nileane";
           repo = "TangerineUI-for-Mastodon";
-          rev = "v1.9.5";
-          hash = "sha256-PXcQZ6MQVfqVk/h39aJqWBi0V7jfqVHK0y4gLfG+UdE=";
+          rev = "v2.1";
+          hash = "sha256-7B5rdiAJmMf5f/HwCU1nTNSu40F4Y6aISQkLMH1JGGE=";
         };
       in
       {
@@ -25,6 +25,8 @@ let
 
           echo "tangerineui: styles/tangerineui.scss" >>$PWD/config/themes.yml
           echo "tangerineui-purple: styles/tangerineui-purple.scss" >>$PWD/config/themes.yml
+          echo "tangerineui-cherry: styles/tangerineui-cherry.scss" >>$PWD/config/themes.yml
+          echo "tangerineui-lagoon: styles/tangerineui-lagoon.scss" >>$PWD/config/themes.yml
         '';
       });
 
@@ -34,9 +36,13 @@ let
       # Make theme available
       echo "tangerineui: styles/tangerineui.scss" >>$PWD/config/themes.yml
       echo "tangerineui-purple: styles/tangerineui-purple.scss" >>$PWD/config/themes.yml
+      echo "tangerineui-cherry: styles/tangerineui-cherry.scss" >>$PWD/config/themes.yml
+      echo "tangerineui-lagoon: styles/tangerineui-lagoon.scss" >>$PWD/config/themes.yml
 
       yq -i '.en.themes.tangerineui = "Tangerine UI"' $PWD/config/locales/en.yml
       yq -i '.en.themes.tangerineui-purple = "Tangerine UI (Purple)"' $PWD/config/locales/en.yml
+      yq -i '.en.themes.tangerineui-cherry = "Tangerine UI (Cherry)"' $PWD/config/locales/en.yml
+      yq -i '.en.themes.tangerineui-lagoon = "Tangerine UI (Lagoon)"' $PWD/config/locales/en.yml
     '';
   });
 in
