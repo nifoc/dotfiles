@@ -491,12 +491,12 @@ in
   };
   neogit = buildVimPlugin {
     pname = "neogit";
-    version = "2024-10-11";
+    version = "2024-10-13";
     src = fetchFromGitHub {
       owner = "NeogitOrg";
       repo = "neogit";
-      rev = "bab8703a4d5406548ab7feb47efbabf023f5ae1a";
-      sha256 = "06yhpj64vdha7c0mpgwgssinqrcxfdgw8lfx75r0pdcij6xms2ri";
+      rev = "df4d61d41473360c32bafae838d817efa8d31f92";
+      sha256 = "1yh3wvqkbiq6djwx836wpqznlsn9wk0zyd28r7wzvikf601yx48l";
       fetchSubmodules = false;
     };
   };
