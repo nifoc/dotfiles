@@ -59,11 +59,6 @@
       };
     };
 
-    attic = {
-      url = "github:zhaofengli/attic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs = {
@@ -97,7 +92,7 @@
           };
 
           tanker = import ./system/flakes/tanker.nix {
-            inherit (inputs) nixpkgs disko home-manager agenix attic;
+            inherit (inputs) nixpkgs disko home-manager agenix;
             inherit inputs;
           };
 

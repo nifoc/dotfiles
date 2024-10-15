@@ -1,4 +1,4 @@
-{ nixpkgs, disko, home-manager, agenix, attic, inputs, ... }:
+{ nixpkgs, disko, home-manager, agenix, inputs, ... }:
 
 let
   default-system = "x86_64-linux";
@@ -48,8 +48,6 @@ in
       }
 
       agenix.nixosModules.default
-
-      attic.nixosModules.atticd
 
       ../hosts/tanker.nix
     ];
