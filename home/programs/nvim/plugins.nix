@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-10-17";
+    version = "2024-10-18";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "03452942dfbd998701d4123ccad2090e1bc7e9f1";
-      sha256 = "1j5marsz84zr3qpnabbhahd7fc1sqyxsk2lw2xw4iyvg90bwyaqx";
+      rev = "68b2bdd99d889e9705f7e90ae64d990f3ff03cf3";
+      sha256 = "0mwyk0i03dy73djhni55zf3dvlxkx3y4104xhkvlbgp60nl71b1h";
       fetchSubmodules = false;
     };
   };
@@ -183,12 +183,12 @@ in
   };
   nvim-lspconfig = buildVimPlugin {
     pname = "nvim-lspconfig";
-    version = "2024-10-16";
+    version = "2024-10-18";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "541f3a2781de481bb84883889e4d9f0904250a56";
-      sha256 = "0z3a122w44k9z2isacywyb8x3hcsql7glrnbrav00rjnl30aml3z";
+      rev = "b55b9659de9ac17e05df4787bb023e4c7ef45329";
+      sha256 = "0887n4q7z2k9faqd43ki7gpq30dn9vjk217kafj9hwymamqqfmk2";
       fetchSubmodules = false;
     };
   };
@@ -205,12 +205,12 @@ in
   };
   schemastore-nvim = buildVimPlugin {
     pname = "schemastore.nvim";
-    version = "2024-10-17";
+    version = "2024-10-18";
     src = fetchFromGitHub {
       owner = "b0o";
       repo = "schemastore.nvim";
-      rev = "ee460baf4c8d29d051906d39b0e095289a3ddc9a";
-      sha256 = "0awxb0rlyplaf9jhgs7i55spi224m8whhycw8ixhsr7vwiscjr62";
+      rev = "30eacb81f0202c0d5718fb27e3ec0b03945a03c7";
+      sha256 = "0q75ql3fg84nb8vhfxgi1wpmpfz7yk0wqkiw3l7zf1j5xmqskl4y";
       fetchSubmodules = false;
     };
   };
@@ -491,12 +491,12 @@ in
   };
   neogit = buildVimPlugin {
     pname = "neogit";
-    version = "2024-10-17";
+    version = "2024-10-18";
     src = fetchFromGitHub {
       owner = "NeogitOrg";
       repo = "neogit";
-      rev = "3e44062d164d11848a1663831e4366b86ef6d889";
-      sha256 = "1mb2mi9cxcd0mdb9fkjc877d2358l00l83p60pjdmd0213b5cc4a";
+      rev = "aa3a343c58c378e91d2457f19952f9f2ee3aacc3";
+      sha256 = "05g62dii54b45q94hnirx7s0xqjdq743aq46y57npah6x2lz8zr0";
       fetchSubmodules = false;
     };
   };
