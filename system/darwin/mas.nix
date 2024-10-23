@@ -10,8 +10,8 @@ in
     let
       applications = [
         "870330316" /* Clear Clipboard */
-        "1354318707" /* Core Tunnel */
-        "1055511498" /* Day One */
+        # "1354318707" /* Core Tunnel */
+        # "1055511498" /* Day One */
         "640199958" /* Developer */
         "1355679052" /* Dropover */
         "1547121417" /* HomeControl */
@@ -22,12 +22,12 @@ in
         "1094255754" /* Outbank */
         "639968404" /* Parcel */
         "1554235898" /* Peek */
-        "1289583905" /* Pixelmator Pro */
-        "1444636541" /* Photomator */
+        # "1289583905" /* Pixelmator Pro */
+        # "1444636541" /* Photomator */
         "1615798039" /* ReadKit */
         "1663047912" /* Screens 5 */
         "1475387142" /* Tailscale */
-        "1538878817" /* UTM */
+        # "1538878817" /* UTM */
       ];
     in
     ''
