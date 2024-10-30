@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-10-28";
+    version = "2024-10-29";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "de70388626b398e9cfbec0ec02a0fab8d0f26648";
-      sha256 = "1272q3v9hrc0zlgr6ha1xkyg9d9ilrpiapcb561ww123mhn7rxaq";
+      rev = "39016abc99853c3e9d70f1bec7e2fa661b9a81bf";
+      sha256 = "1965n3ckaz6h3i7hq6hy0rrfswzd2ni05j3ad8wa40abd7sy4720";
       fetchSubmodules = false;
     };
   };
@@ -205,12 +205,12 @@ in
   };
   schemastore-nvim = buildVimPlugin {
     pname = "schemastore.nvim";
-    version = "2024-10-27";
+    version = "2024-10-29";
     src = fetchFromGitHub {
       owner = "b0o";
       repo = "schemastore.nvim";
-      rev = "e8835ae8e941e940ed3418c3a77976a2bacc52e4";
-      sha256 = "1zkgx4xypp9wvrg8lsidpxfvl1fk2pdggr5dhghbg74n81vvkmbn";
+      rev = "ed65feb5b8026d7c6b1981cfe9d97402342d344d";
+      sha256 = "19yacjqg7zxysl51qzg2mbh243g5xa4g9r54zpsy07fhnh9gvf9j";
       fetchSubmodules = false;
     };
   };
@@ -491,23 +491,23 @@ in
   };
   neogit = buildVimPlugin {
     pname = "neogit";
-    version = "2024-10-28";
+    version = "2024-10-29";
     src = fetchFromGitHub {
       owner = "NeogitOrg";
       repo = "neogit";
-      rev = "be200603ec9f2c8da95636dd4ec68ba92d728352";
-      sha256 = "0flarm3idl5ir3dl4c2b2lc39wpavyfh62wgfbq5scmi5rca42ad";
+      rev = "001f43f50d9589d837cec59004fd92486ab06870";
+      sha256 = "0knm3jf56np990cajy30fjf9751gxkhgbxvvpz5mgffywv4khrlc";
       fetchSubmodules = false;
     };
   };
   fidget-nvim = buildVimPlugin {
     pname = "fidget.nvim";
-    version = "2024-07-13";
+    version = "2024-10-29";
     src = fetchFromGitHub {
       owner = "j-hui";
       repo = "fidget.nvim";
-      rev = "d855eed8a06531a7e8fd0684889b2943f373c469";
-      sha256 = "0lb8zbncdlq91f4x8jqijpqvaigjw7f8b79milxwa11wvm25sg3y";
+      rev = "e2a175c2abe2d4f65357da1c98c59a5cfb2b543f";
+      sha256 = "01ilp9nidqaw9am5qdyga14gnnpsqi82f45ng273dqbrfn86n03x";
       fetchSubmodules = false;
     };
   };
