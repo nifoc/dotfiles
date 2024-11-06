@@ -29,7 +29,7 @@
       '';
     };
 
-    kernelPackages = pkgs.zfs.latestCompatibleLinuxPackages;
+    kernelPackages = pkgs.linuxPackages;
     kernelModules = [ "tcp_bbr" ];
 
     kernel.sysctl = {
