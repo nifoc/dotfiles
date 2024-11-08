@@ -84,8 +84,10 @@ in
 
         switch $os
             case Darwin
+                set -f nix_hostname (scutil --get LocalHostName)
                 set -f config_dir "$HOME/.config/nixpkgs"
             case Linux
+                set -f nix_hostname (hostname -s)
                 set -f config_dir /etc/nixos
             case '*'
                 echo "Unsupported OS"
@@ -100,7 +102,7 @@ in
         end
 
         if test "$other_hostname" = ""
-            just deploy-local-machine (hostname -s)
+            just deploy-local-machine "$nix_hostname"
         else
             just deploy-remote-machine "$other_hostname"
         end

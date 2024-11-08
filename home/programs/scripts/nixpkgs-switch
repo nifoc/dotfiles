@@ -1,13 +1,14 @@
 #!/usr/bin/env fish
 
 set -f nix_os (uname)
-set -f nix_hostname (hostname -s)
 set -f other_hostname $argv[1]
 
 switch $nix_os
     case Darwin
+        set -f nix_hostname (scutil --get LocalHostName)
         set -f config_dir "$HOME/.config/nixpkgs"
     case Linux
+        set -f nix_hostname (hostname -s)
         set -f config_dir /etc/nixos
     case '*'
         echo "Unsupported OS"
