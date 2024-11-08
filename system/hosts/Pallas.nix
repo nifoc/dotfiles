@@ -17,7 +17,6 @@ in
   ];
 
   system.stateVersion = 5;
-  ids.gids.nixbld = 30000;
 
   nix = {
     settings = {
@@ -25,7 +24,6 @@ in
       extra-platforms = [ "x86_64-darwin" ];
 
       log-lines = 25;
-      auto-optimise-store = true;
       keep-derivations = true;
       keep-outputs = true;
       extra-nix-path = "nixpkgs=flake:nixpkgs";
@@ -53,7 +51,9 @@ in
       connect-timeout = 5;
     };
 
-    configureBuildUsers = true;
+    optimise = {
+      automatic = true;
+    };
 
     distributedBuilds = true;
 
