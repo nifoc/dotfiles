@@ -17,7 +17,7 @@ build-local-machine target type=defaultLocalType:
 [group('build')]
 build-remote-machine target type=defaultRemoteType:
   nom build --eval-store auto \
-    --store 'ssh-ng://root@{{target}}.ts.kempkens.network' \
+    --store 'ssh-ng://root@{{target}}' \
     '.#{{type}}Configurations.{{target}}.config.system.build.toplevel'
 
 # Deploy to a local machine

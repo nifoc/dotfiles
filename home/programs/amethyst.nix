@@ -44,6 +44,7 @@ let
       "com.runningwithcrayons.Alfred"
       "com.sindresorhus.Dato-setapp"
       "com.tapbots.Ivory"
+      "net.pornel.ImageOptim"
     ];
 
     new-windows-to-main = false;
