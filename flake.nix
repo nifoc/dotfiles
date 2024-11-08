@@ -91,6 +91,11 @@
             inherit lix-module;
           };
 
+          Pallas = import ./system/flakes/Pallas.nix {
+            inherit (inputs) nixpkgs home-manager nix-darwin agenix neovim-nightly-overlay mkalias nifoc-overlay;
+            inherit lix-module;
+          };
+
           tanker = import ./system/flakes/tanker.nix {
             inherit (inputs) nixpkgs disko home-manager agenix;
             inherit inputs;
@@ -120,6 +125,7 @@
         {
           darwinConfigurations = {
             "Styx" = Styx.system;
+            "Pallas" = Pallas.system;
           };
 
           nixosConfigurations = {

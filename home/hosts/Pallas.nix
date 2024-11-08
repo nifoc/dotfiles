@@ -1,7 +1,7 @@
 args@{ pkgs, lib, config, ... }:
 
 let
-  secret = import ../../secret/hosts/Styx.nix;
+  secret = import ../../secret/hosts/Pallas.nix;
 in
 {
   imports = [
@@ -34,15 +34,10 @@ in
 
     (import ../programs/firefox.nix (args // { inherit secret; }))
 
-    ../programs/podman.nix
-
     ../programs/scripts.nix
 
-    ../programs/ssh/Styx.nix
+    ../programs/ssh/Pallas.nix
     ../programs/eternal-terminal.nix
-
-    ../programs/texlive.nix
-    ../programs/pandoc.nix
 
     ../programs/yt-dlp.nix
   ];
