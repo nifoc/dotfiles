@@ -1,8 +1,5 @@
-args@{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, ... }:
 
-let
-  secret = import ../../secret/hosts/Pallas.nix;
-in
 {
   imports = [
     ../config/fonts
@@ -32,7 +29,7 @@ in
 
     ../programs/jq.nix
 
-    (import ../programs/firefox.nix (args // { inherit secret; }))
+    #(import ../programs/firefox.nix (args // { inherit secret; }))
 
     ../programs/scripts.nix
 
