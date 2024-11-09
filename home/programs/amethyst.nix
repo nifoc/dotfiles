@@ -38,6 +38,7 @@ let
     floating = [
       "at.obdev.LaunchBar"
       "com.apple.systempreferences"
+      "com.colliderli.iina"
       "com.eltima.elmedia-setapp"
       "com.jonny.mona"
       "com.kapeli.dash-setapp"
