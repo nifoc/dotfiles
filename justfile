@@ -24,6 +24,7 @@ build-remote-machine target type=defaultRemoteType:
 [group('deploy')]
 deploy-local-machine target type=defaultLocalType: _git-pull (build-local-machine target type)
   env TERM=xterm-256color {{type}}-rebuild switch --flake ".#{{target}}"
+  sync
   attic push nifoc-systems /run/current-system
 
 # Deploy to a remote machine
