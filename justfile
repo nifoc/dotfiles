@@ -26,6 +26,7 @@ deploy-local-machine target type=defaultLocalType: _git-pull (build-local-machin
   env TERM=xterm-256color {{type}}-rebuild switch --flake ".#{{target}}"
   sync
   attic push nifoc-systems /run/current-system
+  find ./.direnv -maxdepth 1 -name 'flake-profile-*' -type l -exec attic push nifoc-systems {} \;
 
 # Deploy to a remote machine
 [group('deploy')]

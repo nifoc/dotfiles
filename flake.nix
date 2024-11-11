@@ -208,6 +208,11 @@
           TREEFMT_CONFIG_FILE = config.treefmt.build.configFile;
           REMOTE_REPO_TYPE = "forgejo";
         };
+
+        # Used for caching (in CI) only
+        packages = {
+          deploy-rs = inputs'.deploy-rs.packages.default;
+        };
       };
     };
 }
