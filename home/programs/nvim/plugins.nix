@@ -106,12 +106,12 @@ in
   };
   dracula-nvim = buildVimPlugin {
     pname = "dracula.nvim";
-    version = "2024-10-16";
+    version = "2024-11-11";
     src = fetchFromGitHub {
       owner = "Mofiqul";
       repo = "dracula.nvim";
-      rev = "94fa7885a06a67f0a8bfa03e064619d05d1ba496";
-      sha256 = "1yxkhi11a81nmll9il3jq2ii8nbh7x2mf2k5w8ql5y27bdl4wcfy";
+      rev = "e6128ec3923b92bb2b16e81b4a0f04ed0308038e";
+      sha256 = "19cdiibzwmmlw6m1k24d9jypjf1hy8vb63rjila885v8xgx68ffx";
       fetchSubmodules = false;
     };
   };
@@ -121,8 +121,8 @@ in
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "a069bb62a86caaa15ea68af9e6a3bcd8cbc3608d";
-      sha256 = "0ms9dz914j390anz1aviyhyxcv5vvj8h6p1w2xry9w0wqp2yk73q";
+      rev = "bb06afa3f1111780932b3c5493ad65473ce85f9d";
+      sha256 = "0dnnqs7h2dnh50vja709nry0y9kjqjwdqp0zbpa5pg6vkz79r5v2";
       fetchSubmodules = false;
     };
   };
@@ -205,12 +205,12 @@ in
   };
   schemastore-nvim = buildVimPlugin {
     pname = "schemastore.nvim";
-    version = "2024-11-07";
+    version = "2024-11-11";
     src = fetchFromGitHub {
       owner = "b0o";
       repo = "schemastore.nvim";
-      rev = "5f0639d68cbea3ab8a9a24a51a5f984d86ea8438";
-      sha256 = "00w6as4j19rf2rwwpyf1qjks25yplri2s9qr1y4p5k2zl5iq8f96";
+      rev = "64aed5788796d1f241da0afbd096e6dd649694bd";
+      sha256 = "1lkiy6ppvcjv53af76xwiy7axm236vj7xcrb4c3yhjxdi36mndga";
       fetchSubmodules = false;
     };
   };
@@ -271,12 +271,12 @@ in
   };
   LuaSnip = buildVimPlugin {
     pname = "LuaSnip";
-    version = "2024-11-06";
+    version = "2024-11-11";
     src = fetchFromGitHub {
       owner = "L3MON4D3";
       repo = "LuaSnip";
-      rev = "2737edc9e674e537dc0a97e3405658d57d2d31ed";
-      sha256 = "1a1ka4l5p51ja8c1lf878nbcz4c45357fvbnsh69g9p1g6f2xgjm";
+      rev = "48a02259693cb7bbbd1092993406773d5ce14664";
+      sha256 = "1xcy6gbh2490ppvyhrj2f8nnngpbxbcwvx5ybkivxrxza983x8bw";
       fetchSubmodules = false;
     };
   };
@@ -425,23 +425,23 @@ in
   };
   indent-blankline-nvim = buildVimPlugin {
     pname = "indent-blankline.nvim";
-    version = "2024-11-10";
+    version = "2024-11-11";
     src = fetchFromGitHub {
       owner = "lukas-reineke";
       repo = "indent-blankline.nvim";
-      rev = "e51b651ca26cba250ef3a1150c8d35045eee2a84";
-      sha256 = "1qy9d5gnkszw48h9j21hn490783y65pr21mi3qz6k1ppgff227fi";
+      rev = "7871a88056f7144defca9c931e311a3134c5d509";
+      sha256 = "1di5dk855m90l6lblh97sr2c4w4rwv6k6cs67hhll6r8zj5wsl2r";
       fetchSubmodules = false;
     };
   };
   virt-column-nvim = buildVimPlugin {
     pname = "virt-column.nvim";
-    version = "2023-11-13";
+    version = "2024-11-12";
     src = fetchFromGitHub {
       owner = "lukas-reineke";
       repo = "virt-column.nvim";
-      rev = "b62b4ef0774d19452d4ed18e473e824c7a756f2f";
-      sha256 = "02lp989lykxw3qzv66ch47lz7n99xf3b3bghqhsnadrhnlky6n7f";
+      rev = "b87e3e0864211a32724a2ebf3be37e24e9e2fa99";
+      sha256 = "0mlygwrsf6pc44jscq1nb17a8f7p1jv2hgg7ibrm08hqgv7y6fm3";
       fetchSubmodules = false;
     };
   };
