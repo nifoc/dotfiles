@@ -25,7 +25,6 @@ in
       extra-platforms = [ "x86_64-darwin" ];
 
       log-lines = 25;
-      auto-optimise-store = true;
       keep-derivations = true;
       keep-outputs = true;
       extra-nix-path = "nixpkgs=flake:nixpkgs";
@@ -58,6 +57,10 @@ in
       trusted-users = [ "@admin" ];
 
       connect-timeout = 5;
+    };
+
+    optimise = {
+      automatic = true;
     };
 
     configureBuildUsers = true;
