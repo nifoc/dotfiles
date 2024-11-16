@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-11-14";
+    version = "2024-11-15";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "6389ceb1758b8f62a15194e3b790e33268304cb8";
-      sha256 = "1xwc11qia6kyqlags42x1siygkf0v8fh7qqqcr71waxhkmin7yik";
+      rev = "13c7caf8a602488b37cdefe8543c4cfdd5947d9d";
+      sha256 = "01132fx67dmqy5sc935xdxjcc8w061zsm3inyqwngm4ljzh3zdw4";
       fetchSubmodules = false;
     };
   };
@@ -183,12 +183,12 @@ in
   };
   nvim-lspconfig = buildVimPlugin {
     pname = "nvim-lspconfig";
-    version = "2024-11-12";
+    version = "2024-11-15";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "d2d153a179ed59aa7134d7ebdf4d7dcb156efa22";
-      sha256 = "0h65i97lsp1vcab1lr7la3w6mqniz5w6bkmxiglcpxmcywmlhqr6";
+      rev = "87c7c83ce62971e0bdb29bb32b8ad2b19c8f95d0";
+      sha256 = "1yngh5qvqyrqzilv7dnsvhgrsrvi9mhi2m2cgpxh3kgcl4wmsybs";
       fetchSubmodules = false;
     };
   };
@@ -205,12 +205,12 @@ in
   };
   schemastore-nvim = buildVimPlugin {
     pname = "schemastore.nvim";
-    version = "2024-11-14";
+    version = "2024-11-15";
     src = fetchFromGitHub {
       owner = "b0o";
       repo = "schemastore.nvim";
-      rev = "8ae7ed5b8a58ad36136d9b440205cef552bd0e41";
-      sha256 = "1lf4sxy0vycy7lz3xxw1mphrlx7myvywzflmw48v3dwxy48csgx7";
+      rev = "f8d6e9068861888651f68958521b1958314aac41";
+      sha256 = "09brmd1ynkv4di5ci6faad5xcnj2jgvk3js83gwppvva7brxxl7f";
       fetchSubmodules = false;
     };
   };
@@ -407,8 +407,8 @@ in
     src = fetchFromGitHub {
       owner = "stevearc";
       repo = "oil.nvim";
-      rev = "651299a6ca799f09997956f30c67329c6033dcd3";
-      sha256 = "0aq550y843vh46yh3777i0b3jvxs9n6hhja1cs4vifwvam8r91g9";
+      rev = "8ea40b5506115b6d355e304dd9ee5089f7d78601";
+      sha256 = "1mvmy64b5hvbilwpiprifx5qiqhysa09aaxiypqfa329h4v7ad29";
       fetchSubmodules = false;
     };
   };
