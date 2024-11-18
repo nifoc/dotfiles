@@ -13,7 +13,7 @@ in
         # "1354318707" /* Core Tunnel */
         # "1055511498" /* Day One */
         "640199958" /* Developer */
-        "1355679052" /* Dropover */
+        #"1355679052" /* Dropover */
         "1547121417" /* HomeControl */
         "470158793" /* Keka */
         "1567970985" /* MacFamilyTree 10 */
