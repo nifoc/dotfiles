@@ -22,6 +22,8 @@ let
   };
 in
 {
+  arch = default-system;
+
   system = nix-darwin.lib.darwinSystem {
     system = default-system;
     modules = [
@@ -49,4 +51,14 @@ in
       ../hosts/Pallas.nix
     ];
   };
+
+  # deployment = {
+  #   hostname = "";
+  #   sshUser = "daniel";
+  #   remoteBuild = false;
+  #   fastConnection = true;
+  #   interactiveSudo = true;
+  #   autoRollback = false;
+  #   magicRollback = false;
+  # };
 }

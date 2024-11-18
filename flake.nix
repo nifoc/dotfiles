@@ -138,18 +138,24 @@
 
           deploy.nodes =
             let
-              mkDeployConfig = node: node.deployment // {
+              mkDeployNixOsConfig = node: node.deployment // {
                 profiles.system = {
                   path = deploy-rs.lib.${node.arch}.activate.nixos node.system;
                 };
               };
+
+              # mkDeployMacOSConfig = node: node.deployment // {
+              #   profiles.system = {
+              #     path = deploy-rs.lib.${node.arch}.activate.darwin node.system;
+              #   };
+              # };
             in
             {
-              tanker = mkDeployConfig tanker;
-              mediaserver = mkDeployConfig mediaserver;
-              argon = mkDeployConfig argon;
-              neon = mkDeployConfig neon;
-              adsb-antenna = mkDeployConfig adsb-antenna;
+              tanker = mkDeployNixOsConfig tanker;
+              mediaserver = mkDeployNixOsConfig mediaserver;
+              argon = mkDeployNixOsConfig argon;
+              neon = mkDeployNixOsConfig neon;
+              adsb-antenna = mkDeployNixOsConfig adsb-antenna;
             };
         };
 
