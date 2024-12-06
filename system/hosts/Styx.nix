@@ -1,3 +1,5 @@
+{ config, ... }:
+
 let
   homeDir = "/Users/daniel";
 in
@@ -29,6 +31,7 @@ in
       keep-outputs = true;
       extra-nix-path = "nixpkgs=flake:nixpkgs";
 
+      always-allow-substitutes = true;
       builders-use-substitutes = true;
 
       extra-substituters = [
@@ -53,6 +56,8 @@ in
         # extra-trusted-substituters
         "devshells:YXtbU0DheB229oCr2D0H0qHjj2Ed/e2VZiLSXgQ1IVA="
       ];
+
+      netrc-file = config.age.secrets.nix-netrc.path;
 
       trusted-users = [ "@admin" ];
 

@@ -66,7 +66,7 @@ in
       hexyl
       hyperfine
       just
-      lnav
+      #lnav
       mtr
       nix-tree
       nix-update

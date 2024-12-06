@@ -1,3 +1,5 @@
+{ config, ... }:
+
 let
   homeDir = "/Users/daniel";
 in
@@ -28,6 +30,7 @@ in
       keep-outputs = true;
       extra-nix-path = "nixpkgs=flake:nixpkgs";
 
+      always-allow-substitutes = true;
       builders-use-substitutes = true;
 
       extra-substituters = [
@@ -45,6 +48,8 @@ in
         "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
         "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
       ];
+
+      netrc-file = config.age.secrets.nix-netrc.path;
 
       trusted-users = [ "@admin" ];
 
