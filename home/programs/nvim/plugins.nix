@@ -33,8 +33,8 @@ in
     src = fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
-      rev = "21417212f640a1dad28a1408f04468819848f5e7";
-      sha256 = "04v54g2q1y1bq5zcd1n48wyhfynv27qylk09kg2frzwbryg3gar5";
+      rev = "87c34abe5d1dc7c1c0a95aaaf888059c614c68ac";
+      sha256 = "1kkrnsxja92kvrk5lh8sldad4wcnhwgpcpiqhwzn2pg2xda14a08";
       fetchSubmodules = false;
     };
   };
@@ -117,12 +117,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-12-06";
+    version = "2024-12-07";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "53e20aa728713af5cb4a3e0e2dcfea18975d49fc";
-      sha256 = "0xvsdmn4irspsba01qyc5gkr1jgkwcqqzvcjkah90rw6digv1bl0";
+      rev = "894cb3cebbad0535fb4e319ada5d875dbc48d8b9";
+      sha256 = "05j8b8hg2m5wqdm00j31gzwy20l8bz9xj7v27qa4n06frq8825bs";
       fetchSubmodules = false;
     };
   };
@@ -183,12 +183,12 @@ in
   };
   nvim-lspconfig = buildVimPlugin {
     pname = "nvim-lspconfig";
-    version = "2024-12-06";
+    version = "2024-12-07";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "64073cbed0ce23e988160bfd1a148a75b6af94cc";
-      sha256 = "115lqj3pmvdxw6am3gz47mnmfljpfgrli7jclr310l92c53479kp";
+      rev = "47f236c058f0511702286a21ba53bbf42abbd8a8";
+      sha256 = "1pqwnr0c861rjd1ckp0v7ihva6v1y1v1drq2c63wyrh06fmgdk2x";
       fetchSubmodules = false;
     };
   };
@@ -205,12 +205,12 @@ in
   };
   schemastore-nvim = buildVimPlugin {
     pname = "schemastore.nvim";
-    version = "2024-12-04";
+    version = "2024-12-07";
     src = fetchFromGitHub {
       owner = "b0o";
       repo = "schemastore.nvim";
-      rev = "51644f296db488d20ecb84f4d9a050c46d5b4dfc";
-      sha256 = "01p0lkl609k16yhvx3fs85nicpwik205bjsrcs39bgfzb45qa1lw";
+      rev = "6aeaad5ef9eeac79016fa5bb7525fdee72cba775";
+      sha256 = "0bhd48d7x4q0j6f3fwwngrjhaj22173wy3aw8xmjrc0vba9343p4";
       fetchSubmodules = false;
     };
   };
