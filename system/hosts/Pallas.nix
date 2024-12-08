@@ -30,15 +30,13 @@ in
       keep-outputs = true;
       extra-nix-path = "nixpkgs=flake:nixpkgs";
 
-      always-allow-substitutes = true;
       builders-use-substitutes = true;
 
       extra-substituters = [
-        "https://attic.cache.daniel.sx/nifoc-systems?priority=30"
+        "https://attic.cache.daniel.sx/nifoc-systems/?priority=30"
         "https://nix-community.cachix.org?priority=50"
         "https://cache.garnix.io?priority=60"
         "https://cache.lix.systems?priority=70"
-        "https://pre-commit-hooks.cachix.org?priority=80"
       ];
 
       extra-trusted-public-keys = [
@@ -46,7 +44,6 @@ in
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
         "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
-        "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
       ];
 
       netrc-file = config.age.secrets.nix-netrc.path;
