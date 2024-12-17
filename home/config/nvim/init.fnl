@@ -52,6 +52,7 @@
   (set o.termguicolors true)
   (set o.mouse :a)
   (set o.mousemodel :popup_setpos)
+  (set o.mousemoveevent true)
   (set o.cmdheight 1)
   ;(set o.showcmdloc :statusline)
   ;; Backups

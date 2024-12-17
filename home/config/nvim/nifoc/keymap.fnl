@@ -93,6 +93,11 @@
     ;; hover.nvim
     (keymap.set :n :K hover.hover {:desc "Show Documentation"})
     (keymap.set :n :gK hover.hover_select {:desc "hover.nvim selection"})
+    (keymap.set :n :<C-p> #(hover.hover_switch :previous)
+                {:desc "hover.nvim previous source"})
+    (keymap.set :n :<C-n> #(hover.hover_switch :next)
+                {:desc "hover.nvim next source"})
+    (keymap.set :n :<MouseMove> hover.hover_mouse {:desc "hover.nvim mouse"})
     ;; Label
     (wk.add [{1 :<leader>v :group :vcs}
              {1 :<leader>l :group :list/lsp}
