@@ -33,8 +33,8 @@ in
         src = fetchFromGitHub {
           owner = "franciscolourenco";
           repo = "done";
-          rev = "1.19.1";
-          hash = "sha256-BGHfwKoMfOZUsa05kEt8W2luc1aC3Su/OyaGmcb4UiI=";
+          rev = "1.19.3";
+          hash = "sha256-DMIRKRAVOn7YEnuAtz4hIxrU93ULxNoQhW6juxCoh4o=";
         };
       }
 
@@ -169,6 +169,11 @@ in
 
       # Plugin: done
       set -g __done_min_cmd_duration 10000
+    '';
+
+    interactiveShellInit = /* fish */ ''
+      # Set feature flags
+      set fish_features ampersand-nobg-in-token qmark-noglob
     '';
   };
 
