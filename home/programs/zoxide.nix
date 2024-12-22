@@ -8,6 +8,11 @@
     ji = "zi";
   };
 
+  programs.zsh.shellAliases = {
+    j = "z";
+    ji = "zi";
+  };
+
   programs.nushell.shellAliases = {
     j = "z";
     ji = "zi";

@@ -1,0 +1,13 @@
+os="$(uname)"
+
+case "$os" in
+  Darwin)
+    $HOME/.config/nixpkgs/home/programs/nvim/update-plugins.sh
+    ;;
+  Linux)
+    /etc/nixos/home/programs/nvim/update-plugins.sh
+    ;;
+  *)
+    echo "Unsupported OS"
+    exit 1
+esac

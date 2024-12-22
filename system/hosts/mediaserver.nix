@@ -170,7 +170,7 @@ in
       home = "/home/daniel";
       description = "Daniel";
       extraGroups = [ "wheel" ];
-      shell = pkgs.fish;
+      shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [ ssh-keys.LAN ssh-keys.DanielsPhone ];
     };
 

@@ -7,8 +7,7 @@ in
   imports = [
     ../config/fonts
 
-    ../programs/fish.nix
-    ../programs/nushell.nix
+    ../programs/zsh
     ../programs/atuin.nix
     ../programs/direnv.nix
     ../programs/fzf.nix

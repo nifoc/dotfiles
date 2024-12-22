@@ -11,7 +11,7 @@ in
     ../darwin/defaults.nix
     ../darwin/sudo.nix
 
-    ../darwin/fish.nix
+    ../darwin/zsh.nix
     ../darwin/attic.nix
 
     ../darwin/mas.nix

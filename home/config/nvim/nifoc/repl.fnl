@@ -22,6 +22,7 @@
   (local nix #[(exe :nix) :repl])
   (local ruby #[(exe :irb)])
   (local typescript #[(exe :node)])
+  (local zsh #[(exe :zsh)])
   ;; Map filetype to REPL
   (local repl-map {: elixir
                    : erlang
@@ -31,10 +32,11 @@
                    : javascript
                    : nix
                    : ruby
-                   : typescript})
+                   : typescript
+                   : zsh})
 
   (fn mod.open-shell []
-    (let [shell (. repl-map :fish)]
+    (let [shell (. repl-map :zsh)]
       (open-split shell)))
 
   (fn mod.open-repl []

@@ -95,7 +95,7 @@ in
         end
 
         pushd "$config_dir"
-        rm -rf result
+        rm -f result
 
         if test -z "$DIRENV_DIR"
             eval (direnv export fish 2>/dev/null)

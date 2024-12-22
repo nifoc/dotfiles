@@ -3,7 +3,7 @@
     enable = true;
 
     enableBashIntegration = false;
-    enableZshIntegration = false;
+    enableZshIntegration = true;
     enableFishIntegration = true;
 
     settings = {
@@ -23,6 +23,12 @@
         "^mp4concat"
       ];
     };
+  };
+
+  programs.zsh.history = {
+    save = 0;
+    size = 0;
+    share = false;
   };
 
   programs.fish.shellInit = ''
