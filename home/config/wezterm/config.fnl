@@ -25,63 +25,50 @@
     (let [title tab.tab_title]
       (if (and title (> (length title) 0)) title tab.active_pane.title)))
 
-  (fn extract-tab-info [title tab]
-    (let [current-pane tab.active_pane]
-      (match title
-        (where t (t:find "^nvim%s"))
-        {:title (t:gsub "^nvim%s(.*)" "%1") :icon " " :color colors.nvim}
-        (where t (t:find :^nvim$)) {: title :icon " " :color colors.nvim}
-        (where t (t:find "^git%s"))
-        {:title (t:gsub "^git%s(.*)" "%1") :icon "󰊢 " :color "#F25029"}
-        (where t (t:find "^mix%s"))
-        {:title (t:gsub "^mix%s(.*)" "%1") :icon " " :color colors.elixir}
-        (where t (t:find "^iex%s")) {: title :icon " " :color colors.elixir}
-        (where t (t:find "^upa%s")) {: title :icon " " :color colors.nix}
-        (where t (t:find "^upp%s")) {: title :icon " " :color colors.nix}
-        (where t (t:find "^nrsw%s")) {: title :icon " " :color colors.nix}
-        (where t (t:find "^ngc%s")) {: title :icon " " :color colors.nix}
-        (where t (t:find "^nix%s")) {: title :icon " " :color colors.nix}
-        (where t (t:find "^nix-%w+%s")) {: title
-                                         :icon " "
-                                         :color colors.nix}
-        (where t (t:find "^colmena%s")) {: title
-                                         :icon " "
-                                         :color colors.nix}
-        (where t (t:find "^deploy%s")) {: title :icon " " :color colors.nix}
-        (where t (t:find "^ssh%s")) {: title :icon " " :color colors.ssh}
-        (where t (t:find "^scp%s")) {: title :icon " " :color colors.ssh}
-        (where t (t:find "^et%s")) {: title :icon " " :color colors.et}
-        (where t (t:find "^just%s")) {: title :icon " " :color "#C87D57"}
-        (where t (t:find :^ytdl)) {: title :icon " " :color "#FF0000"}
-        (where t (t:find :^instagram-)) {: title :icon " " :color "#FB2179"}
-        (where t (t:find "^gallery-dl%s")) {:title (t:gsub "^gallery-dl%s(.*)"
-                                                           "%1")
-                                            :icon " "
-                                            :color "#009900"}
-        (where t (t:find :^discord-)) {: title :icon " " :color "#5865F2"}
-        (where t (t:find "^bdfr%s"))
-        {:title (t:gsub "^bdfr%s(.*)" "%1") :icon " " :color colors.reddit}
-        (where t (t:find "^bdfr-%w+%s")) {: title
-                                          :icon " "
-                                          :color colors.reddit}
-        (where t (t:find "^rexit%s")) {: title
-                                       :icon " "
-                                       :color colors.reddit}
-        (where t (t:find :^redis-)) {: title :icon " " :color "#DC372C"}
-        (where t (t:find "^%[%w+%]%s")) {: title
-                                         :icon " "
-                                         :color colors.ssh}
-        (where t (t:find "^%w+@%w+:%s")) {: title
-                                          :icon " "
-                                          :color colors.ssh}
-        (where t (t:find "^%w+-dev")) {: title :icon " " :color "#0099CC"}
-        (where t (t:find "^%w+-dl%s")) {: title :icon " " :color "#22BC00"}
-        _ {: title :icon " " :color "#F8F8F2"})))
+  (fn extract-tab-info [title]
+    (match title
+      (where t (t:find "^nvim%s"))
+      {:title (t:gsub "^nvim%s(.*)" "%1") :icon " " :color colors.nvim}
+      (where t (t:find :^nvim$)) {: title :icon " " :color colors.nvim}
+      (where t (t:find "^git%s"))
+      {:title (t:gsub "^git%s(.*)" "%1") :icon "󰊢 " :color "#F25029"}
+      (where t (t:find "^mix%s"))
+      {:title (t:gsub "^mix%s(.*)" "%1") :icon " " :color colors.elixir}
+      (where t (t:find "^iex%s")) {: title :icon " " :color colors.elixir}
+      (where t (t:find "^upa%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^upp%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^nrsw%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^ngc%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^nix%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^nix-%w+%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^colmena%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^deploy%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^ssh%s")) {: title :icon " " :color colors.ssh}
+      (where t (t:find "^scp%s")) {: title :icon " " :color colors.ssh}
+      (where t (t:find "^et%s")) {: title :icon " " :color colors.et}
+      (where t (t:find "^just%s")) {: title :icon " " :color "#C87D57"}
+      (where t (t:find :^ytdl)) {: title :icon " " :color "#FF0000"}
+      (where t (t:find :^instagram-)) {: title :icon " " :color "#FB2179"}
+      (where t (t:find "^gallery-dl%s"))
+      {:title (t:gsub "^gallery-dl%s(.*)" "%1") :icon " " :color "#009900"}
+      (where t (t:find :^discord-)) {: title :icon " " :color "#5865F2"}
+      (where t (t:find "^bdfr%s"))
+      {:title (t:gsub "^bdfr%s(.*)" "%1") :icon " " :color colors.reddit}
+      (where t (t:find "^bdfr-%w+%s")) {: title
+                                        :icon " "
+                                        :color colors.reddit}
+      (where t (t:find "^rexit%s")) {: title :icon " " :color colors.reddit}
+      (where t (t:find :^redis-)) {: title :icon " " :color "#DC372C"}
+      (where t (t:find "^%[%w+%]%s")) {: title :icon " " :color colors.ssh}
+      (where t (t:find "^%w+@%w+:%s")) {: title :icon " " :color colors.ssh}
+      (where t (t:find "^%w+-dev")) {: title :icon " " :color "#0099CC"}
+      (where t (t:find "^%w+-dl%s")) {: title :icon " " :color "#22BC00"}
+      _ {: title :icon " " :color "#F8F8F2"}))
 
   (wezterm.on :format-tab-title
               (fn [tab _tabs _panes _config _hover max-width]
                 (let [raw-title (extract-tab-title tab)
-                      tab-info (extract-tab-info raw-title tab)
+                      tab-info (extract-tab-info raw-title)
                       title (wezterm.truncate_right tab-info.title
                                                     (- max-width 5))]
                   (if tab.is_active
@@ -158,7 +145,8 @@
                         (set overrides.freetype_load_target :Light)
                         (window:set_config_overrides overrides))))))
   ;; Configuration
-  {:default_prog [_G.shells.zsh :-i]
+  {:term :wezterm
+   :default_prog [_G.shells.zsh :-i]
    ;; Appearance
    :color_scheme "Dracula (Official)"
    :window_decorations :INTEGRATED_BUTTONS|RESIZE

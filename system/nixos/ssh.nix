@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   services.openssh = {
     enable = true;
@@ -8,4 +10,6 @@
       PermitRootLogin = "prohibit-password";
     };
   };
+
+  environment.systemPackages = with pkgs; [ wezterm.terminfo ];
 }
