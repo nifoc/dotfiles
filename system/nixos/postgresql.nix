@@ -6,7 +6,7 @@
     package = pkgs.postgresql_16_jit;
     enableJIT = true;
 
-    extraPlugins = ps: with ps; [
+    extensions = ps: with ps; [
       pgroonga
     ];
 
