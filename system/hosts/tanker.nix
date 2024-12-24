@@ -174,8 +174,10 @@ in
 
   fonts.fontconfig.enable = false;
 
-  programs.fish.enable = true;
-  programs.htop.enable = true;
+  programs = {
+    htop.enable = true;
+    zsh.enable = true;
+  };
 
   users.users = {
     root = {
@@ -188,7 +190,7 @@ in
       home = "/home/daniel";
       description = "Daniel";
       extraGroups = [ "wheel" ];
-      shell = pkgs.fish;
+      shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [ ssh-keys.Hetzner ssh-keys.DanielsPhone ];
     };
   };

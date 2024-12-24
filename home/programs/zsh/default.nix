@@ -20,7 +20,6 @@ in
 
     syntaxHighlighting = {
       enable = true;
-      highlighters = [ "main" "brackets" ];
     };
 
     plugins = [
@@ -102,13 +101,23 @@ in
       };
 
     initExtra = /* sh */ ''
+      # Options
+      setopt AUTO_CD
+      setopt AUTO_PUSHD
+      setopt PUSHD_IGNORE_DUPS
+      setopt INTERACTIVE_COMMENTS
+
       # Keymaps
       bindkey '^[[1;3C' forward-word  # Alt+Right
       bindkey '^[[1;3D' backward-word # Alt+Left
 
       # Plugins
+      ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
+      typeset -gA ZSH_HIGHLIGHT_STYLES
+
       ZSH_TAB_TITLE_ENABLE_FULL_COMMAND=true
       ZSH_TAB_TITLE_DEFAULT_DISABLE_PREFIX=true
+      ZSH_TAB_TITLE_ADDITIONAL_TERMS='wezterm'
 
       AUTO_NOTIFY_THRESHOLD=10
 

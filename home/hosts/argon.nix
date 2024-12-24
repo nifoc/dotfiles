@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../programs/fish.nix
+    ../programs/zsh
     ../programs/atuin.nix
     ../programs/starship.nix
 

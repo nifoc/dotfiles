@@ -14,8 +14,7 @@
   (set mod.colors dracula-colors)
 
   (fn mod.setup []
-    (set g.dracula_show_end_of_buffer false)
-    (set g.dracula_italic_comment true)
+    (dracula.setup {:show_end_of_buffer false :italic_comment true})
     (set o.background :dark)
     (colorscheme :dracula)
     ;; Tabline

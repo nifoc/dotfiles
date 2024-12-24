@@ -154,7 +154,6 @@ in
   fonts.fontconfig.enable = false;
 
   programs = {
-    fish.enable = true;
     zsh.enable = true;
     htop.enable = true;
   };

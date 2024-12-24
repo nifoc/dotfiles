@@ -149,7 +149,6 @@ in
   services.hardware.argonone.enable = true;
 
   programs = {
-    fish.enable = true;
     zsh.enable = true;
     htop.enable = true;
   };
@@ -165,7 +164,7 @@ in
       home = "/home/daniel";
       description = "Daniel";
       extraGroups = [ "wheel" ];
-      shell = pkgs.fish;
+      shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [ ssh-keys.LAN ];
     };
   };
