@@ -36,7 +36,8 @@
 - src: hrsh7th/nvim-cmp
 - src: hrsh7th/cmp-nvim-lsp
 - src: saadparwaiz1/cmp_luasnip
-- src: FelipeLema/cmp-async-path
+- src: https://codeberg.org/FelipeLema/cmp-async-path.git
+  name: cmp-async-path
 - src: hrsh7th/cmp-buffer
 - src: hrsh7th/cmp-cmdline
 - src: hrsh7th/cmp-nvim-lsp-document-symbol

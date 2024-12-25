@@ -23,6 +23,7 @@ rm -f "$nix_new_file"
   echo 'let'
   echo 'inherit (pkgs) fetchFromGitHub;'
   # echo 'inherit (pkgs) fetchFromSourcehut;'
+  echo 'inherit (pkgs) fetchFromGitea;'
   echo 'inherit (pkgs.vimUtils) buildVimPlugin;'
   echo 'in'
   echo '{'
@@ -32,7 +33,13 @@ for plugin in "${plugin_array[@]}"; do
   raw_src="$(echo "$plugin" | dasel -r json -w - '.src')"
   owner="$(echo "$raw_src" | awk -F'/' '{ print $(NF-1) }')"
   repo="$(echo "$raw_src" | awk -F'/' '{ print $(NF) }')"
-  name="$(echo "$repo" | tr '.' '-')"
+
+  name="$(echo "$plugin" | jq -r '.name // empty')"
+  pname="$name"
+  if [ -z "$name" ]; then
+    name="$(echo "$repo" | tr '.' '-')"
+    pname="$repo"
+  fi
 
   echo "Updating ${owner}/${repo} ..."
 
@@ -41,6 +48,25 @@ for plugin in "${plugin_array[@]}"; do
   else
     clone_src="https://github.com/${owner}/${repo}.git"
   fi
+
+  case "$clone_src" in
+  https://github.com*)
+    fetcher="fetchFromGitHub"
+    src_extra=""
+    ;;
+  https://git.sr.ht*)
+    fetcher="fetchFromSourcehut"
+    src_extra=""
+    ;;
+  https://codeberg.org*)
+    fetcher="fetchFromGitea"
+    src_extra='domain = "codeberg.org";'
+    ;;
+  *)
+    echo "Unsupported URL: $clone_src"
+    exit 1
+    ;;
+  esac
 
   nix_prefetch_flags="--quiet"
 
@@ -67,29 +93,17 @@ for plugin in "${plugin_array[@]}"; do
     rev = \"$(echo "$src_json" | dasel -r json -w - '.rev')\";
     sha256 = \"$(echo "$src_json" | dasel -r json -w - '.sha256')\";
     fetchSubmodules = $(echo "$src_json" | dasel -r json -w - '.fetchSubmodules');
+    $src_extra
   }"
 
   commit_date="$(echo "$src_json" | dasel -r json -w - '.date')"
   version="$(TZ='Etc/UTC' date -d "$commit_date" "+%Y-%m-%d")"
 
-  case "$clone_src" in
-  https://github.com*)
-    fetcher="fetchFromGitHub"
-    ;;
-  https://git.sr.ht*)
-    fetcher="fetchFromSourcehut"
-    ;;
-  *)
-    echo "Unsupported URL: $clone_src"
-    exit 1
-    ;;
-  esac
-
   case "$name" in
   *)
     {
       echo "${name} = buildVimPlugin {"
-      echo "pname = \"${repo}\";"
+      echo "pname = \"${pname}\";"
     } >>"$nix_new_file"
     close_block="};"
     ;;
@@ -114,13 +128,13 @@ for plugin in "${plugin_array[@]}"; do
     printf "buildPhase = ''\n%s\n'';\n" "$build_phase" >>"$nix_new_file"
   fi
 
-  echo "$close_block" >>"$nix_new_file"
+  {
+    echo "doCheck = false;"
+    echo "doInstallCheck = false;"
+    echo "$close_block"
+  } >>"$nix_new_file"
 done
-
-{
-  echo "doInstallCheck = false;"
-  echo "}"
-} >>"$nix_new_file"
+echo "}" >>"$nix_new_file"
 
 nixpkgs-fmt "$nix_new_file"
 

@@ -47,7 +47,7 @@ in
       # LSP
       #elixir-ls
       lexical
-      lua-language-server
+      #lua-language-server
       marksman
       #next-ls
       nodePackages.dockerfile-language-server-nodejs

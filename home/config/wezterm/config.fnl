@@ -38,7 +38,9 @@
       (where t (t:find "^upa%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^upp%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^nrsw%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find :^nrsw$)) {: title :icon " " :color colors.nix}
       (where t (t:find "^ngc%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find :^ngc$)) {: title :icon " " :color colors.nix}
       (where t (t:find "^nix%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^nix-%w+%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^colmena%s")) {: title :icon " " :color colors.nix}
