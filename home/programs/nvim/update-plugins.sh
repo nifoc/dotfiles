@@ -70,7 +70,7 @@ for plugin in "${plugin_array[@]}"; do
   }"
 
   commit_date="$(echo "$src_json" | dasel -r json -w - '.date')"
-  version="$(date -d "$commit_date" "+%Y-%m-%d")"
+  version="$(TZ='Etc/UTC' date -d "$commit_date" "+%Y-%m-%d")"
 
   case "$clone_src" in
   https://github.com*)
@@ -116,7 +116,11 @@ for plugin in "${plugin_array[@]}"; do
 
   echo "$close_block" >>"$nix_new_file"
 done
-echo "}" >>"$nix_new_file"
+
+{
+  echo "doInstallCheck = false;"
+  echo "}"
+} >>"$nix_new_file"
 
 nixpkgs-fmt "$nix_new_file"
 
