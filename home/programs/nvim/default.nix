@@ -21,11 +21,14 @@ in
       stdenv.cc
 
       git
+      delta
       nodejs
       tree-sitter
       fd
       ripgrep
       universal-ctags
+      fzf
+      chafa
 
       # LSP
       bash-language-server
@@ -131,17 +134,12 @@ in
           type = "fennel";
         }
 
-        # Telescope
+        # Finder
         {
-          plugin = telescope-nvim;
-          config = builtins.readFile ../../config/nvim/plugins/telescope.fnl;
+          plugin = fzf-lua;
+          config = builtins.readFile ../../config/nvim/plugins/fzf.fnl;
           type = "fennel";
         }
-
-        pkgs.vimPlugins.telescope-zf-native-nvim
-
-        telescope-ui-select-nvim
-        telescope-undo-nvim
 
         # LSP
         {

@@ -20,10 +20,10 @@
                              ns.position
                              ns.search-count
                              ns.command])
-  (local telescope-statusline
+  (local fzf-statusline
          {:condition (fn []
-                       (conditions.buffer_matches {:filetype [:TelescopePrompt]}))
-          1 (ns.custom-mode :Telescope :black :green)})
+                       (conditions.buffer_matches {:filetype [:fzf]}))
+          1 (ns.custom-mode :FZF :black :green)})
   (local neogit-statusline {:condition (fn []
                                          (conditions.buffer_matches {:filetype [:NeogitBranchDescription
                                                                                 :NeogitCommitMessage
@@ -44,7 +44,7 @@
           5 (ns.shell-mode :black :purple)})
   (local statusline {:hl ns.default-hl
                      :fallthrough false
-                     1 telescope-statusline
+                     1 fzf-statusline
                      2 neogit-statusline
                      3 shell-statusline
                      4 default-statusline})

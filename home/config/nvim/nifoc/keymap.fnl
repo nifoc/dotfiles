@@ -1,11 +1,14 @@
 (let [mod {}
       keymap vim.keymap
       substitute (require :substitute)
-      telescope-builtin (require :telescope.builtin)
-      telescope-themes (require :telescope.themes)
-      telescope-nifoc (require :nifoc.telescope)
-      telescope-ivy (telescope-themes.get_ivy)
-      telescope-dropdown (telescope-themes.get_dropdown)
+      fzf (require :fzf-lua)
+      fzf-layout-bottom {:winopts_fn #(let [height (math.floor (* vim.o.lines
+                                                                  0.4))]
+                                        {:split (.. "belowright new | resize "
+                                                    (tostring height))})}
+      fzf-layout-dropdown {:winopts {:height 0.4
+                                     :width 0.6
+                                     :preview {:hidden :hidden}}}
       npairs (require :nvim-autopairs)
       hover (require :hover)
       gitsigns (require :gitsigns)
@@ -17,30 +20,21 @@
   (fn mod.setup []
     (keymap.set :n :<space> :<nop> {:noremap true})
     ;; Leader Mappings
-    (keymap.set :n :<leader>o telescope-nifoc.find-files {:desc "Find Files"})
-    (keymap.set :n :<leader>s #(telescope-builtin.live_grep telescope-ivy)
+    (keymap.set :n :<leader>o fzf.files {:desc "Find Files"})
+    (keymap.set :n :<leader>s #(fzf.live_grep fzf-layout-bottom)
                 {:desc "Live Grep"})
     (keymap.set :n :<leader>fn :<cmd>enew<CR> {:desc "New File"})
     (keymap.set :n :<leader>u "<cmd>UrlView buffer<CR>" {:desc "Open UrlView"})
-    (keymap.set :n :<leader>ut "<cmd>Telescope undo<CR>"
-                {:desc "Toggle Undotree"})
     (keymap.set :n :<leader>c repl.open-shell {:desc "Open Shell"})
     (keymap.set :n :<leader>r repl.open-repl {:desc "Open REPL"})
-    (keymap.set :n :<leader>bl #(telescope-builtin.buffers telescope-dropdown)
-                {:desc "List Buffers"})
-    (keymap.set :n :<leader>bf
-                #(telescope-builtin.current_buffer_fuzzy_find telescope-dropdown)
-                {:desc "Find In Buffer"})
-    (keymap.set :n :<leader>bt
-                #(telescope-builtin.treesitter telescope-dropdown)
-                {:desc "Find via Treesitter"})
-    (keymap.set :n :<leader>pt :<cmd>TodoTelescope<CR> {:desc "TODO Comments"})
+    (keymap.set :n :<leader>bl fzf.buffers {:desc "List Buffers"})
+    (keymap.set :n :<leader>bf fzf.grep_curbuf {:desc "Find In Buffer"})
+    (keymap.set :n :<leader>bt fzf.treesitter {:desc "Find via Treesitter"})
     (keymap.set :n :<leader>g #(neogit.open {:kind :split})
                 {:desc "Open Neogit"})
     (keymap.set :n :<leader>vs #(neogit.open {:kind :split})
                 {:desc "VCS Status"})
-    (keymap.set :n :<leader>vb
-                #(telescope-builtin.git_branches telescope-dropdown)
+    (keymap.set :n :<leader>vb #(fzf.git_branches fzf-layout-dropdown)
                 {:desc "List VCS Branches"})
     (keymap.set :n :<leader>vl #(gitsigns.blame_line {:full true})
                 {:desc "Blame Line"})
@@ -49,11 +43,10 @@
     (keymap.set :n :<leader>vvm #(repo.open-merge-request) {:desc "Open MR"})
     (keymap.set :n :<leader>vvc #(repo.open-ci) {:desc "Open CI"})
     (keymap.set :n :<leader>vtc #(repo.run-ci) {:desc "Trigger CI"})
-    (keymap.set :n :<leader>lk telescope-builtin.keymaps
-                {:desc "Show Keymappings"})
-    (keymap.set :n :<leader>ld #(telescope-builtin.diagnostics telescope-ivy)
+    (keymap.set :n :<leader>lk fzf.keymaps {:desc "Show Keymappings"})
+    (keymap.set :n :<leader>ld #(fzf.diagnostics_document fzf-layout-bottom)
                 {:desc "Show Diagnostics"})
-    (keymap.set :n :<leader>lt "<cmd>TodoTelescope theme=ivy<CR>"
+    (keymap.set :n :<leader>lt :<cmd>TodoFzfLua<CR>
                 {:desc "Show Todo Comments"})
     (keymap.set :n :<leader>dli :<cmd>LspInfo<CR> {:desc "LSP Info"})
     (keymap.set :n :<leader>dlr :<cmd>LspRestart<CR> {:desc "Restart LSP"})
@@ -104,27 +97,21 @@
              {1 :<leader>d :group :debug}]))
 
   (fn mod.lsp-attach [_client bufnr]
-    (keymap.set :n :<leader>t
-                #(telescope-builtin.lsp_document_symbols telescope-dropdown)
+    (keymap.set :n :<leader>t #(fzf.lsp_document_symbols fzf-layout-dropdown)
                 {:buffer bufnr :desc "LSP Document Symbols"})
-    (keymap.set :n :<leader>tw
-                #(telescope-builtin.lsp_dynamic_workspace_symbols telescope-dropdown)
+    (keymap.set :n :<leader>tw #(fzf.lsp_workspace_symbols fzf-layout-dropdown)
                 {:buffer bufnr :desc "LSP Workspace Symbols"})
     (keymap.set :n :<leader>th
                 #(vim.lsp.inlay_hint.enable (not (vim.lsp.inlay_hint.is_enabled bufnr))
                                             {: bufnr})
                 {:buffer bufnr :desc "Toggle Inlay Hints"})
-    (keymap.set :n :<leader>lca
-                #(telescope-builtin.lsp_code_actions telescope-dropdown)
+    (keymap.set :n :<leader>lca fzf.lsp_code_actions
                 {:buffer bufnr :desc "LSP Code Action"})
-    (keymap.set :n :<leader>lfr
-                #(telescope-builtin.lsp_references telescope-dropdown)
+    (keymap.set :n :<leader>lfr fzf.lsp_references
                 {:buffer bufnr :desc "Find References"})
-    (keymap.set :n :<leader>lfd
-                #(telescope-builtin.lsp_definitions telescope-dropdown)
+    (keymap.set :n :<leader>lfd fzf.lsp_definitions
                 {:buffer bufnr :desc "Find Definitions"})
-    (keymap.set :n :<leader>lfi
-                #(telescope-builtin.lsp_implementations telescope-dropdown)
+    (keymap.set :n :<leader>lfi fzf.lsp_implementations
                 {:buffer bufnr :desc "Find Implementations"}))
 
   (fn mod.terminal-open [bufnr]

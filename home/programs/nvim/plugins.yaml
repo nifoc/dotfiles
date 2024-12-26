@@ -15,10 +15,8 @@
 - src: nvim-treesitter/nvim-treesitter
 - src: HiPhish/rainbow-delimiters.nvim
 - src: folke/todo-comments.nvim
-# Telescope
-- src: nvim-telescope/telescope.nvim
-- src: nvim-telescope/telescope-ui-select.nvim
-- src: debugloop/telescope-undo.nvim
+# Finder
+- src: ibhagwan/fzf-lua
 # LSP
 - src: neovim/nvim-lspconfig
 - src: mfussenegger/nvim-jdtls

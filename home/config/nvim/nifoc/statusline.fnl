@@ -11,8 +11,11 @@
       nifoc-treesitter (require :nifoc.treesitter)
       navic (require :nvim-navic)
       neogit (require :neogit)
-      telescope-builtin (require :telescope.builtin)
-      telescope-themes (require :telescope.themes)]
+      fzf (require :fzf-lua)
+      fzf-layout-bottom {:winopts_fn #(let [height (math.floor (* vim.o.lines
+                                                                  0.4))]
+                                        {:split (.. "belowright new | resize "
+                                                    (tostring height))})}]
   (fn buffer-variable-exists? [key]
     (not= (. vim :b key) nil))
 
@@ -207,7 +210,7 @@
                                                     self.hints]))))
                         :update [:DiagnosticChanged :BufEnter]
                         :on_click {:name :heirline_diagnostics_list
-                                   :callback #(telescope-builtin.diagnostics (telescope-themes.get_ivy {:bufnr 0}))}
+                                   :callback #(fzf.diagnostics_document fzf-layout-bottom)}
                         1 mod.space-if-count
                         2 {:provider (fn [self]
                                        (let [spacer (if (or (> self.warnings 0)

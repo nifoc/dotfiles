@@ -36,12 +36,12 @@ in
   };
   nvim-web-devicons = buildVimPlugin {
     pname = "nvim-web-devicons";
-    version = "2024-12-24";
+    version = "2024-12-26";
     src = fetchFromGitHub {
       owner = "kyazdani42";
       repo = "nvim-web-devicons";
-      rev = "c1a86a2c386c55efc02fa2ec2c3a914af653d954";
-      sha256 = "09xqzjsaklic12av1x79blvyjfi3falrxc1q4mnwpyb0f0angv05";
+      rev = "63f552a7f59badc6e6b6d22e603150f0d5abebb7";
+      sha256 = "04yr85zz9b04lgxl9gfda52l0p82a1lc891s921mll3bx48i1xb2";
       fetchSubmodules = false;
 
     };
@@ -148,12 +148,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2024-12-25";
+    version = "2024-12-26";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "ac6a72a6f83218216948e898362f09029b8035dc";
-      sha256 = "0mrp9w7q60g43yd3f6ryrva06siy9bh4nxjlsjz0bsnssr70yhgm";
+      rev = "17678b00fa5c2712890a0ec2e269d0a4de1207df";
+      sha256 = "0d6fw1205bhlaxi0kzbl9gn4vgnyca2qxbnch21hz2mbm2wlq8qm";
       fetchSubmodules = false;
 
     };
@@ -188,42 +188,14 @@ in
     doCheck = false;
     doInstallCheck = false;
   };
-  telescope-nvim = buildVimPlugin {
-    pname = "telescope.nvim";
-    version = "2024-11-29";
+  fzf-lua = buildVimPlugin {
+    pname = "fzf-lua";
+    version = "2024-12-26";
     src = fetchFromGitHub {
-      owner = "nvim-telescope";
-      repo = "telescope.nvim";
-      rev = "2eca9ba22002184ac05eddbe47a7fe2d5a384dfc";
-      sha256 = "0bkpys6dj01x6ycylmf6vrd2mqjibmny9a2hxxrqn0jqqvagm5ly";
-      fetchSubmodules = false;
-
-    };
-    doCheck = false;
-    doInstallCheck = false;
-  };
-  telescope-ui-select-nvim = buildVimPlugin {
-    pname = "telescope-ui-select.nvim";
-    version = "2023-12-04";
-    src = fetchFromGitHub {
-      owner = "nvim-telescope";
-      repo = "telescope-ui-select.nvim";
-      rev = "6e51d7da30bd139a6950adf2a47fda6df9fa06d2";
-      sha256 = "1cgi4kmq99ssx97nnriff5674cjfvc3qsw62nx3iz0xqc6d4s631";
-      fetchSubmodules = false;
-
-    };
-    doCheck = false;
-    doInstallCheck = false;
-  };
-  telescope-undo-nvim = buildVimPlugin {
-    pname = "telescope-undo.nvim";
-    version = "2024-11-05";
-    src = fetchFromGitHub {
-      owner = "debugloop";
-      repo = "telescope-undo.nvim";
-      rev = "2971cc9f193ec09e0c5de3563f99cbea16b63f10";
-      sha256 = "0cg4w40wmr1k2l5zb25zffpp990wsmi6kq39fvfzy4ay2wx56zgs";
+      owner = "ibhagwan";
+      repo = "fzf-lua";
+      rev = "76e25abc4bbaab243b52fad7f7d4262e76254fd3";
+      sha256 = "0prii8hv8jli4p69mjqjma650q906f187i6zvk2g9i4kdvzzqpj6";
       fetchSubmodules = false;
 
     };
