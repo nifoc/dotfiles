@@ -31,7 +31,9 @@
                        :<C-f> [:scroll_documentation_down :fallback]
                        :<C-e> [:hide :fallback]}
               :completion {:list {:selection :manual}
-                           :menu {:min_width 20 :max_height 25}
+                           :menu {:min_width 20
+                                  :max_height 25
+                                  :draw {:treesitter [:lsp]}}
                            :documentation {:auto_show true
                                            :window {:border :rounded}}
                            :ghost_text {:enabled false}}
