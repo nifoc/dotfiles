@@ -8,9 +8,6 @@
       g vim.g
       dracula (require :dracula)
       dracula-colors (dracula.colors)]
-  (fn swap-bg-with-fg [fg group]
-    (highlight group {: fg :bg (highlight-get-field group :fg)}))
-
   (set mod.colors dracula-colors)
 
   (fn mod.setup []
@@ -29,46 +26,6 @@
     (highlight :IlluminatedWordText {:bg mod.colors.selection})
     (highlight :IlluminatedWordRead {:bg mod.colors.selection})
     (highlight :IlluminatedWordWrite {:bg mod.colors.selection :underline true})
-    ;; cmp
-    (highlight :PmenuSel {:fg mod.colors.white :bg "#363848"})
-    (highlight :CmpCursorLine {:bg "#363848"})
-    (highlight :CmpItemAbbr {:fg mod.colors.white :bg :NONE})
-    (highlight :CmpItemAbbrMatch {:fg mod.colors.cyan :bg :NONE :bold true})
-    (highlight :CmpItemAbbrMatchFuzzy
-               {:fg mod.colors.cyan :bg :NONE :bold true})
-    (highlight :CmpItemAbbrDeprecated
-               {:fg mod.colors.white :bg :NONE :strikethrough true})
-    (highlight :CmpItemMenu {:fg mod.colors.purple :bg :NONE :italic true})
-    (let [cmp-groups [:CmpItemKindField
-                      :CmpItemKindProperty
-                      :CmpItemKindEvent
-                      :CmpItemKindText
-                      :CmpItemKindEnum
-                      :CmpItemKindKeyword
-                      :CmpItemKindConstant
-                      :CmpItemKindConstructor
-                      :CmpItemKindReference
-                      :CmpItemKindFunction
-                      :CmpItemKindStruct
-                      :CmpItemKindClass
-                      :CmpItemKindModule
-                      :CmpItemKindOperator
-                      :CmpItemKindVariable
-                      :CmpItemKindUnit
-                      :CmpItemKindSnippet
-                      :CmpItemKindFolder
-                      :CmpItemKindMethod
-                      :CmpItemKindValue
-                      :CmpItemKindEnumMember
-                      :CmpItemKindInterface
-                      :CmpItemKindColor
-                      :CmpItemKindTypeParameter]]
-      (each [_ group (pairs cmp-groups)]
-        (swap-bg-with-fg mod.colors.black group)))
-    (highlight :CmpItemKindFile {:fg mod.colors.black :bg mod.colors.white})
-    (highlight :CmpItemKindFolder {:fg mod.colors.black :bg mod.colors.white})
-    (highlight :CmpItemKindTabNine
-               {:fg mod.colors.black :bg mod.colors.bright_magenta})
     ;; neogit
     (highlight :NeogitBranch {:fg mod.colors.green :bold true})
     (highlight :NeogitBranchHead

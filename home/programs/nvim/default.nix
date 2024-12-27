@@ -3,6 +3,8 @@
 let
   inherit (pkgs.stdenv) isDarwin;
   inherit (lib) optionals;
+
+  inherit (pkgs) vimPlugins;
 in
 {
   programs.neovim = {
@@ -84,7 +86,7 @@ in
         nvim-web-devicons
 
         {
-          plugin = wezterm-nvim;
+          plugin = vimPlugins.wezterm-nvim;
           config = builtins.readFile ../../config/nvim/plugins/wezterm.fnl;
           type = "fennel";
         }
@@ -123,13 +125,13 @@ in
         }
 
         {
-          plugin = rainbow-delimiters-nvim;
+          plugin = vimPlugins.rainbow-delimiters-nvim;
           config = builtins.readFile ../../config/nvim/plugins/rainbow-delimiters.fnl;
           type = "fennel";
         }
 
         {
-          plugin = todo-comments-nvim;
+          plugin = vimPlugins.todo-comments-nvim;
           config = builtins.readFile ../../config/nvim/plugins/todo-comments.fnl;
           type = "fennel";
         }
@@ -187,19 +189,14 @@ in
           type = "fennel";
         }
 
-        # cmp
+        # Completion
         {
-          plugin = nvim-cmp;
-          config = builtins.readFile ../../config/nvim/plugins/cmp.fnl;
+          plugin = vimPlugins.blink-cmp;
+          config = builtins.readFile ../../config/nvim/plugins/blink-cmp.fnl;
           type = "fennel";
         }
 
-        cmp-nvim-lsp
-        cmp_luasnip
-        cmp-async-path
-        cmp-buffer
-        cmp-cmdline
-        cmp-nvim-lsp-document-symbol
+        vimPlugins.blink-compat
 
         # Formatting
 
@@ -268,11 +265,11 @@ in
           type = "fennel";
         }
 
-        {
-          plugin = gitsigns-nvim;
-          config = builtins.readFile ../../config/nvim/plugins/gitsigns.fnl;
-          type = "fennel";
-        }
+        # {
+        #   plugin = gitsigns-nvim;
+        #   config = builtins.readFile ../../config/nvim/plugins/gitsigns.fnl;
+        #   type = "fennel";
+        # }
 
         {
           plugin = diffview-nvim;

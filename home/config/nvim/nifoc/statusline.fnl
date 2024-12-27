@@ -10,7 +10,7 @@
       repo (require :nifoc.repo)
       nifoc-treesitter (require :nifoc.treesitter)
       navic (require :nvim-navic)
-      neogit (require :neogit)
+      (ok-neogit neogit) (pcall require :neogit)
       fzf (require :fzf-lua)
       fzf-layout-bottom {:winopts_fn #(let [height (math.floor (* vim.o.lines
                                                                   0.4))]
@@ -179,7 +179,7 @@
            :hl {:fg colors.black :bg colors.orange :bold true}}
         3 {:provider #(.. $1.git-head " ")
            :on_click {:name :heirline_git_branch
-                      :callback #(neogit.open {:kind :split})}
+                      :callback #(when ok-neogit (neogit.open {:kind :split}))}
            :hl {:fg colors.black :bg colors.orange :bold true}}
         4 mod.space
         5 {:provider #(.. " " $1.git-added " ")

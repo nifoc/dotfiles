@@ -6,7 +6,7 @@
       v vim.v
       statusline (require :nifoc.statusline)
       diagnostic vim.diagnostic
-      gitsigns (require :gitsigns)
+      (ok-gitsigns gitsigns) (pcall require :gitsigns)
       gitsigns-ns (api.nvim_create_namespace :gitsigns_signs_)
       augroup (vim.api.nvim_create_augroup :NifocStatuscolumn {:clear true})
       aucmd vim.api.nvim_create_autocmd]
@@ -64,11 +64,12 @@
                                                (vim.diagnostic.get $1.buf))
           :group augroup
           :desc "Update cached diagnostic signs"})
-  (aucmd :User {:pattern :GitSignsUpdate
-                :callback #(when (not= $1.data nil)
-                             (update-cache-gitsigns $1.data.buffer))
-                :group augroup
-                :desc "Update cached gitsigns signs"})
+  (when (= b.nifoc_gitsigns_enabled 1)
+    (aucmd :User {:pattern :GitSignsUpdate
+                  :callback #(when (not= $1.data nil)
+                               (update-cache-gitsigns $1.data.buffer))
+                  :group augroup
+                  :desc "Update cached gitsigns signs"}))
   (aucmd :BufWipeout
          {:callback (fn [args]
                       (tset cache :diagnostics args.buf nil)
@@ -107,7 +108,8 @@
                                                   cursor-pos [mouse.line 0]]
                                               (api.nvim_win_set_cursor mouse.winid
                                                                        cursor-pos)
-                                              (vim.defer_fn #(gitsigns.blame_line {:full true})
+                                              (vim.defer_fn #(when ok-gitsigns
+                                                               (gitsigns.blame_line {:full true}))
                                                 100)))}})
   (set mod.gitsigns-or-bar [{:condition #(and (not= b.nifoc_gitsigns_enabled 1)
                                               (or (o.number:get)

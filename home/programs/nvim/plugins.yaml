@@ -2,7 +2,6 @@
 - src: nvim-lua/popup.nvim
 - src: nvim-lua/plenary.nvim
 - src: kyazdani42/nvim-web-devicons
-- src: willothy/wezterm.nvim
 - src: romainl/vim-cool
 # Keybindings
 - src: gbprod/yanky.nvim
@@ -13,8 +12,6 @@
 - src: Mofiqul/dracula.nvim
 # Syntax
 - src: nvim-treesitter/nvim-treesitter
-- src: HiPhish/rainbow-delimiters.nvim
-- src: folke/todo-comments.nvim
 # Finder
 - src: ibhagwan/fzf-lua
 # LSP
@@ -30,15 +27,6 @@
 - src: folke/ts-comments.nvim
 # Snippets
 - src: L3MON4D3/LuaSnip
-# cmp
-- src: hrsh7th/nvim-cmp
-- src: hrsh7th/cmp-nvim-lsp
-- src: saadparwaiz1/cmp_luasnip
-- src: https://codeberg.org/FelipeLema/cmp-async-path.git
-  name: cmp-async-path
-- src: hrsh7th/cmp-buffer
-- src: hrsh7th/cmp-cmdline
-- src: hrsh7th/cmp-nvim-lsp-document-symbol
 # Formatting
 - src: stevearc/conform.nvim
 # Pairs

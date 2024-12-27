@@ -10,10 +10,8 @@
                                                :dockerfile
                                                :eex
                                                :elixir
-                                               :elvish
                                                :erlang
                                                :fennel
-                                               :fish
                                                :git_config
                                                :git_rebase
                                                :gitattributes

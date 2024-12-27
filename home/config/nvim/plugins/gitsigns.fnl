@@ -8,7 +8,6 @@
                            :untracked {:text "┆"}}
                    :numhl false
                    :linehl false
-                   :diff_opts {:internal true}
                    :preview_config {:border :rounded}
                    :on_attach (fn [bufnr]
-                                (set-bufvar bufnr :nifoc_gitsigns_enabled 1))}))
+                                (set-bufvar bufnr :nifoc_gitsigns_enabled 0))}))

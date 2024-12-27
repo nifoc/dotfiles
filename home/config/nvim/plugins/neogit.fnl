@@ -1,5 +1,5 @@
 (let [neogit (require :neogit)
-      gitsigns (require :gitsigns)
+      (ok-gitsigns gitsigns) (pcall require :gitsigns)
       augroup (vim.api.nvim_create_augroup :NifocNeogit {:clear true})
       aucmd vim.api.nvim_create_autocmd]
   (neogit.setup {})
@@ -17,5 +17,5 @@
                           :NeogitPullComplete
                           :NeogitPushComplete
                           :NeogitStatusRefreshed]
-                :callback #(gitsigns.refresh)
+                :callback #(when ok-gitsigns (gitsigns.refresh))
                 :group augroup}))

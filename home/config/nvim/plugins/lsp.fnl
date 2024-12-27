@@ -1,5 +1,5 @@
 (let [lsp (require :lspconfig)
-      cmp (require :cmp_nvim_lsp)
+      cmp (require :blink.cmp)
       schemastore (require :schemastore)
       navic (require :nvim-navic)
       diagnostic (require :nifoc.diagnostic)
@@ -30,9 +30,7 @@
                      :desc "Automatic LSP setup"})
   ;; Servers
   (vim.lsp.set_log_level :OFF)
-  (let [capabilities (vim.tbl_deep_extend :force
-                                          (vim.lsp.protocol.make_client_capabilities)
-                                          (cmp.default_capabilities))
+  (let [capabilities (cmp.get_lsp_capabilities nil true)
         handlers {:textDocument/hover (vim.lsp.with vim.lsp.handlers.hover
                                         {:border :rounded})
                   :textDocument/signatureHelp (vim.lsp.with vim.lsp.handlers.signature_help
