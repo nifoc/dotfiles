@@ -30,7 +30,10 @@
                        :<C-b> [:scroll_documentation_up :fallback]
                        :<C-f> [:scroll_documentation_down :fallback]
                        :<C-e> [:hide :fallback]}
-              :completion {:list {:selection :manual}
+              :completion {:list {:selection (fn [ctx]
+                                               (if (= ctx.mode :cmdline)
+                                                   :manual
+                                                   :preselect))}
                            :menu {:min_width 20
                                   :max_height 25
                                   :draw {:treesitter [:lsp]}}
