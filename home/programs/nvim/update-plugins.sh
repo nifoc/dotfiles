@@ -23,7 +23,7 @@ rm -f "$nix_new_file"
   echo 'let'
   echo 'inherit (pkgs) fetchFromGitHub;'
   # echo 'inherit (pkgs) fetchFromSourcehut;'
-  echo 'inherit (pkgs) fetchFromGitea;'
+  # echo 'inherit (pkgs) fetchFromGitea;'
   echo 'inherit (pkgs.vimUtils) buildVimPlugin;'
   echo 'in'
   echo '{'

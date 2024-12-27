@@ -1,49 +1,17 @@
-# Utils
-- src: nvim-lua/popup.nvim
-- src: nvim-lua/plenary.nvim
-- src: kyazdani42/nvim-web-devicons
-- src: romainl/vim-cool
 # Keybindings
-- src: gbprod/yanky.nvim
 - src: gbprod/cutlass.nvim
-- src: gbprod/substitute.nvim
 - src: hinell/move.nvim
 # Themes
 - src: Mofiqul/dracula.nvim
 # Syntax
 - src: nvim-treesitter/nvim-treesitter
-# Finder
-- src: ibhagwan/fzf-lua
 # LSP
 - src: neovim/nvim-lspconfig
-- src: mfussenegger/nvim-jdtls
-- src: b0o/schemastore.nvim
-- src: onsails/lspkind.nvim
-- src: SmiteshP/nvim-navic
-- src: RRethy/vim-illuminate
-# Linter
-- src: mfussenegger/nvim-lint
 # Comments
 - src: folke/ts-comments.nvim
-# Snippets
-- src: L3MON4D3/LuaSnip
-# Formatting
-- src: stevearc/conform.nvim
 # Pairs
 - src: windwp/nvim-autopairs
 # Textobjects
 - src: nvim-treesitter/nvim-treesitter-textobjects
-- src: kylechui/nvim-surround
 # UI
-- src: stevearc/oil.nvim
-- src: rebelot/heirline.nvim
-- src: lukas-reineke/indent-blankline.nvim
-- src: lukas-reineke/virt-column.nvim
-- src: axieax/urlview.nvim
-- src: lewis6991/hover.nvim
-- src: lewis6991/gitsigns.nvim
-- src: sindrets/diffview.nvim
-- src: NeogitOrg/neogit
-  branch: master
 - src: j-hui/fidget.nvim
-- src: folke/which-key.nvim
