@@ -48,20 +48,6 @@ in
     doCheck = false;
     doInstallCheck = false;
   };
-  wezterm-nvim = buildVimPlugin {
-    pname = "wezterm.nvim";
-    version = "2024-09-26";
-    src = fetchFromGitHub {
-      owner = "willothy";
-      repo = "wezterm.nvim";
-      rev = "032c33b621b96cc7228955b4352b48141c482098";
-      sha256 = "16a3x84yh6p9i4h3fic59q29cbb6cwmqfx3051g9lxhh3r9dk0xb";
-      fetchSubmodules = false;
-
-    };
-    doCheck = false;
-    doInstallCheck = false;
-  };
   vim-cool = buildVimPlugin {
     pname = "vim-cool";
     version = "2023-09-06";
@@ -154,34 +140,6 @@ in
       repo = "nvim-treesitter";
       rev = "17678b00fa5c2712890a0ec2e269d0a4de1207df";
       sha256 = "0d6fw1205bhlaxi0kzbl9gn4vgnyca2qxbnch21hz2mbm2wlq8qm";
-      fetchSubmodules = false;
-
-    };
-    doCheck = false;
-    doInstallCheck = false;
-  };
-  rainbow-delimiters-nvim = buildVimPlugin {
-    pname = "rainbow-delimiters.nvim";
-    version = "2024-12-15";
-    src = fetchFromGitHub {
-      owner = "HiPhish";
-      repo = "rainbow-delimiters.nvim";
-      rev = "77e5bad54227dcfe3878ffbda88ab1efdaacb475";
-      sha256 = "1wpk8aa8nnh4ba9n8l1l1k4gi5b1zy9p3fg2q72b15czwizq8g58";
-      fetchSubmodules = false;
-
-    };
-    doCheck = false;
-    doInstallCheck = false;
-  };
-  todo-comments-nvim = buildVimPlugin {
-    pname = "todo-comments.nvim";
-    version = "2024-09-16";
-    src = fetchFromGitHub {
-      owner = "folke";
-      repo = "todo-comments.nvim";
-      rev = "ae0a2afb47cf7395dc400e5dc4e05274bf4fb9e0";
-      sha256 = "0v6vn3f9svj756ds8cp0skpw65xixlx1f3aj0fh374wdpb5i4zhh";
       fetchSubmodules = false;
 
     };
@@ -322,104 +280,6 @@ in
       repo = "LuaSnip";
       rev = "33b06d72d220aa56a7ce80a0dd6f06c70cd82b9d";
       sha256 = "1zicjd8y9a16rq1rs1xbmc6g927j5xi05yrxj9ap6wp72pfxxw3r";
-      fetchSubmodules = false;
-
-    };
-    doCheck = false;
-    doInstallCheck = false;
-  };
-  nvim-cmp = buildVimPlugin {
-    pname = "nvim-cmp";
-    version = "2024-12-20";
-    src = fetchFromGitHub {
-      owner = "hrsh7th";
-      repo = "nvim-cmp";
-      rev = "b555203ce4bd7ff6192e759af3362f9d217e8c89";
-      sha256 = "1s3wiwhnqp046skxp60sdrvzhrij4javhm9ndvfsw2fv9bc35x37";
-      fetchSubmodules = false;
-
-    };
-    doCheck = false;
-    doInstallCheck = false;
-  };
-  cmp-nvim-lsp = buildVimPlugin {
-    pname = "cmp-nvim-lsp";
-    version = "2024-12-10";
-    src = fetchFromGitHub {
-      owner = "hrsh7th";
-      repo = "cmp-nvim-lsp";
-      rev = "99290b3ec1322070bcfb9e846450a46f6efa50f0";
-      sha256 = "08q5mf5jrqjjcl1s4h9zj2vd1kcizz0a5a6p65wv1rc5s1fa3a49";
-      fetchSubmodules = false;
-
-    };
-    doCheck = false;
-    doInstallCheck = false;
-  };
-  cmp_luasnip = buildVimPlugin {
-    pname = "cmp_luasnip";
-    version = "2024-11-04";
-    src = fetchFromGitHub {
-      owner = "saadparwaiz1";
-      repo = "cmp_luasnip";
-      rev = "98d9cb5c2c38532bd9bdb481067b20fea8f32e90";
-      sha256 = "037sh4g1747wf07f9sqngiifp89hqww6m2rvizy5ra7jyd04magk";
-      fetchSubmodules = false;
-
-    };
-    doCheck = false;
-    doInstallCheck = false;
-  };
-  cmp-async-path = buildVimPlugin {
-    pname = "cmp-async-path";
-    version = "2024-10-21";
-    src = fetchFromGitea {
-      owner = "FelipeLema";
-      repo = "cmp-async-path.git";
-      rev = "d6d1ffa2075039632a2d71e8fa139818e15ac757";
-      sha256 = "1x10v0kd0i2pdxknzdn3zgqdn4hgbivgnczsj56wc32jzcs6k49i";
-      fetchSubmodules = false;
-      domain = "codeberg.org";
-    };
-    doCheck = false;
-    doInstallCheck = false;
-  };
-  cmp-buffer = buildVimPlugin {
-    pname = "cmp-buffer";
-    version = "2022-08-10";
-    src = fetchFromGitHub {
-      owner = "hrsh7th";
-      repo = "cmp-buffer";
-      rev = "3022dbc9166796b644a841a02de8dd1cc1d311fa";
-      sha256 = "1cwx8ky74633y0bmqmvq1lqzmphadnhzmhzkddl3hpb7rgn18vkl";
-      fetchSubmodules = false;
-
-    };
-    doCheck = false;
-    doInstallCheck = false;
-  };
-  cmp-cmdline = buildVimPlugin {
-    pname = "cmp-cmdline";
-    version = "2024-03-22";
-    src = fetchFromGitHub {
-      owner = "hrsh7th";
-      repo = "cmp-cmdline";
-      rev = "d250c63aa13ead745e3a40f61fdd3470efde3923";
-      sha256 = "1sh4ar3ky4qikh2brlwy9nmhy3208fs77ysbgvhccj0lx2krf6c8";
-      fetchSubmodules = false;
-
-    };
-    doCheck = false;
-    doInstallCheck = false;
-  };
-  cmp-nvim-lsp-document-symbol = buildVimPlugin {
-    pname = "cmp-nvim-lsp-document-symbol";
-    version = "2024-05-29";
-    src = fetchFromGitHub {
-      owner = "hrsh7th";
-      repo = "cmp-nvim-lsp-document-symbol";
-      rev = "f94f7ba948e32cd302caba1c2ca3f7c697fb4fcf";
-      sha256 = "0iyy37l0pc09hs610c40q5qzvg344200kvdkn0z8pjc4zk9wc6q4";
       fetchSubmodules = false;
 
     };
