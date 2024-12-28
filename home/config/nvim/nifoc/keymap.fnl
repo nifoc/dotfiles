@@ -9,6 +9,9 @@
       fzf-layout-dropdown {:winopts {:height 0.4
                                      :width 0.6
                                      :preview {:hidden :hidden}}}
+      fzf-layout-big-dropdown {:winopts {:height 0.6
+                                         :width 0.7
+                                         :preview {:layout :vertical}}}
       (ok-npairs npairs) (pcall require :nvim-autopairs)
       (ok-hover hover) (pcall require :hover)
       (ok-gitsigns gitsigns) (pcall require :gitsigns)
@@ -21,7 +24,8 @@
     (keymap.set :n :<space> :<nop> {:noremap true})
     ;; Leader Mappings
     (when ok-fzf
-      (keymap.set :n :<leader>o fzf.files {:desc "Find Files"})
+      (keymap.set :n :<leader>o #(fzf.files fzf-layout-bottom)
+                  {:desc "Find Files"})
       (keymap.set :n :<leader>s #(fzf.live_grep fzf-layout-bottom)
                   {:desc "Live Grep"}))
     (keymap.set :n :<leader>fn :<cmd>enew<CR> {:desc "New File"})
@@ -29,9 +33,12 @@
     (keymap.set :n :<leader>c repl.open-shell {:desc "Open Shell"})
     (keymap.set :n :<leader>r repl.open-repl {:desc "Open REPL"})
     (when ok-fzf
-      (keymap.set :n :<leader>bl fzf.buffers {:desc "List Buffers"})
-      (keymap.set :n :<leader>bf fzf.grep_curbuf {:desc "Find In Buffer"})
-      (keymap.set :n :<leader>bt fzf.treesitter {:desc "Find via Treesitter"}))
+      (keymap.set :n :<leader>bl #(fzf.buffers fzf-layout-big-dropdown)
+                  {:desc "List Buffers"})
+      (keymap.set :n :<leader>bf #(fzf.grep_curbuf fzf-layout-big-dropdown)
+                  {:desc "Find In Buffer"})
+      (keymap.set :n :<leader>bt #(fzf.treesitter fzf-layout-big-dropdown)
+                  {:desc "Find via Treesitter"}))
     (when ok-neogit
       (keymap.set :n :<leader>g #(neogit.open {:kind :split})
                   {:desc "Open Neogit"})
@@ -110,20 +117,23 @@
       (keymap.set :n :<leader>t #(fzf.lsp_document_symbols fzf-layout-dropdown)
                   {:buffer bufnr :desc "LSP Document Symbols"})
       (keymap.set :n :<leader>tw
-                  #(fzf.lsp_workspace_symbols fzf-layout-dropdown)
+                  #(fzf.lsp_workspace_symbols fzf-layout-big-dropdown)
                   {:buffer bufnr :desc "LSP Workspace Symbols"}))
     (keymap.set :n :<leader>th
                 #(vim.lsp.inlay_hint.enable (not (vim.lsp.inlay_hint.is_enabled bufnr))
                                             {: bufnr})
                 {:buffer bufnr :desc "Toggle Inlay Hints"})
     (when ok-fzf
-      (keymap.set :n :<leader>lca fzf.lsp_code_actions
+      (keymap.set :n :<leader>lca
+                  #(fzf.lsp_code_actions fzf-layout-big-dropdown)
                   {:buffer bufnr :desc "LSP Code Action"})
-      (keymap.set :n :<leader>lfr fzf.lsp_references
+      (keymap.set :n :<leader>lfr #(fzf.lsp_references fzf-layout-big-dropdown)
                   {:buffer bufnr :desc "Find References"})
-      (keymap.set :n :<leader>lfd fzf.lsp_definitions
+      (keymap.set :n :<leader>lfd
+                  #(fzf.lsp_definitions fzf-layout-big-dropdown)
                   {:buffer bufnr :desc "Find Definitions"})
-      (keymap.set :n :<leader>lfi fzf.lsp_implementations
+      (keymap.set :n :<leader>lfi
+                  #(fzf.lsp_implementations fzf-layout-big-dropdown)
                   {:buffer bufnr :desc "Find Implementations"})))
 
   (fn mod.terminal-open [bufnr]
