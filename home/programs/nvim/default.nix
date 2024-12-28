@@ -252,6 +252,8 @@ in
           type = "fennel";
         }
 
+        nvim-treesitter-context
+
         {
           plugin = vimPlugins.urlview-nvim;
           config = builtins.readFile ../../config/nvim/plugins/urlview.fnl;
