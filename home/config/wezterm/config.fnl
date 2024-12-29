@@ -67,12 +67,21 @@
       (where t (t:find "^%w+-dl%s")) {: title :icon " " :color "#22BC00"}
       _ {: title :icon " " :color "#F8F8F2"}))
 
+  (fn show-tab-activity-indicator [panes]
+    (each [_ pane (ipairs panes)]
+      (when pane.has_unseen_output (lua "return true")))
+    false)
+
   (wezterm.on :format-tab-title
               (fn [tab _tabs _panes _config _hover max-width]
                 (let [raw-title (extract-tab-title tab)
                       tab-info (extract-tab-info raw-title)
                       title (wezterm.truncate_right tab-info.title
-                                                    (- max-width 5))]
+                                                    (- max-width 5))
+                      (activity-indicator activity-color) (if (show-tab-activity-indicator tab.panes)
+                                                              (values "  "
+                                                                      "#FFB86C")
+                                                              (values " " nil))]
                   (if tab.is_active
                       [; Left
                        {:Background {:Color colors.active-background}}
@@ -86,21 +95,24 @@
                        {:Attribute {:Italic true}}
                        {:Text title}
                        ; Right
+                       {:Foreground {:Color (or activity-color
+                                                colors.active-foreground)}}
                        {:Attribute {:Intensity :Normal}}
                        {:Attribute {:Italic false}}
-                       {:Text " "}]
+                       {:Text activity-indicator}]
                       [; Left
                        {:Background {:Color colors.inactive-background}}
                        {:Foreground {:Color colors.inactive-foreground}}
                        {:Text "  "}
                        ; Center
-                       {:Foreground {:Color tab-info.color}}
-                       {:Text tab-info.icon}
                        {:Foreground {:Color colors.inactive-foreground}}
+                       {:Text tab-info.icon}
                        {:Attribute {:Italic false}}
                        {:Text title}
                        ; Right
-                       {:Text " "}]))))
+                       {:Foreground {:Color (or activity-color
+                                                colors.inactive-foreground)}}
+                       {:Text activity-indicator}]))))
   ;; Event: Ligatures
   (wezterm.on :update-status
               (fn [window pane]
