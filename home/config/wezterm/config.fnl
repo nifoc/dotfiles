@@ -14,7 +14,8 @@
               :nvim "#019833"
               :nix "#7EBAE4"
               :reddit "#FA4400"
-              :ssh "#F4C82D"}
+              :ssh "#F4C82D"
+              :shell "#F8F8F2"}
       enable-ligatures-flags [:calt=1 :clig=1 :liga=1]
       disable-ligatures-flags [:calt=0 :clig=0 :liga=0]]
   (var ligature-panes [])
@@ -27,9 +28,12 @@
 
   (fn extract-tab-info [title]
     (match title
-      (where t (t:find "^nvim%s"))
-      {:title (t:gsub "^nvim%s(.*)" "%1") :icon " " :color colors.nvim}
-      (where t (t:find :^nvim$)) {: title :icon " " :color colors.nvim}
+      (where t (t:find "^nvim%s")) {:title (t:gsub "^nvim%s(.*)" "%1")
+                                    :icon " "
+                                    :color colors.nvim
+                                    :ignore-activity true}
+      (where t (t:find :^nvim$))
+      {: title :icon " " :color colors.nvim :ignore-activity true}
       (where t (t:find "^git%s"))
       {:title (t:gsub "^git%s(.*)" "%1") :icon "󰊢 " :color "#F25029"}
       (where t (t:find "^mix%s"))
@@ -50,22 +54,35 @@
       (where t (t:find "^et%s")) {: title :icon " " :color colors.et}
       (where t (t:find "^just%s")) {: title :icon " " :color "#C87D57"}
       (where t (t:find :^ytdl)) {: title :icon " " :color "#FF0000"}
-      (where t (t:find :^instagram-)) {: title :icon " " :color "#FB2179"}
-      (where t (t:find "^gallery-dl%s"))
-      {:title (t:gsub "^gallery-dl%s(.*)" "%1") :icon " " :color "#009900"}
-      (where t (t:find :^discord-)) {: title :icon " " :color "#5865F2"}
-      (where t (t:find "^bdfr%s"))
-      {:title (t:gsub "^bdfr%s(.*)" "%1") :icon " " :color colors.reddit}
-      (where t (t:find "^bdfr-%w+%s")) {: title
-                                        :icon " "
-                                        :color colors.reddit}
-      (where t (t:find "^rexit%s")) {: title :icon " " :color colors.reddit}
+      (where t (t:find :^instagram-))
+      {: title :icon " " :color "#FB2179" :ignore-activity true}
+      (where t (t:find "^gallery-dl%s")) {:title (t:gsub "^gallery-dl%s(.*)"
+                                                         "%1")
+                                          :icon " "
+                                          :color "#009900"
+                                          :ignore-activity true}
+      (where t (t:find :^discord-))
+      {: title :icon " " :color "#5865F2" :ignore-activity true}
+      (where t (t:find "^bdfr%s")) {:title (t:gsub "^bdfr%s(.*)" "%1")
+                                    :icon " "
+                                    :color colors.reddit
+                                    :ignore-activity true}
+      (where t (t:find "^bdfr-%w+%s"))
+      {: title :icon " " :color colors.reddit :ignore-activity true}
+      (where t (t:find "^rexit%s"))
+      {: title :icon " " :color colors.reddit :ignore-activity true}
       (where t (t:find :^redis-)) {: title :icon " " :color "#DC372C"}
       (where t (t:find "^%[%w+%]%s")) {: title :icon " " :color colors.ssh}
       (where t (t:find "^%w+@%w+:%s")) {: title :icon " " :color colors.ssh}
-      (where t (t:find "^%w+-dev")) {: title :icon " " :color "#0099CC"}
-      (where t (t:find "^%w+-dl%s")) {: title :icon " " :color "#22BC00"}
-      _ {: title :icon " " :color "#F8F8F2"}))
+      (where t (t:find "^%w+-dev"))
+      {: title :icon " " :color "#0099CC" :ignore-activity true}
+      (where t (t:find "^%w+-dl%s"))
+      {: title :icon " " :color "#22BC00" :ignore-activity true}
+      (where t (t:find "^~"))
+      {: title :icon " " :color colors.shell :ignore-activity true}
+      (where t (t:find :^zsh$))
+      {: title :icon "󰫫 " :color colors.shell :ignore-activity true}
+      _ {: title :icon " " :color colors.shell}))
 
   (fn show-tab-activity-indicator [panes]
     (each [_ pane (ipairs panes)]
@@ -78,7 +95,8 @@
                       tab-info (extract-tab-info raw-title)
                       title (wezterm.truncate_right tab-info.title
                                                     (- max-width 5))
-                      (activity-indicator activity-color) (if (show-tab-activity-indicator tab.panes)
+                      (activity-indicator activity-color) (if (and (not tab-info.ignore-activity)
+                                                                   (show-tab-activity-indicator tab.panes))
                                                               (values "  "
                                                                       "#FFB86C")
                                                               (values " " nil))]
