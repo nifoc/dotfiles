@@ -266,11 +266,11 @@ in
           type = "fennel";
         }
 
-        # {
-        #   plugin = vimPlugins.gitsigns-nvim;
-        #   config = builtins.readFile ../../config/nvim/plugins/gitsigns.fnl;
-        #   type = "fennel";
-        # }
+        {
+          plugin = vimPlugins.gitsigns-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/gitsigns.fnl;
+          type = "fennel";
+        }
 
         {
           plugin = vimPlugins.diffview-nvim;
