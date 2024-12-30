@@ -46,7 +46,7 @@
       (where t (t:find "^ngc%s")) {: title :icon " " :color colors.nix}
       (where t (t:find :^ngc$)) {: title :icon " " :color colors.nix}
       (where t (t:find "^nix%s")) {: title :icon " " :color colors.nix}
-      (where t (t:find "^nix-%w+%s")) {: title :icon " " :color colors.nix}
+      (where t (t:find "^nix%-%w+%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^colmena%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^deploy%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^ssh%s")) {: title :icon " " :color colors.ssh}
@@ -54,34 +54,36 @@
       (where t (t:find "^et%s")) {: title :icon " " :color colors.et}
       (where t (t:find "^just%s")) {: title :icon " " :color "#C87D57"}
       (where t (t:find :^ytdl)) {: title :icon " " :color "#FF0000"}
-      (where t (t:find :^instagram-))
+      (where t (t:find "^instagram%-"))
       {: title :icon " " :color "#FB2179" :ignore-activity true}
-      (where t (t:find "^gallery-dl%s")) {:title (t:gsub "^gallery-dl%s(.*)"
-                                                         "%1")
-                                          :icon " "
-                                          :color "#009900"
-                                          :ignore-activity true}
-      (where t (t:find :^discord-))
+      (where t (t:find "^gallery%-dl%s")) {:title (t:gsub "^gallery%-dl%s(.*)"
+                                                          "%1")
+                                           :icon " "
+                                           :color "#009900"
+                                           :ignore-activity true}
+      (where t (t:find "^discord%-"))
       {: title :icon " " :color "#5865F2" :ignore-activity true}
       (where t (t:find "^bdfr%s")) {:title (t:gsub "^bdfr%s(.*)" "%1")
                                     :icon " "
                                     :color colors.reddit
                                     :ignore-activity true}
-      (where t (t:find "^bdfr-%w+%s"))
+      (where t (t:find "^bdfr%-%w+%s"))
       {: title :icon " " :color colors.reddit :ignore-activity true}
       (where t (t:find "^rexit%s"))
       {: title :icon " " :color colors.reddit :ignore-activity true}
-      (where t (t:find :^redis-)) {: title :icon " " :color "#DC372C"}
+      (where t (t:find "^redis%-")) {: title :icon " " :color "#DC372C"}
       (where t (t:find "^%[%w+%]%s")) {: title :icon " " :color colors.ssh}
       (where t (t:find "^%w+@%w+:%s")) {: title :icon " " :color colors.ssh}
-      (where t (t:find "^%w+-dev"))
+      (where t (t:find "^%w+%-dev"))
       {: title :icon " " :color "#0099CC" :ignore-activity true}
-      (where t (t:find "^%w+-dl%s"))
+      (where t (t:find "^%w+%-dl%s"))
       {: title :icon " " :color "#22BC00" :ignore-activity true}
       (where t (t:find "^~"))
       {: title :icon " " :color colors.shell :ignore-activity true}
       (where t (t:find :^zsh$))
       {: title :icon "󰫫 " :color colors.shell :ignore-activity true}
+      (where t (t:find "^op%srun%s%-%-%s"))
+      (extract-tab-info (t:gsub "^op%srun%s%-%-%s(.*)" "%1"))
       _ {: title :icon " " :color colors.shell}))
 
   (fn show-tab-activity-indicator [panes]
