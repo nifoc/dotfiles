@@ -63,6 +63,7 @@ in
       hyperfine
       just
       mtr
+      nix-forecast
       nix-tree
       nix-update
       nurl
