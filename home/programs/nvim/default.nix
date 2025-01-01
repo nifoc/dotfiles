@@ -67,7 +67,10 @@ in
 
     extraLuaConfig = /* lua */ ''
       vim.loader.enable()
+
+      _G.nifoc_default_shell = '${pkgs.zsh.outPath}/bin/zsh'
       _G.nvim_treesitter_parser_directory = os.getenv("HOME") .. "/.local/share/nvim/nvim-treesitter_parser"
+
       vim.opt.runtimepath:prepend(_G.nvim_treesitter_parser_directory)
 
       require('nifoc.nix')

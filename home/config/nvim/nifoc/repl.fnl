@@ -23,6 +23,7 @@
   (local ruby #[(exe :irb)])
   (local typescript #[(exe :node)])
   (local zsh #[(exe :zsh)])
+  (local default-shell #[_G.nifoc_default_shell])
   ;; Map filetype to REPL
   (local repl-map {: elixir
                    : erlang
@@ -36,8 +37,7 @@
                    : zsh})
 
   (fn mod.open-shell []
-    (let [shell (. repl-map :zsh)]
-      (open-split shell)))
+    (open-split default-shell))
 
   (fn mod.open-repl []
     (let [ft vim.bo.filetype
