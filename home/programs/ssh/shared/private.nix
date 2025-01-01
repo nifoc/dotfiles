@@ -28,6 +28,9 @@
       hostname = "10.0.0.1";
       port = 22;
       user = "root";
+      setEnv = {
+        TERM = "xterm-256color";
+      };
       extraOptions = {
         PreferredAuthentications = "password";
       };
@@ -39,6 +42,9 @@
       user = "daniel";
       identityFile = "~/.ssh/LAN.pub";
       identitiesOnly = true;
+      setEnv = {
+        TERM = "xterm-256color";
+      };
     };
 
     "adsb-antenna" = {
