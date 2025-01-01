@@ -42,6 +42,6 @@
                            :ghost_text {:enabled false}}
               :signature {:enabled true}
               :snippets config-snippets
-              :sources {:default [:lsp :cmp_tabnine :path :luasnip :buffer]
+              :sources {:default [:lsp :luasnip :buffer :path :cmp_tabnine]
                         :providers config-sources-providers}
               :fuzzy {:prebuilt_binaries {:download false :force_version nil}}}))
