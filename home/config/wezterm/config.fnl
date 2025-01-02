@@ -255,10 +255,6 @@
                      :action :OpenLinkAtMouseCursor}]
    ;; Scrollback
    :scrollback_lines 5000
-   ;; Launch Menu
-   :launch_menu [{:label :Btop++ :args [_G.programs.btop]}
-                 {:label :bash :args [_G.shells.bash]}
-                 {:label :zsh :args [_G.shells.zsh]}]
    ;; Other
    :front_end :WebGpu
    :max_fps 120

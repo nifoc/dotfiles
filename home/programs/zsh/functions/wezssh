@@ -1,1 +1,0 @@
-wezterm cli spawn --domain-name "SSH:$1"

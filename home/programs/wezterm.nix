@@ -10,12 +10,7 @@ in
 
     extraConfig = /* lua */ ''
       _G.shells = {
-        bash = '${pkgs.bash.outPath}/bin/bash',
-        zsh = '${pkgs.zsh.outPath}/bin/zsh',
-      };
-
-      _G.programs = {
-        btop = '${pkgs.btop.outPath}/bin/btop',
+        zsh = '${pkgs.zsh.outPath}/bin/zsh'
       };
 
       local cfg = require('config');
