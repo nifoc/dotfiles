@@ -11,6 +11,7 @@ in
     ../shared/show-update-changelog.nix
     ../nixos/ssh.nix
     ../nixos/eternal-terminal.nix
+    ../nixos/wezterm-headless.nix
 
     ../nixos/git.nix
 

@@ -12,6 +12,7 @@ in
     ../nixos/raspberry.nix
     ../nixos/ssh.nix
     ../nixos/eternal-terminal.nix
+    ../nixos/wezterm-headless.nix
 
     ../nixos/git.nix
 
