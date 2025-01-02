@@ -233,6 +233,7 @@
           {:key :RightArrow
            :mods :CMD
            :action (wezterm.action.ActivateTabRelative 1)}]
+   :enable_kitty_keyboard true
    :send_composed_key_when_left_alt_is_pressed true
    :send_composed_key_when_right_alt_is_pressed true
    ;; Mouse
@@ -260,4 +261,5 @@
                  {:label :zsh :args [_G.shells.zsh]}]
    ;; Other
    :front_end :WebGpu
+   :max_fps 120
    :check_for_updates false})
