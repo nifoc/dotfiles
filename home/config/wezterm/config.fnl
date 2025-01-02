@@ -196,7 +196,7 @@
    :tab_max_width 42
    :window_frame {:active_titlebar_bg colors.frame-background
                   :inactive_titlebar_bg colors.frame-background
-                  :font (wezterm.font {:family "Berkeley Mono"
+                  :font (wezterm.font {:family :TX-02
                                        :weight :Regular
                                        :harfbuzz_features disable-ligatures-flags})
                   :font_size 11}
@@ -207,7 +207,7 @@
                       :new_tab_hover {:bg_color colors.hover-background
                                       :fg_color colors.hover-foreground}}}
    ;; Fonts
-   :font (wezterm.font_with_fallback ["Berkeley Mono"
+   :font (wezterm.font_with_fallback [:TX-02
                                       "Symbols Nerd Font"
                                       "Apple Symbols"
                                       "Apple Color Emoji"

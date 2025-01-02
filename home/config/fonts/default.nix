@@ -20,6 +20,25 @@ let
     '';
   };
 
+  tx-02 = pkgs.stdenvNoCC.mkDerivation {
+    pname = "tx-02";
+    version = "2.002";
+
+    src = ../../../secret/fonts/TX-02;
+
+    dontPatch = true;
+    dontConfigure = true;
+    dontBuild = true;
+    doCheck = false;
+    dontFixup = true;
+
+    installPhase = ''
+      runHook preInstall
+      install -Dm644 -t $out/share/fonts/opentype/ *.otf
+      runHook postInstall
+    '';
+  };
+
   nerdfonts = pkgs.stdenvNoCC.mkDerivation {
     pname = "nerdfonts";
     version = "3.3.0";
@@ -45,5 +64,6 @@ in
     jetbrains-mono
     nerdfonts
     noto-fonts
+    tx-02
   ];
 }
