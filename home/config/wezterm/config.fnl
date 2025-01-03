@@ -4,6 +4,7 @@
               :active-background "#282A36"
               :active-foreground "#ABB2BF"
               :active-indicator "#BD93F9"
+              :active-indicator-ssh "#FFB86C"
               :inactive-background "#282A36"
               :inactive-foreground "#6272A4"
               :hover-background "#242530"
@@ -47,11 +48,16 @@
       (where t (t:find :^ngc$)) {: title :icon " " :color colors.nix}
       (where t (t:find "^nix%s")) {: title :icon " " :color colors.nix}
       (where t (t:find "^nix%-%w+%s")) {: title :icon " " :color colors.nix}
-      (where t (t:find "^colmena%s")) {: title :icon " " :color colors.nix}
-      (where t (t:find "^deploy%s")) {: title :icon " " :color colors.nix}
-      (where t (t:find "^ssh%s")) {: title :icon " " :color colors.ssh}
-      (where t (t:find "^scp%s")) {: title :icon " " :color colors.ssh}
-      (where t (t:find "^et%s")) {: title :icon " " :color colors.et}
+      (where t (t:find "^colmena%s"))
+      {: title :icon " " :color colors.nix :ssh-domain true}
+      (where t (t:find "^deploy%s"))
+      {: title :icon " " :color colors.nix :ssh-domain true}
+      (where t (t:find "^ssh%s"))
+      {: title :icon " " :color colors.ssh :ssh-domain true}
+      (where t (t:find "^scp%s"))
+      {: title :icon " " :color colors.ssh :ssh-domain true}
+      (where t (t:find "^et%s"))
+      {: title :icon " " :color colors.et :ssh-domain true}
       (where t (t:find "^just%s")) {: title :icon " " :color "#C87D57"}
       (where t (t:find :^ytdl)) {: title :icon " " :color "#FF0000"}
       (where t (t:find "^instagram%-"))
@@ -72,8 +78,10 @@
       (where t (t:find "^rexit%s"))
       {: title :icon " " :color colors.reddit :ignore-activity true}
       (where t (t:find "^redis%-")) {: title :icon " " :color "#DC372C"}
-      (where t (t:find "^%[%w+%]%s")) {: title :icon " " :color colors.ssh}
-      (where t (t:find "^%w+@%w+:%s")) {: title :icon " " :color colors.ssh}
+      (where t (t:find "^%[%w+%]%s"))
+      {: title :icon " " :color colors.ssh :ssh-domain true}
+      (where t (t:find "^%w+@%w+:%s"))
+      {: title :icon " " :color colors.ssh :ssh-domain true}
       (where t (t:find "^%w+%-dev"))
       {: title :icon " " :color "#0099CC" :ignore-activity true}
       (where t (t:find "^%w+%-dl%s"))
@@ -86,6 +94,8 @@
       (extract-tab-info (t:gsub "^op%srun%s%-%-%s(.*)" "%1"))
       _ {: title :icon " " :color colors.shell}))
 
+  (fn is-ssh-domain [pane] (= (string.sub pane.domain_name 1 3) :SSH))
+
   (fn show-tab-activity-indicator [panes]
     (each [_ pane (ipairs panes)]
       (when pane.has_unseen_output (lua "return true")))
@@ -97,6 +107,10 @@
                       tab-info (extract-tab-info raw-title)
                       title (wezterm.truncate_right tab-info.title
                                                     (- max-width 5))
+                      active-indicator-color (if (or tab-info.ssh-domain
+                                                     (is-ssh-domain tab.active_pane))
+                                                 colors.active-indicator-ssh
+                                                 colors.active-indicator)
                       (activity-indicator activity-color) (if (and (not tab-info.ignore-activity)
                                                                    (show-tab-activity-indicator tab.panes))
                                                               (values "  "
@@ -105,7 +119,7 @@
                   (if tab.is_active
                       [; Left
                        {:Background {:Color colors.active-background}}
-                       {:Foreground {:Color colors.active-indicator}}
+                       {:Foreground {:Color active-indicator-color}}
                        {:Text "│ "}
                        ; Center
                        {:Foreground {:Color tab-info.color}}
