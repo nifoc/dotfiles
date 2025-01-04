@@ -94,7 +94,9 @@
       (extract-tab-info (t:gsub "^op%srun%s%-%-%s(.*)" "%1"))
       _ {: title :icon " " :color colors.shell}))
 
-  (fn is-ssh-domain [pane] (= (string.sub pane.domain_name 1 3) :SSH))
+  (fn is-ssh-domain [pane]
+    (or (= (?. pane :user_vars :cmd_domain) :ssh)
+        (= (string.sub pane.domain_name 1 3) :SSH)))
 
   (fn show-tab-activity-indicator [panes]
     (each [_ pane (ipairs panes)]
