@@ -19,9 +19,8 @@
               :shell "#F8F8F2"}
       enable-ligatures-flags [:calt=1 :clig=1 :liga=1]
       disable-ligatures-flags [:calt=0 :clig=0 :liga=0]]
-  (var ligature-panes [])
   (var latest-pane-update nil)
-  ;; Event: Tab format
+  ;; Helper functions
 
   (fn extract-tab-title [tab]
     (let [title tab.tab_title]
@@ -94,15 +93,19 @@
       (extract-tab-info (t:gsub "^op%srun%s%-%-%s(.*)" "%1"))
       _ {: title :icon " " :color colors.shell}))
 
-  (fn is-ssh-domain [pane]
-    (or (= (?. pane :user_vars :cmd_domain) :ssh)
+  (fn ssh-domain? [pane]
+    (or (= (?. pane :user_vars :cmd-domain) :ssh)
         (= (string.sub pane.domain_name 1 3) :SSH)))
 
-  (fn show-tab-activity-indicator [panes]
+  (fn enable-ligatures? [user-vars]
+    (= (?. user-vars :enable-ligatures) :t))
+
+  (fn tab-activity-indicator? [panes]
     (each [_ pane (ipairs panes)]
       (when pane.has_unseen_output (lua "return true")))
     false)
 
+  ;; Event: Tab Format
   (wezterm.on :format-tab-title
               (fn [tab _tabs _panes _config _hover max-width]
                 (let [raw-title (extract-tab-title tab)
@@ -110,11 +113,11 @@
                       title (wezterm.truncate_right tab-info.title
                                                     (- max-width 5))
                       active-indicator-color (if (or tab-info.ssh-domain
-                                                     (is-ssh-domain tab.active_pane))
+                                                     (ssh-domain? tab.active_pane))
                                                  colors.active-indicator-ssh
                                                  colors.active-indicator)
                       (activity-indicator activity-color) (if (and (not tab-info.ignore-activity)
-                                                                   (show-tab-activity-indicator tab.panes))
+                                                                   (tab-activity-indicator? tab.panes))
                                                               (values "  "
                                                                       "#FFB86C")
                                                               (values " " nil))]
@@ -156,7 +159,7 @@
                 (when (not= latest-pane-update pane-id)
                   (let [overrides (or (window:get_config_overrides) {})]
                     (set latest-pane-update pane-id)
-                    (if (. ligature-panes pane-id)
+                    (if (enable-ligatures? (pane:get_user_vars))
                         (do
                           (set overrides.harfbuzz_features
                                enable-ligatures-flags)
@@ -166,19 +169,16 @@
                                disable-ligatures-flags)
                           (window:set_config_overrides overrides)))))))
   (wezterm.on :user-var-changed
-              (fn [window pane name value]
-                (let [overrides (or (window:get_config_overrides) {})
-                      pane-id (pane:pane_id)]
+              (fn [window _pane name value]
+                (let [overrides (or (window:get_config_overrides) {})]
                   (case [name value]
                     [:enable-ligatures :t] (do
                                              (set overrides.harfbuzz_features
                                                   enable-ligatures-flags)
-                                             (tset ligature-panes pane-id true)
                                              (window:set_config_overrides overrides))
                     [:enable-ligatures :f] (do
                                              (set overrides.harfbuzz_features
                                                   disable-ligatures-flags)
-                                             (tset ligature-panes pane-id nil)
                                              (window:set_config_overrides overrides))))))
   ;; Event: Screen options
   (wezterm.on :window-resized
