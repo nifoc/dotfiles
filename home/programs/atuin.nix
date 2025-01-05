@@ -4,7 +4,11 @@
 
     enableBashIntegration = false;
     enableZshIntegration = true;
-    enableFishIntegration = true;
+    enableFishIntegration = false;
+
+    daemon = {
+      enable = true;
+    };
 
     settings = {
       auto_sync = true;
