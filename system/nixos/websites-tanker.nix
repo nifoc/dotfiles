@@ -3,14 +3,14 @@
 let
   kempkens-io = pkgs.stdenvNoCC.mkDerivation {
     pname = "website-kempkens-io";
-    version = "2023-09-18";
+    version = "2025-01-05";
 
     src = pkgs.fetchFromGitea {
       domain = "git.kempkens.io";
       owner = "daniel";
       repo = "kempkens.io";
-      rev = "da5e8119f0228f0fbffc06193f17b8148229affb";
-      hash = "sha256-F/i8ADHTEZZurrs0QFCvP/wBhz0im2jDXErg8sImlAI=";
+      rev = "480e6e8bfcc16eded4070c1aea3ba32429d61859";
+      hash = "sha256-ImFcliRPy98eba8DcMbS2BA85r8PA/b6igDRE9+Es9c=";
       fetchSubmodules = true;
     };
 
@@ -32,14 +32,14 @@ let
 
   blog-kempkens-io = pkgs.stdenvNoCC.mkDerivation {
     pname = "website-blog-kempkens-io";
-    version = "2024-10-05";
+    version = "2025-01-05";
 
     src = pkgs.fetchFromGitea {
       domain = "git.kempkens.io";
       owner = "daniel";
       repo = "blog.kempkens.io";
-      rev = "4b38edfc4f2b606f001ae046a84bd46fc9e4078e";
-      hash = "sha256-VaJxlCix8JoQViC5PHZMlEpsqkjgRQNRUcIXQxs9JWk=";
+      rev = "e91dcbfb98c4dd794908b4508eace0f64a54c679";
+      hash = "sha256-xuEddqtnuMbhMolbLXbOjxOPOe8ZFabga2Hv5IwAMow=";
       fetchSubmodules = true;
     };
 
