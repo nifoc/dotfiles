@@ -13,10 +13,7 @@ in
     enableCompletion = true;
     enableVteIntegration = !config.programs.wezterm.enable;
 
-    autosuggestion = {
-      enable = true;
-      strategy = [ "completion" ];
-    };
+    autosuggestion.enable = false;
 
     syntaxHighlighting = {
       enable = true;
@@ -24,21 +21,41 @@ in
 
     plugins = [
       {
-        # https://github.com/dracula/zsh-syntax-highlighting
-        name = "dracula-zsh-syntax-highlighting";
-        file = "zsh-syntax-highlighting.sh";
+        # https://github.com/Aloxaf/fzf-tab
+        name = "fzf-tab";
         src = fetchFromGitHub {
-          owner = "dracula";
-          repo = "zsh-syntax-highlighting";
-          rev = "09c89b657ad8a27ddfe1d6f2162e99e5cce0d5b3";
-          hash = "sha256-JrSKx8qHGAF0DnSJiuKWvn6ItQHvWpJ5pKo4yNbrHno=";
+          owner = "Aloxaf";
+          repo = "fzf-tab";
+          rev = "6aced3f35def61c5edf9d790e945e8bb4fe7b305";
+          hash = "sha256-EWMeslDgs/DWVaDdI9oAS46hfZtp4LHTRY8TclKTNK8=";
+        };
+      }
+
+      {
+        # https://github.com/zsh-users/zsh-autosuggestions
+        name = "zsh-autosuggestions";
+        src = fetchFromGitHub {
+          owner = "zsh-users";
+          repo = "zsh-autosuggestions";
+          rev = "0e810e5afa27acbd074398eefbe28d13005dbc15";
+          hash = "sha256-85aw9OM2pQPsWklXjuNOzp9El1MsNb+cIiZQVHUzBnk=";
+        };
+      }
+
+      {
+        # https://github.com/hlissner/zsh-autopair
+        name = "zsh-autopair";
+        src = fetchFromGitHub {
+          owner = "hlissner";
+          repo = "zsh-autopair";
+          rev = "449a7c3d095bc8f3d78cf37b9549f8bb4c383f3d";
+          hash = "sha256-3zvOgIi+q7+sTXrT+r/4v98qjeiEL4Wh64rxBYnwJvQ=";
         };
       }
 
       {
         # https://github.com/trystan2k/zsh-tab-title
         name = "zsh-tab-title";
-        file = "zsh-tab-title.plugin.zsh";
         src = fetchFromGitHub {
           owner = "trystan2k";
           repo = "zsh-tab-title";
@@ -50,7 +67,6 @@ in
       {
         # https://github.com/Freed-Wu/zsh-colorize-functions
         name = "zsh-colorize-functions";
-        file = "zsh-colorize-functions.plugin.zsh";
         src = fetchFromGitHub {
           owner = "Freed-Wu";
           repo = "zsh-colorize-functions";
@@ -62,7 +78,6 @@ in
       {
         # https://github.com/Freed-Wu/zsh-help
         name = "zsh-help";
-        file = "zsh-help.plugin.zsh";
         src = fetchFromGitHub {
           owner = "Freed-Wu";
           repo = "zsh-help";
@@ -72,21 +87,20 @@ in
       }
 
       {
-        # https://github.com/hlissner/zsh-autopair
-        name = "zsh-autopair";
-        file = "zsh-autopair.plugin.zsh";
+        # https://github.com/dracula/zsh-syntax-highlighting
+        name = "dracula-zsh-syntax-highlighting";
+        file = "zsh-syntax-highlighting.sh";
         src = fetchFromGitHub {
-          owner = "hlissner";
-          repo = "zsh-autopair";
-          rev = "449a7c3d095bc8f3d78cf37b9549f8bb4c383f3d";
-          hash = "sha256-3zvOgIi+q7+sTXrT+r/4v98qjeiEL4Wh64rxBYnwJvQ=";
+          owner = "dracula";
+          repo = "zsh-syntax-highlighting";
+          rev = "09c89b657ad8a27ddfe1d6f2162e99e5cce0d5b3";
+          hash = "sha256-JrSKx8qHGAF0DnSJiuKWvn6ItQHvWpJ5pKo4yNbrHno=";
         };
       }
     ] ++ optionals isDarwin [
       {
         # https://github.com/MichaelAquilina/zsh-auto-notify
         name = "zsh-auto-notify";
-        file = "auto-notify.plugin.zsh";
         src = fetchFromGitHub {
           owner = "MichaelAquilina";
           repo = "zsh-auto-notify";
@@ -123,6 +137,13 @@ in
       bindkey '^[[1;3D' backward-word # Alt+Left
 
       # Plugins
+      zstyle ':completion:*:git-checkout:*' sort false
+      zstyle ':completion:*:descriptions' format '[%d]'
+      zstyle ':completion:*' menu no
+      zstyle ':fzf-tab:*' use-fzf-default-opts yes
+
+      ZSH_AUTOSUGGEST_STRATEGY=(completion)
+
       ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
       typeset -gA ZSH_HIGHLIGHT_STYLES
 
