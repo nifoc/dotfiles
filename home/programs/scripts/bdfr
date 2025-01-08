@@ -1,4 +1,5 @@
-#!/usr/bin/env nu
+#!/usr/bin/env nix-shell
+#! nix-shell -i nu -p nushell
 
 let base_url = "https://media-browser.internal.kempkens.network/management/jobs/BdfrDownload/run?"
 

@@ -11,3 +11,5 @@ case "$os" in
     echo "Unsupported OS"
     exit 1
 esac
+
+# vim: ft=sh

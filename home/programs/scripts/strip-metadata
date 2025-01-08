@@ -1,4 +1,5 @@
-#!/usr/bin/env nu
+#!/usr/bin/env nix-shell
+#! nix-shell -i nu -p nushell
 
 def main [path: string] {
   glob $path | each { |item|

@@ -3,3 +3,5 @@ printf "\033]1337;SetUserVar=%s=%s\007" cmd-domain `echo -n ssh | base64`
 et -c "$*" mediaserver
 
 printf "\033]1337;SetUserVar=%s=%s\007" cmd-domain `echo -n local | base64`
+
+# vim: ft=sh

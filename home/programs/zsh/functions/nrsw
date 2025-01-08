@@ -30,3 +30,5 @@ fi
 
 rm -f result
 popd
+
+# vim: ft=sh
