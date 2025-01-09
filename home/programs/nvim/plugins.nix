@@ -49,12 +49,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2025-01-07";
+    version = "2025-01-08";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "622a4a6ba76d1de52b72a965159213ae655b4ac7";
-      sha256 = "03kz6n5dw2rw7mkpg7i0rxbrq1z86ib4jwrrglrw5vhs0n6afakc";
+      rev = "8ca76960ae75e0a3bb231402558eb50e79433161";
+      sha256 = "0c01i25skllmchwbywfsq3r5id4jxrx30xn93vbqy6vwwrb04ffm";
       fetchSubmodules = false;
 
     };
@@ -63,12 +63,12 @@ in
   };
   nvim-lspconfig = buildVimPlugin {
     pname = "nvim-lspconfig";
-    version = "2025-01-05";
+    version = "2025-01-08";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "8121483b8132b7053120fafd83728178fb3febf6";
-      sha256 = "1s7ijivzhqam3s07n9nzyib7xsgkn2mflcmvyv0m5pkn4n0shsc4";
+      rev = "88157521e890fe7fdf18bee22438875edd6300a6";
+      sha256 = "0s66yz5pa2apc8pvp93zxn6rydm0dx5a7z7z9lqzrp11qkaf9j20";
       fetchSubmodules = false;
 
     };
@@ -91,12 +91,12 @@ in
   };
   nvim-autopairs = buildVimPlugin {
     pname = "nvim-autopairs";
-    version = "2024-11-17";
+    version = "2025-01-09";
     src = fetchFromGitHub {
       owner = "windwp";
       repo = "nvim-autopairs";
-      rev = "b464658e9b880f463b9f7e6ccddd93fb0013f559";
-      sha256 = "0p4v49saqfsc8kinl3wc3zhmr6m2q86vmay2f10payp29n4v3did";
+      rev = "d2f791ceeb26d04d87aa54343bc94e8ad8d7be1c";
+      sha256 = "1y87br3n26ary130l5aq6h79lfq92w8f0674mnb9rfls5r68s2y2";
       fetchSubmodules = false;
 
     };
@@ -119,11 +119,11 @@ in
   };
   fidget-nvim = buildVimPlugin {
     pname = "fidget.nvim";
-    version = "2024-12-16";
+    version = "2025-01-08";
     src = fetchFromGitHub {
       owner = "j-hui";
       repo = "fidget.nvim";
-      rev = "9238947645ce17d96f30842e61ba81147185b657";
+      rev = "a0abbf18084b77d28bc70e24752e4f4fd54aea17";
       sha256 = "1117w5i7996vxx32vibb09zpzzgwaipj5ldkdgck3ds5vkcdlk53";
       fetchSubmodules = false;
 
