@@ -1,5 +1,3 @@
-{ config, ... }:
-
 let
   homeDir = "/Users/daniel";
 in
@@ -46,8 +44,6 @@ in
         "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
       ];
 
-      netrc-file = config.age.secrets.nix-netrc.path;
-
       trusted-users = [ "@admin" ];
 
       connect-timeout = 5;
@@ -85,6 +81,8 @@ in
       interval = { Weekday = 0; Hour = 3; Minute = 15; };
     };
   };
+
+  environment.etc."nix/netrc".source = ../../secret/shared/nix-netrc;
 
   documentation.doc.enable = false;
 
