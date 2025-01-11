@@ -31,7 +31,7 @@ in
       builders-use-substitutes = true;
 
       extra-substituters = [
-        "https://attic.cache.daniel.sx/nifoc-systems/?priority=30"
+        "https://attic.cache.daniel.sx/nifoc-systems?priority=30"
         "https://nix-community.cachix.org?priority=50"
         "https://cache.garnix.io?priority=60"
         "https://cache.lix.systems?priority=70"
@@ -81,8 +81,6 @@ in
       interval = { Weekday = 0; Hour = 3; Minute = 15; };
     };
   };
-
-  environment.etc."nix/netrc".source = ../../secret/shared/nix-netrc;
 
   documentation.doc.enable = false;
 

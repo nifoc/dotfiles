@@ -3,10 +3,12 @@
     identityPaths = [ "/Users/daniel/.ssh/agenix" ];
 
     secrets = {
-      # nix-netrc = {
-      #   file = ../all/nix/netrc.age;
-      #   mode = "444";
-      # };
+      nix-netrc = {
+        file = ../all/nix/netrc.age;
+        path = "/etc/nix/netrc";
+        mode = "444";
+        symlink = false;
+      };
 
       git-maintenance = {
         file = ./git/maintenance.age;
