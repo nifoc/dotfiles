@@ -1,4 +1,4 @@
-args@{ pkgs, config, lib, ... }:
+args@{ pkgs, config, ... }:
 
 let
   secret = import ../../secret/hosts/argon.nix;
@@ -24,7 +24,7 @@ in
 
     ../nixos/chrony.nix
 
-    (import ../nixos/controld.nix (args // { podmanDNS = false; }))
+    (import ../nixos/controld.nix (args // { podmanDNS = true; }))
 
     (import ../nixos/forgejo-runner.nix (args // { inherit secret; name = "argon"; tag = "ubuntu-latest-arm64"; nixTag = "arm64"; }))
 
@@ -101,17 +101,6 @@ in
     useNetworkd = true;
   };
 
-  environment.etc."resolv.conf".text = lib.mkForce ''
-    nameserver 127.0.0.1
-    nameserver 10.0.0.110
-    options edns0 trust-ad
-    search .
-  '';
-
-  services.resolved.extraConfig = ''
-    DNSStubListener=no
-  '';
-
   systemd.network = {
     enable = true;
 
@@ -122,14 +111,6 @@ in
           Name = "vlan51";
         };
         vlanConfig.Id = 51;
-      };
-
-      "20-vlan20" = {
-        netdevConfig = {
-          Kind = "vlan";
-          Name = "vlan777";
-        };
-        vlanConfig.Id = 777;
       };
     };
 
@@ -158,16 +139,6 @@ in
           IPv6AcceptRA = false;
         };
         address = [ "10.0.51.5/24" ];
-        linkConfig.RequiredForOnline = "routable";
-      };
-
-      "30-modem" = {
-        matchConfig.Name = "vlan777";
-        networkConfig = {
-          DHCP = "no";
-          IPv6AcceptRA = false;
-        };
-        address = [ "192.168.1.5/24" ];
         linkConfig.RequiredForOnline = "routable";
       };
     };
