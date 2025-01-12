@@ -47,6 +47,7 @@ in
       trusted-users = [ "@admin" ];
 
       connect-timeout = 5;
+      netrc-file = "/etc/nix/netrc";
     };
 
     optimise = {
