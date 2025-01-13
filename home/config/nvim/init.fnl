@@ -74,9 +74,7 @@
   (set g.loaded_ruby_provider 0)
   (set g.loaded_node_provider 0)
   (set g.loaded_perl_provider 0)
-  (set g.loaded_matchit 1) ; Disable built-in plugins
-  (set g.loaded_matchparen 1)
-  (set g.loaded_gzip 1)
+  (set g.loaded_gzip 1) ; Disable built-in plugins
   (set g.loaded_rrhelper 1)
   (set g.loaded_tarPlugin 1)
   (set g.loaded_zipPlugin 1)
