@@ -18,7 +18,7 @@
     (highlight :TabLine {:fg mod.colors.comment :bg mod.colors.black})
     (highlight :TabLineSel {:fg mod.colors.white :bg mod.colors.bg})
     (highlight :TabLineFill {:bg mod.colors.black})
-    ;; vim-matchup
+    ;; matchit
     (highlight :MatchParen {:fg mod.colors.orange :bold true :italic true})
     (highlight :MatchWord {:italic true})
     (highlight-link :MatchupVirtualText :Comment)
