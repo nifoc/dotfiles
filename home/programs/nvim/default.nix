@@ -185,11 +185,7 @@ in
         }
 
         # Snippets
-        {
-          plugin = vimPlugins.luasnip;
-          config = builtins.readFile ../../config/nvim/plugins/luasnip.fnl;
-          type = "fennel";
-        }
+        vimPlugins.friendly-snippets
 
         # Completion
         {

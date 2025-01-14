@@ -1,8 +1,4 @@
 (let [cmp (require :blink.cmp)
-      (ok-luasnip _luasnip) (pcall require :luasnip)
-      config-snippets (if ok-luasnip
-                          {:preset :luasnip}
-                          {})
       config-sources-providers (if (pcall require :cmp_tabnine.config)
                                    {:cmp_tabnine {:name :cmp_tabnine
                                                   :module :blink.compat.source}}
@@ -30,12 +26,12 @@
                                               :auto_insert false}}
                            :menu {:min_width 20
                                   :max_height 25
+                                  :border :rounded
                                   :draw {:treesitter [:lsp]}}
                            :documentation {:auto_show true
                                            :window {:border :rounded}}
                            :ghost_text {:enabled false}}
               :signature {:enabled true}
-              :snippets config-snippets
               :sources {:default [:lsp :snippets :buffer :path :cmp_tabnine]
                         :providers config-sources-providers}
               :fuzzy {:prebuilt_binaries {:download false :force_version nil}}}))
