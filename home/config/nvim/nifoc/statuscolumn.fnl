@@ -4,7 +4,9 @@
       o vim.opt
       b vim.b
       v vim.v
-      get-bufvar api.nvim_buf_get_var
+      get-bufvar (fn [bufnr key default]
+                   (let [(ok value) (pcall api.nvim_buf_get_var bufnr key)]
+                     (if ok value default)))
       statusline (require :nifoc.statusline)
       diagnostic vim.diagnostic
       (ok-gitsigns gitsigns) (pcall require :gitsigns)
@@ -68,7 +70,7 @@
   (aucmd :User {:pattern :GitSignsUpdate
                 :callback #(when (and (not= $1.data nil)
                                       (= (get-bufvar $1.data.buffer
-                                                     :nifoc_gitsigns_enabled)
+                                                     :nifoc_gitsigns_enabled 0)
                                          1))
                              (update-cache-gitsigns $1.data.buffer))
                 :group augroup
