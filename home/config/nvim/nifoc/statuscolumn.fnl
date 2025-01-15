@@ -4,6 +4,7 @@
       o vim.opt
       b vim.b
       v vim.v
+      get-bufvar api.nvim_buf_get_var
       statusline (require :nifoc.statusline)
       diagnostic vim.diagnostic
       (ok-gitsigns gitsigns) (pcall require :gitsigns)
@@ -65,7 +66,10 @@
           :group augroup
           :desc "Update cached diagnostic signs"})
   (aucmd :User {:pattern :GitSignsUpdate
-                :callback #(when (not= $1.data nil)
+                :callback #(when (and (not= $1.data nil)
+                                      (= (get-bufvar $1.data.buffer
+                                                     :nifoc_gitsigns_enabled)
+                                         1))
                              (update-cache-gitsigns $1.data.buffer))
                 :group augroup
                 :desc "Update cached gitsigns signs"})
