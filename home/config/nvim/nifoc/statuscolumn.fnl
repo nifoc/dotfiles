@@ -64,12 +64,11 @@
                                                (vim.diagnostic.get $1.buf))
           :group augroup
           :desc "Update cached diagnostic signs"})
-  (when (= b.nifoc_gitsigns_enabled 1)
-    (aucmd :User {:pattern :GitSignsUpdate
-                  :callback #(when (not= $1.data nil)
-                               (update-cache-gitsigns $1.data.buffer))
-                  :group augroup
-                  :desc "Update cached gitsigns signs"}))
+  (aucmd :User {:pattern :GitSignsUpdate
+                :callback #(when (not= $1.data nil)
+                             (update-cache-gitsigns $1.data.buffer))
+                :group augroup
+                :desc "Update cached gitsigns signs"})
   (aucmd :BufWipeout
          {:callback (fn [args]
                       (tset cache :diagnostics args.buf nil)
