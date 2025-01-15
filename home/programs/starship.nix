@@ -20,6 +20,12 @@
         format = "[ $duration]($style)";
       };
 
+      direnv = {
+        disabled = false;
+        symbol = "󱁿 ";
+        format = "\\[[$symbol$loaded/$allowed]($style)\\]";
+      };
+
       docker_context = {
         symbol = " ";
         format = "\\[[$symbol$context]($style)\\]";
@@ -38,6 +44,11 @@
       git_branch = {
         symbol = " ";
         format = "\\[[$symbol$branch]($style)\\]";
+      };
+
+      gradle = {
+        symbol = " ";
+        format = "\\[[$symbol($version)]($style)\\]";
       };
 
       hostname = {
