@@ -12,10 +12,9 @@
       navic (require :nvim-navic)
       (ok-neogit neogit) (pcall require :neogit)
       fzf (require :fzf-lua)
-      fzf-layout-bottom {:winopts_fn #(let [height (math.floor (* vim.o.lines
-                                                                  0.4))]
-                                        {:split (.. "belowright new | resize "
-                                                    (tostring height))})}]
+      fzf-layout-bottom {:winopts #(let [height (math.floor (* vim.o.lines 0.4))]
+                                     {:split (.. "belowright new | resize "
+                                                 (tostring height))})}]
   (fn buffer-variable-exists? [key]
     (not= (. vim :b key) nil))
 
@@ -248,7 +247,7 @@
         :init #(if (navic.is_available)
                    (set $1.check-length 1)
                    (set $1.check-length 0))
-        :update :CursorMoved
+        :update [:CursorMoved :CursorMovedI :BufEnter]
         1 mod.space-if-length
         2 {:provider #(string.gsub (navic.get_location) "%%" "%%%%")
            :hl {:fg colors.white}}})
@@ -317,7 +316,7 @@
                                      :hl {:fg colors.white}}))
                     (table.insert children child)))
                 (set self.child (self:new children 1)))
-        :update :CursorMoved
+        :update [:CursorMoved :CursorMovedI :BufEnter]
         1 mod.space-if-length
         2 {:provider #(: $1.child :eval) :hl {:fg colors.white}}})
   ;; Buffer Options
@@ -341,7 +340,7 @@
                 (let [pos (api.nvim_win_get_cursor 0)]
                   (set self.position-line (tostring (. pos 1)))
                   (set self.position-column (tostring (. pos 2)))))
-        :update :CursorMoved
+        :update [:CursorMoved :CursorMovedI :BufEnter]
         :provider #(string.format " %3s:%-3s " $1.position-line
                                   $1.position-column)
         :hl {:fg colors.black :bg colors.purple :bold true}})
@@ -363,7 +362,7 @@
                       :init (fn [self]
                               (set self.current-line (get-current-line))
                               (set self.total-lines (get-total-lines)))
-                      :update :CursorMoved
+                      :update [:CursorMoved :CursorMovedI :BufEnter]
                       :provider (fn [self]
                                   (let [scrollbar-icons self.scrollbar-icons-block
                                         i (+ (math.floor (* (/ (- self.current-line

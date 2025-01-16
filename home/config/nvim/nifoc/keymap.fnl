@@ -2,10 +2,9 @@
       keymap vim.keymap
       (ok-substitute substitute) (pcall require :substitute)
       (ok-fzf fzf) (pcall require :fzf-lua)
-      fzf-layout-bottom {:winopts_fn #(let [height (math.floor (* vim.o.lines
-                                                                  0.4))]
-                                        {:split (.. "belowright new | resize "
-                                                    (tostring height))})}
+      fzf-layout-bottom {:winopts #(let [height (math.floor (* vim.o.lines 0.4))]
+                                     {:split (.. "belowright new | resize "
+                                                 (tostring height))})}
       fzf-layout-dropdown {:winopts {:height 0.4
                                      :width 0.6
                                      :preview {:hidden :hidden}}}
