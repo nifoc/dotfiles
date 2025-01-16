@@ -172,6 +172,9 @@
                                     self.git-removed
                                     self.git-changed]))
                   (set self.check-length (length self.git-head))))
+        :update {1 :User
+                 :pattern :GitSignsUpdate
+                 :callback (vim.schedule_wrap #(vim.cmd.redrawstatus))}
         1 mod.space-if-count-or-length
         2 {:provider #(.. " " $1.git-repo-icon " ")
            :on_click {:name :heirline_git_repo_type
@@ -338,14 +341,12 @@
                 (let [pos (api.nvim_win_get_cursor 0)]
                   (set self.position-line (tostring (. pos 1)))
                   (set self.position-column (tostring (. pos 2)))))
+        :update :CursorMoved
         :provider #(string.format " %3s:%-3s " $1.position-line
                                   $1.position-column)
         :hl {:fg colors.black :bg colors.purple :bold true}})
   ;; Scrollbar
-  (set mod.scrollbar {:init (fn [self]
-                              (set self.current-line (get-current-line))
-                              (set self.total-lines (get-total-lines)))
-                      :static {:scrollbar-icons-block ["▁"
+  (set mod.scrollbar {:static {:scrollbar-icons-block ["▁"
                                                        "▂"
                                                        "▃"
                                                        "▄"
@@ -359,6 +360,10 @@
                                                       "🭹"
                                                       "🭺"
                                                       "🭻"]}
+                      :init (fn [self]
+                              (set self.current-line (get-current-line))
+                              (set self.total-lines (get-total-lines)))
+                      :update :CursorMoved
                       :provider (fn [self]
                                   (let [scrollbar-icons self.scrollbar-icons-block
                                         i (+ (math.floor (* (/ (- self.current-line
