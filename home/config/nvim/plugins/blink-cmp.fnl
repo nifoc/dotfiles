@@ -1,4 +1,7 @@
 (let [cmp (require :blink.cmp)
+      config-snippets (if (pcall require :mini.snippets)
+                          {:preset :mini_snippets}
+                          {})
       config-sources-providers (if (pcall require :cmp_tabnine.config)
                                    {:cmp_tabnine {:name :cmp_tabnine
                                                   :module :blink.compat.source}}
@@ -32,6 +35,7 @@
                                            :window {:border :rounded}}
                            :ghost_text {:enabled false}}
               :signature {:enabled true}
+              :snippets config-snippets
               :sources {:default [:lsp :snippets :buffer :path :cmp_tabnine]
                         :providers config-sources-providers}
               :fuzzy {:prebuilt_binaries {:download false :force_version nil}}}))

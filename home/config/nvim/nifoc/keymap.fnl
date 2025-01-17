@@ -11,7 +11,6 @@
       fzf-layout-big-dropdown {:winopts {:height 0.6
                                          :width 0.7
                                          :preview {:layout :vertical}}}
-      (ok-npairs npairs) (pcall require :nvim-autopairs)
       (ok-hover hover) (pcall require :hover)
       (ok-gitsigns gitsigns) (pcall require :gitsigns)
       (ok-neogit neogit) (pcall require :neogit)
@@ -67,9 +66,6 @@
     (keymap.set :n :<leader>dtp :<cmd>TSPlaygroundToggle<CR>
                 {:desc "Toggle Treetsitter Playground"})
     ;; Other Mappings
-    (when ok-npairs
-      (keymap.set :i :<CR> npairs.autopairs_cr
-                  {:expr true :replace_keycodes false :silent true}))
     (keymap.set :n :F #(formatting.maybe-format-buffer 0)
                 {:desc "Format Buffer"})
     (keymap.set :n :<A-Left> :b)
@@ -80,11 +76,6 @@
     (keymap.set :i :<A-Right> :<C-o>w)
     (keymap.set :i :<S-Left> :<C-o>^)
     (keymap.set :i :<S-Right> :<C-o>$)
-    (keymap.set :n :<A-Up> "<cmd>MoveLine -1<CR>" {:noremap true :silent true})
-    (keymap.set :n :<A-Down> "<cmd>MoveLine 1<CR>" {:noremap true :silent true})
-    (keymap.set :x :<A-Up> "<cmd>MoveBlock -1<CR>" {:noremap true :silent true})
-    (keymap.set :x :<A-Down> "<cmd>MoveBlock 1<CR>"
-                {:noremap true :silent true})
     (keymap.set :n :p "<Plug>(YankyPutAfter)")
     (keymap.set :n :P "<Plug>(YankyPutBefore)")
     (when ok-substitute

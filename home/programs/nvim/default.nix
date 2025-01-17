@@ -85,6 +85,13 @@ in
         # Utils
         vimPlugins.popup-nvim
         vimPlugins.plenary-nvim
+
+        {
+          plugin = vimPlugins.mini-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/mini.fnl;
+          type = "fennel";
+        }
+
         vimPlugins.nvim-web-devicons
 
         {
@@ -113,8 +120,6 @@ in
           config = builtins.readFile ../../config/nvim/plugins/substitute.fnl;
           type = "fennel";
         }
-
-        move-nvim
 
         # Themes
         dracula-nvim
@@ -204,21 +209,8 @@ in
           type = "fennel";
         }
 
-        # Pairs
-        {
-          plugin = nvim-autopairs;
-          config = builtins.readFile ../../config/nvim/plugins/autopairs.fnl;
-          type = "fennel";
-        }
-
         # Textobjects
         nvim-treesitter-textobjects
-
-        {
-          plugin = vimPlugins.nvim-surround;
-          config = builtins.readFile ../../config/nvim/plugins/surround.fnl;
-          type = "fennel";
-        }
 
         # UI
         {

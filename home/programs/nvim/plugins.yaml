@@ -1,6 +1,5 @@
 # Keybindings
 - src: gbprod/cutlass.nvim
-- src: hinell/move.nvim
 # Themes
 - src: Mofiqul/dracula.nvim
 # Syntax
@@ -9,8 +8,6 @@
 - src: neovim/nvim-lspconfig
 # Comments
 - src: folke/ts-comments.nvim
-# Pairs
-- src: windwp/nvim-autopairs
 # Textobjects
 - src: nvim-treesitter/nvim-treesitter-textobjects
 # UI
