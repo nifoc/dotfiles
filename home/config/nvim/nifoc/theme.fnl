@@ -5,7 +5,6 @@
 
 (let [mod {}
       o vim.opt
-      g vim.g
       dracula (require :dracula)
       dracula-colors (dracula.colors)]
   (set mod.colors dracula-colors)
@@ -22,6 +21,8 @@
     (highlight :MatchParen {:fg mod.colors.orange :bold true :italic true})
     (highlight :MatchWord {:italic true})
     (highlight-link :MatchupVirtualText :Comment)
+    ;; treesitter-context
+    (highlight-link :TreesitterContextSeparator :StatusLineNC)
     ;; vim-illuminate
     (highlight :IlluminatedWordText {:bg mod.colors.selection})
     (highlight :IlluminatedWordRead {:bg mod.colors.selection})

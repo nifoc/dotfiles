@@ -1,4 +1,16 @@
 (let [cmp (require :blink.cmp)
+      (ok-mini-icons mini-icons) (pcall require :mini.icons)
+      config-components (if ok-mini-icons
+                            {:kind_icon {:ellipsis false
+                                         :text (fn [ctx]
+                                                 (let [(icon _ _) (mini-icons.get :lsp
+                                                                                  ctx.kind)]
+                                                   icon))
+                                         :highlight (fn [ctx]
+                                                      (let [(_ hl _) (mini-icons.get :lsp
+                                                                                     ctx.kind)]
+                                                        hl))}}
+                            {})
       config-snippets (if (pcall require :mini.snippets)
                           {:preset :mini_snippets}
                           {})
@@ -30,7 +42,8 @@
                            :menu {:min_width 20
                                   :max_height 25
                                   :border :rounded
-                                  :draw {:treesitter [:lsp]}}
+                                  :draw {:components config-components
+                                         :treesitter [:lsp]}}
                            :documentation {:auto_show true
                                            :window {:border :rounded}}
                            :ghost_text {:enabled false}}

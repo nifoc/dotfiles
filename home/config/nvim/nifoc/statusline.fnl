@@ -4,7 +4,7 @@
       api vim.api
       heirline-utils (require :heirline.utils)
       heirline-conditions (require :heirline.conditions)
-      web-devicons (require :nvim-web-devicons)
+      mini-icons (require :mini.icons)
       colors (. (require :nifoc.theme) :colors)
       formatting (require :nifoc.formatting)
       repo (require :nifoc.repo)
@@ -128,15 +128,12 @@
   (set mod.filetype-block {:init #(set $1.filename (api.nvim_buf_get_name 0))})
   (set mod.file-icon {:init (fn [self]
                               (let [filename self.filename
-                                    ext (vim.fn.fnamemodify filename ":e")
-                                    (icon color) (web-devicons.get_icon_color filename
-                                                                              ext
-                                                                              {:default true})]
+                                    (icon hl _) (mini-icons.get :file filename)]
                                 (set self.icon icon)
-                                (set self.icon-color color)))
+                                (set self.icon-hl hl)))
                       :provider #(when $1.icon
                                    (.. $1.icon " "))
-                      :hl #{:fg $1.icon-color}})
+                      :hl #$1.icon-hl})
   (set mod.filetype {:provider #(let [ft vim.bo.filetype]
                                   (if (> (ft:len) 0) ft "no ft"))
                      :hl {:fg colors.white}})

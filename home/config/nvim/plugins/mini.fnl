@@ -1,7 +1,9 @@
-(let [move (require :mini.move)
+(let [icons (require :mini.icons)
+      move (require :mini.move)
       pairs (require :mini.pairs)
       snippets (require :mini.snippets)
       surround (require :mini.surround)]
+  (icons.setup)
   (move.setup {:mappings {:left :<A-Left>
                           :right :<A-Right>
                           :down :<A-Down>

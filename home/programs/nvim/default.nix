@@ -92,8 +92,6 @@ in
           type = "fennel";
         }
 
-        vimPlugins.nvim-web-devicons
-
         {
           plugin = vimPlugins.wezterm-nvim;
           config = builtins.readFile ../../config/nvim/plugins/wezterm.fnl;
@@ -160,8 +158,6 @@ in
         vimPlugins.nvim-jdtls
 
         vimPlugins.SchemaStore-nvim
-
-        vimPlugins.lspkind-nvim
 
         {
           plugin = vimPlugins.nvim-navic;
@@ -243,7 +239,11 @@ in
           type = "fennel";
         }
 
-        nvim-treesitter-context
+        {
+          plugin = nvim-treesitter-context;
+          config = builtins.readFile ../../config/nvim/plugins/context.fnl;
+          type = "fennel";
+        }
 
         {
           plugin = vimPlugins.urlview-nvim;
