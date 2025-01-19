@@ -47,7 +47,7 @@
                            :documentation {:auto_show true
                                            :window {:border :rounded}}
                            :ghost_text {:enabled false}}
-              :signature {:enabled true}
+              :signature {:enabled true :window {:border :rounded}}
               :snippets config-snippets
               :sources {:default [:lsp :snippets :buffer :path :cmp_tabnine]
                         :providers config-sources-providers}
