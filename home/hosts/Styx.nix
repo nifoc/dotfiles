@@ -20,6 +20,7 @@ in
     ../programs/nvim
 
     ../programs/git.nix
+    ../programs/lazygit.nix
 
     ../programs/bat.nix
 
@@ -65,7 +66,7 @@ in
       hexyl
       hyperfine
       just
-      #lnav
+      lnav
       mtr
       nix-tree
       nix-update
