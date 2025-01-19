@@ -24,17 +24,6 @@
          {:condition (fn []
                        (conditions.buffer_matches {:filetype [:fzf]}))
           1 (ns.custom-mode :FZF :black :green)})
-  (local neogit-statusline {:condition (fn []
-                                         (conditions.buffer_matches {:filetype [:NeogitBranchDescription
-                                                                                :NeogitCommitMessage
-                                                                                :NeogitCommitView
-                                                                                :NeogitLogView
-                                                                                :NeogitMergeMessage
-                                                                                :NeogitPopup
-                                                                                :NeogitStatus
-                                                                                :NeogitTagMessage]}))
-                            1 (ns.custom-mode :Neogit :black :purple)
-                            2 ns.git})
   (local shell-statusline
          {:condition #(not= vim.b.nifoc_shell_mode nil)
           1 ns.vi-mode
@@ -45,9 +34,8 @@
   (local statusline {:hl ns.default-hl
                      :fallthrough false
                      1 fzf-statusline
-                     2 neogit-statusline
-                     3 shell-statusline
-                     4 default-statusline})
+                     2 shell-statusline
+                     3 default-statusline})
   (local winbar nil)
   (local tabline [nt.os-indicator
                   (utils.make_buflist nt.buffer-block nt.truncate-left

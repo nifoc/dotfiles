@@ -8,8 +8,6 @@
 - src: neovim/nvim-lspconfig
 # Comments
 - src: folke/ts-comments.nvim
-# Textobjects
-- src: nvim-treesitter/nvim-treesitter-textobjects
 # UI
 - src: j-hui/fidget.nvim
 - src: nvim-treesitter/nvim-treesitter-context

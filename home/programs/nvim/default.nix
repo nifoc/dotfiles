@@ -50,8 +50,8 @@ in
       statix
     ] ++ optionals isDarwin [
       # LSP
-      #elixir-ls
-      lexical
+      elixir-ls
+      #lexical
       #lua-language-server
       marksman
       #next-ls
@@ -110,12 +110,6 @@ in
         {
           plugin = cutlass-nvim;
           config = builtins.readFile ../../config/nvim/plugins/cutlass.fnl;
-          type = "fennel";
-        }
-
-        {
-          plugin = vimPlugins.substitute-nvim;
-          config = builtins.readFile ../../config/nvim/plugins/substitute.fnl;
           type = "fennel";
         }
 
@@ -205,9 +199,6 @@ in
           type = "fennel";
         }
 
-        # Textobjects
-        nvim-treesitter-textobjects
-
         # UI
         {
           plugin = vimPlugins.oil-nvim;
@@ -266,12 +257,6 @@ in
         {
           plugin = vimPlugins.diffview-nvim;
           config = builtins.readFile ../../config/nvim/plugins/diffview.fnl;
-          type = "fennel";
-        }
-
-        {
-          plugin = vimPlugins.neogit;
-          config = builtins.readFile ../../config/nvim/plugins/neogit.fnl;
           type = "fennel";
         }
 

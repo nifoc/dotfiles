@@ -1,6 +1,5 @@
 (let [mod {}
       keymap vim.keymap
-      (ok-substitute substitute) (pcall require :substitute)
       (ok-fzf fzf) (pcall require :fzf-lua)
       fzf-layout-bottom {:winopts #(let [height (math.floor (* vim.o.lines 0.4))]
                                      {:split (.. "belowright new | resize "
@@ -13,10 +12,10 @@
                                          :preview {:layout :vertical}}}
       (ok-hover hover) (pcall require :hover)
       (ok-gitsigns gitsigns) (pcall require :gitsigns)
-      (ok-neogit neogit) (pcall require :neogit)
       (ok-wk wk) (pcall require :which-key)
       repl (require :nifoc.repl)
       repo (require :nifoc.repo)
+      git (require :nifoc.git)
       formatting (require :nifoc.formatting)]
   (fn mod.setup []
     (keymap.set :n :<space> :<nop> {:noremap true})
@@ -37,11 +36,7 @@
                   {:desc "Find In Buffer"})
       (keymap.set :n :<leader>bt #(fzf.treesitter fzf-layout-big-dropdown)
                   {:desc "Find via Treesitter"}))
-    (when ok-neogit
-      (keymap.set :n :<leader>g #(neogit.open {:kind :split})
-                  {:desc "Open Neogit"})
-      (keymap.set :n :<leader>vs #(neogit.open {:kind :split})
-                  {:desc "VCS Status"}))
+    (keymap.set :n :<leader>g git.open-lazygit {:desc "Open lazygit"})
     (when ok-fzf
       (keymap.set :n :<leader>vb #(fzf.git_branches fzf-layout-dropdown)
                   {:desc "List VCS Branches"}))
@@ -78,8 +73,7 @@
     (keymap.set :i :<S-Right> :<C-o>$)
     (keymap.set :n :p "<Plug>(YankyPutAfter)")
     (keymap.set :n :P "<Plug>(YankyPutBefore)")
-    (when ok-substitute
-      (keymap.set :x :p substitute.visual))
+    (keymap.set :x :p "<cmd>lua MiniOperators.replace('visual')<CR>")
     (keymap.set :x :P "<Plug>(YankyPutBefore)")
     (keymap.set :n :gp "<Plug>(YankyGPutAfter)")
     (keymap.set :n :gP "<Plug>(YankyGPutBefore)")

@@ -8,9 +8,9 @@
       colors (. (require :nifoc.theme) :colors)
       formatting (require :nifoc.formatting)
       repo (require :nifoc.repo)
+      nifoc-git (require :nifoc.git)
       nifoc-treesitter (require :nifoc.treesitter)
       navic (require :nvim-navic)
-      (ok-neogit neogit) (pcall require :neogit)
       fzf (require :fzf-lua)
       fzf-layout-bottom {:winopts #(let [height (math.floor (* vim.o.lines 0.4))]
                                      {:split (.. "belowright new | resize "
@@ -178,7 +178,7 @@
            :hl {:fg colors.black :bg colors.orange :bold true}}
         3 {:provider #(.. $1.git-head " ")
            :on_click {:name :heirline_git_branch
-                      :callback #(when ok-neogit (neogit.open {:kind :split}))}
+                      :callback nifoc-git.open-lazygit}
            :hl {:fg colors.black :bg colors.orange :bold true}}
         4 mod.space
         5 {:provider #(.. " " $1.git-added " ")
