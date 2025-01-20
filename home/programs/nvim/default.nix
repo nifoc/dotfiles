@@ -195,15 +195,6 @@ in
 
         # UI
         {
-          plugin = vimPlugins.oil-nvim;
-          config = /* fennel */ ''
-            (let [oil (require :oil)]
-              (oil.setup))
-          '';
-          type = "fennel";
-        }
-
-        {
           plugin = vimPlugins.heirline-nvim;
           config = builtins.readFile ../../config/nvim/plugins/heirline.fnl;
           type = "fennel";
@@ -251,18 +242,6 @@ in
         {
           plugin = vimPlugins.diffview-nvim;
           config = builtins.readFile ../../config/nvim/plugins/diffview.fnl;
-          type = "fennel";
-        }
-
-        {
-          plugin = fidget-nvim;
-          config = builtins.readFile ../../config/nvim/plugins/fidget.fnl;
-          type = "fennel";
-        }
-
-        {
-          plugin = vimPlugins.which-key-nvim;
-          config = builtins.readFile ../../config/nvim/plugins/which-key.fnl;
           type = "fennel";
         }
       ] ++ optionals isDarwin [

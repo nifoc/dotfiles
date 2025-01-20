@@ -12,7 +12,6 @@
                                          :preview {:layout :vertical}}}
       (ok-hover hover) (pcall require :hover)
       (ok-gitsigns gitsigns) (pcall require :gitsigns)
-      (ok-wk wk) (pcall require :which-key)
       repl (require :nifoc.repl)
       repo (require :nifoc.repo)
       git (require :nifoc.git)
@@ -81,7 +80,8 @@
     (keymap.set :x :gP "<Plug>(YankyGPutBefore)")
     (keymap.set :n :y "<Plug>(YankyYank)")
     (keymap.set :x :y "<Plug>(YankyYank)")
-    (keymap.set :n "-" :<cmd>Oil<CR> {:desc "Open Oil"})
+    (keymap.set :n "-" "<cmd>lua MiniFiles.open()<CR>"
+                {:desc "Open File Browser"})
     ;; hover.nvim
     (when ok-hover
       (keymap.set :n :K hover.hover {:desc "Show Documentation"})
@@ -89,12 +89,7 @@
       (keymap.set :n :<C-p> #(hover.hover_switch :previous)
                   {:desc "hover.nvim previous source"})
       (keymap.set :n :<C-n> #(hover.hover_switch :next)
-                  {:desc "hover.nvim next source"}))
-    ;; Label
-    (when ok-wk
-      (wk.add [{1 :<leader>v :group :vcs}
-               {1 :<leader>l :group :list/lsp}
-               {1 :<leader>d :group :debug}])))
+                  {:desc "hover.nvim next source"})))
 
   (fn mod.lsp-attach [_client bufnr]
     (when ok-fzf
