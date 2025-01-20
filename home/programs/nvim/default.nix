@@ -159,12 +159,6 @@ in
           type = "fennel";
         }
 
-        {
-          plugin = vimPlugins.vim-illuminate;
-          config = builtins.readFile ../../config/nvim/plugins/illuminate.fnl;
-          type = "fennel";
-        }
-
         # Linter
         {
           plugin = vimPlugins.nvim-lint;

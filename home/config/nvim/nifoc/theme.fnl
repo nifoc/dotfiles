@@ -1,7 +1,4 @@
-(import-macros {: colorscheme
-                : highlight
-                : highlight-link
-                : highlight-get-field} :../macros/cmd)
+(import-macros {: colorscheme : highlight : highlight-link} :../macros/cmd)
 
 (let [mod {}
       o vim.opt
@@ -19,13 +16,6 @@
     (highlight :TabLineFill {:bg mod.colors.black})
     ;; matchit
     (highlight :MatchParen {:fg mod.colors.orange :bold true :italic true})
-    (highlight :MatchWord {:italic true})
-    (highlight-link :MatchupVirtualText :Comment)
-    ;; treesitter-context
-    (highlight-link :TreesitterContextSeparator :StatusLineNC)
-    ;; vim-illuminate
-    (highlight :IlluminatedWordText {:bg mod.colors.selection})
-    (highlight :IlluminatedWordRead {:bg mod.colors.selection})
-    (highlight :IlluminatedWordWrite {:bg mod.colors.selection :underline true}))
+    (highlight :MatchWord {:italic true}))
 
   mod)
