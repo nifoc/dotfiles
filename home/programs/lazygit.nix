@@ -1,3 +1,5 @@
+{ pkgs, lib, ... }:
+
 {
   programs.lazygit = {
     enable = true;
@@ -27,6 +29,13 @@
           unstagedChangesColor = [ "#FF5555" ];
 
           defaultFgColor = [ "#F8F8F2" ];
+        };
+      };
+
+      git = {
+        paging = {
+          colorArg = "always";
+          pager = "${lib.getExe pkgs.delta} --dark --syntax-theme=Dracula --paging=never";
         };
       };
 
