@@ -12,6 +12,7 @@
               ; Icons
               :elixir "#A074C4"
               :et "#1C3062"
+              :git "#F25029"
               :nvim "#019833"
               :nix "#7EBAE4"
               :reddit "#FA4400"
@@ -35,7 +36,8 @@
       (where t (t:find :^nvim$))
       {: title :icon " " :color colors.nvim :ignore-activity true}
       (where t (t:find "^git%s"))
-      {:title (t:gsub "^git%s(.*)" "%1") :icon "󰊢 " :color "#F25029"}
+      {:title (t:gsub "^git%s(.*)" "%1") :icon "󰊢 " :color colors.git}
+      (where t (t:find :^lazygit$)) {: title :icon "󰊢 " :color colors.git}
       (where t (t:find "^mix%s"))
       {:title (t:gsub "^mix%s(.*)" "%1") :icon " " :color colors.elixir}
       (where t (t:find "^iex%s")) {: title :icon " " :color colors.elixir}
