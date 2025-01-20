@@ -91,6 +91,8 @@
       {: title :icon " " :color colors.shell :ignore-activity true}
       (where t (t:find :^zsh$))
       {: title :icon "󰫫 " :color colors.shell :ignore-activity true}
+      (where t (t:find :^luajit)) {: title :icon "󰢱 " :color "#51A0CF"}
+      (where t (t:find :^node$)) {: title :icon " " :color "#5FA04E"}
       (where t (t:find "^op%srun%s%-%-%s"))
       (extract-tab-info (t:gsub "^op%srun%s%-%-%s(.*)" "%1"))
       _ {: title :icon " " :color colors.shell}))
