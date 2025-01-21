@@ -2,6 +2,7 @@
 
 (let [ai (require :mini.ai)
       clue (require :mini.clue)
+      cmt (require :mini.comment)
       cursorword (require :mini.cursorword)
       files (require :mini.files)
       icons (require :mini.icons)
@@ -35,6 +36,8 @@
                        (clue.gen_clues.registers)
                        (clue.gen_clues.windows)
                        (clue.gen_clues.z)]})
+  ;; comment
+  (cmt.setup)
   ;; cursorword
   (cursorword.setup)
   (highlight :MiniCursorword {:bg theme.colors.selection})

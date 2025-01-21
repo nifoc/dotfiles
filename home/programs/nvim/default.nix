@@ -166,13 +166,6 @@ in
           type = "fennel";
         }
 
-        # Comments
-        {
-          plugin = ts-comments-nvim;
-          config = builtins.readFile ../../config/nvim/plugins/comment.fnl;
-          type = "fennel";
-        }
-
         # Snippets
         vimPlugins.friendly-snippets
 
