@@ -26,7 +26,6 @@ in
       log-lines = 25;
       keep-derivations = true;
       keep-outputs = true;
-      extra-nix-path = "nixpkgs=flake:nixpkgs";
 
       builders-use-substitutes = true;
 
