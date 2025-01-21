@@ -188,7 +188,10 @@
           settings = {
             hooks = {
               deadnix.enable = true;
-              shellcheck.enable = true;
+              shellcheck = {
+                enable = true;
+                excludes = [ "\\.envrc" ];
+              };
               # statix.enable = true;
               treefmt.enable = true;
             };
