@@ -7,6 +7,7 @@
           program (program-fn)]
       (each [_ value (ipairs program)]
         (table.insert args value))
+      (wezterm.set_tab_title "")
       (wezterm.exec args
                     (fn [result]
                       (when (not= result.code 0)
