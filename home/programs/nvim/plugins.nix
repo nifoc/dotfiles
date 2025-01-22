@@ -35,12 +35,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2025-01-20";
+    version = "2025-01-21";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "0fb02ac5c39423b5c863eb7c8dd7b093879f1488";
-      sha256 = "0m92jg1sbfhrxay30p36w7xfvz3f535mhdf6105r6m8ppsvh6lha";
+      rev = "07bd1b53bf465e42d53253b48b7437892d6c45e8";
+      sha256 = "1x9ggl49qh79pb1v6sf5q1d21yjzf6c3wy77w4j6y0a836gqyd26";
       fetchSubmodules = false;
 
     };
@@ -53,22 +53,8 @@ in
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "46de45200afab642a134cf4e26f8f495ab7a49dd";
-      sha256 = "06dy61j3qvibc51if9r0bax5i5smipn8drabv1lx1zfnhv4h95x1";
-      fetchSubmodules = false;
-
-    };
-    doCheck = false;
-    doInstallCheck = false;
-  };
-  ts-comments-nvim = buildVimPlugin {
-    pname = "ts-comments.nvim";
-    version = "2024-12-14";
-    src = fetchFromGitHub {
-      owner = "folke";
-      repo = "ts-comments.nvim";
-      rev = "872dcfa0418f4a33b7437fb4d9f4e89f2f000d74";
-      sha256 = "1jnxhj25x9mzm2m8sqgp8viwd8kswyrc1k4s4yqxh457m8xj6yn1";
+      rev = "d1871c84b218931cc758dbbde1fec8e90c6d465c";
+      sha256 = "0rxhi8ia22axq7xqqwrzrwklpa3dhp0hanjcrvwwnvzd5541gh2v";
       fetchSubmodules = false;
 
     };
