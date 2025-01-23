@@ -30,7 +30,7 @@ in
 
     ../nixos/atuin-sync.nix
 
-    (import ../nixos/atticd.nix (args // { inherit secret; }))
+    ../nixos/atticd.nix
 
     ../nixos/fedifetcher.nix
 

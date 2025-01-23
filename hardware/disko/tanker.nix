@@ -171,6 +171,14 @@
               atime = "off";
             };
           };
+
+          atticd-data = {
+            type = "zfs_fs";
+            mountpoint = "/var/lib/atticd-data";
+            options = {
+              atime = "off";
+            };
+          };
         };
       };
     };

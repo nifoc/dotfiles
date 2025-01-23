@@ -1,4 +1,4 @@
-{ pkgs, config, secret, ... }:
+{ pkgs, config, ... }:
 
 let
   fqdn = "attic.cache.daniel.sx";
@@ -19,10 +19,8 @@ in
       api-endpoint = "https://${fqdn}/";
 
       storage = {
-        type = "s3";
-        region = "auto";
-        bucket = "attic-cache";
-        endpoint = "https://${secret.cloudflare.account-id}.r2.cloudflarestorage.com";
+        type = "local";
+        path = "/var/lib/atticd-data";
       };
 
       chunking = {

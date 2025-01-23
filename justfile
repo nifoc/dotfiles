@@ -16,9 +16,9 @@ build-local-machine target type=defaultLocalType:
 # Build a remote machine
 [group('build')]
 build-remote-machine target type=defaultRemoteType:
-  nom build --eval-store auto \
+  nom build --fallback \
+    --eval-store auto \
     --store 'ssh-ng://root@{{target}}' \
-    --fallback \
     '.#{{type}}Configurations.{{target}}.config.system.build.toplevel'
 
 # Deploy to a local machine
