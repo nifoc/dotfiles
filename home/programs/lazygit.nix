@@ -37,7 +37,12 @@
           colorArg = "always";
           pager = "${lib.getExe pkgs.delta} --dark --syntax-theme=Dracula --paging=never";
         };
+
+        autoFetch = false;
+        autoRefresh = false;
       };
+
+      update.method = "never";
 
       disableStartupPopups = true;
     };
