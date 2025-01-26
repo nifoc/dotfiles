@@ -9,4 +9,9 @@
   systemd.services.podman-deye-mqtt.restartTriggers = [
     "${config.age.secrets.deye-mqtt-config.file}"
   ];
+
+  networking.firewall.interfaces."podman+" = {
+    allowedTCPPorts = [ 502 8899 ];
+    allowedUDPPorts = [ 48899 ];
+  };
 }

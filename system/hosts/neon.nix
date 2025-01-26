@@ -32,7 +32,6 @@ in
     ../nixos/unbound.nix
 
     ../nixos/container.nix
-    ../../container/deye
   ];
 
   system.stateVersion = "23.11";
