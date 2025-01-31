@@ -14,7 +14,7 @@
       (ok-gitsigns gitsigns) (pcall require :gitsigns)
       repl (require :nifoc.repl)
       repo (require :nifoc.repo)
-      git (require :nifoc.git)
+      tui (require :nifoc.tui)
       formatting (require :nifoc.formatting)]
   (fn mod.setup []
     (keymap.set :n :<space> :<nop> {:noremap true})
@@ -35,7 +35,7 @@
                   {:desc "Find In Buffer"})
       (keymap.set :n :<leader>bt #(fzf.treesitter fzf-layout-big-dropdown)
                   {:desc "Find via Treesitter"}))
-    (keymap.set :n :<leader>g git.open-lazygit {:desc "Open lazygit"})
+    (keymap.set :n :<leader>g tui.open-lazygit {:desc "Open lazygit"})
     (when ok-fzf
       (keymap.set :n :<leader>vb #(fzf.git_branches fzf-layout-dropdown)
                   {:desc "List VCS Branches"}))

@@ -8,8 +8,8 @@
       colors (. (require :nifoc.theme) :colors)
       formatting (require :nifoc.formatting)
       repo (require :nifoc.repo)
-      nifoc-git (require :nifoc.git)
       nifoc-treesitter (require :nifoc.treesitter)
+      nifoc-tui (require :nifoc.tui)
       navic (require :nvim-navic)
       fzf (require :fzf-lua)
       fzf-layout-bottom {:winopts #(let [height (math.floor (* vim.o.lines 0.4))]
@@ -178,7 +178,7 @@
            :hl {:fg colors.black :bg colors.orange :bold true}}
         3 {:provider #(.. $1.git-head " ")
            :on_click {:name :heirline_git_branch
-                      :callback nifoc-git.open-lazygit}
+                      :callback nifoc-tui.open-lazygit}
            :hl {:fg colors.black :bg colors.orange :bold true}}
         4 mod.space
         5 {:provider #(.. " " $1.git-added " ")

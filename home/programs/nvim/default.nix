@@ -39,7 +39,7 @@ in
       #nixd
       taplo-lsp
 
-      # Diagnostic Tools
+      # Tools
       checkstyle
       deadnix
       nodePackages.eslint_d
@@ -52,14 +52,16 @@ in
       # LSP
       elixir-ls
       #lexical
-      #lua-language-server
+      lua-language-server
       marksman
-      #next-ls
       nodePackages.dockerfile-language-server-nodejs
       nodePackages.svelte-language-server
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.yaml-language-server
+
+      # Tools
+      openapi-tui
 
       # Other
       xcbuild
