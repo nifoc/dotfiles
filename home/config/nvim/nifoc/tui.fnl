@@ -1,5 +1,6 @@
 (let [mod {}
-      wezterm (require :wezterm)]
+      wezterm (require :wezterm)
+      openapi-spec-file vim.env.OPENAPI_SPEC_FILE]
   (fn exe [bin] (vim.fn.exepath bin))
 
   (fn open-split [program-fn]
@@ -15,8 +16,13 @@
                                     vim.log.levels.ERROR []))))))
 
   (local lazygit #[(exe :lazygit)])
+  (local openapi-tui #[(exe :openapi-tui) :-i openapi-spec-file])
 
   (fn mod.open-lazygit []
     (open-split lazygit))
+
+  (fn mod.open-openapi-tui []
+    (if (not= openapi-spec-file nil) (open-split openapi-tui)
+        (vim.notify "OpenAPI specification not found" vim.log.levels.ERROR)))
 
   mod)

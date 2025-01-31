@@ -56,6 +56,7 @@
                           :line_up :<A-Up>}})
   ;; notify
   (notify.setup {:window {:max_width_share 0.5}})
+  (set vim.notify (notify.make_notify))
   ;; operators
   (operators.setup)
   ;; pairs

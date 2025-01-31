@@ -47,6 +47,8 @@
     (keymap.set :n :<leader>vvm #(repo.open-merge-request) {:desc "Open MR"})
     (keymap.set :n :<leader>vvc #(repo.open-ci) {:desc "Open CI"})
     (keymap.set :n :<leader>vtc #(repo.run-ci) {:desc "Trigger CI"})
+    (keymap.set :n :<leader>lo #(tui.open-openapi-tui)
+                {:desc "Open openapi-tui"})
     (when ok-fzf
       (keymap.set :n :<leader>lk fzf.keymaps {:desc "Show Keymappings"})
       (keymap.set :n :<leader>ld #(fzf.diagnostics_document fzf-layout-bottom)
