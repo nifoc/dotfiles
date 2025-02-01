@@ -13,7 +13,7 @@
       navic (require :nvim-navic)
       fzf (require :fzf-lua)
       fzf-layout-bottom {:winopts #(let [height (math.floor (* vim.o.lines 0.4))]
-                                     {:split (.. "belowright new | resize "
+                                     {:split (.. "belowright new | set nobuflisted | resize "
                                                  (tostring height))})}]
   (fn buffer-variable-exists? [key]
     (not= (. vim :b key) nil))

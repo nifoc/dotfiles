@@ -3,7 +3,7 @@
       api vim.api
       augroup (api.nvim_create_augroup :NifocWezterm {:clear true})
       aucmd api.nvim_create_autocmd
-      title-ignore-fts [:sh]]
+      title-ignore-fts ["" :fzf]]
   (when (= wezterm-exists 1)
     (fn update-tab-title [args]
       (let [path (api.nvim_buf_get_name args.buf)
