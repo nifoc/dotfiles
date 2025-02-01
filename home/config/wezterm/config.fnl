@@ -79,6 +79,7 @@
       (where t (t:find "^rexit%s"))
       {: title :icon " " :color colors.reddit :ignore-activity true}
       (where t (t:find "^redis%-")) {: title :icon " " :color "#DC372C"}
+      (where t (t:find :^openapi-tui$)) {: title :icon " " :color "#9DE646"}
       (where t (t:find "^%[%w+%]%s"))
       {: title :icon " " :color colors.ssh :ssh-domain true}
       (where t (t:find "^%w+@%w+:%s"))
