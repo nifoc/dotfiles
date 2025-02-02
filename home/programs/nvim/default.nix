@@ -41,6 +41,7 @@ in
 
       # Tools
       checkstyle
+      curl
       deadnix
       nodePackages.eslint_d
       hadolint
@@ -241,8 +242,8 @@ in
         }
       ] ++ optionals isDarwin [
         {
-          plugin = vimPlugins.cmp-tabnine;
-          config = builtins.readFile ../../config/nvim/plugins/cmp_tabnine.fnl;
+          plugin = vimPlugins.supermaven-nvim;
+          config = builtins.readFile ../../config/nvim/plugins/supermaven.fnl;
           type = "fennel";
         }
       ];

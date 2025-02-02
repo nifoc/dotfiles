@@ -52,7 +52,7 @@ in
     packages = with pkgs; [
       _1password-cli
       arp-scan
-      curlHTTP3
+      curl
       dasel
       dig
       exiftool

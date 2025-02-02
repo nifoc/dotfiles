@@ -3,21 +3,42 @@
       config-components (if ok-mini-icons
                             {:kind_icon {:ellipsis false
                                          :text (fn [ctx]
+                                                 (print ctx.kind)
                                                  (let [(icon _ _) (mini-icons.get :lsp
                                                                                   ctx.kind)]
-                                                   icon))
+                                                   (if (= ctx.source_name
+                                                          :supermaven)
+                                                       ""
+                                                       icon)))
                                          :highlight (fn [ctx]
                                                       (let [(_ hl _) (mini-icons.get :lsp
                                                                                      ctx.kind)]
-                                                        hl))}}
-                            {})
+                                                        (if (= ctx.source_name
+                                                               :supermaven)
+                                                            :MiniIconsAzure
+                                                            hl)))}
+                             :source_name {:text (fn [ctx]
+                                                   (.. "[" ctx.source_name "]"))}}
+                            {:source_name {:text (fn [ctx]
+                                                   (.. "[" ctx.source_name "]"))}})
       ;config-snippets (if (pcall require :mini.snippets)
       ;                    {:preset :mini_snippets}
       ;                    {})
-      config-sources-providers (if (pcall require :cmp_tabnine.config)
-                                   {:cmp_tabnine {:name :cmp_tabnine
-                                                  :module :blink.compat.source}}
-                                   {})]
+      (config-sources config-sources-providers) (if (pcall require
+                                                           :supermaven-nvim)
+                                                    (values [:lsp
+                                                             :snippets
+                                                             :supermaven
+                                                             :buffer
+                                                             :path]
+                                                            {:supermaven {:name :supermaven
+                                                                          :module :blink.compat.source
+                                                                          :score_offset 3}})
+                                                    (values [:lsp
+                                                             :snippets
+                                                             :buffer
+                                                             :path]
+                                                            {}))]
   (cmp.setup {:keymap {:preset :none
                        :<CR> [:accept :fallback]
                        :<esc> [:cancel :fallback]
@@ -43,12 +64,17 @@
                                   :max_height 25
                                   :border :rounded
                                   :draw {:components config-components
+                                         :columns [[:kind_icon]
+                                                   {1 :label
+                                                    2 :label_description
+                                                    :gap 1}
+                                                   [:source_name]]
                                          :treesitter [:lsp]}}
                            :documentation {:auto_show true
                                            :window {:border :rounded}}
                            :ghost_text {:enabled false}}
               :signature {:enabled true :window {:border :rounded}}
               ;:snippets config-snippets
-              :sources {:default [:lsp :snippets :buffer :path :cmp_tabnine]
+              :sources {:default config-sources
                         :providers config-sources-providers}
               :fuzzy {:prebuilt_binaries {:download false :force_version nil}}}))
