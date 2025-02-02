@@ -192,11 +192,9 @@
                       current-screen (. (wezterm.gui.screens) :active :name)]
                   (case current-screen
                     :S34J55x (do
-                               (set overrides.line_height 1)
                                (set overrides.freetype_load_target :Normal)
                                (window:set_config_overrides overrides))
                     _ (do
-                        (set overrides.line_height 0.95)
                         (set overrides.freetype_load_target :Light)
                         (window:set_config_overrides overrides))))))
   ;; Configuration
@@ -235,7 +233,6 @@
                                       "Noto Sans Symbols"
                                       "Noto Sans Symbols 2"])
    :font_size 13
-   :line_height 0.95
    :freetype_load_target :Light
    ;:freetype_render_target :HorizontalLcd
    :harfbuzz_features disable-ligatures-flags
