@@ -1,44 +1,47 @@
 (let [cmp (require :blink.cmp)
       (ok-mini-icons mini-icons) (pcall require :mini.icons)
-      config-components (if ok-mini-icons
-                            {:kind_icon {:ellipsis false
-                                         :text (fn [ctx]
-                                                 (print ctx.kind)
-                                                 (let [(icon _ _) (mini-icons.get :lsp
-                                                                                  ctx.kind)]
-                                                   (if (= ctx.source_name
-                                                          :supermaven)
-                                                       ""
-                                                       icon)))
-                                         :highlight (fn [ctx]
-                                                      (let [(_ hl _) (mini-icons.get :lsp
-                                                                                     ctx.kind)]
-                                                        (if (= ctx.source_name
-                                                               :supermaven)
-                                                            :MiniIconsAzure
-                                                            hl)))}
-                             :source_name {:text (fn [ctx]
-                                                   (.. "[" ctx.source_name "]"))}}
-                            {:source_name {:text (fn [ctx]
-                                                   (.. "[" ctx.source_name "]"))}})
-      ;config-snippets (if (pcall require :mini.snippets)
-      ;                    {:preset :mini_snippets}
-      ;                    {})
-      (config-sources config-sources-providers) (if (pcall require
-                                                           :supermaven-nvim)
-                                                    (values [:lsp
-                                                             :snippets
-                                                             :supermaven
-                                                             :buffer
-                                                             :path]
-                                                            {:supermaven {:name :supermaven
-                                                                          :module :blink.compat.source
-                                                                          :score_offset 3}})
-                                                    (values [:lsp
-                                                             :snippets
-                                                             :buffer
-                                                             :path]
-                                                            {}))]
+      components (if ok-mini-icons
+                     {:kind_icon {:ellipsis false
+                                  :text (fn [ctx]
+                                          (print ctx.kind)
+                                          (let [(icon _ _) (mini-icons.get :lsp
+                                                                           ctx.kind)]
+                                            (if (= ctx.source_name :supermaven)
+                                                ""
+                                                icon)))
+                                  :highlight (fn [ctx]
+                                               (let [(_ hl _) (mini-icons.get :lsp
+                                                                              ctx.kind)]
+                                                 (if (= ctx.source_name
+                                                        :supermaven)
+                                                     :MiniIconsAzure
+                                                     hl)))}
+                      :source_name {:text (fn [ctx]
+                                            (.. "[" ctx.source_name "]"))}}
+                     {:source_name {:text (fn [ctx]
+                                            (.. "[" ctx.source_name "]"))}})
+      columns (fn [ctx]
+                (if (= ctx.mode :cmdline) [[:kind_icon] [:label]]
+                    [[:kind_icon]
+                     {1 :label 2 :label_description :gap 1}
+                     [:source_name]]))
+      snippets (if (pcall require :mini.snippets)
+                   {:preset :mini_snippets}
+                   {})
+      (sources-default sources-providers) (if (pcall require :supermaven-nvim)
+                                              (values [:lsp
+                                                       :snippets
+                                                       :supermaven
+                                                       :buffer
+                                                       :path]
+                                                      {:supermaven {:name :supermaven
+                                                                    :module :blink.compat.source
+                                                                    :score_offset 3}})
+                                              (values [:lsp
+                                                       :snippets
+                                                       :buffer
+                                                       :path]
+                                                      {}))]
   (cmp.setup {:keymap {:preset :none
                        :<CR> [:accept :fallback]
                        :<esc> [:cancel :fallback]
@@ -63,18 +66,13 @@
                            :menu {:min_width 20
                                   :max_height 25
                                   :border :rounded
-                                  :draw {:components config-components
-                                         :columns [[:kind_icon]
-                                                   {1 :label
-                                                    2 :label_description
-                                                    :gap 1}
-                                                   [:source_name]]
+                                  :draw {: components
+                                         : columns
                                          :treesitter [:lsp]}}
                            :documentation {:auto_show true
                                            :window {:border :rounded}}
                            :ghost_text {:enabled false}}
               :signature {:enabled true :window {:border :rounded}}
-              ;:snippets config-snippets
-              :sources {:default config-sources
-                        :providers config-sources-providers}
+              : snippets
+              :sources {:default sources-default :providers sources-providers}
               :fuzzy {:prebuilt_binaries {:download false :force_version nil}}}))
