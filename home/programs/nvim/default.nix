@@ -42,13 +42,11 @@ in
 
       # Tools
       checkstyle
-      curl
       deadnix
       nodePackages.eslint_d
       hadolint
       luajitPackages.fennel
       nixpkgs-fmt
-      serpl
       shellcheck
       statix
     ] ++ optionals isDarwin [
@@ -64,7 +62,9 @@ in
       nodePackages.yaml-language-server
 
       # Tools
+      curl
       openapi-tui
+      serpl
 
       # Other
       xcbuild
