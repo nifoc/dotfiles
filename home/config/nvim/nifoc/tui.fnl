@@ -17,6 +17,7 @@
 
   (local lazygit #[(exe :lazygit)])
   (local openapi-tui #[(exe :openapi-tui) :-i openapi-spec-file])
+  (local serpl #[(exe :serpl)])
 
   (fn mod.open-lazygit []
     (open-split lazygit))
@@ -24,5 +25,8 @@
   (fn mod.open-openapi-tui []
     (if (not= openapi-spec-file nil) (open-split openapi-tui)
         (vim.notify "OpenAPI specification not found" vim.log.levels.ERROR)))
+
+  (fn mod.open-serpl []
+    (open-split serpl))
 
   mod)

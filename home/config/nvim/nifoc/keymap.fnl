@@ -55,6 +55,7 @@
                   {:desc "Show Diagnostics"})
       (keymap.set :n :<leader>lt :<cmd>TodoFzfLua<CR>
                   {:desc "Show Todo Comments"}))
+    (keymap.set :n :<leader>pr #(tui.open-serpl) {:desc "Open Serpl"})
     (keymap.set :n :<leader>dli :<cmd>LspInfo<CR> {:desc "LSP Info"})
     (keymap.set :n :<leader>dlr :<cmd>LspRestart<CR> {:desc "Restart LSP"})
     (keymap.set :n :<leader>ds #(vim.diagnostic.open_float {:scope :line})

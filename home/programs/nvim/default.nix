@@ -28,6 +28,7 @@ in
       tree-sitter
       fd
       ripgrep
+      ast-grep
       universal-ctags
       fzf
       chafa
@@ -47,6 +48,7 @@ in
       hadolint
       luajitPackages.fennel
       nixpkgs-fmt
+      serpl
       shellcheck
       statix
     ] ++ optionals isDarwin [
