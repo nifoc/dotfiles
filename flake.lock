@@ -336,7 +336,7 @@
         "narHash": "sha256-YMLrcBpf0TR5r/eaqm8lxzFPap2TxCor0ZGcK3a7+b8=",
         "rev": "b90bf629bbd835e61f1317b99e12f8c831017006",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/b90bf629bbd835e61f1317b99e12f8c831017006.tar.gz?rev=b90bf629bbd835e61f1317b99e12f8c831017006"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/b90bf629bbd835e61f1317b99e12f8c831017006.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -420,11 +420,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1738461720,
-        "narHash": "sha256-vnDVr4dYpCP/YSSrXT7/nM9qUSW6lUvtIKEASQBTiik=",
+        "lastModified": 1738548126,
+        "narHash": "sha256-nVZHqxPMSWAjKV2CiYcrc6aJ/IjZE0cBt+HKVf0Qr3A=",
         "ref": "refs/heads/master",
-        "rev": "9510bc0307ea0165022bcb8323a48f0f178df966",
-        "revCount": 1074,
+        "rev": "6eb3ecc9aceda3e37d302146e3a8d55f5e5b685a",
+        "revCount": 1075,
         "type": "git",
         "url": "https://git.kempkens.io/daniel/nix-overlay"
       },
