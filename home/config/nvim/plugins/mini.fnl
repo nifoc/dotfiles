@@ -63,5 +63,15 @@
   (pairs.setup)
   ;; snippets
   (snippets.setup)
+  (highlight :MiniSnippetsCurrent
+             {:fg nil :bg nil :sp theme.colors.orange :underdotted true})
+  (highlight :MiniSnippetsCurrentReplace
+             {:fg nil :bg nil :sp theme.colors.red :underdotted true})
+  (highlight :MiniSnippetsFinal
+             {:fg nil :bg nil :sp theme.colors.green :underdotted true})
+  (highlight :MiniSnippetsUnvisited
+             {:fg nil :bg nil :sp theme.colors.cyan :underdotted true})
+  (highlight :MiniSnippetsVisited
+             {:fg nil :bg nil :sp theme.colors.purple :underdotted true})
   ;; surround
   (surround.setup))
