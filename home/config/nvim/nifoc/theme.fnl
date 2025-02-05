@@ -1,4 +1,4 @@
-(import-macros {: colorscheme : highlight : highlight-link} :../macros/cmd)
+(import-macros {: colorscheme : highlight} :../macros/cmd)
 
 (let [mod {}
       o vim.opt
