@@ -64,6 +64,7 @@ in
       # Tools
       curl
       openapi-tui
+      serie
       serpl
 
       # Other
