@@ -43,7 +43,7 @@
       (keymap.set :n :<leader>vl #(gitsigns.blame_line {:full true})
                   {:desc "Blame Line"}))
     (keymap.set :n :<leader>vd :<cmd>DiffviewOpen<CR> {:desc "Open DiffView"})
-    (keymap.set :n :<leader>vvl #(tui.open-lazygit-log) {:desc "Open git log"})
+    (keymap.set :n :<leader>vvl #(tui.open-serie) {:desc "Open git log"})
     (keymap.set :n :<leader>vvr #(repo.open-repo) {:desc "Open repository"})
     (keymap.set :n :<leader>vvm #(repo.open-merge-request) {:desc "Open MR"})
     (keymap.set :n :<leader>vvc #(repo.open-ci) {:desc "Open CI"})

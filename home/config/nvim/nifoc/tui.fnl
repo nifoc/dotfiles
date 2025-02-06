@@ -16,15 +16,15 @@
                                     vim.log.levels.ERROR []))))))
 
   (local lazygit #[(exe :lazygit)])
-  (local lazygit-log #[(exe :lazygit) :log])
+  (local serie #[(exe :serie)])
   (local openapi-tui #[(exe :openapi-tui) :-i openapi-spec-file])
   (local serpl #[(exe :serpl)])
 
   (fn mod.open-lazygit []
     (open-split lazygit))
 
-  (fn mod.open-lazygit-log []
-    (open-split lazygit-log))
+  (fn mod.open-serie []
+    (open-split serie))
 
   (fn mod.open-openapi-tui []
     (if (not= openapi-spec-file nil) (open-split openapi-tui)
