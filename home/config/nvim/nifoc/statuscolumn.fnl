@@ -1,5 +1,4 @@
 (let [mod {}
-      cache {:diagnostics {} :gitsigns {}}
       api vim.api
       o vim.opt
       b vim.b
@@ -87,6 +86,4 @@
                                                                             :pos line
                                                                             :scope :line})
                                    100)))}})
-  ;; Debug
-  (set mod._debug_cache #{: cache})
   mod)
