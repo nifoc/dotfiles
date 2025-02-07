@@ -1,12 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let
-  secret = import ../../secret/hosts/adsb-antenna.nix;
   ssh-keys = import ../shared/ssh-keys.nix;
 in
 {
   imports = [
     ../../hardware/hosts/adsb-antenna.nix
+    ../../agenix/hosts/adsb-antenna/config.nix
     ../shared/show-update-changelog.nix
     ../nixos/raspberry.nix
     ../nixos/ssh.nix
@@ -22,24 +22,31 @@ in
   system.stateVersion = "22.11";
 
   nix = {
-    package = pkgs.nixVersions.stable;
-
     settings = {
-      auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
 
-      substituters = [
-        "https://attic.cache.daniel.sx/nifoc-systems?priority=1"
-        "https://attic.cache.daniel.sx/nifoc-ci?priority=2"
-        "https://nix-community.cachix.org?priority=3"
-        "https://cache.garnix.io?priority=4"
+      log-lines = 25;
+      auto-optimise-store = true;
+      keep-derivations = true;
+      keep-outputs = true;
+
+      extra-substituters = [
+        "https://attic.cache.daniel.sx/nifoc-systems?priority=30"
+        "https://attic.cache.daniel.sx/nifoc-ci?priority=35"
+        "https://nix-community.cachix.org?priority=50"
+        "https://cache.garnix.io?priority=60"
+        "https://cache.lix.systems?priority=70"
       ];
 
-      trusted-public-keys = [
+      extra-trusted-public-keys = [
         "nifoc-systems:eDDqVP5BFR6/1KvXbF9oUL8JahDdmbrsYtxlQ57LOTU="
         "nifoc-ci:JpD9zqVQi8JuS7B8htPDOQZh08rhInMnGFS9RVhiuwk="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+        "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
       ];
+
+      connect-timeout = 5;
     };
 
     gc = {
@@ -47,12 +54,6 @@ in
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      keep-derivations = true
-      keep-outputs = true
-    '';
   };
 
   environment.etc."nix/netrc".source = ../../secret/shared/nix-netrc;
@@ -90,7 +91,7 @@ in
     doc.enable = false;
   };
 
-  programs.fish.enable = true;
+  programs.zsh.enable = true;
 
   users.users = {
     root = {
@@ -98,12 +99,12 @@ in
     };
 
     daniel = {
-      inherit (secret.users.daniel) hashedPassword;
+      hashedPasswordFile = config.age.secrets.user-daniel-password.path;
       isNormalUser = true;
       home = "/home/daniel";
       description = "Daniel";
       extraGroups = [ "wheel" ];
-      shell = pkgs.fish;
+      shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [ ssh-keys.LAN ];
     };
   };

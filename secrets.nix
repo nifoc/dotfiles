@@ -6,12 +6,14 @@ let
   system-mediaserver = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlB0cL5CtTOyARWSE2yUsNU4JHUPmr71710mZHzsmbX";
   system-argon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPP9ygczyi6g8abvj1I0eAj7N2Rli9UMlkC8VT6SnWLU";
   system-neon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5Ht4KaRUvuGFmYLznTkVSnn6isjrcVplz1kKWkrnRQ";
+  syetsm-adsb-antenna = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBkjUSiku9spAlFkZ1T1IvyToE/yF1HUAjDxxH1dKKAv";
 
   tanker = [ user-daniel-Styx user-daniel-Pallas system-tanker ];
   mediaserver = [ user-daniel-Styx user-daniel-Pallas system-mediaserver ];
   argon = [ user-daniel-Styx user-daniel-Pallas system-argon ];
   neon = [ user-daniel-Styx user-daniel-Pallas system-neon ];
-  all-systems = [ user-daniel-Styx user-daniel-Pallas system-tanker system-mediaserver system-argon system-neon ];
+  adsb-antenna = [ user-daniel-Styx user-daniel-Pallas syetsm-adsb-antenna ];
+  all-systems = [ user-daniel-Styx user-daniel-Pallas system-tanker system-mediaserver system-argon system-neon syetsm-adsb-antenna ];
 in
 {
   # all
@@ -127,6 +129,11 @@ in
   "agenix/hosts/neon/mosquitto/passwordHomeAssistant.age".publicKeys = neon;
 
   "agenix/hosts/neon/deye-mqtt/config.age".publicKeys = neon;
+
+  # adsb-antenna
+  "agenix/hosts/adsb-antenna/user/danielPassword.age".publicKeys = adsb-antenna;
+
+  "agenix/hosts/adsb-antenna/container/adsb-environment.age".publicKeys = adsb-antenna;
 
   # Styx
   "agenix/hosts/Styx/git/maintenance.age".publicKeys = [ user-daniel-Styx ];

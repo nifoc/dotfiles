@@ -42,6 +42,8 @@
                   "algorithm:histogram"
                   :indent-heuristic
                   "linematch:50"])
+  ;; Filetype
+  (let [filetype (require :nifoc.filetype)] (filetype.setup))
   ;; UI
   (set o.number true)
   (set o.relativenumber true)

@@ -118,8 +118,8 @@
           };
 
           adsb-antenna = import ./system/flakes/adsb-antenna.nix {
-            inherit (inputs) nixpkgs nixos-hardware home-manager;
-            inherit inputs;
+            inherit (inputs) nixpkgs nixos-hardware home-manager agenix nifoc-overlay;
+            inherit lix-module;
           };
         in
         {

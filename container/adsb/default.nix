@@ -1,6 +1,5 @@
-let
-  secret = import ../../secret/container/adsb;
-in
+{ config, ... }:
+
 {
   virtualisation.oci-containers.containers = {
     readsb = {
@@ -13,11 +12,10 @@ in
         "READSB_DCFILTER" = "true";
         "READSB_FIX" = "true";
         "READSB_GAIN" = "autogain";
-        "READSB_LAT" = secret.container.adsb.readsb.lat;
-        "READSB_LON" = secret.container.adsb.readsb.lon;
         "READSB_MODEAC" = "true";
         "READSB_RX_LOCATION_ACCURACY" = "2";
       };
+      environmentFiles = [ config.age.secrets.container-adsb-environment.path ];
       volumes = [
         "/etc/container-adsb/readsb/autogain:/run/autogain"
       ];
@@ -61,12 +59,10 @@ in
         "BEASTPORT" = "30005";
         "MLATHOST" = "mlathub";
         "MLATPORT" = "30105";
-        "LAT" = secret.container.adsb.readsb.lat;
-        "LONG" = secret.container.adsb.readsb.lon;
-        "HEYWHATSTHAT_PANORAMA_ID" = secret.container.adsb.tar1090.heywhatsthatId;
         "TAR1090_FLIGHTAWARELINKS" = "true";
         "TAR1090_DISPLAYUNITS" = "metric";
       };
+      environmentFiles = [ config.age.secrets.container-adsb-environment.path ];
       volumes = [
         "/etc/container-adsb/tar1090/heatmap:/var/globe_history"
       ];
@@ -86,8 +82,8 @@ in
         "BEASTHOST" = "readsb";
         "BEASTPORT" = "30005";
         "MLAT" = "yes";
-        "FR24KEY" = secret.container.adsb.fr24feed.key;
       };
+      environmentFiles = [ config.age.secrets.container-adsb-environment.path ];
       extraOptions = [
         "--tmpfs=/run:exec,size=64M"
         "--tmpfs=/var/log"
@@ -106,10 +102,8 @@ in
         "BEASTPORT" = "30005";
         "ALLOW_MLAT" = "yes";
         "MLAT_RESULTS" = "yes";
-        "LAT" = secret.container.adsb.readsb.lat;
-        "LONG" = secret.container.adsb.readsb.lon;
-        "FEEDER_ID" = secret.container.adsb.piaware.feederId;
       };
+      environmentFiles = [ config.age.secrets.container-adsb-environment.path ];
       extraOptions = [
         "--tmpfs=/run:exec,size=64M"
         "--tmpfs=/var/log"

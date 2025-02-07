@@ -1,22 +1,18 @@
-{ nixpkgs, nixos-hardware, home-manager, inputs, ... }:
+{ nixpkgs, lix-module, nixos-hardware, home-manager, agenix, nifoc-overlay }:
 
 let
   default-system = "aarch64-linux";
 
-  overlay-nifoc = inputs.nifoc-overlay.overlay;
-
   nixpkgsConfig = {
     overlays = [
-      overlay-nifoc
+      nifoc-overlay.overlay
     ];
 
     config = {
       allowUnfree = true;
       allowBroken = true;
 
-      permittedInsecurePackages = [
-        "openssl-1.1.1t"
-      ];
+      permittedInsecurePackages = [ ];
     };
   };
 in
@@ -26,23 +22,30 @@ in
   system = nixpkgs.lib.nixosSystem {
     system = default-system;
     modules = [
-      ../hosts/adsb-antenna.nix
+      {
+        nixpkgs = nixpkgsConfig;
+        nix = {
+          registry.nixpkgs.to = { type = "path"; path = nixpkgs.outPath; };
+          nixPath = nixpkgs.lib.mkForce [ "nixpkgs=flake:nixpkgs" ];
+        };
+      }
 
       nixos-hardware.nixosModules.raspberry-pi-4
 
+      lix-module.nixosModules.default
+
       home-manager.nixosModules.home-manager
-
       {
-        nixpkgs = nixpkgsConfig;
-        nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
-        nix.registry.nixpkgs.flake = nixpkgs;
-
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
           users.daniel = import ../../home/hosts/adsb-antenna.nix;
         };
       }
+
+      agenix.nixosModules.default
+
+      ../hosts/adsb-antenna.nix
     ];
   };
 
