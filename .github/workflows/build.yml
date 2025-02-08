@@ -12,5 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: samueldr/lix-gha-installer-action@v2025-01-24.prerelease
+      - uses: ryanccn/attic-action@v0
+        with:
+          endpoint: ${{ secrets.ATTIC_ENDPOINT }}
+          cache: ${{ secrets.ATTIC_CACHE }}
+          token: ${{ secrets.ATTIC_TOKEN }}
       - name: Build adsb-antenna
         run: nix build '.#nixosConfigurations.adsb-antenna.config.system.build.toplevel'
