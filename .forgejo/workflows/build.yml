@@ -33,7 +33,7 @@ jobs:
           attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
       - name: Build lix
         run: |
-          nix build '.#nixosConfigurations.tanker.pkgs.lix'
+          nix build '.#nixosConfigurations.mediaserver.config.nix.package'
           attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
       - name: Build nginx
         run: |
@@ -63,7 +63,7 @@ jobs:
           attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
       - name: Build lix
         run: |
-          nix build '.#nixosConfigurations.argon.pkgs.lix'
+          nix build '.#nixosConfigurations.argon.config.nix.package'
           attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
       - name: Build nginx
         run: |
