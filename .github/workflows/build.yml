@@ -21,3 +21,19 @@ jobs:
         run: nix build '.#nixosConfigurations.adsb-antenna.config.system.build.toplevel'
       - name: Build neon
         run: nix build '.#nixosConfigurations.neon.config.system.build.toplevel'
+  build-apple-packages:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: samueldr/lix-gha-installer-action@latest
+      - uses: ryanccn/attic-action@v0
+        with:
+          endpoint: ${{ secrets.ATTIC_ENDPOINT }}
+          cache: ${{ secrets.ATTIC_CACHE }}
+          token: ${{ secrets.ATTIC_TOKEN }}
+      - name: Build lix
+        run: nix build '.#darwinConfigurations.Pallas.config.nix.package'
+      - name: Build neovim
+        run: nix build '.#darwinConfigurations.Pallas.config.home-manager.users.daniel.programs.neovim.finalPackage'
+      - name: Build wezterm
+        run: nix build '.#darwinConfigurations.Pallas.config.home-manager.users.daniel.programs.wezterm.package'
