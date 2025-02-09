@@ -18,6 +18,7 @@ in
 {
   # all
   "agenix/hosts/all/nix/netrc.age".publicKeys = all-systems;
+  "agenix/hosts/all/nix/forgejo_runner_netrc.age".publicKeys = all-systems;
 
   # tanker
   "agenix/hosts/tanker/user/danielPassword.age".publicKeys = tanker;

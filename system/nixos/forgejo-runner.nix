@@ -1,4 +1,4 @@
-{ pkgs, config, secret, name, tag, nixTag, ... }:
+{ pkgs, config, name, tag, nixTag, ... }:
 
 # Based on: https://git.clan.lol/clan/clan-infra/src/branch/main/modules/web01/gitea/actions-runner.nix
 
@@ -57,9 +57,7 @@ in
         trusted-public-keys = nifoc-ci:JpD9zqVQi8JuS7B8htPDOQZh08rhInMnGFS9RVhiuwk= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g= cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
         NIX_CONFIG
 
-        cat <<NIX_NETRC > etc/nix/netrc
-        ${secret.forgejo_runner.netrc}
-        NIX_NETRC
+        cp ${config.age.secrets.nix-forgejo-runner-netrc.path} etc/nix/netrc
 
         cat <<NSSWITCH > etc/nsswitch.conf
         passwd:    files mymachines systemd

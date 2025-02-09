@@ -1,7 +1,6 @@
 args@{ pkgs, config, ... }:
 
 let
-  secret = import ../../secret/hosts/neon.nix;
   ssh-keys = import ../shared/ssh-keys.nix;
 in
 {
@@ -22,7 +21,7 @@ in
 
     (import ../nixos/controld.nix (args // { podmanDNS = true; }))
 
-    (import ../nixos/forgejo-runner.nix (args // { inherit secret; name = "neon"; tag = "ubuntu-latest-arm64"; nixTag = "arm64"; }))
+    (import ../nixos/forgejo-runner.nix (args // { name = "neon"; tag = "ubuntu-latest-arm64"; nixTag = "arm64"; }))
 
     ../nixos/rtl_433.nix
 
@@ -70,8 +69,6 @@ in
       options = "--delete-older-than 14d";
     };
   };
-
-  environment.etc."nix/netrc".source = ../../secret/shared/nix-netrc;
 
   boot = {
     loader = {

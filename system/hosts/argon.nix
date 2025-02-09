@@ -1,7 +1,6 @@
 args@{ pkgs, config, ... }:
 
 let
-  secret = import ../../secret/hosts/argon.nix;
   ssh-keys = import ../shared/ssh-keys.nix;
 in
 {
@@ -26,7 +25,7 @@ in
 
     (import ../nixos/controld.nix (args // { podmanDNS = true; }))
 
-    (import ../nixos/forgejo-runner.nix (args // { inherit secret; name = "argon"; tag = "ubuntu-latest-arm64"; nixTag = "arm64"; }))
+    (import ../nixos/forgejo-runner.nix (args // { name = "argon"; tag = "ubuntu-latest-arm64"; nixTag = "arm64"; }))
 
     ../nixos/mosquitto.nix
 
@@ -84,8 +83,6 @@ in
       options = "--delete-older-than 14d";
     };
   };
-
-  environment.etc."nix/netrc".source = ../../secret/shared/nix-netrc;
 
   boot = {
     loader = {

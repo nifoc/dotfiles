@@ -1,5 +1,17 @@
 {
   age.secrets = {
+    nix-netrc = {
+      file = ../all/nix/netrc.age;
+      path = "/etc/nix/netrc";
+      mode = "440";
+      symlink = false;
+    };
+
+    nix-forgejo-runner-netrc = {
+      file = ../all/nix/forgejo_runner_netrc.age;
+      mode = "440";
+    };
+
     user-daniel-password = {
       file = ./user/danielPassword.age;
     };
