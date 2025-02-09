@@ -20,7 +20,10 @@
           :group augroup
           :desc "Clear diagnostic count for current buffer"})
   ;; Line Number
-  (set mod.line-number {:provider "%l"})
+  (set mod.line-number
+       [{:provider "%="}
+        {:provider (fn []
+                     (if (not= v.virtnum 0) "" "%l"))}])
   ;; Signs
   (set mod.signs {:provider "%s" :hl {:bold true}})
   ;; gitsigns
