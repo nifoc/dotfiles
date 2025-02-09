@@ -26,8 +26,6 @@ in
 
     ../programs/btop.nix
 
-    ../programs/gallery-dl.nix
-
     ../programs/gpg.nix
 
     ../programs/jq.nix
