@@ -1,0 +1,3 @@
+nix repl --expr "builtins.getFlake \"$PWD\""
+
+# vim: ft=sh
