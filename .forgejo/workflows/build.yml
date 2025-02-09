@@ -31,10 +31,6 @@ jobs:
         run: |
           nix build '.#deploy-rs'
           attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
-      - name: Build lix
-        run: |
-          nix build '.#nixosConfigurations.mediaserver.pkgs.lix'
-          attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
       - name: Build nginx
         run: |
           nix build '.#nixosConfigurations.tanker.config.services.nginx.package'
