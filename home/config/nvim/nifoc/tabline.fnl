@@ -8,7 +8,8 @@
       fg-active (highlight-get-field :TabLineSel :fg)
       fg-inactive (highlight-get-field :TabLine :fg)
       bg-active (highlight-get-field :TabLineSel :bg)
-      bg-inactive (highlight-get-field :TabLine :bg)]
+      bg-inactive (highlight-get-field :TabLine :bg)
+      (ok-mini-files mini-files) (pcall require :mini.files)]
   ;; Utils
   (set mod.space
        {:provider " "
@@ -89,7 +90,10 @@
                                  {:fg fg-color :bg bg-active}))
                          1 {:provider "  "}
                          2 {:provider (fn [self]
-                                        (. self :os self.uname))}
+                                        (. self :os self.uname))
+                            :on_click {:name :heirline_tabline_os_indicator_callback
+                                       :callback #(when ok-mini-files
+                                                    (mini-files.open))}}
                          3 {:provider "  "}})
   ;; Block
   (set mod.buffer-block [mod.active-indicator
