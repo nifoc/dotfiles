@@ -62,8 +62,8 @@ let
     use-canary-build = false;
 
     # Keybindings
-    mod1 = [ "option" "shift" ];
-    mod2 = [ "option" "shift" "control" ];
+    mod1 = [ "control" "option" "shift" ];
+    mod2 = [ "control" "option" "command" "shift" ]; # "Hyper"
 
     focus-ccw = { mod = "mod1"; key = "h"; };
     focus-cw = { mod = "mod1"; key = "l"; };
@@ -81,12 +81,13 @@ let
 
     toggle-float = { mod = "mod2"; key = "t"; };
 
-    select-tall-layout = { mod = "mod2"; key = "a"; };
-    select-fullscreen-layout = { mod = "mod2"; key = "f"; };
-    select-wide-layout = { mod = "mod2"; key = "s"; };
-    select-two-pane-layout = { mod = "mod2"; key = "2"; };
-    select-column-layout = { mod = "mod2"; key = "c"; };
-    select-bsp-layout = { mod = "mod2"; key = "p"; };
+    select-tall-layout = { mod = "mod1"; key = "t"; };
+    select-fullscreen-layout = { mod = "mod1"; key = "f"; };
+    select-wide-layout = { mod = "mod1"; key = "w"; };
+    select-two-pane-layout = { mod = "mod1"; key = "2"; };
+    select-column-layout = { mod = "mod1"; key = "c"; };
+    select-bsp-layout = { mod = "mod1"; key = "p"; };
+
     display-current-layout = { mod = "mod1"; key = "i"; };
     reevaluate-windows = { mod = "mod2"; key = "b"; };
 
@@ -103,6 +104,23 @@ let
     throw-space-9 = disable-keybinding;
     throw-space-10 = disable-keybinding;
 
+    focus-screen-1 = disable-keybinding;
+    throw-screen-1 = disable-keybinding;
+    focus-screen-2 = disable-keybinding;
+    throw-screen-2 = disable-keybinding;
+    focus-screen-3 = disable-keybinding;
+    throw-screen-3 = disable-keybinding;
+    focus-screen-4 = disable-keybinding;
+    throw-screen-4 = disable-keybinding;
+    focus-screen-5 = disable-keybinding;
+    throw-screen-5 = disable-keybinding;
+
+    cycle-layout = disable-keybinding;
+    cycle-layout-backward = disable-keybinding;
+    shrink-main = disable-keybinding;
+    expand-main = disable-keybinding;
+    increase-main = disable-keybinding;
+    decrease-main = disable-keybinding;
     toggle-tiling = disable-keybinding;
 
     toggle-focus-follows-mouse = disable-keybinding;
