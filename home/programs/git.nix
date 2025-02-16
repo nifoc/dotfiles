@@ -93,83 +93,96 @@ in
       ".DS_Store"
     ];
 
-    includes = [
-      # Maintenance
-      (mkIf isDarwin {
-        path = "${config.xdg.configHome}/git/maintenance-config";
-      })
+    includes =
+      let
+        op-ssh-sign = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+      in
+      [
+        # Maintenance
+        (mkIf isDarwin {
+          path = "${config.xdg.configHome}/git/maintenance-config";
+        })
 
-      # Private
-      {
-        condition = "hasconfig:remote.*.url:forgejo@git.kempkens.io:*/**";
-        contents = {
-          user = {
-            signingKey = "~/.ssh/GitHub.pub";
-          };
+        # Private
+        {
+          condition = "hasconfig:remote.*.url:forgejo@git.kempkens.io:*/**";
+          contents = {
+            user = {
+              signingKey = "~/.ssh/GitHub.pub";
+            };
 
-          commit = {
-            gpgSign = true;
-          };
+            commit = {
+              gpgSign = true;
+            };
 
-          tag = {
-            gpgSign = true;
-          };
+            tag = {
+              gpgSign = true;
+            };
 
-          gpg = {
-            format = "ssh";
-          };
-        };
-      }
+            gpg = {
+              format = "ssh";
+            };
 
-      {
-        condition = "hasconfig:remote.*.url:git@github.com:*/**";
-        contents = {
-          user = {
-            signingKey = "~/.ssh/GitHub.pub";
+            "gpg \"ssh\"" = {
+              program = op-ssh-sign;
+            };
           };
+        }
 
-          commit = {
-            gpgSign = true;
-          };
+        {
+          condition = "hasconfig:remote.*.url:git@github.com:*/**";
+          contents = {
+            user = {
+              signingKey = "~/.ssh/GitHub.pub";
+            };
 
-          tag = {
-            gpgSign = true;
-          };
+            commit = {
+              gpgSign = true;
+            };
 
-          gpg = {
-            format = "ssh";
-          };
-        };
-      }
+            tag = {
+              gpgSign = true;
+            };
 
-      # Work
-      {
-        condition = "hasconfig:remote.*.url:git@git.app.nedeco.de:*/**";
-        contents = {
-          user = {
-            email = "d.kempkens@nedeco.de";
-            name = "Daniel Kempkens";
-            signingKey = "~/.ssh/nedeco_gitlab.pub";
-          };
+            gpg = {
+              format = "ssh";
+            };
 
-          commit = {
-            gpgSign = true;
+            "gpg \"ssh\"" = {
+              program = op-ssh-sign;
+            };
           };
+        }
 
-          tag = {
-            gpgSign = true;
-          };
+        # Work
+        {
+          condition = "hasconfig:remote.*.url:git@git.app.nedeco.de:*/**";
+          contents = {
+            user = {
+              email = "d.kempkens@nedeco.de";
+              name = "Daniel Kempkens";
+              signingKey = "~/.ssh/nedeco_gitlab.pub";
+            };
 
-          gpg = {
-            format = "ssh";
-          };
+            commit = {
+              gpgSign = true;
+            };
 
-          "gpg \"ssh\"" = {
-            allowedSignersFile = "~/.ssh/allowed_signers/work-nedeco";
+            tag = {
+              gpgSign = true;
+            };
+
+            gpg = {
+              format = "ssh";
+            };
+
+            "gpg \"ssh\"" = {
+              program = op-ssh-sign;
+              allowedSignersFile = "~/.ssh/allowed_signers/work-nedeco";
+            };
           };
-        };
-      }
-    ];
+        }
+      ];
   };
 
   home.sessionVariables.GIT_CEILING_DIRECTORIES = "/Users";
