@@ -1,4 +1,5 @@
 (let [_hyper [:cmd :alt :ctrl :shift]
+      hostname (hs.host.localizedName)
       _ipc (require :hs.ipc)
       programs (require :programs)]
   ;; Caffeine
@@ -12,6 +13,7 @@
                       " -P verySecurePassword")]
       (hs.execute command false)))
 
-  (hs.spoons.use :USBDeviceActions
-                 {:config {:devices {"Keychron Q1" {:fn switch-monitor-input}}}
-                  :start true}))
+  (when (= hostname :Pallas)
+    (hs.spoons.use :USBDeviceActions
+                   {:config {:devices {"Keychron Q1" {:fn switch-monitor-input}}}
+                    :start true})))
