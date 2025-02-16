@@ -26,11 +26,11 @@ in
 
     ../programs/btop.nix
 
-    ../programs/event-scripts.nix
-
     # ../programs/gallery-dl.nix
 
     ../programs/gpg.nix
+
+    ../programs/hammerspoon.nix
 
     ../programs/jq.nix
 
