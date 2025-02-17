@@ -99,10 +99,10 @@
     (when ok-fzf
       (keymap.set :n :<leader>t #(fzf.lsp_document_symbols fzf-layout-dropdown)
                   {:buffer bufnr :desc "LSP Document Symbols"})
-      (keymap.set :n :<leader>tw
+      (keymap.set :n :<leader>lws
                   #(fzf.lsp_workspace_symbols fzf-layout-big-dropdown)
                   {:buffer bufnr :desc "LSP Workspace Symbols"}))
-    (keymap.set :n :<leader>th
+    (keymap.set :n :<leader>lth
                 #(vim.lsp.inlay_hint.enable (not (vim.lsp.inlay_hint.is_enabled bufnr))
                                             {: bufnr})
                 {:buffer bufnr :desc "Toggle Inlay Hints"})
