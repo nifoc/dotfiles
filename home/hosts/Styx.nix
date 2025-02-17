@@ -28,6 +28,8 @@ in
 
     ../programs/gpg.nix
 
+    ../programs/hammerspoon.nix
+
     ../programs/jq.nix
 
     (import ../programs/firefox.nix (args // { inherit secret; }))

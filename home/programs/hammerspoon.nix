@@ -56,7 +56,7 @@
     activation.hammerspoonReload = lib.hm.dag.entryAfter [ "writeBoundary" ] /* bash */ ''
       $VERBOSE_ECHO "Reloading Hammerspoon configuration"
 
-      $DRY_RUN_CMD /Applications/Hammerspoon.app/Contents/Frameworks/hs/hs -c 'hs.reload()'
+      $DRY_RUN_CMD /Applications/Hammerspoon.app/Contents/Frameworks/hs/hs -c 'hs.reload()' || true
     '';
   };
 }
