@@ -20,11 +20,6 @@
                                             (.. "[" ctx.source_name "]"))}}
                      {:source_name {:text (fn [ctx]
                                             (.. "[" ctx.source_name "]"))}})
-      columns (fn [ctx]
-                (if (= ctx.mode :cmdline) [[:kind_icon] [:label]]
-                    [[:kind_icon]
-                     {1 :label 2 :label_description :gap 1}
-                     [:source_name]]))
       snippets (if (pcall require :mini.snippets)
                    {:preset :mini_snippets}
                    {})
@@ -67,12 +62,18 @@
                                   :max_height 25
                                   :border :rounded
                                   :draw {: components
-                                         : columns
+                                         :columns [[:kind_icon]
+                                                   {1 :label
+                                                    2 :label_description
+                                                    :gap 1}
+                                                   [:source_name]]
                                          :treesitter [:lsp]}}
                            :documentation {:auto_show true
                                            :auto_show_delay_ms 200
                                            :window {:border :rounded}}
                            :ghost_text {:enabled false}}
+              :cmdline {:completion {:menu {:draw {:columns [[:kind_icon]
+                                                             [:label]]}}}}
               :signature {:enabled true :window {:border :rounded}}
               : snippets
               :sources {:default sources-default :providers sources-providers}
