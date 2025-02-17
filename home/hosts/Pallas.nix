@@ -74,6 +74,7 @@ in
       socat
       ssh-audit
       tea
+      trippy
       viddy
       wget
       xxHash
