@@ -96,6 +96,8 @@
       (where t (t:find :^node$)) {: title :icon " " :color "#5FA04E"}
       (where t (t:find "^op%srun%s%-%-%s"))
       (extract-tab-info (t:gsub "^op%srun%s%-%-%s(.*)" "%1"))
+      (where t (t:find "^op%srun%s%-%-no%-masking%s%-%-%s"))
+      (extract-tab-info (t:gsub "^op%srun%s%-%-no%-masking%s%-%-%s(.*)" "%1"))
       _ {: title :icon " " :color colors.shell}))
 
   (fn ssh-domain? [pane]
