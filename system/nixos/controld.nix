@@ -9,7 +9,8 @@
       serviceConfig = {
         ExecStart = "${pkgs.controld}/bin/ctrld run";
         WorkingDirectory = "/var/lib/controld";
-        RestartSec = 120;
+        Restart = "on-failure";
+        RestartSec = "10s";
         LimitMEMLOCK = "infinity";
       };
       after = [ "network.target" ];
