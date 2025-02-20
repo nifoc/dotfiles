@@ -6,13 +6,10 @@ in
     ../../agenix/hosts/Styx/config.nix
     ../shared/show-update-changelog.nix
 
-    ../darwin/defaults.nix
     ../darwin/sudo.nix
 
     ../darwin/zsh.nix
     ../darwin/attic.nix
-
-    ../darwin/hammerspoon.nix
 
     ../darwin/mas.nix
     ../darwin/fake-homebrew.nix

@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+    ../config/macos.nix
     ../config/fonts
 
     ../programs/zsh

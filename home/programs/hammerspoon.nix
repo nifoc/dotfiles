@@ -1,6 +1,8 @@
 { pkgs, lib, config, ... }:
 
 {
+  targets.darwin.defaults."org.hammerspoon.Hammerspoon".MJConfigFile = "~/.config/hammerspoon/init.lua";
+
   xdg.configFile."hammerspoon" =
     let
       programs = /* lua */ ''
@@ -53,7 +55,7 @@
         };
       };
 
-    activation.hammerspoonReload = lib.hm.dag.entryAfter [ "writeBoundary" ] /* bash */ ''
+    activation.hammerspoonReload = lib.hm.dag.entryAfter [ "setDarwinDefaults" ] /* bash */ ''
       $VERBOSE_ECHO "Reloading Hammerspoon configuration"
 
       $DRY_RUN_CMD /Applications/Hammerspoon.app/Contents/Frameworks/hs/hs -c 'hs.reload()' || true
