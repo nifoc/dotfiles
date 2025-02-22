@@ -21,7 +21,7 @@ jobs:
         run: nix build '.#nixosConfigurations.adsb-antenna.config.system.build.toplevel'
       - name: Build neon
         run: nix build '.#nixosConfigurations.neon.config.system.build.toplevel'
-  build-apple-packages:
+  build-apple-system:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
@@ -31,9 +31,5 @@ jobs:
           endpoint: ${{ secrets.ATTIC_ENDPOINT }}
           cache: ${{ secrets.ATTIC_CACHE }}
           token: ${{ secrets.ATTIC_TOKEN }}
-      - name: Build lix
-        run: nix build '.#darwinConfigurations.Pallas.config.nix.package'
-      - name: Build neovim
-        run: nix build '.#darwinConfigurations.Pallas.config.home-manager.users.daniel.programs.neovim.finalPackage'
-      - name: Build wezterm
-        run: nix build '.#darwinConfigurations.Pallas.config.home-manager.users.daniel.programs.wezterm.package'
+      - name: Build Pallas
+        run: nix build '.#darwinConfigurations.Pallas.config.system.build.toplevel'

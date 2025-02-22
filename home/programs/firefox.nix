@@ -1,4 +1,4 @@
-{ pkgs, config, lib, secret, ... }:
+{ pkgs, config, lib, ... }:
 
 let
   profileName = "daniel";
@@ -132,8 +132,6 @@ let
     "network.proxy.autoconfig_url" = "file:///Users/daniel/Documents/Firefox/default.pac";
 
     "network.trr.mode" = 2;
-    "network.trr.uri" = secret.firefox.settings.doh_uri;
-    "network.trr.custom_uri" = secret.firefox.settings.doh_uri;
     "network.dns.echconfig.enabled" = true;
 
     "browser.tabs.loadDivertedInBackground" = true;
