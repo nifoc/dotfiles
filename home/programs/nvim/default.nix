@@ -51,8 +51,8 @@ in
       statix
     ] ++ optionals isDarwin [
       # LSP
-      elixir-ls
-      #lexical
+      #elixir-ls
+      lexical
       lua-language-server
       marksman
       nodePackages.dockerfile-language-server-nodejs
