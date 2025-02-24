@@ -56,6 +56,7 @@
       exiftool
       fd
       ffmpeg
+      forgejo-cli
       glab
       glow
       hexyl
@@ -71,7 +72,6 @@
       ripgrep
       socat
       ssh-audit
-      tea
       trippy
       viddy
       wget

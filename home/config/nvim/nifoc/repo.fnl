@@ -33,7 +33,7 @@
     (case mod.type
       :github nil
       :gitlab (run-cmd [:glab :repo :view :--web])
-      :forgejo (run-cmd [:tea :open])))
+      :forgejo (run-cmd [:fj :repo :browse])))
 
   (fn mod.open-merge-request []
     (case mod.type
