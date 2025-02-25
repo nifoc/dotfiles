@@ -83,6 +83,10 @@ in
     };
   };
 
+  networking.hosts = {
+    "0.0.0.0" = [ "gdata.nedeco.local" ];
+  };
+
   documentation.doc.enable = false;
 
   users = {
