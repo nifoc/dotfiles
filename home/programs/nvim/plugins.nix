@@ -21,12 +21,12 @@ in
   };
   dracula-nvim = buildVimPlugin {
     pname = "dracula.nvim";
-    version = "2024-12-19";
+    version = "2025-02-24";
     src = fetchFromGitHub {
       owner = "Mofiqul";
       repo = "dracula.nvim";
-      rev = "515acae4fd294fcefa5b15237a333c2606e958d1";
-      sha256 = "1sr09v6q07q111pbcm8nc12mvgzb5f5n7bg8frrwb6dpspj4h97n";
+      rev = "96c9d19ce81b26053055ad6f688277d655b3f7d2";
+      sha256 = "0w8r0h9sk3gspahiv203wxj744cry70sra2gf230x2pfrysp09g0";
       fetchSubmodules = false;
 
     };
@@ -35,12 +35,12 @@ in
   };
   nvim-treesitter = buildVimPlugin {
     pname = "nvim-treesitter";
-    version = "2025-02-23";
+    version = "2025-02-24";
     src = fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "f2bd62c6568de54ca1b8fb0a8de04a41442934cb";
-      sha256 = "1pw5zr0c3v2zi6hprgj6s5x9wlhpl73kmksqpbjq5zwh17b2m6kw";
+      rev = "e6d02ec9efd396d294a7793f2066e2527b07b03a";
+      sha256 = "0nlzk6v631qkda1y0y8ylrv6x9x5czi89961fpvkzaxmdc600d2x";
       fetchSubmodules = false;
 
     };
