@@ -3,7 +3,6 @@
       components (if ok-mini-icons
                      {:kind_icon {:ellipsis false
                                   :text (fn [ctx]
-                                          (print ctx.kind)
                                           (let [(icon _ _) (mini-icons.get :lsp
                                                                            ctx.kind)]
                                             (if (= ctx.source_name :supermaven)
@@ -77,4 +76,5 @@
               :signature {:enabled true :window {:border :rounded}}
               : snippets
               :sources {:default sources-default :providers sources-providers}
-              :fuzzy {:prebuilt_binaries {:download false :force_version nil}}}))
+              :fuzzy {:implementation :prefer_rust
+                      :prebuilt_binaries {:download false}}}))
