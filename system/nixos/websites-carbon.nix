@@ -119,6 +119,8 @@ in
           "/.well-known/matrix/client".extraConfig = ''
             default_type application/json;
           '';
+
+          "= /robots.txt".alias = "${pkgs.ai-robots-txt}/share/robots.txt";
         };
       };
 
@@ -154,6 +156,8 @@ in
           add_header Referrer-Policy no-referrer;
           add_header Content-Security-Policy "default-src 'none'; manifest-src https://blog.kempkens.io; script-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'";
         '';
+
+        locations."= /robots.txt".alias = "${pkgs.ai-robots-txt}/share/robots.txt";
       };
     } // builtins.listToAttrs (builtins.map
       # Documentation
