@@ -65,6 +65,15 @@
       identitiesOnly = true;
     };
 
+    "carbon" = {
+      hostname = "49.12.228.29";
+      port = 22;
+      user = "daniel";
+      forwardAgent = true;
+      identityFile = "~/.ssh/Hetzner.pub";
+      identitiesOnly = true;
+    };
+
     "mediaserver" = {
       hostname = "mediaserver.ts.kempkens.network";
       port = 22;

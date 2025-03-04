@@ -3,17 +3,19 @@ let
   user-daniel-Pallas = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOg47WuNIBJ5h44XU2nzlW96VZuxUhm9ow1xUK5xDD9i";
 
   system-tanker = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILpnogLd3Ttmz/At0dXveaG1xF37vV7lz34ojDTIuCOi";
+  system-carbon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEvF4zibLcXxlp4Eorc/6C30yeFItLNT2iAvGnNEscnu";
   system-mediaserver = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlB0cL5CtTOyARWSE2yUsNU4JHUPmr71710mZHzsmbX";
   system-argon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPP9ygczyi6g8abvj1I0eAj7N2Rli9UMlkC8VT6SnWLU";
   system-neon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5Ht4KaRUvuGFmYLznTkVSnn6isjrcVplz1kKWkrnRQ";
   syetsm-adsb-antenna = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBkjUSiku9spAlFkZ1T1IvyToE/yF1HUAjDxxH1dKKAv";
 
   tanker = [ user-daniel-Styx user-daniel-Pallas system-tanker ];
+  carbon = [ user-daniel-Styx user-daniel-Pallas system-carbon ];
   mediaserver = [ user-daniel-Styx user-daniel-Pallas system-mediaserver ];
   argon = [ user-daniel-Styx user-daniel-Pallas system-argon ];
   neon = [ user-daniel-Styx user-daniel-Pallas system-neon ];
   adsb-antenna = [ user-daniel-Styx user-daniel-Pallas syetsm-adsb-antenna ];
-  all-systems = [ user-daniel-Styx user-daniel-Pallas system-tanker system-mediaserver system-argon system-neon syetsm-adsb-antenna ];
+  all-systems = [ user-daniel-Styx user-daniel-Pallas system-tanker system-carbon system-mediaserver system-argon system-neon syetsm-adsb-antenna ];
 in
 {
   # all
@@ -69,6 +71,15 @@ in
 
   "agenix/hosts/tanker/weewx/config.age".publicKeys = tanker;
   "agenix/hosts/tanker/weewx/skin.age".publicKeys = tanker;
+
+  # carbon
+  "agenix/hosts/carbon/user/danielPassword.age".publicKeys = carbon;
+
+  "agenix/hosts/carbon/acme/credentials.age".publicKeys = carbon;
+
+  "agenix/hosts/carbon/tailscale/authkey.age".publicKeys = carbon;
+
+  "agenix/hosts/carbon/fedifetcher/config.age".publicKeys = carbon;
 
   # mediaserver
   "agenix/hosts/mediaserver/user/danielPassword.age".publicKeys = mediaserver;
@@ -137,8 +148,8 @@ in
   "agenix/hosts/adsb-antenna/container/adsb-environment.age".publicKeys = adsb-antenna;
 
   # Styx
-  "agenix/hosts/Styx/git/maintenance.age".publicKeys = [ user-daniel-Styx ];
+  "agenix/hosts/Styx/git/maintenance.age".publicKeys = [ user-daniel-Styx user-daniel-Pallas ];
 
   # Pallas
-  "agenix/hosts/Pallas/git/maintenance.age".publicKeys = [ user-daniel-Pallas ];
+  "agenix/hosts/Pallas/git/maintenance.age".publicKeys = [ user-daniel-Pallas user-daniel-Styx ];
 }

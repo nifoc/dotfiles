@@ -3,9 +3,7 @@
 {
   systemd.services.fedifetcher = {
     description = "FediFetcher";
-    wants = [ "mastodon-web.service" "mastodon-wait-for-available.service" ];
-    after = [ "mastodon-web.service" "mastodon-wait-for-available.service" ];
-    # wantedBy = [ "multi-user.target" ];
+    requires = [ "gotosocial.service" ];
     startAt = "*:0/25";
 
     serviceConfig = {

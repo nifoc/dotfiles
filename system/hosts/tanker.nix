@@ -28,8 +28,6 @@ in
 
     ../nixos/anonymous-overflow.nix
 
-    ../nixos/atuin-sync.nix
-
     ../nixos/atticd.nix
 
     ../nixos/fedifetcher.nix
@@ -53,8 +51,6 @@ in
 
     ../nixos/tailscale.nix
     ../nixos/tailscale-nodns.nix
-
-    ../nixos/websites-tanker.nix
 
     ../nixos/weewx.nix
   ];
