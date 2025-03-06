@@ -18,6 +18,9 @@
 
           storage-local-base-path = "/var/lib/gotosocial/storage";
 
+          media-emoji-remote-max-size = "200KiB";
+          media-remote-cache-days = 3;
+
           instance-languages = [ "en" "de" ];
           accounts-registration-open = false;
           landing-page-user = "daniel";
