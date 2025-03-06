@@ -107,6 +107,11 @@
             inherit lix-module;
           };
 
+          boron = import ./system/flakes/boron.nix {
+            inherit (inputs) nixpkgs disko home-manager agenix neovim-nightly-overlay nifoc-overlay;
+            inherit lix-module;
+          };
+
           mediaserver = import ./system/flakes/mediaserver.nix {
             inherit (inputs) nixpkgs home-manager agenix;
             inherit lix-module;
@@ -137,6 +142,7 @@
           nixosConfigurations = {
             tanker = tanker.system;
             carbon = carbon.system;
+            boron = boron.system;
             mediaserver = mediaserver.system;
             argon = argon.system;
             neon = neon.system;
@@ -160,6 +166,7 @@
             {
               tanker = mkDeployNixOsConfig tanker;
               carbon = mkDeployNixOsConfig carbon;
+              boron = mkDeployNixOsConfig boron;
               mediaserver = mkDeployNixOsConfig mediaserver;
               argon = mkDeployNixOsConfig argon;
               neon = mkDeployNixOsConfig neon;

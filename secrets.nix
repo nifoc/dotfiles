@@ -4,6 +4,7 @@ let
 
   system-tanker = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILpnogLd3Ttmz/At0dXveaG1xF37vV7lz34ojDTIuCOi";
   system-carbon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEvF4zibLcXxlp4Eorc/6C30yeFItLNT2iAvGnNEscnu";
+  system-boron = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEH0G+fjmO4IOULTWFWtRf8Wh5BxeGukub8qoRFd5zvA";
   system-mediaserver = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlB0cL5CtTOyARWSE2yUsNU4JHUPmr71710mZHzsmbX";
   system-argon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPP9ygczyi6g8abvj1I0eAj7N2Rli9UMlkC8VT6SnWLU";
   system-neon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5Ht4KaRUvuGFmYLznTkVSnn6isjrcVplz1kKWkrnRQ";
@@ -11,11 +12,22 @@ let
 
   tanker = [ user-daniel-Styx user-daniel-Pallas system-tanker ];
   carbon = [ user-daniel-Styx user-daniel-Pallas system-carbon ];
+  boron = [ user-daniel-Styx user-daniel-Pallas system-boron ];
   mediaserver = [ user-daniel-Styx user-daniel-Pallas system-mediaserver ];
   argon = [ user-daniel-Styx user-daniel-Pallas system-argon ];
   neon = [ user-daniel-Styx user-daniel-Pallas system-neon ];
   adsb-antenna = [ user-daniel-Styx user-daniel-Pallas syetsm-adsb-antenna ];
-  all-systems = [ user-daniel-Styx user-daniel-Pallas system-tanker system-carbon system-mediaserver system-argon system-neon syetsm-adsb-antenna ];
+  all-systems = [
+    user-daniel-Styx
+    user-daniel-Pallas
+    system-tanker
+    system-carbon
+    system-boron
+    system-mediaserver
+    system-argon
+    system-neon
+    syetsm-adsb-antenna
+  ];
 in
 {
   # all
@@ -80,6 +92,11 @@ in
   "agenix/hosts/carbon/tailscale/authkey.age".publicKeys = carbon;
 
   "agenix/hosts/carbon/fedifetcher/config.age".publicKeys = carbon;
+
+  # boron 
+  "agenix/hosts/boron/user/danielPassword.age".publicKeys = boron;
+
+  "agenix/hosts/boron/tailscale/authkey.age".publicKeys = boron;
 
   # mediaserver
   "agenix/hosts/mediaserver/user/danielPassword.age".publicKeys = mediaserver;
