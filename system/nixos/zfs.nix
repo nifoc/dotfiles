@@ -6,7 +6,9 @@
       enable = true;
       flags = "-k -p --utc";
 
-      monthly = 3;
+      daily = 5;
+      weekly = 0;
+      monthly = 0;
     };
 
     autoScrub = {
