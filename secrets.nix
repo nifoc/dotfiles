@@ -33,6 +33,7 @@ in
   # all
   "agenix/hosts/all/nix/netrc.age".publicKeys = all-systems;
   "agenix/hosts/all/nix/forgejo_runner_netrc.age".publicKeys = all-systems;
+  "agenix/hosts/all/attic/config.age".publicKeys = all-systems;
 
   # tanker
   "agenix/hosts/tanker/user/danielPassword.age".publicKeys = tanker;
@@ -96,7 +97,11 @@ in
   # boron 
   "agenix/hosts/boron/user/danielPassword.age".publicKeys = boron;
 
+  "agenix/hosts/boron/acme/credentials.age".publicKeys = boron;
+
   "agenix/hosts/boron/tailscale/authkey.age".publicKeys = boron;
+
+  "agenix/hosts/boron/atticd/environment.age".publicKeys = boron;
 
   # mediaserver
   "agenix/hosts/mediaserver/user/danielPassword.age".publicKeys = mediaserver;

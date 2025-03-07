@@ -2,7 +2,7 @@
 
 {
   services.nginx = {
-    virtualHosts."default.networked.systems" = {
+    virtualHosts."default.kempkens.network" = {
       listen = [
         {
           addr = "0.0.0.0";
@@ -31,7 +31,7 @@
       quic = false;
 
       onlySSL = true;
-      useACMEHost = "networked.systems";
+      useACMEHost = "kempkens.network";
 
       locations."/" = {
         return = "418";

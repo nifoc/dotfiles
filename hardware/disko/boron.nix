@@ -59,6 +59,25 @@
             options.mountpoint = "/nix";
             mountpoint = "/nix";
           };
+          "root/services/postgresql" = {
+            type = "zfs_fs";
+            options = {
+              mountpoint = "/var/lib/postgresql";
+              compression = "zstd";
+              recordsize = "16k";
+              atime = "off";
+            };
+            mountpoint = "/var/lib/postgresql";
+          };
+          "root/services/atticd-storage" = {
+            type = "zfs_fs";
+            options = {
+              mountpoint = "/var/lib/atticd-storage";
+              recordsize = "256k";
+              atime = "off";
+            };
+            mountpoint = "/var/lib/atticd-storage";
+          };
         };
       };
     };

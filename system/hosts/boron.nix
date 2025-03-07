@@ -15,6 +15,13 @@ in
 
     ../nixos/git.nix
 
+    ../nixos/acme-boron.nix
+    ../nixos/nginx.nix
+    ../nixos/nginx-boron.nix
+    ../nixos/postgresql.nix
+
+    ../nixos/atticd.nix
+
     ../nixos/tailscale.nix
     ../nixos/tailscale-nodns.nix
   ];
