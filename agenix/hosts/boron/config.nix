@@ -7,8 +7,21 @@
       symlink = false;
     };
 
+    nix-forgejo-runner-netrc = {
+      file = ../all/nix/forgejo_runner_netrc.age;
+      mode = "440";
+    };
+
     user-daniel-password = {
       file = ./user/danielPassword.age;
+    };
+
+    attic-config = {
+      file = ../all/attic/config.age;
+      path = "/home/daniel/.config/attic/config.toml";
+      mode = "600";
+      owner = "daniel";
+      group = "users";
     };
 
     acme-credentials = {
@@ -23,6 +36,10 @@
 
     atticd-environment = {
       file = ./atticd/environment.age;
+    };
+
+    forgejo-actions-token = {
+      file = ./forgejo-actions/token.age;
     };
   };
 }

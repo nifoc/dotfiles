@@ -96,6 +96,8 @@ in
 
   "agenix/hosts/carbon/fedifetcher/config.age".publicKeys = carbon;
 
+  "agenix/hosts/carbon/forgejo-actions/token.age".publicKeys = carbon;
+
   # boron 
   "agenix/hosts/boron/user/danielPassword.age".publicKeys = boron;
 
@@ -104,6 +106,8 @@ in
   "agenix/hosts/boron/tailscale/authkey.age".publicKeys = boron;
 
   "agenix/hosts/boron/atticd/environment.age".publicKeys = boron;
+
+  "agenix/hosts/boron/forgejo-actions/token.age".publicKeys = boron;
 
   # mediaserver
   "agenix/hosts/mediaserver/user/danielPassword.age".publicKeys = mediaserver;

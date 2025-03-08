@@ -39,6 +39,10 @@ jobs:
         run: |
           nix build '.#nixosConfigurations.tanker.config.home-manager.users.daniel.programs.neovim.finalPackage'
           attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
+      - name: Build boron
+        run: |
+          nix build '.#nixosConfigurations.boron.config.system.build.toplevel'
+          attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
   build-arm64-linux:
     runs-on: nix-arm64
     steps:
@@ -68,4 +72,16 @@ jobs:
       - name: Build neovim
         run: |
           nix build '.#nixosConfigurations.argon.config.home-manager.users.daniel.programs.neovim.finalPackage'
+          attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
+      - name: Build adsb-antenna
+        run: |
+          nix build '.#nixosConfigurations.adsb-antenna.config.system.build.toplevel'
+          attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
+      - name: Build neon
+        run: |
+          nix build '.#nixosConfigurations.neon.config.system.build.toplevel'
+          attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
+      - name: Build carbon
+        run: |
+          nix build '.#nixosConfigurations.carbon.config.system.build.toplevel'
           attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')

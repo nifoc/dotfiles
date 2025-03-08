@@ -65,6 +65,13 @@
             };
             mountpoint = "/var/lib/postgresql";
           };
+          "root/services/podman" = {
+            type = "zfs_fs";
+            options = {
+              mountpoint = "none";
+              "com.sun:auto-snapshot" = "false";
+            };
+          };
           "root/services/gotosocial" = {
             type = "zfs_fs";
             options = {
