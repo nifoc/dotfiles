@@ -92,6 +92,8 @@ in
 
   "agenix/hosts/carbon/tailscale/authkey.age".publicKeys = carbon;
 
+  "agenix/hosts/carbon/msmtp/password.age".publicKeys = carbon;
+
   "agenix/hosts/carbon/fedifetcher/config.age".publicKeys = carbon;
 
   # boron 

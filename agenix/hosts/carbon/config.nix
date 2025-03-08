@@ -21,6 +21,11 @@
       file = ./tailscale/authkey.age;
     };
 
+    msmtp-password = {
+      file = ./msmtp/password.age;
+      mode = "444";
+    };
+
     fedifetcher-config = {
       file = ./fedifetcher/config.age;
     };

@@ -12,6 +12,7 @@ in
     ../nixos/ssh.nix
     ../nixos/eternal-terminal.nix
     ../nixos/wezterm-headless.nix
+    ../nixos/msmtp.nix
 
     ../nixos/git.nix
 
@@ -23,6 +24,8 @@ in
     ../nixos/atuin-sync.nix
 
     ../nixos/fedifetcher.nix
+
+    ../nixos/forgejo.nix
 
     ../nixos/gotosocial.nix
 
@@ -143,6 +146,7 @@ in
     htop.enable = true;
     zsh.enable = true;
   };
+  environment.systemPackages = [ pkgs.rsync ];
 
   users.users = {
     root = {

@@ -75,6 +75,15 @@
             };
             mountpoint = "/var/lib/gotosocial";
           };
+          "root/services/forgejo" = {
+            type = "zfs_fs";
+            options = {
+              mountpoint = "/var/lib/forgejo";
+              compression = "zstd";
+              atime = "off";
+            };
+            mountpoint = "/var/lib/forgejo";
+          };
         };
       };
     };

@@ -74,6 +74,14 @@
       identitiesOnly = true;
     };
 
+    "carbon.ts.kempkens.network" = {
+      port = 22;
+      user = "daniel";
+      forwardAgent = true;
+      identityFile = "~/.ssh/Hetzner.pub";
+      identitiesOnly = true;
+    };
+
     "boron" = {
       hostname = "boron.ts.kempkens.network";
       port = 22;

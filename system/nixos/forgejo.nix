@@ -69,9 +69,13 @@ in
         add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
       '';
 
-      locations."/" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://unix:/run/forgejo/forgejo.sock";
+      locations = {
+        "/" = {
+          recommendedProxySettings = true;
+          proxyPass = "http://unix:/run/forgejo/forgejo.sock";
+        };
+
+        "= /robots.txt".alias = "${pkgs.ai-robots-txt}/share/robots.txt";
       };
     };
   };
