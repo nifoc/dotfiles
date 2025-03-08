@@ -36,8 +36,6 @@ in
 
     ../nixos/weewx-proxy.nix
     ../nixos/temper.nix
-
-    ../nixos/container.nix
   ];
 
   system.stateVersion = "22.11";

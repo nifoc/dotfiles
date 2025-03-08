@@ -27,8 +27,6 @@ in
     ../nixos/tailscale-nodns.nix
 
     ../nixos/unbound.nix
-
-    ../nixos/container.nix
   ];
 
   system.stateVersion = "23.11";
