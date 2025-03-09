@@ -109,6 +109,8 @@ in
 
   "agenix/hosts/boron/forgejo-actions/token.age".publicKeys = boron;
 
+  "agenix/hosts/boron/miniflux/credentials.age".publicKeys = boron;
+
   # mediaserver
   "agenix/hosts/mediaserver/user/danielPassword.age".publicKeys = mediaserver;
 

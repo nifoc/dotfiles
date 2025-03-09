@@ -15,6 +15,10 @@
     };
 
     certs = {
+      "kempkens.io" = {
+        extraDomainNames = [ "*.kempkens.io" ];
+      };
+
       "kempkens.network" = {
         extraDomainNames = [ "*.kempkens.network" ];
       };

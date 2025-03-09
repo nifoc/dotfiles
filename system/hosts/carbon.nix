@@ -67,6 +67,8 @@ in
         "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
       ];
 
+      extra-trusted-users = [ "nix-remote-builder" ];
+
       connect-timeout = 5;
     };
 
@@ -170,6 +172,14 @@ in
       extraGroups = [ "wheel" ];
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [ ssh-keys.Hetzner ssh-keys.DanielsPhone ];
+    };
+
+    nix-remote-builder = {
+      isNormalUser = true;
+      home = "/home/nix-remote-builder";
+      description = "Nix Remote Builder";
+      shell = pkgs.zsh;
+      openssh.authorizedKeys.keys = [ ssh-keys.NixRemoteBuilder ];
     };
   };
 }

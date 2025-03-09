@@ -41,5 +41,9 @@
     forgejo-actions-token = {
       file = ./forgejo-actions/token.age;
     };
+
+    miniflux-credentials = {
+      file = ./miniflux/credentials.age;
+    };
   };
 }

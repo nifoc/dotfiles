@@ -91,6 +91,14 @@
       identitiesOnly = true;
     };
 
+    "boron.ts.kempkens.network" = {
+      port = 22;
+      user = "daniel";
+      forwardAgent = true;
+      identityFile = "~/.ssh/Hetzner.pub";
+      identitiesOnly = true;
+    };
+
     "mediaserver" = {
       hostname = "mediaserver.ts.kempkens.network";
       port = 22;

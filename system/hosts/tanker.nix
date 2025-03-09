@@ -36,10 +36,6 @@ in
 
     ../nixos/mastodon.nix
 
-    ../nixos/miniflux.nix
-
-    (import ../nixos/ntfy-sh.nix (args // { inherit secret; }))
-
     ../nixos/matrix
 
     ../nixos/tailscale.nix

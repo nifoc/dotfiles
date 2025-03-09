@@ -59,16 +59,16 @@ in
 
     buildMachines = [
       {
-        hostName = "mediaserver.ts.kempkens.network";
+        hostName = "boron.ts.kempkens.network";
         protocol = "ssh-ng";
-        systems = [ "x86_64-linux" "aarch64-linux" ];
+        systems = [ "x86_64-linux" ];
         sshUser = "nix-remote-builder";
         sshKey = "${homeDir}/.ssh/id_nix_remote_builder";
         maxJobs = 2;
       }
 
       {
-        hostName = "argon.ts.kempkens.network";
+        hostName = "carbon.ts.kempkens.network";
         protocol = "ssh-ng";
         systems = [ "aarch64-linux" ];
         sshUser = "nix-remote-builder";
