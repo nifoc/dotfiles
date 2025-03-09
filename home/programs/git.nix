@@ -132,6 +132,9 @@ in
       "*.sol merge=mergiraf"
       "*.lua merge=mergiraf"
       "*.rb merge=mergiraf"
+      "*.nix merge=mergiraf"
+      "*.sv merge=mergiraf"
+      "*.svh merge=mergiraf"
     ];
 
     includes =
