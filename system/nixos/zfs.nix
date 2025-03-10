@@ -8,7 +8,7 @@
       enable = true;
       flags = "-k -p --utc";
 
-      daily = 5;
+      daily = 3;
       weekly = 0;
       monthly = 0;
     };
