@@ -1,3 +1,5 @@
+{ config, ... }:
+
 {
   services =
     let
@@ -40,11 +42,39 @@
             client_max_body_size 40m;
           '';
 
-          locations."/" = {
-            recommendedProxySettings = true;
-            proxyWebsockets = true;
-            proxyPass = "http://${bind-address}:${toString port}";
+          locations = {
+            "/" = {
+              recommendedProxySettings = true;
+              proxyWebsockets = true;
+              proxyPass = "http://${bind-address}:${toString port}";
+            };
 
+            "/assets/" = {
+              alias = config.services.gotosocial.settings.web-asset-base-dir;
+
+              extraConfig = ''
+                autoindex off;
+                expires 5m;
+                add_header Cache-Control "public";
+              '';
+            };
+
+            "/fileserver/" = {
+              alias = "${config.services.gotosocial.settings.storage-local-base-path}/";
+              tryFiles = "$uri @fileserver";
+
+              extraConfig = ''
+                autoindex off;
+                expires 1w;
+                add_header Cache-Control "private, immutable";
+              '';
+            };
+
+            "@fileserver" = {
+              recommendedProxySettings = true;
+              proxyWebsockets = true;
+              proxyPass = "http://${bind-address}:${toString port}";
+            };
           };
         };
 
