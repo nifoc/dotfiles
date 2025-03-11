@@ -46,5 +46,13 @@
     forgejo-actions-token = {
       file = ./forgejo-actions/token.age;
     };
+
+    mautrix-signal = {
+      file = ./mautrix/signal.age;
+    };
+
+    mautrix-whatsapp = {
+      file = ./mautrix/whatsapp.age;
+    };
   };
 }

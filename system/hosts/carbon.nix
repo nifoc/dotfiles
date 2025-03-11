@@ -25,6 +25,10 @@ in
 
     ../nixos/atuin-sync.nix
 
+    ../nixos/conduwuit.nix
+    ../nixos/matrix/mautrix-signal.nix
+    ../nixos/matrix/mautrix-whatsapp.nix
+
     ../nixos/fedifetcher.nix
 
     ../nixos/forgejo.nix

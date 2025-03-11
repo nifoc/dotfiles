@@ -1,42 +1,48 @@
-{ pkgs, config, lib, ... }:
+{ config, ... }:
 
 {
-  # Re-use old signald user and group
-  users.users.signald = {
-    group = "signald";
-    isSystemUser = true;
-  };
+  services.mautrix-signal = {
+    enable = true;
+    serviceDependencies = [ "conduwuit.service" ];
 
-  users.groups.signald = { };
+    environmentFile = config.age.secrets.mautrix-signal.path;
+    settings = {
+      backfill = {
+        enabled = true;
+      };
 
-  systemd.services.mautrix-signal = {
-    description = "A Matrix-Signal puppeting bridge";
-    wantedBy = [ "multi-user.target" ];
-    requires = [ "matrix-synapse.service" ];
-    after = [ "matrix-synapse.service" ];
-    restartTriggers = [ "${config.age.secrets.mautrix-signal-config.file}" ];
-    serviceConfig = {
-      User = "signald";
-      Group = "signald";
-      LoadCredential = [ "config:${config.age.secrets.mautrix-signal-config.path}" ];
-      ExecStart = "${lib.getExe pkgs.mautrix-signal} --config=%d/config --no-update";
-      Restart = "on-failure";
-      RestartSec = "5s";
+      bridge = {
+        permissions = {
+          "*" = "relay";
+          "kempkens.io" = "user";
+          "@daniel:kempkens.io" = "admin";
+        };
+      };
 
-      StateDirectory = "mautrix-signal";
-      RuntimeDirectory = "mautrix-signal";
-      StateDirectoryMode = "0750";
-      RuntimeDirectoryMode = "0750";
+      double_puppet = {
+        secrets = {
+          "${config.services.conduwuit.settings.global.server_name}" = "$DOUBLE_PUPPET_SECRETS_HOMESERVER";
+        };
+      };
 
-      ProtectHome = true;
-      ProtectKernelTunables = true;
-      ProtectKernelModules = true;
-      ProtectControlGroups = true;
-      PrivateTmp = true;
+      encryption = {
+        allow = true;
+        default = true;
+        pickle_key = "$ENCRYPTION_PICKLE_KEY";
+      };
+
+      homeserver = {
+        address = "http://127.0.0.1:${toString (builtins.elemAt config.services.conduwuit.settings.global.port 0)}";
+        domain = config.services.conduwuit.settings.global.server_name;
+      };
+
+      matrix = {
+        message_status_events = true;
+      };
+
+      provisioning = {
+        shared_secret = "$PROVISIONING_SHARED_SECRET";
+      };
     };
   };
-
-  services.matrix-synapse.settings.app_service_config_files = [
-    "/var/lib/matrix-synapse/bridges/registration-signal.yaml"
-  ];
 }

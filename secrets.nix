@@ -98,6 +98,9 @@ in
 
   "agenix/hosts/carbon/forgejo-actions/token.age".publicKeys = carbon;
 
+  "agenix/hosts/carbon/mautrix/signal.age".publicKeys = carbon;
+  "agenix/hosts/carbon/mautrix/whatsapp.age".publicKeys = carbon;
+
   # boron 
   "agenix/hosts/boron/user/danielPassword.age".publicKeys = boron;
 

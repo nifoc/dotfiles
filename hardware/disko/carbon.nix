@@ -52,7 +52,10 @@
           };
           "root/nix" = {
             type = "zfs_fs";
-            options.mountpoint = "/nix";
+            options = {
+              mountpoint = "/nix";
+              atime = "off";
+            };
             mountpoint = "/nix";
           };
           "root/services/postgresql" = {

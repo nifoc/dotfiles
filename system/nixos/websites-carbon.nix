@@ -112,14 +112,6 @@ in
           "/.well-known/host-meta".return = "301 https://mastodon.kempkens.io/.well-known/host-meta";
           "/.well-known/webfinger".return = "301 https://mastodon.kempkens.io$request_uri";
 
-          "/.well-known/matrix/server".extraConfig = ''
-            default_type application/json;
-          '';
-
-          "/.well-known/matrix/client".extraConfig = ''
-            default_type application/json;
-          '';
-
           "= /robots.txt".alias = "${pkgs.ai-robots-txt}/share/robots.txt";
         };
       };

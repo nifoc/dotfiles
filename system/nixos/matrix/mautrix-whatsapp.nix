@@ -1,30 +1,47 @@
-{ pkgs, config, lib, ... }:
+{ config, ... }:
 
 {
-  systemd.services.mautrix-whatsapp = {
-    description = "Matrix <-> Whatsapp hybrid puppeting/relaybot bridge";
-    wantedBy = [ "multi-user.target" ];
-    requires = [ "matrix-synapse.service" ];
-    after = [ "matrix-synapse.service" ];
-    restartTriggers = [ "${config.age.secrets.mautrix-whatsapp-config.file}" ];
-    serviceConfig = {
-      DynamicUser = true;
-      StateDirectory = "mautrix-whatsapp";
-      LoadCredential = [ "config:${config.age.secrets.mautrix-whatsapp-config.path}" ];
-      ExecStart = "${lib.getExe pkgs.mautrix-whatsapp} --config=%d/config --no-update";
-      Restart = "on-failure";
-      RestartSec = "5s";
+  services.mautrix-whatsapp = {
+    enable = true;
+    serviceDependencies = [ "conduwuit.service" ];
 
-      ProtectSystem = "strict";
-      ProtectHome = true;
-      ProtectKernelTunables = true;
-      ProtectKernelModules = true;
-      ProtectControlGroups = true;
-      PrivateTmp = true;
+    environmentFile = config.age.secrets.mautrix-whatsapp.path;
+    # Settings have to be written in the old format: https://github.com/mautrix/whatsapp/blob/v0.10.9/example-config.yaml
+    # Update once this is merged: https://github.com/NixOS/nixpkgs/pull/350448
+    settings = {
+      backfill = {
+        enabled = true;
+      };
+
+      bridge = {
+        message_status_events = true;
+
+        encryption = {
+          allow = true;
+          default = true;
+        };
+
+        history_sync.backfill = true;
+
+        login_shared_secret_map = {
+          "${config.services.conduwuit.settings.global.server_name}" = "$DOUBLE_PUPPET_SECRETS_HOMESERVER";
+        };
+
+        permissions = {
+          "*" = "relay";
+          "kempkens.io" = "user";
+          "@daniel:kempkens.io" = "admin";
+        };
+
+        provisioning = {
+          shared_secret = "$PROVISIONING_SHARED_SECRET";
+        };
+      };
+
+      homeserver = {
+        address = "http://127.0.0.1:${toString (builtins.elemAt config.services.conduwuit.settings.global.port 0)}";
+        domain = config.services.conduwuit.settings.global.server_name;
+      };
     };
   };
-
-  services.matrix-synapse.settings.app_service_config_files = [
-    "/var/lib/matrix-synapse/bridges/registration-whatsapp.yaml"
-  ];
 }
