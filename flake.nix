@@ -188,7 +188,6 @@
 
       perSystem = { config, pkgs, inputs', ... }: {
         treefmt = {
-          package = pkgs.treefmt1;
           inherit (config.flake-root) projectRootFile;
 
           programs = {
