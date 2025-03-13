@@ -35,7 +35,7 @@
     # Overlays
 
     disko = {
-      url = "github:nix-community/disko?ref=refs/tags/v1.3.0";
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
