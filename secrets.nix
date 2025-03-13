@@ -101,6 +101,8 @@ in
   "agenix/hosts/carbon/mautrix/signal.age".publicKeys = carbon;
   "agenix/hosts/carbon/mautrix/whatsapp.age".publicKeys = carbon;
 
+  "agenix/hosts/carbon/vaultwarden/config.age".publicKeys = carbon;
+
   # boron 
   "agenix/hosts/boron/user/danielPassword.age".publicKeys = boron;
 

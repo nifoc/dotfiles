@@ -39,6 +39,8 @@ in
     ../nixos/tailscale.nix
     ../nixos/tailscale-nodns.nix
 
+    ../nixos/vaultwarden.nix
+
     ../nixos/websites-carbon.nix
 
     ../nixos/container.nix

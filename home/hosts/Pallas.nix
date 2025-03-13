@@ -32,8 +32,6 @@
 
     ../programs/jq.nix
 
-    ../programs/firefox.nix
-
     ../programs/scripts.nix
 
     ../programs/ssh/Pallas.nix

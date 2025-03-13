@@ -19,6 +19,10 @@
         extraDomainNames = [ "*.kempkens.io" ];
       };
 
+      "kempkens.network" = {
+        extraDomainNames = [ "*.kempkens.network" ];
+      };
+
       "networked.systems" = {
         extraDomainNames = [ "*.networked.systems" ];
       };

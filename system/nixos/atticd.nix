@@ -66,7 +66,7 @@ in
 
       locations."/" = {
         recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:8081";
+        proxyPass = "http://${config.services.atticd.settings.listen}";
       };
     };
   };

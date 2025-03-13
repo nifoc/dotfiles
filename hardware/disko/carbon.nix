@@ -94,6 +94,14 @@
             };
             mountpoint = "/var/lib/forgejo";
           };
+          "root/services/vaultwarden" = {
+            type = "zfs_fs";
+            options = {
+              mountpoint = "/var/lib/bitwarden_rs";
+              atime = "off";
+            };
+            mountpoint = "/var/lib/bitwarden_rs";
+          };
         };
       };
     };

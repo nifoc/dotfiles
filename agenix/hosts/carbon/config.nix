@@ -54,5 +54,9 @@
     mautrix-whatsapp = {
       file = ./mautrix/whatsapp.age;
     };
+
+    vaultwarden-config = {
+      file = ./vaultwarden/config.age;
+    };
   };
 }
