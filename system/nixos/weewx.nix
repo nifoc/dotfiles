@@ -3,7 +3,6 @@
 let
   home = "/var/lib/weewx-weather";
   pkg = pkgs.weewx;
-  secret = import ../../secret/container/weewx;
 in
 {
   # weewx
@@ -107,69 +106,59 @@ in
     "de_DE.UTF-8/UTF-8"
   ];
 
-  services.mosquitto.listeners = [
-    {
-      address = "0.0.0.0";
-      port = 1883;
+  services = {
+    mosquitto.listeners = [
+      {
+        address = "127.0.0.1";
+        port = 9883;
 
-      settings = {
-        protocol = "mqtt";
-      };
-
-      users = {
-        weewx-proxy = {
-          hashedPasswordFile = config.age.secrets.mosquitto-password-weewx-proxy.path;
-          acl = [ "write weewx/+" ];
+        settings = {
+          protocol = "websockets";
+          allow_anonymous = true;
         };
 
-        weewx = {
-          hashedPasswordFile = config.age.secrets.mosquitto-password-weewx.path;
-          acl = [ "read weewx/+" "write weather/+" ];
+        acl = [ "topic read weather/+" ];
+      }
+    ];
+
+    nginx.virtualHosts."wetter.kempkens.io" = {
+      listen = [
+        {
+          addr = "100.88.88.45";
+          port = 7781;
+          ssl = false;
+          extraParameters = [
+            "fastopen=63"
+            "backlog=1023"
+            "deferred"
+          ];
+        }
+      ];
+
+      root = "${home}/data/html/wdc";
+
+      extraConfig = ''
+        index index.html;
+      '';
+
+      locations = {
+        "~* \.html$".extraConfig = ''
+          expires modified 120s;
+        '';
+
+        "~* \.(js|css)$".extraConfig = ''
+          expires 1h;
+        '';
+
+        "/mqtt" = {
+          recommendedProxySettings = true;
+          proxyPass = "http://127.0.0.1:9883";
+          proxyWebsockets = true;
+
+          extraConfig = ''
+            add_header Cache-Control no-store;
+          '';
         };
-      };
-    }
-    {
-      address = "127.0.0.1";
-      port = 9883;
-
-      settings = {
-        protocol = "websockets";
-        allow_anonymous = true;
-      };
-
-      acl = [ "topic read weather/+" ];
-    }
-  ];
-
-  networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 1883 ];
-
-  services.nginx.virtualHosts."${secret.container.weewx.hostname}" = {
-    quic = true;
-    http3 = true;
-    kTLS = true;
-
-    root = "${home}/data/html/wdc";
-    forceSSL = true;
-    useACMEHost = "kempkens.io";
-
-    extraConfig = ''
-      index index.html;
-      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-    '';
-
-    locations = {
-      "~* \.html$".extraConfig = ''
-        expires modified 120s;
-      '';
-
-      "~* \.(js|css)$".extraConfig = ''
-        expires 1h;
-      '';
-
-      "/mqtt" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:9883";
-        proxyWebsockets = true;
       };
     };
   };

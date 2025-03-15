@@ -6,6 +6,9 @@
     wantedBy = [ "multi-user.target" ];
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
+
+    restartTriggers = [ "${config.age.secrets.weewx-proxy-environment.file}" ];
+
     serviceConfig = {
       DynamicUser = true;
       StateDirectory = "weewx-proxy";
@@ -43,9 +46,14 @@
             acl = [ "write bitshake/#" ];
           };
 
+          weewx = {
+            hashedPasswordFile = config.age.secrets.mosquitto-password-weewx.path;
+            acl = [ "read weewx/+" "write weather/+" ];
+          };
+
           weewx-proxy = {
             hashedPasswordFile = config.age.secrets.mosquitto-password-weewx-proxy.path;
-            acl = [ "read rtl433" "read deye/#" "read bitshake/#" "write hadata/#" ];
+            acl = [ "read rtl433" "read deye/#" "read bitshake/#" "write hadata/#" "write weewx/+" ];
           };
 
           home-assistant = {

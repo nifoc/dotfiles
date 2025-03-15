@@ -36,12 +36,8 @@ in
 
     ../nixos/mastodon.nix
 
-    ../nixos/matrix
-
     ../nixos/tailscale.nix
     ../nixos/tailscale-nodns.nix
-
-    ../nixos/weewx.nix
   ];
 
   system.stateVersion = "22.11";

@@ -18,6 +18,7 @@ in
     ../nixos/acme-boron.nix
     ../nixos/nginx.nix
     ../nixos/nginx-boron.nix
+    ../nixos/home-proxy.nix
     ../nixos/postgresql.nix
 
     ../nixos/atticd.nix

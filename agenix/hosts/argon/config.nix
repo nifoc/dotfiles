@@ -38,8 +38,10 @@
       file = ./adguardhome-sync/environment.age;
     };
 
-    forgejo-actions-token = {
-      file = ./forgejo-actions/token.age;
+    mosquitto-password-weewx = {
+      file = ./mosquitto/passwordWeewx.age;
+      owner = "mosquitto";
+      group = "mosquitto";
     };
 
     mosquitto-password-weewx-proxy = {
@@ -56,6 +58,19 @@
 
     ups-primary-password = {
       file = ./ups/primaryPassword.age;
+    };
+
+    weewx-config = {
+      file = ./weewx/config.age;
+      owner = "weewx";
+      group = "weewx";
+    };
+
+    weewx-skin = {
+      file = ./weewx/skin.age;
+      path = "/var/lib/weewx-weather/overlay/upper/skins/weewx-wdc/skin.conf";
+      owner = "weewx";
+      group = "weewx";
     };
 
     weewx-proxy-environment = {
