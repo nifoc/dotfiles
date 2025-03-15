@@ -21,11 +21,11 @@ jobs:
           attic login --set-default attic ${{ secrets.ATTIC_ENDPOINT }} ${{ secrets.ATTIC_TOKEN }}
       - name: Build attic-server
         run: |
-          nix build '.#nixosConfigurations.tanker.pkgs.attic-server'
+          nix build '.#nixosConfigurations.boron.pkgs.attic-server'
           attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
       - name: Build attic-client
         run: |
-          nix build '.#nixosConfigurations.tanker.pkgs.attic-client'
+          nix build '.#nixosConfigurations.boron.pkgs.attic-client'
           attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
       - name: Build deploy-rs
         run: |
