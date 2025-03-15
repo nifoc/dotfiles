@@ -34,7 +34,8 @@
 
       extraConfig = ''
         add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-        add_header X-Robots-Tag none;
+        add_header X-Robots-Tag "noindex, nofollow";
+        add_header X-Robots-Tag "noai, noimageai";
       '';
 
       locations = {
