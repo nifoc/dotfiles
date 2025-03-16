@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 let
   portI = 9918 + 10 - 7;
@@ -61,9 +61,7 @@ in
           '';
         };
 
-        "= /robots.txt" = {
-          return = "200 \"User-agent: *\\nDisallow: /\"";
-        };
+        "= /robots.txt".alias = "${pkgs.ai-robots-txt}/share/robots_generic.txt";
       };
     };
   };

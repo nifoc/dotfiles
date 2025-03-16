@@ -86,7 +86,7 @@ in
               '';
             };
 
-            "= /robots.txt".alias = "${pkgs.ai-robots-txt}/share/robots.txt";
+            "= /robots.txt".alias = "${pkgs.ai-robots-txt}/share/robots_generic.txt";
 
             "~* ^(\/_matrix|\/_conduwuit)" = {
               recommendedProxySettings = true;
