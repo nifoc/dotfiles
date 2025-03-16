@@ -1,6 +1,16 @@
+{ config, ... }:
+
+let
+  portI = 9918 + 10 - 7;
+  portE = 9919 + 10 - 9;
+  interface = config.systemd.network.networks."10-wan".matchConfig.Name;
+in
 {
   services.nginx = {
-    resolver.addresses = [ "1.1.1.1" ];
+    resolver = {
+      addresses = [ "1.1.1.1" ];
+      ipv6 = false;
+    };
 
     proxyCachePath.wetter = {
       enable = true;
@@ -8,21 +18,19 @@
       maxSize = "200m";
     };
 
-    # streamConfig = ''
-    #   resolver 1.1.1.1 ipv6=off;
-    #
-    #   upstream video {
-    #     server ${secret.nginx.upstream.video.hostname}:${builtins.toString secret.nginx.upstream.video.upstreamPort};
-    #   }
-    #
-    #   server {
-    #     listen *:${builtins.toString secret.nginx.upstream.video.externalPort} fastopen=63 backlog=1023;
-    #     listen [::]:${builtins.toString secret.nginx.upstream.video.externalPort} fastopen=63 backlog=1023;
-    #
-    #     proxy_protocol on;
-    #     proxy_pass video;
-    #   }
-    # '';
+    streamConfig = ''
+      upstream video {
+        server 100.88.216.110:${toString portI};
+      }
+
+      server {
+        listen *:${toString portE} fastopen=63 backlog=1023;
+        listen [::]:${toString portE} fastopen=63 backlog=1023;
+
+        proxy_protocol on;
+        proxy_pass video;
+      }
+    '';
 
     virtualHosts."wetter.kempkens.io" = {
       quic = true;
@@ -41,7 +49,7 @@
       locations = {
         "/" = {
           recommendedProxySettings = true;
-          proxyPass = "http://100.88.88.45:7781";
+          proxyPass = "http://100.88.88.45:${toString (7780 + 1)}";
           proxyWebsockets = true;
 
           extraConfig = ''
@@ -60,7 +68,5 @@
     };
   };
 
-  # networking.firewall.interfaces."enp41s0".allowedTCPPorts = [
-  #   secret.nginx.upstream.video.externalPort
-  # ];
+  networking.firewall.interfaces."${interface}".allowedTCPPorts = [ portE ];
 }

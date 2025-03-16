@@ -41,6 +41,7 @@
           "${host}" = {
             quic = true;
             http3 = true;
+            kTLS = true;
 
             forceSSL = true;
             useACMEHost = host;
