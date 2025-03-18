@@ -29,6 +29,8 @@
 
       "nifoc.pw" = {
         domain = "*.nifoc.pw";
+
+        dnsProvider = "ovh";
       };
     };
   };
