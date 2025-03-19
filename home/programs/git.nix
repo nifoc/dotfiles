@@ -8,6 +8,7 @@ in
   home.packages = with pkgs; [
     git-absorb
     git-crypt
+    git-trim
   ];
 
   programs.git = {
