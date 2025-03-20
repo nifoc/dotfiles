@@ -56,26 +56,37 @@ in
       };
     };
 
-    nginx.virtualHosts."${fqdn}" = {
-      quic = true;
-      http3 = true;
-
-      forceSSL = true;
-      useACMEHost = "kempkens.io";
-
-      extraConfig = ''
-        client_max_body_size 0;
-
-        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+    nginx = {
+      commonHttpConfig = ''
+        map "$http_user_agent" $forgejo_loggable {
+          default            1;
+          "~*^connect-go.*$" 0;
+        }
       '';
 
-      locations = {
-        "/" = {
-          recommendedProxySettings = true;
-          proxyPass = "http://unix:/run/forgejo/forgejo.sock";
-        };
+      virtualHosts."${fqdn}" = {
+        quic = true;
+        http3 = true;
 
-        "= /robots.txt".alias = "${pkgs.ai-robots-txt}/share/robots.txt";
+        forceSSL = true;
+        useACMEHost = "kempkens.io";
+
+        extraConfig = ''
+          access_log /var/log/nginx/access_${fqdn}.log combined buffer=32k flush=5m if=$forgejo_loggable;
+
+          client_max_body_size 0;
+
+          add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+        '';
+
+        locations = {
+          "/" = {
+            recommendedProxySettings = true;
+            proxyPass = "http://unix:/run/forgejo/forgejo.sock";
+          };
+
+          "= /robots.txt".alias = "${pkgs.ai-robots-txt}/share/robots.txt";
+        };
       };
     };
   };

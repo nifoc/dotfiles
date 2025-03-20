@@ -70,11 +70,14 @@ in
           useACMEHost = "kempkens.io";
 
           extraConfig = ''
+            access_log /var/log/nginx/access_${fqdn}.log combined buffer=32k flush=5m;
+
+            client_max_body_size 20m;
+
             add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
             add_header X-Content-Type-Options nosniff;
             add_header X-Frame-Options DENY;
             add_header X-XSS-Protection "1; mode=block";
-            client_max_body_size 20m;
           '';
 
           locations = {

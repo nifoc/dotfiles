@@ -23,8 +23,6 @@
       log_format combined_anon '$remote_addr_anon - $remote_user [$time_local] '
                                '"$request" $status $body_bytes_sent '
                                '"$http_referer" "$http_user_agent"';
-
-      access_log /var/log/nginx/access.log combined_anon buffer=32k flush=5m;
     '';
 
     # Currently breaks HTTP3

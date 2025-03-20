@@ -45,6 +45,8 @@ in
       useACMEHost = "kempkens.network";
 
       extraConfig = ''
+        access_log /var/log/nginx/access_${fqdn}.log combined buffer=32k flush=5m;
+
         client_max_body_size 40m;
       '';
 

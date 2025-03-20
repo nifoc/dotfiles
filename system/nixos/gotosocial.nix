@@ -47,8 +47,11 @@
             useACMEHost = host;
 
             extraConfig = ''
-              add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+              access_log /var/log/nginx/access_${host}.log combined buffer=32k flush=5m;
+
               client_max_body_size 40m;
+
+              add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
             '';
 
             locations =

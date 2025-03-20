@@ -99,6 +99,8 @@ in
         useACMEHost = "kempkens.io";
 
         extraConfig = ''
+          access_log /var/log/nginx/access_kempkens.io.log combined buffer=32k flush=5m;
+
           add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
           add_header X-Frame-Options DENY;
           add_header X-XSS-Protection "1; mode=block";
@@ -141,6 +143,8 @@ in
         useACMEHost = "kempkens.io";
 
         extraConfig = ''
+          access_log /var/log/nginx/access_blog.kempkens.io.log combined buffer=32k flush=5m;
+
           add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
           add_header X-Frame-Options DENY;
           add_header X-XSS-Protection "1; mode=block";
