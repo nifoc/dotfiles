@@ -19,6 +19,7 @@ in
     ../nixos/acme-carbon.nix
     ../nixos/nginx.nix
     ../nixos/nginx-carbon.nix
+    ../nixos/goaccess.nix
     ../nixos/postgresql.nix
 
     ../nixos/attic.nix
