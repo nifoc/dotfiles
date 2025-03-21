@@ -45,9 +45,11 @@ in
       useACMEHost = "kempkens.network";
 
       extraConfig = ''
-        access_log /var/log/nginx/access_${fqdn}.log combined buffer=32k flush=5m;
+        access_log /var/log/nginx/access_${fqdn}.log combined_vhost buffer=32k flush=5m;
 
         client_max_body_size 40m;
+
+        add_header Alt-Svc 'h3=":443"; ma=86400';
       '';
 
       locations."/" = {

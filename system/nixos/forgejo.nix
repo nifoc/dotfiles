@@ -72,10 +72,11 @@ in
         useACMEHost = "kempkens.io";
 
         extraConfig = ''
-          access_log /var/log/nginx/access_${fqdn}.log combined buffer=32k flush=5m if=$forgejo_loggable;
+          access_log /var/log/nginx/access_${fqdn}.log combined_vhost buffer=32k flush=5m if=$forgejo_loggable;
 
           client_max_body_size 0;
 
+          add_header Alt-Svc 'h3=":443"; ma=86400';
           add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
         '';
 

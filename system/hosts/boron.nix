@@ -19,6 +19,7 @@ in
     ../nixos/nginx.nix
     ../nixos/nginx-boron.nix
     ../nixos/home-proxy.nix
+    ../nixos/goaccess.nix
     ../nixos/postgresql.nix
 
     ../nixos/atticd.nix

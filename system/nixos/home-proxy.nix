@@ -41,6 +41,7 @@ in
       useACMEHost = "kempkens.io";
 
       extraConfig = ''
+        add_header Alt-Svc 'h3=":443"; ma=86400';
         add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
         add_header X-Robots-Tag "noindex, nofollow";
         add_header X-Robots-Tag "noai, noimageai";
