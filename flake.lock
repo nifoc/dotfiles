@@ -294,11 +294,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1742588233,
-        "narHash": "sha256-Fi5g8H5FXMSRqy+mU6gPG0v+C9pzjYbkkiePtz8+PpA=",
+        "lastModified": 1742701794,
+        "narHash": "sha256-bJIFFa6/4vBGoNmCwjO5TCIbiveV2BRxVLqHcxk5jXw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "296ddc64627f4a6a4eb447852d7346b9dd16197d",
+        "rev": "9172a6f956f7e0f7810861b9b1146f1c43d9abcb",
         "type": "github"
       },
       "original": {
@@ -382,11 +382,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1742576680,
-        "narHash": "sha256-A9Yo0HZyANBdplEAVpY72Ml4EV32MCgk6Hlacz0/0Ak=",
+        "lastModified": 1742688454,
+        "narHash": "sha256-gK9nPXWEXVtBWlZCBlwMZynlCDGJ1TtVlRBfC02PNxc=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "e0208ec30864247b6614e08051151a649044e93c",
+        "rev": "098d2af8c606ea8adc1b8b3084f454ca681a7ab3",
         "type": "github"
       },
       "original": {
@@ -398,11 +398,11 @@
     "neovim-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1742426477,
-        "narHash": "sha256-MLlU8s/lVKHfYcl9g8Q4nOl3BVWc627fVII58qtL9d8=",
+        "lastModified": 1742654371,
+        "narHash": "sha256-fmOfoKTyGmjouWGFxfJvMdZVX3u2GSZyMlVE9yNhusA=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "175c09bd660d0cea62288e74cea925a9b15bee55",
+        "rev": "f4d9a2983a49c1729f78ffbf6b1e6dcc30215d0d",
         "type": "github"
       },
       "original": {
@@ -422,11 +422,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1742608957,
-        "narHash": "sha256-7CawvmMSPpL/f1CFFqydn7W+1aQr+R3asFdOaPOvw08=",
+        "lastModified": 1742695345,
+        "narHash": "sha256-1mbf5EmBQmYKUET/H4lJybsOR8bTt8/CpJgFELJdiF8=",
         "ref": "refs/heads/master",
-        "rev": "0045ce6e5d6240d5167d659fa9b73e11da6b096d",
-        "revCount": 1110,
+        "rev": "f7fff3ff442204609d63cfadea17ada393e45b70",
+        "revCount": 1112,
         "type": "git",
         "url": "https://git.kempkens.io/daniel/nix-overlay"
       },
