@@ -172,9 +172,13 @@ in
           useACMEHost = "nifoc.pw";
 
           extraConfig = ''
+            add_header Alt-Svc 'h3=":443"; ma=86400';
+
             autoindex on;
             autoindex_format html;
           '';
+
+          locations."= /robots.txt".alias = "${pkgs.ai-robots-txt}/share/robots_generic.txt";
         };
       }) [ "katja.nifoc.pw" "katja_vmstats.nifoc.pw" "noesis.nifoc.pw" "propagator.nifoc.pw" ]);
   };
