@@ -6,7 +6,7 @@
     # Lix
 
     lix-module = {
-      url = "git+https://git.lix.systems/lix-project/nixos-module?ref=stable";
+      url = "git+https://git.lix.systems/lix-project/nixos-module?ref=release-2.92";
       #url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
