@@ -49,12 +49,12 @@ in
   };
   nvim-lspconfig = buildVimPlugin {
     pname = "nvim-lspconfig";
-    version = "2025-03-21";
+    version = "2025-03-25";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "nvim-lspconfig";
-      rev = "fb733ac734249ccf293e5c8018981d4d8f59fa8f";
-      sha256 = "04qz643mgjr32lwk9lw9bq2cjy5cdxmw5vldc3zyxrcclngyv0sg";
+      rev = "200280dab91a7df2ca42fd2ab3cb4c5fab056666";
+      sha256 = "0irb77p532pwbigbm8lh2rm91a208n4h06bf8b34h13s0gkz3bc8";
       fetchSubmodules = false;
 
     };
