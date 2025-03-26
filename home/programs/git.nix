@@ -45,10 +45,22 @@ in
 
       push = {
         default = "simple";
+        autoSetupRemote = true;
+        followTags = true;
+      };
+
+      fetch = {
+        prune = true;
+        pruneTags = true;
+        all = true;
       };
 
       branch = {
         sort = "-committerdate";
+      };
+
+      tag = {
+        sort = "version:refname";
       };
 
       merge = {
@@ -66,6 +78,7 @@ in
 
       rerere = {
         enabled = true;
+        autoupdate = true;
       };
 
       init = {
@@ -78,6 +91,10 @@ in
 
       column = {
         ui = "auto";
+      };
+
+      help = {
+        autocorrect = "prompt";
       };
 
       apply = {
