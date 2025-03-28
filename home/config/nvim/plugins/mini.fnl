@@ -12,7 +12,9 @@
       pairs (require :mini.pairs)
       snippets (require :mini.snippets)
       surround (require :mini.surround)
-      theme (require :nifoc.theme)]
+      theme (require :nifoc.theme)
+      augroup (vim.api.nvim_create_augroup :NifocMini {:clear true})
+      aucmd vim.api.nvim_create_autocmd]
   ;; ai
   (ai.setup)
   ;; clue
@@ -73,5 +75,15 @@
              {:fg nil :bg nil :sp theme.colors.cyan :underdotted true})
   (highlight :MiniSnippetsVisited
              {:fg nil :bg nil :sp theme.colors.purple :underdotted true})
+  (aucmd :User {:pattern :MiniSnippetsSessionJump
+                :callback #(when (= $1.data.tabstop_to :0)
+                             (snippets.session.stop))
+                :group augroup
+                :desc "Stop session on final tabstop"})
+  (aucmd :ModeChanged
+         {:pattern "*:n"
+          :callback #(while (snippets.session.get) (snippets.session.stop))
+          :group augroup
+          :desc "Stop sessions on normal mode exit"})
   ;; surround
   (surround.setup))
