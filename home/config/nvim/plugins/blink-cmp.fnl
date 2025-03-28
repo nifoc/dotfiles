@@ -54,9 +54,9 @@
                        :<C-f> [:scroll_documentation_down :fallback]
                        :<C-e> [:hide :fallback]}
               :completion {:list {:selection {:preselect (fn [ctx]
-                                                           (or (not= ctx.mode
-                                                                     :cmdline)
-                                                               (not (cmp.snippet_active))))
+                                                           (and (not= ctx.mode
+                                                                      :cmdline)
+                                                                (not (cmp.snippet_active))))
                                               :auto_insert false}}
                            :menu {:min_width 20
                                   :max_height 25
