@@ -1,11 +1,2 @@
 # Keybindings
 - src: gbprod/cutlass.nvim
-# Themes
-- src: Mofiqul/dracula.nvim
-# Syntax
-- src: nvim-treesitter/nvim-treesitter
-# LSP
-- src: neovim/nvim-lspconfig
-# UI
-- src: j-hui/fidget.nvim
-- src: nvim-treesitter/nvim-treesitter-context

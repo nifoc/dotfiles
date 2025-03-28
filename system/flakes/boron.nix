@@ -1,11 +1,10 @@
-{ nixpkgs, lix-module, home-manager, agenix, disko, neovim-nightly-overlay, nifoc-overlay }:
+{ nixpkgs, lix-module, home-manager, agenix, disko, nifoc-overlay }:
 
 let
   default-system = "x86_64-linux";
 
   nixpkgsConfig = {
     overlays = [
-      neovim-nightly-overlay.overlays.default
       nifoc-overlay.overlay
     ];
 

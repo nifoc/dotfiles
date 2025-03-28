@@ -60,15 +60,6 @@
       };
     };
 
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        git-hooks.follows = "git-hooks";
-      };
-    };
-
     nifoc-overlay = {
       url = "git+https://git.kempkens.io/daniel/nix-overlay";
       inputs = {
@@ -88,12 +79,12 @@
       flake =
         let
           Styx = import ./system/flakes/Styx.nix {
-            inherit (inputs) nixpkgs home-manager nix-darwin agenix neovim-nightly-overlay mkalias nifoc-overlay;
+            inherit (inputs) nixpkgs home-manager nix-darwin agenix mkalias nifoc-overlay;
             inherit lix-module;
           };
 
           Pallas = import ./system/flakes/Pallas.nix {
-            inherit (inputs) nixpkgs home-manager nix-darwin agenix neovim-nightly-overlay mkalias nifoc-overlay;
+            inherit (inputs) nixpkgs home-manager nix-darwin agenix mkalias nifoc-overlay;
             inherit lix-module;
           };
 
@@ -103,12 +94,12 @@
           };
 
           carbon = import ./system/flakes/carbon.nix {
-            inherit (inputs) nixpkgs disko home-manager agenix neovim-nightly-overlay nifoc-overlay;
+            inherit (inputs) nixpkgs disko home-manager agenix nifoc-overlay;
             inherit lix-module;
           };
 
           boron = import ./system/flakes/boron.nix {
-            inherit (inputs) nixpkgs disko home-manager agenix neovim-nightly-overlay nifoc-overlay;
+            inherit (inputs) nixpkgs disko home-manager agenix nifoc-overlay;
             inherit lix-module;
           };
 
@@ -119,12 +110,12 @@
           };
 
           argon = import ./system/flakes/argon.nix {
-            inherit (inputs) nixpkgs nixos-hardware home-manager agenix neovim-nightly-overlay nifoc-overlay;
+            inherit (inputs) nixpkgs nixos-hardware home-manager agenix nifoc-overlay;
             inherit lix-module;
           };
 
           neon = import ./system/flakes/neon.nix {
-            inherit (inputs) nixpkgs nixos-hardware home-manager agenix neovim-nightly-overlay nifoc-overlay;
+            inherit (inputs) nixpkgs nixos-hardware home-manager agenix nifoc-overlay;
             inherit lix-module;
           };
 

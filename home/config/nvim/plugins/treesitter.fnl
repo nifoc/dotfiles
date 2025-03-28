@@ -3,46 +3,7 @@
       disable-parsers []]
   (nifoc-treesitter.setup)
   (treesitter-config.setup {:parser_install_dir _G.nvim_treesitter_parser_directory
-                            :ensure_installed [:angular
-                                               :bash
-                                               :css
-                                               :diff
-                                               :dockerfile
-                                               :eex
-                                               :elixir
-                                               :erlang
-                                               :fennel
-                                               :git_config
-                                               :git_rebase
-                                               :gitattributes
-                                               :gitcommit
-                                               :gitignore
-                                               :graphql
-                                               :heex
-                                               :html
-                                               :http
-                                               :java
-                                               :javascript
-                                               :jsdoc
-                                               :json
-                                               :just
-                                               :lua
-                                               :make
-                                               :markdown
-                                               :markdown_inline
-                                               :nix
-                                               :python
-                                               :query
-                                               :regex
-                                               :ruby
-                                               :scss
-                                               :sql
-                                               :styled
-                                               :svelte
-                                               :toml
-                                               :tsx
-                                               :typescript
-                                               :vim]
+                            :ensure_installed []
                             :sync_install false
                             :auto_install false
                             :highlight {:enable true :disable disable-parsers}

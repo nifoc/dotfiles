@@ -1,4 +1,4 @@
-{ nixpkgs, lix-module, home-manager, nix-darwin, agenix, neovim-nightly-overlay, mkalias, nifoc-overlay }:
+{ nixpkgs, lix-module, home-manager, nix-darwin, agenix, mkalias, nifoc-overlay }:
 
 let
   default-system = "aarch64-darwin";
@@ -10,7 +10,6 @@ let
     overlays = [
       overlay-x86
       agenix.overlays.default
-      neovim-nightly-overlay.overlays.default
       nifoc-overlay.overlay
       overlay-mkalias
     ];

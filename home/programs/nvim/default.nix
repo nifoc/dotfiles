@@ -3,13 +3,10 @@
 let
   inherit (pkgs.stdenv) isDarwin;
   inherit (lib) optionals;
-
-  inherit (pkgs) vimPlugins;
 in
 {
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim;
 
     defaultEditor = true;
 
@@ -77,7 +74,7 @@ in
       _G.nifoc_default_shell = '${pkgs.zsh.outPath}/bin/zsh'
       _G.nvim_treesitter_parser_directory = os.getenv("HOME") .. "/.local/share/nvim/nvim-treesitter_parser"
 
-      vim.opt.runtimepath:prepend(_G.nvim_treesitter_parser_directory)
+      -- vim.opt.runtimepath:prepend(_G.nvim_treesitter_parser_directory)
 
       require('nifoc.nix')
       require('configuration.init')
@@ -87,34 +84,34 @@ in
       let
         customPlugins = import ./plugins.nix { inherit pkgs lib; };
       in
-      with customPlugins; [
+      with pkgs.vimPlugins; [
         # Utils
-        vimPlugins.popup-nvim
-        vimPlugins.plenary-nvim
+        popup-nvim
+        plenary-nvim
 
         {
-          plugin = vimPlugins.mini-nvim;
+          plugin = mini-nvim;
           config = builtins.readFile ../../config/nvim/plugins/mini.fnl;
           type = "fennel";
         }
 
         {
-          plugin = vimPlugins.wezterm-nvim;
+          plugin = wezterm-nvim;
           config = builtins.readFile ../../config/nvim/plugins/wezterm.fnl;
           type = "fennel";
         }
 
-        vimPlugins.vim-cool
+        vim-cool
 
         # Keybindings
         {
-          plugin = vimPlugins.yanky-nvim;
+          plugin = yanky-nvim;
           config = builtins.readFile ../../config/nvim/plugins/yanky.fnl;
           type = "fennel";
         }
 
         {
-          plugin = cutlass-nvim;
+          plugin = customPlugins.cutlass-nvim;
           config = builtins.readFile ../../config/nvim/plugins/cutlass.fnl;
           type = "fennel";
         }
@@ -124,26 +121,67 @@ in
 
         # Syntax
         {
-          plugin = nvim-treesitter;
+          plugin = nvim-treesitter.withPlugins (p: [
+            p.angular
+            p.bash
+            p.css
+            p.diff
+            p.dockerfile
+            p.eex
+            p.elixir
+            p.erlang
+            p.fennel
+            p.git_config
+            p.git_rebase
+            p.gitattributes
+            p.gitcommit
+            p.gitignore
+            p.graphql
+            p.heex
+            p.html
+            p.http
+            p.java
+            p.javascript
+            p.jsdoc
+            p.json
+            p.just
+            p.lua
+            p.make
+            p.markdown
+            p.markdown_inline
+            p.nix
+            p.python
+            p.query
+            p.regex
+            p.ruby
+            p.scss
+            p.sql
+            p.styled
+            p.svelte
+            p.toml
+            p.tsx
+            p.typescript
+            p.vim
+          ]);
           config = builtins.readFile ../../config/nvim/plugins/treesitter.fnl;
           type = "fennel";
         }
 
         {
-          plugin = vimPlugins.rainbow-delimiters-nvim;
+          plugin = rainbow-delimiters-nvim;
           config = builtins.readFile ../../config/nvim/plugins/rainbow-delimiters.fnl;
           type = "fennel";
         }
 
         {
-          plugin = vimPlugins.todo-comments-nvim;
+          plugin = todo-comments-nvim;
           config = builtins.readFile ../../config/nvim/plugins/todo-comments.fnl;
           type = "fennel";
         }
 
         # Finder
         {
-          plugin = vimPlugins.fzf-lua;
+          plugin = fzf-lua;
           config = builtins.readFile ../../config/nvim/plugins/fzf.fnl;
           type = "fennel";
         }
@@ -155,58 +193,58 @@ in
           type = "fennel";
         }
 
-        vimPlugins.nvim-jdtls
+        nvim-jdtls
 
-        vimPlugins.SchemaStore-nvim
+        SchemaStore-nvim
 
         {
-          plugin = vimPlugins.nvim-navic;
+          plugin = nvim-navic;
           config = builtins.readFile ../../config/nvim/plugins/navic.fnl;
           type = "fennel";
         }
 
         # Linter
         {
-          plugin = vimPlugins.nvim-lint;
+          plugin = nvim-lint;
           config = builtins.readFile ../../config/nvim/plugins/nvim-lint.fnl;
           type = "fennel";
         }
 
         # Snippets
-        vimPlugins.friendly-snippets
+        friendly-snippets
 
         # Completion
         {
-          plugin = vimPlugins.blink-cmp;
+          plugin = blink-cmp;
           config = builtins.readFile ../../config/nvim/plugins/blink-cmp.fnl;
           type = "fennel";
         }
 
-        vimPlugins.blink-compat
+        blink-compat
 
         # Formatting
 
         {
-          plugin = vimPlugins.conform-nvim;
+          plugin = conform-nvim;
           config = builtins.readFile ../../config/nvim/plugins/formatter.fnl;
           type = "fennel";
         }
 
         # UI
         {
-          plugin = vimPlugins.heirline-nvim;
+          plugin = heirline-nvim;
           config = builtins.readFile ../../config/nvim/plugins/heirline.fnl;
           type = "fennel";
         }
 
         {
-          plugin = vimPlugins.indent-blankline-nvim;
+          plugin = indent-blankline-nvim;
           config = builtins.readFile ../../config/nvim/plugins/indent_line.fnl;
           type = "fennel";
         }
 
         {
-          plugin = vimPlugins.virt-column-nvim;
+          plugin = virt-column-nvim;
           config = /* fennel */ ''
             (let [virt-column (require :virt-column)]
               (virt-column.setup))
@@ -221,31 +259,31 @@ in
         }
 
         {
-          plugin = vimPlugins.urlview-nvim;
+          plugin = urlview-nvim;
           config = builtins.readFile ../../config/nvim/plugins/urlview.fnl;
           type = "fennel";
         }
 
         {
-          plugin = vimPlugins.hover-nvim;
+          plugin = hover-nvim;
           config = builtins.readFile ../../config/nvim/plugins/hover.fnl;
           type = "fennel";
         }
 
         {
-          plugin = vimPlugins.gitsigns-nvim;
+          plugin = gitsigns-nvim;
           config = builtins.readFile ../../config/nvim/plugins/gitsigns.fnl;
           type = "fennel";
         }
 
         {
-          plugin = vimPlugins.diffview-nvim;
+          plugin = diffview-nvim;
           config = builtins.readFile ../../config/nvim/plugins/diffview.fnl;
           type = "fennel";
         }
       ] ++ optionals isDarwin [
         {
-          plugin = vimPlugins.supermaven-nvim;
+          plugin = supermaven-nvim;
           config = builtins.readFile ../../config/nvim/plugins/supermaven.fnl;
           type = "fennel";
         }
@@ -345,14 +383,6 @@ in
     activation.neovimCache = lib.hm.dag.entryAfter [ "linkGeneration" ] /* bash */ ''
       $VERBOSE_ECHO "Resetting loader"
       $DRY_RUN_CMD ${lib.getExe config.programs.neovim.finalPackage} -l <(echo "vim.loader.reset()")
-    '';
-
-    activation.neovimTreeSitter = lib.hm.dag.entryAfter [ "writeBoundary" ] /* bash */ ''
-      $VERBOSE_ECHO "Updating tree-sitter parsers"
-
-      export CC='${pkgs.stdenv.cc}/bin/${pkgs.stdenv.cc.targetPrefix}cc'
-      export CXX='${pkgs.stdenv.cc}/bin/${pkgs.stdenv.cc.targetPrefix}c++'
-      $DRY_RUN_CMD ${lib.getExe config.programs.neovim.finalPackage} -c 'TSUpdateSync | q' --headless
     '';
   };
 }

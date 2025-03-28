@@ -5,7 +5,6 @@ let
 
   nixpkgsConfig = {
     overlays = [
-      inputs.neovim-nightly-overlay.overlays.default
       inputs.nifoc-overlay.overlay
     ];
 
