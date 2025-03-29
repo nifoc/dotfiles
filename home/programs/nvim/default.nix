@@ -53,7 +53,6 @@ in
       lua-language-server
       marksman
       nodePackages.dockerfile-language-server-nodejs
-      nodePackages.svelte-language-server
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.yaml-language-server
@@ -187,12 +186,6 @@ in
         }
 
         # LSP
-        {
-          plugin = nvim-lspconfig;
-          config = builtins.readFile ../../config/nvim/plugins/lsp.fnl;
-          type = "fennel";
-        }
-
         nvim-jdtls
 
         SchemaStore-nvim
@@ -299,6 +292,7 @@ in
       mkdir -p $out/lua/nifoc/utils
       mkdir -p $out/ftplugin
       mkdir -p $out/after/ftplugin
+      mkdir -p $out/lsp
 
       config_store_path="${../../config/nvim}"
       fennel="fennel --use-bit-lib --compile"
@@ -343,6 +337,17 @@ in
 
         echo "Compiling $fnlfile -> $out/after/$file_out_path"
         $fennel "$fnlfile" > "$out/after/$file_out_path"
+      done
+
+      # lsp 
+      lsp_store_path="$config_store_path/lsp"
+      lsp_store_fnl="$(find "$lsp_store_path" -type f -name '*.fnl')"
+
+      for fnlfile in $lsp_store_fnl; do
+        file_out_path="$(echo "$fnlfile" | sed "s|$lsp_store_path/||" | sed "s/.fnl$/.lua/")"
+
+        echo "Compiling $fnlfile -> $out/lsp/$file_out_path"
+        $fennel "$fnlfile" > "$out/lsp/$file_out_path"
       done
 
       # Plugins
