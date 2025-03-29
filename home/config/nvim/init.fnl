@@ -93,6 +93,7 @@
     (diagnostic.setup)
     (formatting.setup))
   (require :configuration.plugins)
+  (require :nifoc.lsp)
   ;; Keymap
   (let [keymap (require :nifoc.keymap)]
     (keymap.setup))

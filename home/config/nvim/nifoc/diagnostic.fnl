@@ -11,7 +11,8 @@
   (fn mod.setup []
     (vim.diagnostic.config {:underline true
                             :virtual_text false
-                            :signs true
+                            :virtual_lines false
+                            :signs false
                             :float {:border :rounded
                                     :source true
                                     :focusable false}
@@ -38,4 +39,3 @@
               :desc "Refresh Codelens"})))
 
   mod)
-
