@@ -385,7 +385,7 @@ in
         };
       };
 
-    activation.neovimCache = lib.hm.dag.entryAfter [ "linkGeneration" ] /* bash */ ''
+    activation.neovimCache = lib.hm.dag.entryAfter [ "writeBoundary" ] /* bash */ ''
       $VERBOSE_ECHO "Resetting loader"
       $DRY_RUN_CMD ${lib.getExe config.programs.neovim.finalPackage} -l <(echo "vim.loader.reset()")
     '';

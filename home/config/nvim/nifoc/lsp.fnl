@@ -30,7 +30,7 @@
   (vim.lsp.enable [:bashls
                    :cssls
                    :dockerls
-                   :erlang
+                   :erlangls
                    :fennel_ls
                    :html
                    :jsonls
