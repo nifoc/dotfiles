@@ -70,11 +70,18 @@ in
 
       merge = {
         conflictStyle = "zdiff3";
+
+        mergiraf = {
+          name = "mergiraf";
+          driver = "${lib.getExe pkgs.mergiraf} merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L";
+        };
       };
 
-      "merge \"mergiraf\"" = {
-        name = "mergiraf";
-        driver = "${lib.getExe pkgs.mergiraf} merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L";
+      mergetool = {
+        nixfmt = {
+          cmd = "${lib.getExe pkgs.nixfmt-rfc-style} --mergetool \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"";
+          trustExitCode = true;
+        };
       };
 
       rebase = {
