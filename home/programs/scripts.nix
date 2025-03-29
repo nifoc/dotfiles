@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 let
   inherit (pkgs.stdenv) isDarwin;
@@ -7,11 +12,14 @@ let
   user-bin-directory = "${config.home.homeDirectory}/.bin";
 in
 {
-  home.packages = with pkgs; [
-    nvd
-  ] ++ optionals isDarwin [
-    cliclick
-  ];
+  home.packages =
+    with pkgs;
+    [
+      nvd
+    ]
+    ++ optionals isDarwin [
+      cliclick
+    ];
 
   home.file."${user-bin-directory}" = {
     source = ./scripts;

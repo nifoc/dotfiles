@@ -23,7 +23,10 @@
           media-emoji-remote-max-size = "200KiB";
           media-remote-cache-days = 3;
 
-          instance-languages = [ "en" "de" ];
+          instance-languages = [
+            "en"
+            "de"
+          ];
           accounts-registration-open = false;
           landing-page-user = "daniel";
         };
@@ -63,7 +66,9 @@
                 };
               in
               {
-                "/" = gtsProxy // { proxyWebsockets = true; };
+                "/" = gtsProxy // {
+                  proxyWebsockets = true;
+                };
 
                 "~ /.well-known/(webfinger|host-meta)$" = gtsProxy // {
                   extraConfig = ''
@@ -108,7 +113,9 @@
                   '';
                 };
 
-                "@fileserver" = gtsProxy // { proxyWebsockets = true; };
+                "@fileserver" = gtsProxy // {
+                  proxyWebsockets = true;
+                };
               };
           };
 

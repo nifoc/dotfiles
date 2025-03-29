@@ -14,8 +14,15 @@
     supportedFilesystems = [ "zfs" ];
 
     initrd = {
-      availableKernelModules = [ "ata_piix" "uhci_hcd" "xen_blkfront" ];
-      kernelModules = [ "nvme" "tls" ];
+      availableKernelModules = [
+        "ata_piix"
+        "uhci_hcd"
+        "xen_blkfront"
+      ];
+      kernelModules = [
+        "nvme"
+        "tls"
+      ];
     };
 
     kernelModules = [ "tcp_bbr" ];

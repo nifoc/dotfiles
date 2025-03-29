@@ -15,7 +15,10 @@
       autoPrune = {
         enable = true;
         dates = "weekly";
-        flags = [ "--all" "--filter=label!=io.kempkens.keepImage" ];
+        flags = [
+          "--all"
+          "--filter=label!=io.kempkens.keepImage"
+        ];
       };
     };
 
@@ -25,8 +28,15 @@
   };
 
   networking.firewall.interfaces."podman+" = {
-    allowedUDPPorts = [ 53 443 ];
-    allowedTCPPorts = [ 53 443 5432 ];
+    allowedUDPPorts = [
+      53
+      443
+    ];
+    allowedTCPPorts = [
+      53
+      443
+      5432
+    ];
   };
 
   # It looks like there is no way to activate the "built-in" service and timer ...

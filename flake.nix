@@ -74,32 +74,69 @@
     };
   };
 
-  outputs = inputs@{ flake-parts, lix-module, deploy-rs, ... }:
+  outputs =
+    inputs@{
+      flake-parts,
+      lix-module,
+      deploy-rs,
+      ...
+    }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       flake =
         let
           Styx = import ./system/flakes/Styx.nix {
-            inherit (inputs) nixpkgs home-manager nix-darwin agenix mkalias nifoc-overlay;
+            inherit (inputs)
+              nixpkgs
+              home-manager
+              nix-darwin
+              agenix
+              mkalias
+              nifoc-overlay
+              ;
             inherit lix-module;
           };
 
           Pallas = import ./system/flakes/Pallas.nix {
-            inherit (inputs) nixpkgs home-manager nix-darwin agenix mkalias nifoc-overlay;
+            inherit (inputs)
+              nixpkgs
+              home-manager
+              nix-darwin
+              agenix
+              mkalias
+              nifoc-overlay
+              ;
             inherit lix-module;
           };
 
           tanker = import ./system/flakes/tanker.nix {
-            inherit (inputs) nixpkgs disko home-manager agenix;
+            inherit (inputs)
+              nixpkgs
+              disko
+              home-manager
+              agenix
+              ;
             inherit inputs;
           };
 
           carbon = import ./system/flakes/carbon.nix {
-            inherit (inputs) nixpkgs disko home-manager agenix nifoc-overlay;
+            inherit (inputs)
+              nixpkgs
+              disko
+              home-manager
+              agenix
+              nifoc-overlay
+              ;
             inherit lix-module;
           };
 
           boron = import ./system/flakes/boron.nix {
-            inherit (inputs) nixpkgs disko home-manager agenix nifoc-overlay;
+            inherit (inputs)
+              nixpkgs
+              disko
+              home-manager
+              agenix
+              nifoc-overlay
+              ;
             inherit lix-module;
           };
 
@@ -110,17 +147,35 @@
           };
 
           argon = import ./system/flakes/argon.nix {
-            inherit (inputs) nixpkgs nixos-hardware home-manager agenix nifoc-overlay;
+            inherit (inputs)
+              nixpkgs
+              nixos-hardware
+              home-manager
+              agenix
+              nifoc-overlay
+              ;
             inherit lix-module;
           };
 
           neon = import ./system/flakes/neon.nix {
-            inherit (inputs) nixpkgs nixos-hardware home-manager agenix nifoc-overlay;
+            inherit (inputs)
+              nixpkgs
+              nixos-hardware
+              home-manager
+              agenix
+              nifoc-overlay
+              ;
             inherit lix-module;
           };
 
           adsb-antenna = import ./system/flakes/adsb-antenna.nix {
-            inherit (inputs) nixpkgs nixos-hardware home-manager agenix nifoc-overlay;
+            inherit (inputs)
+              nixpkgs
+              nixos-hardware
+              home-manager
+              agenix
+              nifoc-overlay
+              ;
             inherit lix-module;
           };
         in
@@ -142,11 +197,14 @@
 
           deploy.nodes =
             let
-              mkDeployNixOsConfig = node: node.deployment // {
-                profiles.system = {
-                  path = deploy-rs.lib.${node.arch}.activate.nixos node.system;
+              mkDeployNixOsConfig =
+                node:
+                node.deployment
+                // {
+                  profiles.system = {
+                    path = deploy-rs.lib.${node.arch}.activate.nixos node.system;
+                  };
                 };
-              };
 
               # mkDeployMacOSConfig = node: node.deployment // {
               #   profiles.system = {
@@ -177,57 +235,65 @@
         "aarch64-linux"
       ];
 
-      perSystem = { config, pkgs, inputs', ... }: {
-        treefmt = {
-          inherit (config.flake-root) projectRootFile;
+      perSystem =
+        {
+          config,
+          pkgs,
+          inputs',
+          ...
+        }:
+        {
+          treefmt = {
+            inherit (config.flake-root) projectRootFile;
 
-          programs = {
-            fnlfmt.enable = true;
-            nixpkgs-fmt.enable = true;
-            shfmt.enable = true;
-            yamlfmt.enable = true;
-          };
-        };
-
-        pre-commit = {
-          settings = {
-            hooks = {
-              deadnix.enable = true;
-              shellcheck = {
-                enable = true;
-                excludes = [ "\\.envrc" ];
-              };
-              # statix.enable = true;
-              treefmt.enable = true;
+            programs = {
+              fnlfmt.enable = true;
+              just.enable = true;
+              nixfmt.enable = true;
+              shfmt.enable = true;
+              yamlfmt.enable = true;
             };
           };
+
+          pre-commit = {
+            settings = {
+              hooks = {
+                deadnix.enable = true;
+                shellcheck = {
+                  enable = true;
+                  excludes = [ "\\.envrc" ];
+                };
+                # statix.enable = true;
+                treefmt.enable = true;
+              };
+            };
+          };
+
+          devShells.default = pkgs.mkShell {
+            name = "dotfiles";
+
+            inputsFrom = [
+              config.flake-root.devShell
+              config.treefmt.build.devShell
+              config.pre-commit.devShell
+            ];
+
+            packages = [
+              inputs'.agenix.packages.agenix
+              inputs'.deploy-rs.packages.default
+              pkgs.just
+              pkgs.nix-output-monitor
+              (pkgs.octodns.withProviders (_: [ inputs'.nifoc-overlay.packages.octodns-ovh ]))
+            ];
+
+            TREEFMT_CONFIG_FILE = config.treefmt.build.configFile;
+            REMOTE_REPO_TYPE = "forgejo";
+          };
+
+          # Used for caching (in CI) only
+          packages = {
+            deploy-rs = inputs'.deploy-rs.packages.default;
+          };
         };
-
-        devShells.default = pkgs.mkShell {
-          name = "dotfiles";
-
-          inputsFrom = [
-            config.flake-root.devShell
-            config.treefmt.build.devShell
-            config.pre-commit.devShell
-          ];
-
-          packages = [
-            inputs'.agenix.packages.agenix
-            inputs'.deploy-rs.packages.default
-            pkgs.just
-            pkgs.nix-output-monitor
-            (pkgs.octodns.withProviders (_: [ inputs'.nifoc-overlay.packages.octodns-ovh ]))
-          ];
-
-          TREEFMT_CONFIG_FILE = config.treefmt.build.configFile;
-          REMOTE_REPO_TYPE = "forgejo";
-        };
-
-        # Used for caching (in CI) only
-        packages = {
-          deploy-rs = inputs'.deploy-rs.packages.default;
-        };
-      };
     };
 }

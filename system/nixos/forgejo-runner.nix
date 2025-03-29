@@ -1,4 +1,11 @@
-{ pkgs, config, name, tag, nixTag, ... }:
+{
+  pkgs,
+  config,
+  name,
+  tag,
+  nixTag,
+  ...
+}:
 
 # Based on: https://git.clan.lol/clan/clan-infra/src/branch/main/modules/web01/gitea/actions-runner.nix
 
@@ -38,7 +45,12 @@ in
       wantedBy = [ "multi-user.target" ];
       after = [ "podman.service" ];
       requires = [ "podman.service" ];
-      path = [ config.virtualisation.podman.package pkgs.gnutar pkgs.shadow pkgs.getent ];
+      path = [
+        config.virtualisation.podman.package
+        pkgs.gnutar
+        pkgs.shadow
+        pkgs.getent
+      ];
       script = ''
         set -eux -o pipefail
         mkdir -p etc/nix
@@ -131,7 +143,12 @@ in
           "~sethostname"
         ];
         SupplementaryGroups = [ "podman" ];
-        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" "AF_NETLINK" ];
+        RestrictAddressFamilies = [
+          "AF_INET"
+          "AF_INET6"
+          "AF_UNIX"
+          "AF_NETLINK"
+        ];
 
         # Needs network access
         PrivateNetwork = false;

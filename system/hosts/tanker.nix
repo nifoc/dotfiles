@@ -44,7 +44,10 @@ in
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       extra-platforms = [ "aarch64-linux" ];
 
       log-lines = 25;
@@ -163,7 +166,10 @@ in
 
   users.users = {
     root = {
-      openssh.authorizedKeys.keys = [ ssh-keys.Hetzner ssh-keys.BackupTanker ];
+      openssh.authorizedKeys.keys = [
+        ssh-keys.Hetzner
+        ssh-keys.BackupTanker
+      ];
     };
 
     daniel = {
@@ -173,7 +179,10 @@ in
       description = "Daniel";
       extraGroups = [ "wheel" ];
       shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [ ssh-keys.Hetzner ssh-keys.DanielsPhone ];
+      openssh.authorizedKeys.keys = [
+        ssh-keys.Hetzner
+        ssh-keys.DanielsPhone
+      ];
     };
   };
 }

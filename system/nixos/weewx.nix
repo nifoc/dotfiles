@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 let
   home = "/var/lib/weewx-weather";
@@ -15,9 +20,16 @@ in
     in
     {
       description = "WeeWX";
-      requires = [ "time-sync.target" "mosquitto.service" ];
+      requires = [
+        "time-sync.target"
+        "mosquitto.service"
+      ];
       bindsTo = mounts;
-      after = [ "network-online.target" "time-sync.target" "mosquitto.service" ] ++ mounts;
+      after = [
+        "network-online.target"
+        "time-sync.target"
+        "mosquitto.service"
+      ] ++ mounts;
       wants = [ "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
 
@@ -55,12 +67,20 @@ in
         ProtectKernelModules = true;
         ProtectKernelTunables = true;
         ProtectProc = "invisible";
-        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" ];
+        RestrictAddressFamilies = [
+          "AF_INET"
+          "AF_INET6"
+          "AF_UNIX"
+        ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
         SystemCallArchitectures = "native";
-        SystemCallFilter = [ "@system-service" "~@privileged" "~@resources" ];
+        SystemCallFilter = [
+          "@system-service"
+          "~@privileged"
+          "~@resources"
+        ];
       };
     };
 
@@ -85,7 +105,9 @@ in
     uid = 421;
   };
 
-  users.groups.weewx = { gid = 421; };
+  users.groups.weewx = {
+    gid = 421;
+  };
 
   fileSystems.weewx-data = {
     fsType = "overlay";

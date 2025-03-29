@@ -1,40 +1,49 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
-  targets.darwin.defaults."org.hammerspoon.Hammerspoon".MJConfigFile = "~/.config/hammerspoon/init.lua";
+  targets.darwin.defaults."org.hammerspoon.Hammerspoon".MJConfigFile =
+    "~/.config/hammerspoon/init.lua";
 
   xdg.configFile."hammerspoon" =
     let
-      programs = /* lua */ ''
-        local M = {
-          mosquitto_pub = \"${pkgs.mosquitto}/bin/mosquitto_pub\",
-        }
+      programs = # lua
+        ''
+          local M = {
+            mosquitto_pub = \"${pkgs.mosquitto}/bin/mosquitto_pub\",
+          }
 
-        return M
-      '';
+          return M
+        '';
     in
     {
-      source = pkgs.runCommand "hammerspoon-fennel-files"
-        {
-          nativeBuildInputs = with pkgs; [ lua54Packages.fennel ];
-        } ''
-        mkdir -p $out
+      source =
+        pkgs.runCommand "hammerspoon-fennel-files"
+          {
+            nativeBuildInputs = with pkgs; [ lua54Packages.fennel ];
+          }
+          ''
+            mkdir -p $out
 
-        config_store_path="${../config/hammerspoon}"
-        fennel="fennel --use-bit-lib --compile"
+            config_store_path="${../config/hammerspoon}"
+            fennel="fennel --use-bit-lib --compile"
 
-        echo "Using fennel command: $fennel"
+            echo "Using fennel command: $fennel"
 
-        # Change PWD to config directory
-        cd "$config_store_path"
+            # Change PWD to config directory
+            cd "$config_store_path"
 
-        echo "Writing programs.lua ..."
-        echo "${programs}" > "$out/programs.lua"
+            echo "Writing programs.lua ..."
+            echo "${programs}" > "$out/programs.lua"
 
-        # Config
-        echo "Compiling init.fnl ..."
-        $fennel "$config_store_path/init.fnl" > "$out/init.lua"
-      '';
+            # Config
+            echo "Compiling init.fnl ..."
+            $fennel "$config_store_path/init.fnl" > "$out/init.lua"
+          '';
       recursive = true;
     };
 
@@ -55,10 +64,12 @@
         };
       };
 
-    activation.hammerspoonReload = lib.hm.dag.entryAfter [ "setDarwinDefaults" ] /* bash */ ''
-      $VERBOSE_ECHO "Reloading Hammerspoon configuration"
+    activation.hammerspoonReload =
+      lib.hm.dag.entryAfter [ "setDarwinDefaults" ] # bash
+        ''
+          $VERBOSE_ECHO "Reloading Hammerspoon configuration"
 
-      $DRY_RUN_CMD /Applications/Hammerspoon.app/Contents/Frameworks/hs/hs -c 'hs.reload()' || true
-    '';
+          $DRY_RUN_CMD /Applications/Hammerspoon.app/Contents/Frameworks/hs/hs -c 'hs.reload()' || true
+        '';
   };
 }

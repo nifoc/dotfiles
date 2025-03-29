@@ -6,7 +6,11 @@
   boot = {
     kernelModules = [ "tcp_bbr" ];
 
-    blacklistedKernelModules = [ "rtl2832" "dvb_usb_rtl28xxu" "rtl2832_sdr" ];
+    blacklistedKernelModules = [
+      "rtl2832"
+      "dvb_usb_rtl28xxu"
+      "rtl2832_sdr"
+    ];
 
     kernel.sysctl = {
       "net.core.default_qdisc" = "fq";

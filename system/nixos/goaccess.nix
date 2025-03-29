@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 let
   inherit (pkgs) goaccess;
@@ -62,7 +67,10 @@ in
         ProtectKernelTunables = "yes";
         ProtectSystem = "strict";
         ReadOnlyPaths = [ "/var/log/nginx" ];
-        ReadWritePaths = [ "/proc/self" workingDir ];
+        ReadWritePaths = [
+          "/proc/self"
+          workingDir
+        ];
         StateDirectory = "goaccess";
         SystemCallFilter = "~@clock @cpu-emulation @debug @keyring @memlock @module @mount @obsolete @privileged @reboot @resources @setuid @swap @raw-io";
         WorkingDirectory = workingDir;

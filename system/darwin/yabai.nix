@@ -52,24 +52,28 @@ in
       focus_follows_mouse = "off";
     };
 
-    extraConfig = (lib.strings.concatMapStrings (app: "${yabai-bin} -m rule --add app='^${app}$' manage=off\n") unmanaged-apps) + ''
-      # App-specific rules
-      ${yabai-bin} -m rule --add app='^Finder$' title='daniel' grid=2:2:1:1:1:1
-      ${yabai-bin} -m rule --add app='^Mona$' title='Daniel' grid=1:4:0:0:1:1
+    extraConfig =
+      (lib.strings.concatMapStrings (
+        app: "${yabai-bin} -m rule --add app='^${app}$' manage=off\n"
+      ) unmanaged-apps)
+      + ''
+        # App-specific rules
+        ${yabai-bin} -m rule --add app='^Finder$' title='daniel' grid=2:2:1:1:1:1
+        ${yabai-bin} -m rule --add app='^Mona$' title='Daniel' grid=1:4:0:0:1:1
 
-      # Auto-float certain windows
-      ${yabai-bin} -m signal --add event=window_created action='
-        ${yabai-bin} -m query --windows --window $YABAI_WINDOW_ID | ${jq-bin} -er ".\"can-resize\" or .\"is-floating\"" || \
-        ${yabai-bin} -m window $YABAI_WINDOW_ID --toggle float
-      '
+        # Auto-float certain windows
+        ${yabai-bin} -m signal --add event=window_created action='
+          ${yabai-bin} -m query --windows --window $YABAI_WINDOW_ID | ${jq-bin} -er ".\"can-resize\" or .\"is-floating\"" || \
+          ${yabai-bin} -m window $YABAI_WINDOW_ID --toggle float
+        '
 
-      # Smart Gaps
-      ${yabai-bin} -m signal --add event=window_created action='${script-smart-padding}'
-      ${yabai-bin} -m signal --add event=window_destroyed action='${script-smart-padding}'
+        # Smart Gaps
+        ${yabai-bin} -m signal --add event=window_created action='${script-smart-padding}'
+        ${yabai-bin} -m signal --add event=window_destroyed action='${script-smart-padding}'
 
-      # Apply rules on startup/for existing windows
-      ${yabai-bin} -m rule --apply
-    '';
+        # Apply rules on startup/for existing windows
+        ${yabai-bin} -m rule --apply
+      '';
   };
 
   services.skhd.skhdConfig = ''

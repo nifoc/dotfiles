@@ -8,7 +8,6 @@ in
     settings = {
       analytics.reporting_enabled = false;
 
-
       server = {
         root_url = "https://${fqdn}";
         domain = fqdn;

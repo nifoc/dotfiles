@@ -3,7 +3,8 @@
 # Heavily inspired by the built-in firewall scripts, minus the nice interface
 
 let
-  writeShScript = name: text:
+  writeShScript =
+    name: text:
     let
       dir = pkgs.writeScriptBin name ''
         #! ${pkgs.runtimeShell} -e

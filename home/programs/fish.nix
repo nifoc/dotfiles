@@ -8,9 +8,11 @@ let
 in
 {
 
-  home.packages = with pkgs; optionals isDarwin [
-    terminal-notifier
-  ];
+  home.packages =
+    with pkgs;
+    optionals isDarwin [
+      terminal-notifier
+    ];
 
   programs.fish = {
     enable = true;
@@ -61,120 +63,132 @@ in
       }
     ];
 
-    shellAliases = {
-      upa = "nix flake update ~/.config/nixpkgs -v && upn";
-      ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
-      nsr = "sudo nix-store --verify --check-contents --repair";
+    shellAliases =
+      {
+        upa = "nix flake update ~/.config/nixpkgs -v && upn";
+        ngc = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
+        nsr = "sudo nix-store --verify --check-contents --repair";
 
-      la = "${lib.getExe pkgs.eza} --long --all --group --header --group-directories-first --sort=type --icons";
-      lg = "${lib.getExe pkgs.eza} --long --all --group --header --git";
-      lt = "${lib.getExe pkgs.eza} --long --all --group --header --tree --level ";
-    } // optionalAttrs isDarwin {
-      tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
-    };
+        la = "${lib.getExe pkgs.eza} --long --all --group --header --group-directories-first --sort=type --icons";
+        lg = "${lib.getExe pkgs.eza} --long --all --group --header --git";
+        lt = "${lib.getExe pkgs.eza} --long --all --group --header --tree --level ";
+      }
+      // optionalAttrs isDarwin {
+        tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
+      };
 
     functions = {
-      base64decode = /* fish */ ''
-        echo "$argv" | base64 --decode
-      '';
+      base64decode = # fish
+        ''
+          echo "$argv" | base64 --decode
+        '';
 
-      nrsw = /* fish */ ''
-        set -f os (uname)
-        set -f other_hostname $argv[1]
+      nrsw = # fish
+        ''
+          set -f os (uname)
+          set -f other_hostname $argv[1]
 
-        switch $os
-            case Darwin
-                set -f nix_hostname (scutil --get LocalHostName)
-                set -f config_dir "$HOME/.config/nixpkgs"
-            case Linux
-                set -f nix_hostname (hostname -s)
-                set -f config_dir /etc/nixos
-            case '*'
-                echo "Unsupported OS"
-                exit 1
-        end
+          switch $os
+              case Darwin
+                  set -f nix_hostname (scutil --get LocalHostName)
+                  set -f config_dir "$HOME/.config/nixpkgs"
+              case Linux
+                  set -f nix_hostname (hostname -s)
+                  set -f config_dir /etc/nixos
+              case '*'
+                  echo "Unsupported OS"
+                  exit 1
+          end
 
-        pushd "$config_dir"
-        rm -f result
+          pushd "$config_dir"
+          rm -f result
 
-        if test -z "$DIRENV_DIR"
-            eval (direnv export fish 2>/dev/null)
-        end
+          if test -z "$DIRENV_DIR"
+              eval (direnv export fish 2>/dev/null)
+          end
 
-        if test "$other_hostname" = ""
-            just deploy-local-machine "$nix_hostname"
-        else
-            just deploy-remote-machine "$other_hostname"
-        end
+          if test "$other_hostname" = ""
+              just deploy-local-machine "$nix_hostname"
+          else
+              just deploy-remote-machine "$other_hostname"
+          end
 
-        rm -f result
-        popd
-      '';
+          rm -f result
+          popd
+        '';
 
-      upn = /* fish */ ''
-        set -f os (uname)
+      upn = # fish
+        ''
+          set -f os (uname)
 
-        switch $os
-            case Darwin
-                $HOME/.config/nixpkgs/home/programs/nvim/update-plugins.sh
-            case Linux
-                /etc/nixos/home/programs/nvim/update-plugins.sh
-            case '*'
-                echo "Unsupported OS"
-                exit 1
-        end
-      '';
+          switch $os
+              case Darwin
+                  $HOME/.config/nixpkgs/home/programs/nvim/update-plugins.sh
+              case Linux
+                  /etc/nixos/home/programs/nvim/update-plugins.sh
+              case '*'
+                  echo "Unsupported OS"
+                  exit 1
+          end
+        '';
 
-      upp = /* fish */ ''
-        if not test -f ./.envrc; or rg --quiet '^use flake$' ./.envrc
-          nix flake update ./ -v
-        else
-          nix flake update (rg --no-line-number --color never '^use flake' ./.envrc | cut -d ' ' -f 3 | xargs -I {} sh -c 'echo {}') -v
-        end
-      '';
+      upp = # fish
+        ''
+          if not test -f ./.envrc; or rg --quiet '^use flake$' ./.envrc
+            nix flake update ./ -v
+          else
+            nix flake update (rg --no-line-number --color never '^use flake' ./.envrc | cut -d ' ' -f 3 | xargs -I {} sh -c 'echo {}') -v
+          end
+        '';
 
-      wezssh = /* fish */ ''
-        wezterm cli spawn --domain-name "SSH:$argv"
-      '';
+      wezssh = # fish
+        ''
+          wezterm cli spawn --domain-name "SSH:$argv"
+        '';
 
-      wget-browser = /* fish */ ''
-        set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
-        ${lib.getExe pkgs.wget} -U "$user_agent" $argv
-      '';
+      wget-browser = # fish
+        ''
+          set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
+          ${lib.getExe pkgs.wget} -U "$user_agent" $argv
+        '';
 
-      aria-browser = /* fish */ ''
-        set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
-        ${lib.getExe pkgs.aria2} -U "$user_agent" --file-allocation none --async-dns=false -x 2 $argv
-      '';
+      aria-browser = # fish
+        ''
+          set user_agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15"
+          ${lib.getExe pkgs.aria2} -U "$user_agent" --file-allocation none --async-dns=false -x 2 $argv
+        '';
 
-      macos-app-id = /* fish */ ''
-        osascript -e "id of app \"$argv\""
-      '';
+      macos-app-id = # fish
+        ''
+          osascript -e "id of app \"$argv\""
+        '';
     };
 
-    shellInit = /* fish */ ''
-      # Disable greeting
-      set fish_greeting
+    shellInit = # fish
+      ''
+        # Disable greeting
+        set fish_greeting
 
-      if test -d "$HOME/.bin"
-        set -gx PATH "$HOME/.bin" $PATH
-      end
-
-      # Custom Scripts
-      if test -d "$HOME/.config/fish/custom-scripts"
-        for custom_script in $HOME/.config/fish/custom-scripts/*.fish
-          source "$custom_script"
+        if test -d "$HOME/.bin"
+          set -gx PATH "$HOME/.bin" $PATH
         end
-      end
 
-      # Plugin: done
-      set -g __done_min_cmd_duration 10000
-    '';
+        # Custom Scripts
+        if test -d "$HOME/.config/fish/custom-scripts"
+          for custom_script in $HOME/.config/fish/custom-scripts/*.fish
+            source "$custom_script"
+          end
+        end
 
-    interactiveShellInit = /* fish */ ''
-      # Set feature flags
-      set fish_features ampersand-nobg-in-token qmark-noglob
-    '';
+        # Plugin: done
+        set -g __done_min_cmd_duration 10000
+      '';
+
+    interactiveShellInit = # fish
+      ''
+        # Set feature flags
+        set fish_features ampersand-nobg-in-token qmark-noglob
+      '';
   };
 
   xdg.configFile."fish/conf.d" = {

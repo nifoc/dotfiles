@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 let
   inherit (lib) mkIf;
@@ -103,9 +108,13 @@ in
 
       maintenance = mkIf isDarwin {
         strategy = "incremental";
-        repo = let home = config.home.homeDirectory; in [
-          "${home}/.config/nixpkgs"
-        ];
+        repo =
+          let
+            home = config.home.homeDirectory;
+          in
+          [
+            "${home}/.config/nixpkgs"
+          ];
       };
     };
 
@@ -254,38 +263,45 @@ in
       gitExecPath = "${config.programs.git.package}/libexec/git-core";
       git = "${gitExecPath}/git";
 
-      calendarInterval = schedule:
+      calendarInterval =
+        schedule:
         let
           freq = {
-            "hourly" = [{ Minute = 0; }];
-            "daily" = [{
-              Hour = 0;
-              Minute = 0;
-            }];
-            "weekly" = [{
-              Weekday = 1;
-              Hour = 0;
-              Minute = 0;
-            }];
+            "hourly" = [ { Minute = 0; } ];
+            "daily" = [
+              {
+                Hour = 0;
+                Minute = 0;
+              }
+            ];
+            "weekly" = [
+              {
+                Weekday = 1;
+                Hour = 0;
+                Minute = 0;
+              }
+            ];
           };
         in
         freq.${schedule};
 
-      launchdAgent = { schedule }: {
-        enable = true;
-        config = {
-          ProgramArguments = [
-            git
-            "--exec-path=${gitExecPath}"
-            "for-each-repo"
-            "--config=maintenance.repo"
-            "maintenance"
-            "run"
-            "--schedule=${schedule}"
-          ];
-          StartCalendarInterval = calendarInterval schedule;
+      launchdAgent =
+        { schedule }:
+        {
+          enable = true;
+          config = {
+            ProgramArguments = [
+              git
+              "--exec-path=${gitExecPath}"
+              "for-each-repo"
+              "--config=maintenance.repo"
+              "maintenance"
+              "run"
+              "--schedule=${schedule}"
+            ];
+            StartCalendarInterval = calendarInterval schedule;
+          };
         };
-      };
     in
     {
       git-maintenance-hourly = launchdAgent { schedule = "hourly"; };

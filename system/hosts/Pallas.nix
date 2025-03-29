@@ -19,7 +19,10 @@ in
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       extra-platforms = [ "x86_64-darwin" ];
 
       log-lines = 25;
@@ -78,7 +81,11 @@ in
 
     gc = {
       automatic = true;
-      interval = { Weekday = 0; Hour = 3; Minute = 15; };
+      interval = {
+        Weekday = 0;
+        Hour = 3;
+        Minute = 15;
+      };
     };
   };
 

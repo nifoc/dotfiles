@@ -1,4 +1,11 @@
-{ nixpkgs, lix-module, home-manager, agenix, inputs, ... }:
+{
+  nixpkgs,
+  lix-module,
+  home-manager,
+  agenix,
+  inputs,
+  ...
+}:
 
 let
   default-system = "x86_64-linux";
@@ -25,7 +32,10 @@ in
       {
         nixpkgs = nixpkgsConfig;
         nix = {
-          registry.nixpkgs.to = { type = "path"; path = nixpkgs.outPath; };
+          registry.nixpkgs.to = {
+            type = "path";
+            path = nixpkgs.outPath;
+          };
           nixPath = nixpkgs.lib.mkForce [ "nixpkgs=flake:nixpkgs" ];
         };
       }

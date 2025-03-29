@@ -57,7 +57,10 @@ in
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
 
       log-lines = 25;
       auto-optimise-store = true;
@@ -166,7 +169,10 @@ in
       description = "Daniel";
       extraGroups = [ "wheel" ];
       shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [ ssh-keys.LAN ssh-keys.DanielsPhone ];
+      openssh.authorizedKeys.keys = [
+        ssh-keys.LAN
+        ssh-keys.DanielsPhone
+      ];
     };
 
     nix-remote-builder = {

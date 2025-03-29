@@ -22,7 +22,10 @@ in
           x_forwarded = true;
           resources = [
             {
-              names = [ "client" "federation" ];
+              names = [
+                "client"
+                "federation"
+              ];
               compress = false;
             }
           ];
@@ -41,11 +44,31 @@ in
       };
 
       thumbnail_sizes = [
-        { width = 32; height = 32; method = "crop"; }
-        { width = 96; height = 96; method = "crop"; }
-        { width = 320; height = 240; method = "scale"; }
-        { width = 640; height = 480; method = "scale"; }
-        { width = 800; height = 600; method = "scale"; }
+        {
+          width = 32;
+          height = 32;
+          method = "crop";
+        }
+        {
+          width = 96;
+          height = 96;
+          method = "crop";
+        }
+        {
+          width = 320;
+          height = 240;
+          method = "scale";
+        }
+        {
+          width = 640;
+          height = 480;
+          method = "scale";
+        }
+        {
+          width = 800;
+          height = 600;
+          method = "scale";
+        }
       ];
 
       url_preview_enabled = true;

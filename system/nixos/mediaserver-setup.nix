@@ -16,7 +16,10 @@
   };
 
   boot.supportedFilesystems = [ "nfs" ];
-  environment.systemPackages = with pkgs; [ cifs-utils nfs-utils ];
+  environment.systemPackages = with pkgs; [
+    cifs-utils
+    nfs-utils
+  ];
   services.rpcbind.enable = true;
 
   systemd = {

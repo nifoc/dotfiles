@@ -33,7 +33,14 @@ in
     ../nixos/fedifetcher.nix
 
     ../nixos/forgejo.nix
-    (import ../nixos/forgejo-runner.nix (args // { name = "carbon"; tag = "ubuntu-latest-arm64"; nixTag = "arm64"; }))
+    (import ../nixos/forgejo-runner.nix (
+      args
+      // {
+        name = "carbon";
+        tag = "ubuntu-latest-arm64";
+        nixTag = "arm64";
+      }
+    ))
 
     ../nixos/gotosocial.nix
 
@@ -51,7 +58,10 @@ in
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
 
       log-lines = 25;
       auto-optimise-store = true;
@@ -178,7 +188,10 @@ in
       description = "Daniel";
       extraGroups = [ "wheel" ];
       shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [ ssh-keys.Hetzner ssh-keys.DanielsPhone ];
+      openssh.authorizedKeys.keys = [
+        ssh-keys.Hetzner
+        ssh-keys.DanielsPhone
+      ];
     };
 
     nix-remote-builder = {
@@ -190,4 +203,3 @@ in
     };
   };
 }
-

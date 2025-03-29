@@ -10,13 +10,41 @@ let
   system-neon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5Ht4KaRUvuGFmYLznTkVSnn6isjrcVplz1kKWkrnRQ";
   syetsm-adsb-antenna = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBkjUSiku9spAlFkZ1T1IvyToE/yF1HUAjDxxH1dKKAv";
 
-  tanker = [ user-daniel-Styx user-daniel-Pallas system-tanker ];
-  carbon = [ user-daniel-Styx user-daniel-Pallas system-carbon ];
-  boron = [ user-daniel-Styx user-daniel-Pallas system-boron ];
-  mediaserver = [ user-daniel-Styx user-daniel-Pallas system-mediaserver ];
-  argon = [ user-daniel-Styx user-daniel-Pallas system-argon ];
-  neon = [ user-daniel-Styx user-daniel-Pallas system-neon ];
-  adsb-antenna = [ user-daniel-Styx user-daniel-Pallas syetsm-adsb-antenna ];
+  tanker = [
+    user-daniel-Styx
+    user-daniel-Pallas
+    system-tanker
+  ];
+  carbon = [
+    user-daniel-Styx
+    user-daniel-Pallas
+    system-carbon
+  ];
+  boron = [
+    user-daniel-Styx
+    user-daniel-Pallas
+    system-boron
+  ];
+  mediaserver = [
+    user-daniel-Styx
+    user-daniel-Pallas
+    system-mediaserver
+  ];
+  argon = [
+    user-daniel-Styx
+    user-daniel-Pallas
+    system-argon
+  ];
+  neon = [
+    user-daniel-Styx
+    user-daniel-Pallas
+    system-neon
+  ];
+  adsb-antenna = [
+    user-daniel-Styx
+    user-daniel-Pallas
+    syetsm-adsb-antenna
+  ];
   all-systems = [
     user-daniel-Styx
     user-daniel-Pallas
@@ -103,7 +131,7 @@ in
 
   "agenix/hosts/carbon/vaultwarden/config.age".publicKeys = carbon;
 
-  # boron 
+  # boron
   "agenix/hosts/boron/user/danielPassword.age".publicKeys = boron;
 
   "agenix/hosts/boron/acme/credentials.age".publicKeys = boron;
@@ -165,7 +193,7 @@ in
 
   "agenix/hosts/argon/weewx-proxy/environment.age".publicKeys = argon;
 
-  # neon 
+  # neon
   "agenix/hosts/neon/user/danielPassword.age".publicKeys = neon;
 
   "agenix/hosts/neon/tailscale/authkey.age".publicKeys = neon;
@@ -186,8 +214,14 @@ in
   "agenix/hosts/adsb-antenna/container/adsb-environment.age".publicKeys = adsb-antenna;
 
   # Styx
-  "agenix/hosts/Styx/git/maintenance.age".publicKeys = [ user-daniel-Styx user-daniel-Pallas ];
+  "agenix/hosts/Styx/git/maintenance.age".publicKeys = [
+    user-daniel-Styx
+    user-daniel-Pallas
+  ];
 
   # Pallas
-  "agenix/hosts/Pallas/git/maintenance.age".publicKeys = [ user-daniel-Pallas user-daniel-Styx ];
+  "agenix/hosts/Pallas/git/maintenance.age".publicKeys = [
+    user-daniel-Pallas
+    user-daniel-Styx
+  ];
 }

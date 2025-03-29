@@ -19,9 +19,18 @@
   };
 
   networking.firewall.interfaces."end0" = {
-    allowedTCPPorts = [ 5353 8581 51789 ];
+    allowedTCPPorts = [
+      5353
+      8581
+      51789
+    ];
     allowedUDPPorts = [ 5353 ];
 
-    allowedTCPPortRanges = [{ from = 52100; to = 52150; }];
+    allowedTCPPortRanges = [
+      {
+        from = 52100;
+        to = 52150;
+      }
+    ];
   };
 }

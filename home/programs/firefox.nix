@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 let
   profileName = "daniel";
@@ -8,7 +13,8 @@ let
     "browser.newtabpage.activity-stream.showSponsored" = false;
     "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
 
-    "geo.provider.network.url" = "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
+    "geo.provider.network.url" =
+      "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
 
     "extensions.getAddons.showPane" = false;
     "extensions.htmlaboutaddons.recommendations.enabled" = false;
@@ -42,7 +48,8 @@ let
     "browser.tabs.crashReporting.sendReport" = false;
     "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
 
-    "extensions.blocklist.url" = "https://blocklist.addons.mozilla.org/blocklist/3/%APP_ID%/%APP_VERSION%/";
+    "extensions.blocklist.url" =
+      "https://blocklist.addons.mozilla.org/blocklist/3/%APP_ID%/%APP_VERSION%/";
 
     "network.prefetch-next" = false;
     "network.dns.disablePrefetch" = true;
@@ -166,18 +173,19 @@ in
     let
       fullProfilePath = "Library/Application Support/Firefox/Profiles/${profileName}";
 
-      userPrefValue = pref:
-        builtins.toJSON (if lib.isBool pref || lib.isInt pref || lib.isString pref then
-          pref
-        else
-          builtins.toJSON pref);
+      userPrefValue =
+        pref:
+        builtins.toJSON (
+          if lib.isBool pref || lib.isInt pref || lib.isString pref then pref else builtins.toJSON pref
+        );
 
-      mkUserJs = prefs:
-        ''
-          ${lib.concatStrings (lib.mapAttrsToList (name: value: ''
+      mkUserJs = prefs: ''
+        ${lib.concatStrings (
+          lib.mapAttrsToList (name: value: ''
             user_pref("${name}", ${userPrefValue value});
-          '') prefs)}
-        '';
+          '') prefs
+        )}
+      '';
     in
     {
       "${fullProfilePath}/user.js".text = mkUserJs settings;
@@ -188,7 +196,8 @@ in
       wezterm = "${pkgs.wezterm}/bin/wezterm";
       nvim = "${config.programs.neovim.finalPackage}/bin/nvim";
     in
-      /* vim */ ''
+    # vim
+    ''
       set editorcmd ${wezterm} -e ${nvim}
 
       set smoothscroll true

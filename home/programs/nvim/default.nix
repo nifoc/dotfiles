@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 let
   inherit (pkgs.stdenv) isDarwin;
@@ -14,76 +19,85 @@ in
     withRuby = false;
     withPython3 = false;
 
-    extraLuaPackages = luaPkgs: with luaPkgs; [ lua-toml readline ];
+    extraLuaPackages =
+      luaPkgs: with luaPkgs; [
+        lua-toml
+        readline
+      ];
 
-    extraPackages = with pkgs; [
-      stdenv.cc
+    extraPackages =
+      with pkgs;
+      [
+        stdenv.cc
 
-      git
-      delta
-      nodejs
-      tree-sitter
-      fd
-      ripgrep
-      ast-grep
-      universal-ctags
-      fzf
-      chafa
+        git
+        delta
+        nodejs
+        tree-sitter
+        fd
+        ripgrep
+        ast-grep
+        universal-ctags
+        fzf
+        chafa
 
-      # LSP
-      bash-language-server
-      fennel-ls
-      nil
-      #nixd
-      taplo-lsp
+        # LSP
+        bash-language-server
+        fennel-ls
+        nil
+        #nixd
+        taplo-lsp
 
-      # Tools
-      checkstyle
-      deadnix
-      nodePackages.eslint_d
-      hadolint
-      luajitPackages.fennel
-      nixpkgs-fmt
-      shellcheck
-      statix
-    ] ++ optionals isDarwin [
-      # LSP
-      #elixir-ls
-      lexical
-      lua-language-server
-      marksman
-      nodePackages.dockerfile-language-server-nodejs
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
-      nodePackages.yaml-language-server
+        # Tools
+        checkstyle
+        deadnix
+        nodePackages.eslint_d
+        hadolint
+        luajitPackages.fennel
+        nixfmt-rfc-style
+        shellcheck
+        statix
+      ]
+      ++ optionals isDarwin [
+        # LSP
+        #elixir-ls
+        lexical
+        lua-language-server
+        marksman
+        nodePackages.dockerfile-language-server-nodejs
+        nodePackages.typescript-language-server
+        nodePackages.vscode-langservers-extracted
+        nodePackages.yaml-language-server
 
-      # Tools
-      curl
-      openapi-tui
-      serie
-      serpl
+        # Tools
+        curl
+        openapi-tui
+        serie
+        serpl
 
-      # Other
-      xcbuild
-    ];
+        # Other
+        xcbuild
+      ];
 
-    extraLuaConfig = /* lua */ ''
-      vim.loader.enable()
+    extraLuaConfig = # lua
+      ''
+        vim.loader.enable()
 
-      _G.nifoc_default_shell = '${pkgs.zsh.outPath}/bin/zsh'
-      _G.nvim_treesitter_parser_directory = os.getenv("HOME") .. "/.local/share/nvim/nvim-treesitter_parser"
+        _G.nifoc_default_shell = '${pkgs.zsh.outPath}/bin/zsh'
+        _G.nvim_treesitter_parser_directory = os.getenv("HOME") .. "/.local/share/nvim/nvim-treesitter_parser"
 
-      -- vim.opt.runtimepath:prepend(_G.nvim_treesitter_parser_directory)
+        -- vim.opt.runtimepath:prepend(_G.nvim_treesitter_parser_directory)
 
-      require('nifoc.nix')
-      require('configuration.init')
-    '';
+        require('nifoc.nix')
+        require('configuration.init')
+      '';
 
     plugins =
       let
         customPlugins = import ./plugins.nix { inherit pkgs lib; };
       in
-      with pkgs.vimPlugins; [
+      with pkgs.vimPlugins;
+      [
         # Utils
         popup-nvim
         plenary-nvim
@@ -238,10 +252,11 @@ in
 
         {
           plugin = virt-column-nvim;
-          config = /* fennel */ ''
-            (let [virt-column (require :virt-column)]
-              (virt-column.setup))
-          '';
+          config = # fennel
+            ''
+              (let [virt-column (require :virt-column)]
+                (virt-column.setup))
+            '';
           type = "fennel";
         }
 
@@ -274,7 +289,8 @@ in
           config = builtins.readFile ../../config/nvim/plugins/diffview.fnl;
           type = "fennel";
         }
-      ] ++ optionals isDarwin [
+      ]
+      ++ optionals isDarwin [
         {
           plugin = supermaven-nvim;
           config = builtins.readFile ../../config/nvim/plugins/supermaven.fnl;
@@ -284,87 +300,89 @@ in
   };
 
   xdg.configFile."nvim" = {
-    source = pkgs.runCommand "nvim-fennel-files"
-      {
-        nativeBuildInputs = with pkgs; [ luajitPackages.fennel ];
-      } ''
-      mkdir -p $out/lua/configuration
-      mkdir -p $out/lua/nifoc/utils
-      mkdir -p $out/ftplugin
-      mkdir -p $out/after/ftplugin
-      mkdir -p $out/lsp
+    source =
+      pkgs.runCommand "nvim-fennel-files"
+        {
+          nativeBuildInputs = with pkgs; [ luajitPackages.fennel ];
+        }
+        ''
+          mkdir -p $out/lua/configuration
+          mkdir -p $out/lua/nifoc/utils
+          mkdir -p $out/ftplugin
+          mkdir -p $out/after/ftplugin
+          mkdir -p $out/lsp
 
-      config_store_path="${../../config/nvim}"
-      fennel="fennel --use-bit-lib --compile"
+          config_store_path="${../../config/nvim}"
+          fennel="fennel --use-bit-lib --compile"
 
-      echo "Using fennel command: $fennel"
+          echo "Using fennel command: $fennel"
 
-      # Change PWD to config directory
-      cd "$config_store_path"
+          # Change PWD to config directory
+          cd "$config_store_path"
 
-      # Init
-      echo "Compiling init.fnl ..."
-      $fennel "$config_store_path/init.fnl" > "$out/lua/configuration/init.lua"
+          # Init
+          echo "Compiling init.fnl ..."
+          $fennel "$config_store_path/init.fnl" > "$out/lua/configuration/init.lua"
 
-      # Utils
-      nifoc_store_path="$config_store_path/nifoc"
-      nifoc_store_fnl="$(find "$nifoc_store_path" -type f -name '*.fnl')"
+          # Utils
+          nifoc_store_path="$config_store_path/nifoc"
+          nifoc_store_fnl="$(find "$nifoc_store_path" -type f -name '*.fnl')"
 
-      for fnlfile in $nifoc_store_fnl; do
-        file_out_path="$(echo "$fnlfile" | sed "s|$nifoc_store_path/||" | sed "s/.fnl$/.lua/")"
+          for fnlfile in $nifoc_store_fnl; do
+            file_out_path="$(echo "$fnlfile" | sed "s|$nifoc_store_path/||" | sed "s/.fnl$/.lua/")"
 
-        echo "Compiling $fnlfile -> $out/lua/nifoc/$file_out_path"
-        $fennel "$fnlfile" > "$out/lua/nifoc/$file_out_path"
-      done
+            echo "Compiling $fnlfile -> $out/lua/nifoc/$file_out_path"
+            $fennel "$fnlfile" > "$out/lua/nifoc/$file_out_path"
+          done
 
-      # ftplugin
-      ftplugin_store_path="$config_store_path/ftplugin"
-      ftplugin_store_fnl="$(find "$ftplugin_store_path" -type f -name '*.fnl')"
+          # ftplugin
+          ftplugin_store_path="$config_store_path/ftplugin"
+          ftplugin_store_fnl="$(find "$ftplugin_store_path" -type f -name '*.fnl')"
 
-      for fnlfile in $ftplugin_store_fnl; do
-        file_out_path="$(echo "$fnlfile" | sed "s|$ftplugin_store_path/||" | sed "s/.fnl$/.lua/")"
+          for fnlfile in $ftplugin_store_fnl; do
+            file_out_path="$(echo "$fnlfile" | sed "s|$ftplugin_store_path/||" | sed "s/.fnl$/.lua/")"
 
-        echo "Compiling $fnlfile -> $out/ftplugin/$file_out_path"
-        $fennel "$fnlfile" > "$out/ftplugin/$file_out_path"
-      done
+            echo "Compiling $fnlfile -> $out/ftplugin/$file_out_path"
+            $fennel "$fnlfile" > "$out/ftplugin/$file_out_path"
+          done
 
-      # After
-      after_store_path="$config_store_path/after"
-      after_store_fnl="$(find "$after_store_path" -type f -name '*.fnl')"
+          # After
+          after_store_path="$config_store_path/after"
+          after_store_fnl="$(find "$after_store_path" -type f -name '*.fnl')"
 
-      for fnlfile in $after_store_fnl; do
-        file_out_path="$(echo "$fnlfile" | sed "s|$after_store_path/||" | sed "s/.fnl$/.lua/")"
+          for fnlfile in $after_store_fnl; do
+            file_out_path="$(echo "$fnlfile" | sed "s|$after_store_path/||" | sed "s/.fnl$/.lua/")"
 
-        echo "Compiling $fnlfile -> $out/after/$file_out_path"
-        $fennel "$fnlfile" > "$out/after/$file_out_path"
-      done
+            echo "Compiling $fnlfile -> $out/after/$file_out_path"
+            $fennel "$fnlfile" > "$out/after/$file_out_path"
+          done
 
-      # lsp 
-      lsp_store_path="$config_store_path/lsp"
-      lsp_store_fnl="$(find "$lsp_store_path" -type f -name '*.fnl')"
+          # lsp 
+          lsp_store_path="$config_store_path/lsp"
+          lsp_store_fnl="$(find "$lsp_store_path" -type f -name '*.fnl')"
 
-      for fnlfile in $lsp_store_fnl; do
-        file_out_path="$(echo "$fnlfile" | sed "s|$lsp_store_path/||" | sed "s/.fnl$/.lua/")"
+          for fnlfile in $lsp_store_fnl; do
+            file_out_path="$(echo "$fnlfile" | sed "s|$lsp_store_path/||" | sed "s/.fnl$/.lua/")"
 
-        echo "Compiling $fnlfile -> $out/lsp/$file_out_path"
-        $fennel "$fnlfile" > "$out/lsp/$file_out_path"
-      done
+            echo "Compiling $fnlfile -> $out/lsp/$file_out_path"
+            $fennel "$fnlfile" > "$out/lsp/$file_out_path"
+          done
 
-      # Plugins
-      echo "Compiling plugin configuration ..."
-      {
-      cat <<EOF
-      ${config.programs.neovim.generatedConfigs.fennel}
-      nil
-      EOF
-      } > "$out/lua/configuration/plugins.fnl"
-      $fennel "$out/lua/configuration/plugins.fnl" > "$out/lua/configuration/plugins.lua"
-      rm -f "$out/lua/configuration/plugins.fnl"
+          # Plugins
+          echo "Compiling plugin configuration ..."
+          {
+          cat <<EOF
+          ${config.programs.neovim.generatedConfigs.fennel}
+          nil
+          EOF
+          } > "$out/lua/configuration/plugins.fnl"
+          $fennel "$out/lua/configuration/plugins.fnl" > "$out/lua/configuration/plugins.lua"
+          rm -f "$out/lua/configuration/plugins.fnl"
 
-      # Other
-      echo "Copying tree-sitter queries ..."
-      cp -r "$after_store_path/queries" "$out/after/"
-    '';
+          # Other
+          echo "Copying tree-sitter queries ..."
+          cp -r "$after_store_path/queries" "$out/after/"
+        '';
     recursive = true;
   };
 
@@ -385,9 +403,11 @@ in
         };
       };
 
-    activation.neovimCache = lib.hm.dag.entryAfter [ "writeBoundary" ] /* bash */ ''
-      $VERBOSE_ECHO "Resetting loader"
-      $DRY_RUN_CMD ${lib.getExe config.programs.neovim.finalPackage} -l <(echo "vim.loader.reset()")
-    '';
+    activation.neovimCache =
+      lib.hm.dag.entryAfter [ "writeBoundary" ] # bash
+        ''
+          $VERBOSE_ECHO "Resetting loader"
+          $DRY_RUN_CMD ${lib.getExe config.programs.neovim.finalPackage} -l <(echo "vim.loader.reset()")
+        '';
   };
 }

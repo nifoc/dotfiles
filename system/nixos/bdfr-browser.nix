@@ -9,8 +9,14 @@ in
   systemd.services.bdfr-browser = {
     description = "A crude BDFR browser UI";
     wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" "postgresql.service" ];
-    path = with pkgs; [ busybox inotify-tools ];
+    after = [
+      "network.target"
+      "postgresql.service"
+    ];
+    path = with pkgs; [
+      busybox
+      inotify-tools
+    ];
     serviceConfig = {
       DynamicUser = true;
       StateDirectory = "bdfr-browser";

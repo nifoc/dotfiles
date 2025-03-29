@@ -48,12 +48,21 @@
 
           weewx = {
             hashedPasswordFile = config.age.secrets.mosquitto-password-weewx.path;
-            acl = [ "read weewx/+" "write weather/+" ];
+            acl = [
+              "read weewx/+"
+              "write weather/+"
+            ];
           };
 
           weewx-proxy = {
             hashedPasswordFile = config.age.secrets.mosquitto-password-weewx-proxy.path;
-            acl = [ "read rtl433" "read deye/#" "read bitshake/#" "write hadata/#" "write weewx/+" ];
+            acl = [
+              "read rtl433"
+              "read deye/#"
+              "read bitshake/#"
+              "write hadata/#"
+              "write weewx/+"
+            ];
           };
 
           home-assistant = {
@@ -65,13 +74,21 @@
     ];
 
     bridges.home-assistant = {
-      addresses = [{ address = "10.0.0.230"; port = 1883; }];
+      addresses = [
+        {
+          address = "10.0.0.230";
+          port = 1883;
+        }
+      ];
       settings = {
         remote_username = "mqtt_bridge";
         remote_password = "verySecurePassword";
         try_private = true;
       };
-      topics = [ "hadata/# out" "deye/# out" ];
+      topics = [
+        "hadata/# out"
+        "deye/# out"
+      ];
     };
   };
 

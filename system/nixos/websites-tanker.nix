@@ -14,7 +14,10 @@ let
       fetchSubmodules = true;
     };
 
-    nativeBuildInputs = with pkgs; [ brotli hugo ];
+    nativeBuildInputs = with pkgs; [
+      brotli
+      hugo
+    ];
 
     installPhase = ''
       mkdir $out
@@ -43,7 +46,10 @@ let
       fetchSubmodules = true;
     };
 
-    nativeBuildInputs = with pkgs; [ brotli hugo ];
+    nativeBuildInputs = with pkgs; [
+      brotli
+      hugo
+    ];
 
     installPhase = ''
       mkdir $out
@@ -87,92 +93,102 @@ let
 in
 {
   services.nginx = {
-    virtualHosts = {
-      # kempkens.io
-      "kempkens.io" = {
-        quic = true;
-        http3 = true;
-        kTLS = true;
-
-        root = "${kempkens-io}/public";
-        forceSSL = true;
-        useACMEHost = "kempkens.io";
-
-        extraConfig = ''
-          add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-          add_header X-Frame-Options DENY;
-          add_header X-XSS-Protection "1; mode=block";
-          add_header X-Content-Type-Options nosniff;
-          add_header Referrer-Policy no-referrer;
-          add_header Content-Security-Policy "default-src 'none'; manifest-src https://kempkens.io; script-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'";
-        '';
-
-        locations = {
-          "/id".return = "307 https://keyoxide.org/028BCE9BABB5145AAAA1FB8410BE1D47E5ADFF92";
-          "/.well-known/host-meta".return = "301 https://mastodon.kempkens.io/.well-known/host-meta";
-          "/.well-known/webfinger".return = "301 https://mastodon.kempkens.io$request_uri";
-
-          "/.well-known/matrix/server".extraConfig = ''
-            default_type application/json;
-          '';
-
-          "/.well-known/matrix/client".extraConfig = ''
-            default_type application/json;
-          '';
-        };
-      };
-
-      "www.kempkens.io" = {
-        quic = true;
-        http3 = true;
-
-        addSSL = true;
-        useACMEHost = "kempkens.io";
-
-        extraConfig = ''
-          add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-        '';
-
-        globalRedirect = "kempkens.io";
-      };
-
-      # blog.kempkens.io
-      "blog.kempkens.io" = {
-        quic = true;
-        http3 = true;
-        kTLS = true;
-
-        root = "${blog-kempkens-io}/public";
-        forceSSL = true;
-        useACMEHost = "kempkens.io";
-
-        extraConfig = ''
-          add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-          add_header X-Frame-Options DENY;
-          add_header X-XSS-Protection "1; mode=block";
-          add_header X-Content-Type-Options nosniff;
-          add_header Referrer-Policy no-referrer;
-          add_header Content-Security-Policy "default-src 'none'; manifest-src https://blog.kempkens.io; script-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'";
-        '';
-      };
-    } // builtins.listToAttrs (builtins.map
-      # Documentation
-      (domain: {
-        name = domain;
-        value = {
+    virtualHosts =
+      {
+        # kempkens.io
+        "kempkens.io" = {
           quic = true;
           http3 = true;
           kTLS = true;
 
-          root = "${docs-nifoc-pw}/site/${domain}";
+          root = "${kempkens-io}/public";
           forceSSL = true;
-          useACMEHost = "nifoc.pw";
+          useACMEHost = "kempkens.io";
 
           extraConfig = ''
-            autoindex on;
-            autoindex_format html;
+            add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+            add_header X-Frame-Options DENY;
+            add_header X-XSS-Protection "1; mode=block";
+            add_header X-Content-Type-Options nosniff;
+            add_header Referrer-Policy no-referrer;
+            add_header Content-Security-Policy "default-src 'none'; manifest-src https://kempkens.io; script-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'";
+          '';
+
+          locations = {
+            "/id".return = "307 https://keyoxide.org/028BCE9BABB5145AAAA1FB8410BE1D47E5ADFF92";
+            "/.well-known/host-meta".return = "301 https://mastodon.kempkens.io/.well-known/host-meta";
+            "/.well-known/webfinger".return = "301 https://mastodon.kempkens.io$request_uri";
+
+            "/.well-known/matrix/server".extraConfig = ''
+              default_type application/json;
+            '';
+
+            "/.well-known/matrix/client".extraConfig = ''
+              default_type application/json;
+            '';
+          };
+        };
+
+        "www.kempkens.io" = {
+          quic = true;
+          http3 = true;
+
+          addSSL = true;
+          useACMEHost = "kempkens.io";
+
+          extraConfig = ''
+            add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+          '';
+
+          globalRedirect = "kempkens.io";
+        };
+
+        # blog.kempkens.io
+        "blog.kempkens.io" = {
+          quic = true;
+          http3 = true;
+          kTLS = true;
+
+          root = "${blog-kempkens-io}/public";
+          forceSSL = true;
+          useACMEHost = "kempkens.io";
+
+          extraConfig = ''
+            add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+            add_header X-Frame-Options DENY;
+            add_header X-XSS-Protection "1; mode=block";
+            add_header X-Content-Type-Options nosniff;
+            add_header Referrer-Policy no-referrer;
+            add_header Content-Security-Policy "default-src 'none'; manifest-src https://blog.kempkens.io; script-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'";
           '';
         };
-      }) [ "katja.nifoc.pw" "katja_vmstats.nifoc.pw" "noesis.nifoc.pw" "propagator.nifoc.pw" ]);
+      }
+      // builtins.listToAttrs (
+        builtins.map
+          # Documentation
+          (domain: {
+            name = domain;
+            value = {
+              quic = true;
+              http3 = true;
+              kTLS = true;
+
+              root = "${docs-nifoc-pw}/site/${domain}";
+              forceSSL = true;
+              useACMEHost = "nifoc.pw";
+
+              extraConfig = ''
+                autoindex on;
+                autoindex_format html;
+              '';
+            };
+          })
+          [
+            "katja.nifoc.pw"
+            "katja_vmstats.nifoc.pw"
+            "noesis.nifoc.pw"
+            "propagator.nifoc.pw"
+          ]
+      );
   };
 }

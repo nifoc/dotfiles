@@ -14,8 +14,16 @@
     supportedFilesystems = [ "zfs" ];
 
     initrd = {
-      availableKernelModules = [ "ata_piix" "uhci_hcd" "xen_blkfront" ];
-      kernelModules = [ "nvme" "tls" "virtio_gpu" ];
+      availableKernelModules = [
+        "ata_piix"
+        "uhci_hcd"
+        "xen_blkfront"
+      ];
+      kernelModules = [
+        "nvme"
+        "tls"
+        "virtio_gpu"
+      ];
     };
 
     kernelParams = [ "console=tty" ];

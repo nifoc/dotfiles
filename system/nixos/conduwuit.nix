@@ -11,7 +11,10 @@ in
 
       settings = {
         global = {
-          address = [ "127.0.0.1" "::1" ];
+          address = [
+            "127.0.0.1"
+            "::1"
+          ];
           inherit server_name;
 
           allow_registration = false;

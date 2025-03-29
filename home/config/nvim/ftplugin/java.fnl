@@ -16,4 +16,3 @@
               :settings {:java {:format formatter-settings}}}]
   (set vim.env.JAVA_OPTS (.. "-javaagent:" jars-dir :/lombok.jar))
   (jdtls.start_or_attach config))
-

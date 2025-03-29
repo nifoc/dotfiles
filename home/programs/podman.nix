@@ -17,7 +17,8 @@
       helper_binaries_dir = ["${config.home.profileDirectory}/bin"]
   '';
 
-  programs.fish.functions.podman = /* fish */ ''
-    fish -c "set -e SSH_AUTH_SOCK; ${config.home.profileDirectory}/bin/podman $argv"
-  '';
+  programs.fish.functions.podman = # fish
+    ''
+      fish -c "set -e SSH_AUTH_SOCK; ${config.home.profileDirectory}/bin/podman $argv"
+    '';
 }

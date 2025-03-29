@@ -1,4 +1,12 @@
-{ nixpkgs, lix-module, home-manager, nix-darwin, agenix, mkalias, nifoc-overlay }:
+{
+  nixpkgs,
+  lix-module,
+  home-manager,
+  nix-darwin,
+  agenix,
+  mkalias,
+  nifoc-overlay,
+}:
 
 let
   default-system = "aarch64-darwin";
@@ -27,7 +35,10 @@ in
       {
         nixpkgs = nixpkgsConfig;
         nix = {
-          registry.nixpkgs.to = { type = "path"; path = nixpkgs.outPath; };
+          registry.nixpkgs.to = {
+            type = "path";
+            path = nixpkgs.outPath;
+          };
           nixPath = nixpkgs.lib.mkForce [ "nixpkgs=flake:nixpkgs" ];
         };
       }

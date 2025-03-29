@@ -31,7 +31,10 @@ in
       ProtectKernelLogs = true;
       ProtectKernelModules = true;
       ProtectKernelTunables = true;
-      RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
+      RestrictAddressFamilies = [
+        "AF_INET"
+        "AF_INET6"
+      ];
       RestrictNamespaces = true;
       RestrictRealtime = true;
       RestrictSUIDSGID = true;
@@ -39,7 +42,10 @@ in
   };
 
   services.nginx.virtualHosts."overflow.daniel.sx" = {
-    listenAddresses = [ "100.122.253.109" "[fd7a:115c:a1e0::3a01:fd6d]" ];
+    listenAddresses = [
+      "100.122.253.109"
+      "[fd7a:115c:a1e0::3a01:fd6d]"
+    ];
     quic = true;
     http3 = true;
 

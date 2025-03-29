@@ -9,7 +9,10 @@
   };
 
   services.nginx.virtualHosts."atuin-sync.kempkens.io" = {
-    listenAddresses = [ "100.97.247.57" "[fd7a:115c:a1e0::8a01:f739]" ];
+    listenAddresses = [
+      "100.97.247.57"
+      "[fd7a:115c:a1e0::8a01:f739]"
+    ];
     quic = true;
     http3 = true;
 

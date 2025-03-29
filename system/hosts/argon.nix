@@ -43,7 +43,10 @@ in
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
 
       log-lines = 25;
       auto-optimise-store = true;
@@ -111,7 +114,10 @@ in
     networks = {
       "10-lan" = {
         matchConfig.Name = "end0";
-        vlan = [ "vlan51" "vlan777" ];
+        vlan = [
+          "vlan51"
+          "vlan777"
+        ];
         networkConfig = {
           DHCP = "yes";
           IPv6AcceptRA = true;
@@ -197,7 +203,10 @@ in
       description = "Daniel";
       extraGroups = [ "wheel" ];
       shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [ ssh-keys.LAN ssh-keys.DanielsPhone ];
+      openssh.authorizedKeys.keys = [
+        ssh-keys.LAN
+        ssh-keys.DanielsPhone
+      ];
     };
 
     nix-remote-builder = {

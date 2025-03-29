@@ -7,10 +7,16 @@
     settings = {
       gui = {
         theme = {
-          activeBorderColor = [ "#FF79C6" "bold" ];
+          activeBorderColor = [
+            "#FF79C6"
+            "bold"
+          ];
           inactiveBorderColor = [ "#BD93F9" ];
 
-          searchingActiveBorderColor = [ "#8BE9FD" "bold" ];
+          searchingActiveBorderColor = [
+            "#8BE9FD"
+            "bold"
+          ];
 
           optionsTextColor = [ "#6272A4" ];
 

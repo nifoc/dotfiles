@@ -4,7 +4,10 @@ let
   settingsFormat = pkgs.formats.yaml { };
 
   window_padding = 5;
-  disable-keybinding = { mod = ""; key = ""; };
+  disable-keybinding = {
+    mod = "";
+    key = "";
+  };
 
   settings = {
     # Settings
@@ -62,34 +65,100 @@ let
     use-canary-build = false;
 
     # Keybindings
-    mod1 = [ "control" "option" "shift" ];
-    mod2 = [ "control" "option" "command" "shift" ]; # "Hyper"
+    mod1 = [
+      "control"
+      "option"
+      "shift"
+    ];
+    mod2 = [
+      "control"
+      "option"
+      "command"
+      "shift"
+    ]; # "Hyper"
 
-    focus-ccw = { mod = "mod1"; key = "h"; };
-    focus-cw = { mod = "mod1"; key = "l"; };
-    focus-main = { mod = "mod1"; key = "m"; };
+    focus-ccw = {
+      mod = "mod1";
+      key = "h";
+    };
+    focus-cw = {
+      mod = "mod1";
+      key = "l";
+    };
+    focus-main = {
+      mod = "mod1";
+      key = "m";
+    };
 
-    focus-screen-ccw = { mod = "mod1"; key = "e"; };
-    focus-screen-cw = { mod = "mod1"; key = "w"; };
+    focus-screen-ccw = {
+      mod = "mod1";
+      key = "e";
+    };
+    focus-screen-cw = {
+      mod = "mod1";
+      key = "w";
+    };
 
-    swap-ccw = { mod = "mod2"; key = "h"; };
-    swap-cw = { mod = "mod2"; key = "l"; };
-    swap-main = { mod = "mod2"; key = "m"; };
+    swap-ccw = {
+      mod = "mod2";
+      key = "h";
+    };
+    swap-cw = {
+      mod = "mod2";
+      key = "l";
+    };
+    swap-main = {
+      mod = "mod2";
+      key = "m";
+    };
 
-    swap-screen-ccw = { mod = "mod2"; key = "e"; };
-    swap-screen-cw = { mod = "mod2"; key = "w"; };
+    swap-screen-ccw = {
+      mod = "mod2";
+      key = "e";
+    };
+    swap-screen-cw = {
+      mod = "mod2";
+      key = "w";
+    };
 
-    toggle-float = { mod = "mod2"; key = "t"; };
+    toggle-float = {
+      mod = "mod2";
+      key = "t";
+    };
 
-    select-tall-layout = { mod = "mod1"; key = "t"; };
-    select-fullscreen-layout = { mod = "mod1"; key = "f"; };
-    select-wide-layout = { mod = "mod1"; key = "w"; };
-    select-two-pane-layout = { mod = "mod1"; key = "2"; };
-    select-column-layout = { mod = "mod1"; key = "c"; };
-    select-bsp-layout = { mod = "mod1"; key = "p"; };
+    select-tall-layout = {
+      mod = "mod1";
+      key = "t";
+    };
+    select-fullscreen-layout = {
+      mod = "mod1";
+      key = "f";
+    };
+    select-wide-layout = {
+      mod = "mod1";
+      key = "w";
+    };
+    select-two-pane-layout = {
+      mod = "mod1";
+      key = "2";
+    };
+    select-column-layout = {
+      mod = "mod1";
+      key = "c";
+    };
+    select-bsp-layout = {
+      mod = "mod1";
+      key = "p";
+    };
 
-    display-current-layout = { mod = "mod1"; key = "i"; };
-    reevaluate-windows = { mod = "mod2"; key = "b"; };
+    display-current-layout = {
+      mod = "mod1";
+      key = "i";
+    };
+    reevaluate-windows = {
+      mod = "mod2";
+      key = "b";
+    };
 
     throw-space-left = disable-keybinding;
     throw-space-right = disable-keybinding;
@@ -124,7 +193,10 @@ let
     toggle-tiling = disable-keybinding;
 
     toggle-focus-follows-mouse = disable-keybinding;
-    relaunch-amethyst = { mod = "mod2"; key = "z"; };
+    relaunch-amethyst = {
+      mod = "mod2";
+      key = "z";
+    };
   };
 in
 {

@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 let
   web-domain = "mastodon.kempkens.io";
@@ -6,7 +11,8 @@ let
   pkg-base = pkgs.mastodon;
 
   pkg-mastodon = pkg-base.overrideAttrs (_: {
-    mastodonModules = pkg-base.mastodonModules.overrideAttrs (oldMods:
+    mastodonModules = pkg-base.mastodonModules.overrideAttrs (
+      oldMods:
       let
         tangerine-ui = pkgs.fetchFromGitHub {
           owner = "nileane";
@@ -28,7 +34,8 @@ let
           echo "tangerineui-cherry: styles/tangerineui-cherry.scss" >>$PWD/config/themes.yml
           echo "tangerineui-lagoon: styles/tangerineui-lagoon.scss" >>$PWD/config/themes.yml
         '';
-      });
+      }
+    );
 
     nativeBuildInputs = [ pkgs.yq-go ];
 
@@ -108,7 +115,7 @@ in
     extraEnvFiles = [ config.age.secrets.mastodon-extra-config.path ];
   };
 
-  # For services that connect to Mastodon 
+  # For services that connect to Mastodon
   systemd.services.mastodon-wait-for-available = {
     description = "Wait for Mastodon to be available";
     after = [ "mastodon-web.service" ];
@@ -125,13 +132,12 @@ in
       extraConfig = ''
         least_conn;
       '';
-      servers = builtins.listToAttrs
-        (map
-          (i: {
-            name = "unix:/run/mastodon-streaming/streaming-${toString i}.socket";
-            value = { };
-          })
-          (lib.range 1 config.services.mastodon.streamingProcesses));
+      servers = builtins.listToAttrs (
+        map (i: {
+          name = "unix:/run/mastodon-streaming/streaming-${toString i}.socket";
+          value = { };
+        }) (lib.range 1 config.services.mastodon.streamingProcesses)
+      );
     };
 
     virtualHosts = {

@@ -1,4 +1,9 @@
-{ lib, config, secret, ... }:
+{
+  lib,
+  config,
+  secret,
+  ...
+}:
 
 {
   services.adguardhome = {
@@ -94,21 +99,34 @@
 
   networking.firewall.interfaces =
     let
-      interfaces = lib.mapAttrsToList (_: lib.attrsets.attrByPath [ "matchConfig" "Name" ] null) config.systemd.network.networks ++ [ "tailscale0" ];
+      interfaces =
+        lib.mapAttrsToList (
+          _: lib.attrsets.attrByPath [ "matchConfig" "Name" ] null
+        ) config.systemd.network.networks
+        ++ [ "tailscale0" ];
     in
-    builtins.listToAttrs
-      (builtins.map
-        (iface:
-          {
-            name = iface;
-            value = {
-              allowedTCPPorts = [ 53 1053 9053 10443 ];
-              allowedUDPPorts = [ 53 1053 9053 10443 ];
-            };
-          })
-        (builtins.filter builtins.isString interfaces));
+    builtins.listToAttrs (
+      builtins.map (iface: {
+        name = iface;
+        value = {
+          allowedTCPPorts = [
+            53
+            1053
+            9053
+            10443
+          ];
+          allowedUDPPorts = [
+            53
+            1053
+            9053
+            10443
+          ];
+        };
+      }) (builtins.filter builtins.isString interfaces)
+    );
 
-  virtualisation.podman.defaultNetwork.settings.dns_enabled = lib.mkForce secret.adguardhome.podmanDNS;
+  virtualisation.podman.defaultNetwork.settings.dns_enabled =
+    lib.mkForce secret.adguardhome.podmanDNS;
 
   services.nginx = {
     upstreams.adguardhome = {

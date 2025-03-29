@@ -10,8 +10,14 @@
 
   systemd.services.cloudflared-sail = {
     wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" "network-online.target" ];
-    wants = [ "network.target" "network-online.target" ];
+    after = [
+      "network.target"
+      "network-online.target"
+    ];
+    wants = [
+      "network.target"
+      "network-online.target"
+    ];
     serviceConfig = {
       ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run";
       EnvironmentFile = [ config.age.secrets.cloudflared-environment.path ];

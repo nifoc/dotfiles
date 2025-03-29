@@ -10,12 +10,21 @@
     };
 
     initrd = {
-      availableKernelModules = [ "ata_piix" "xhci_pci" "ahci" "sd_mod" "sr_mod" ];
+      availableKernelModules = [
+        "ata_piix"
+        "xhci_pci"
+        "ahci"
+        "sd_mod"
+        "sr_mod"
+      ];
       kernelModules = [ "tls" ];
     };
 
     kernelPackages = pkgs.linuxPackages;
-    kernelModules = [ "kvm-intel" "tcp_bbr" ];
+    kernelModules = [
+      "kvm-intel"
+      "tcp_bbr"
+    ];
 
     kernel.sysctl = {
       "net.core.default_qdisc" = "fq";

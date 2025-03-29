@@ -1,4 +1,10 @@
-{ pkgs, lib, config, modulesPath, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  modulesPath,
+  ...
+}:
 
 {
   imports = [
@@ -11,15 +17,26 @@
       enable = true;
 
       copyKernels = true;
-      devices = [ "/dev/nvme0n1" "/dev/nvme1n1" ];
+      devices = [
+        "/dev/nvme0n1"
+        "/dev/nvme1n1"
+      ];
       efiInstallAsRemovable = true;
       efiSupport = true;
       fsIdentifier = "uuid";
     };
 
     initrd = {
-      availableKernelModules = [ "xhci_pci" "ahci" "nvme" "sd_mod" ];
-      kernelModules = [ "kvm-amd" "tls" ];
+      availableKernelModules = [
+        "xhci_pci"
+        "ahci"
+        "nvme"
+        "sd_mod"
+      ];
+      kernelModules = [
+        "kvm-amd"
+        "tls"
+      ];
     };
 
     swraid = {

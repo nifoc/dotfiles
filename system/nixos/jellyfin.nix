@@ -109,7 +109,10 @@
 
   networking.firewall.interfaces =
     let
-      ports = [ 9920 9921 ];
+      ports = [
+        9920
+        9921
+      ];
     in
     {
       "ens3".allowedTCPPorts = ports;

@@ -24,7 +24,14 @@ in
 
     ../nixos/atticd.nix
 
-    (import ../nixos/forgejo-runner.nix (args // { name = "boron"; tag = "ubuntu-latest-amd64"; nixTag = "amd64"; }))
+    (import ../nixos/forgejo-runner.nix (
+      args
+      // {
+        name = "boron";
+        tag = "ubuntu-latest-amd64";
+        nixTag = "amd64";
+      }
+    ))
 
     ../nixos/miniflux.nix
 
@@ -40,7 +47,10 @@ in
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
 
       log-lines = 25;
       auto-optimise-store = true;
@@ -166,7 +176,10 @@ in
       description = "Daniel";
       extraGroups = [ "wheel" ];
       shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [ ssh-keys.Hetzner ssh-keys.DanielsPhone ];
+      openssh.authorizedKeys.keys = [
+        ssh-keys.Hetzner
+        ssh-keys.DanielsPhone
+      ];
     };
 
     nix-remote-builder = {

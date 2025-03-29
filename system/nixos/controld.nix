@@ -1,4 +1,10 @@
-{ pkgs, config, lib, podmanDNS, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  podmanDNS,
+  ...
+}:
 
 {
   systemd = {
@@ -27,19 +33,27 @@
 
   networking.firewall.interfaces =
     let
-      interfaces = lib.mapAttrsToList (_: lib.attrsets.attrByPath [ "matchConfig" "Name" ] null) config.systemd.network.networks ++ [ "tailscale0" ];
+      interfaces =
+        lib.mapAttrsToList (
+          _: lib.attrsets.attrByPath [ "matchConfig" "Name" ] null
+        ) config.systemd.network.networks
+        ++ [ "tailscale0" ];
     in
-    builtins.listToAttrs
-      (builtins.map
-        (iface:
-          {
-            name = iface;
-            value = {
-              allowedTCPPorts = [ 53 5353 ];
-              allowedUDPPorts = [ 53 5353 ];
-            };
-          })
-        (builtins.filter builtins.isString interfaces));
+    builtins.listToAttrs (
+      builtins.map (iface: {
+        name = iface;
+        value = {
+          allowedTCPPorts = [
+            53
+            5353
+          ];
+          allowedUDPPorts = [
+            53
+            5353
+          ];
+        };
+      }) (builtins.filter builtins.isString interfaces)
+    );
 
   virtualisation.podman.defaultNetwork.settings.dns_enabled = lib.mkForce podmanDNS;
 }

@@ -37,17 +37,15 @@
     };
   };
 
-  systemd.services.podman-autobrr =
-    {
-      bindsTo = [ "wg.service" ];
-      after = lib.mkForce [ "wg.service" ];
-    };
+  systemd.services.podman-autobrr = {
+    bindsTo = [ "wg.service" ];
+    after = lib.mkForce [ "wg.service" ];
+  };
 
-  systemd.services.podman-omegabrr =
-    {
-      bindsTo = [ "wg.service" ];
-      after = lib.mkForce [ "wg.service" ];
-    };
+  systemd.services.podman-omegabrr = {
+    bindsTo = [ "wg.service" ];
+    after = lib.mkForce [ "wg.service" ];
+  };
 
   services.nginx.virtualHosts."autobrr.internal.kempkens.network" = {
     quic = true;
