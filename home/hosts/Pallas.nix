@@ -35,6 +35,8 @@
 
     ../programs/hammerspoon.nix
 
+    ../programs/iex.nix
+
     ../programs/jq.nix
 
     ../programs/scripts.nix
