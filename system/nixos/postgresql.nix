@@ -18,6 +18,9 @@
       track_activities = "on";
       track_counts = "on";
       autovacuum = "on";
+
+      shared_preload_libraries = "pg_stat_statements";
+      compute_query_id = "on";
     };
 
     authentication = ''
