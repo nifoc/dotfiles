@@ -75,6 +75,11 @@ in
           name = "mergiraf";
           driver = "${lib.getExe pkgs.mergiraf} merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L";
         };
+
+        yarn = {
+          name = "yarn";
+          driver = "yarn install";
+        };
       };
 
       mergetool = {
@@ -133,6 +138,9 @@ in
     ];
 
     attributes = [
+      # specific
+      "yarn.lock merge=yarn"
+      # mergiraf
       "*.java merge=mergiraf"
       "*.kt merge=mergiraf"
       "*.rs merge=mergiraf"
