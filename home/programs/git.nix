@@ -186,7 +186,6 @@ in
       "*.svh merge=mergiraf"
       # pandoc
       "*.docx diff=pandoc"
-      "*.doc diff=pandoc"
       "*.odt diff=pandoc"
       # other
       "*.age binary"
