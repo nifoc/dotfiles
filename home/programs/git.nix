@@ -98,6 +98,13 @@ in
         autoupdate = true;
       };
 
+      diff = {
+        pandoc = {
+          textconv = "${lib.getExe pkgs.pandoc} --to=markdown";
+          prompt = false;
+        };
+      };
+
       init = {
         defaultBranch = "master";
       };
@@ -177,6 +184,12 @@ in
       "*.nix merge=mergiraf"
       "*.sv merge=mergiraf"
       "*.svh merge=mergiraf"
+      # pandoc
+      "*.docx diff=pandoc"
+      "*.doc diff=pandoc"
+      "*.odt diff=pandoc"
+      # other
+      "*.age binary"
     ];
 
     includes =
