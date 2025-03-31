@@ -60,6 +60,7 @@ in
 {
   # all
   "agenix/hosts/all/nix/netrc.age".publicKeys = all-systems;
+  "agenix/hosts/all/nix/id_nix_remote_builder.age".publicKeys = all-systems;
   "agenix/hosts/all/nix/forgejo_runner_netrc.age".publicKeys = all-systems;
   "agenix/hosts/all/attic/config.age".publicKeys = all-systems;
 

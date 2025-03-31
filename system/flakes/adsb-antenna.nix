@@ -60,7 +60,7 @@ in
   };
 
   deployment = {
-    hostname = "adsb-antenna";
+    hostname = "10.0.51.101";
     sshUser = "root";
     remoteBuild = false;
     autoRollback = false;
