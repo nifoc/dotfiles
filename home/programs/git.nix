@@ -147,6 +147,9 @@ in
     attributes = [
       # specific
       "yarn.lock merge=yarn"
+      ".gitattributes export-ignore"
+      ".gitignore export-ignore"
+      ".gitkeep export-ignore"
       # mergiraf
       "*.java merge=mergiraf"
       "*.kt merge=mergiraf"
@@ -186,9 +189,13 @@ in
       "*.svh merge=mergiraf"
       # pandoc
       "*.docx diff=pandoc"
+      "*.epub diff=pandoc"
       "*.odt diff=pandoc"
       # other
       "*.age binary"
+      "*.bat eol=crlf"
+      "*.cmd eol=crlf"
+      "*.ps1 eol=crlf"
     ];
 
     includes =
