@@ -51,8 +51,6 @@ in
 
       connect-timeout = 5;
       netrc-file = "/etc/nix/netrc";
-
-      sandbox = true;
     };
 
     optimise = {
