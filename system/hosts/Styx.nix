@@ -11,7 +11,6 @@ in
     ../darwin/zsh.nix
     ../darwin/attic.nix
 
-    ../darwin/mas.nix
     ../darwin/fake-homebrew.nix
   ];
 
