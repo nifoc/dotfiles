@@ -8,6 +8,7 @@
       "PUID" = "1001";
       "PGID" = "2001";
       "TZ" = "Etc/UTC";
+      "PROWLARR__AUTH__TRUSTCGNATIPADDRESSES" = "true";
     };
     volumes = [
       "/var/lib/prowlarr:/config"

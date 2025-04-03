@@ -8,6 +8,7 @@
       "PUID" = "1001";
       "PGID" = "2001";
       "TZ" = "Etc/UTC";
+      "SONARR__AUTH__TRUSTCGNATIPADDRESSES" = "true";
     };
     volumes = [
       "/var/lib/sonarr/.config/NzbDrone:/config"
@@ -38,21 +39,27 @@
       after = lib.mkForce ([ "wg.service" ] ++ mounts);
     };
 
-  services.nginx.virtualHosts."sonarr.internal.kempkens.network" = {
-    quic = true;
-    http3 = true;
+  services.nginx =
+    let
+      fqdn = "sonarr.internal.kempkens.network";
+    in
+    {
+      virtualHosts."${fqdn}" = {
+        quic = true;
+        http3 = true;
 
-    onlySSL = true;
-    useACMEHost = "internal.kempkens.network";
+        onlySSL = true;
+        useACMEHost = "internal.kempkens.network";
 
-    extraConfig = ''
-      client_max_body_size 32m;
-    '';
+        extraConfig = ''
+          client_max_body_size 32m;
+        '';
 
-    locations."/" = {
-      recommendedProxySettings = true;
-      proxyPass = "http://192.168.42.2:8989";
-      proxyWebsockets = true;
+        locations."/" = {
+          recommendedProxySettings = true;
+          proxyPass = "http://192.168.42.2:8989";
+          proxyWebsockets = true;
+        };
+      };
     };
-  };
 }

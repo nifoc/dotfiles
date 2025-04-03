@@ -8,6 +8,7 @@
       "PUID" = "1001";
       "PGID" = "2001";
       "TZ" = "Etc/UTC";
+      "RADARR__AUTH__TRUSTCGNATIPADDRESSES" = "true";
     };
     volumes = [
       "/var/lib/radarr/.config/Radarr:/config"
