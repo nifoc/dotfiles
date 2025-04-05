@@ -77,33 +77,37 @@ in
       };
   };
 
-  services.nginx.virtualHosts."${fqdn}" = {
-    listen = [
-      {
-        addr = tailscale.ipv4;
-        port = 443;
-        ssl = true;
-      }
+  services.nginx = {
+    tailscaleAuth.virtualHosts = [ fqdn ];
 
-      {
-        addr = "[${tailscale.ipv6}]";
-        port = 443;
-        ssl = true;
-      }
-    ];
+    virtualHosts."${fqdn}" = {
+      listen = [
+        {
+          addr = tailscale.ipv4;
+          port = 443;
+          ssl = true;
+        }
 
-    quic = true;
-    http3 = true;
-    kTLS = true;
+        {
+          addr = "[${tailscale.ipv6}]";
+          port = 443;
+          ssl = true;
+        }
+      ];
 
-    root = workingDir;
-    forceSSL = true;
-    useACMEHost = "kempkens.network";
+      quic = true;
+      http3 = true;
+      kTLS = true;
 
-    locations."/ws" = {
-      recommendedProxySettings = true;
-      proxyPass = "http://127.0.0.1:${port}";
-      proxyWebsockets = true;
+      root = workingDir;
+      forceSSL = true;
+      useACMEHost = "kempkens.network";
+
+      locations."/ws" = {
+        recommendedProxySettings = true;
+        proxyPass = "http://127.0.0.1:${port}";
+        proxyWebsockets = true;
+      };
     };
   };
 }

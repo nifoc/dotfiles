@@ -46,6 +46,7 @@ in
 
     ../nixos/tailscale.nix
     ../nixos/tailscale-nodns.nix
+    ../nixos/tailscale-auth.nix
 
     ../nixos/vaultwarden.nix
 
