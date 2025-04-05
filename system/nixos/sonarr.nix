@@ -44,6 +44,8 @@
       fqdn = "sonarr.internal.kempkens.network";
     in
     {
+      tailscaleAuth.virtualHosts = [ fqdn ];
+
       virtualHosts."${fqdn}" = {
         quic = true;
         http3 = true;

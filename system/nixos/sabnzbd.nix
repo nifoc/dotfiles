@@ -36,20 +36,28 @@
       after = lib.mkForce ([ "wg.service" ] ++ mounts);
     };
 
-  services.nginx.virtualHosts."sabnzbd.internal.kempkens.network" = {
-    quic = true;
-    http3 = true;
+  services.nginx =
+    let
+      fqdn = "sabnzbd.internal.kempkens.network";
+    in
+    {
+      tailscaleAuth.virtualHosts = [ fqdn ];
 
-    onlySSL = true;
-    useACMEHost = "internal.kempkens.network";
+      virtualHosts."${fqdn}" = {
+        quic = true;
+        http3 = true;
 
-    extraConfig = ''
-      client_max_body_size 32m;
-    '';
+        onlySSL = true;
+        useACMEHost = "internal.kempkens.network";
 
-    locations."/" = {
-      recommendedProxySettings = true;
-      proxyPass = "http://192.168.42.2:8080";
+        extraConfig = ''
+          client_max_body_size 32m;
+        '';
+
+        locations."/" = {
+          recommendedProxySettings = true;
+          proxyPass = "http://192.168.42.2:8080";
+        };
+      };
     };
-  };
 }

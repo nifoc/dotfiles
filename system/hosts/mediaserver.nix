@@ -28,6 +28,7 @@ in
 
     ../nixos/tailscale-router.nix
     ../nixos/tailscale-nodns.nix
+    ../nixos/tailscale-auth.nix
 
     ../nixos/unbound.nix
 

@@ -40,25 +40,33 @@ in
       };
     };
 
-  services.nginx.virtualHosts."aria.internal.kempkens.network" = {
-    quic = true;
-    http3 = true;
-    kTLS = true;
+  services.nginx =
+    let
+      fqdn = "aria.internal.kempkens.network";
+    in
+    {
+      tailscaleAuth.virtualHosts = [ fqdn ];
 
-    root = "${pkgs.ariang}/share/ariang";
-    onlySSL = true;
-    useACMEHost = "internal.kempkens.network";
+      virtualHosts."${fqdn}" = {
+        quic = true;
+        http3 = true;
+        kTLS = true;
 
-    locations."/jsonrpc" = {
-      recommendedProxySettings = true;
-      proxyPass = "http://192.168.42.2:6801";
-      proxyWebsockets = true;
+        root = "${pkgs.ariang}/share/ariang";
+        onlySSL = true;
+        useACMEHost = "internal.kempkens.network";
 
-      extraConfig = ''
-        add_header Access-Control-Allow-Headers '*';
-        add_header Access-Control-Allow-Origin '*';
-        add_header Access-Control-Allow-Methods '*';
-      '';
+        locations."/jsonrpc" = {
+          recommendedProxySettings = true;
+          proxyPass = "http://192.168.42.2:6801";
+          proxyWebsockets = true;
+
+          extraConfig = ''
+            add_header Access-Control-Allow-Headers '*';
+            add_header Access-Control-Allow-Origin '*';
+            add_header Access-Control-Allow-Methods '*';
+          '';
+        };
+      };
     };
-  };
 }

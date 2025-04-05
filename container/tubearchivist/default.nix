@@ -10,7 +10,7 @@
 
   virtualisation.oci-containers.containers = {
     tubearchivist = {
-      image = "docker.io/bbilly1/tubearchivist:v0.4.12";
+      image = "docker.io/bbilly1/tubearchivist:v0.5.1";
       dependsOn = [
         "archivist-es"
         "archivist-redis"
@@ -26,7 +26,7 @@
     };
 
     archivist-redis = {
-      image = "docker.io/redis/redis-stack-server:6.2.6-v9";
+      image = "docker.io/valkey/valkey:8";
       volumes = [
         "/var/lib/tubearchivist/redis:/data"
       ];
@@ -51,16 +51,24 @@
       after = lib.mkAfter mounts;
     };
 
-  services.nginx.virtualHosts."tubearchivist.internal.kempkens.network" = {
-    quic = true;
-    http3 = true;
+  services.nginx =
+    let
+      fqdn = "tubearchivist.internal.kempkens.network";
+    in
+    {
+      tailscaleAuth.virtualHosts = [ fqdn ];
 
-    onlySSL = true;
-    useACMEHost = "internal.kempkens.network";
+      virtualHosts."${fqdn}" = {
+        quic = true;
+        http3 = true;
 
-    locations."/" = {
-      recommendedProxySettings = true;
-      proxyPass = "http://127.0.0.1:9887";
+        onlySSL = true;
+        useACMEHost = "internal.kempkens.network";
+
+        locations."/" = {
+          recommendedProxySettings = true;
+          proxyPass = "http://127.0.0.1:9887";
+        };
+      };
     };
-  };
 }
