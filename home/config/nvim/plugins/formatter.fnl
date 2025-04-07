@@ -36,7 +36,7 @@
                                      :javascript [:treefmt_or_prettier]
                                      :json [:treefmt_or_prettier]
                                      :lua [:treefmt_or_stylua]
-                                     :nix [:treefmt_or_nixpkgs_fmt]
+                                     :nix [:treefmt_or_nixfmt]
                                      :sh [:treefmt_or_shfmt]
                                      :typescript [:treefmt_or_prettier]
                                      :yaml [:treefmt_or_yamlfmt]}
@@ -45,7 +45,7 @@
                                                                          :args ["-"]})
                                :treefmt_or_stylua #(treefmt-or-fallback {:command :stylua
                                                                          :args ["-"]})
-                               :treefmt_or_nixpkgs_fmt #(treefmt-or-fallback {:command :nixpkgs-fmt})
+                               :treefmt_or_nixfmt #(treefmt-or-fallback {:command :nixfmt})
                                :treefmt_or_prettier #(treefmt-or-fallback {:command :prettier
                                                                            :args [:--stdin-filepath
                                                                                   tmp-filename]
