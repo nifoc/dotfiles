@@ -138,6 +138,7 @@ in
             p.angular
             p.bash
             p.css
+            p.comment
             p.diff
             p.dockerfile
             p.eex
@@ -175,6 +176,7 @@ in
             p.tsx
             p.typescript
             p.vim
+            p.yaml
           ]);
           config = builtins.readFile ../../config/nvim/plugins/treesitter.fnl;
           type = "fennel";
