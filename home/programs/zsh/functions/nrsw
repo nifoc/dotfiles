@@ -2,20 +2,21 @@ os="$(uname)"
 other_hostname="$1"
 
 case "$os" in
-  Darwin)
-    nix_hostname="$(scutil --get LocalHostName)"
-    config_dir="$HOME/.config/nixpkgs"
-    ;;
-  Linux)
-    nix_hostname="$(hostname -s)"
-    config_dir="/etc/nixos"
-    ;;
-  *)
-    echo "Unsupported OS"
-    exit 1
+Darwin)
+  nix_hostname="$(scutil --get LocalHostName)"
+  config_dir="$HOME/.config/nixpkgs"
+  ;;
+Linux)
+  nix_hostname="$(hostname -s)"
+  config_dir="/etc/nixos"
+  ;;
+*)
+  echo "Unsupported OS"
+  exit 1
+  ;;
 esac
 
-pushd "$config_dir"
+pushd "$config_dir" || exit
 rm -f result
 
 if [ -z "$DIRENV_DIR" ]; then
@@ -25,10 +26,12 @@ fi
 if [ -z "$other_hostname" ]; then
   just deploy-local-machine "$nix_hostname"
 else
-  just deploy-remote-machine "$other_hostname"
+  remote_build="$(nix eval --json ".#deploy.nodes.${other_hostname}.remoteBuild" 2>/dev/null)"
+
+  just deploy-remote-machine "$other_hostname" "$remote_build"
 fi
 
 rm -f result
-popd
+popd || exit
 
 # vim: ft=sh

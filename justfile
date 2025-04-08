@@ -1,5 +1,6 @@
 defaultLocalType := if os() == "macos" { "darwin" } else { "nixos" }
 defaultRemoteType := "nixos"
+defaultRemoteBuild := "true"
 
 default:
     @just --list
@@ -15,11 +16,16 @@ build-local-machine target type=defaultLocalType:
 
 # Build a remote machine
 [group('build')]
-build-remote-machine target type=defaultRemoteType:
-    nom build --fallback \
-      --eval-store auto \
-      --store 'ssh-ng://root@{{ target }}' \
-      '.#{{ type }}Configurations.{{ target }}.config.system.build.toplevel'
+build-remote-machine target remoteBuild=defaultRemoteBuild type=defaultRemoteType:
+    #!/bin/sh
+    if [ "{{ remoteBuild }}" = "true" ]; then
+        nom build --fallback \
+          --eval-store auto \
+          --store 'ssh-ng://root@{{ target }}' \
+          '.#{{ type }}Configurations.{{ target }}.config.system.build.toplevel'
+    else
+        echo "Remote building is disabled"
+    fi
 
 # Deploy to a local machine
 [group('deploy')]
@@ -30,7 +36,7 @@ deploy-local-machine target type=defaultLocalType: _git-pull (build-local-machin
 
 # Deploy to a remote machine
 [group('deploy')]
-deploy-remote-machine target type=defaultRemoteType: _git-pull (build-remote-machine target type)
+deploy-remote-machine target remoteBuild=defaultRemoteBuild type=defaultRemoteType: _git-pull (build-remote-machine target remoteBuild type)
     deploy --skip-checks '.#{{ target }}'
     ssh -t '{{ target }}' 'attic push nifoc-systems /run/current-system'
 
