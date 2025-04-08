@@ -32,8 +32,8 @@ in
           src = fetchFromGitHub {
             owner = "Aloxaf";
             repo = "fzf-tab";
-            rev = "6aced3f35def61c5edf9d790e945e8bb4fe7b305";
-            hash = "sha256-EWMeslDgs/DWVaDdI9oAS46hfZtp4LHTRY8TclKTNK8=";
+            rev = "01dad759c4466600b639b442ca24aebd5178e799";
+            hash = "sha256-q26XVS/LcyZPRqDNwKKA9exgBByE0muyuNb0Bbar2lY=";
           };
         }
 
