@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   config,
   ...
 }:
@@ -63,13 +62,5 @@
           sha256 = "sha256-/h2axBWbzbtKjXo2mjp18dP4EV42cKqHhDMq4RhOec4=";
         };
       };
-
-    activation.hammerspoonReload =
-      lib.hm.dag.entryAfter [ "setDarwinDefaults" ] # bash
-        ''
-          $VERBOSE_ECHO "Reloading Hammerspoon configuration"
-
-          $DRY_RUN_CMD /Applications/Hammerspoon.app/Contents/Frameworks/hs/hs -c 'hs.reload()' || true
-        '';
   };
 }

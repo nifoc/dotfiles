@@ -1,7 +1,11 @@
 (let [_hyper [:cmd :alt :ctrl :shift]
       hostname (hs.host.localizedName)
+      home (os.getenv :HOME)
+      config-dir (.. home :/.config/hammerspoon/)
       _ipc (require :hs.ipc)
       programs (require :programs)]
+  ;; Hot-reload configuration
+  (: (hs.pathwatcher.new config-dir hs.reload) :start)
   ;; Caffeine
   (hs.spoons.use :Caffeine {:start true})
   ;; USBDeviceActions
