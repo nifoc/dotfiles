@@ -27,5 +27,13 @@
       file = ./controld/config.age;
       path = "/var/lib/controld/ctrld.toml";
     };
+
+    z2m-secrets = {
+      file = ./z2m/secrets.age;
+      path = "/var/lib/zigbee2mqtt/secrets.yaml";
+      owner = "zigbee2mqtt";
+      group = "zigbee2mqtt";
+      symlink = false;
+    };
   };
 }

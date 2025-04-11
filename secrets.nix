@@ -209,6 +209,8 @@ in
 
   "agenix/hosts/neon/deye-mqtt/config.age".publicKeys = neon;
 
+  "agenix/hosts/neon/z2m/secrets.age".publicKeys = neon;
+
   # adsb-antenna
   "agenix/hosts/adsb-antenna/user/danielPassword.age".publicKeys = adsb-antenna;
 

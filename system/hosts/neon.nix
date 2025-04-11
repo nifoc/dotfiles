@@ -27,6 +27,8 @@ in
     ../nixos/tailscale-nodns.nix
 
     ../nixos/unbound.nix
+
+    ../nixos/zigbee2mqtt.nix
   ];
 
   system.stateVersion = "23.11";
