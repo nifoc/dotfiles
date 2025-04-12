@@ -26,6 +26,8 @@
 
       advanced = {
         transmit_power = 20;
+        channel = 20;
+        last_seen = "ISO_8601";
       };
 
       homeassistant = {
