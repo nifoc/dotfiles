@@ -4,10 +4,7 @@ let
   settingsFormat = pkgs.formats.yaml { };
 
   window_padding = 5;
-  disable-keybinding = {
-    mod = "";
-    key = "";
-  };
+  disable-keybinding = false;
 
   settings = {
     # Settings
