@@ -24,7 +24,7 @@
         history_sync.backfill = true;
 
         login_shared_secret_map = {
-          "${config.services.conduwuit.settings.global.server_name}" = "$DOUBLE_PUPPET_SECRETS_HOMESERVER";
+          "kempkens.io" = "$DOUBLE_PUPPET_SECRETS_HOMESERVER";
         };
 
         permissions = {
@@ -39,8 +39,8 @@
       };
 
       homeserver = {
-        address = "http://127.0.0.1:${toString (builtins.elemAt config.services.conduwuit.settings.global.port 0)}";
-        domain = config.services.conduwuit.settings.global.server_name;
+        address = "http://127.0.0.1:6167";
+        domain = "kempkens.io";
       };
     };
   };

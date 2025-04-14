@@ -1,36 +1,115 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   server_name = "kempkens.io";
   fqdn = "matrix.${server_name}";
+
+  user = "conduwuit";
+  group = "conduwuit";
+
+  cfg = {
+    global = {
+      inherit server_name;
+      address = [
+        "127.0.0.1"
+        "::1"
+      ];
+      port = [ 6167 ];
+      unix_socket_perms = 660;
+
+      database_path = "/var/lib/conduwuit/";
+
+      max_request_size = 20000000;
+
+      allow_registration = false;
+      allow_federation = true;
+      allow_encryption = true;
+      allow_check_for_updates = false;
+
+      trusted_servers = [ "matrix.org" ];
+
+      allow_legacy_media = false;
+
+      url_preview_bound_interface = "eth0";
+
+      new_user_displayname_suffix = "";
+    };
+  };
+
+  format = pkgs.formats.toml { };
+  configFile = format.generate "tuwunel.toml" cfg;
 in
 {
-  services = {
-    conduwuit = {
-      enable = true;
+  users.users."${user}" = {
+    inherit group;
+    home = cfg.global.database_path;
+    isSystemUser = true;
+  };
 
-      settings = {
-        global = {
-          address = [
-            "127.0.0.1"
-            "::1"
-          ];
-          inherit server_name;
+  users.groups."${group}" = { };
 
-          allow_registration = false;
-          allow_federation = true;
-          allow_encryption = true;
-          allow_check_for_updates = false;
-
-          allow_legacy_media = false;
-
-          url_preview_bound_interface = "eth0";
-
-          new_user_displayname_suffix = "";
-        };
-      };
+  systemd.services.conduwuit = {
+    description = "Tuwunel Matrix Server";
+    wantedBy = [ "multi-user.target" ];
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
+    environment = {
+      CONDUWUIT_CONFIG = configFile;
     };
+    startLimitBurst = 5;
+    startLimitIntervalSec = 60;
+    serviceConfig = {
+      DynamicUser = true;
+      User = user;
+      Group = group;
 
+      DevicePolicy = "closed";
+      LockPersonality = true;
+      MemoryDenyWriteExecute = true;
+      NoNewPrivileges = true;
+      ProtectClock = true;
+      ProtectControlGroups = true;
+      ProtectHome = true;
+      ProtectHostname = true;
+      ProtectKernelLogs = true;
+      ProtectKernelModules = true;
+      ProtectKernelTunables = true;
+      PrivateDevices = true;
+      PrivateMounts = true;
+      PrivateTmp = true;
+      PrivateUsers = true;
+      PrivateIPC = true;
+      RemoveIPC = true;
+      RestrictAddressFamilies = [
+        "AF_INET"
+        "AF_INET6"
+        "AF_UNIX"
+      ];
+      RestrictNamespaces = true;
+      RestrictRealtime = true;
+      SystemCallArchitectures = "native";
+      SystemCallFilter = [
+        "@system-service @resources"
+        "~@clock @debug @module @mount @reboot @swap @cpu-emulation @obsolete @timer @chown @setuid @privileged @keyring @ipc"
+      ];
+      SystemCallErrorNumber = "EPERM";
+
+      StateDirectory = "conduwuit";
+      StateDirectoryMode = "0700";
+      RuntimeDirectory = "conduwuit";
+      RuntimeDirectoryMode = "0750";
+
+      ExecStart = lib.getExe pkgs.tuwunel;
+      Restart = "on-failure";
+      RestartSec = 10;
+    };
+  };
+
+  services = {
     nginx.virtualHosts =
       let
         wellKnown = {
@@ -97,7 +176,7 @@ in
 
             "~* ^(\/_matrix|\/_conduwuit)" = {
               recommendedProxySettings = true;
-              proxyPass = "http://127.0.0.1:${toString (builtins.elemAt config.services.conduwuit.settings.global.port 0)}";
+              proxyPass = "http://127.0.0.1:${toString (builtins.elemAt cfg.global.port 0)}";
 
               extraConfig = ''
                 proxy_http_version 1.1;
