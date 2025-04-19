@@ -18,9 +18,9 @@
         sync_frequency = "30m";
         update_check = false;
 
-        style = "auto";
-        inline_height = 40;
-        search_mode = "fuzzy";
+        style = "compact";
+        inline_height = 25;
+        search_mode = "skim";
         filter_mode_shell_up_key_binding = "directory";
 
         history_filter = [
