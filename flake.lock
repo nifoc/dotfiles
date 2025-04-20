@@ -273,7 +273,7 @@
       },
       "locked": {
         "lastModified": 1742943028,
-        "narHash": "sha256-NDDb4vo2DxKJmwhipK9LqRF5d2TEquw6iHIsWc/cFjk=",
+        "narHash": "sha256-fprwZKE1uMzO9tiWWOrmLWBW3GPkMayQfb0xOvVFIno=",
         "ref": "release-2.92",
         "rev": "3fae818597ca2f1474de62022f850c23be50528d",
         "revCount": 134,
@@ -318,7 +318,7 @@
       },
       "locked": {
         "lastModified": 1745149191,
-        "narHash": "sha256-YXmUKx4uFVsScCgpevrOOTMDWR3eOoaPqdqb75Yj5k4=",
+        "narHash": "sha256-Ca1kqIOxfVIBCFSk+IS9995zllVS0rnt1hvUFIQutJM=",
         "ref": "refs/heads/master",
         "rev": "0bf314ea08299da926ae056303c6dc95460c375d",
         "revCount": 1141,
