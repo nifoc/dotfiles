@@ -19,7 +19,7 @@ let
     pkgs.gnugrep
     pkgs.gawk
     pkgs.git
-    pkgs.nixVersions.stable
+    pkgs.lix
     pkgs.nix-update
     pkgs.bash
     pkgs.jq
