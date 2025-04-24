@@ -19,3 +19,5 @@ jobs:
           token: ${{ secrets.ATTIC_TOKEN }}
       - name: Build Pallas
         run: nix build '.#darwinConfigurations.Pallas.config.system.build.toplevel'
+      - name: Build Styx
+        run: nix build '.#darwinConfigurations.Styx.config.system.build.toplevel'
