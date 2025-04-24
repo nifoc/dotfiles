@@ -1,14 +1,11 @@
 { pkgs, config, ... }:
 
 let
-  secret = import ../../../secret/hosts/Styx.nix;
-
   ssh-directory = "${config.home.homeDirectory}/.ssh";
   auth-socket = "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
   signers-directory = "${ssh-directory}/allowed_signers";
 
   shared-private = import ./shared/private.nix;
-  shared-work = import ./shared/work.nix { inherit secret; };
 
   ssh-keys = import ../../../system/shared/ssh-keys.nix;
 in
@@ -27,7 +24,7 @@ in
       VerifyHostKeyDNS yes
     '';
 
-    matchBlocks = shared-private.matchBlocks // shared-work.matchBlocks;
+    matchBlocks = shared-private.matchBlocks;
 
     includes = [
       "~/.ssh/config_work"
