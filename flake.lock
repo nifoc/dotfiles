@@ -317,11 +317,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1745460181,
-        "narHash": "sha256-KkdF2DEe+Hmtj2roAbJrNtxMFXcXQTMMfcwNddPrJLk=",
+        "lastModified": 1745546586,
+        "narHash": "sha256-nq1kNqWNbcQsFcmMy+BTcZBYzENKj99/KJBWurhVEUM=",
         "ref": "refs/heads/master",
-        "rev": "1140b99957d3abcbe7721df2677beb61dc566e59",
-        "revCount": 1144,
+        "rev": "c0ad3e9dff43aa5c3dd3fd0baa65b74859484a77",
+        "revCount": 1145,
         "type": "git",
         "url": "https://git.kempkens.io/daniel/nix-overlay"
       },
