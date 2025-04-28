@@ -6,6 +6,7 @@
   agenix,
   mkalias,
   nifoc-overlay,
+  nedeco,
 }:
 
 let
@@ -50,11 +51,16 @@ in
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
+
+          sharedModules = [ nedeco.homeManagerModules.minimal ];
+
           users.dkempkens = import ../../home/hosts/Styx.nix;
         };
       }
 
       agenix.darwinModules.default
+
+      nedeco.darwinModules.standard
 
       ../hosts/Styx.nix
     ];

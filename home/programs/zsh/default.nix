@@ -17,7 +17,6 @@ in
       enable = true;
 
       enableCompletion = true;
-      enableVteIntegration = !config.programs.wezterm.enable;
 
       autosuggestion.enable = false;
 
@@ -56,17 +55,6 @@ in
           }
 
           {
-            # https://github.com/zsh-users/zsh-autosuggestions
-            name = "zsh-autosuggestions";
-            src = fetchFromGitHub {
-              owner = "zsh-users";
-              repo = "zsh-autosuggestions";
-              tag = "v0.7.1";
-              hash = "sha256-vpTyYq9ZgfgdDsWzjxVAE7FZH4MALMNZIFyEOBLm5Qo=";
-            };
-          }
-
-          {
             # https://github.com/hlissner/zsh-autopair
             name = "zsh-autopair";
             src = fetchFromGitHub {
@@ -74,17 +62,6 @@ in
               repo = "zsh-autopair";
               rev = "449a7c3d095bc8f3d78cf37b9549f8bb4c383f3d";
               hash = "sha256-3zvOgIi+q7+sTXrT+r/4v98qjeiEL4Wh64rxBYnwJvQ=";
-            };
-          }
-
-          {
-            # https://github.com/trystan2k/zsh-tab-title
-            name = "zsh-tab-title";
-            src = fetchFromGitHub {
-              owner = "trystan2k";
-              repo = "zsh-tab-title";
-              tag = "v3.1.0";
-              hash = "sha256-YvAN8c2++WRJYGblstZKWCWrCl0byXQqFryTA35/Ao0=";
             };
           }
 
@@ -122,6 +99,29 @@ in
             };
           }
         ]
+        ++ optionals (!builtins.hasAttr "nedeco" config || !config.nedeco.zsh.enable) [
+          {
+            # https://github.com/zsh-users/zsh-autosuggestions
+            name = "zsh-autosuggestions";
+            src = fetchFromGitHub {
+              owner = "zsh-users";
+              repo = "zsh-autosuggestions";
+              tag = "v0.7.1";
+              hash = "sha256-vpTyYq9ZgfgdDsWzjxVAE7FZH4MALMNZIFyEOBLm5Qo=";
+            };
+          }
+
+          {
+            # https://github.com/trystan2k/zsh-tab-title
+            name = "zsh-tab-title";
+            src = fetchFromGitHub {
+              owner = "trystan2k";
+              repo = "zsh-tab-title";
+              tag = "v3.1.0";
+              hash = "sha256-YvAN8c2++WRJYGblstZKWCWrCl0byXQqFryTA35/Ao0=";
+            };
+          }
+        ]
         ++ optionals isDarwin [
           {
             # https://github.com/MichaelAquilina/zsh-auto-notify
@@ -152,62 +152,69 @@ in
           tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
         };
 
-      initContent = lib.mkMerge [
-        (mkOrder 500 # sh
-          ''
-            # Options
-            setopt AUTO_CD
-            setopt AUTO_PUSHD
-            setopt INTERACTIVE_COMMENTS
+      initContent = lib.mkMerge (
+        [
+          (mkOrder 501 # sh
+            ''
+              zstyle ':completion:*:git-checkout:*' sort false
+              zstyle ':completion:*' menu no
+              zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
-            # Keymaps
-            bindkey '^[[1;3C' forward-word  # Alt+Right
-            bindkey '^[[1;3D' backward-word # Alt+Left
+              AUTO_NOTIFY_THRESHOLD=20
+            ''
+          )
 
-            # Plugins
-            zstyle ':completion:*:git-checkout:*' sort false
-            zstyle ':completion:*' menu no
-            zstyle ':fzf-tab:*' use-fzf-default-opts yes
+          (mkOrder 1501 # sh
+            ''
+              # Custom Functions
+              () {
+                local user_functions="$HOME/.zsh/user_functions"
+                if [[ -d $user_functions ]]; then
+                  typeset -TUg +x FPATH=$user_functions:$FPATH fpath
+                  autoload ''${=$(cd "$user_functions" && echo *)}
+                fi
 
-            ZSH_AUTOSUGGEST_STRATEGY=(completion)
+                local server_functions="$HOME/.zsh/server_functions"
+                if [[ -d $server_functions ]]; then
+                  typeset -TUg +x FPATH=$server_functions:$FPATH fpath
+                  autoload ''${=$(cd "$server_functions" && echo *)}
+                fi
+              }
+            ''
+          )
+        ]
+        ++ optionals (!builtins.hasAttr "nedeco" config || !config.nedeco.zsh.enable) [
+          (mkOrder 500 # sh
+            ''
+              # Options
+              setopt AUTO_CD
+              setopt AUTO_PUSHD
+              setopt INTERACTIVE_COMMENTS
 
-            ZSH_TAB_TITLE_ENABLE_FULL_COMMAND=true
-            ZSH_TAB_TITLE_DEFAULT_DISABLE_PREFIX=true
-            ZSH_TAB_TITLE_ADDITIONAL_TERMS='wezterm'
+              # Keymaps
+              bindkey '^[[1;3C' forward-word  # Alt+Right
+              bindkey '^[[1;3D' backward-word # Alt+Left
 
-            AUTO_NOTIFY_THRESHOLD=20
-          ''
-        )
+              # Plugins
+              ZSH_AUTOSUGGEST_STRATEGY=(completion)
 
-        (mkOrder 1000 # sh
-          ''
-            # PATH
-            if [[ -d "$HOME/.bin" ]]; then
-              path=("$HOME/.bin" $path)
-              export PATH
-            fi
-          ''
-        )
+              ZSH_TAB_TITLE_ENABLE_FULL_COMMAND=true
+              ZSH_TAB_TITLE_DEFAULT_DISABLE_PREFIX=true
+              ZSH_TAB_TITLE_ADDITIONAL_TERMS='wezterm'
+            ''
+          )
 
-        (mkOrder 1500 # sh
-          ''
-            # Custom Functions
-            () {
-              local user_functions="$HOME/.zsh/user_functions"
-              if [[ -d $user_functions ]]; then
-                typeset -TUg +x FPATH=$user_functions:$FPATH fpath
-                autoload ''${=$(cd "$user_functions" && echo *)}
+          (mkOrder 1000 # sh
+            ''
+              # PATH
+              if [[ -d "$HOME/.bin" ]]; then
+                path=("$HOME/.bin" $path)
+                export PATH
               fi
-
-              local server_functions="$HOME/.zsh/server_functions"
-              if [[ -d $server_functions ]]; then
-                typeset -TUg +x FPATH=$server_functions:$FPATH fpath
-                autoload ''${=$(cd "$server_functions" && echo *)}
-              fi
-            }
-          ''
-        )
-      ];
+            ''
+          )
+        ]
+      );
     };
 
     lesspipe.enable = true;

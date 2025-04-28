@@ -6,7 +6,7 @@
 }:
 
 let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf optionals;
   inherit (pkgs.stdenv.hostPlatform) isDarwin;
 in
 {
@@ -137,14 +137,14 @@ in
       };
     };
 
-    ignores = [
+    ignores = optionals (!builtins.hasAttr "nedeco" config || !config.nedeco.git.enable) [
       "*~"
       "*.swp"
       ".direnv/"
       ".DS_Store"
     ];
 
-    attributes = [
+    attributes = optionals (!builtins.hasAttr "nedeco" config || !config.nedeco.git.enable) [
       # specific
       "yarn.lock merge=yarn"
       ".gitattributes export-ignore"
