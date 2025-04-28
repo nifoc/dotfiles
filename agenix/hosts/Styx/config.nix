@@ -1,6 +1,6 @@
 {
   age = {
-    identityPaths = [ "/Users/daniel/.ssh/agenix" ];
+    identityPaths = [ "/Users/dkempkens/.ssh/agenix" ];
 
     secrets = {
       nix-netrc = {
@@ -10,27 +10,18 @@
         symlink = false;
       };
 
-      nix-id_nix_remote_builder = {
-        file = ../all/nix/id_nix_remote_builder.age;
-        path = "/etc/nix/id_nix_remote_builder";
-        mode = "600";
-        owner = "root";
-        group = "wheel";
-        symlink = false;
-      };
-
       attic-config = {
         file = ../all/attic/config.age;
-        path = "/Users/daniel/.config/attic/config.toml";
+        path = "/Users/dkempkens/.config/attic/config.toml";
         mode = "600";
-        owner = "daniel";
+        owner = "dkempkens";
         group = "staff";
       };
 
       git-maintenance = {
         file = ./git/maintenance.age;
-        path = "/Users/daniel/.config/git/maintenance-config";
-        owner = "daniel";
+        path = "/Users/dkempkens/.config/git/maintenance-config";
+        owner = "dkempkens";
         group = "staff";
       };
     };

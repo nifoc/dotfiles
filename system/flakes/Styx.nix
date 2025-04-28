@@ -50,7 +50,7 @@ in
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.daniel = import ../../home/hosts/Styx.nix;
+          users.dkempkens = import ../../home/hosts/Styx.nix;
         };
       }
 

@@ -1,5 +1,5 @@
 let
-  homeDir = "/Users/daniel";
+  homeDir = "/Users/dkempkens";
 in
 {
   imports = [
@@ -15,7 +15,6 @@ in
   ];
 
   system.stateVersion = 5;
-  ids.gids.nixbld = 30000;
 
   nix = {
     settings = {
@@ -57,40 +56,6 @@ in
       automatic = true;
     };
 
-    distributedBuilds = true;
-
-    buildMachines = [
-      {
-        hostName = "boron.ts.kempkens.network";
-        protocol = "ssh-ng";
-        systems = [ "x86_64-linux" ];
-        mandatoryFeatures = [ ];
-        supportedFeatures = [
-          "benchmark"
-          "big-parallel"
-        ];
-        sshUser = "nix-remote-builder";
-        sshKey = "/etc/nix/id_nix_remote_builder";
-        maxJobs = 2;
-        speedFactor = 1;
-      }
-
-      {
-        hostName = "carbon.ts.kempkens.network";
-        protocol = "ssh-ng";
-        systems = [ "aarch64-linux" ];
-        mandatoryFeatures = [ ];
-        supportedFeatures = [
-          "benchmark"
-          "big-parallel"
-        ];
-        sshUser = "nix-remote-builder";
-        sshKey = "/etc/nix/id_nix_remote_builder";
-        maxJobs = 2;
-        speedFactor = 1;
-      }
-    ];
-
     gc = {
       automatic = true;
       interval = {
@@ -101,24 +66,10 @@ in
     };
   };
 
-  environment.etc."ssh/ssh_config.d/100-nix-remote-builder.conf".text = ''
-    Host carbon.ts.kempkens.network
-      User nix-remote-builder
-      Port 22
-      IdentityFile /etc/nix/id_nix_remote_builder
-      StrictHostKeyChecking accept-new
-
-    Host boron.ts.kempkens.network
-      User nix-remote-builder
-      Port 22
-      IdentityFile /etc/nix/id_nix_remote_builder
-      StrictHostKeyChecking accept-new
-  '';
-
   documentation.doc.enable = false;
 
   users = {
-    users.daniel = {
+    users.dkempkens = {
       home = homeDir;
     };
   };
