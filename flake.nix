@@ -72,6 +72,8 @@
       url = "github:reckenrode/mkalias";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nedeco.url = "github:nedeco/nix-base-system";
   };
 
   outputs =
@@ -92,6 +94,7 @@
               agenix
               mkalias
               nifoc-overlay
+              nedeco
               ;
             inherit lix-module;
           };

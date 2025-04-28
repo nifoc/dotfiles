@@ -103,7 +103,7 @@
           last_apps=$(cat "${lastAppsFile}" 2>/dev/null || echo "")
           next_apps=$(readlink -f ${apps}/Applications/* | sort)
 
-          #if [ "$last_apps" != "$next_apps" ]; then
+          if [ "$last_apps" != "$next_apps" ]; then
             echo "Apps have changed. Updating macOS aliases..."
 
             apps_path="${config.home.homeDirectory}/Applications/Home Manager Apps"
@@ -115,7 +115,7 @@
               -L {} "$apps_path/{/}"
 
             [ -z "$DRY_RUN_CMD" ] && echo "$next_apps" > "${lastAppsFile}"
-          #fi
+          fi
         ''
     );
   };

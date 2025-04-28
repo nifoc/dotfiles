@@ -306,6 +306,21 @@
         "type": "github"
       }
     },
+    "nedeco": {
+      "locked": {
+        "lastModified": 1745851686,
+        "narHash": "sha256-5ETd1AkF7Z79aBSJMxhULYCOl8C++vc8O5KKE9++/3w=",
+        "owner": "nedeco",
+        "repo": "nix-base-system",
+        "rev": "42c7666d889a1f4b95c16c5feec705d6b95f53ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nedeco",
+        "repo": "nix-base-system",
+        "type": "github"
+      }
+    },
     "nifoc-overlay": {
       "inputs": {
         "flake-parts": [
@@ -455,6 +470,7 @@
         "home-manager": "home-manager",
         "lix-module": "lix-module",
         "mkalias": "mkalias",
+        "nedeco": "nedeco",
         "nifoc-overlay": "nifoc-overlay",
         "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",
