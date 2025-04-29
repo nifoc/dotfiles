@@ -2,6 +2,7 @@ name: Update Flake
 on:
   schedule:
     - cron: '0 4 * * *'
+  workflow_dispatch: {}
 jobs:
   update-flake:
     runs-on: nix-amd64
