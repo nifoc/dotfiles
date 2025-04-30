@@ -26,16 +26,20 @@ in
       ];
     };
 
-    nginx.virtualHosts."${fqdn}" = {
-      quic = true;
-      http3 = true;
+    nginx = {
+      tailscaleAuth.virtualHosts = [ fqdn ];
 
-      onlySSL = true;
-      useACMEHost = "internal.kempkens.network";
+      virtualHosts."${fqdn}" = {
+        quic = true;
+        http3 = true;
 
-      locations."/" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:8018";
+        onlySSL = true;
+        useACMEHost = "internal.kempkens.network";
+
+        locations."/" = {
+          recommendedProxySettings = true;
+          proxyPass = "http://127.0.0.1:8018";
+        };
       };
     };
   };
