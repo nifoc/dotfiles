@@ -26,6 +26,8 @@ in
 
     ../nixos/ddg.nix
 
+    ../nixos/shiori.nix
+
     ../nixos/tailscale-router.nix
     ../nixos/tailscale-nodns.nix
     ../nixos/tailscale-auth.nix

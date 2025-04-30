@@ -162,6 +162,8 @@ in
 
   "agenix/hosts/mediaserver/tubearchivist/environmentES.age".publicKeys = mediaserver;
 
+  "agenix/hosts/mediaserver/shiori/environment.age".publicKeys = mediaserver;
+
   "agenix/hosts/mediaserver/aria2/config.age".publicKeys = mediaserver;
 
   "agenix/hosts/mediaserver/recyclarr/config.age".publicKeys = mediaserver;

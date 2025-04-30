@@ -50,6 +50,10 @@
       file = ./tubearchivist/environmentES.age;
     };
 
+    shiori-environment = {
+      file = ./shiori/environment.age;
+    };
+
     aria2-config = {
       file = ./aria2/config.age;
       owner = "media_user";
