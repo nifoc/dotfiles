@@ -14,6 +14,7 @@ in
     git-absorb
     git-crypt
     git-trim
+    mergiraf
   ];
 
   programs.git = {
@@ -69,7 +70,7 @@ in
       };
 
       merge = {
-        conflictStyle = "zdiff3";
+        conflictStyle = "diff3";
 
         mergiraf = {
           name = "mergiraf";
