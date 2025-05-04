@@ -74,6 +74,7 @@
     };
 
     nedeco.url = "github:nedeco/nix-base-system";
+    #nedeco.url = "path:/Users/dkempkens/Code/Work/nedeco/nix-base-system";
   };
 
   outputs =
