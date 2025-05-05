@@ -37,6 +37,7 @@ let
     float-small-windows = true;
     floating = [
       "at.obdev.LaunchBar"
+      "com.apple.ScreenSharing"
       "com.apple.systempreferences"
       "com.colliderli.iina"
       "com.eltima.elmedia-setapp"
