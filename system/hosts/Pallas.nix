@@ -48,6 +48,7 @@ in
 
       trusted-users = [ "@admin" ];
 
+      sandbox = "relaxed";
       connect-timeout = 5;
       netrc-file = "/etc/nix/netrc";
     };
@@ -106,12 +107,18 @@ in
       Port 22
       IdentityFile /etc/nix/id_nix_remote_builder
       StrictHostKeyChecking accept-new
+      ControlMaster auto
+      ControlPath /tmp/ssh-%r@%h:%p
+      ControlPersist 120
 
     Host boron.ts.kempkens.network
       User nix-remote-builder
       Port 22
       IdentityFile /etc/nix/id_nix_remote_builder
       StrictHostKeyChecking accept-new
+      ControlMaster auto
+      ControlPath /tmp/ssh-%r@%h:%p
+      ControlPersist 120
   '';
 
   documentation.doc.enable = false;
