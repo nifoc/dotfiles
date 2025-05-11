@@ -30,6 +30,7 @@ in
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       ];
 
+      sandbox = "relaxed";
       netrc-file = "/etc/nix/netrc";
     };
   };
