@@ -4,6 +4,8 @@
   services.chrony = {
     enable = true;
 
+    enableRTCTrimming = false;
+
     servers = [
       "ptbtime1.ptb.de"
       "ptbtime2.ptb.de"
@@ -14,7 +16,6 @@
       "ntp1.hetzner.de"
       "ntp2.hetzner.de"
       "ntp3.hetzner.de"
-      "time.cloudflare.com"
     ];
 
     extraConfig = ''
