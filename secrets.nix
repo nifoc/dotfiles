@@ -5,6 +5,7 @@ let
   system-tanker = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILpnogLd3Ttmz/At0dXveaG1xF37vV7lz34ojDTIuCOi";
   system-carbon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEvF4zibLcXxlp4Eorc/6C30yeFItLNT2iAvGnNEscnu";
   system-boron = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEH0G+fjmO4IOULTWFWtRf8Wh5BxeGukub8qoRFd5zvA";
+  system-krypton = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINKE5LN8s5bcOYBaN682QxxmJRedytACUN8aRMzxlfuL";
   system-mediaserver = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlB0cL5CtTOyARWSE2yUsNU4JHUPmr71710mZHzsmbX";
   system-argon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPP9ygczyi6g8abvj1I0eAj7N2Rli9UMlkC8VT6SnWLU";
   system-neon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5Ht4KaRUvuGFmYLznTkVSnn6isjrcVplz1kKWkrnRQ";
@@ -24,6 +25,10 @@ let
     user-daniel-Styx
     user-daniel-Pallas
     system-boron
+  ];
+  krypton = [
+    user-daniel-Pallas
+    system-krypton
   ];
   mediaserver = [
     user-daniel-Styx
@@ -51,6 +56,7 @@ let
     system-tanker
     system-carbon
     system-boron
+    system-krypton
     system-mediaserver
     system-argon
     system-neon
@@ -144,6 +150,18 @@ in
   "agenix/hosts/boron/forgejo-actions/token.age".publicKeys = boron;
 
   "agenix/hosts/boron/miniflux/credentials.age".publicKeys = boron;
+
+  # krypton
+  "agenix/hosts/krypton/user/danielPassword.age".publicKeys = krypton;
+
+  "agenix/hosts/krypton/acme/credentials.age".publicKeys = krypton;
+
+  "agenix/hosts/krypton/podman/auth.age".publicKeys = krypton;
+
+  "agenix/hosts/krypton/tailscale/authkey.age".publicKeys = krypton;
+
+  "agenix/hosts/krypton/wireguard/config-dl.age".publicKeys = krypton;
+  "agenix/hosts/krypton/wireguard/config-sc.age".publicKeys = krypton;
 
   # mediaserver
   "agenix/hosts/mediaserver/user/danielPassword.age".publicKeys = mediaserver;

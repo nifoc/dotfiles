@@ -143,6 +143,17 @@
             inherit lix-module;
           };
 
+          krypton = import ./system/flakes/krypton.nix {
+            inherit (inputs)
+              nixpkgs
+              disko
+              home-manager
+              agenix
+              nifoc-overlay
+              ;
+            inherit lix-module;
+          };
+
           mediaserver = import ./system/flakes/mediaserver.nix {
             inherit (inputs) nixpkgs home-manager agenix;
             inherit lix-module;
@@ -192,6 +203,7 @@
             tanker = tanker.system;
             carbon = carbon.system;
             boron = boron.system;
+            krypton = krypton.system;
             mediaserver = mediaserver.system;
             argon = argon.system;
             neon = neon.system;
@@ -219,6 +231,7 @@
               tanker = mkDeployNixOsConfig tanker;
               carbon = mkDeployNixOsConfig carbon;
               boron = mkDeployNixOsConfig boron;
+              krypton = mkDeployNixOsConfig krypton;
               mediaserver = mkDeployNixOsConfig mediaserver;
               argon = mkDeployNixOsConfig argon;
               neon = mkDeployNixOsConfig neon;
@@ -264,7 +277,10 @@
                 deadnix.enable = true;
                 shellcheck = {
                   enable = true;
-                  excludes = [ "\\.envrc" ];
+                  excludes = [
+                    "\\.envrc"
+                    "system/nixos/monit/scripts/"
+                  ];
                 };
                 # statix.enable = true;
                 treefmt.enable = true;
