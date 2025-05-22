@@ -20,7 +20,7 @@ in
     '';
 
     postActivation = mkIf isDarwin {
-      text = ''
+      text = lib.mkOrder 9999 ''
         if [[ -e /run/current-system ]]; then
           echo "[show-update-changelog] System Changelog"
           sudo -H ${lib.getExe pkgs.nvd} --nix-bin-dir='${config.nix.package}/bin' diff /run/current-system "$systemConfig"

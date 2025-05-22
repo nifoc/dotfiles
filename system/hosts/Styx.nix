@@ -10,7 +10,10 @@ in
     ../darwin/fake-homebrew.nix
   ];
 
-  system.stateVersion = 5;
+  system = {
+    stateVersion = 5;
+    primaryUser = "dkempkens";
+  };
 
   nix = {
     settings = {
