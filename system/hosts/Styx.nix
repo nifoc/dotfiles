@@ -8,6 +8,8 @@ in
     ../darwin/attic.nix
 
     ../darwin/fake-homebrew.nix
+
+    ../darwin/git.nix
   ];
 
   system = {
