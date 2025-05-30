@@ -142,7 +142,10 @@ in
     tmp.cleanOnBoot = true;
   };
 
-  zramSwap.enable = true;
+  zramSwap = {
+    enable = true;
+    writebackDevice = "/dev/zvol/dozer/swap-writeback";
+  };
 
   networking = {
     hostName = "krypton";

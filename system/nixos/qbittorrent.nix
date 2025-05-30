@@ -20,7 +20,8 @@ in
     volumes = [
       "/var/lib/qbittorrent:/config"
       "/dozer/downloads/qBittorrent:/mnt/downloads/qBittorrent"
-      "${pkgs.vuetorrent}/share:/usr/local/share/vuetorrent"
+      "${pkgs.vuetorrent}/share:/usr/local/share/vuetorrent:ro"
+      "${pkgs.torrent-best-blocklist}/share:/usr/local/share/best-blocklist:ro"
     ];
     networks = [ "ns:/var/run/netns/${netns}" ];
     capabilities = {

@@ -11,8 +11,9 @@
     };
 
     nginx.virtualHosts = lib.genAttrs config.services.nginx.tailscaleAuth.virtualHosts (vhost: {
-      "${vhost}".locations."/auth" = {
+      locations."/auth" = {
         extraConfig = lib.mkAfter ''
+          # Skipping auth for ${vhost} for certain clients
           if ($tailscale_auth_skip = yes) {
             return 200;
           }
