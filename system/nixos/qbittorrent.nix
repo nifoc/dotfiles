@@ -1,66 +1,80 @@
 { pkgs, lib, ... }:
 
-{
-  systemd.tmpfiles.rules = [
-    "d /var/lib/qbittorrent 0750 media_user media_group"
+let
+  fqdn = "qbittorrent.internal.kempkens.network";
+  netns = "dl";
+  requiredPaths = [
+    "/dozer/downloads"
   ];
-
+in
+{
   virtualisation.oci-containers.containers.qbittorrent = {
     image = "lscr.io/linuxserver/qbittorrent:latest";
     ports = [ "192.168.42.2:8071:8071" ];
     environment = {
-      "PUID" = "1001";
+      "PUID" = "2001";
       "PGID" = "2001";
       "TZ" = "Etc/UTC";
       "WEBUI_PORT" = "8071";
     };
     volumes = [
       "/var/lib/qbittorrent:/config"
-      "/mnt/downloads:/mnt/downloads"
+      "/dozer/downloads/qBittorrent:/mnt/downloads/qBittorrent"
       "${pkgs.vuetorrent}/share:/usr/local/share/vuetorrent"
     ];
-    extraOptions = [
-      "--network=ns:/var/run/netns/wg"
-      "--cap-add=CAP_NET_RAW"
-      "--label=com.centurylinklabs.watchtower.enable=true"
-      "--label=io.containers.autoupdate=registry"
+    networks = [ "ns:/var/run/netns/${netns}" ];
+    capabilities = {
+      CAP_NET_RAW = true;
+    };
+    labels = {
+      "com.centurylinklabs.watchtower.enable" = "true";
+      "io.containers.autoupdate" = "registry";
+    };
+  };
+
+  systemd = {
+    services.podman-qbittorrent = {
+      bindsTo = [ "wg-${netns}.service" ];
+      after = lib.mkAfter [ "wg-${netns}.service" ];
+      wantedBy = lib.mkForce [ ];
+
+      unitConfig = {
+        ConditionDirectoryNotEmpty = requiredPaths;
+      };
+    };
+
+    paths.podman-qbittorrent = {
+      wantedBy = [ "multi-user.target" ];
+
+      pathConfig = {
+        PathExists = requiredPaths;
+        DirectoryNotEmpty = requiredPaths;
+      };
+    };
+
+    tmpfiles.rules = [
+      "d /var/lib/qbittorrent 0750 media_user user_media"
     ];
   };
 
-  systemd.services.podman-qbittorrent =
-    let
-      mounts = [
-        "mnt-downloads.mount"
-      ];
-    in
-    {
-      requires = lib.mkAfter mounts;
-      bindsTo = [ "wg.service" ];
-      after = lib.mkForce ([ "wg.service" ] ++ mounts);
-    };
+  services.nginx = {
+    tailscaleAuth.virtualHosts = [ fqdn ];
 
-  services.nginx =
-    let
-      fqdn = "qbittorrent.internal.kempkens.network";
-    in
-    {
-      tailscaleAuth.virtualHosts = [ fqdn ];
+    virtualHosts."${fqdn}" = {
+      quic = true;
+      http3 = true;
 
-      virtualHosts."${fqdn}" = {
-        quic = true;
-        http3 = true;
+      onlySSL = true;
+      useACMEHost = "internal.kempkens.network";
 
-        onlySSL = true;
-        useACMEHost = "internal.kempkens.network";
+      extraConfig = ''
+        client_max_body_size 32m;
+      '';
 
-        extraConfig = ''
-          client_max_body_size 32m;
-        '';
-
-        locations."/" = {
-          recommendedProxySettings = true;
-          proxyPass = "http://192.168.42.2:8071";
-        };
+      locations."/" = {
+        recommendedProxySettings = true;
+        proxyPass = "http://192.168.42.2:8071";
       };
     };
+  };
 }

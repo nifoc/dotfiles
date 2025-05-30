@@ -2,26 +2,26 @@
 
 let
   data-dir = "/var/lib/recyclarr";
+  netns = "dl";
 in
 {
   virtualisation.oci-containers.containers.recyclarr = {
     image = "ghcr.io/recyclarr/recyclarr:latest";
+    dependsOn = [ "sonarr" ];
     environment = {
       "TZ" = "Etc/UTC";
     };
-    volumes = [
-      "${data-dir}:/config"
-    ];
-    extraOptions = [
-      "--network=ns:/var/run/netns/wg"
-      "--label=com.centurylinklabs.watchtower.enable=true"
-      "--label=io.containers.autoupdate=registry"
-    ];
+    volumes = [ "${data-dir}:/config" ];
+    networks = [ "ns:/var/run/netns/${netns}" ];
+    labels = {
+      "com.centurylinklabs.watchtower.enable" = "true";
+      "io.containers.autoupdate" = "registry";
+    };
   };
 
   systemd.services.podman-recyclarr = {
-    bindsTo = [ "wg.service" ];
-    after = lib.mkForce [ "wg.service" ];
+    bindsTo = [ "wg-${netns}.service" ];
+    after = lib.mkAfter [ "wg-${netns}.service" ];
 
     restartTriggers = [ "${config.age.secrets.recyclarr-config.file}" ];
   };

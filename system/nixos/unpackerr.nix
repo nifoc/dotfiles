@@ -1,27 +1,45 @@
 { pkgs, config, ... }:
 
+let
+  netns = "dl";
+  requiredPaths = [ "/dozer/downloads" ];
+in
 {
-  systemd.services.unpackerr =
-    let
-      mounts = [ "mnt-downloads.mount" ];
-    in
-    {
+  systemd = {
+    services.unpackerr = {
       description = "unpackerr service";
-      requires = mounts;
-      bindsTo = [ "wg.service" ];
-      after = [ "wg.service" ] ++ mounts;
-      wantedBy = [ "multi-user.target" ];
+      bindsTo = [ "wg-${netns}.service" ];
+      after = [
+        "network-online.target"
+        "wg-${netns}.service"
+      ];
+      wants = [ "network-online.target" ];
+      wantedBy = [ ];
+
+      unitConfig = {
+        ConditionDirectoryNotEmpty = requiredPaths;
+      };
 
       serviceConfig = {
         Type = "simple";
         User = "media_user";
-        Group = "media_group";
-        NetworkNamespacePath = "/var/run/netns/wg";
+        Group = "user_media";
+        NetworkNamespacePath = "/var/run/netns/${netns}";
         BindReadOnlyPaths = [
-          "/etc/netns/wg/resolv.conf:/etc/resolv.conf:norbind"
-          "/etc/netns/wg/nsswitch.conf:/etc/nsswitch.conf:norbind"
+          "/etc/netns/${netns}/resolv.conf:/etc/resolv.conf:norbind"
+          "/etc/netns/${netns}/nsswitch.conf:/etc/nsswitch.conf:norbind"
         ];
         ExecStart = "${pkgs.unpackerr}/bin/unpackerr --config ${config.age.secrets.unpackerr-config.path}";
       };
     };
+
+    paths.unpackerr = {
+      wantedBy = [ "multi-user.target" ];
+
+      pathConfig = {
+        PathExists = requiredPaths;
+        DirectoryNotEmpty = requiredPaths;
+      };
+    };
+  };
 }

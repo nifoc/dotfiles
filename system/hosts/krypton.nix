@@ -27,9 +27,18 @@ in
 
     ../nixos/attic.nix
 
+    ../nixos/ddg.nix
+
+    ../nixos/jellyfin.nix
+
     ../nixos/monit
 
+    ../nixos/samba/krypton.nix
+
+    ../nixos/smartd.nix
+
     ../nixos/tailscale-router.nix
+    ../nixos/tailscale-exit-node.nix
     ../nixos/tailscale-nodns.nix
     ../nixos/tailscale-auth.nix
 
@@ -43,6 +52,7 @@ in
           nsIP = "192.168.42.6";
           ports = [
             4000
+            9999
           ];
         };
         configFile = config.age.secrets.wireguard-config-sc;
@@ -66,14 +76,26 @@ in
             8191
             8989
             9696
-            9999
           ];
         };
         configFile = config.age.secrets.wireguard-config-dl;
       }
     ))
 
+    ../nixos/flaresolverr.nix
+    ../nixos/prowlarr.nix
+    ../nixos/recyclarr.nix
+    ../nixos/unpackerr.nix
+    ../nixos/sonarr.nix
+    ../nixos/radarr.nix
+    ../nixos/sabnzbd.nix
+    ../nixos/qbittorrent.nix
+
     ../nixos/container.nix
+    ../../container/tubearchivist
+    ../../secret/nixos/additional-media/media_browser.nix
+    ../../secret/nixos/additional-media/stash.nix
+    ../../secret/nixos/additional-media/homepage.nix
   ];
 
   system.stateVersion = "22.11";
@@ -169,7 +191,6 @@ in
 
   services = {
     udev.extraRules = ''
-      ATTR{address}=="0c:c4:7a:19:76:cd", NAME="eth0"
       ATTR{address}=="40:a6:b7:c1:7d:38", NAME="eth0"
     '';
 
@@ -183,12 +204,36 @@ in
 
   services.zfs.autoScrub = {
     enable = true;
-    interval = lib.mkForce "60day";
+    interval = lib.mkForce "quarterly";
   };
 
   documentation = {
     nixos.enable = false;
     doc.enable = false;
+  };
+
+  power.ups = {
+    enable = true;
+    mode = "standalone";
+    openFirewall = true;
+
+    ups.primary = {
+      description = "Back-UPS RS 900G";
+      driver = "usbhid-ups";
+      port = "auto";
+    };
+
+    users.upsmon = {
+      passwordFile = config.age.secrets.ups-primary-password.path;
+      upsmon = "primary";
+    };
+
+    upsd.listen = [
+      { address = "127.0.0.1"; }
+      { address = "10.0.0.100"; }
+    ];
+
+    upsmon.monitor.primary.user = "upsmon";
   };
 
   fonts.fontconfig.enable = false;
@@ -222,6 +267,16 @@ in
         ];
         shell = pkgs.zsh;
         openssh.authorizedKeys.keys = [ ssh-keys.LAN ];
+      };
+
+      media_user = {
+        uid = 2001;
+        group = "user_media";
+        isSystemUser = true;
+        description = "Media User";
+        home = "/var/lib/media_user";
+        createHome = true;
+        autoSubUidGidRange = true;
       };
     };
   };

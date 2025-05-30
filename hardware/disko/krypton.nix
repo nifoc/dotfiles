@@ -7,12 +7,18 @@
         content = {
           type = "gpt";
           partitions = {
+            boot = {
+              size = "1M";
+              type = "EF02"; # for grub MBR
+            };
             ESP = {
-              size = "1G";
+              size = "512M";
               type = "EF00";
               content = {
-                type = "mdraid";
-                name = "boot";
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot0";
+                mountOptions = [ "umask=0077" ];
               };
             };
             zfs = {
@@ -32,12 +38,18 @@
         content = {
           type = "gpt";
           partitions = {
+            boot = {
+              size = "1M";
+              type = "EF02"; # for grub MBR
+            };
             ESP = {
-              size = "1G";
+              size = "512M";
               type = "EF00";
               content = {
-                type = "mdraid";
-                name = "boot";
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot1";
+                mountOptions = [ "umask=0077" ];
               };
             };
             zfs = {
@@ -48,20 +60,6 @@
               };
             };
           };
-        };
-      };
-    };
-
-    mdadm = {
-      boot = {
-        type = "mdadm";
-        level = 1;
-        metadata = "1.0";
-        content = {
-          type = "filesystem";
-          format = "vfat";
-          mountpoint = "/boot";
-          mountOptions = [ "umask=0077" ];
         };
       };
     };

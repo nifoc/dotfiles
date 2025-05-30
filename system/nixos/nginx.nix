@@ -30,6 +30,14 @@
                                 '"$http_referer" "$http_user_agent"';
 
       access_log /var/log/nginx/access.log combined_vhost buffer=32k flush=5m;
+
+      map $remote_addr $tailscale_auth_skip {
+        100.83.191.69 yes;
+        fd7a:115c:a1e0::d034:bf45 yes;
+        100.88.88.45 yes;
+        fd7a:115c:a1e0::cb01:582d yes;
+        default no;
+      }
     '';
 
     # Currently breaks HTTP3

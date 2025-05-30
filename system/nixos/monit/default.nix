@@ -16,18 +16,17 @@
           inherit (lib) getExe;
           inherit (lib.strings) concatMapStringsSep;
 
-          cpupower = writeShellApplication {
-            name = "monit-cpupower";
+          turbostat = writeShellApplication {
+            name = "monit-turbostat";
 
             runtimeInputs = with pkgs; [
-              config.boot.kernelPackages.cpupower
+              config.boot.kernelPackages.turbostat
               coreutils
-              gnused
             ];
 
             bashOptions = [ "nounset" ];
 
-            text = builtins.readFile ./scripts/cpupower.sh;
+            text = builtins.readFile ./scripts/turbostat.sh;
           };
 
           sensors = writeShellApplication {
@@ -155,11 +154,11 @@
           check network tailscale0 with interface tailscale0
             if link down then alert
 
-          check program cpupower with path "${getExe cpupower}"
+          check program turbostat with path "${getExe turbostat}"
             if status != 0 then alert
 
           check program sensors with path "${getExe sensors} coretemp-isa-0000"
-            if status > 85 for 4 cycles then alert
+            if status > 70 for 4 cycles then alert
 
           check program top10 with path "${getExe top10}"
             if status != 0 then alert
@@ -183,6 +182,17 @@
           [
             "ata-Samsung_SSD_870_EVO_1TB_S75CNX0Y204686N"
             "ata-Samsung_SSD_870_EVO_1TB_S75CNX0Y204574J"
+            "ata-ST10000NE0008-2JM101_ZPW0MSB4"
+            "ata-ST10000NE0008-2JM101_ZPW0N01M"
+            "ata-ST14000NE0008-2RX103_ZTM0CFC2"
+            "ata-ST14000NE0008-2RX103_ZTM0HSKH"
+            "ata-ST16000NE000-2RW103_ZL2PXPP3"
+            "ata-ST16000NE000-2RW103_ZL2PZ6XX"
+            "ata-ST6000VN001-2BB186_ZCT2ZWZC"
+            "ata-ST8000NE001-2M7101_WSDA0W75"
+            "ata-WDC_WD100EFAX-68LHPN0_7PKTUMNC"
+            "ata-WDC_WD100EFAX-68LHPN0_JEKD2W3N"
+            "ata-INTEL_SSDSC2BB080G6_PHWA635201X5080BGN"
           ]
         )
         + (concatMapStringsSep "\n"

@@ -5,7 +5,7 @@ let
   system-tanker = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILpnogLd3Ttmz/At0dXveaG1xF37vV7lz34ojDTIuCOi";
   system-carbon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEvF4zibLcXxlp4Eorc/6C30yeFItLNT2iAvGnNEscnu";
   system-boron = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEH0G+fjmO4IOULTWFWtRf8Wh5BxeGukub8qoRFd5zvA";
-  system-krypton = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINKE5LN8s5bcOYBaN682QxxmJRedytACUN8aRMzxlfuL";
+  system-krypton = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQooOFh2618Y7sXwYE640ftsdmEr6O87jUVKw/VogtY";
   system-mediaserver = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlB0cL5CtTOyARWSE2yUsNU4JHUPmr71710mZHzsmbX";
   system-argon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPP9ygczyi6g8abvj1I0eAj7N2Rli9UMlkC8VT6SnWLU";
   system-neon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5Ht4KaRUvuGFmYLznTkVSnn6isjrcVplz1kKWkrnRQ";
@@ -156,9 +156,20 @@ in
 
   "agenix/hosts/krypton/acme/credentials.age".publicKeys = krypton;
 
+  "agenix/hosts/krypton/homepage/environment.age".publicKeys = krypton;
+
   "agenix/hosts/krypton/podman/auth.age".publicKeys = krypton;
 
+  "agenix/hosts/krypton/recyclarr/config.age".publicKeys = krypton;
+
   "agenix/hosts/krypton/tailscale/authkey.age".publicKeys = krypton;
+
+  "agenix/hosts/krypton/tubearchivist/environmentTA.age".publicKeys = krypton;
+  "agenix/hosts/krypton/tubearchivist/environmentES.age".publicKeys = krypton;
+
+  "agenix/hosts/krypton/unpackerr/config.age".publicKeys = krypton;
+
+  "agenix/hosts/krypton/ups/primaryPassword.age".publicKeys = krypton;
 
   "agenix/hosts/krypton/wireguard/config-dl.age".publicKeys = krypton;
   "agenix/hosts/krypton/wireguard/config-sc.age".publicKeys = krypton;
@@ -237,10 +248,10 @@ in
   "agenix/hosts/adsb-antenna/container/adsb-environment.age".publicKeys = adsb-antenna;
 
   # Styx
-  "agenix/hosts/Styx/git/maintenance.age".publicKeys = [
-    user-daniel-Styx
-    user-daniel-Pallas
-  ];
+  # "agenix/hosts/Styx/git/maintenance.age".publicKeys = [
+  #   user-daniel-Styx
+  #   user-daniel-Pallas
+  # ];
 
   # Pallas
   "agenix/hosts/Pallas/git/maintenance.age".publicKeys = [

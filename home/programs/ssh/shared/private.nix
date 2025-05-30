@@ -99,6 +99,15 @@
       identitiesOnly = true;
     };
 
+    "krypton" = {
+      hostname = "krypton.ts.kempkens.network";
+      port = 22;
+      user = "daniel";
+      forwardAgent = true;
+      identityFile = "~/.ssh/LAN.pub";
+      identitiesOnly = true;
+    };
+
     "mediaserver" = {
       hostname = "mediaserver.ts.kempkens.network";
       port = 22;

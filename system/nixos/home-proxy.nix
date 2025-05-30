@@ -20,7 +20,7 @@ in
 
     streamConfig = ''
       upstream video {
-        server 100.88.216.110:${toString portI};
+        server 100.83.191.69:${toString portI};
       }
 
       server {

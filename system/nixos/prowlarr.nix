@@ -1,53 +1,58 @@
 { lib, ... }:
 
+let
+  fqdn = "prowlarr.internal.kempkens.network";
+  netns = "dl";
+in
 {
   virtualisation.oci-containers.containers.prowlarr = {
     image = "lscr.io/linuxserver/prowlarr:latest";
     ports = [ "192.168.42.2:9696:9696" ];
+    dependsOn = [ "flaresolverr" ];
     environment = {
-      "PUID" = "1001";
+      "PUID" = "2001";
       "PGID" = "2001";
       "TZ" = "Etc/UTC";
       "PROWLARR__AUTH__TRUSTCGNATIPADDRESSES" = "true";
     };
-    volumes = [
-      "/var/lib/prowlarr:/config"
-    ];
-    extraOptions = [
-      "--network=ns:/var/run/netns/wg"
-      "--label=com.centurylinklabs.watchtower.enable=true"
-      "--label=io.containers.autoupdate=registry"
+    volumes = [ "/var/lib/prowlarr:/config" ];
+    networks = [ "ns:/var/run/netns/${netns}" ];
+    labels = {
+      "com.centurylinklabs.watchtower.enable" = "true";
+      "io.containers.autoupdate" = "registry";
+    };
+  };
+
+  systemd = {
+    services.podman-prowlarr = {
+      bindsTo = [ "wg-${netns}.service" ];
+      after = lib.mkAfter [ "wg-${netns}.service" ];
+    };
+
+    tmpfiles.rules = [
+      "d /var/lib/prowlarr 0755 media_user user_media"
     ];
   };
 
-  systemd.services.podman-prowlarr = {
-    bindsTo = [ "wg.service" ];
-    after = lib.mkForce [ "wg.service" ];
-  };
+  services.nginx = {
+    tailscaleAuth.virtualHosts = [ fqdn ];
 
-  services.nginx =
-    let
-      fqdn = "prowlarr.internal.kempkens.network";
-    in
-    {
-      tailscaleAuth.virtualHosts = [ fqdn ];
+    virtualHosts."${fqdn}" = {
+      quic = true;
+      http3 = true;
 
-      virtualHosts."${fqdn}" = {
-        quic = true;
-        http3 = true;
+      onlySSL = true;
+      useACMEHost = "internal.kempkens.network";
 
-        onlySSL = true;
-        useACMEHost = "internal.kempkens.network";
+      extraConfig = ''
+        client_max_body_size 32m;
+      '';
 
-        extraConfig = ''
-          client_max_body_size 32m;
-        '';
-
-        locations."/" = {
-          recommendedProxySettings = true;
-          proxyPass = "http://192.168.42.2:9696";
-          proxyWebsockets = true;
-        };
+      locations."/" = {
+        recommendedProxySettings = true;
+        proxyPass = "http://192.168.42.2:9696";
+        proxyWebsockets = true;
       };
     };
+  };
 }

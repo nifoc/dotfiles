@@ -1,74 +1,102 @@
 { lib, config, ... }:
 
-{
-  systemd.tmpfiles.rules = [
-    "d /var/lib/tubearchivist 0755 root root"
-    "d /var/lib/tubearchivist/cache 0755 media_user media_group"
-    "d /var/lib/tubearchivist/redis 0755 root root"
-    "d /var/lib/tubearchivist/es 0755 1000 root"
+let
+  fqdn = "tubearchivist.internal.kempkens.network";
+  requiredPaths = [
+    "/dozer/MediaVault/YTDL"
   ];
-
+in
+{
   virtualisation.oci-containers.containers = {
     tubearchivist = {
-      image = "docker.io/bbilly1/tubearchivist:v0.5.1";
+      image = "docker.io/bbilly1/tubearchivist:unstable";
       dependsOn = [
-        "archivist-es"
-        "archivist-redis"
+        "tubearchivist-es"
+        "tubearchivist-redis"
       ];
       ports = [ "127.0.0.1:9887:8000" ];
       environmentFiles = [ config.age.secrets.tubearchivist-environment-ta.path ];
       volumes = [
-        "/mnt/media/YTDL/Downloads:/youtube"
+        "/dozer/MediaVault/YTDL/Downloads:/youtube"
         "/var/lib/tubearchivist/cache:/cache"
-        "/mnt/media/YTDL/Cache/backup:/cache/backup"
-        "/mnt/media/YTDL/Cache/import:/cache/import"
+        "/dozer/MediaVault/YTDL/Cache/backup:/cache/backup"
+        "/dozer/MediaVault/YTDL/Cache/import:/cache/import"
       ];
+      labels = {
+        "com.centurylinklabs.watchtower.enable" = "true";
+        "io.containers.autoupdate" = "registry";
+      };
     };
 
-    archivist-redis = {
+    tubearchivist-redis = {
       image = "docker.io/valkey/valkey:8";
-      volumes = [
-        "/var/lib/tubearchivist/redis:/data"
-      ];
+      user = "2001:2001";
+      volumes = [ "/var/lib/tubearchivist/redis:/data" ];
+      labels = {
+        "com.centurylinklabs.watchtower.enable" = "true";
+        "io.containers.autoupdate" = "registry";
+      };
     };
 
-    archivist-es = {
+    tubearchivist-es = {
       image = "docker.io/bbilly1/tubearchivist-es:latest";
       ports = [ "127.0.0.1:9200:9200" ];
       environmentFiles = [ config.age.secrets.tubearchivist-environment-es.path ];
-      volumes = [
-        "/var/lib/tubearchivist/es:/usr/share/elasticsearch/data"
-      ];
+      volumes = [ "/var/lib/tubearchivist/es:/usr/share/elasticsearch/data" ];
+      labels = {
+        "com.centurylinklabs.watchtower.enable" = "true";
+        "io.containers.autoupdate" = "registry";
+      };
     };
   };
 
-  systemd.services.podman-tubearchivist =
-    let
-      mounts = [ "mnt-media-YTDL.mount" ];
-    in
-    {
-      requires = lib.mkAfter mounts;
-      after = lib.mkAfter mounts;
-    };
+  systemd = {
+    services = {
+      podman-tubearchivist = {
+        wantedBy = lib.mkForce [ ];
+        restartTriggers = [ "${config.age.secrets.tubearchivist-environment-ta.file}" ];
 
-  services.nginx =
-    let
-      fqdn = "tubearchivist.internal.kempkens.network";
-    in
-    {
-      tailscaleAuth.virtualHosts = [ fqdn ];
-
-      virtualHosts."${fqdn}" = {
-        quic = true;
-        http3 = true;
-
-        onlySSL = true;
-        useACMEHost = "internal.kempkens.network";
-
-        locations."/" = {
-          recommendedProxySettings = true;
-          proxyPass = "http://127.0.0.1:9887";
+        unitConfig = {
+          ConditionDirectoryNotEmpty = requiredPaths;
         };
       };
+
+      podman-tubearchivist-es = {
+        restartTriggers = [ "${config.age.secrets.tubearchivist-environment-es.file}" ];
+      };
     };
+
+    paths.podman-tubearchivist = {
+      wantedBy = [ "multi-user.target" ];
+
+      pathConfig = {
+        PathExists = requiredPaths;
+        DirectoryNotEmpty = requiredPaths;
+      };
+    };
+
+    tmpfiles.rules = [
+      "d /var/lib/tubearchivist 0755 root root"
+      "d /var/lib/tubearchivist/cache 0755 media_user user_media"
+      "d /var/lib/tubearchivist/redis 0755 media_user user_media"
+      "d /var/lib/tubearchivist/es 0755 1000 root"
+    ];
+  };
+
+  services.nginx = {
+    tailscaleAuth.virtualHosts = [ fqdn ];
+
+    virtualHosts."${fqdn}" = {
+      quic = true;
+      http3 = true;
+
+      onlySSL = true;
+      useACMEHost = "internal.kempkens.network";
+
+      locations."/" = {
+        recommendedProxySettings = true;
+        proxyPass = "http://127.0.0.1:9887";
+      };
+    };
+  };
 }

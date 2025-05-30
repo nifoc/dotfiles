@@ -12,8 +12,24 @@
 
   boot = {
     loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
+      grub = {
+        mirroredBoots = lib.mkForce [
+          {
+            devices = [ "/dev/disk/by-id/ata-Samsung_SSD_870_EVO_1TB_S75CNX0Y204686N" ];
+            path = "/boot0";
+          }
+          {
+            devices = [ "/dev/disk/by-id/ata-Samsung_SSD_870_EVO_1TB_S75CNX0Y204574J" ];
+            path = "/boot1";
+          }
+        ];
+
+        efiSupport = true;
+        efiInstallAsRemovable = true;
+
+        gfxmodeBios = "1024x768";
+        gfxpayloadBios = "keep";
+      };
     };
     supportedFilesystems = [ "zfs" ];
 
@@ -44,6 +60,12 @@
       "net.core.rmem_max" = 2500000;
       "net.core.wmem_max" = 2500000;
       "vm.overcommit_memory" = lib.mkForce 1;
+    };
+
+    zfs = {
+      extraPools = [ "dozer" ];
+      requestEncryptionCredentials = [ "zroot/root" ];
+      forceImportRoot = false;
     };
   };
 

@@ -25,14 +25,44 @@
       group = "acme";
     };
 
+    homepage-environment = {
+      file = ./homepage/environment.age;
+    };
+
     podman-auth = {
       file = ./podman/auth.age;
       path = "/root/.docker/config.json";
       mode = "400";
     };
 
+    recyclarr-config = {
+      file = ./recyclarr/config.age;
+      symlink = false;
+      path = "/var/lib/recyclarr/recyclarr.yml";
+      owner = "1000";
+      group = "1000";
+    };
+
     tailscale-authkey = {
       file = ./tailscale/authkey.age;
+    };
+
+    tubearchivist-environment-ta = {
+      file = ./tubearchivist/environmentTA.age;
+    };
+
+    tubearchivist-environment-es = {
+      file = ./tubearchivist/environmentES.age;
+    };
+
+    unpackerr-config = {
+      file = ./unpackerr/config.age;
+      owner = "media_user";
+      group = "user_media";
+    };
+
+    ups-primary-password = {
+      file = ./ups/primaryPassword.age;
     };
 
     wireguard-config-dl = {

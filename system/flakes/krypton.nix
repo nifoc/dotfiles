@@ -60,7 +60,7 @@ in
   };
 
   deployment = {
-    hostname = "10.0.0.222";
+    hostname = "krypton";
     sshUser = "root";
     remoteBuild = true;
     autoRollback = false;
