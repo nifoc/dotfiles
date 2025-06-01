@@ -7,6 +7,10 @@
       withKTLS = true;
     };
 
+    additionalModules = with pkgs.nginxModules; [
+      vts
+    ];
+
     recommendedOptimisation = true;
     recommendedGzipSettings = true;
     recommendedBrotliSettings = true;
@@ -38,11 +42,36 @@
         fd7a:115c:a1e0::cb01:582d yes;
         default no;
       }
+
+      vhost_traffic_status_zone;
     '';
 
     # Currently breaks HTTP3
     # appendConfig = ''
     #   worker_processes auto;
     # '';
+
+    virtualHosts."localhost" = {
+      listen = [
+        {
+          addr = "127.0.0.1";
+          port = 80;
+        }
+        {
+          addr = "[::1]";
+          port = 80;
+        }
+      ];
+
+      locations."/status".extraConfig = ''
+        vhost_traffic_status_display;
+        vhost_traffic_status_display_format html;
+
+        access_log off;
+        allow 127.0.0.1;
+        allow ::1;
+        deny all;
+      '';
+    };
   };
 }

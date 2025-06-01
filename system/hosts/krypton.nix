@@ -31,7 +31,8 @@ in
 
     ../nixos/jellyfin.nix
 
-    ../nixos/monit
+    ../nixos/munin/node.nix
+    ../nixos/munin/cron.nix
 
     ../nixos/samba/krypton.nix
 

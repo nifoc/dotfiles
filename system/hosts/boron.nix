@@ -35,6 +35,8 @@ in
 
     ../nixos/miniflux.nix
 
+    ../nixos/munin/node.nix
+
     ../nixos/ntfy-sh.nix
 
     ../nixos/tailscale.nix

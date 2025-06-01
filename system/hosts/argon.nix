@@ -25,6 +25,8 @@ in
 
     (import ../nixos/controld.nix (args // { podmanDNS = true; }))
 
+    ../nixos/munin/node.nix
+
     ../nixos/mosquitto.nix
 
     ../nixos/tailscale-router.nix

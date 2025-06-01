@@ -112,6 +112,25 @@
               "com.sun:auto-snapshot" = "false";
             };
           };
+          "root/services/munin" = {
+            type = "zfs_fs";
+            options = {
+              mountpoint = "/var/lib/munin";
+              compression = "zstd";
+              atime = "off";
+            };
+            mountpoint = "/var/lib/munin";
+          };
+          "root/services/munin/www" = {
+            type = "zfs_fs";
+            options = {
+              mountpoint = "/var/www/munin";
+              compression = "lz4";
+              atime = "off";
+              "com.sun:auto-snapshot" = "false";
+            };
+            mountpoint = "/var/www/munin";
+          };
         };
       };
     };

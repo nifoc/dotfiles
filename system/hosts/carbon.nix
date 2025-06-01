@@ -44,6 +44,8 @@ in
 
     ../nixos/gotosocial.nix
 
+    ../nixos/munin/node.nix
+
     ../nixos/tailscale.nix
     ../nixos/tailscale-nodns.nix
     ../nixos/tailscale-auth.nix
