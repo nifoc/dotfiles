@@ -52,6 +52,20 @@
           printable = "no";
           "valid users" = "daniel";
         };
+
+        MediaScraper = {
+          comment = "MediaScraper on Dozer";
+          path = "/dozer/JailVault/media-scraper";
+          "force user" = "daniel";
+          "force group" = "user_media";
+          "guest ok" = "no";
+          "create mask" = "0644";
+          "directory mask" = "0755";
+          writable = "yes";
+          browseable = "yes";
+          printable = "no";
+          "valid users" = "daniel";
+        };
       };
     };
 

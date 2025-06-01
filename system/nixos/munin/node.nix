@@ -74,6 +74,9 @@
         [ipmi_*]
           user root
 
+        [samba]
+          user root
+
         [smart_*]
           user root
           group disk
