@@ -81,6 +81,11 @@
           user root
           group disk
           env.smartpath ${getExe pkgs.smartmontools}
+
+        [sshd_log]
+          group systemd-journal
+          env.logfile journald
+          env.journalctlargs --unit=sshd.service
       '';
 
     extraAutoPlugins =
@@ -93,7 +98,9 @@
         };
       in
       [
+        "${contrib}/plugins/chrony"
         "${contrib}/plugins/nginx"
+        "${contrib}/plugins/ssh"
         "${contrib}/plugins/zfs"
       ];
   };
