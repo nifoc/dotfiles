@@ -66,6 +66,7 @@
       glow
       hexyl
       hyperfine
+      imagemagick
       just
       mtr
       nix-forecast
