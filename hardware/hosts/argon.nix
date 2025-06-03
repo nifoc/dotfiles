@@ -6,6 +6,11 @@
   boot = {
     kernelModules = [ "tcp_bbr" ];
 
+    blacklistedKernelModules = [
+      "brcmfmac"
+      "brcmutil"
+    ];
+
     kernel.sysctl = {
       "net.core.default_qdisc" = "fq";
       "net.ipv4.tcp_congestion_control" = "bbr";
@@ -31,8 +36,6 @@
   ];
 
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eth0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlan0.useDHCP = lib.mkDefault true;
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
+  powerManagement.cpuFreqGovernor = lib.mkForce "ondemand";
 }

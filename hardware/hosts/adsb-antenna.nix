@@ -7,9 +7,13 @@
     kernelModules = [ "tcp_bbr" ];
 
     blacklistedKernelModules = [
+      # SDR
       "rtl2832"
       "dvb_usb_rtl28xxu"
       "rtl2832_sdr"
+      # WLAN
+      "brcmfmac"
+      "brcmutil"
     ];
 
     kernel.sysctl = {
@@ -34,8 +38,6 @@
   ];
 
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eth0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlan0.useDHCP = lib.mkDefault true;
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
+  powerManagement.cpuFreqGovernor = lib.mkForce "ondemand";
 }
