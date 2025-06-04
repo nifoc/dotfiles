@@ -17,13 +17,48 @@
       availableKernelModules = [
         "ata_piix"
         "uhci_hcd"
+        "virtio_pci"
+        "virtio_net"
         "xen_blkfront"
       ];
+
       kernelModules = [
         "nvme"
         "tls"
         "virtio_gpu"
       ];
+
+      systemd = {
+        enable = true;
+
+        network = {
+          networks = {
+            "enp1s0" = {
+              matchConfig.Name = "enp1s0";
+              networkConfig.DHCP = "ipv4";
+            };
+          };
+        };
+      };
+
+      network = {
+        enable = true;
+
+        ssh =
+          let
+            ssh-keys = import ../../system/shared/ssh-keys.nix;
+          in
+          {
+            enable = true;
+            port = 2222;
+
+            hostKeys = [ "/etc/secrets/initrd/ssh_host_ed25519_key" ];
+            authorizedKeys = [
+              "command=\"systemd-tty-ask-password-agent\" ${ssh-keys.Hetzner}"
+              "command=\"systemd-tty-ask-password-agent\" ${ssh-keys.DanielsPhone}"
+            ];
+          };
+      };
     };
 
     kernelParams = [ "console=tty" ];

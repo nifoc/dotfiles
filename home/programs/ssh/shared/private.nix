@@ -56,15 +56,6 @@
       identitiesOnly = true;
     };
 
-    "tanker" = {
-      hostname = "tanker.ts.kempkens.network";
-      port = 22;
-      user = "daniel";
-      forwardAgent = true;
-      identityFile = "~/.ssh/Hetzner.pub";
-      identitiesOnly = true;
-    };
-
     "carbon" = {
       hostname = "carbon.ts.kempkens.network";
       port = 22;
@@ -78,6 +69,14 @@
       port = 22;
       user = "daniel";
       forwardAgent = true;
+      identityFile = "~/.ssh/Hetzner.pub";
+      identitiesOnly = true;
+    };
+
+    "carbon-unlock" = {
+      hostname = "49.12.228.29";
+      port = 2222;
+      user = "root";
       identityFile = "~/.ssh/Hetzner.pub";
       identitiesOnly = true;
     };
@@ -99,17 +98,16 @@
       identitiesOnly = true;
     };
 
-    "krypton" = {
-      hostname = "krypton.ts.kempkens.network";
-      port = 22;
-      user = "daniel";
-      forwardAgent = true;
-      identityFile = "~/.ssh/LAN.pub";
+    "boron-unlock" = {
+      hostname = "138.199.219.102";
+      port = 2222;
+      user = "root";
+      identityFile = "~/.ssh/Hetzner.pub";
       identitiesOnly = true;
     };
 
-    "mediaserver" = {
-      hostname = "mediaserver.ts.kempkens.network";
+    "krypton" = {
+      hostname = "krypton.ts.kempkens.network";
       port = 22;
       user = "daniel";
       forwardAgent = true;
