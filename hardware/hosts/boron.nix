@@ -22,10 +22,7 @@
         "xen_blkfront"
       ];
 
-      kernelModules = [
-        "nvme"
-        "tls"
-      ];
+      kernelModules = [ "nvme" ];
 
       systemd = {
         enable = true;
@@ -63,7 +60,10 @@
       };
     };
 
-    kernelModules = [ "tcp_bbr" ];
+    kernelModules = [
+      "tcp_bbr"
+      "tls"
+    ];
 
     kernel.sysctl = {
       "net.core.default_qdisc" = "fq";

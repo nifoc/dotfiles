@@ -40,15 +40,52 @@
         "usbhid"
         "sd_mod"
         "ehci_pci"
+        "i40e"
+        "igb"
       ];
-      kernelModules = [
-        "coretemp"
-        "kvm-intel"
-        "tls"
-      ];
+
+      systemd = {
+        enable = true;
+
+        network = {
+          networks = {
+            "enp1s0f0np0" = {
+              matchConfig.Name = "enp1s0f0np0";
+              networkConfig.DHCP = "ipv4";
+            };
+          };
+        };
+      };
+
+      network = {
+        enable = true;
+
+        ssh =
+          let
+            ssh-keys = import ../../system/shared/ssh-keys.nix;
+          in
+          {
+            enable = true;
+            port = 2222;
+
+            # mkdir -p /etc/secrets/initrd
+            # chmod 700 -R /etc/secrets/
+            # ssh-keygen -t ed25519 -N "" -f /etc/secrets/initrd/ssh_host_ed25519_key
+            hostKeys = [ "/etc/secrets/initrd/ssh_host_ed25519_key" ];
+            authorizedKeys = [
+              "command=\"systemd-tty-ask-password-agent\" ${ssh-keys.LAN}"
+              "command=\"systemd-tty-ask-password-agent\" ${ssh-keys.DanielsPhone}"
+            ];
+          };
+      };
     };
 
-    kernelModules = [ "tcp_bbr" ];
+    kernelModules = [
+      "coretemp"
+      "kvm-intel"
+      "tcp_bbr"
+      "tls"
+    ];
 
     kernel.sysctl = {
       "net.core.default_qdisc" = "fq";

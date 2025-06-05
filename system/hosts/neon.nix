@@ -163,7 +163,10 @@ in
       description = "Daniel";
       extraGroups = [ "wheel" ];
       shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [ ssh-keys.LAN ];
+      openssh.authorizedKeys.keys = [
+        ssh-keys.LAN
+        ssh-keys.DanielsPhone
+      ];
     };
   };
 }

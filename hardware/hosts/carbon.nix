@@ -24,7 +24,6 @@
 
       kernelModules = [
         "nvme"
-        "tls"
         "virtio_gpu"
       ];
 
@@ -66,7 +65,10 @@
 
     kernelParams = [ "console=tty" ];
 
-    kernelModules = [ "tcp_bbr" ];
+    kernelModules = [
+      "tcp_bbr"
+      "tls"
+    ];
 
     kernel.sysctl = {
       "net.core.default_qdisc" = "fq";
