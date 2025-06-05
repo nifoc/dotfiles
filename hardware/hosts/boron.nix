@@ -51,6 +51,9 @@
             enable = true;
             port = 2222;
 
+            # mkdir -p /etc/secrets/initrd
+            # chmod 700 -R /etc/secrets/
+            # ssh-keygen -t ed25519 -N "" -f /etc/secrets/initrd/ssh_host_ed25519_key
             hostKeys = [ "/etc/secrets/initrd/ssh_host_ed25519_key" ];
             authorizedKeys = [
               "command=\"systemd-tty-ask-password-agent\" ${ssh-keys.Hetzner}"
