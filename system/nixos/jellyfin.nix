@@ -23,11 +23,8 @@ in
       serviceConfig = {
         BindReadOnlyPaths = [
           "/dozer/MediaVault/Anime"
-          "dozer-MediaVault-Deutsche\\x20Serien"
-          "dozer-media-Deutsche\\x20Filme"
           "/dozer/media/Documentaries"
           "/dozer/media/Movies"
-          "dozer-media-TV\\x20Shows"
           "/dozer/MediaVault/YTDL"
         ];
       };
