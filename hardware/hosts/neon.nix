@@ -4,6 +4,12 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
+    kernelParams = [
+      "cgroup_memory=1"
+      "cgroup_enable=cpuset"
+      "cgroup_enable=memory"
+    ];
+
     kernelModules = [ "tcp_bbr" ];
 
     blacklistedKernelModules = [
