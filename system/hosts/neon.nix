@@ -19,7 +19,18 @@ in
 
     ../nixos/chrony.nix
 
-    (import ../nixos/controld.nix (args // { podmanDNS = true; }))
+    (import ../nixos/blocky.nix (
+      args
+      // {
+        blockyPorts = {
+          dns = [
+            "10.0.0.7:53"
+            "10.0.51.7:53"
+            "100.126.68.56:53"
+          ];
+        };
+      }
+    ))
 
     ../nixos/munin/node.nix
 
@@ -27,8 +38,6 @@ in
 
     ../nixos/tailscale-router.nix
     ../nixos/tailscale-nodns.nix
-
-    ../nixos/unbound.nix
   ];
 
   system.stateVersion = "23.11";

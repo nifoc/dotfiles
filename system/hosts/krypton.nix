@@ -27,6 +27,20 @@ in
 
     ../nixos/attic.nix
 
+    (import ../nixos/blocky.nix (
+      args
+      // {
+        blockyPorts = {
+          dns = [
+            "10.0.0.100:53"
+            "100.83.191.69:53"
+          ];
+
+          http = [ "127.0.0.1:8053" ];
+        };
+      }
+    ))
+
     ../nixos/ddg.nix
 
     ../nixos/jellyfin.nix

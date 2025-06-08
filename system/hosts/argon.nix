@@ -23,7 +23,20 @@ in
 
     ../nixos/chrony.nix
 
-    (import ../nixos/controld.nix (args // { podmanDNS = true; }))
+    (import ../nixos/blocky.nix (
+      args
+      // {
+        blockyPorts = {
+          dns = [
+            "10.0.0.5:53"
+            "10.0.51.5:53"
+            "100.88.88.45:53"
+          ];
+
+          http = [ "127.0.0.1:8053" ];
+        };
+      }
+    ))
 
     ../nixos/munin/node.nix
 
@@ -31,8 +44,6 @@ in
 
     ../nixos/tailscale-router.nix
     ../nixos/tailscale-nodns.nix
-
-    ../nixos/unbound.nix
 
     ../nixos/uptime-kuma.nix
 
