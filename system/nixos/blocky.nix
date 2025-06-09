@@ -2,6 +2,7 @@
   config,
   lib,
   blockyPorts,
+  valkeyInstance ? { },
   ...
 }:
 
@@ -131,6 +132,14 @@
           ];
         };
 
+        redis = lib.mkIf (builtins.hasAttr "connect" valkeyInstance) {
+          address = "${valkeyInstance.connect}:${toString valkeyInstance.port}";
+          password = "didYouFindTheSecret?";
+          required = false;
+          connectionAttempts = 10;
+          connectionCooldown = "10s";
+        };
+
         ede.enable = true;
       };
     };
@@ -147,6 +156,23 @@
           recommendedProxySettings = true;
           proxyPass = "http://127.0.0.1:8053";
         };
+      };
+    };
+
+    redis.servers = lib.mkIf (builtins.hasAttr "bind" valkeyInstance) {
+      blocky = {
+        enable = true;
+
+        inherit (valkeyInstance) bind;
+        inherit (valkeyInstance) port;
+
+        openFirewall = true;
+        requirePass = "didYouFindTheSecret?";
+
+        databases = 1;
+        save = [ ];
+        appendOnly = false;
+        appendFsync = "no";
       };
     };
   };

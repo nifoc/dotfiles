@@ -95,6 +95,7 @@
             ++ optional config.services.jellyfin.enable "jellyfin"
             ++ optional config.services.gotosocial.enable "gotosocial"
             ++ optional config.services.blocky.enable "blocky"
+            ++ optional (builtins.hasAttr "blocky" config.services.redis.servers) "redis-blocky"
             ++ optional config.services.atticd.enable "atticd"
             ++ optional config.services.samba.enable "samba-smbd"
           );

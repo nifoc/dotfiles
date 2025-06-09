@@ -115,6 +115,14 @@
       identitiesOnly = true;
     };
 
+    "krypton-unlock" = {
+      hostname = "10.0.0.100";
+      port = 2222;
+      user = "root";
+      identityFile = "~/.ssh/LAN.pub";
+      identitiesOnly = true;
+    };
+
     "argon" = {
       hostname = "argon.ts.kempkens.network";
       port = 22;

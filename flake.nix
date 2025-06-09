@@ -294,7 +294,7 @@
             inputsFrom = [
               config.flake-root.devShell
               config.treefmt.build.devShell
-              config.pre-commit.devShell
+              #config.pre-commit.devShell
             ];
 
             packages = [

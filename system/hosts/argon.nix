@@ -35,6 +35,11 @@ in
 
           http = [ "127.0.0.1:8053" ];
         };
+
+        valkeyInstance = {
+          connect = "10.0.0.100";
+          port = 2653;
+        };
       }
     ))
 

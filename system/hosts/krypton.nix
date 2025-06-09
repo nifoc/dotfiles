@@ -38,6 +38,12 @@ in
 
           http = [ "127.0.0.1:8053" ];
         };
+
+        valkeyInstance = {
+          bind = "10.0.0.100";
+          connect = "10.0.0.100";
+          port = 2653;
+        };
       }
     ))
 
@@ -56,6 +62,8 @@ in
     ../nixos/tailscale-exit-node.nix
     ../nixos/tailscale-nodns.nix
     ../nixos/tailscale-auth.nix
+
+    ../nixos/valkey.nix
 
     ../nixos/wireguard/setup.nix
     (import ../nixos/wireguard/namespace.nix (
