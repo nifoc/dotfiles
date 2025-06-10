@@ -9,7 +9,7 @@
   services.munin-node =
     let
       inherit (lib) getExe;
-      inherit (lib.strings) concatStringsSep;
+      inherit (lib.strings) concatStringsSep optionalString;
       inherit (lib.lists) optional;
 
       extra-plugins = import ../../../secret/nixos/munin/plugins.nix;
@@ -99,6 +99,14 @@
             ++ optional config.services.atticd.enable "atticd"
             ++ optional config.services.samba.enable "samba-smbd"
           );
+
+          redis = optionalString (builtins.hasAttr "blocky" config.services.redis.servers) ''
+            [redis]
+              env.host1 ${config.services.redis.servers.blocky.bind}
+              env.port1 ${toString config.services.redis.servers.blocky.port}
+              env.password1 "${config.services.redis.servers.blocky.requirePass}"
+              env.title_prefix1 blocky
+          '';
         in
         concatStringsSep "\n" [
           ''
@@ -119,6 +127,8 @@
 
             [systemd_mem]
               env.services ${systemd_mem_services}
+
+            ${redis}
           ''
           extra-plugins.config
         ];
@@ -127,6 +137,7 @@
         "${contrib}/plugins/chrony"
         "${contrib}/plugins/jellyfin"
         "${contrib}/plugins/nginx"
+        "${contrib}/plugins/redis"
         "${contrib}/plugins/systemd"
         "${contrib}/plugins/zfs"
       ];
