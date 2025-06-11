@@ -9,7 +9,7 @@ in
 {
   virtualisation.oci-containers.containers = {
     tubearchivist = {
-      image = "docker.io/bbilly1/tubearchivist:unstable";
+      image = "docker.io/bbilly1/tubearchivist:latest";
       dependsOn = [
         "tubearchivist-es"
         "tubearchivist-redis"
