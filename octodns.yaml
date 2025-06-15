@@ -3,7 +3,7 @@ providers:
     class: octodns.provider.yaml.YamlProvider
     directory: ./secret/dns/
     default_ttl: 3600
-    enforce_order: True
+    enforce_order: False
   ovh:
     class: octodns_ovh.OvhProvider
     endpoint: ovh-eu

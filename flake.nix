@@ -302,7 +302,10 @@
               inputs'.deploy-rs.packages.default
               pkgs.just
               pkgs.nix-output-monitor
-              #(pkgs.octodns.withProviders (_: [ inputs'.nifoc-overlay.packages.octodns-ovh ]))
+              (pkgs.octodns.withProviders (_: [
+                pkgs.octodns-providers.bind
+                inputs'.nifoc-overlay.packages.octodns-ovh
+              ]))
             ];
 
             TREEFMT_CONFIG_FILE = config.treefmt.build.configFile;

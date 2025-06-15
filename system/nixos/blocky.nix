@@ -61,7 +61,10 @@
 
         blocking = {
           denylists = {
-            basic = [ "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/tif.txt" ];
+            basic = [
+              "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/tif.txt"
+              "https://malware-filter.gitlab.io/malware-filter/urlhaus-filter-wildcard-online.txt"
+            ];
 
             expert = [
               "https://raw.githubusercontent.com/sjhgvr/oisd/refs/heads/main/domainswild_big.txt"
@@ -73,6 +76,11 @@
             default = [ "basic" ];
 
             pallas = [
+              "basic"
+              "expert"
+            ];
+
+            styx = [
               "basic"
               "expert"
             ];
@@ -112,6 +120,11 @@
             pallas = [
               "100.89.41.25"
               "fd7a:115c:a1e0::f401:2919"
+            ];
+
+            styx = [
+              "100.90.80.127"
+              "fd7a:115c:a1e0::401:507f"
             ];
 
             daniels-iphone = [
