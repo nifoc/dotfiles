@@ -130,7 +130,7 @@
 
             ${redis}
           ''
-          extra-plugins.config
+          (optionalString (config.networking.hostName == "krypton") extra-plugins.config)
         ];
 
       extraAutoPlugins = [
