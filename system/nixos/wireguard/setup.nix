@@ -2,8 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    ldns
-    tcpdump
     wireguard-tools
   ];
 

@@ -17,6 +17,7 @@ in
     ../nixos/ssh.nix
     ../nixos/eternal-terminal.nix
     ../nixos/wezterm-headless.nix
+    ../nixos/debugging-tools.nix
 
     ../nixos/git.nix
 
@@ -228,10 +229,20 @@ in
 
   security.sudo.enable = true;
 
-  services.zfs.autoScrub = {
-    enable = true;
-    interval = lib.mkForce "quarterly";
-  };
+  services.zfs =
+    let
+      inherit (lib) mkForce;
+    in
+    {
+      autoSnapshot = {
+        daily = mkForce 7;
+      };
+
+      autoScrub = {
+        interval = mkForce "quarterly";
+        pools = [ "dozer" ];
+      };
+    };
 
   documentation = {
     nixos.enable = false;
