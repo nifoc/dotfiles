@@ -59,6 +59,8 @@ in
 
     ../nixos/smartd.nix
 
+    ../nixos/speedtest-tracker.nix
+
     ../nixos/tailscale-router.nix
     ../nixos/tailscale-exit-node.nix
     ../nixos/tailscale-nodns.nix
@@ -118,6 +120,7 @@ in
     ../nixos/container.nix
     ../../container/tubearchivist
     ../../secret/nixos/additional-media/media_browser.nix
+    ../../secret/nixos/additional-media/scraper.nix
     ../../secret/nixos/additional-media/stash.nix
     ../../secret/nixos/additional-media/homepage.nix
   ];

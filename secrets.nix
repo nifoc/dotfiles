@@ -162,6 +162,8 @@ in
 
   "agenix/hosts/krypton/recyclarr/config.age".publicKeys = krypton;
 
+  "agenix/hosts/krypton/speedtest-tracker/environment.age".publicKeys = krypton;
+
   "agenix/hosts/krypton/tailscale/authkey.age".publicKeys = krypton;
 
   "agenix/hosts/krypton/tubearchivist/environmentTA.age".publicKeys = krypton;

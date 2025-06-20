@@ -64,6 +64,7 @@
             basic = [
               "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/tif.txt"
               "https://malware-filter.gitlab.io/malware-filter/urlhaus-filter-wildcard-online.txt"
+              "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/fake.txt"
             ];
 
             expert = [
@@ -154,6 +155,11 @@
         };
 
         ede.enable = true;
+
+        ecs = {
+          useAsClient = false;
+          forward = false;
+        };
       };
     };
 

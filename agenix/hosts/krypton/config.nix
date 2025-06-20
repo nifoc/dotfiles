@@ -43,6 +43,10 @@
       group = "1000";
     };
 
+    speedtest-tracker-environment = {
+      file = ./speedtest-tracker/environment.age;
+    };
+
     tailscale-authkey = {
       file = ./tailscale/authkey.age;
     };
