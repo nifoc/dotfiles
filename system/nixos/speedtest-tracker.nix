@@ -16,7 +16,7 @@ in
       "DATETIME_FORMAT" = "d.m.Y H:i";
       "CHART_DATETIME_FORMAT" = "j. M. - H:i";
       "SPEEDTEST_SCHEDULE" = "0 */4 * * *";
-      "SPEEDTEST_SERVERS" = "69359,17392";
+      "SPEEDTEST_SERVERS" = "69359,17392,35154,48091";
       "SPEEDTEST_BLOCKED_SERVERS" = "61977";
     };
     environmentFiles = [
