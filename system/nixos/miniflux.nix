@@ -17,17 +17,16 @@ in
       adminCredentialsFile = config.age.secrets.miniflux-credentials.path;
     };
 
-    nginx.virtualHosts."${fqdn}" = {
-      quic = true;
-      http3 = true;
-
-      onlySSL = true;
+    caddy.virtualHosts."${fqdn}" = {
       useACMEHost = "kempkens.io";
 
-      locations."/" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:8016";
-      };
+      extraConfig = ''
+        encode
+
+        header >Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+        reverse_proxy ${config.services.miniflux.config.LISTEN_ADDR}
+      '';
     };
   };
 }

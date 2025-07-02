@@ -163,18 +163,17 @@
       };
     };
 
-    nginx = lib.mkIf (builtins.hasAttr "http" blockyPorts) {
+    caddy = lib.mkIf (builtins.hasAttr "http" blockyPorts) {
       virtualHosts."dns.internal.kempkens.network" = {
-        quic = true;
-        http3 = true;
-
-        onlySSL = true;
         useACMEHost = "internal.kempkens.network";
 
-        locations."/dns-query" = {
-          recommendedProxySettings = true;
-          proxyPass = "http://127.0.0.1:8053";
-        };
+        extraConfig = ''
+          encode
+
+          header >Strict-Transport-Security "max-age=31536000"
+
+          reverse_proxy /dns-query ${builtins.head blockyPorts.http}
+        '';
       };
     };
 

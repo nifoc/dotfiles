@@ -6,64 +6,46 @@ let
   interface = config.systemd.network.networks."10-wan".matchConfig.Name;
 in
 {
-  services.nginx = {
-    resolver = {
-      addresses = [ "1.1.1.1" ];
-      ipv6 = false;
-    };
-
-    proxyCachePath.wetter = {
-      enable = true;
-      keysZoneName = "cache_wetter";
-      maxSize = "200m";
-    };
-
-    streamConfig = ''
-      upstream video {
-        server 100.83.191.69:${toString portI};
-      }
-
-      server {
-        listen *:${toString portE} fastopen=63 backlog=1023;
-        listen [::]:${toString portE} fastopen=63 backlog=1023;
-
-        proxy_protocol on;
-        proxy_pass video;
+  services.caddy = {
+    globalConfig = ''
+      layer4 {
+        :${toString portE} {
+          route {
+            proxy {
+              proxy_protocol v2
+              upstream 100.83.191.69:${toString portI}
+            }
+          }
+        }
       }
     '';
 
     virtualHosts."wetter.kempkens.io" = {
-      quic = true;
-      http3 = true;
-      kTLS = true;
-
-      forceSSL = true;
       useACMEHost = "kempkens.io";
 
       extraConfig = ''
-        add_header Alt-Svc 'h3=":443"; ma=86400';
-        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-        add_header X-Robots-Tag "noindex, nofollow";
-        add_header X-Robots-Tag "noai, noimageai";
+        encode
+
+        header {
+          Permissions-Policy interest-cohort=()
+          Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+          X-Content-Type-Options nosniff
+          X-Frame-Options DENY
+
+          +X-Robots-Tag "noindex, nofollow"
+          +X-Robots-Tag "noai, noimageai"
+        }
+
+        handle /robots.txt {
+          rewrite * robots_generic.txt
+          root * ${pkgs.ai-robots-txt}/share
+          file_server
+        }
+
+        handle {
+          reverse_proxy 100.88.88.45:${toString (7780 + 1)}
+        }
       '';
-
-      locations = {
-        "/" = {
-          recommendedProxySettings = true;
-          proxyPass = "http://100.88.88.45:${toString (7780 + 1)}";
-          proxyWebsockets = true;
-
-          extraConfig = ''
-            proxy_cache cache_wetter;
-            proxy_cache_revalidate on;
-            proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504;
-            proxy_cache_background_update on;
-            proxy_cache_lock on;
-          '';
-        };
-
-        "= /robots.txt".alias = "${pkgs.ai-robots-txt}/share/robots_generic.txt";
-      };
     };
   };
 

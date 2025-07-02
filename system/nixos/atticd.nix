@@ -50,29 +50,41 @@ in
       ];
     };
 
-    nginx.virtualHosts."${fqdn}" = {
-      quic = true;
-      http3 = true;
-
-      onlySSL = true;
+    caddy.virtualHosts."${fqdn}" = {
       useACMEHost = "kempkens.network";
 
       extraConfig = ''
-        access_log /var/log/nginx/access_${fqdn}.log combined_vhost buffer=32k flush=5m;
+        request_body {
+          max_size 2GB
+        }
 
-        client_max_body_size 0;
-
-        add_header Alt-Svc 'h3=":443"; ma=86400';
-
-        proxy_read_timeout 300s;
-        proxy_send_timeout 300s;
+        reverse_proxy ${config.services.atticd.settings.listen}
       '';
-
-      locations."/" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://${config.services.atticd.settings.listen}";
-      };
     };
+
+    # nginx.virtualHosts."${fqdn}" = {
+    #   quic = true;
+    #   http3 = true;
+    #
+    #   onlySSL = true;
+    #   useACMEHost = "kempkens.network";
+    #
+    #   extraConfig = ''
+    #     access_log /var/log/nginx/access_${fqdn}.log combined_vhost buffer=32k flush=5m;
+    #
+    #     client_max_body_size 0;
+    #
+    #     add_header Alt-Svc 'h3=":443"; ma=86400';
+    #
+    #     proxy_read_timeout 300s;
+    #     proxy_send_timeout 300s;
+    #   '';
+    #
+    #   locations."/" = {
+    #     recommendedProxySettings = true;
+    #     proxyPass = "http://${config.services.atticd.settings.listen}";
+    #   };
+    # };
   };
 
   systemd.services.atticd.serviceConfig = {

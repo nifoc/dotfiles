@@ -16,10 +16,8 @@ in
     ../nixos/git.nix
 
     ../nixos/acme-boron.nix
-    ../nixos/nginx.nix
-    ../nixos/nginx-boron.nix
+    ../nixos/caddy
     ../nixos/home-proxy.nix
-    ../nixos/goaccess.nix
     ../nixos/postgresql.nix
 
     ../nixos/atticd.nix
@@ -41,7 +39,6 @@ in
 
     ../nixos/tailscale.nix
     ../nixos/tailscale-nodns.nix
-    ../nixos/tailscale-auth.nix
 
     ../nixos/container.nix
   ];

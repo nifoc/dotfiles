@@ -16,8 +16,7 @@ in
     ../nixos/git.nix
 
     ../nixos/acme-argon.nix
-    ../nixos/nginx.nix
-    ../nixos/nginx-argon.nix
+    ../nixos/caddy
 
     ../nixos/attic.nix
 

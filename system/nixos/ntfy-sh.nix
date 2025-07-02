@@ -1,10 +1,15 @@
+{ config, ... }:
+
+let
+  fqdn = "ntfy.kempkens.io";
+in
 {
   services = {
     ntfy-sh = {
       enable = true;
 
       settings = {
-        base-url = "https://ntfy.kempkens.io";
+        base-url = "https://${fqdn}";
         listen-http = "127.0.0.1:8004";
         behind-proxy = true;
 
@@ -19,22 +24,16 @@
       };
     };
 
-    nginx.virtualHosts."ntfy.kempkens.io" = {
-      quic = true;
-      http3 = true;
-
-      forceSSL = true;
+    caddy.virtualHosts."${fqdn}" = {
       useACMEHost = "kempkens.io";
 
       extraConfig = ''
-        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-      '';
+        encode
 
-      locations."/" = {
-        recommendedProxySettings = true;
-        proxyWebsockets = true;
-        proxyPass = "http://127.0.0.1:8004";
-      };
+        header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+        reverse_proxy ${config.services.ntfy-sh.settings.listen-http}
+      '';
     };
   };
 }

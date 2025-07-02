@@ -143,45 +143,34 @@ in
       }
     ];
 
-    nginx.virtualHosts."wetter.kempkens.io" = {
-      listen = [
-        {
-          addr = "100.88.88.45";
-          port = 7781;
-          ssl = false;
-          extraParameters = [
-            "fastopen=63"
-            "backlog=1023"
-            "deferred"
-          ];
-        }
+    caddy.virtualHosts."http://wetter.kempkens.io:7781" = {
+      listenAddresses = [
+        "100.88.88.45"
+        "[fd7a:115c:a1e0::cb01:582d]"
       ];
 
-      root = "${home}/data/html/wdc";
-
       extraConfig = ''
-        index index.html;
+        encode
+
+        @html {
+          file
+          path *.html
+        }
+
+        @js_css {
+          file
+          path *.js *.css
+        }
+
+        header @html Cache-Control "public, max-age=60, immutable"
+        header @js_css Cache-Control "public, max-age=600"
+
+        root * ${home}/data/html/wdc
+        reverse_proxy /mqtt 127.0.0.1:9883
+        file_server
       '';
-
-      locations = {
-        "~* \.html$".extraConfig = ''
-          expires modified 120s;
-        '';
-
-        "~* \.(js|css)$".extraConfig = ''
-          expires 1h;
-        '';
-
-        "/mqtt" = {
-          recommendedProxySettings = true;
-          proxyPass = "http://127.0.0.1:9883";
-          proxyWebsockets = true;
-
-          extraConfig = ''
-            add_header Cache-Control no-store;
-          '';
-        };
-      };
     };
   };
+
+  networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 7781 ];
 }

@@ -6,12 +6,12 @@
 
     defaults = {
       email = "acme@kempkens.io";
-      group = "nginx";
-      dnsProvider = "cloudflare";
+      group = "caddy";
+      dnsProvider = "ovh";
       credentialsFile = config.age.secrets.acme-credentials.path;
       dnsResolver = "1.1.1.1:53";
       dnsPropagationCheck = true;
-      reloadServices = [ "nginx.service" ];
+      reloadServices = [ "caddy.service" ];
     };
 
     certs = {

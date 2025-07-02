@@ -137,6 +137,7 @@ in
           plugin = nvim-treesitter.withPlugins (p: [
             p.angular
             p.bash
+            p.caddy
             p.css
             p.comment
             p.diff
