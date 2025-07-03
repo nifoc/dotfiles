@@ -14,6 +14,7 @@ in
     ../nixos/zfs.nix
     ../../agenix/hosts/krypton/config.nix
     ../shared/show-update-changelog.nix
+    ../nixos/sudo.nix
     ../nixos/ssh.nix
     ../nixos/eternal-terminal.nix
     ../nixos/wezterm-headless.nix
@@ -229,8 +230,6 @@ in
       MaxRetentionSec=30day
     '';
   };
-
-  security.sudo.enable = true;
 
   services.zfs =
     let
