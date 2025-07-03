@@ -9,6 +9,7 @@ in
     ../../agenix/hosts/adsb-antenna/config.nix
     ../shared/show-update-changelog.nix
     ../nixos/raspberry.nix
+    ../nixos/sudo.nix
     ../nixos/ssh.nix
 
     ../nixos/git.nix
@@ -84,8 +85,6 @@ in
     SystemMaxUse=512M
     MaxRetentionSec=7day
   '';
-
-  security.sudo.enable = true;
 
   documentation = {
     nixos.enable = false;
