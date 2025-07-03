@@ -9,6 +9,7 @@ in
     ../../agenix/hosts/argon/config.nix
     ../shared/show-update-changelog.nix
     ../nixos/raspberry.nix
+    ../nixos/sudo.nix
     ../nixos/ssh.nix
     ../nixos/eternal-terminal.nix
     ../nixos/wezterm-headless.nix
@@ -169,8 +170,6 @@ in
     SystemMaxUse=512M
     MaxRetentionSec=30day
   '';
-
-  security.sudo.enable = true;
 
   documentation = {
     nixos.enable = false;
