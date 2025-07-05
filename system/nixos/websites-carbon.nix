@@ -92,78 +92,88 @@ let
   };
 in
 {
-  services.nginx = {
+  services.caddy = {
     virtualHosts =
       {
-        # kempkens.io
         "kempkens.io" = {
-          quic = true;
-          http3 = true;
-          kTLS = true;
-
-          root = "${kempkens-io}/public";
-          forceSSL = true;
           useACMEHost = "kempkens.io";
 
           extraConfig = ''
-            access_log /var/log/nginx/access_kempkens.io.log combined_vhost buffer=32k flush=5m;
+            encode
 
-            add_header Alt-Svc 'h3=":443"; ma=86400';
-            add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-            add_header X-Frame-Options DENY;
-            add_header X-XSS-Protection "1; mode=block";
-            add_header X-Content-Type-Options nosniff;
-            add_header Referrer-Policy no-referrer;
-            add_header Content-Security-Policy "default-src 'none'; manifest-src https://kempkens.io; script-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'";
+            header {
+              Permissions-Policy interest-cohort=()
+              Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+              X-Content-Type-Options nosniff
+              X-Frame-Options DENY
+              X-XSS-Protection "1; mode=block"
+              Referrer-Policy no-referrer
+              Content-Security-Policy "default-src 'none'; manifest-src https://kempkens.io; script-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'"
+
+              +X-Robots-Tag "noindex, nofollow"
+              +X-Robots-Tag "noai, noimageai"
+            }
+
+            redir /id https://keyoxide.org/028BCE9BABB5145AAAA1FB8410BE1D47E5ADFF92 307
+
+            handle /robots.txt {
+              root * ${pkgs.ai-robots-txt}/share
+              file_server
+            }
+
+            handle {
+              root * ${kempkens-io}/public
+
+              file_server {
+                precompressed 
+              }
+            }
           '';
-
-          locations = {
-            "/id".return = "307 https://keyoxide.org/028BCE9BABB5145AAAA1FB8410BE1D47E5ADFF92";
-            "/.well-known/host-meta".return = "301 https://mastodon.kempkens.io/.well-known/host-meta";
-            "/.well-known/webfinger".return = "301 https://mastodon.kempkens.io$request_uri";
-
-            "= /robots.txt".alias = "${pkgs.ai-robots-txt}/share/robots.txt";
-          };
         };
 
         "www.kempkens.io" = {
-          quic = true;
-          http3 = true;
-
-          addSSL = true;
           useACMEHost = "kempkens.io";
 
           extraConfig = ''
-            add_header Alt-Svc 'h3=":443"; ma=86400';
-            add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-          '';
+            header >Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
-          globalRedirect = "kempkens.io";
+            redir https://kempkens.io{uri} permanent
+          '';
         };
 
         # blog.kempkens.io
         "blog.kempkens.io" = {
-          quic = true;
-          http3 = true;
-          kTLS = true;
-
-          root = "${blog-kempkens-io}/public";
-          forceSSL = true;
           useACMEHost = "kempkens.io";
 
           extraConfig = ''
-            access_log /var/log/nginx/access_blog.kempkens.io.log combined_vhost buffer=32k flush=5m;
+            encode
 
-            add_header Alt-Svc 'h3=":443"; ma=86400';
-            add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-            add_header X-Frame-Options DENY;
-            add_header X-XSS-Protection "1; mode=block";
-            add_header X-Content-Type-Options nosniff;
-            add_header Referrer-Policy no-referrer;
-            add_header Content-Security-Policy "default-src 'none'; manifest-src https://blog.kempkens.io; script-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'";
+            header {
+              Permissions-Policy interest-cohort=()
+              Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+              X-Content-Type-Options nosniff
+              X-Frame-Options DENY
+              X-XSS-Protection "1; mode=block"
+              Referrer-Policy no-referrer
+              Content-Security-Policy "default-src 'none'; manifest-src https://blog.kempkens.io; script-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'"
+
+              +X-Robots-Tag "noindex, nofollow"
+              +X-Robots-Tag "noai, noimageai"
+            }
+
+            handle /robots.txt {
+              root * ${pkgs.ai-robots-txt}/share
+              file_server
+            }
+
+            handle {
+              root * ${blog-kempkens-io}/public
+              
+              file_server {
+                precompressed 
+              }
+            }
           '';
-
-          locations."= /robots.txt".alias = "${pkgs.ai-robots-txt}/share/robots.txt";
         };
       }
       // builtins.listToAttrs (
@@ -172,22 +182,36 @@ in
           (domain: {
             name = domain;
             value = {
-              quic = true;
-              http3 = true;
-              kTLS = true;
-
-              root = "${docs-nifoc-pw}/site/${domain}";
-              forceSSL = true;
               useACMEHost = "nifoc.pw";
 
               extraConfig = ''
-                add_header Alt-Svc 'h3=":443"; ma=86400';
+                encode
 
-                autoindex on;
-                autoindex_format html;
+                header {
+                  Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+                  +X-Robots-Tag "noindex, nofollow"
+                  +X-Robots-Tag "noai, noimageai"
+                }
+
+                handle /robots.txt {
+                  rewrite * robots_generic.txt
+                  root * ${pkgs.ai-robots-txt}/share
+                  file_server
+                }
+
+                handle {
+                  root * ${docs-nifoc-pw}/site/${domain}
+                  
+                  file_server {
+                    browse {
+                      sort namedirfirst asc
+                    }
+
+                    precompressed 
+                  }
+                }
               '';
-
-              locations."= /robots.txt".alias = "${pkgs.ai-robots-txt}/share/robots_generic.txt";
             };
           })
           [

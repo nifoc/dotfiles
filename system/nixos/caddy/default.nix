@@ -2,6 +2,7 @@
   imports = [
     ./argon.nix
     ./boron.nix
+    ./carbon.nix
   ];
 
   services.caddy = {

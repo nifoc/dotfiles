@@ -1,5 +1,3 @@
-{ config, ... }:
-
 {
   services =
     let
@@ -32,107 +30,33 @@
         };
       };
 
-      nginx = {
-        proxyCachePath.gts_api = {
-          enable = true;
-          keysZoneName = "cache_gts_api";
-          inactive = "1w";
-          maxSize = "200m";
+      caddy.virtualHosts = {
+        "${host}" = {
+          useACMEHost = host;
+
+          extraConfig = ''
+            encode
+
+            request_body {
+              max_size 40MB
+            }
+
+            header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+            reverse_proxy ${bind-address}:${toString port} {
+              flush_interval -1
+            }
+          '';
         };
 
-        virtualHosts = {
-          "${host}" = {
-            quic = true;
-            http3 = true;
-            kTLS = true;
+        "www.${host}" = {
+          useACMEHost = host;
 
-            forceSSL = true;
-            useACMEHost = host;
+          extraConfig = ''
+            header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-            extraConfig = ''
-              access_log /var/log/nginx/access_${host}.log combined_vhost buffer=32k flush=5m;
-
-              client_max_body_size 40m;
-
-              add_header Alt-Svc 'h3=":443"; ma=86400';
-              add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
-            '';
-
-            locations =
-              let
-                gtsProxy = {
-                  recommendedProxySettings = true;
-                  proxyPass = "http://${bind-address}:${toString port}";
-                };
-              in
-              {
-                "/" = gtsProxy // {
-                  proxyWebsockets = true;
-                };
-
-                "~ /.well-known/(webfinger|host-meta)$" = gtsProxy // {
-                  extraConfig = ''
-                    proxy_cache cache_gts_api;
-                    proxy_cache_key $scheme://$host$uri$is_args$query_string;
-                    proxy_cache_valid 200 10m;
-                    proxy_cache_use_stale error timeout updating http_429 http_500 http_502 http_503 http_504;
-                    proxy_cache_background_update on;
-                    proxy_cache_lock on;
-                  '';
-                };
-
-                "~ ^\/users\/(?:[a-z0-9_\.]+)\/main-key$" = gtsProxy // {
-                  extraConfig = ''
-                    proxy_cache cache_gts_api;
-                    proxy_cache_key $scheme://$host$uri;
-                    proxy_cache_valid 200 604800s;
-                    proxy_cache_use_stale error timeout updating http_429 http_500 http_502 http_503 http_504;
-                    proxy_cache_background_update on;
-                    proxy_cache_lock on;
-                  '';
-                };
-
-                "/assets/" = {
-                  alias = config.services.gotosocial.settings.web-asset-base-dir;
-
-                  extraConfig = ''
-                    autoindex off;
-                    expires 5m;
-                    add_header Cache-Control "public";
-                  '';
-                };
-
-                "/fileserver/" = {
-                  alias = "${config.services.gotosocial.settings.storage-local-base-path}/";
-                  tryFiles = "$uri @fileserver";
-
-                  extraConfig = ''
-                    autoindex off;
-                    expires 1w;
-                    add_header Cache-Control "private, immutable";
-                  '';
-                };
-
-                "@fileserver" = gtsProxy // {
-                  proxyWebsockets = true;
-                };
-              };
-          };
-
-          "www.${host}" = {
-            quic = true;
-            http3 = true;
-
-            addSSL = true;
-            useACMEHost = host;
-
-            extraConfig = ''
-              add_header Alt-Svc 'h3=":443"; ma=86400';
-              add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
-            '';
-
-            globalRedirect = host;
-          };
+            redir https://${host}{uri} permanent
+          '';
         };
       };
     };

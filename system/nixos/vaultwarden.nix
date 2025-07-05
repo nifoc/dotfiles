@@ -37,26 +37,18 @@ in
       ];
     };
 
-    nginx.virtualHosts."${fqdn}" = {
-      quic = true;
-      http3 = true;
-
-      onlySSL = true;
+    caddy.virtualHosts."${fqdn}" = {
       useACMEHost = "kempkens.network";
 
       extraConfig = ''
-        access_log /var/log/nginx/access_${fqdn}.log combined_vhost buffer=32k flush=5m;
+        encode
 
-        client_max_body_size 40m;
+        request_body {
+          max_size 40MB
+        }
 
-        add_header Alt-Svc 'h3=":443"; ma=86400';
+        reverse_proxy ${config.services.vaultwarden.config.ROCKET_ADDRESS}:${toString config.services.vaultwarden.config.ROCKET_PORT}
       '';
-
-      locations."/" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://${config.services.vaultwarden.config.ROCKET_ADDRESS}:${toString config.services.vaultwarden.config.ROCKET_PORT}";
-        proxyWebsockets = true;
-      };
     };
   };
 

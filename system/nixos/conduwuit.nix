@@ -110,81 +110,92 @@ in
   };
 
   services = {
-    nginx.virtualHosts =
+    caddy.virtualHosts =
       let
-        wellKnown = {
-          "/.well-known/matrix/server" = {
-            return = "200 '{\"m.server\": \"${fqdn}:443\"}'";
+        wellKnown = ''
+          header /.well-known/matrix/server {
+            Content-Type "application/json"
+            Access-Control-Allow-Origin "*"
+          }
 
-            extraConfig = ''
-              default_type application/json;
-              more_set_headers 'Access-Control-Allow-Origin: "*"';
-            '';
-          };
+          respond /.well-known/matrix/server <<JSON
+            {"m.server": "${fqdn}:443"}
+            JSON 200
 
-          "/.well-known/matrix/client" = {
-            return = "200 '{\"m.server\": {\"base_url\": \"https://${fqdn}\"}, \"m.homeserver\": {\"base_url\": \"https://${fqdn}\"}, \"org.matrix.msc3575.proxy\": {\"url\": \"https://${fqdn}\"}}'";
+          header /.well-known/matrix/client {
+            Content-Type "application/json"
+            Access-Control-Allow-Origin "*"
+          }
 
-            extraConfig = ''
-              default_type application/json;
-              more_set_headers 'Access-Control-Allow-Origin: "*"';
-            '';
-          };
+          respond /.well-known/matrix/client <<JSON
+            {
+              "m.server": {"base_url": "https://${fqdn}"},
+              "m.homeserver": {"base_url": "https://${fqdn}"},
+              "org.matrix.msc3575.proxy": {"url": "https://${fqdn}"}
+            }
+            JSON 200
 
-          "/.well-known/matrix/support" = {
-            return = "200 '{\"contacts\": [{\"role\": \"m.role.admin\", \"matrix_id\": \"@daniel:kempkens.io\", \"email_address\": \"daniel@kempkens.io\"}]}'";
+          header /.well-known/matrix/support {
+            Content-Type "application/json"
+            Access-Control-Allow-Origin "*"
+          }
 
-            extraConfig = ''
-              default_type application/json;
-              more_set_headers 'Access-Control-Allow-Origin: "*"';
-            '';
-          };
-        };
+          respond /.well-known/matrix/support <<JSON
+            {
+              "contacts": [{
+                "role": "m.role.admin",
+                "matrix_id": "@daniel:kempkens.io",
+                "email_address": "daniel@kempkens.io"
+              }]
+            }
+            JSON 200
+        '';
       in
       {
-        "${server_name}".locations = wellKnown;
+        "${server_name}".extraConfig = wellKnown;
 
         "${fqdn}" = {
-          quic = true;
-          http3 = true;
-
-          forceSSL = true;
           useACMEHost = "kempkens.io";
 
           extraConfig = ''
-            access_log /var/log/nginx/access_${fqdn}.log combined_vhost buffer=32k flush=5m;
+            encode
 
-            client_max_body_size 20m;
+            request_body {
+              max_size 20MB
+            }
 
-            add_header Alt-Svc 'h3=":443"; ma=86400';
-            add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-            add_header X-Content-Type-Options nosniff;
-            add_header X-Frame-Options DENY;
-            add_header X-XSS-Protection "1; mode=block";
+            header {
+              Permissions-Policy interest-cohort=()
+              >Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+              X-Content-Type-Options nosniff
+              X-Frame-Options DENY
+              X-XSS-Protection "1; mode=block"
+
+              +X-Robots-Tag "noindex, nofollow"
+              +X-Robots-Tag "noai, noimageai"
+            }
+
+            header / {
+              Content-Type "text/plain"
+            }
+
+            respond / "uwu ~" 200
+
+            ${wellKnown}
+
+            handle /robots.txt {
+              rewrite * robots_generic.txt
+              root * ${pkgs.ai-robots-txt}/share
+              file_server
+            }
+
+            @tuwunel {
+              path /_matrix/*
+              path /_conduwuit/*
+            }
+
+            reverse_proxy @tuwunel 127.0.0.1:${toString (builtins.elemAt cfg.global.port 0)}
           '';
-
-          locations = {
-            "= /" = {
-              return = "200 'uwu~'";
-
-              extraConfig = ''
-                default_type text/plain;
-              '';
-            };
-
-            "= /robots.txt".alias = "${pkgs.ai-robots-txt}/share/robots_generic.txt";
-
-            "~* ^(\/_matrix|\/_conduwuit)" = {
-              recommendedProxySettings = true;
-              proxyPass = "http://127.0.0.1:${toString (builtins.elemAt cfg.global.port 0)}";
-
-              extraConfig = ''
-                proxy_http_version 1.1;
-                proxy_read_timeout 60s;
-                proxy_send_timeout 60s;
-              '';
-            };
-          } // wellKnown;
         };
       };
   };

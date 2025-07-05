@@ -21,6 +21,8 @@
 
       "kempkens.network" = {
         extraDomainNames = [ "*.kempkens.network" ];
+
+        dnsProvider = "ovh";
       };
     };
   };

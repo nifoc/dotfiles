@@ -68,6 +68,7 @@
       hyperfine
       imagemagick
       just
+      libjxl
       mtr
       nix-forecast
       nix-tree
