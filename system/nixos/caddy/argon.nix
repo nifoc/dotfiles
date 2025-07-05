@@ -15,6 +15,10 @@ lib.mkIf (config.networking.hostName == "argon") {
     };
 
     globalConfig = ''
+      servers {
+        protocols h1 h2 h2c h3
+      }
+
       default_sni default.internal.kempkens.network
     '';
   };
