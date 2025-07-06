@@ -170,7 +170,7 @@
         extraConfig = ''
           encode
 
-          header >Strict-Transport-Security "max-age=31536000"
+          header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
           reverse_proxy /dns-query ${builtins.head blockyPorts.http}
         '';

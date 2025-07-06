@@ -56,89 +56,40 @@ in
       openFirewall = false;
     };
 
-    nginx.virtualHosts = {
-      "jellyfin.internal.kempkens.network" = {
-        listen = [
-          {
-            addr = "0.0.0.0";
-            port = 9920;
-            ssl = true;
-            extraParameters = [
-              "fastopen=63"
-              "backlog=1023"
-              "deferred"
-            ];
-          }
-
-          {
-            addr = "[::0]";
-            port = 9920;
-            ssl = true;
-            extraParameters = [
-              "fastopen=63"
-              "backlog=1023"
-              "deferred"
-            ];
-          }
-        ];
-
-        quic = true;
-        http3 = true;
-
-        onlySSL = true;
+    caddy.virtualHosts = {
+      "jellyfin.internal.kempkens.network:9920" = {
         useACMEHost = "internal.kempkens.network";
 
         serverAliases = [ "jellyfin-local.internal.kempkens.network" ];
 
-        locations."/" = {
-          recommendedProxySettings = true;
-          proxyPass = "http://127.0.0.1:8096";
-        };
-
-        locations."/socket" = {
-          recommendedProxySettings = true;
-          proxyPass = "http://127.0.0.1:8096";
-          proxyWebsockets = true;
-        };
-      };
-
-      "jellyfin.home.kempkens.io" = {
-        listen = [
-          {
-            addr = "0.0.0.0";
-            port = 9921;
-            ssl = true;
-            extraParameters = [
-              "proxy_protocol"
-              "fastopen=63"
-              "backlog=1023"
-              "deferred"
-            ];
-          }
-        ];
-
-        quic = false;
-
-        onlySSL = true;
-        useACMEHost = "internal.kempkens.network";
-
         extraConfig = ''
-          set_real_ip_from 100.90.7.38/32;
-          set_real_ip_from fd7a:115c:a1e0::2101:727/128;
-          real_ip_header proxy_protocol;
+          encode
+
+          header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+          reverse_proxy 127.0.0.1:8096 {
+            flush_interval -1
+          }
         '';
-
-        locations."/" = {
-          recommendedProxySettings = true;
-          proxyPass = "http://127.0.0.1:8096";
-        };
-
-        locations."/socket" = {
-          recommendedProxySettings = true;
-          proxyPass = "http://127.0.0.1:8096";
-          proxyWebsockets = true;
-        };
       };
+
+      # "jellyfin.home.kempkens.io:9921" = {
+      #   useACMEHost = "internal.kempkens.network";
+      #
+      #   extraConfig = ''
+      #     set_real_ip_from 100.90.7.38/32;
+      #     set_real_ip_from fd7a:115c:a1e0::2101:727/128;
+      #     real_ip_header proxy_protocol;
+      #
+      #     encode
+      #
+      #     header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
+      #
+      #     reverse_proxy 127.0.0.1:8096 {
+      #       flush_interval -1
+      #     }
+      #   '';
+      # };
     };
   };
 

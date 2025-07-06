@@ -3,6 +3,7 @@
     ./argon.nix
     ./boron.nix
     ./carbon.nix
+    ./krypton.nix
   ];
 
   services.caddy = {

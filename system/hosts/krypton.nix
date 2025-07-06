@@ -23,8 +23,7 @@ in
     ../nixos/git.nix
 
     ../nixos/acme-krypton.nix
-    ../nixos/nginx.nix
-    ../nixos/nginx-krypton.nix
+    ../nixos/caddy
     ../nixos/postgresql.nix
 
     ../nixos/attic.nix
@@ -79,6 +78,7 @@ in
           nsIP = "192.168.42.6";
           ports = [
             4000
+            4001
             9999
           ];
         };
@@ -123,7 +123,6 @@ in
     ../../secret/nixos/additional-media/media_browser.nix
     ../../secret/nixos/additional-media/scraper.nix
     ../../secret/nixos/additional-media/stash.nix
-    ../../secret/nixos/additional-media/homepage.nix
   ];
 
   system.stateVersion = "22.11";

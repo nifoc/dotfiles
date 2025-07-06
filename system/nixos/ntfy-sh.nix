@@ -30,7 +30,7 @@ in
       extraConfig = ''
         encode
 
-        header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        header >Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
         reverse_proxy ${config.services.ntfy-sh.settings.listen-http}
       '';

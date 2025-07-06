@@ -37,22 +37,36 @@
         '';
     };
 
-    nginx =
+    caddy =
       let
         fqdn = "munin.internal.kempkens.network";
       in
       {
-        tailscaleAuth.virtualHosts = [ fqdn ];
-
         virtualHosts."${fqdn}" = {
-          quic = true;
-          http3 = true;
-          kTLS = true;
-
-          root = "/var/www/munin";
-
-          onlySSL = true;
           useACMEHost = "internal.kempkens.network";
+
+          extraConfig = ''
+            encode
+
+            header Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+            forward_auth unix/${config.services.tailscaleAuth.socketPath} {
+              uri /auth
+              header_up Remote-Addr {remote_host}
+              header_up Remote-Port {remote_port}
+              header_up Original-URI {uri}
+              copy_headers {
+                Tailscale-User>X-Webauth-User
+                Tailscale-Name>X-Webauth-Name
+                Tailscale-Login>X-Webauth-Login
+                Tailscale-Tailnet>X-Webauth-Tailnet
+                Tailscale-Profile-Picture>X-Webauth-Profile-Picture
+              }
+            }
+
+            root * /var/www/munin
+            file_server
+          '';
         };
       };
   };

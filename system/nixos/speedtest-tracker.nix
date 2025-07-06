@@ -2,11 +2,13 @@
 
 let
   fqdn = "speedtest.internal.kempkens.network";
+  internalIP = "127.0.0.1";
+  internalPort = "8082";
 in
 {
   virtualisation.oci-containers.containers.speedtest-tracker = {
     image = "lscr.io/linuxserver/speedtest-tracker:latest";
-    ports = [ "127.0.0.1:8082:80" ];
+    ports = [ "${internalIP}:${internalPort}:80" ];
     environment = {
       "PUID" = "2001";
       "PGID" = "2001";
@@ -43,21 +45,31 @@ in
     ];
   };
 
-  services.nginx = {
-    tailscaleAuth.virtualHosts = [ fqdn ];
-
+  services.caddy = {
     virtualHosts."${fqdn}" = {
-      quic = true;
-      http3 = true;
-
-      onlySSL = true;
       useACMEHost = "internal.kempkens.network";
 
-      locations."/" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:8082";
-        proxyWebsockets = true;
-      };
+      extraConfig = ''
+        encode
+
+        header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+        forward_auth unix/${config.services.tailscaleAuth.socketPath} {
+          uri /auth
+          header_up Remote-Addr {remote_host}
+          header_up Remote-Port {remote_port}
+          header_up Original-URI {uri}
+          copy_headers {
+            Tailscale-User>X-Webauth-User
+            Tailscale-Name>X-Webauth-Name
+            Tailscale-Login>X-Webauth-Login
+            Tailscale-Tailnet>X-Webauth-Tailnet
+            Tailscale-Profile-Picture>X-Webauth-Profile-Picture
+          }
+        }
+
+        reverse_proxy ${internalIP}:${internalPort}
+      '';
     };
   };
 }

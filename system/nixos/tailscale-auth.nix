@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ lib, config, ... }:
 
 {
   services = {
@@ -7,18 +7,11 @@
     };
 
     nginx.tailscaleAuth = {
-      enable = true;
+      enable = false;
     };
+  };
 
-    nginx.virtualHosts = lib.genAttrs config.services.nginx.tailscaleAuth.virtualHosts (vhost: {
-      locations."/auth" = {
-        extraConfig = lib.mkAfter ''
-          # Skipping auth for ${vhost} for certain clients
-          if ($tailscale_auth_skip = yes) {
-            return 200;
-          }
-        '';
-      };
-    });
+  users.users = lib.optionalAttrs config.services.caddy.enable {
+    caddy.extraGroups = [ config.services.tailscaleAuth.group ];
   };
 }

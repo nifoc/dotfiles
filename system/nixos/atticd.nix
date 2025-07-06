@@ -58,7 +58,9 @@ in
           max_size 2GB
         }
 
-        reverse_proxy ${config.services.atticd.settings.listen}
+        reverse_proxy ${config.services.atticd.settings.listen} {
+          flush_interval -1
+        }
       '';
     };
 

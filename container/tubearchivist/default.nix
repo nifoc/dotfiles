@@ -2,6 +2,8 @@
 
 let
   fqdn = "tubearchivist.internal.kempkens.network";
+  internalIP = "127.0.0.1";
+  internalPort = "9887";
   requiredPaths = [
     "/dozer/MediaVault/YTDL"
   ];
@@ -14,7 +16,7 @@ in
         "tubearchivist-es"
         "tubearchivist-redis"
       ];
-      ports = [ "127.0.0.1:9887:8000" ];
+      ports = [ "${internalIP}:${internalPort}:8000" ];
       environmentFiles = [ config.age.secrets.tubearchivist-environment-ta.path ];
       volumes = [
         "/dozer/MediaVault/YTDL/Downloads:/youtube"
@@ -83,20 +85,21 @@ in
     ];
   };
 
-  services.nginx = {
-    tailscaleAuth.virtualHosts = [ fqdn ];
+  services.caddy = {
+    #tailscaleAuth.virtualHosts = [ fqdn ];
 
     virtualHosts."${fqdn}" = {
-      quic = true;
-      http3 = true;
-
-      onlySSL = true;
       useACMEHost = "internal.kempkens.network";
 
-      locations."/" = {
-        recommendedProxySettings = true;
-        proxyPass = "http://127.0.0.1:9887";
-      };
+      extraConfig = ''
+        encode
+
+        header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+        reverse_proxy ${internalIP}:${internalPort} {
+          flush_interval -1
+        }
+      '';
     };
   };
 }
