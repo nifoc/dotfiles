@@ -158,6 +158,8 @@ in
 
   "agenix/hosts/krypton/homepage/environment.age".publicKeys = krypton;
 
+  "agenix/hosts/krypton/msmtp/password.age".publicKeys = krypton;
+
   "agenix/hosts/krypton/podman/auth.age".publicKeys = krypton;
 
   "agenix/hosts/krypton/recyclarr/config.age".publicKeys = krypton;

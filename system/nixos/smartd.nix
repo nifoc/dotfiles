@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   services.smartd = {
@@ -6,12 +11,12 @@
 
     autodetect = true;
 
-    defaults.monitored = "-a";
+    defaults.monitored = "-a -o on -s S/../.././02";
 
     notifications = {
       mail = {
         enable = true;
-        sender = "smartd@mg.kempkens.io";
+        sender = "server+${config.networking.hostName}@kempkens.io";
         recipient = "daniel@kempkens.io";
       };
 

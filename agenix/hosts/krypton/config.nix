@@ -29,6 +29,11 @@
       file = ./homepage/environment.age;
     };
 
+    msmtp-password = {
+      file = ./msmtp/password.age;
+      mode = "444";
+    };
+
     podman-auth = {
       file = ./podman/auth.age;
       path = "/root/.docker/config.json";
