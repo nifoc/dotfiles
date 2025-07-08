@@ -252,10 +252,10 @@
       "flake": false,
       "locked": {
         "lastModified": 1751235704,
-        "narHash": "sha256-Jzm3KPZ2gL+0Nl3Mw/2E0B3vqDDi1Xt5+9VCXghUDZ8=",
-        "rev": "f3a7bbe5f8d1a8504ddb6362d50106904523e440",
+        "narHash": "sha256-J4ycLoXHPsoBoQtEXFCelL4xlq5pT8U9tNWNKm43+YI=",
+        "rev": "1d7368585eebaa2c4bdbcb88fe600cfb2239b2c6",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/f3a7bbe5f8d1a8504ddb6362d50106904523e440.tar.gz?rev=f3a7bbe5f8d1a8504ddb6362d50106904523e440"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/1d7368585eebaa2c4bdbcb88fe600cfb2239b2c6.tar.gz?rev=1d7368585eebaa2c4bdbcb88fe600cfb2239b2c6"
       },
       "original": {
         "type": "tarball",
@@ -274,8 +274,9 @@
       "locked": {
         "lastModified": 1751240025,
         "narHash": "sha256-SXUAlxpjPRkArRMHy5+Hdi+PiC+ND9yzzIjiaHmTvQU=",
+        "rev": "8b1094356f4723d6e89d3f8a95b333ee16d9ab02",
         "type": "tarball",
-        "url": "https://git.lix.systems/lix-project/nixos-module/archive/2.93.2-1.tar.gz"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/8b1094356f4723d6e89d3f8a95b333ee16d9ab02.tar.gz?rev=8b1094356f4723d6e89d3f8a95b333ee16d9ab02"
       },
       "original": {
         "type": "tarball",
@@ -328,11 +329,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1751853765,
-        "narHash": "sha256-Wl/x+OfYo8IPwovXPmfSNy1g+O61rNX5SrIh9Tb04ac=",
+        "lastModified": 1751940161,
+        "narHash": "sha256-NkRH/C1YdYkq2viuuNt/fREqz2N89RC9iVAwKHmFoyA=",
         "ref": "refs/heads/master",
-        "rev": "4a93ec722819064382cb14dc040f25312054ba9f",
-        "revCount": 1206,
+        "rev": "9200b712347c7300ad052450c55cc3a7c9813962",
+        "revCount": 1207,
         "type": "git",
         "url": "https://git.kempkens.io/daniel/nix-overlay"
       },
@@ -401,11 +402,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1751786137,
-        "narHash": "sha256-lIlUKVGCGsh0Q2EA7/6xRtKUZjaQ/ur8uUyY+MynHXQ=",
+        "lastModified": 1751852175,
+        "narHash": "sha256-+MLlfTCCOvz4K6AcSPbaPiFM9MYi7fA2Wr1ibmRwIlM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ceb24d94c6feaa4e8737a8e2bd3cf71c3a7eaaa0",
+        "rev": "2defa37146df235ef62f566cde69930a86f14df1",
         "type": "github"
       },
       "original": {
