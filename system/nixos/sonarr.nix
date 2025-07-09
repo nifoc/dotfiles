@@ -50,7 +50,7 @@ in
       wantedBy = [ "multi-user.target" ];
 
       pathConfig = {
-        DirectoryNotEmpty = requiredPaths;
+        PathModified = "/root/zfs-dozer-mount-common";
       };
     };
 

@@ -125,6 +125,8 @@ in
 
   "agenix/hosts/carbon/acme/credentials.age".publicKeys = carbon;
 
+  "agenix/hosts/carbon/ntfy/token-hardware.age".publicKeys = carbon;
+
   "agenix/hosts/carbon/tailscale/authkey.age".publicKeys = carbon;
 
   "agenix/hosts/carbon/msmtp/password.age".publicKeys = carbon;
@@ -143,6 +145,10 @@ in
 
   "agenix/hosts/boron/acme/credentials.age".publicKeys = boron;
 
+  "agenix/hosts/boron/msmtp/password.age".publicKeys = boron;
+
+  "agenix/hosts/boron/ntfy/token-hardware.age".publicKeys = boron;
+
   "agenix/hosts/boron/tailscale/authkey.age".publicKeys = boron;
 
   "agenix/hosts/boron/atticd/environment.age".publicKeys = boron;
@@ -159,6 +165,8 @@ in
   "agenix/hosts/krypton/homepage/environment.age".publicKeys = krypton;
 
   "agenix/hosts/krypton/msmtp/password.age".publicKeys = krypton;
+
+  "agenix/hosts/krypton/ntfy/token-hardware.age".publicKeys = krypton;
 
   "agenix/hosts/krypton/podman/auth.age".publicKeys = krypton;
 

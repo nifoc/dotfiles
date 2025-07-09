@@ -17,7 +17,7 @@ in
 {
   virtualisation.oci-containers.containers.qbittorrent = {
     image = "lscr.io/linuxserver/qbittorrent:latest";
-    ports = [ "${internalIP}:${internalPort}1:8071" ];
+    ports = [ "${internalIP}:${internalPort}:8071" ];
     environment = {
       "PUID" = "2001";
       "PGID" = "2001";
@@ -55,7 +55,6 @@ in
       wantedBy = [ "multi-user.target" ];
 
       pathConfig = {
-        PathExists = requiredPaths;
         DirectoryNotEmpty = requiredPaths;
       };
     };

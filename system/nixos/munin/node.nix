@@ -114,6 +114,9 @@
               user root
               group disk
 
+            [caddy_*]
+              user caddy
+
             [ipmi_*]
               user root
 
@@ -136,7 +139,6 @@
       extraAutoPlugins = [
         "${contrib}/plugins/chrony"
         "${contrib}/plugins/jellyfin"
-        "${contrib}/plugins/nginx"
         "${contrib}/plugins/redis"
         "${contrib}/plugins/systemd"
         "${contrib}/plugins/zfs"

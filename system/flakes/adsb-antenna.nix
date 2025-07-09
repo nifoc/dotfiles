@@ -5,6 +5,7 @@
   home-manager,
   agenix,
   nifoc-overlay,
+  run0-sudo-shim,
 }:
 
 let
@@ -54,6 +55,8 @@ in
       }
 
       agenix.nixosModules.default
+
+      run0-sudo-shim.nixosModules.default
 
       ../hosts/adsb-antenna.nix
     ];

@@ -37,7 +37,6 @@ in
       wantedBy = [ "multi-user.target" ];
 
       pathConfig = {
-        PathExists = requiredPaths;
         DirectoryNotEmpty = requiredPaths;
       };
     };

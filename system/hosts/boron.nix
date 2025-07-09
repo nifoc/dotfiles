@@ -13,6 +13,7 @@ in
     ../nixos/ssh.nix
     ../nixos/eternal-terminal.nix
     ../nixos/wezterm-headless.nix
+    ../nixos/msmtp.nix
 
     ../nixos/git.nix
 

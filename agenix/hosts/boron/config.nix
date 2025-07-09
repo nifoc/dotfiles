@@ -45,5 +45,15 @@
     miniflux-credentials = {
       file = ./miniflux/credentials.age;
     };
+
+    msmtp-password = {
+      file = ./msmtp/password.age;
+      mode = "444";
+    };
+
+    ntfy-token-hardware = {
+      file = ./ntfy/token-hardware.age;
+      mode = "444";
+    };
   };
 }

@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   services.zfs = {
@@ -18,6 +23,18 @@
       interval = "monthly";
 
       pools = [ "zroot" ];
+    };
+
+    zed.settings = {
+      ZED_NOTIFY_VERBOSE = true;
+
+      ZED_EMAIL_ADDR = [ "daniel@kempkens.io" ];
+      ZED_EMAIL_PROG = "${lib.getExe pkgs.msmtp}";
+      ZED_EMAIL_OPTS = "@ADDRESS@";
+
+      ZED_NTFY_URL = "https://ntfy.kempkens.io";
+      ZED_NTFY_TOPIC = "hardware";
+      ZED_NTFY_ACCESS_TOKEN = "$(${pkgs.coreutils}/bin/cat ${config.age.secrets.ntfy-token-hardware.path})";
     };
   };
 

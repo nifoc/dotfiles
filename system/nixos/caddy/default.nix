@@ -10,6 +10,8 @@
     enable = true;
 
     globalConfig = ''
+      admin
+
       auto_https disable_certs
     '';
   };

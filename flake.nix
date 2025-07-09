@@ -67,6 +67,11 @@
       };
     };
 
+    run0-sudo-shim = {
+      url = "github:lordgrimmauld/run0-sudo-shim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     mkalias = {
       url = "github:reckenrode/mkalias";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -128,6 +133,7 @@
               home-manager
               agenix
               nifoc-overlay
+              run0-sudo-shim
               ;
             inherit lix-module;
           };
@@ -139,6 +145,7 @@
               home-manager
               agenix
               nifoc-overlay
+              run0-sudo-shim
               ;
             inherit lix-module;
           };
@@ -150,6 +157,7 @@
               home-manager
               agenix
               nifoc-overlay
+              run0-sudo-shim
               ;
             inherit lix-module;
           };
@@ -167,6 +175,7 @@
               home-manager
               agenix
               nifoc-overlay
+              run0-sudo-shim
               ;
             inherit lix-module;
           };
@@ -178,6 +187,7 @@
               home-manager
               agenix
               nifoc-overlay
+              run0-sudo-shim
               ;
             inherit lix-module;
           };
@@ -189,6 +199,7 @@
               home-manager
               agenix
               nifoc-overlay
+              run0-sudo-shim
               ;
             inherit lix-module;
           };

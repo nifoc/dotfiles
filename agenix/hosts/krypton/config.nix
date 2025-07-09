@@ -34,6 +34,11 @@
       mode = "444";
     };
 
+    ntfy-token-hardware = {
+      file = ./ntfy/token-hardware.age;
+      mode = "444";
+    };
+
     podman-auth = {
       file = ./podman/auth.age;
       path = "/root/.docker/config.json";

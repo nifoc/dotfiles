@@ -39,6 +39,11 @@
       mode = "444";
     };
 
+    ntfy-token-hardware = {
+      file = ./ntfy/token-hardware.age;
+      mode = "444";
+    };
+
     fedifetcher-config = {
       file = ./fedifetcher/config.age;
     };
