@@ -11,17 +11,27 @@
           "server string" = "Krypton";
           "hosts allow" = "10.0.0.0/255.255.255.0";
           interfaces = "eth*";
-          "max log size" = "50";
           "dns proxy" = false;
-          "syslog only" = true;
+          "log level" = 1;
+          "logging" = "systemd";
+
+          "server min protocol" = "SMB3";
+          "smb encrypt" = "required";
+          "client signing" = "mandatory";
+          "server signing" = "mandatory";
+
+          "socket options" = "TCP_NODELAY IPTOS_LOWDELAY";
+          "use sendfile" = true;
 
           "vfs objects" = "fruit streams_xattr";
+          "fruit:aapl" = "yes";
           "fruit:metadata" = "stream";
           "fruit:model" = "MacSamba";
           "fruit:veto_appledouble" = "no";
           "fruit:nfs_aces" = "no";
           "fruit:wipe_intentionally_left_blank_rfork" = "yes";
           "fruit:delete_empty_adfiles" = "yes";
+          "fruit:copyfile" = "yes";
           "fruit:posix_rename" = "yes";
         };
 
