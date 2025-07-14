@@ -15,10 +15,12 @@
           "log level" = 1;
           "logging" = "systemd";
 
-          "server min protocol" = "SMB3";
-          "smb encrypt" = "required";
-          "client signing" = "mandatory";
+          "server min protocol" = "SMB3_02";
+          "client min protocol" = "SMB3_02";
+          "server smb encrypt" = "required";
+          "client smb encrypt" = "desired";
           "server signing" = "mandatory";
+          "client signing" = "mandatory";
 
           "socket options" = "TCP_NODELAY IPTOS_LOWDELAY";
           "use sendfile" = true;

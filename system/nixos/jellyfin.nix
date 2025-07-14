@@ -58,8 +58,6 @@ in
 
     caddy.virtualHosts = {
       "jellyfin.internal.kempkens.network:9920" = {
-        useACMEHost = "internal.kempkens.network";
-
         serverAliases = [ "jellyfin-local.internal.kempkens.network" ];
 
         extraConfig = ''
@@ -72,24 +70,6 @@ in
           }
         '';
       };
-
-      # "jellyfin.home.kempkens.io:9921" = {
-      #   useACMEHost = "internal.kempkens.network";
-      #
-      #   extraConfig = ''
-      #     set_real_ip_from 100.90.7.38/32;
-      #     set_real_ip_from fd7a:115c:a1e0::2101:727/128;
-      #     real_ip_header proxy_protocol;
-      #
-      #     encode
-      #
-      #     header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
-      #
-      #     reverse_proxy 127.0.0.1:8096 {
-      #       flush_interval -1
-      #     }
-      #   '';
-      # };
     };
   };
 
@@ -97,7 +77,6 @@ in
     let
       ports = [
         9920
-        9921
       ];
     in
     {

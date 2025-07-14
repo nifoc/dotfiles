@@ -6,16 +6,14 @@
 
 lib.mkIf (config.networking.hostName == "krypton") {
   services.caddy = {
-    virtualHosts."default.internal.kempkens.network" = {
-      useACMEHost = "internal.kempkens.network";
-
+    virtualHosts."*.internal.kempkens.network" = {
       extraConfig = ''
         respond "I'm a teapot" 418
       '';
     };
 
     globalConfig = ''
-      default_sni default.networked.systems
+      default_sni default.internal.kempkens.network
     '';
   };
 

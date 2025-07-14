@@ -66,8 +66,6 @@ in
 
   services.caddy = {
     virtualHosts."${fqdn}" = {
-      useACMEHost = "internal.kempkens.network";
-
       extraConfig = ''
         encode
 

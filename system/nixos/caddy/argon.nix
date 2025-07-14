@@ -6,9 +6,7 @@
 
 lib.mkIf (config.networking.hostName == "argon") {
   services.caddy = {
-    virtualHosts."default.internal.kempkens.network" = {
-      useACMEHost = "internal.kempkens.network";
-
+    virtualHosts."*.internal.kempkens.network" = {
       extraConfig = ''
         respond "I'm a teapot" 418
       '';

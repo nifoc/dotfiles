@@ -4,26 +4,16 @@
   ...
 }:
 
-lib.mkIf (config.networking.hostName == "carbon") {
+lib.mkIf (config.networking.hostName == "neon") {
   services.caddy = {
-    virtualHosts = {
-      "default.networked.systems" = {
-        useACMEHost = "networked.systems";
-
-        extraConfig = ''
-          respond "I'm a teapot" 418
-        '';
-      };
-
-      "*.kempkens.network" = {
-        extraConfig = ''
-          respond "I'm a teapot" 418
-        '';
-      };
+    virtualHosts."*.internal.kempkens.network" = {
+      extraConfig = ''
+        respond "I'm a teapot" 418
+      '';
     };
 
     globalConfig = ''
-      default_sni default.networked.systems
+      default_sni default.internal.kempkens.network
     '';
   };
 

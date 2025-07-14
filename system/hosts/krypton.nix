@@ -23,7 +23,6 @@ in
 
     ../nixos/git.nix
 
-    ../nixos/acme-krypton.nix
     ../nixos/caddy
     ../nixos/postgresql.nix
 
@@ -53,8 +52,7 @@ in
 
     ../nixos/jellyfin.nix
 
-    ../nixos/munin/node.nix
-    ../nixos/munin/cron.nix
+    ../nixos/monitoring
 
     ../nixos/samba/krypton.nix
 

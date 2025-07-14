@@ -19,20 +19,8 @@
         extraDomainNames = [ "*.kempkens.io" ];
       };
 
-      "kempkens.network" = {
-        extraDomainNames = [ "*.kempkens.network" ];
-
-        dnsProvider = "ovh";
-      };
-
       "networked.systems" = {
         extraDomainNames = [ "*.networked.systems" ];
-      };
-
-      "nifoc.pw" = {
-        domain = "*.nifoc.pw";
-
-        dnsProvider = "ovh";
       };
     };
   };

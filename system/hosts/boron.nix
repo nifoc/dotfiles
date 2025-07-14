@@ -35,7 +35,7 @@ in
 
     ../nixos/miniflux.nix
 
-    ../nixos/munin/node.nix
+    ../nixos/monitoring/prometheus_exporters.nix
 
     ../nixos/ntfy-sh.nix
 

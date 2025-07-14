@@ -16,7 +16,6 @@ in
 
     ../nixos/git.nix
 
-    ../nixos/acme-argon.nix
     ../nixos/caddy
 
     ../nixos/attic.nix
@@ -43,9 +42,11 @@ in
       }
     ))
 
-    ../nixos/munin/node.nix
+    ../nixos/monitoring/prometheus_exporters.nix
 
     ../nixos/mosquitto.nix
+
+    ../nixos/smartd.nix
 
     ../nixos/tailscale-router.nix
     ../nixos/tailscale-nodns.nix

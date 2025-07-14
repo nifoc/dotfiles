@@ -19,10 +19,8 @@
       group = "users";
     };
 
-    acme-credentials = {
-      file = ./acme/credentials.age;
-      owner = "acme";
-      group = "acme";
+    caddy-environment = {
+      file = ../all/caddy/environment.age;
     };
 
     tailscale-authkey = {

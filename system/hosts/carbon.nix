@@ -43,7 +43,7 @@ in
 
     ../nixos/gotosocial.nix
 
-    ../nixos/munin/node.nix
+    ../nixos/monitoring/prometheus_exporters.nix
 
     ../nixos/tailscale.nix
     ../nixos/tailscale-nodns.nix

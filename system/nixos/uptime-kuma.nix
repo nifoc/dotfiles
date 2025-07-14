@@ -7,8 +7,6 @@
     };
 
     caddy.virtualHosts."kuma.internal.kempkens.network" = {
-      useACMEHost = "internal.kempkens.network";
-
       extraConfig = ''
         encode
 

@@ -154,6 +154,8 @@
           connectionCooldown = "10s";
         };
 
+        prometheus.enable = true;
+
         ede.enable = true;
 
         ecs = {
@@ -165,14 +167,19 @@
 
     caddy = lib.mkIf (builtins.hasAttr "http" blockyPorts) {
       virtualHosts."dns.internal.kempkens.network" = {
-        useACMEHost = "internal.kempkens.network";
+        serverAliases = [ "dns-${config.networking.hostName}.internal.kempkens.network" ];
 
         extraConfig = ''
           encode
 
           header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-          reverse_proxy /dns-query ${builtins.head blockyPorts.http}
+          @blocky {
+            path /dns-query
+            path /metrics
+          }
+
+          reverse_proxy @blocky ${builtins.head blockyPorts.http}
         '';
       };
     };

@@ -18,6 +18,8 @@ in
 
     ../nixos/attic.nix
 
+    ../nixos/caddy
+
     ../nixos/chrony.nix
 
     (import ../nixos/blocky.nix (
@@ -29,6 +31,8 @@ in
             "10.0.51.7:53"
             "100.126.68.56:53"
           ];
+
+          http = [ "127.0.0.1:8053" ];
         };
 
         valkeyInstance = {
@@ -38,9 +42,11 @@ in
       }
     ))
 
-    ../nixos/munin/node.nix
+    ../nixos/monitoring/prometheus_exporters.nix
 
     ../nixos/rtl_433.nix
+
+    ../nixos/smartd.nix
 
     ../nixos/tailscale-router.nix
     ../nixos/tailscale-nodns.nix

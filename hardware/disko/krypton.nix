@@ -112,6 +112,16 @@
               "com.sun:auto-snapshot" = "false";
             };
           };
+          "root/services/prometheus" = {
+            type = "zfs_fs";
+            options = {
+              mountpoint = "/var/lib/prometheus";
+              compression = "zstd";
+              atime = "off";
+              "com.sun:auto-snapshot" = "false";
+            };
+            mountpoint = "/var/lib/prometheus";
+          };
           "root/services/munin" = {
             type = "zfs_fs";
             options = {

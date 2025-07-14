@@ -175,6 +175,17 @@ in
             }
           '';
         };
+
+        # nifoc.pw
+        "*.nifoc.pw" = {
+          extraConfig = ''
+            encode
+
+            header Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+            redir https://kempkens.io permanent
+          '';
+        };
       }
       // builtins.listToAttrs (
         builtins.map
@@ -182,8 +193,6 @@ in
           (domain: {
             name = domain;
             value = {
-              useACMEHost = "nifoc.pw";
-
               extraConfig = ''
                 encode
 

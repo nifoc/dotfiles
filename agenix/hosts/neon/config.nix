@@ -19,6 +19,10 @@
       group = "users";
     };
 
+    caddy-environment = {
+      file = ../all/caddy/environment.age;
+    };
+
     tailscale-authkey = {
       file = ./tailscale/authkey.age;
     };

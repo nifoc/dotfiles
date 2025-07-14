@@ -69,6 +69,7 @@ in
   "agenix/hosts/all/nix/id_nix_remote_builder.age".publicKeys = all-systems;
   "agenix/hosts/all/nix/forgejo_runner_netrc.age".publicKeys = all-systems;
   "agenix/hosts/all/attic/config.age".publicKeys = all-systems;
+  "agenix/hosts/all/caddy/environment.age".publicKeys = all-systems;
 
   # tanker
   "agenix/hosts/tanker/user/danielPassword.age".publicKeys = tanker;

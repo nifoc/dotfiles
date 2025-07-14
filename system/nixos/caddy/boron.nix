@@ -1,28 +1,32 @@
 {
-  pkgs,
   lib,
   config,
   ...
 }:
 
 lib.mkIf (config.networking.hostName == "boron") {
-  services.caddy = {
-    package = pkgs.caddy.withPlugins {
-      plugins = [ "github.com/mholt/caddy-l4@v0.0.0-20250530154005-4d3c80e89c5f" ];
-      hash = "sha256-O2shDuAA4OjUx44uOxMbd5iQUQVl6GUuFKqv+P/PXNM=";
-    };
+  services = {
+    caddy = {
+      virtualHosts."*.kempkens.network" = {
+        extraConfig = ''
+          respond "I'm a teapot" 418
+        '';
+      };
 
-    virtualHosts."default.kempkens.network" = {
-      useACMEHost = "kempkens.network";
-
-      extraConfig = ''
-        respond "I'm a teapot" 418
+      globalConfig = ''
+        default_sni default.kempkens.network
       '';
     };
 
-    globalConfig = ''
-      default_sni default.kempkens.network
-    '';
+    postgresql = {
+      authentication = ''
+        host caddy_storage caddy_storage 100.88.88.45/32 md5
+        host caddy_storage caddy_storage 100.90.7.38/32 md5
+        host caddy_storage caddy_storage 100.97.247.57/32 md5
+        host caddy_storage caddy_storage 100.83.191.69/32 md5
+        host caddy_storage caddy_storage 100.126.68.56/32 md5
+      '';
+    };
   };
 
   networking.firewall.interfaces =
