@@ -93,6 +93,20 @@
           "valid users" = "daniel";
         };
 
+        Media = {
+          comment = "Media on Dozer";
+          path = "/dozer/media";
+          "force user" = "daniel";
+          "force group" = "user_media";
+          "guest ok" = "no";
+          "create mask" = "0644";
+          "directory mask" = "0755";
+          writable = "yes";
+          browseable = "yes";
+          printable = "no";
+          "valid users" = "daniel";
+        };
+
         Downloads = {
           comment = "Downloads on Dozer";
           path = "/dozer/downloads";
