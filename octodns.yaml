@@ -1,18 +1,26 @@
+processors:
+  acme:
+    class: octodns.processor.acme.AcmeManagingProcessor
 providers:
   config:
     class: octodns.provider.yaml.YamlProvider
     directory: ./secret/dns/
     default_ttl: 3600
     enforce_order: False
-  ovh:
-    class: octodns_ovh.OvhProvider
-    endpoint: ovh-eu
-    application_key: env/OVH_APPLICATION_KEY
-    application_secret: env/OVH_APPLICATION_SECRET
-    consumer_key: env/OVH_CONSUMER_KEY
+  desec:
+    class: octodns_desec.DesecProvider
+    token: env/DESEC_TOKEN
+    # ovh:
+    #   class: octodns_ovh.OvhProvider
+    #   endpoint: ovh-eu
+    #   application_key: env/OVH_APPLICATION_KEY
+    #   application_secret: env/OVH_APPLICATION_SECRET
+    #   consumer_key: env/OVH_CONSUMER_KEY
 zones:
   '*':
     sources:
       - config
     targets:
-      - ovh
+      - desec
+    processors:
+      - acme

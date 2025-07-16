@@ -315,6 +315,7 @@
               pkgs.nix-output-monitor
               (pkgs.octodns.withProviders (_: [
                 pkgs.octodns-providers.bind
+                inputs'.nifoc-overlay.packages.octodns-desec
                 inputs'.nifoc-overlay.packages.octodns-ovh
               ]))
             ];
