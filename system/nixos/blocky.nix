@@ -176,6 +176,7 @@
 
           @blocky {
             path /dns-query
+            path /dns-query/*
             path /metrics
           }
 
