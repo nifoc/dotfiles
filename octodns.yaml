@@ -1,6 +1,10 @@
 processors:
-  acme:
-    class: octodns.processor.acme.AcmeManagingProcessor
+  caddy-acme:
+    class: octodns.processor.acme.AcmeMangingProcessor
+  caddy-https:
+    class: octodns.processor.filter.TypeRejectlistFilter
+    rejectlist:
+      - HTTPS
 providers:
   config:
     class: octodns.provider.yaml.YamlProvider
@@ -23,4 +27,5 @@ zones:
     targets:
       - desec
     processors:
-      - acme
+      - caddy-acme
+      - caddy-https

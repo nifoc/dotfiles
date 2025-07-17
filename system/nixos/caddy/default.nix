@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   imports = [
@@ -14,10 +19,10 @@
 
     package = pkgs.caddy.withPlugins {
       plugins = [
-        "github.com/caddy-dns/ovh@v0.0.0-20250519141359-17fd665136b5"
+        "github.com/caddy-dns/desec@v0.0.0-20250422185948-3a2346e88559"
         "github.com/yroc92/postgres-storage@v0.0.0-20230310195636-276797aefe40"
       ];
-      hash = "sha256-MyDDPtcAnIMta2FUlKrFgMR/KVuhsT3yAXplHD0H9C0=";
+      hash = lib.fakeHash;
     };
 
     environmentFile = config.age.secrets.caddy-environment.path;
@@ -39,11 +44,8 @@
         disable_ddl false
       }
 
-      acme_dns ovh {
-        endpoint {$DNS_OVH_ENDPOINT}
-        application_key {$DNS_OVH_APPLICATION_KEY}
-        application_secret {$DNS_OVH_APPLICATION_SECRET}
-        consumer_key {$DNS_OVH_CONSUMER_KEY}
+      acme_dns desec {
+        token {$DNS_DESEC_TOKEN}
       }
     '';
   };
