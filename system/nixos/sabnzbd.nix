@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, ... }:
 
 let
   fqdn = "sabnzbd.internal.kempkens.network";
@@ -64,19 +64,7 @@ in
 
         header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-        forward_auth unix/${config.services.tailscaleAuth.socketPath} {
-          uri /auth
-          header_up Remote-Addr {remote_host}
-          header_up Remote-Port {remote_port}
-          header_up Original-URI {uri}
-          copy_headers {
-            Tailscale-User>X-Webauth-User
-            Tailscale-Name>X-Webauth-Name
-            Tailscale-Login>X-Webauth-Login
-            Tailscale-Tailnet>X-Webauth-Tailnet
-            Tailscale-Profile-Picture>X-Webauth-Profile-Picture
-          }
-        }
+        import tailscale-auth
 
         reverse_proxy ${internalIP}:${internalPort}
       '';
