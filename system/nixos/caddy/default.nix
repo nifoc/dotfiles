@@ -46,6 +46,10 @@
       acme_dns desec {
         token {$DNS_DESEC_TOKEN}
       }
+
+      dns desec {
+        token {$DNS_DESEC_TOKEN}
+      }
     '';
   };
 

@@ -13,7 +13,7 @@ lib.mkIf (config.networking.hostName == "neon") {
     };
 
     globalConfig = ''
-      default_sni default.internal.kempkens.network
+      default_sni default-${config.networking.hostName}.internal.kempkens.network
     '';
   };
 
