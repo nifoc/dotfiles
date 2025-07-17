@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   config,
   ...
 }:
@@ -22,7 +21,7 @@
         "github.com/caddy-dns/desec@v0.0.0-20250422185948-3a2346e88559"
         "github.com/yroc92/postgres-storage@v0.0.0-20230310195636-276797aefe40"
       ];
-      hash = lib.fakeHash;
+      hash = "sha256-57fzGmT0zYwhcoOfdn2aeV3qoJlQM1LusyeMtOKcIHA=";
     };
 
     environmentFile = config.age.secrets.caddy-environment.path;
