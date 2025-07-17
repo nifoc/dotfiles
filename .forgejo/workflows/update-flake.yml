@@ -12,10 +12,18 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: master
+      - name: Cache Login
+        run: |
+          echo "Logging in ..."
+          attic login --set-default attic ${{ secrets.ATTIC_ENDPOINT }} ${{ secrets.ATTIC_TOKEN }}
       - name: Update dependencies
         run: |
           nix flake update
           env NIX_PATH=nixpkgs=$(nix flake metadata github:nixos/nixpkgs/nixos-unstable-small --json | jq -r .path) nix-shell ./home/programs/nvim/update-plugins.sh
+      - name: Build lix
+        run: |
+          nix build '.#nixosConfigurations.boron.config.nix.package'
+          attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
       - uses: https://github.com/stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "[automation] Update flake"
