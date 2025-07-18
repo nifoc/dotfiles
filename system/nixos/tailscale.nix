@@ -11,4 +11,8 @@
       "--stateful-filtering"
     ];
   };
+
+  systemd.services.tailscaled.serviceConfig.Environment = [
+    "TS_DEBUG_MTU=1350"
+  ];
 }
