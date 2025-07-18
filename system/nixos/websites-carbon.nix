@@ -116,10 +116,7 @@ in
 
             redir /id https://keyoxide.org/028BCE9BABB5145AAAA1FB8410BE1D47E5ADFF92 307
 
-            handle /robots.txt {
-              root * ${pkgs.ai-robots-txt}/share
-              file_server
-            }
+            import robots-txt-ai
 
             handle {
               root * ${kempkens-io}/public
@@ -161,14 +158,11 @@ in
               +X-Robots-Tag "noai, noimageai"
             }
 
-            handle /robots.txt {
-              root * ${pkgs.ai-robots-txt}/share
-              file_server
-            }
+            import robots-txt-ai
 
             handle {
               root * ${blog-kempkens-io}/public
-              
+
               file_server {
                 precompressed 
               }
@@ -203,15 +197,11 @@ in
                   +X-Robots-Tag "noai, noimageai"
                 }
 
-                handle /robots.txt {
-                  rewrite * robots_generic.txt
-                  root * ${pkgs.ai-robots-txt}/share
-                  file_server
-                }
+                import robots-txt-generic
 
                 handle {
                   root * ${docs-nifoc-pw}/site/${domain}
-                  
+
                   file_server {
                     browse {
                       sort namedirfirst asc

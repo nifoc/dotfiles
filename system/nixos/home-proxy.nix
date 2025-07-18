@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
 {
   services.caddy = {
     virtualHosts."wetter.kempkens.io" = {
@@ -19,11 +17,7 @@
           +X-Robots-Tag "noai, noimageai"
         }
 
-        handle /robots.txt {
-          rewrite * robots_generic.txt
-          root * ${pkgs.ai-robots-txt}/share
-          file_server
-        }
+        import robots-txt-generic
 
         handle /mqtt {
           reverse_proxy http://100.88.88.45:${toString (7780 + 1)}

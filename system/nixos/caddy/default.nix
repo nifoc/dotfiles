@@ -51,6 +51,23 @@
         token {$DNS_DESEC_TOKEN}
       }
     '';
+
+    extraConfig = ''
+      (robots-txt-ai) {
+        handle /robots.txt {
+          root * ${pkgs.ai-robots-txt}/share
+          file_server
+        }
+      }
+
+      (robots-txt-generic) {
+        handle /robots.txt {
+          rewrite * robots_generic.txt
+          root * ${pkgs.ai-robots-txt}/share
+          file_server
+        }
+      }
+    '';
   };
 
   networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 2019 ];

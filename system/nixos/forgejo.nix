@@ -74,10 +74,7 @@ in
           +X-Robots-Tag "noai, noimageai"
         }
 
-        handle /robots.txt {
-          root * ${pkgs.ai-robots-txt}/share
-          file_server
-        }
+        import robots-txt-ai
 
         handle {
           reverse_proxy unix//run/forgejo/forgejo.sock

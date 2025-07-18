@@ -183,11 +183,7 @@ in
 
             ${wellKnown}
 
-            handle /robots.txt {
-              rewrite * robots_generic.txt
-              root * ${pkgs.ai-robots-txt}/share
-              file_server
-            }
+            import robots-txt-generic
 
             @tuwunel {
               path /_matrix/*
