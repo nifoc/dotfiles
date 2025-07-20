@@ -197,6 +197,8 @@ in
 
               # Plugins
               ZSH_AUTOSUGGEST_STRATEGY=(completion)
+              ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+              ZSH_AUTOSUGGEST_USE_ASYNC=1
 
               ZSH_TAB_TITLE_ENABLE_FULL_COMMAND=true
               ZSH_TAB_TITLE_DEFAULT_DISABLE_PREFIX=true

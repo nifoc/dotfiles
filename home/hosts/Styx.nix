@@ -81,6 +81,7 @@
       ripgrep
       socat
       ssh-audit
+      testssl
       trippy
       viddy
       wget
