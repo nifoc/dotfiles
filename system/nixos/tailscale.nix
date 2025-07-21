@@ -12,7 +12,8 @@
     ];
   };
 
-  systemd.services.tailscaled.serviceConfig.Environment = [
-    "TS_DEBUG_MTU=1350"
-  ];
+  # No good way to increase the MTU on macOS, so don't do this for now
+  # systemd.services.tailscaled.serviceConfig.Environment = [
+  #   "TS_DEBUG_MTU=1350"
+  # ];
 }
