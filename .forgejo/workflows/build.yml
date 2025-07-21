@@ -36,6 +36,10 @@ jobs:
         run: |
           nix build '.#nixosConfigurations.boron.config.nix.package'
           attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
+      - name: Build caddy
+        run: |
+          nix build '.#nixosConfigurations.boron.config.services.caddy.package'
+          attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
       - name: Build nginx
         run: |
           nix build '.#nixosConfigurations.boron.config.services.nginx.package'
@@ -70,9 +74,9 @@ jobs:
         run: |
           nix build '.#nixosConfigurations.carbon.config.nix.package'
           attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
-      - name: Build nginx
+      - name: Build caddy
         run: |
-          nix build '.#nixosConfigurations.carbon.config.services.nginx.package'
+          nix build '.#nixosConfigurations.carbon.config.services.caddy.package'
           attic push ${{ secrets.ATTIC_CACHE }} $(nix-store -qR --include-outputs $(nix-store -qd ./result) | grep -v '\.drv$')
       - name: Build neovim
         run: |
