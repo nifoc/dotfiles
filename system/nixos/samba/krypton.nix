@@ -63,6 +63,8 @@
           browseable = "yes";
           printable = "no";
           "valid users" = "daniel";
+          "veto files" = "/._*/.DS_Store/";
+          "delete veto files" = "yes";
         };
 
         MediaScraper = {
@@ -77,6 +79,8 @@
           browseable = "yes";
           printable = "no";
           "valid users" = "daniel";
+          "veto files" = "/._*/.DS_Store/";
+          "delete veto files" = "yes";
         };
 
         MediaVault = {
@@ -91,6 +95,8 @@
           browseable = "yes";
           printable = "no";
           "valid users" = "daniel";
+          "veto files" = "/._*/.DS_Store/";
+          "delete veto files" = "yes";
         };
 
         Media = {
@@ -105,6 +111,8 @@
           browseable = "yes";
           printable = "no";
           "valid users" = "daniel";
+          "veto files" = "/._*/.DS_Store/";
+          "delete veto files" = "yes";
         };
 
         Downloads = {
@@ -119,6 +127,8 @@
           browseable = "yes";
           printable = "no";
           "valid users" = "daniel";
+          "veto files" = "/._*/.DS_Store/";
+          "delete veto files" = "yes";
         };
       };
     };
