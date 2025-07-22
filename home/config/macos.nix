@@ -19,6 +19,8 @@
       show-recent-tags = false;
       show-removable-media-on-desktop = true;
       show-sidebar = true;
+      FXPreferredViewStyle = "Nlsv";
+      _FXSortFoldersFirst = true;
     };
   };
 }
