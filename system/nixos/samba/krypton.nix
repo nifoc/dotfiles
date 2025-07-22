@@ -25,10 +25,11 @@
           "socket options" = "TCP_NODELAY IPTOS_LOWDELAY";
           "use sendfile" = true;
 
-          "vfs objects" = "fruit streams_xattr";
+          "vfs objects" = "catia fruit streams_xattr";
           "fruit:aapl" = "yes";
           "fruit:metadata" = "stream";
           "fruit:model" = "MacSamba";
+          "fruit:encoding" = "native";
           "fruit:veto_appledouble" = "no";
           "fruit:nfs_aces" = "no";
           "fruit:wipe_intentionally_left_blank_rfork" = "yes";
