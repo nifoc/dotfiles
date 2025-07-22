@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }:
 
@@ -68,6 +69,11 @@
         }
       }
     '';
+  };
+
+  systemd.services.caddy = {
+    requires = lib.mkAfter [ "tailscaled.service" ];
+    after = lib.mkAfter [ "tailscaled.service" ];
   };
 
   networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 2019 ];
