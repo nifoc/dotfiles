@@ -1,6 +1,6 @@
 {
   imports = [
-    ./synapse.nix
+    ./continuwuity.nix
     ./mautrix-whatsapp.nix
     ./mautrix-signal.nix
   ];

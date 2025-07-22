@@ -3,7 +3,7 @@
 {
   services.mautrix-whatsapp = {
     enable = true;
-    serviceDependencies = [ "conduwuit.service" ];
+    serviceDependencies = [ "continuwuity.service" ];
 
     environmentFile = config.age.secrets.mautrix-whatsapp.path;
     # Settings have to be written in the old format: https://github.com/mautrix/whatsapp/blob/v0.10.9/example-config.yaml

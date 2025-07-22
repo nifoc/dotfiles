@@ -3,7 +3,7 @@
 {
   services.mautrix-signal = {
     enable = true;
-    serviceDependencies = [ "conduwuit.service" ];
+    serviceDependencies = [ "continuwuity.service" ];
 
     environmentFile = config.age.secrets.mautrix-signal.path;
     settings = {
