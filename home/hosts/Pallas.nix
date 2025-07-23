@@ -44,6 +44,8 @@
     ../programs/ssh/Pallas.nix
     ../programs/eternal-terminal.nix
 
+    ../programs/yazi.nix
+
     ../programs/yt-dlp.nix
   ];
 

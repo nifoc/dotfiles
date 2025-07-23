@@ -19,6 +19,7 @@
   (local serie #[(exe :serie)])
   (local openapi-tui #[(exe :openapi-tui) :-i openapi-spec-file])
   (local serpl #[(exe :serpl)])
+  (local yazi #[(exe :yazi)])
 
   (fn mod.open-lazygit []
     (open-split lazygit))
@@ -32,5 +33,8 @@
 
   (fn mod.open-serpl []
     (open-split serpl))
+
+  (fn mod.open-yazi []
+    (open-split yazi))
 
   mod)

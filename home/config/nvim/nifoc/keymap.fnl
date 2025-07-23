@@ -25,6 +25,7 @@
       (keymap.set :n :<leader>s #(fzf.live_grep fzf-layout-bottom)
                   {:desc "Live Grep"}))
     (keymap.set :n :<leader>fn :<cmd>enew<CR> {:desc "New File"})
+    (keymap.set :n :<leader>fm #(tui.open-yazi) {:desc "Open Yazi"})
     (keymap.set :n :<leader>u "<cmd>UrlView buffer<CR>" {:desc "Open UrlView"})
     (keymap.set :n :<leader>c repl.open-shell {:desc "Open Shell"})
     (keymap.set :n :<leader>r repl.open-repl {:desc "Open REPL"})
