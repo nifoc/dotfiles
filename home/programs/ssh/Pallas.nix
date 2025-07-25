@@ -2,7 +2,7 @@
 
 let
   ssh-directory = "${config.home.homeDirectory}/.ssh";
-  auth-socket = "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+  auth-socket = "${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
 
   shared-private = import ./shared/private.nix;
 

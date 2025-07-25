@@ -39,6 +39,7 @@ let
       "at.obdev.LaunchBar"
       "com.apple.ScreenSharing"
       "com.apple.systempreferences"
+      "com.bitwarden.desktop"
       "com.colliderli.iina"
       "com.eltima.elmedia-setapp"
       "com.jonny.mona"

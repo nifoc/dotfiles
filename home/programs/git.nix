@@ -152,42 +152,64 @@ in
       ".gitignore export-ignore"
       ".gitkeep export-ignore"
       # mergiraf
-      "*.java merge=mergiraf"
-      "*.kt merge=mergiraf"
-      "*.rs merge=mergiraf"
-      "*.go merge=mergiraf"
-      "*.js merge=mergiraf"
-      "*.jsx merge=mergiraf"
-      "*.mjs merge=mergiraf"
-      "*.json merge=mergiraf"
-      "*.yml merge=mergiraf"
-      "*.yaml merge=mergiraf"
-      "*.toml merge=mergiraf"
-      "*.html merge=mergiraf"
-      "*.htm merge=mergiraf"
-      "*.xhtml merge=mergiraf"
-      "*.xml merge=mergiraf"
       "*.c merge=mergiraf"
-      "*.h merge=mergiraf"
+      "*.c++ merge=mergiraf"
       "*.cc merge=mergiraf"
       "*.cpp merge=mergiraf"
-      "*.hpp merge=mergiraf"
+      "*.cppm merge=mergiraf"
       "*.cs merge=mergiraf"
+      "*.cxx merge=mergiraf"
       "*.dart merge=mergiraf"
       "*.dts merge=mergiraf"
-      "*.scala merge=mergiraf"
-      "*.sbt merge=mergiraf"
-      "*.ts merge=mergiraf"
-      "*.tsx merge=mergiraf"
-      "*.py merge=mergiraf"
+      "*.ex merge=mergiraf"
+      "*.exs merge=mergiraf"
+      "*.go merge=mergiraf"
+      "*.h merge=mergiraf"
+      "*.h++ merge=mergiraf"
+      "*.hcl merge=mergiraf"
+      "*.hh merge=mergiraf"
+      "*.hpp merge=mergiraf"
+      "*.hs merge=mergiraf"
+      "*.htm merge=mergiraf"
+      "*.html merge=mergiraf"
+      "*.hxx merge=mergiraf"
+      "*.ini merge=mergiraf"
+      "*.ixx merge=mergiraf"
+      "*.java merge=mergiraf"
+      "*.js merge=mergiraf"
+      "*.json merge=mergiraf"
+      "*.jsx merge=mergiraf"
+      "*.kt merge=mergiraf"
+      "*.lua merge=mergiraf"
+      "*.md merge=mergiraf"
+      "*.mjs merge=mergiraf"
+      "*.ml merge=mergiraf"
+      "*.mli merge=mergiraf"
+      "*.mpp merge=mergiraf"
+      "*.nix merge=mergiraf"
       "*.php merge=mergiraf"
       "*.phtml merge=mergiraf"
-      "*.sol merge=mergiraf"
-      "*.lua merge=mergiraf"
+      "*.properties merge=mergiraf"
+      "*.py merge=mergiraf"
       "*.rb merge=mergiraf"
-      "*.nix merge=mergiraf"
+      "*.rs merge=mergiraf"
+      "*.sbt merge=mergiraf"
+      "*.scala merge=mergiraf"
+      "*.sol merge=mergiraf"
       "*.sv merge=mergiraf"
       "*.svh merge=mergiraf"
+      "*.tcc merge=mergiraf"
+      "*.tf merge=mergiraf"
+      "*.tfvars merge=mergiraf"
+      "*.toml merge=mergiraf"
+      "*.ts merge=mergiraf"
+      "*.tsx merge=mergiraf"
+      "*.xhtml merge=mergiraf"
+      "*.xml merge=mergiraf"
+      "*.yaml merge=mergiraf"
+      "*.yml merge=mergiraf"
+      "go.mod merge=mergiraf"
+      "go.sum merge=mergiraf"
       # pandoc
       "*.docx diff=pandoc"
       "*.epub diff=pandoc"
@@ -199,96 +221,83 @@ in
       "*.ps1 eol=crlf"
     ];
 
-    includes =
-      let
-        op-ssh-sign = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-      in
-      [
-        # Maintenance
-        (mkIf isDarwin {
-          path = "${config.xdg.configHome}/git/maintenance-config";
-        })
+    includes = [
+      # Maintenance
+      (mkIf isDarwin {
+        path = "${config.xdg.configHome}/git/maintenance-config";
+      })
 
-        # Private
-        {
-          condition = "hasconfig:remote.*.url:forgejo@git.kempkens.io:*/**";
-          contents = {
-            user = {
-              signingKey = "~/.ssh/GitHub.pub";
-            };
-
-            commit = {
-              gpgSign = true;
-            };
-
-            tag = {
-              gpgSign = true;
-            };
-
-            gpg = {
-              format = "ssh";
-            };
-
-            "gpg \"ssh\"" = {
-              program = op-ssh-sign;
-            };
+      # Private
+      {
+        condition = "hasconfig:remote.*.url:forgejo@git.kempkens.io:*/**";
+        contents = {
+          user = {
+            signingKey = "~/.ssh/GitHub.pub";
           };
-        }
 
-        {
-          condition = "hasconfig:remote.*.url:git@github.com:*/**";
-          contents = {
-            user = {
-              signingKey = "~/.ssh/GitHub.pub";
-            };
-
-            commit = {
-              gpgSign = true;
-            };
-
-            tag = {
-              gpgSign = true;
-            };
-
-            gpg = {
-              format = "ssh";
-            };
-
-            "gpg \"ssh\"" = {
-              program = op-ssh-sign;
-            };
+          commit = {
+            gpgSign = true;
           };
-        }
 
-        # Work
-        {
-          condition = "hasconfig:remote.*.url:git@git.app.nedeco.de:*/**";
-          contents = {
-            user = {
-              email = "d.kempkens@nedeco.de";
-              name = "Daniel Kempkens";
-              signingKey = "~/.ssh/nedeco_gitlab.pub";
-            };
-
-            commit = {
-              gpgSign = true;
-            };
-
-            tag = {
-              gpgSign = true;
-            };
-
-            gpg = {
-              format = "ssh";
-            };
-
-            "gpg \"ssh\"" = {
-              program = op-ssh-sign;
-              allowedSignersFile = "~/.ssh/allowed_signers/work-nedeco";
-            };
+          tag = {
+            gpgSign = true;
           };
-        }
-      ];
+
+          gpg = {
+            format = "ssh";
+          };
+        };
+      }
+
+      {
+        condition = "hasconfig:remote.*.url:git@github.com:*/**";
+        contents = {
+          user = {
+            signingKey = "~/.ssh/GitHub.pub";
+          };
+
+          commit = {
+            gpgSign = true;
+          };
+
+          tag = {
+            gpgSign = true;
+          };
+
+          gpg = {
+            format = "ssh";
+          };
+        };
+      }
+
+      # Work
+      {
+        condition = "hasconfig:remote.*.url:git@git.app.nedeco.de:*/**";
+        contents = {
+          user = {
+            email = "d.kempkens@nedeco.de";
+            name = "Daniel Kempkens";
+            signingKey = "~/.ssh/nedeco_gitlab.pub";
+          };
+
+          commit = {
+            gpgSign = true;
+          };
+
+          tag = {
+            gpgSign = true;
+          };
+
+          gpg = {
+            format = "ssh";
+          };
+
+          "gpg \"ssh\"" = {
+            allowedSignersFile = "~/.ssh/allowed_signers/work-nedeco";
+          };
+        };
+      }
+    ];
   };
 
   home.sessionVariables.GIT_CEILING_DIRECTORIES = "/Users";

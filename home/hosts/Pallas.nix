@@ -27,6 +27,8 @@
 
     ../programs/bat.nix
 
+    ../programs/bitwarden.nix
+
     ../programs/btop.nix
 
     # ../programs/gallery-dl.nix
