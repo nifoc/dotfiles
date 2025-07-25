@@ -1,32 +1,40 @@
 { pkgs, config, ... }:
 
 {
-  services.postgresql = {
-    enable = true;
-    package = pkgs.postgresql_16_jit;
-    enableJIT = true;
+  services = {
+    postgresql = {
+      enable = true;
+      package = pkgs.postgresql_16_jit;
+      enableJIT = true;
 
-    enableTCPIP = true;
+      enableTCPIP = true;
 
-    settings = {
-      full_page_writes = "off";
-      wal_init_zero = "off";
-      wal_recycle = "off";
+      settings = {
+        full_page_writes = "off";
+        wal_init_zero = "off";
+        wal_recycle = "off";
 
-      work_mem = "12MB";
+        work_mem = "12MB";
 
-      track_activities = "on";
-      track_counts = "on";
-      autovacuum = "on";
+        track_activities = "on";
+        track_counts = "on";
+        autovacuum = "on";
 
-      shared_preload_libraries = "pg_stat_statements";
-      compute_query_id = "on";
+        shared_preload_libraries = "pg_stat_statements";
+        compute_query_id = "on";
+      };
+
+      authentication = ''
+        host all all 100.64.0.0/10 md5
+        host all all 10.88.0.0/16 md5
+      '';
     };
 
-    authentication = ''
-      host all all 100.64.0.0/10 md5
-      host all all 10.88.0.0/16 md5
-    '';
+    postgresqlBackup = {
+      enable = true;
+      compression = "zstd";
+      compressionLevel = 7;
+    };
   };
 
   networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 5432 ];

@@ -27,6 +27,8 @@ lib.mkIf (config.networking.hostName == "boron") {
         host caddy_storage caddy_storage 100.126.68.56/32 md5
       '';
     };
+
+    postgresqlBackup.databases = [ "caddy_storage" ];
   };
 
   networking.firewall.interfaces =
