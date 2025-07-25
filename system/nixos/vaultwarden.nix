@@ -21,8 +21,10 @@ in
         DATABASE_URL = "postgresql:///vaultwarden?host=/run/postgresql";
 
         USE_SENDMAIL = true;
-        SMTP_FROM = "vaultwarden@mg.kempkens.io";
+        SMTP_FROM = "vaultwarden@kempkens.io";
         SENDMAIL_COMMAND = "${pkgs.system-sendmail}/bin/sendmail";
+
+        PUSH_ENABLED = true;
       };
     };
 
@@ -37,6 +39,8 @@ in
       ];
     };
 
+    postgresqlBackup.databases = [ "vaultwarden" ];
+
     caddy.virtualHosts."${fqdn}" = {
       extraConfig = ''
         encode
@@ -45,7 +49,9 @@ in
           max_size 40MB
         }
 
-        reverse_proxy ${config.services.vaultwarden.config.ROCKET_ADDRESS}:${toString config.services.vaultwarden.config.ROCKET_PORT}
+        reverse_proxy ${config.services.vaultwarden.config.ROCKET_ADDRESS}:${toString config.services.vaultwarden.config.ROCKET_PORT} {
+          header_up X-Real-IP {remote_host}
+        }
       '';
     };
   };
