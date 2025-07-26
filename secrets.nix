@@ -139,6 +139,9 @@ in
   "agenix/hosts/carbon/mautrix/signal.age".publicKeys = carbon;
   "agenix/hosts/carbon/mautrix/whatsapp.age".publicKeys = carbon;
 
+  "agenix/hosts/carbon/restic/password.age".publicKeys = carbon;
+  "agenix/hosts/carbon/restic/ssh-private-key.age".publicKeys = carbon;
+
   "agenix/hosts/carbon/vaultwarden/config.age".publicKeys = carbon;
 
   # boron

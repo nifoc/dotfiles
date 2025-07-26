@@ -64,6 +64,14 @@
       file = ./mautrix/whatsapp.age;
     };
 
+    restic-password = {
+      file = ./restic/password.age;
+    };
+
+    restic-ssh-private-key = {
+      file = ./restic/ssh-private-key.age;
+    };
+
     vaultwarden-config = {
       file = ./vaultwarden/config.age;
     };

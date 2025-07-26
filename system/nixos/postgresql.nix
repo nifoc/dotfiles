@@ -35,6 +35,8 @@
       compression = "zstd";
       compressionLevel = 7;
     };
+
+    restic.backups.remote.paths = [ config.services.postgresqlBackup.location ];
   };
 
   networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 5432 ];

@@ -43,6 +43,8 @@ in
 
     ../nixos/monitoring/prometheus_exporters.nix
 
+    ../nixos/restic/carbon.nix
+
     ../nixos/tailscale.nix
     ../nixos/tailscale-nodns.nix
 
