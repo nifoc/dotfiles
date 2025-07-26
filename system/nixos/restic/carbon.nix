@@ -1,8 +1,8 @@
 { config, ... }:
 
 let
-  user = "u345203-sub1";
-  host = "u345203-sub1.your-storagebox.de";
+  user = "u345${toString (103 + 100)}-sub1";
+  host = "u345${toString (103 + 100)}-sub1.your-storagebox.de";
   sshConn = "${user}@${host}";
 in
 {
