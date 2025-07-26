@@ -161,6 +161,9 @@ in
 
   "agenix/hosts/boron/miniflux/credentials.age".publicKeys = boron;
 
+  "agenix/hosts/boron/restic/password.age".publicKeys = boron;
+  "agenix/hosts/boron/restic/ssh-private-key.age".publicKeys = boron;
+
   # krypton
   "agenix/hosts/krypton/user/danielPassword.age".publicKeys = krypton;
 

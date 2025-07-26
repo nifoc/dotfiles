@@ -39,6 +39,8 @@ in
 
     ../nixos/ntfy-sh.nix
 
+    ../nixos/restic/boron.nix
+
     ../nixos/tailscale.nix
     ../nixos/tailscale-nodns.nix
 
