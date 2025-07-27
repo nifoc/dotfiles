@@ -51,6 +51,14 @@
       group = "1000";
     };
 
+    restic-password = {
+      file = ./restic/password.age;
+    };
+
+    restic-ssh-private-key = {
+      file = ./restic/ssh-private-key.age;
+    };
+
     speedtest-tracker-environment = {
       file = ./speedtest-tracker/environment.age;
     };

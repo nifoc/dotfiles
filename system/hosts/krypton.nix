@@ -54,6 +54,8 @@ in
 
     ../nixos/monitoring
 
+    ../nixos/restic/krypton.nix
+
     ../nixos/samba/krypton.nix
 
     ../nixos/smartd.nix
