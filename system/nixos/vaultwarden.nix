@@ -47,6 +47,8 @@ in
       extraConfig = ''
         encode
 
+        header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
         request_body {
           max_size 40MB
         }
