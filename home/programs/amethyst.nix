@@ -42,6 +42,7 @@ let
       "com.bitwarden.desktop"
       "com.colliderli.iina"
       "com.eltima.elmedia-setapp"
+      "com.haystacksoftware.Arq"
       "com.jonny.mona"
       "com.kapeli.dash-setapp"
       "com.macpaw.Gemini-setapp"
