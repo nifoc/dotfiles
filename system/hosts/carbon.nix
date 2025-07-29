@@ -39,6 +39,8 @@ in
       }
     ))
 
+    ../nixos/geoipupdate.nix
+
     ../nixos/gotosocial.nix
 
     ../nixos/monitoring/prometheus_exporters.nix

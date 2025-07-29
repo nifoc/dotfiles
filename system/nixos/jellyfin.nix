@@ -71,6 +71,11 @@ in
         '';
       };
     };
+
+    restic.backups.remote.paths = [
+      "/var/lib/jellyfin/config"
+      "/var/lib/jellyfin/data"
+    ];
   };
 
   networking.firewall.interfaces =

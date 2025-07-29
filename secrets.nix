@@ -126,6 +126,8 @@ in
 
   "agenix/hosts/carbon/acme/credentials.age".publicKeys = carbon;
 
+  "agenix/hosts/carbon/geoipupdate/license.age".publicKeys = carbon;
+
   "agenix/hosts/carbon/ntfy/token-hardware.age".publicKeys = carbon;
 
   "agenix/hosts/carbon/tailscale/authkey.age".publicKeys = carbon;

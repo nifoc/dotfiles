@@ -49,6 +49,8 @@ in
 
         header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
+        import geoblock-common
+
         request_body {
           max_size 40MB
         }

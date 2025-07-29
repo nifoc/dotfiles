@@ -34,6 +34,10 @@
       file = ../all/caddy/environment.age;
     };
 
+    geoipupdate-license = {
+      file = ./geoipupdate/license.age;
+    };
+
     tailscale-authkey = {
       file = ./tailscale/authkey.age;
     };
