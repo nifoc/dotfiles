@@ -52,8 +52,14 @@
       };
 
       hostname = {
-        ssh_only = true;
+        ssh_only = false;
         ssh_symbol = " ";
+        detect_env_vars = [
+          "SSH_CONNECTION"
+          "SSH_CLIENT"
+          "SSH_TTY"
+          "NIFOC_SSH_CONNECTION"
+        ];
         format = "\\[[$ssh_symbol$hostname]($style)\\]";
       };
 
@@ -118,6 +124,12 @@
       };
 
       username = {
+        detect_env_vars = [
+          "SSH_CONNECTION"
+          "SSH_CLIENT"
+          "SSH_TTY"
+          "NIFOC_SSH_CONNECTION"
+        ];
         format = "\\[[ $user]($style)\\]";
       };
 

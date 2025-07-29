@@ -214,6 +214,10 @@ in
               fi
 
               export LESS="--quit-if-one-screen --ignore-case --RAW-CONTROL-CHARS"
+
+              if [[ "$WEZTERM_EXECUTABLE" = *"wezterm-mux-server" ]]; then
+                export NIFOC_SSH_CONNECTION=1
+              fi
             ''
           )
         ]
