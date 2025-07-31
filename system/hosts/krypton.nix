@@ -184,9 +184,9 @@ in
   systemd = {
     enableEmergencyMode = false;
 
-    watchdog = {
-      runtimeTime = "20s";
-      rebootTime = "30s";
+    settings.Manager = {
+      RuntimeWatchdogSec = 20;
+      RebootWatchdogSec = 30;
     };
 
     network = rec {
