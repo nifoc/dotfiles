@@ -269,11 +269,11 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1753223229,
-        "narHash": "sha256-tkT4aCZZE6IEmjYotOzKKa2rV3pGpH3ZREeQn7ACgdU=",
-        "rev": "7ac20fc47cf2f1b7469c7a2f379e5a3a51a6789a",
+        "lastModified": 1753306924,
+        "narHash": "sha256-jLCEW0FvjFhC+c4RHzH+xbkSOxrnpFHnhjOw6sudhx0=",
+        "rev": "1a4393d0aac31aba21f5737ede1b171e11336d77",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/7ac20fc47cf2f1b7469c7a2f379e5a3a51a6789a.tar.gz?rev=7ac20fc47cf2f1b7469c7a2f379e5a3a51a6789a"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/1a4393d0aac31aba21f5737ede1b171e11336d77.tar.gz?rev=1a4393d0aac31aba21f5737ede1b171e11336d77"
       },
       "original": {
         "type": "tarball",
@@ -347,17 +347,15 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1753581721,
-        "narHash": "sha256-aop5R5yhWEGa4WPVz5VBTgcLXWVxKFH2lC+Dtga4oLM=",
-        "ref": "refs/heads/master",
-        "rev": "f2a822e08cde7ac62d355b46b976708407f08191",
-        "revCount": 1224,
-        "type": "git",
-        "url": "https://git.kempkens.io/daniel/nix-overlay"
+        "lastModified": 1753927365,
+        "narHash": "sha256-/Be4KSKJKaQr2oCv+/sjgMEE7XxXMrhhk+zrEc78AQU=",
+        "rev": "667ebf35f281ce8c5a5ac272aa63b6e67e0e530d",
+        "type": "tarball",
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/667ebf35f281ce8c5a5ac272aa63b6e67e0e530d.tar.gz?rev=667ebf35f281ce8c5a5ac272aa63b6e67e0e530d"
       },
       "original": {
-        "type": "git",
-        "url": "https://git.kempkens.io/daniel/nix-overlay"
+        "type": "tarball",
+        "url": "https://git.kempkens.io/daniel/nix-overlay/archive/master.tar.gz"
       }
     },
     "nix-darwin": {
