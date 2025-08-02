@@ -14,6 +14,8 @@ in
     ../darwin/fake-homebrew.nix
 
     ../darwin/git.nix
+
+    ../darwin/yubikey.nix
   ];
 
   system = {
