@@ -27,6 +27,15 @@
         group = "staff";
       };
 
+      yubikey-u2f_keys = {
+        file = ./yubikey/u2f_keys.age;
+        path = "/etc/u2f_mappings";
+        mode = "640";
+        owner = "root";
+        group = "wheel";
+        symlink = false;
+      };
+
       git-maintenance = {
         file = ./git/maintenance.age;
         path = "/Users/daniel/.config/git/maintenance-config";

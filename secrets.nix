@@ -278,6 +278,8 @@ in
   # ];
 
   # Pallas
+  "agenix/hosts/Pallas/yubikey/u2f_keys.age".publicKeys = [ user-daniel-Pallas ];
+
   "agenix/hosts/Pallas/git/maintenance.age".publicKeys = [
     user-daniel-Pallas
     user-daniel-Styx

@@ -8,7 +8,7 @@ in
 
   security.pam.services.sudo_local = {
     text = lib.mkOrder 9999 ''
-      auth       sufficient     ${pam_u2f}/lib/security/pam_u2f.so cue
+      auth       sufficient     ${pam_u2f}/lib/security/pam_u2f.so authfile=/etc/u2f_mappings cue
     '';
   };
 }
