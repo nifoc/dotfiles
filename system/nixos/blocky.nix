@@ -204,8 +204,8 @@
   };
 
   systemd.services.blocky = {
-    wants = [ "tailscaled.service" ];
-    after = [ "tailscaled.service" ];
+    wants = [ "tailscale-wait-up.service" ];
+    after = [ "tailscale-wait-up.service" ];
   };
 
   networking.firewall.interfaces =

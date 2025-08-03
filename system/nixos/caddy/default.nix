@@ -73,8 +73,8 @@
   };
 
   systemd.services.caddy = {
-    requires = lib.mkAfter [ "tailscaled.service" ];
-    after = lib.mkAfter [ "tailscaled.service" ];
+    requires = lib.mkAfter [ "tailscale-wait-up.service" ];
+    after = lib.mkAfter [ "tailscale-wait-up.service" ];
   };
 
   networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 2019 ];

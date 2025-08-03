@@ -58,7 +58,6 @@ in
 
     caddy.virtualHosts = {
       "jellyfin.internal.kempkens.network:9920" = {
-        serverAliases = [ "jellyfin-local.internal.kempkens.network" ];
 
         extraConfig = ''
           encode
