@@ -25,6 +25,8 @@ in
         SENDMAIL_COMMAND = "${pkgs.system-sendmail}/bin/sendmail";
 
         PUSH_ENABLED = true;
+
+        ENFORCE_SINGLE_ORG_WITH_RESET_PW_POLICY = true;
       };
     };
 

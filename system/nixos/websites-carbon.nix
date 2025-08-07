@@ -93,132 +93,131 @@ let
 in
 {
   services.caddy = {
-    virtualHosts =
-      {
-        "kempkens.io" = {
-          useACMEHost = "kempkens.io";
+    virtualHosts = {
+      "kempkens.io" = {
+        useACMEHost = "kempkens.io";
 
-          extraConfig = ''
-            encode
+        extraConfig = ''
+          encode
 
-            header {
-              Permissions-Policy interest-cohort=()
-              Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-              X-Content-Type-Options nosniff
-              X-Frame-Options DENY
-              X-XSS-Protection "1; mode=block"
-              Referrer-Policy no-referrer
-              Content-Security-Policy "default-src 'none'; manifest-src https://kempkens.io; script-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'"
+          header {
+            Permissions-Policy interest-cohort=()
+            Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+            X-Content-Type-Options nosniff
+            X-Frame-Options DENY
+            X-XSS-Protection "1; mode=block"
+            Referrer-Policy no-referrer
+            Content-Security-Policy "default-src 'none'; manifest-src https://kempkens.io; script-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'"
 
-              +X-Robots-Tag "noindex, nofollow"
-              +X-Robots-Tag "noai, noimageai"
+            +X-Robots-Tag "noindex, nofollow"
+            +X-Robots-Tag "noai, noimageai"
+          }
+
+          redir /id https://keyoxide.org/028BCE9BABB5145AAAA1FB8410BE1D47E5ADFF92 307
+
+          import robots-txt-ai
+
+          handle {
+            root * ${kempkens-io}/public
+
+            file_server {
+              precompressed
             }
+          }
+        '';
+      };
 
-            redir /id https://keyoxide.org/028BCE9BABB5145AAAA1FB8410BE1D47E5ADFF92 307
+      "www.kempkens.io" = {
+        useACMEHost = "kempkens.io";
 
-            import robots-txt-ai
+        extraConfig = ''
+          header >Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
-            handle {
-              root * ${kempkens-io}/public
+          redir https://kempkens.io{uri} permanent
+        '';
+      };
 
-              file_server {
-                precompressed 
+      # blog.kempkens.io
+      "blog.kempkens.io" = {
+        useACMEHost = "kempkens.io";
+
+        extraConfig = ''
+          encode
+
+          header {
+            Permissions-Policy interest-cohort=()
+            Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+            X-Content-Type-Options nosniff
+            X-Frame-Options DENY
+            X-XSS-Protection "1; mode=block"
+            Referrer-Policy no-referrer
+            Content-Security-Policy "default-src 'none'; manifest-src https://blog.kempkens.io; script-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'"
+
+            +X-Robots-Tag "noindex, nofollow"
+            +X-Robots-Tag "noai, noimageai"
+          }
+
+          import robots-txt-ai
+
+          handle {
+            root * ${blog-kempkens-io}/public
+
+            file_server {
+              precompressed
+            }
+          }
+        '';
+      };
+
+      # nifoc.pw
+      "*.nifoc.pw" = {
+        extraConfig = ''
+          encode
+
+          header Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+          redir https://kempkens.io permanent
+        '';
+      };
+    }
+    // builtins.listToAttrs (
+      builtins.map
+        # Documentation
+        (domain: {
+          name = domain;
+          value = {
+            extraConfig = ''
+              encode
+
+              header {
+                Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+                +X-Robots-Tag "noindex, nofollow"
+                +X-Robots-Tag "noai, noimageai"
               }
-            }
-          '';
-        };
 
-        "www.kempkens.io" = {
-          useACMEHost = "kempkens.io";
+              import robots-txt-generic
 
-          extraConfig = ''
-            header >Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+              handle {
+                root * ${docs-nifoc-pw}/site/${domain}
 
-            redir https://kempkens.io{uri} permanent
-          '';
-        };
-
-        # blog.kempkens.io
-        "blog.kempkens.io" = {
-          useACMEHost = "kempkens.io";
-
-          extraConfig = ''
-            encode
-
-            header {
-              Permissions-Policy interest-cohort=()
-              Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-              X-Content-Type-Options nosniff
-              X-Frame-Options DENY
-              X-XSS-Protection "1; mode=block"
-              Referrer-Policy no-referrer
-              Content-Security-Policy "default-src 'none'; manifest-src https://blog.kempkens.io; script-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'"
-
-              +X-Robots-Tag "noindex, nofollow"
-              +X-Robots-Tag "noai, noimageai"
-            }
-
-            import robots-txt-ai
-
-            handle {
-              root * ${blog-kempkens-io}/public
-
-              file_server {
-                precompressed 
-              }
-            }
-          '';
-        };
-
-        # nifoc.pw
-        "*.nifoc.pw" = {
-          extraConfig = ''
-            encode
-
-            header Strict-Transport-Security "max-age=31536000; includeSubDomains"
-
-            redir https://kempkens.io permanent
-          '';
-        };
-      }
-      // builtins.listToAttrs (
-        builtins.map
-          # Documentation
-          (domain: {
-            name = domain;
-            value = {
-              extraConfig = ''
-                encode
-
-                header {
-                  Strict-Transport-Security "max-age=31536000; includeSubDomains"
-
-                  +X-Robots-Tag "noindex, nofollow"
-                  +X-Robots-Tag "noai, noimageai"
-                }
-
-                import robots-txt-generic
-
-                handle {
-                  root * ${docs-nifoc-pw}/site/${domain}
-
-                  file_server {
-                    browse {
-                      sort namedirfirst asc
-                    }
-
-                    precompressed 
+                file_server {
+                  browse {
+                    sort namedirfirst asc
                   }
+
+                  precompressed
                 }
-              '';
-            };
-          })
-          [
-            "katja.nifoc.pw"
-            "katja_vmstats.nifoc.pw"
-            "noesis.nifoc.pw"
-            "propagator.nifoc.pw"
-          ]
-      );
+              }
+            '';
+          };
+        })
+        [
+          "katja.nifoc.pw"
+          "katja_vmstats.nifoc.pw"
+          "noesis.nifoc.pw"
+          "propagator.nifoc.pw"
+        ]
+    );
   };
 }

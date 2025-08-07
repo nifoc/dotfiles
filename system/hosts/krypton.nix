@@ -28,6 +28,8 @@ in
 
     ../nixos/attic.nix
 
+    ../nixos/audiobookshelf.nix
+
     (import ../nixos/blocky.nix (
       args
       // {
@@ -51,6 +53,8 @@ in
     ../nixos/ddg.nix
 
     ../nixos/jellyfin.nix
+
+    ../nixos/libretranslate.nix
 
     ../nixos/monitoring
 

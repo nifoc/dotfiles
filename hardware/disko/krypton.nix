@@ -122,24 +122,15 @@
             };
             mountpoint = "/var/lib/prometheus";
           };
-          "root/services/munin" = {
+          "root/services/libretranslate" = {
             type = "zfs_fs";
             options = {
-              mountpoint = "/var/lib/munin";
+              mountpoint = "/var/lib/libretranslate";
               compression = "zstd";
-              atime = "off";
-            };
-            mountpoint = "/var/lib/munin";
-          };
-          "root/services/munin/www" = {
-            type = "zfs_fs";
-            options = {
-              mountpoint = "/var/www/munin";
-              compression = "lz4";
               atime = "off";
               "com.sun:auto-snapshot" = "false";
             };
-            mountpoint = "/var/www/munin";
+            mountpoint = "/var/lib/libretranslate";
           };
         };
       };
