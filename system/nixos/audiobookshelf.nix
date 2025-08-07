@@ -13,7 +13,7 @@ in
       };
     };
 
-    paths.jellyfin = {
+    paths.audiobookshelf = {
       wantedBy = [ "multi-user.target" ];
 
       pathConfig = {
@@ -44,5 +44,7 @@ in
         }
       '';
     };
+
+    restic.backups.remote.paths = [ "/var/lib/audiobookshelf/metadata/backups" ];
   };
 }
