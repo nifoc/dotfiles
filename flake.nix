@@ -4,15 +4,16 @@
 
     # Lix
 
+    lix = {
+      url = "https://git.lix.systems/lix-project/lix/archive/release-2.93.tar.gz";
+      flake = false;
+    };
+
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-
-        lix = {
-          url = "https://git.lix.systems/lix-project/lix/archive/1a4393d0aac31aba21f5737ede1b171e11336d77.tar.gz";
-          flake = false;
-        };
+        lix.follows = "lix";
       };
     };
 
