@@ -69,9 +69,6 @@ in
         header {
           Permissions-Policy interest-cohort=()
           >Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-
-          +X-Robots-Tag "noindex, nofollow"
-          +X-Robots-Tag "noai, noimageai"
         }
 
         import robots-txt-ai

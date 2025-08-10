@@ -51,14 +51,18 @@ in
 
         header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-        import geoblock-common
+        import robots-txt-generic
 
-        request_body {
-          max_size 40MB
-        }
+        handle {
+          import geoblock-common
 
-        reverse_proxy ${config.services.vaultwarden.config.ROCKET_ADDRESS}:${toString config.services.vaultwarden.config.ROCKET_PORT} {
-          header_up X-Real-IP {remote_host}
+          request_body {
+            max_size 40MB
+          }
+
+          reverse_proxy ${config.services.vaultwarden.config.ROCKET_ADDRESS}:${toString config.services.vaultwarden.config.ROCKET_PORT} {
+            header_up X-Real-IP {remote_host}
+          }
         }
       '';
     };

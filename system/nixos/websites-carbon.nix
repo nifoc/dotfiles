@@ -108,9 +108,6 @@ in
             X-XSS-Protection "1; mode=block"
             Referrer-Policy no-referrer
             Content-Security-Policy "default-src 'none'; manifest-src https://kempkens.io; script-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'"
-
-            +X-Robots-Tag "noindex, nofollow"
-            +X-Robots-Tag "noai, noimageai"
           }
 
           redir /id https://keyoxide.org/028BCE9BABB5145AAAA1FB8410BE1D47E5ADFF92 307
@@ -152,9 +149,6 @@ in
             X-XSS-Protection "1; mode=block"
             Referrer-Policy no-referrer
             Content-Security-Policy "default-src 'none'; manifest-src https://blog.kempkens.io; script-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'"
-
-            +X-Robots-Tag "noindex, nofollow"
-            +X-Robots-Tag "noai, noimageai"
           }
 
           import robots-txt-ai
@@ -191,9 +185,6 @@ in
 
               header {
                 Strict-Transport-Security "max-age=31536000; includeSubDomains"
-
-                +X-Robots-Tag "noindex, nofollow"
-                +X-Robots-Tag "noai, noimageai"
               }
 
               import robots-txt-generic
