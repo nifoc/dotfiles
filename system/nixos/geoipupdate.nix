@@ -23,7 +23,7 @@
         @geoblock {
           maxmind_geolocation {
             db_path "${config.services.geoipupdate.settings.DatabaseDirectory}/GeoLite2-Country.mmdb"
-            allow_countries RU CN NG RO KP UNK
+            allow_countries RU CN US NG RO KP UNK
           }
         }
 
