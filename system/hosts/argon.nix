@@ -46,6 +46,8 @@ in
 
     ../nixos/mosquitto.nix
 
+    ../nixos/restic/argon.nix
+
     ../nixos/smartd.nix
 
     ../nixos/tailscale-router.nix

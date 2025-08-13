@@ -29,7 +29,8 @@ in
         "network-online.target"
         "time-sync.target"
         "mosquitto.service"
-      ] ++ mounts;
+      ]
+      ++ mounts;
       wants = [ "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
 
@@ -129,6 +130,8 @@ in
   ];
 
   services = {
+    restic.backups.remote.paths = [ "${home}/data/db" ];
+
     mosquitto.listeners = [
       {
         address = "127.0.0.1";

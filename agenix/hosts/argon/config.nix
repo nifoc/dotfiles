@@ -54,6 +54,14 @@
       group = "mosquitto";
     };
 
+    restic-password = {
+      file = ./restic/password.age;
+    };
+
+    restic-ssh-private-key = {
+      file = ./restic/ssh-private-key.age;
+    };
+
     ups-primary-password = {
       file = ./ups/primaryPassword.age;
     };
