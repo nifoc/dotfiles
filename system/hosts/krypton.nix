@@ -58,6 +58,8 @@ in
 
     ../nixos/monitoring
 
+    ../nixos/redlib.nix
+
     ../nixos/restic/krypton.nix
 
     ../nixos/samba/krypton.nix
@@ -103,6 +105,7 @@ in
             7441
             7474
             7878
+            8002
             8071
             8080
             8191

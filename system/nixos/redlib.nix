@@ -1,77 +1,48 @@
-{
-  pkgs,
-  lib,
-  secret,
-  ...
-}:
+{ config, lib, ... }:
 
+let
+  cfg = config.services.redlib;
+  netns = "dl";
+in
 {
-  systemd.services.redlib =
-    let
-      args = lib.concatStringsSep " " ([
-        "--port 8002"
-        "--address 127.0.0.1"
-      ]);
-    in
-    {
-      description = "Private front-end for Reddit";
-      wantedBy = [ "multi-user.target" ];
-      after = [ "network.target" ];
-      serviceConfig = {
-        DynamicUser = true;
-        ExecStart = "${pkgs.redlib}/bin/redlib ${args}";
-        Restart = "on-failure";
-        RestartSec = "2s";
-        # Hardening
-        CapabilityBoundingSet = [ "" ];
-        DeviceAllow = [ "" ];
-        LockPersonality = true;
-        MemoryDenyWriteExecute = true;
-        PrivateDevices = true;
-        # A private user cannot have process capabilities on the host's user
-        # namespace and thus CAP_NET_BIND_SERVICE has no effect.
-        PrivateUsers = true;
-        ProcSubset = "pid";
-        ProtectClock = true;
-        ProtectControlGroups = true;
-        ProtectHome = true;
-        ProtectHostname = true;
-        ProtectKernelLogs = true;
-        ProtectKernelModules = true;
-        ProtectKernelTunables = true;
-        ProtectProc = "invisible";
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
-        RestrictNamespaces = true;
-        RestrictRealtime = true;
-        RestrictSUIDSGID = true;
-        SystemCallArchitectures = "native";
-        SystemCallFilter = [
-          "@system-service"
-          "~@privileged"
-          "~@resources"
-        ];
-        UMask = "0077";
+  services = {
+    redlib = {
+      enable = true;
+      address = "192.168.42.2";
+      port = 8002;
+
+      settings = {
+        REDLIB_DEFAULT_LAYOUT = "compact";
+        REDLIB_DEFAULT_WIDE = "on";
+        REDLIB_DEFAULT_SHOW_NSFW = "on";
+        REDLIB_DEFAULT_USE_HLS = "on";
       };
     };
 
-  services.nginx.virtualHosts."${secret.nginx.hostnames.libreddit}" = {
-    listenAddresses = [
-      "100.122.253.109"
-      "[fd7a:115c:a1e0::3a01:fd6d]"
-    ];
+    caddy.virtualHosts."reddit.internal.kempkens.network" = {
+      extraConfig = ''
+        encode
 
-    quic = true;
-    http3 = true;
+        header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-    onlySSL = true;
-    useACMEHost = "daniel.sx";
+        import tailscale-auth
 
-    locations."/" = {
-      recommendedProxySettings = true;
-      proxyPass = "http://127.0.0.1:8002";
+        reverse_proxy ${cfg.address}:${toString cfg.port}
+      '';
+    };
+  };
+
+  systemd.services.redlib = {
+    bindsTo = [ "wg-${netns}.service" ];
+    after = lib.mkAfter [ "wg-${netns}.service" ];
+
+    serviceConfig = {
+      NetworkNamespacePath = "/var/run/netns/${netns}";
+      BindReadOnlyPaths = [
+        "/etc/netns/${netns}/resolv.conf:/etc/resolv.conf:norbind"
+        "/etc/netns/${netns}/nsswitch.conf:/etc/nsswitch.conf:norbind"
+        "/etc/netns/${netns}/nscd-kill:/run/nscd:norbind"
+      ];
     };
   };
 }
