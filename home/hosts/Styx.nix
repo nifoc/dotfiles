@@ -51,8 +51,6 @@
     ../programs/yt-dlp.nix
   ];
 
-  disabledModules = [ "targets/darwin/linkapps.nix" ];
-
   home = {
     stateVersion = "22.11";
 
@@ -89,35 +87,45 @@
       xz
     ];
 
-    activation.aliasApplications = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin (
+    activation.linkApps = lib.hm.dag.entryAfter [ "installPackages" ] (
       let
-        apps = pkgs.buildEnv {
+        applications = pkgs.buildEnv {
           name = "home-manager-applications";
           paths = config.home.packages;
           pathsToLink = "/Applications";
         };
-
-        lastAppsFile = "${config.xdg.stateHome}/nix/.apps";
       in
-      lib.hm.dag.entryAfter [ "writeBoundary" ] # bash
-        ''
-          last_apps=$(cat "${lastAppsFile}" 2>/dev/null || echo "")
-          next_apps=$(readlink -f ${apps}/Applications/* | sort)
+      ''
+        ourLink () {
+          local link
+          link=$(readlink "$1")
+          [ -L "$1" ] && [ "''${link#*-}" = 'home-manager-applications/Applications' ]
+        }
 
-          if [ "$last_apps" != "$next_apps" ]; then
-            echo "Apps have changed. Updating macOS aliases..."
+        targetFolder="$HOME/Applications/Home Manager Apps"
 
-            apps_path="${config.home.homeDirectory}/Applications/Home Manager Apps"
-            $DRY_RUN_CMD mkdir -p "$apps_path"
+        echo "setting up $targetFolder ..." >&2
 
-            $DRY_RUN_CMD ${lib.getExe pkgs.fd} \
-              -t l -d 1 . ${apps}/Applications \
-              -x $DRY_RUN_CMD "${pkgs.mkalias}/bin/mkalias" \
-              -L {} "$apps_path/{/}"
+        if [ -e "$targetFolder" ] && ourLink "$targetFolder"; then
+          $DRY_RUN_CMD rm "$targetFolder"
+        fi
 
-            [ -z "$DRY_RUN_CMD" ] && echo "$next_apps" > "${lastAppsFile}"
-          fi
-        ''
+        $DRY_RUN_CMD mkdir -p "$targetFolder"
+
+        rsyncFlags=(
+          --archive
+          --checksum
+          --copy-unsafe-links
+          --delete
+          --exclude=$'Icon\r'
+          --no-group
+          --no-owner
+        )
+
+        $DRY_RUN_CMD ${lib.getExe pkgs.rsync} "''${rsyncFlags[@]}" ${applications}/Applications/ "$targetFolder"
+      ''
     );
   };
+
+  targets.darwin.linkApps.enable = false;
 }

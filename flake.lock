@@ -303,26 +303,6 @@
         "url": "https://git.lix.systems/lix-project/nixos-module/archive/release-2.93.tar.gz"
       }
     },
-    "mkalias": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1678761502,
-        "narHash": "sha256-tL3C/b2BPOGQpV287wECDCDWmKwwPvezAAN3qz7N07M=",
-        "owner": "reckenrode",
-        "repo": "mkalias",
-        "rev": "8a5478cdb646f137ebc53cb9d235f8e5892ea00a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "reckenrode",
-        "repo": "mkalias",
-        "type": "github"
-      }
-    },
     "nedeco": {
       "locked": {
         "lastModified": 1746481484,
@@ -506,7 +486,6 @@
         "home-manager": "home-manager",
         "lix": "lix",
         "lix-module": "lix-module",
-        "mkalias": "mkalias",
         "nedeco": "nedeco",
         "nifoc-overlay": "nifoc-overlay",
         "nix-darwin": "nix-darwin",

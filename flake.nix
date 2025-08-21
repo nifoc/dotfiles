@@ -79,11 +79,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    mkalias = {
-      url = "github:reckenrode/mkalias";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nedeco.url = "github:nedeco/nix-base-system";
     #nedeco.url = "path:/Users/dkempkens/Code/Work/nedeco/nix-base-system";
   };
@@ -104,7 +99,6 @@
               home-manager
               nix-darwin
               agenix
-              mkalias
               nifoc-overlay
               nedeco
               ;
@@ -117,7 +111,6 @@
               home-manager
               nix-darwin
               agenix
-              mkalias
               nifoc-overlay
               ;
             inherit lix-module;
@@ -317,7 +310,8 @@
 
             packages = [
               inputs'.agenix.packages.agenix
-              inputs'.deploy-rs.packages.default
+              #inputs'.deploy-rs.packages.default
+              pkgs.deploy-rs
               pkgs.just
               pkgs.nix-output-monitor
               (pkgs.octodns.withProviders (_: [
