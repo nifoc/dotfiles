@@ -33,6 +33,8 @@ in
       }
     ))
 
+    ../nixos/mail-security.nix
+
     ../nixos/miniflux.nix
 
     ../nixos/monitoring/prometheus_exporters.nix

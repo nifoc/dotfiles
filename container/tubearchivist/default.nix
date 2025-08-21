@@ -86,17 +86,39 @@ in
 
   services.caddy = {
     virtualHosts."${fqdn}" = {
-      extraConfig = ''
-        encode
+      extraConfig =
+        let
+          media-browser = config.virtualisation.oci-containers.containers.media_browser.environment.PHX_HOST;
 
-        header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
+          override-cors = ''
+            >Access-Control-Allow-Methods GET
+            >Access-Control-Allow-Headers *
+          '';
+        in
+        ''
+          encode
 
-        import tailscale-auth
+          @origin_media header Origin "https://${media-browser}"
+          @origin_localhost header Origin "http://localhost:4000"
 
-        reverse_proxy ${internalIP}:${internalPort} {
-          flush_interval -1
-        }
-      '';
+          header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+          header @origin_media {
+            >Access-Control-Allow-Origin "https://${media-browser}"
+            ${override-cors}
+          }
+
+          header @origin_localhost {
+            >Access-Control-Allow-Origin "http://localhost:4000"
+            ${override-cors}
+          }
+
+          import tailscale-auth
+
+          reverse_proxy ${internalIP}:${internalPort} {
+            flush_interval -1
+          }
+        '';
     };
   };
 }
