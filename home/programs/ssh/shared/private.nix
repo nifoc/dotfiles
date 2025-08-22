@@ -28,11 +28,12 @@
       hostname = "10.0.0.1";
       port = 22;
       user = "root";
+      forwardAgent = true;
       setEnv = {
         TERM = "xterm-256color";
       };
       extraOptions = {
-        PreferredAuthentications = "password";
+        PreferredAuthentications = "keyboard-interactive";
       };
     };
 
