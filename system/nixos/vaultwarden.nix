@@ -21,7 +21,7 @@ in
         DATABASE_URL = "postgresql:///vaultwarden?host=/run/postgresql";
 
         USE_SENDMAIL = true;
-        SMTP_FROM = "vaultwarden@kempkens.io";
+        SMTP_FROM = "server@kempkens.email";
         SENDMAIL_COMMAND = "${pkgs.system-sendmail}/bin/sendmail";
 
         PUSH_ENABLED = true;

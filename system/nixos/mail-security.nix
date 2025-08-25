@@ -1,5 +1,15 @@
 let
-  domains = [ "kempkens.li" ];
+  domains = [
+    "kempkens.io"
+    "kempkens.email"
+    "kempkens.li"
+  ];
+
+  hsts = {
+    "kempkens.io" = "max-age=31536000; includeSubDomains; preload";
+    "kempkens.email" = "max-age=31536000; includeSubDomains";
+    "kempkens.li" = "max-age=31536000; includeSubDomains";
+  };
 
   header-cleanup = ''
     header_down -Access
@@ -19,7 +29,7 @@ in
           encode
 
           header {
-            >Strict-Transport-Security "max-age=31536000; includeSubDomains"
+            >Strict-Transport-Security "${hsts."${domain}"}"
             >Access-Control-Allow-Origin "*"
           }
 
@@ -42,7 +52,7 @@ in
         extraConfig = ''
           encode
 
-          header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
+          header >Strict-Transport-Security "${hsts."${domain}"}"
 
           handle /.well-known/mta-sts.txt {
             reverse_proxy https://mta-sts.protonmail.com {
