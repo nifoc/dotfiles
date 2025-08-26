@@ -56,11 +56,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755519972,
-        "narHash": "sha256-bU4nqi3IpsUZJeyS8Jk85ytlX61i4b0KCxXX9YcOgVc=",
+        "lastModified": 1756115622,
+        "narHash": "sha256-iv8xVtmLMNLWFcDM/HcAPLRGONyTRpzL9NS09RnryRM=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "4073ff2f481f9ef3501678ff479ed81402caae6d",
+        "rev": "bafad29f89e83b2d861b493aa23034ea16595560",
         "type": "github"
       },
       "original": {
@@ -292,11 +292,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755826954,
-        "narHash": "sha256-csTdFThUiCvqZj1R8tTcSiVGxIXbuZ9K+0TywhHCGZY=",
-        "rev": "174dc5796138f7e29f9baddd672ac548d8a12d76",
+        "lastModified": 1756125859,
+        "narHash": "sha256-6a+PWILmqHCs9B5eIBLg6HSZ8jYweZpgOWO8FlyVwYI=",
+        "rev": "d3292125035b04df00d01549a26e948631fabe1e",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/174dc5796138f7e29f9baddd672ac548d8a12d76.tar.gz?rev=174dc5796138f7e29f9baddd672ac548d8a12d76"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/d3292125035b04df00d01549a26e948631fabe1e.tar.gz?rev=d3292125035b04df00d01549a26e948631fabe1e"
       },
       "original": {
         "type": "tarball",
@@ -329,11 +329,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1756000998,
-        "narHash": "sha256-BW5nArifi6ywM4BUBd/HKMSqQER43UITBhfUsiTpvR4=",
-        "rev": "f3287eaed8ea23506140e6da2979ed22daf23fbc",
+        "lastModified": 1756173758,
+        "narHash": "sha256-UnPargX92XTkirtyzzEg9eXUggUXdVb1o7OYwGJZRxM=",
+        "rev": "d4c153e6248894223d9f82735fb7747511c3f1db",
         "type": "tarball",
-        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/f3287eaed8ea23506140e6da2979ed22daf23fbc.tar.gz?rev=f3287eaed8ea23506140e6da2979ed22daf23fbc"
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/d4c153e6248894223d9f82735fb7747511c3f1db.tar.gz?rev=d4c153e6248894223d9f82735fb7747511c3f1db"
       },
       "original": {
         "type": "tarball",
@@ -421,11 +421,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1755829505,
-        "narHash": "sha256-4/Jd+LkQ2ssw8luQVkqVs9spDBVE6h/u/hC/tzngsPo=",
+        "lastModified": 1756128520,
+        "narHash": "sha256-R94HxJBi+RK1iCm8Y4Q9pdrHZl0GZoDPIaYwjxRNPh4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f937f8ecd1c70efd7e9f90ba13dfb400cf559de4",
+        "rev": "c53baa6685261e5253a1c355a1b322f82674a824",
         "type": "github"
       },
       "original": {
