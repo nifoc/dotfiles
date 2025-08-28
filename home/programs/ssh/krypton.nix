@@ -10,15 +10,27 @@ in
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
 
-    forwardAgent = false;
-    compression = false;
-    hashKnownHosts = true;
-    serverAliveInterval = 60;
     extraConfig = ''
       UpdateHostKeys ask
       # VerifyHostKeyDNS yes
     '';
+
+    matchBlocks = {
+      "*" = {
+        forwardAgent = false;
+        addKeysToAgent = "no";
+        compression = false;
+        hashKnownHosts = true;
+        serverAliveInterval = 60;
+        serverAliveCountMax = 3;
+        userKnownHostsFile = "~/.ssh/known_hosts";
+        controlMaster = "no";
+        controlPath = "~/.ssh/master-%r@%n:%p";
+        controlPersist = "no";
+      };
+    };
   };
 
   home.file = {

@@ -13,17 +13,28 @@ in
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
 
-    forwardAgent = false;
-    compression = false;
-    hashKnownHosts = true;
-    serverAliveInterval = 60;
     extraConfig = ''
       IdentityAgent "${auth-socket}"
       VerifyHostKeyDNS yes
     '';
 
-    matchBlocks = shared-private.matchBlocks;
+    matchBlocks = {
+      "*" = {
+        forwardAgent = false;
+        addKeysToAgent = "no";
+        compression = false;
+        hashKnownHosts = true;
+        serverAliveInterval = 60;
+        serverAliveCountMax = 3;
+        userKnownHostsFile = "~/.ssh/known_hosts";
+        controlMaster = "no";
+        controlPath = "~/.ssh/master-%r@%n:%p";
+        controlPersist = "no";
+      };
+    }
+    // shared-private.matchBlocks;
   };
 
   home.file = {
