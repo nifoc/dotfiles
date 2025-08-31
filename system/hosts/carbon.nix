@@ -27,6 +27,8 @@ in
 
     ../nixos/matrix
 
+    ../nixos/fail2ban.nix
+
     ../nixos/fedifetcher.nix
 
     ../nixos/forgejo.nix
