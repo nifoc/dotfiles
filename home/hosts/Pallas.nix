@@ -55,7 +55,6 @@
     stateVersion = "22.11";
 
     packages = with pkgs; [
-      _1password-cli
       arp-scan
       curl
       dasel
