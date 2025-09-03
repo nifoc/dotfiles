@@ -168,7 +168,7 @@ in
                 # Ports
               ''
               + (concatMapStringsSep "\n" (
-                p: "iptables -A wg-fw -p tcp --dport ${builtins.toString p} -j wg-fw-accept -i veth${name}ns0"
+                p: "iptables -A wg-fw -p tcp --dport ${toString p} -j wg-fw-accept -i veth${name}ns0"
               ) veth.ports)
               + ''
 
@@ -192,6 +192,12 @@ in
                 ip46tables -N wg-fw-out
 
                 # Block non-local traffic
+              ''
+              + (concatMapStringsSep "\n" (
+                p: "iptables -A wg-fw-out -p tcp -d ${veth.hostIP}/32 --dport ${toString p} -j wg-fw-accept"
+              ) veth.hostPorts)
+              + ''
+
                 iptables -A wg-fw-out -i veth${name}ns0 ! -d ${veth.hostIP}/32 -j wg-fw-refuse
                 iptables -A wg-fw-out -i veth${name}ns0 ! -d ${veth.nsIP}/32 -j wg-fw-refuse
                 ip6tables -A wg-fw-out -i veth${name}ns0 -j wg-fw-refuse
@@ -253,4 +259,6 @@ in
       "d /etc/netns/${name}/nscd-kill 0755 nscd nscd"
     ];
   };
+
+  networking.firewall.interfaces."veth${name}host0".allowedTCPPorts = veth.hostPorts;
 }

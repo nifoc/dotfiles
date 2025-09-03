@@ -92,5 +92,9 @@
     wireguard-config-sc = {
       file = ./wireguard/config-sc.age;
     };
+
+    wireguard-config-ch = {
+      file = ./wireguard/config-ch.age;
+    };
   };
 }

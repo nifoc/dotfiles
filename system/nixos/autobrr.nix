@@ -1,62 +1,83 @@
 { lib, ... }:
 
+let
+  fqdn = "autobrr.internal.kempkens.network";
+  internalIP = "192.168.42.10";
+  internalPortAuto = "7474";
+  internalPortOmega = "7441";
+  internalGW = "192.168.42.9";
+  netns = "ch";
+in
 {
-  systemd.tmpfiles.rules = [
-    "d /var/lib/autobrr 0755 root root"
-    "d /var/lib/omegabrr 0755 root root"
-  ];
-
   virtualisation.oci-containers.containers = {
     autobrr = {
       image = "ghcr.io/autobrr/autobrr:latest";
-      ports = [ "192.168.42.2:7474:7474" ];
+      ports = [ "${internalIP}:${internalPortAuto}:7474" ];
       environment = {
         "TZ" = "Europe/Berlin";
       };
       volumes = [
         "/var/lib/autobrr:/config"
       ];
+      networks = [ "ns:/var/run/netns/${netns}" ];
+      labels = {
+        "com.centurylinklabs.watchtower.enable" = "true";
+        "io.containers.autoupdate" = "registry";
+      };
       extraOptions = [
-        "--network=ns:/var/run/netns/wg"
-        "--label=com.centurylinklabs.watchtower.enable=true"
-        "--label=io.containers.autoupdate=registry"
+        "--add-host=sonarr.internal.kempkens.network:${internalGW}"
+        "--add-host=radarr.internal.kempkens.network:${internalGW}"
       ];
     };
 
     omegabrr = {
       image = "ghcr.io/autobrr/omegabrr:latest";
-      ports = [ "192.168.42.2:7441:7441" ];
+      ports = [ "${internalIP}:${internalPortOmega}:7441" ];
       volumes = [
         "/var/lib/omegabrr:/config"
       ];
+      networks = [ "ns:/var/run/netns/${netns}" ];
+      labels = {
+        "com.centurylinklabs.watchtower.enable" = "true";
+        "io.containers.autoupdate" = "registry";
+      };
       extraOptions = [
-        "--network=ns:/var/run/netns/wg"
-        "--label=com.centurylinklabs.watchtower.enable=true"
-        "--label=io.containers.autoupdate=registry"
+        "--add-host=sonarr.internal.kempkens.network:${internalGW}"
+        "--add-host=radarr.internal.kempkens.network:${internalGW}"
       ];
     };
   };
 
-  systemd.services.podman-autobrr = {
-    bindsTo = [ "wg.service" ];
-    after = lib.mkForce [ "wg.service" ];
+  systemd = {
+    services = {
+      podman-autobrr = {
+        bindsTo = [ "wg-${netns}.service" ];
+        after = lib.mkAfter [ "wg-${netns}.service" ];
+      };
+
+      podman-omegabrr = {
+        bindsTo = [ "wg-${netns}.service" ];
+        after = lib.mkAfter [ "wg-${netns}.service" ];
+      };
+    };
+
+    tmpfiles.rules = [
+      "d /var/lib/autobrr 0755 root root"
+      "d /var/lib/omegabrr 0755 root root"
+    ];
   };
 
-  systemd.services.podman-omegabrr = {
-    bindsTo = [ "wg.service" ];
-    after = lib.mkForce [ "wg.service" ];
-  };
+  services.caddy = {
+    virtualHosts."${fqdn}" = {
+      extraConfig = ''
+        encode
 
-  services.nginx.virtualHosts."autobrr.internal.kempkens.network" = {
-    quic = true;
-    http3 = true;
+        header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-    onlySSL = true;
-    useACMEHost = "internal.kempkens.network";
+        import tailscale-auth
 
-    locations."/" = {
-      recommendedProxySettings = true;
-      proxyPass = "http://192.168.42.2:7474";
+        reverse_proxy ${internalIP}:${internalPortAuto}
+      '';
     };
   };
 }

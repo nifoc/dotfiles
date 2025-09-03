@@ -70,9 +70,19 @@ in
 
         header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-        import tailscale-auth
+        @autobrr {
+          client_ip 192.168.42.10
+        }
 
-        reverse_proxy ${internalIP}:${internalPort}
+        handle @autobrr {
+          reverse_proxy ${internalIP}:${internalPort}
+        }
+
+        handle {
+          import tailscale-auth
+
+          reverse_proxy ${internalIP}:${internalPort}
+        }
       '';
     };
   };

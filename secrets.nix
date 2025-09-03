@@ -197,6 +197,7 @@ in
 
   "agenix/hosts/krypton/wireguard/config-dl.age".publicKeys = krypton;
   "agenix/hosts/krypton/wireguard/config-sc.age".publicKeys = krypton;
+  "agenix/hosts/krypton/wireguard/config-ch.age".publicKeys = krypton;
 
   # mediaserver
   "agenix/hosts/mediaserver/user/danielPassword.age".publicKeys = mediaserver;

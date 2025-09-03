@@ -83,11 +83,14 @@ in
         veth = {
           hostIP = "192.168.42.5";
           nsIP = "192.168.42.6";
+
           ports = [
             4000
             4001
             9999
           ];
+
+          hostPorts = [ ];
         };
         configFile = config.age.secrets.wireguard-config-sc;
       }
@@ -99,11 +102,9 @@ in
         veth = {
           hostIP = "192.168.42.1";
           nsIP = "192.168.42.2";
+
           ports = [
-            3000
             6801
-            7441
-            7474
             7878
             8002
             8071
@@ -112,8 +113,29 @@ in
             8989
             9696
           ];
+
+          hostPorts = [ ];
         };
         configFile = config.age.secrets.wireguard-config-dl;
+      }
+    ))
+    (import ../nixos/wireguard/namespace.nix (
+      args
+      // {
+        name = "ch";
+        veth = {
+          hostIP = "192.168.42.9";
+          nsIP = "192.168.42.10";
+
+          ports = [
+            3000
+            7441
+            7474
+          ];
+
+          hostPorts = [ 443 ];
+        };
+        configFile = config.age.secrets.wireguard-config-ch;
       }
     ))
 
@@ -123,6 +145,8 @@ in
     ../nixos/unpackerr.nix
     ../nixos/sonarr.nix
     ../nixos/radarr.nix
+    ../nixos/convos.nix
+    ../nixos/autobrr.nix
     ../nixos/sabnzbd.nix
     ../nixos/qbittorrent.nix
 
