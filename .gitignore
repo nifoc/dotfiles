@@ -2,5 +2,6 @@
 *.auth
 .pre-commit-config.yaml
 result
+result-man
 key
 .direnv/
