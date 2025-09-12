@@ -16,6 +16,10 @@
     (highlight :TabLineFill {:bg mod.colors.black})
     ;; matchit
     (highlight :MatchParen {:fg mod.colors.orange :bold true :italic true})
-    (highlight :MatchWord {:italic true}))
+    (highlight :MatchWord {:italic true})
+    ;; fzf-lua
+    (highlight :fzf1 {:fg mod.colors.red :bg mod.colors.black})
+    (highlight :fzf2 {:fg mod.colors.black :bg mod.colors.green :bold true})
+    (highlight :fzf3 {:fg mod.colors.white :bg mod.colors.black}))
 
   mod)
