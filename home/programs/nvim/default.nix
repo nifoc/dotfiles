@@ -60,11 +60,11 @@ in
       ]
       ++ optionals isDarwin [
         # LSP
+        dockerfile-language-server
         #elixir-ls
         lexical
         lua-language-server
         marksman
-        nodePackages.dockerfile-language-server-nodejs
         nodePackages.typescript-language-server
         nodePackages.vscode-langservers-extracted
         nodePackages.yaml-language-server

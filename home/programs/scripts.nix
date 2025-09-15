@@ -12,14 +12,9 @@ let
   user-bin-directory = "${config.home.homeDirectory}/.bin";
 in
 {
-  home.packages =
-    with pkgs;
-    [
-      nvd
-    ]
-    ++ optionals isDarwin [
-      cliclick
-    ];
+  home.packages = optionals isDarwin [
+    pkgs.cliclick
+  ];
 
   home.file."${user-bin-directory}" = {
     source = ./scripts;
