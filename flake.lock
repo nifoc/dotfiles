@@ -253,11 +253,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757650187,
-        "narHash": "sha256-OrythrqccPKtuVt0mj26rr83Qo3Ljb4ZmwLdPGjzjMU=",
+        "lastModified": 1757920978,
+        "narHash": "sha256-Mv16aegXLulgyDunijP6SPFJNm8lSXb2w3Q0X+vZ9TY=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9eab59f3e71ea3a725e4817d8dcf0da0824ad19d",
+        "rev": "11cc5449c50e0e5b785be3dfcb88245232633eb8",
         "type": "github"
       },
       "original": {
@@ -269,11 +269,11 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1757265857,
-        "narHash": "sha256-malglYr8Hpg2li5VNH6yVaUQuIQxUcEvlf9mMsOBY1Y=",
-        "rev": "c8dc916356d0ade59e74a9265dbf0374d9968066",
+        "lastModified": 1757791921,
+        "narHash": "sha256-83qbJckLOLrAsKO88UI9N4QRatNEc3gUFtLMiAPwK0g=",
+        "rev": "b7c2f17e9133e8b85d41c58b52f9d4e3254f41da",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/c8dc916356d0ade59e74a9265dbf0374d9968066.tar.gz?rev=c8dc916356d0ade59e74a9265dbf0374d9968066"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/b7c2f17e9133e8b85d41c58b52f9d4e3254f41da.tar.gz?rev=b7c2f17e9133e8b85d41c58b52f9d4e3254f41da"
       },
       "original": {
         "type": "tarball",
@@ -329,11 +329,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1757297023,
-        "narHash": "sha256-obrV5OdMSYkdYYSbS4p/e4mFUCcgPXn932kAwir/I3k=",
-        "rev": "539fe132a0d0a2cc04b76825dfd29d24242c52b0",
+        "lastModified": 1757815309,
+        "narHash": "sha256-XpCTJffH+zPV0K5/jDR/8S0HA9UmAtca556OD53tq5c=",
+        "rev": "d6c5a8a38084511e062a42578a98e44acfb9e909",
         "type": "tarball",
-        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/539fe132a0d0a2cc04b76825dfd29d24242c52b0.tar.gz?rev=539fe132a0d0a2cc04b76825dfd29d24242c52b0"
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/d6c5a8a38084511e062a42578a98e44acfb9e909.tar.gz?rev=d6c5a8a38084511e062a42578a98e44acfb9e909"
       },
       "original": {
         "type": "tarball",
@@ -405,11 +405,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1757103352,
-        "narHash": "sha256-PtT7ix43ss8PONJ1VJw3f6t2yAoGH+q462Sn8lrmWmk=",
+        "lastModified": 1757891025,
+        "narHash": "sha256-NfiTk59huy/YK9H4W4wVwRYyiP2u86QqROM5KK4f5F4=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "11b2a10c7be726321bb854403fdeec391e798bf0",
+        "rev": "4c38a024fa32e61db2be8573e5282b15d9733a79",
         "type": "github"
       },
       "original": {
@@ -421,11 +421,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1757584362,
-        "narHash": "sha256-XeTX/w16rUNUNBsfaOVCDoMMa7Xu7KvIMT7tn1zIEcg=",
+        "lastModified": 1757843276,
+        "narHash": "sha256-GNqrHTSABo9Fwvhcgq4hy4Us5OY368gIEJCI48lBWhM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d33e926c80e6521a55da380a4c4c44a7462af405",
+        "rev": "af745796c2755d6f3a6d835967862184d53a17ff",
         "type": "github"
       },
       "original": {
