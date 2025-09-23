@@ -10,16 +10,19 @@ in
   xdg.configFile."${configDir}/.iex.exs".text = # elixir
     ''
       Application.put_env(:elixir, :ansi_enabled, true)
+      system_version = System.version()
 
-      iex_options = [colors: [enabled: true]]
+      base_options = [colors: [enabled: true]]
 
-      iex_options =
-        if Version.compare(System.version(), "1.18.0") in [:eq, :gt] do
-          iex_options ++ [auto_reload: true]
-        else
-          iex_options
+      version_options =
+        cond do
+          Version.compare(system_version, "1.18.0") in [:eq, :gt] ->
+            [auto_reload: true]
+
+          true ->
+            []
         end
 
-      IEx.configure(iex_options)
+      IEx.configure(base_options ++ version_options)
     '';
 }
