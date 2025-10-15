@@ -18,6 +18,7 @@
     ../programs/zoxide.nix
 
     ../programs/amethyst.nix
+    ../programs/rift.nix
     ../programs/wezterm.nix
 
     ../programs/nvim
