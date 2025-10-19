@@ -39,7 +39,7 @@
     (case mod.type
       :github nil
       :gitlab (run-cmd [:glab :mr :view :--web])
-      :forgejo nil))
+      :forgejo (run-cmd [:fj :pr :browse])))
 
   (fn mod.open-ci []
     (case mod.type
