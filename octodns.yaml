@@ -26,6 +26,7 @@ zones:
       - config
     targets:
       - desec
+      #- ovh
     processors:
       - caddy-acme
       - caddy-https
