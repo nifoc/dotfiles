@@ -29,8 +29,6 @@
 
     ../programs/iex.nix
 
-    ../programs/jetbrains.nix
-
     ../programs/jq.nix
 
     ../programs/firefox.nix
