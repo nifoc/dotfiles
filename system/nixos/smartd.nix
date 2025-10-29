@@ -16,7 +16,7 @@
     notifications = {
       mail = {
         enable = config.programs.msmtp.enable;
-        sender = "server+${config.networking.hostName}@kempkens.io";
+        sender = "server@kempkens.io";
         recipient = "daniel@kempkens.io";
       };
 

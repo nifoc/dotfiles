@@ -104,6 +104,11 @@
       requestEncryptionCredentials = [ "zroot/root" ];
       forceImportRoot = false;
     };
+
+    swraid.mdadmConf = ''
+      MAILFROM server@kempkens.io
+      MAILADDR daniel@kempkens.io
+    '';
   };
 
   environment.variables = {
