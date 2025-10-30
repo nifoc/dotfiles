@@ -182,7 +182,7 @@ in
   users.groups.nix-ci-user = { };
 
   services.gitea-actions-runner = {
-    package = pkgs.forgejo-actions-runner;
+    package = pkgs.forgejo-runner;
 
     instances = {
       act = {
