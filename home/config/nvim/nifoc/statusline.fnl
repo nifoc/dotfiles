@@ -11,7 +11,6 @@
       nifoc-treesitter (require :nifoc.treesitter)
       nifoc-tui (require :nifoc.tui)
       navic (require :nvim-navic)
-      supermaven (require :supermaven-nvim.api)
       fzf (require :fzf-lua)
       fzf-layout-bottom {:winopts #(let [height (math.floor (* vim.o.lines 0.4))]
                                      {:split (.. "belowright new | set nobuflisted | resize "
@@ -326,14 +325,10 @@
            :provider " "
            :on_click {:name :heirline_buffer_options_lsp
                       :callback #(deferred_cmd {:cmd :LspInfo} 200)}}
-        3 {:condition #(supermaven.is_running)
-           :provider " "
-           :on_click {:name :heirline_buffer_options_supermaven
-                      :callback #(deferred_cmd {:cmd :SupermavenShowLog} 200)}}
-        4 {:condition #(formatting.active?) :provider "󰉼 "}
-        5 {:condition #(nifoc-treesitter.active?) :provider " "}
-        6 {:condition #vim.wo.spell :provider "󰓆"}
-        7 {:provider (fn [self]
+        3 {:condition #(formatting.active?) :provider "󰉼 "}
+        4 {:condition #(nifoc-treesitter.active?) :provider " "}
+        5 {:condition #vim.wo.spell :provider "󰓆"}
+        6 {:provider (fn [self]
                        (let [f vim.bo.fileformat]
                          (.. (. self :format f) " ")))}})
   ;; Position

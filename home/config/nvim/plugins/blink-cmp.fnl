@@ -5,16 +5,11 @@
                                   :text (fn [ctx]
                                           (let [(icon _ _) (mini-icons.get :lsp
                                                                            ctx.kind)]
-                                            (if (= ctx.source_name :supermaven)
-                                                ""
-                                                icon)))
+                                            icon))
                                   :highlight (fn [ctx]
                                                (let [(_ hl _) (mini-icons.get :lsp
                                                                               ctx.kind)]
-                                                 (if (= ctx.source_name
-                                                        :supermaven)
-                                                     :MiniIconsAzure
-                                                     hl)))}
+                                                 hl))}
                       :source_name {:text (fn [ctx]
                                             (.. "[" ctx.source_name "]"))}}
                      {:source_name {:text (fn [ctx]
@@ -22,20 +17,11 @@
       snippets (if (pcall require :mini.snippets)
                    {:preset :mini_snippets}
                    {})
-      (sources-default sources-providers) (if (pcall require :supermaven-nvim)
-                                              (values [:lsp
-                                                       :snippets
-                                                       :supermaven
-                                                       :buffer
-                                                       :path]
-                                                      {:supermaven {:name :supermaven
-                                                                    :module :blink.compat.source
-                                                                    :score_offset 3}})
-                                              (values [:lsp
-                                                       :snippets
-                                                       :buffer
-                                                       :path]
-                                                      {}))]
+      (sources-default sources-providers) (values [:lsp
+                                                   :snippets
+                                                   :buffer
+                                                   :path]
+                                                  {})]
   (cmp.setup {:keymap {:preset :none
                        :<CR> [:accept :fallback]
                        :<esc> [:cancel :fallback]

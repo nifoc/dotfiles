@@ -46,7 +46,7 @@ in
         fennel-ls
         nil
         #nixd
-        taplo-lsp
+        taplo
 
         # Tools
         checkstyle
@@ -294,12 +294,6 @@ in
         }
       ]
       ++ optionals isDarwin [
-        {
-          plugin = supermaven-nvim;
-          config = builtins.readFile ../../config/nvim/plugins/supermaven.fnl;
-          type = "fennel";
-        }
-
         {
           plugin = flatten-nvim;
           config = builtins.readFile ../../config/nvim/plugins/flatten.fnl;
