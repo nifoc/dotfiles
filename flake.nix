@@ -163,6 +163,8 @@
               nifoc-overlay
               run0-sudo-shim
               ;
+
+            inherit lix-overlay;
           };
 
           neon = import ./system/flakes/neon.nix {
