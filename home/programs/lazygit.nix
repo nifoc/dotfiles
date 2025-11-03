@@ -39,10 +39,16 @@
       };
 
       git = {
-        paging = {
-          colorArg = "always";
-          pager = "${lib.getExe pkgs.delta} --dark --syntax-theme=Dracula --paging=never";
-        };
+        pagers = [
+          {
+            pager = "${lib.getExe pkgs.delta} --dark --syntax-theme=Dracula --paging=never";
+            colorArg = "always";
+          }
+
+          {
+            externalDiffCommand = "${lib.getExe pkgs.difftastic} --color=always";
+          }
+        ];
 
         autoFetch = false;
         autoRefresh = false;
