@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 let
   homeDir = "/Users/dkempkens";
 in
@@ -18,6 +20,8 @@ in
   };
 
   nix = {
+    package = pkgs.lixPackageSets.stable.lix;
+
     settings = {
       extra-platforms = [ "x86_64-darwin" ];
 

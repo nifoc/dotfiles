@@ -1,9 +1,9 @@
 {
   nixpkgs,
-  lix-module,
   home-manager,
   agenix,
   disko,
+  lix-overlay,
   nifoc-overlay,
   run0-sudo-shim,
 }:
@@ -13,6 +13,7 @@ let
 
   nixpkgsConfig = {
     overlays = [
+      lix-overlay
       nifoc-overlay.overlay
     ];
 
@@ -40,8 +41,6 @@ in
           nixPath = nixpkgs.lib.mkForce [ "nixpkgs=flake:nixpkgs" ];
         };
       }
-
-      lix-module.nixosModules.default
 
       disko.nixosModules.disko
 

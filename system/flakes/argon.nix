@@ -1,9 +1,9 @@
 {
   nixpkgs,
-  lix-module,
   nixos-hardware,
   home-manager,
   agenix,
+  lix-overlay,
   nifoc-overlay,
   run0-sudo-shim,
 }:
@@ -13,6 +13,7 @@ let
 
   nixpkgsConfig = {
     overlays = [
+      lix-overlay
       nifoc-overlay.overlay
     ];
 
@@ -42,8 +43,6 @@ in
       }
 
       nixos-hardware.nixosModules.raspberry-pi-4
-
-      lix-module.nixosModules.default
 
       home-manager.nixosModules.home-manager
       {

@@ -1,9 +1,9 @@
 {
   nixpkgs,
-  lix-module,
   home-manager,
   nix-darwin,
   agenix,
+  lix-overlay,
   nifoc-overlay,
 }:
 
@@ -14,6 +14,7 @@ let
 
   nixpkgsConfig = {
     overlays = [
+      lix-overlay
       overlay-x86
       agenix.overlays.default
       nifoc-overlay.overlay
@@ -41,8 +42,6 @@ in
           nixPath = nixpkgs.lib.mkForce [ "nixpkgs=flake:nixpkgs" ];
         };
       }
-
-      lix-module.nixosModules.default
 
       home-manager.darwinModules.home-manager
       {

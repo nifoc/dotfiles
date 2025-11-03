@@ -2,21 +2,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-    # Lix
-
-    lix = {
-      url = "https://git.lix.systems/lix-project/lix/archive/release-2.93.tar.gz";
-      flake = false;
-    };
-
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/release-2.93.tar.gz";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        lix.follows = "lix";
-      };
-    };
-
     # Tools
 
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -86,13 +71,25 @@
   outputs =
     inputs@{
       flake-parts,
-      lix-module,
       deploy-rs,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       flake =
         let
+          lix-overlay =
+            final: prev:
+            let
+              nix = final.lixPackageSets.stable.lix;
+            in
+            {
+              nixpkgs-review = prev.nixpkgs-review.override { inherit nix; };
+              nix-direnv = prev.nix-direnv.override { inherit nix; };
+              nix-eval-jobs = prev.nix-eval-jobs.override { inherit nix; };
+              nix-fast-build = prev.nix-fast-build.override { inherit nix; };
+              nix-update = prev.nix-update.override { inherit nix; };
+            };
+
           Styx = import ./system/flakes/Styx.nix {
             inherit (inputs)
               nixpkgs
@@ -102,7 +99,8 @@
               nifoc-overlay
               nedeco
               ;
-            inherit lix-module;
+
+            inherit lix-overlay;
           };
 
           Pallas = import ./system/flakes/Pallas.nix {
@@ -113,17 +111,8 @@
               agenix
               nifoc-overlay
               ;
-            inherit lix-module;
-          };
 
-          tanker = import ./system/flakes/tanker.nix {
-            inherit (inputs)
-              nixpkgs
-              disko
-              home-manager
-              agenix
-              ;
-            inherit inputs;
+            inherit lix-overlay;
           };
 
           carbon = import ./system/flakes/carbon.nix {
@@ -135,7 +124,8 @@
               nifoc-overlay
               run0-sudo-shim
               ;
-            inherit lix-module;
+
+            inherit lix-overlay;
           };
 
           boron = import ./system/flakes/boron.nix {
@@ -147,7 +137,8 @@
               nifoc-overlay
               run0-sudo-shim
               ;
-            inherit lix-module;
+
+            inherit lix-overlay;
           };
 
           krypton = import ./system/flakes/krypton.nix {
@@ -159,13 +150,8 @@
               nifoc-overlay
               run0-sudo-shim
               ;
-            inherit lix-module;
-          };
 
-          mediaserver = import ./system/flakes/mediaserver.nix {
-            inherit (inputs) nixpkgs home-manager agenix;
-            inherit lix-module;
-            inherit inputs;
+            inherit lix-overlay;
           };
 
           argon = import ./system/flakes/argon.nix {
@@ -177,7 +163,6 @@
               nifoc-overlay
               run0-sudo-shim
               ;
-            inherit lix-module;
           };
 
           neon = import ./system/flakes/neon.nix {
@@ -189,7 +174,8 @@
               nifoc-overlay
               run0-sudo-shim
               ;
-            inherit lix-module;
+
+            inherit lix-overlay;
           };
 
           adsb-antenna = import ./system/flakes/adsb-antenna.nix {
@@ -201,7 +187,8 @@
               nifoc-overlay
               run0-sudo-shim
               ;
-            inherit lix-module;
+
+            inherit lix-overlay;
           };
         in
         {
@@ -211,11 +198,9 @@
           };
 
           nixosConfigurations = {
-            tanker = tanker.system;
             carbon = carbon.system;
             boron = boron.system;
             krypton = krypton.system;
-            mediaserver = mediaserver.system;
             argon = argon.system;
             neon = neon.system;
             adsb-antenna = adsb-antenna.system;
@@ -239,11 +224,9 @@
               # };
             in
             {
-              tanker = mkDeployNixOsConfig tanker;
               carbon = mkDeployNixOsConfig carbon;
               boron = mkDeployNixOsConfig boron;
               krypton = mkDeployNixOsConfig krypton;
-              mediaserver = mkDeployNixOsConfig mediaserver;
               argon = mkDeployNixOsConfig argon;
               neon = mkDeployNixOsConfig neon;
               adsb-antenna = mkDeployNixOsConfig adsb-antenna;
