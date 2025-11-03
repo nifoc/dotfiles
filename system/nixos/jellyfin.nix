@@ -22,9 +22,12 @@ in
 
       serviceConfig = {
         BindReadOnlyPaths = [
-          "/dozer/MediaVault/Anime"
-          "/dozer/media/Documentaries"
-          "/dozer/media/Movies"
+          "/dozer/MediaVault/Anime:/mnt/media/Anime"
+          "\"/dozer/media/Deutsche Filme\":\"/mnt/media/Deutsche Filme\""
+          "\"/dozer/MediaVault/Deutsche Serien\":\"/mnt/media/Deutsche Serien\""
+          "/dozer/media/Documentaries:/mnt/media/Documentaries"
+          "/dozer/media/Movies:/mnt/media/Movies"
+          "\"/dozer/media/TV Shows\":\"/mnt/media/TV Shows\""
           "/dozer/MediaVault/YTDL"
         ];
       };
@@ -37,15 +40,6 @@ in
         PathModified = "/root/zfs-dozer-mount-common";
       };
     };
-
-    tmpfiles.rules = [
-      "L /mnt/media/Anime - - - - /dozer/MediaVault/Anime"
-      "L /mnt/media/Deutsche\\x20Serien - - - - /dozer/MediaVault/Deutsche\\x20Serien"
-      "L /mnt/media/Deutsche\\x20Filme - - - - /dozer/media/Deutsche\\x20Filme"
-      "L /mnt/media/Documentaries - - - - /dozer/media/Documentaries"
-      "L /mnt/media/Movies - - - - /dozer/media/Movies"
-      "L /mnt/media/TV\\x20Shows - - - - /dozer/media/TV\\x20Shows"
-    ];
   };
 
   services = {
