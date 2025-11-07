@@ -52,6 +52,8 @@ in
 
     ../nixos/ddg.nix
 
+    ../nixos/immich.nix
+
     ../nixos/jellyfin.nix
 
     ../nixos/libretranslate.nix

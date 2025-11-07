@@ -69,6 +69,7 @@
       hexyl
       hyperfine
       imagemagick
+      immich-cli
       just
       libjxl
       mtr
