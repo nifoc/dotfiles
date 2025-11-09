@@ -14,11 +14,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1761656077,
-        "narHash": "sha256-lsNWuj4Z+pE7s0bd2OKicOFq9bK86JE0ZGeKJbNqb94=",
+        "lastModified": 1762618334,
+        "narHash": "sha256-wyT7Pl6tMFbFrs8Lk/TlEs81N6L+VSybPfiIgzU8lbQ=",
         "owner": "ryantm",
         "repo": "agenix",
-        "rev": "9ba0d85de3eaa7afeab493fed622008b6e4924f5",
+        "rev": "fcdea223397448d35d9b31f798479227e80183f6",
         "type": "github"
       },
       "original": {
@@ -259,11 +259,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1762567340,
-        "narHash": "sha256-6OqpvJ8yRxCM5fNVM7nVj9lBwtDhpuDV2ISuz2XqwYY=",
-        "rev": "ae76e0789f9da309016a891658a5e3088ad8814c",
+        "lastModified": 1762653740,
+        "narHash": "sha256-Px+OFVRZMSZzsYK/Gzw26ZC7/pVlHBB9IRwSaPBmqz8=",
+        "rev": "94eda667ccdd0eb2706dc81d56f97f04e023e1d2",
         "type": "tarball",
-        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/ae76e0789f9da309016a891658a5e3088ad8814c.tar.gz?rev=ae76e0789f9da309016a891658a5e3088ad8814c"
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/94eda667ccdd0eb2706dc81d56f97f04e023e1d2.tar.gz?rev=94eda667ccdd0eb2706dc81d56f97f04e023e1d2"
       },
       "original": {
         "type": "tarball",
@@ -277,11 +277,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762501326,
-        "narHash": "sha256-QbhsksHaIN6qU3oXhwUFbYycKX1GRxObpQSWAM5fhRY=",
+        "lastModified": 1762627886,
+        "narHash": "sha256-/QLk1bzmbcqJt9sU43+y/3tHtXhAy0l8Ck0MoO2+evQ=",
         "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "e2b82ebd0f990a5d1b68fcc761b3d6383c86ccfd",
+        "rev": "5125a3cd414dc98bbe2c528227aa6b62ee61f733",
         "type": "github"
       },
       "original": {
