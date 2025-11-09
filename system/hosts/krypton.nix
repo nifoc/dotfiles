@@ -52,7 +52,7 @@ in
 
     ../nixos/ddg.nix
 
-    ../nixos/immich.nix
+    ../nixos/immich
 
     ../nixos/jellyfin.nix
 

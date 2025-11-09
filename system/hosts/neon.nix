@@ -42,6 +42,8 @@ in
       }
     ))
 
+    (import ../nixos/immich/machine-learning.nix (args // { host = "100.126.68.56"; }))
+
     ../nixos/monitoring/prometheus_exporters.nix
 
     ../nixos/rtl_433.nix

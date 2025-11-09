@@ -1,9 +1,24 @@
-{ config, ... }:
+args@{
+  config,
+  host ? "localhost",
+  ...
+}:
 
 {
+  imports = [
+    (import ./machine-learning.nix (
+      args
+      // {
+        inherit host;
+      }
+    ))
+  ];
+
   services = {
     immich = {
       enable = true;
+
+      inherit host;
 
       mediaLocation = "/dozer/MediaVault/Immich";
 
@@ -13,10 +28,6 @@
 
         enableVectorChord = true;
         enableVectors = false;
-      };
-
-      machine-learning = {
-        enable = true;
       };
     };
 
