@@ -1,9 +1,16 @@
 args@{
+  lib,
   config,
   host ? "localhost",
   ...
 }:
 
+let
+  requiredPaths = [
+    "/dozer/MediaVault/Immich"
+    "/dozer/JailVault/media-scraper/Galleries"
+  ];
+in
 {
   imports = [
     (import ./machine-learning.nix (
@@ -13,6 +20,30 @@ args@{
       }
     ))
   ];
+
+  systemd = {
+    services.immich-server = {
+      wantedBy = lib.mkForce [ ];
+
+      unitConfig = {
+        ConditionDirectoryNotEmpty = requiredPaths;
+      };
+
+      serviceConfig = {
+        BindReadOnlyPaths = [
+          "/dozer/JailVault/media-scraper/Galleries"
+        ];
+      };
+    };
+
+    paths.immich-server = {
+      wantedBy = [ "multi-user.target" ];
+
+      pathConfig = {
+        PathModified = "/root/zfs-dozer-mount-common";
+      };
+    };
+  };
 
   services = {
     immich = {

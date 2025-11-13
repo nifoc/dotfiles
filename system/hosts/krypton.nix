@@ -52,7 +52,7 @@ in
 
     ../nixos/ddg.nix
 
-    ../nixos/immich
+    (import ../nixos/immich (args // { host = "localhost"; }))
 
     ../nixos/jellyfin.nix
 
