@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -88,46 +83,8 @@
       xxHash
       xz
     ];
-
-    activation.linkApps = lib.hm.dag.entryAfter [ "installPackages" ] (
-      let
-        applications = pkgs.buildEnv {
-          name = "home-manager-applications";
-          paths = config.home.packages;
-          pathsToLink = "/Applications";
-        };
-      in
-      ''
-        ourLink () {
-          local link
-          link=$(readlink "$1")
-          [ -L "$1" ] && [ "''${link#*-}" = 'home-manager-applications/Applications' ]
-        }
-
-        targetFolder="$HOME/Applications/Home Manager Apps"
-
-        echo "setting up $targetFolder ..." >&2
-
-        if [ -e "$targetFolder" ] && ourLink "$targetFolder"; then
-          $DRY_RUN_CMD rm "$targetFolder"
-        fi
-
-        $DRY_RUN_CMD mkdir -p "$targetFolder"
-
-        rsyncFlags=(
-          --archive
-          --checksum
-          --copy-unsafe-links
-          --delete
-          --exclude=$'Icon\r'
-          --no-group
-          --no-owner
-        )
-
-        $DRY_RUN_CMD ${lib.getExe pkgs.rsync} "''${rsyncFlags[@]}" ${applications}/Applications/ "$targetFolder"
-      ''
-    );
   };
 
   targets.darwin.linkApps.enable = false;
+  targets.darwin.copyApps.enable = true;
 }
