@@ -1,6 +1,8 @@
-{ lib, config, ... }:
+{ config, ... }:
 
 let
+  inherit (config.virtualisation.quadlet) containers;
+
   fqdn = "tubearchivist.internal.kempkens.network";
   internalIP = "127.0.0.1";
   internalPort = "9887";
@@ -9,28 +11,41 @@ let
   ];
 in
 {
-  virtualisation.oci-containers.containers = {
+  virtualisation.quadlet.containers = {
     tubearchivist = {
-      image = "docker.io/bbilly1/tubearchivist:latest";
-      dependsOn = [
-        "tubearchivist-es"
-        "tubearchivist-redis"
-      ];
-      ports = [ "${internalIP}:${internalPort}:8000" ];
-      environmentFiles = [ config.age.secrets.tubearchivist-environment-ta.path ];
-      volumes = [
-        "/dozer/MediaVault/YTDL/Downloads:/youtube"
-        "/var/lib/tubearchivist/cache:/cache"
-        "/dozer/MediaVault/YTDL/Cache/backup:/cache/backup"
-        "/dozer/MediaVault/YTDL/Cache/import:/cache/import"
-      ];
-      labels = {
-        "com.centurylinklabs.watchtower.enable" = "true";
-        "io.containers.autoupdate" = "registry";
+      autoStart = false;
+
+      containerConfig = {
+        image = "docker.io/bbilly1/tubearchivist:latest";
+        publishPorts = [ "${internalIP}:${internalPort}:8000" ];
+        environmentFiles = [ config.age.secrets.tubearchivist-environment-ta.path ];
+        volumes = [
+          "/dozer/MediaVault/YTDL/Downloads:/youtube"
+          "/var/lib/tubearchivist/cache:/cache"
+          "/dozer/MediaVault/YTDL/Cache/backup:/cache/backup"
+          "/dozer/MediaVault/YTDL/Cache/import:/cache/import"
+        ];
+        labels = {
+          "com.centurylinklabs.watchtower.enable" = "true";
+          "io.containers.autoupdate" = "registry";
+        };
+      };
+
+      unitConfig = {
+        Requires = [
+          containers.tubearchivist-redis.ref
+          containers.tubearchivist-es.ref
+        ];
+        After = [
+          containers.tubearchivist-redis.ref
+          containers.tubearchivist-es.ref
+        ];
+
+        ConditionDirectoryNotEmpty = requiredPaths;
       };
     };
 
-    tubearchivist-redis = {
+    tubearchivist-redis.containerConfig = {
       image = "docker.io/valkey/valkey:8";
       user = "2001:2001";
       volumes = [ "/var/lib/tubearchivist/redis:/data" ];
@@ -40,9 +55,9 @@ in
       };
     };
 
-    tubearchivist-es = {
+    tubearchivist-es.containerConfig = {
       image = "docker.io/bbilly1/tubearchivist-es:latest";
-      ports = [ "127.0.0.1:9200:9200" ];
+      publishPorts = [ "127.0.0.1:9200:9200" ];
       environmentFiles = [ config.age.secrets.tubearchivist-environment-es.path ];
       volumes = [ "/var/lib/tubearchivist/es:/usr/share/elasticsearch/data" ];
       labels = {
@@ -53,22 +68,7 @@ in
   };
 
   systemd = {
-    services = {
-      podman-tubearchivist = {
-        wantedBy = lib.mkForce [ ];
-        restartTriggers = [ "${config.age.secrets.tubearchivist-environment-ta.file}" ];
-
-        unitConfig = {
-          ConditionDirectoryNotEmpty = requiredPaths;
-        };
-      };
-
-      podman-tubearchivist-es = {
-        restartTriggers = [ "${config.age.secrets.tubearchivist-environment-es.file}" ];
-      };
-    };
-
-    paths.podman-tubearchivist = {
+    paths.tubearchivist = {
       wantedBy = [ "multi-user.target" ];
 
       pathConfig = {
@@ -88,7 +88,7 @@ in
     virtualHosts."${fqdn}" = {
       extraConfig =
         let
-          media-browser = config.virtualisation.oci-containers.containers.media_browser.environment.PHX_HOST;
+          media-browser = containers.media_browser.containerConfig.environments.PHX_HOST;
 
           override-cors = ''
             >Access-Control-Allow-Methods GET

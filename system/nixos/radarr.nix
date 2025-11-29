@@ -1,6 +1,8 @@
-{ lib, ... }:
+{ config, ... }:
 
 let
+  inherit (config.virtualisation.quadlet) containers;
+
   fqdn = "radarr.internal.kempkens.network";
   internalIP = "192.168.42.2";
   internalPort = "7878";
@@ -11,39 +13,43 @@ let
   ];
 in
 {
-  virtualisation.oci-containers.containers.radarr = {
-    image = "lscr.io/linuxserver/radarr:latest";
-    ports = [ "${internalIP}:${internalPort}:7878" ];
-    environment = {
-      "PUID" = "2001";
-      "PGID" = "2001";
-      "TZ" = "Etc/UTC";
-      "RADARR__AUTH__TRUSTCGNATIPADDRESSES" = "true";
+  virtualisation.quadlet.containers.radarr = {
+    autoStart = false;
+
+    containerConfig = {
+      image = "lscr.io/linuxserver/radarr:latest";
+      environments = {
+        PUID = "2001";
+        PGID = "2001";
+        TZ = "Etc/UTC";
+        RADARR__AUTH__TRUSTCGNATIPADDRESSES = "true";
+      };
+      volumes = [
+        "/var/lib/radarr/.config/Radarr:/config"
+        "/dozer/downloads:/mnt/downloads"
+        "/dozer/media/Movies:/mnt/media/Movies"
+      ];
+      networks = [ "ns:/var/run/netns/${netns}" ];
+      labels = {
+        "com.centurylinklabs.watchtower.enable" = "true";
+        "io.containers.autoupdate" = "registry";
+      };
     };
-    volumes = [
-      "/var/lib/radarr/.config/Radarr:/config"
-      "/dozer/downloads:/mnt/downloads"
-      "/dozer/media/Movies:/mnt/media/Movies"
-    ];
-    networks = [ "ns:/var/run/netns/${netns}" ];
-    labels = {
-      "com.centurylinklabs.watchtower.enable" = "true";
-      "io.containers.autoupdate" = "registry";
+
+    unitConfig = {
+      BindsTo = [ "wg-${netns}.service" ];
+      Requires = [ containers.prowlarr.ref ];
+      After = [
+        containers.prowlarr.ref
+        "wg-${netns}.service"
+      ];
+
+      ConditionDirectoryNotEmpty = requiredPaths;
     };
   };
 
   systemd = {
-    services.podman-radarr = {
-      bindsTo = [ "wg-${netns}.service" ];
-      after = lib.mkAfter [ "wg-${netns}.service" ];
-      wantedBy = lib.mkForce [ ];
-
-      unitConfig = {
-        ConditionDirectoryNotEmpty = requiredPaths;
-      };
-    };
-
-    paths.podman-radarr = {
+    paths.radarr = {
       wantedBy = [ "multi-user.target" ];
 
       pathConfig = {

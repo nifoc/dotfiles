@@ -1,30 +1,39 @@
-{ lib, config, ... }:
+{ config, ... }:
 
 let
+  inherit (config.virtualisation.quadlet) containers;
+
   data-dir = "/var/lib/recyclarr";
   netns = "dl";
 in
 {
-  virtualisation.oci-containers.containers.recyclarr = {
-    image = "ghcr.io/recyclarr/recyclarr:latest";
-    dependsOn = [ "sonarr" ];
-    environment = {
-      "TZ" = "Etc/UTC";
+  virtualisation.quadlet.containers.recyclarr = {
+    containerConfig = {
+      image = "ghcr.io/recyclarr/recyclarr:latest";
+      environments = {
+        "TZ" = "Etc/UTC";
+      };
+      volumes = [ "${data-dir}:/config" ];
+      networks = [ "ns:/var/run/netns/${netns}" ];
+      labels = {
+        "com.centurylinklabs.watchtower.enable" = "true";
+        "io.containers.autoupdate" = "registry";
+      };
     };
-    volumes = [ "${data-dir}:/config" ];
-    networks = [ "ns:/var/run/netns/${netns}" ];
-    labels = {
-      "com.centurylinklabs.watchtower.enable" = "true";
-      "io.containers.autoupdate" = "registry";
+
+    unitConfig = {
+      BindsTo = [ "wg-${netns}.service" ];
+      Requires = [ containers.sonarr.ref ];
+      After = [
+        containers.sonarr.ref
+        "wg-${netns}.service"
+      ];
     };
   };
 
-  systemd.services.podman-recyclarr = {
-    bindsTo = [ "wg-${netns}.service" ];
-    after = lib.mkAfter [ "wg-${netns}.service" ];
-
-    restartTriggers = [ "${config.age.secrets.recyclarr-config.file}" ];
-  };
+  # services.recyclarr = {
+  #   restartTriggers = lib.mkDefault [ "${config.age.secrets.recyclarr-config.file}" ];
+  # };
 
   systemd.tmpfiles.rules = [
     "d ${data-dir} 0755 1000 1000"

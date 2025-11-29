@@ -1,6 +1,8 @@
-{ lib, ... }:
+{ config, ... }:
 
 let
+  inherit (config.virtualisation.quadlet) containers;
+
   fqdn = "sonarr.internal.kempkens.network";
   internalIP = "192.168.42.2";
   internalPort = "8989";
@@ -12,41 +14,45 @@ let
   ];
 in
 {
-  virtualisation.oci-containers.containers.sonarr = {
-    image = "lscr.io/linuxserver/sonarr:develop";
-    ports = [ "${internalIP}:${internalPort}:8989" ];
-    environment = {
-      "PUID" = "2001";
-      "PGID" = "2001";
-      "TZ" = "Etc/UTC";
-      "SONARR__AUTH__TRUSTCGNATIPADDRESSES" = "true";
+  virtualisation.quadlet.containers.sonarr = {
+    autoStart = false;
+
+    containerConfig = {
+      image = "lscr.io/linuxserver/sonarr:develop";
+      environments = {
+        PUID = "2001";
+        PGID = "2001";
+        TZ = "Etc/UTC";
+        SONARR__AUTH__TRUSTCGNATIPADDRESSES = "true";
+      };
+      volumes = [
+        "/var/lib/sonarr/.config/NzbDrone:/config"
+        "/dozer/downloads:/mnt/downloads"
+        "/dozer/media/TV Shows:/mnt/media/TV Shows"
+        "/dozer/media/Documentaries:/mnt/media/Documentaries"
+        "/dozer/MediaVault/Anime:/mnt/media/Anime"
+      ];
+      networks = [ "ns:/var/run/netns/${netns}" ];
+      labels = {
+        "com.centurylinklabs.watchtower.enable" = "true";
+        "io.containers.autoupdate" = "registry";
+      };
     };
-    volumes = [
-      "/var/lib/sonarr/.config/NzbDrone:/config"
-      "/dozer/downloads:/mnt/downloads"
-      "/dozer/media/TV Shows:/mnt/media/TV Shows"
-      "/dozer/media/Documentaries:/mnt/media/Documentaries"
-      "/dozer/MediaVault/Anime:/mnt/media/Anime"
-    ];
-    networks = [ "ns:/var/run/netns/${netns}" ];
-    labels = {
-      "com.centurylinklabs.watchtower.enable" = "true";
-      "io.containers.autoupdate" = "registry";
+
+    unitConfig = {
+      BindsTo = [ "wg-${netns}.service" ];
+      Requires = [ containers.prowlarr.ref ];
+      After = [
+        containers.prowlarr.ref
+        "wg-${netns}.service"
+      ];
+
+      ConditionDirectoryNotEmpty = requiredPaths;
     };
   };
 
   systemd = {
-    services.podman-sonarr = {
-      bindsTo = [ "wg-${netns}.service" ];
-      after = lib.mkAfter [ "wg-${netns}.service" ];
-      wantedBy = lib.mkForce [ ];
-
-      unitConfig = {
-        ConditionDirectoryNotEmpty = requiredPaths;
-      };
-    };
-
-    paths.podman-sonarr = {
+    paths.sonarr = {
       wantedBy = [ "multi-user.target" ];
 
       pathConfig = {

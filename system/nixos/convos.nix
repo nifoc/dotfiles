@@ -1,5 +1,3 @@
-{ lib, ... }:
-
 let
   fqdn = "convos.internal.kempkens.network";
   internalIP = "192.168.42.10";
@@ -7,33 +5,31 @@ let
   netns = "ch";
 in
 {
-  virtualisation.oci-containers.containers.convos = {
-    image = "ghcr.io/convos-chat/convos:stable";
-    ports = [ "${internalIP}:${internalPort}:3000" ];
-    environment = {
-      "TZ" = "Etc/UTC";
-      "CONVOS_REVERSE_PROXY" = "1";
+  virtualisation.quadlet.containers.convos = {
+    containerConfig = {
+      image = "ghcr.io/convos-chat/convos:stable";
+      environments = {
+        TZ = "Etc/UTC";
+        MOJO_LISTEN = "http://${internalIP}:${internalPort}";
+        CONVOS_REVERSE_PROXY = "1";
+      };
+      volumes = [ "/var/lib/convos:/data" ];
+      networks = [ "ns:/var/run/netns/${netns}" ];
+      labels = {
+        "com.centurylinklabs.watchtower.enable" = "true";
+        "io.containers.autoupdate" = "registry";
+      };
     };
-    volumes = [
-      "/var/lib/convos:/data"
-    ];
-    networks = [ "ns:/var/run/netns/${netns}" ];
-    labels = {
-      "com.centurylinklabs.watchtower.enable" = "true";
-      "io.containers.autoupdate" = "registry";
+
+    unitConfig = {
+      BindsTo = [ "wg-${netns}.service" ];
+      After = [ "wg-${netns}.service" ];
     };
   };
 
-  systemd = {
-    services.podman-convos = {
-      bindsTo = [ "wg-${netns}.service" ];
-      after = lib.mkAfter [ "wg-${netns}.service" ];
-    };
-
-    tmpfiles.rules = [
-      "d /var/lib/convos 0755 root root"
-    ];
-  };
+  systemd.tmpfiles.rules = [
+    "d /var/lib/convos 0755 root root"
+  ];
 
   services.caddy = {
     virtualHosts."${fqdn}" = {

@@ -23,6 +23,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
+
     # Overlays
 
     disko = {
@@ -147,6 +149,7 @@
               disko
               home-manager
               agenix
+              quadlet-nix
               nifoc-overlay
               run0-sudo-shim
               ;

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
+{ pkgs, ... }:
 
 let
   fqdn = "qbittorrent.internal.kempkens.network";
@@ -14,43 +10,40 @@ let
   ];
 in
 {
-  virtualisation.oci-containers.containers.qbittorrent = {
-    image = "lscr.io/linuxserver/qbittorrent:latest";
-    ports = [ "${internalIP}:${internalPort}:8071" ];
-    environment = {
-      "PUID" = "2001";
-      "PGID" = "2001";
-      "TZ" = "Etc/UTC";
-      "WEBUI_PORT" = "8071";
+  virtualisation.quadlet.containers.qbittorrent = {
+    autoStart = false;
+
+    containerConfig = {
+      image = "lscr.io/linuxserver/qbittorrent:latest";
+      environments = {
+        "PUID" = "2001";
+        "PGID" = "2001";
+        "TZ" = "Etc/UTC";
+        "WEBUI_PORT" = "8071";
+      };
+      volumes = [
+        "/var/lib/qbittorrent:/config"
+        "/dozer/downloads/qBittorrent:/mnt/downloads/qBittorrent"
+        "${pkgs.vuetorrent}/share:/usr/local/share/vuetorrent:ro"
+        "${pkgs.torrent-best-blocklist}/share:/usr/local/share/best-blocklist:ro"
+      ];
+      networks = [ "ns:/var/run/netns/${netns}" ];
+      labels = {
+        "com.centurylinklabs.watchtower.enable" = "true";
+        "io.containers.autoupdate" = "registry";
+      };
     };
-    volumes = [
-      "/var/lib/qbittorrent:/config"
-      "/dozer/downloads/qBittorrent:/mnt/downloads/qBittorrent"
-      "${pkgs.vuetorrent}/share:/usr/local/share/vuetorrent:ro"
-      "${pkgs.torrent-best-blocklist}/share:/usr/local/share/best-blocklist:ro"
-    ];
-    networks = [ "ns:/var/run/netns/${netns}" ];
-    capabilities = {
-      CAP_NET_RAW = true;
-    };
-    labels = {
-      "com.centurylinklabs.watchtower.enable" = "true";
-      "io.containers.autoupdate" = "registry";
+
+    unitConfig = {
+      BindsTo = [ "wg-${netns}.service" ];
+      After = [ "wg-${netns}.service" ];
+
+      ConditionDirectoryNotEmpty = requiredPaths;
     };
   };
 
   systemd = {
-    services.podman-qbittorrent = {
-      bindsTo = [ "wg-${netns}.service" ];
-      after = lib.mkAfter [ "wg-${netns}.service" ];
-      wantedBy = lib.mkForce [ ];
-
-      unitConfig = {
-        ConditionDirectoryNotEmpty = requiredPaths;
-      };
-    };
-
-    paths.podman-qbittorrent = {
+    paths.qbittorrent = {
       wantedBy = [ "multi-user.target" ];
 
       pathConfig = {

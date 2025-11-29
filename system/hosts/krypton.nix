@@ -153,6 +153,7 @@ in
     ../nixos/qbittorrent.nix
 
     ../nixos/container.nix
+    ../nixos/quadlet.nix
     ../../container/tubearchivist
     ../../secret/nixos/additional-media/media_browser.nix
     ../../secret/nixos/additional-media/scraper.nix

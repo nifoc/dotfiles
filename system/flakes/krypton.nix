@@ -1,8 +1,9 @@
 {
   nixpkgs,
+  disko,
   home-manager,
   agenix,
-  disko,
+  quadlet-nix,
   lix-overlay,
   nifoc-overlay,
   run0-sudo-shim,
@@ -54,6 +55,8 @@ in
       }
 
       agenix.nixosModules.default
+
+      quadlet-nix.nixosModules.quadlet
 
       run0-sudo-shim.nixosModules.default
 
