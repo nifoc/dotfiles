@@ -20,7 +20,7 @@ in
   };
 
   nix = {
-    package = pkgs.lixPackageSets.stable.lix;
+    package = pkgs.lixPackageSets.latest.lix;
 
     settings = {
       extra-platforms = [ "x86_64-darwin" ];

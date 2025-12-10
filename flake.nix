@@ -82,7 +82,7 @@
           lix-overlay =
             final: prev:
             let
-              nix = final.lixPackageSets.stable.lix;
+              nix = final.lixPackageSets.latest.lix;
             in
             {
               nixpkgs-review = prev.nixpkgs-review.override { inherit nix; };

@@ -57,7 +57,7 @@ in
   system.stateVersion = "23.11";
 
   nix = {
-    package = pkgs.lixPackageSets.stable.lix;
+    package = pkgs.lixPackageSets.latest.lix;
 
     settings = {
       experimental-features = [

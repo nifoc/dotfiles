@@ -26,7 +26,7 @@ in
   };
 
   nix = {
-    package = pkgs.lixPackageSets.stable.lix;
+    package = pkgs.lixPackageSets.latest.lix;
 
     settings = {
       experimental-features = [
