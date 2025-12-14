@@ -23,7 +23,6 @@
           sub-lang = "en,de";
           # Other
           no-overwrites = true;
-          no-call-home = true;
         };
       };
 

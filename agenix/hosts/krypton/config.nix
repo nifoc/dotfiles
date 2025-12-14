@@ -37,6 +37,10 @@
       mode = "444";
     };
 
+    pinchflat-config = {
+      file = ./pinchflat/config.age;
+    };
+
     podman-auth = {
       file = ./podman/auth.age;
       path = "/root/.docker/config.json";

@@ -177,6 +177,8 @@ in
 
   "agenix/hosts/krypton/ntfy/token-hardware.age".publicKeys = krypton;
 
+  "agenix/hosts/krypton/pinchflat/config.age".publicKeys = krypton;
+
   "agenix/hosts/krypton/podman/auth.age".publicKeys = krypton;
 
   "agenix/hosts/krypton/recyclarr/config.age".publicKeys = krypton;

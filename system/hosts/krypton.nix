@@ -60,6 +60,8 @@ in
 
     ../nixos/monitoring
 
+    ../nixos/pinchflat.nix
+
     ../nixos/redlib.nix
 
     ../nixos/restic/krypton.nix
