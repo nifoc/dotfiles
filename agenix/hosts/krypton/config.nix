@@ -27,6 +27,10 @@
       file = ./homepage/environment.age;
     };
 
+    linkwarden-environment = {
+      file = ./linkwarden/environment.age;
+    };
+
     msmtp-password = {
       file = ./msmtp/password.age;
       mode = "444";
@@ -45,6 +49,10 @@
       file = ./podman/auth.age;
       path = "/root/.docker/config.json";
       mode = "400";
+    };
+
+    readeck-environment = {
+      file = ./readeck/environment.age;
     };
 
     recyclarr-config = {
