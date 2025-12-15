@@ -8,6 +8,7 @@ let
     "/dozer/media/Documentaries"
     "/dozer/media/Movies"
     "/dozer/media/TV Shows"
+    "/dozer/MediaVault/Pinchflat"
     "/dozer/MediaVault/YTDL"
   ];
 in
@@ -28,6 +29,7 @@ in
           "/dozer/media/Documentaries:/mnt/media/Documentaries"
           "/dozer/media/Movies:/mnt/media/Movies"
           "\"/dozer/media/TV Shows\":\"/mnt/media/TV Shows\""
+          "/dozer/MediaVault/Pinchflat"
           "/dozer/MediaVault/YTDL"
         ];
       };

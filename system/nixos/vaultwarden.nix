@@ -70,6 +70,7 @@ in
 
   systemd.services.vaultwarden = {
     requires = [ "postgresql.service" ];
+    after = [ "postgresql.service" ];
     restartTriggers = [ "${config.age.secrets.vaultwarden-config.file}" ];
   };
 }

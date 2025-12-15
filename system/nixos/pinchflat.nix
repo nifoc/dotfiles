@@ -21,6 +21,7 @@ in
 
       extraConfig = {
         UMASK = "002";
+        YT_DLP_WORKER_CONCURRENCY = "1";
       };
     };
 

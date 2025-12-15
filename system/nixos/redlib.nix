@@ -1,14 +1,13 @@
-{ config, lib, ... }:
+{ config, ... }:
 
 let
   cfg = config.services.redlib;
-  netns = "dl";
 in
 {
   services = {
     redlib = {
       enable = true;
-      address = "192.168.42.2";
+      address = "127.0.0.1";
       port = 8002;
 
       settings = {
@@ -29,20 +28,6 @@ in
 
         reverse_proxy ${cfg.address}:${toString cfg.port}
       '';
-    };
-  };
-
-  systemd.services.redlib = {
-    bindsTo = [ "wg-${netns}.service" ];
-    after = lib.mkAfter [ "wg-${netns}.service" ];
-
-    serviceConfig = {
-      NetworkNamespacePath = "/var/run/netns/${netns}";
-      BindReadOnlyPaths = [
-        "/etc/netns/${netns}/resolv.conf:/etc/resolv.conf:norbind"
-        "/etc/netns/${netns}/nsswitch.conf:/etc/nsswitch.conf:norbind"
-        "/etc/netns/${netns}/nscd-kill:/run/nscd:norbind"
-      ];
     };
   };
 }
