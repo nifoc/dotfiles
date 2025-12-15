@@ -173,6 +173,8 @@ in
 
   "agenix/hosts/krypton/homepage/environment.age".publicKeys = krypton;
 
+  "agenix/hosts/krypton/linkwarden/environment.age".publicKeys = krypton;
+
   "agenix/hosts/krypton/msmtp/password.age".publicKeys = krypton;
 
   "agenix/hosts/krypton/ntfy/token-hardware.age".publicKeys = krypton;
@@ -180,6 +182,8 @@ in
   "agenix/hosts/krypton/pinchflat/config.age".publicKeys = krypton;
 
   "agenix/hosts/krypton/podman/auth.age".publicKeys = krypton;
+
+  "agenix/hosts/krypton/readeck/environment.age".publicKeys = krypton;
 
   "agenix/hosts/krypton/recyclarr/config.age".publicKeys = krypton;
 

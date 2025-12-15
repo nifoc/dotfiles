@@ -62,6 +62,8 @@ in
 
     ../nixos/pinchflat.nix
 
+    ../nixos/readeck.nix
+
     ../nixos/redlib.nix
 
     ../nixos/restic/krypton.nix
