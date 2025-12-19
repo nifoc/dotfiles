@@ -145,6 +145,20 @@ in
       }
     ))
 
+    (import ../nixos/vlan-netns.nix (
+      args
+      // {
+        name = "dt";
+        vlan = {
+          interface = "vlan200";
+          ip = "10.0.200.100";
+          gateway = "10.0.200.1";
+          ns1 = "10.0.200.5";
+          ns2 = "10.0.200.7";
+        };
+      }
+    ))
+
     ../nixos/flaresolverr.nix
     ../nixos/prowlarr.nix
     ../nixos/recyclarr.nix
@@ -230,9 +244,20 @@ in
     network = rec {
       enable = true;
 
+      netdevs = {
+        "20-vlan200" = {
+          netdevConfig = {
+            Kind = "vlan";
+            Name = "vlan200";
+          };
+          vlanConfig.Id = 200;
+        };
+      };
+
       networks = {
         "10-lan" = {
           matchConfig.Name = "eth0";
+          vlan = [ "vlan200" ];
           networkConfig = {
             DHCP = "yes";
             IPv6AcceptRA = true;
@@ -244,6 +269,17 @@ in
             "10.0.0.5"
             "10.0.0.7"
           ];
+        };
+
+        "20-dtag" = {
+          matchConfig.Name = "vlan200";
+          networkConfig = {
+            DHCP = "no";
+            IPv6AcceptRA = false;
+          };
+          linkConfig = {
+            ActivationPolicy = "down";
+          };
         };
       };
 

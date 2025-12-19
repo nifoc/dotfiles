@@ -29,6 +29,7 @@ in
           dns = [
             "10.0.0.5:53"
             "10.0.51.5:53"
+            "10.0.200.5:53"
             "100.88.88.45:53"
           ];
 
@@ -123,12 +124,20 @@ in
     enable = true;
 
     netdevs = {
-      "20-vlan10" = {
+      "20-vlan51" = {
         netdevConfig = {
           Kind = "vlan";
           Name = "vlan51";
         };
         vlanConfig.Id = 51;
+      };
+
+      "30-vlan200" = {
+        netdevConfig = {
+          Kind = "vlan";
+          Name = "vlan200";
+        };
+        vlanConfig.Id = 200;
       };
     };
 
@@ -137,7 +146,7 @@ in
         matchConfig.Name = "end0";
         vlan = [
           "vlan51"
-          "vlan777"
+          "vlan200"
         ];
         networkConfig = {
           DHCP = "yes";
@@ -160,6 +169,16 @@ in
           IPv6AcceptRA = false;
         };
         address = [ "10.0.51.5/24" ];
+        linkConfig.RequiredForOnline = "routable";
+      };
+
+      "30-dtag" = {
+        matchConfig.Name = "vlan200";
+        networkConfig = {
+          DHCP = "no";
+          IPv6AcceptRA = false;
+        };
+        address = [ "10.0.200.5/24" ];
         linkConfig.RequiredForOnline = "routable";
       };
     };

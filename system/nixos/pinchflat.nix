@@ -2,7 +2,8 @@
 
 let
   fqdn = "pinchflat.internal.kempkens.network";
-  internalIP = "127.0.0.1";
+  internalIP = "10.0.200.100";
+  netns = "dt";
   requiredPaths = [
     "/dozer/MediaVault/Pinchflat"
   ];
@@ -41,6 +42,16 @@ in
   systemd = {
     services.pinchflat = {
       wantedBy = lib.mkForce [ ];
+      bindsTo = [ "vlan-ns-${netns}.service" ];
+      after = [ "vlan-ns-${netns}.service" ];
+
+      serviceConfig = {
+        NetworkNamespacePath = "/var/run/netns/${netns}";
+        BindReadOnlyPaths = [
+          "/etc/netns/${netns}/resolv.conf:/etc/resolv.conf:norbind"
+          "/etc/netns/${netns}/nsswitch.conf:/etc/nsswitch.conf:norbind"
+        ];
+      };
 
       unitConfig = {
         ConditionDirectoryNotEmpty = requiredPaths;

@@ -44,6 +44,7 @@ let
       "com.eltima.elmedia-setapp"
       "com.haystacksoftware.Arq"
       "com.jonny.mona"
+      "com.jonny.supermona"
       "com.kapeli.dash-setapp"
       "com.macpaw.Gemini-setapp"
       "com.runningwithcrayons.Alfred"
