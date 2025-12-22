@@ -259,11 +259,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1766282530,
-        "narHash": "sha256-fqOFtii2Zgm79RE/sqK9Xb+OgiwaiQTo0zJBHM/c/6E=",
-        "rev": "842144ddaa77fa17317c55592d8313f7c1353d9f",
+        "lastModified": 1766358128,
+        "narHash": "sha256-C794ye5G0J5tTXNV6jfq9MRKUm4xsCxThJuZ2Z32VPE=",
+        "rev": "0d2da6c7b96b434108a801b45d4ef0ebed049cd2",
         "type": "tarball",
-        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/842144ddaa77fa17317c55592d8313f7c1353d9f.tar.gz?rev=842144ddaa77fa17317c55592d8313f7c1353d9f"
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/0d2da6c7b96b434108a801b45d4ef0ebed049cd2.tar.gz?rev=0d2da6c7b96b434108a801b45d4ef0ebed049cd2"
       },
       "original": {
         "type": "tarball",
