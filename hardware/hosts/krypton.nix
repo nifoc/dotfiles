@@ -120,5 +120,5 @@
     cpu.intel.updateMicrocode = true;
   };
 
-  powerManagement.cpuFreqGovernor = lib.mkForce "ondemand";
+  powerManagement.cpuFreqGovernor = lib.mkForce "schedutil";
 }

@@ -45,24 +45,32 @@ in
       };
     };
 
-    tubearchivist-redis.containerConfig = {
-      image = "docker.io/valkey/valkey:8";
-      user = "2001:2001";
-      volumes = [ "/var/lib/tubearchivist/redis:/data" ];
-      labels = {
-        "com.centurylinklabs.watchtower.enable" = "true";
-        "io.containers.autoupdate" = "registry";
+    tubearchivist-redis = {
+      autoStart = false;
+
+      containerConfig = {
+        image = "docker.io/valkey/valkey:8";
+        user = "2001:2001";
+        volumes = [ "/var/lib/tubearchivist/redis:/data" ];
+        labels = {
+          "com.centurylinklabs.watchtower.enable" = "true";
+          "io.containers.autoupdate" = "registry";
+        };
       };
     };
 
-    tubearchivist-es.containerConfig = {
-      image = "docker.io/bbilly1/tubearchivist-es:latest";
-      publishPorts = [ "127.0.0.1:9200:9200" ];
-      environmentFiles = [ config.age.secrets.tubearchivist-environment-es.path ];
-      volumes = [ "/var/lib/tubearchivist/es:/usr/share/elasticsearch/data" ];
-      labels = {
-        "com.centurylinklabs.watchtower.enable" = "true";
-        "io.containers.autoupdate" = "registry";
+    tubearchivist-es = {
+      autoStart = false;
+
+      containerConfig = {
+        image = "docker.io/bbilly1/tubearchivist-es:latest";
+        publishPorts = [ "127.0.0.1:9200:9200" ];
+        environmentFiles = [ config.age.secrets.tubearchivist-environment-es.path ];
+        volumes = [ "/var/lib/tubearchivist/es:/usr/share/elasticsearch/data" ];
+        labels = {
+          "com.centurylinklabs.watchtower.enable" = "true";
+          "io.containers.autoupdate" = "registry";
+        };
       };
     };
   };
