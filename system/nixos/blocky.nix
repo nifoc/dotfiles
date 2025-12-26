@@ -137,7 +137,7 @@
           };
         };
 
-        dnssec.validate = true;
+        dnssec.validate = false;
 
         caching = {
           exclude = [
