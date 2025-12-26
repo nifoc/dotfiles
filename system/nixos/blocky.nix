@@ -137,6 +137,8 @@
           };
         };
 
+        dnssec.validate = true;
+
         caching = {
           exclude = [
             "/.*\.lan$/"
