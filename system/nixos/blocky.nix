@@ -140,6 +140,9 @@
         dnssec.validate = false;
 
         caching = {
+          prefetching = true;
+          prefetchMaxItemsCount = 1000;
+
           exclude = [
             "/.*\.lan$/"
             "/.*\.lansecurity$/"
