@@ -95,8 +95,6 @@ in
   services.caddy = {
     virtualHosts = {
       "kempkens.io" = {
-        useACMEHost = "kempkens.io";
-
         extraConfig = ''
           encode
 
@@ -125,8 +123,6 @@ in
       };
 
       "www.kempkens.io" = {
-        useACMEHost = "kempkens.io";
-
         extraConfig = ''
           header >Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
@@ -136,8 +132,6 @@ in
 
       # blog.kempkens.io
       "blog.kempkens.io" = {
-        useACMEHost = "kempkens.io";
-
         extraConfig = ''
           encode
 

@@ -57,8 +57,6 @@ in
     };
 
     caddy.virtualHosts."${fqdn}" = {
-      useACMEHost = "kempkens.io";
-
       extraConfig = ''
         encode
 

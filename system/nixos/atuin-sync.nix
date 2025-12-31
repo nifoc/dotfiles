@@ -17,8 +17,6 @@
         "[fd7a:115c:a1e0::8a01:f739]"
       ];
 
-      useACMEHost = "kempkens.io";
-
       extraConfig = ''
         encode
 

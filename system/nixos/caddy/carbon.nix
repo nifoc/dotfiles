@@ -7,15 +7,13 @@
 lib.mkIf (config.networking.hostName == "carbon") {
   services.caddy = {
     virtualHosts = {
-      "default.networked.systems" = {
-        useACMEHost = "networked.systems";
-
+      "*.kempkens.network" = {
         extraConfig = ''
           respond "I'm a teapot" 418
         '';
       };
 
-      "*.kempkens.network" = {
+      "*.kempkens.io" = {
         extraConfig = ''
           respond "I'm a teapot" 418
         '';
@@ -23,7 +21,7 @@ lib.mkIf (config.networking.hostName == "carbon") {
     };
 
     globalConfig = ''
-      default_sni default.networked.systems
+      default_sni default.kempkens.network
     '';
   };
 

@@ -17,7 +17,6 @@ in
 
     ../nixos/git.nix
 
-    ../nixos/acme-boron.nix
     ../nixos/caddy
     ../nixos/home-proxy.nix
     ../nixos/postgresql.nix

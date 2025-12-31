@@ -84,8 +84,6 @@ in
         "${server_name}".extraConfig = wellKnown;
 
         "${fqdn}" = {
-          useACMEHost = "kempkens.io";
-
           extraConfig = ''
             encode
 

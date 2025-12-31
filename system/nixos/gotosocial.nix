@@ -32,8 +32,6 @@
 
       caddy.virtualHosts = {
         "${host}" = {
-          useACMEHost = host;
-
           extraConfig = ''
             encode
 
@@ -46,16 +44,6 @@
             reverse_proxy ${bind-address}:${toString port} {
               flush_interval -1
             }
-          '';
-        };
-
-        "www.${host}" = {
-          useACMEHost = host;
-
-          extraConfig = ''
-            header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
-
-            redir https://${host}{uri} permanent
           '';
         };
       };

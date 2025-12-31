@@ -17,7 +17,6 @@ in
 
     ../nixos/git.nix
 
-    ../nixos/acme-carbon.nix
     ../nixos/caddy
     ../nixos/postgresql.nix
 

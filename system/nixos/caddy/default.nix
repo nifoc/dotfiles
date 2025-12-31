@@ -45,12 +45,17 @@
         disable_ddl false
       }
 
-      acme_dns desec {
+      dns desec {
         token {$DNS_DESEC_TOKEN}
       }
 
-      dns desec {
-        token {$DNS_DESEC_TOKEN}
+      cert_issuer acme {
+        dns desec {
+          token {$DNS_DESEC_TOKEN}
+        }
+
+        propagation_delay 5m
+        resolvers ns1.desec.io ns2.desec.org
       }
     '';
 

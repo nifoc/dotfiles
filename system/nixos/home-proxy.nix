@@ -1,8 +1,6 @@
 {
   services.caddy = {
     virtualHosts."wetter.kempkens.io" = {
-      useACMEHost = "kempkens.io";
-
       extraConfig = ''
         encode
 
