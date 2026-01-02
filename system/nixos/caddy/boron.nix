@@ -14,7 +14,7 @@ lib.mkIf (config.networking.hostName == "boron") {
           '';
         };
 
-        "*.kempkens.io, kempkens.io" = {
+        "*.kempkens.io" = {
           extraConfig = ''
             respond "I'm a teapot" 418
           '';
