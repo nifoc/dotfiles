@@ -4,6 +4,7 @@
   home-manager,
   agenix,
   quadlet-nix,
+  direnv-instant,
   lix-overlay,
   nifoc-overlay,
   run0-sudo-shim,
@@ -51,6 +52,9 @@ in
           useGlobalPkgs = true;
           useUserPackages = true;
           users.daniel = import ../../home/hosts/krypton.nix;
+          extraSpecialArgs = {
+            inputs = { inherit direnv-instant; };
+          };
         };
       }
 

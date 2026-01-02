@@ -4,7 +4,10 @@
 
     # Tools
 
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
 
     flake-root.url = "github:srid/flake-root";
 
@@ -24,6 +27,15 @@
     };
 
     quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
+
+    direnv-instant = {
+      url = "github:Mic92/direnv-instant";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        treefmt-nix.follows = "treefmt-nix";
+      };
+    };
 
     # Overlays
 
@@ -111,6 +123,7 @@
               home-manager
               nix-darwin
               agenix
+              direnv-instant
               nifoc-overlay
               ;
 
@@ -150,6 +163,7 @@
               home-manager
               agenix
               quadlet-nix
+              direnv-instant
               nifoc-overlay
               run0-sudo-shim
               ;

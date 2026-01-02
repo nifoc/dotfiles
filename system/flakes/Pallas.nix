@@ -3,6 +3,7 @@
   home-manager,
   nix-darwin,
   agenix,
+  direnv-instant,
   lix-overlay,
   nifoc-overlay,
 }:
@@ -49,6 +50,9 @@ in
           useGlobalPkgs = true;
           useUserPackages = true;
           users.daniel = import ../../home/hosts/Pallas.nix;
+          extraSpecialArgs = {
+            inputs = { inherit direnv-instant; };
+          };
         };
       }
 
