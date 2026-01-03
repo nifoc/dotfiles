@@ -35,6 +35,7 @@ lib.mkIf (config.networking.hostName == "boron") {
 
       globalConfig = ''
         default_sni default.kempkens.network
+        ech ech-boron.kempkens.network
       '';
     };
 

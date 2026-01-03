@@ -22,6 +22,7 @@ lib.mkIf (config.networking.hostName == "carbon") {
 
     globalConfig = ''
       default_sni default.kempkens.network
+      ech ech-carbon.kempkens.network
     '';
   };
 
