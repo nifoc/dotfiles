@@ -62,11 +62,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767176313,
-        "narHash": "sha256-mDMlJB2inLhcfy3Gr2Ukx+AIVdoVxKhnqmHoclNxGL8=",
+        "lastModified": 1767498610,
+        "narHash": "sha256-DFAfuDZSFl/PwHJaxFVDOY6QJe7SGPR4xL/CoN16WZ8=",
         "owner": "Mic92",
         "repo": "direnv-instant",
-        "rev": "348a02bce25b6cc16d48ef5ac90032d39e5233d9",
+        "rev": "cde46db6ca09cfbfed09bb3866c872d857a0eef1",
         "type": "github"
       },
       "original": {
@@ -248,11 +248,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767437240,
-        "narHash": "sha256-OA0dBHhccdupFXp+/eaFfb8K1dQxk61in4aF5ITGVX8=",
+        "lastModified": 1767556355,
+        "narHash": "sha256-RDTUBDQBi9D4eD9iJQWtUDN/13MDLX+KmE+TwwNUp2s=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "1cfa305fba94468f665de1bd1b62dddf2e0cb012",
+        "rev": "f894bc4ffde179d178d8deb374fcf9855d1a82b7",
         "type": "github"
       },
       "original": {
@@ -287,11 +287,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1767492099,
-        "narHash": "sha256-Cx3JUiGZQR11g57i4MPDTsCjpt7uqIf56V3YBsaa8F4=",
-        "rev": "1d4c110ff8a1f2876149e033b2706cb8d1699b6a",
+        "lastModified": 1767578569,
+        "narHash": "sha256-U4RDYE6gUCpI+BHwrlkXRWsiHgfvTa5IK4l6x0b0Mmc=",
+        "rev": "b5299456993429ea4edb2f156002b05629247ecc",
         "type": "tarball",
-        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/1d4c110ff8a1f2876149e033b2706cb8d1699b6a.tar.gz?rev=1d4c110ff8a1f2876149e033b2706cb8d1699b6a"
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/b5299456993429ea4edb2f156002b05629247ecc.tar.gz?rev=b5299456993429ea4edb2f156002b05629247ecc"
       },
       "original": {
         "type": "tarball",
