@@ -9,6 +9,7 @@ in
     ../../agenix/hosts/neon/config.nix
     ../shared/show-update-changelog.nix
     ../nixos/raspberry.nix
+    ../nixos/argononed.nix
     ../nixos/sudo.nix
     ../nixos/ssh.nix
     ../nixos/eternal-terminal.nix
@@ -109,7 +110,7 @@ in
     useNetworkd = true;
   };
 
-  systemd.network = {
+  systemd.network = rec {
     enable = true;
 
     netdevs = {
@@ -173,7 +174,7 @@ in
     };
 
     wait-online.extraArgs = [
-      "--interface=end0"
+      "--interface=${networks."10-lan".matchConfig.Name}"
     ];
   };
 
@@ -186,8 +187,6 @@ in
     nixos.enable = false;
     doc.enable = false;
   };
-
-  services.hardware.argonone.enable = true;
 
   programs = {
     zsh.enable = true;
