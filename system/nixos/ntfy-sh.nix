@@ -21,7 +21,11 @@ in
 
         upstream-base-url = "https://ntfy.sh";
         keepalive-interval = "45s";
+
+        web-push-file = "/var/lib/ntfy-sh/webpush.db";
       };
+
+      environmentFile = config.age.secrets.ntfy-environment.path;
     };
 
     caddy.virtualHosts."${fqdn}" = {

@@ -55,6 +55,10 @@
       mode = "444";
     };
 
+    ntfy-environment = {
+      file = ./ntfy/environment.age;
+    };
+
     ntfy-token-hardware = {
       file = ./ntfy/token-hardware.age;
       mode = "444";

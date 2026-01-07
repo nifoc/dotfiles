@@ -153,6 +153,7 @@ in
 
   "agenix/hosts/boron/msmtp/password.age".publicKeys = boron;
 
+  "agenix/hosts/boron/ntfy/environment.age".publicKeys = boron;
   "agenix/hosts/boron/ntfy/token-hardware.age".publicKeys = boron;
 
   "agenix/hosts/boron/tailscale/authkey.age".publicKeys = boron;
