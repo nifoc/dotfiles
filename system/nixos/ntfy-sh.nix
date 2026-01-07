@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  fqdn = "ntfy.kempkens.io";
+  fqdn = "ntfy.kempkens.network";
 in
 {
   services = {
