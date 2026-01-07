@@ -8,7 +8,6 @@
       colors (. (require :nifoc.theme) :colors)
       formatting (require :nifoc.formatting)
       repo (require :nifoc.repo)
-      nifoc-treesitter (require :nifoc.treesitter)
       nifoc-tui (require :nifoc.tui)
       navic (require :nvim-navic)
       fzf (require :fzf-lua)
@@ -326,9 +325,8 @@
            :on_click {:name :heirline_buffer_options_lsp
                       :callback #(deferred_cmd {:cmd :LspInfo} 200)}}
         3 {:condition #(formatting.active?) :provider "󰉼 "}
-        4 {:condition #(nifoc-treesitter.active?) :provider " "}
-        5 {:condition #vim.wo.spell :provider "󰓆"}
-        6 {:provider (fn [self]
+        4 {:condition #vim.wo.spell :provider "󰓆"}
+        5 {:provider (fn [self]
                        (let [f vim.bo.fileformat]
                          (.. (. self :format f) " ")))}})
   ;; Position
