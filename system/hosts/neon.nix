@@ -46,6 +46,8 @@ in
 
     (import ../nixos/immich/machine-learning.nix (args // { host = "100.126.68.56"; }))
 
+    ../nixos/otbr.nix
+
     ../nixos/monitoring/prometheus_exporters.nix
 
     ../nixos/rtl_433.nix
@@ -54,6 +56,9 @@ in
 
     ../nixos/tailscale-router.nix
     ../nixos/tailscale-nodns.nix
+
+    ../nixos/container.nix
+    ../nixos/quadlet.nix
   ];
 
   system.stateVersion = "23.11";

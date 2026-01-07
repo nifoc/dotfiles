@@ -190,6 +190,7 @@
               nixos-hardware
               home-manager
               agenix
+              quadlet-nix
               nifoc-overlay
               run0-sudo-shim
               ;
