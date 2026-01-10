@@ -6,8 +6,6 @@
     ../programs/atuin.nix
     ../programs/starship.nix
 
-    ../programs/nvim
-
     ../programs/git.nix
 
     ../programs/bat.nix

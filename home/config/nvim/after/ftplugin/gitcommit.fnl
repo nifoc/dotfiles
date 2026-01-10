@@ -1,3 +1,5 @@
-(let [lo vim.opt_local]
+(let [lo vim.opt_local
+      ts vim.treesitter]
   (set lo.spell true)
-  (set lo.colorcolumn :+1))
+  (set lo.colorcolumn :+1)
+  (ts.start))

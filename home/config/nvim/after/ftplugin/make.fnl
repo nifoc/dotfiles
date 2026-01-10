@@ -1,4 +1,6 @@
-(let [lo vim.opt_local]
+(let [lo vim.opt_local
+      ts vim.treesitter]
   (set lo.expandtab false)
   (set lo.shiftwidth 2)
-  (set lo.softtabstop 0))
+  (set lo.softtabstop 0)
+  (ts.start))

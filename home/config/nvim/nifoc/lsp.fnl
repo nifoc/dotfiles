@@ -31,10 +31,10 @@
                    :cssls
                    :dockerls
                    :erlangls
+                   :expert
                    :fennel_ls
                    :html
                    :jsonls
-                   :lexical
                    :lua_ls
                    :marksman
                    :nil_ls

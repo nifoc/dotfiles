@@ -84,7 +84,7 @@ in
 
         mergetool = {
           nixfmt = {
-            cmd = "${lib.getExe pkgs.nixfmt-rfc-style} --mergetool \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"";
+            cmd = "${lib.getExe pkgs.nixfmt} --mergetool \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"";
             trustExitCode = true;
           };
         };

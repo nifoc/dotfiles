@@ -78,6 +78,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    elixir-expert = {
+      url = "github:elixir-lang/expert";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+
     nedeco.url = "github:nedeco/nix-base-system";
     #nedeco.url = "path:/Users/dkempkens/Code/Work/nedeco/nix-base-system";
   };
@@ -110,6 +118,7 @@
               home-manager
               nix-darwin
               agenix
+              elixir-expert
               nifoc-overlay
               nedeco
               ;
@@ -124,6 +133,7 @@
               nix-darwin
               agenix
               direnv-instant
+              elixir-expert
               nifoc-overlay
               ;
 

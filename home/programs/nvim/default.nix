@@ -54,15 +54,15 @@ in
         nodePackages.eslint_d
         hadolint
         luajitPackages.fennel
-        nixfmt-rfc-style
+        nixfmt
         shellcheck
         statix
       ]
       ++ optionals isDarwin [
         # LSP
         dockerfile-language-server
+        elixir-expert
         #elixir-ls
-        lexical
         lua-language-server
         marksman
         nodePackages.typescript-language-server

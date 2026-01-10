@@ -7,8 +7,6 @@
     ../programs/starship.nix
     ../programs/direnv.nix
 
-    ../programs/nvim
-
     ../programs/git.nix
 
     ../programs/bat.nix
