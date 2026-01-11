@@ -118,6 +118,7 @@
               home-manager
               nix-darwin
               agenix
+              direnv-instant
               elixir-expert
               nifoc-overlay
               nedeco
