@@ -9,6 +9,7 @@ in
     ../../agenix/hosts/argon/config.nix
     ../shared/show-update-changelog.nix
     ../nixos/raspberry.nix
+    ../nixos/argononed.nix
     ../nixos/sudo.nix
     ../nixos/ssh.nix
     ../nixos/eternal-terminal.nix
@@ -197,8 +198,6 @@ in
     nixos.enable = false;
     doc.enable = false;
   };
-
-  services.hardware.argonone.enable = true;
 
   power.ups = {
     enable = true;
