@@ -79,7 +79,7 @@ in
         xcbuild
       ];
 
-    extraLuaConfig = # lua
+    initLua = # lua
       ''
         vim.loader.enable()
 
