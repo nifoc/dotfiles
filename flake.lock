@@ -297,11 +297,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769813945,
-        "narHash": "sha256-9ABv9Lo9t6MrFjlnRnU8Zw1C6LVj2+R8PipQ/rxGLHk=",
+        "lastModified": 1769872935,
+        "narHash": "sha256-07HMIGQ/WJeAQJooA7Kkg1SDKxhAiV6eodvOwTX6WKI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "475921375def3eb930e1f8883f619ff8609accb6",
+        "rev": "f4ad5068ee8e89e4a7c2e963e10dd35cd77b37b7",
         "type": "github"
       },
       "original": {
@@ -336,11 +336,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1769824938,
-        "narHash": "sha256-TS7RvRIC8cNHdJuRb99RyMOx6RohHIQ4wBqYln05CNw=",
-        "rev": "222dcf44009376d621c54186f103b1feb2c2c944",
+        "lastModified": 1769911334,
+        "narHash": "sha256-pL3IBrmK/yV14jIcJ3H0EjevPBHQ9fAyeVGuqhga0D8=",
+        "rev": "609fffaf525fad1c95888fa83a32657d320589fc",
         "type": "tarball",
-        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/222dcf44009376d621c54186f103b1feb2c2c944.tar.gz?rev=222dcf44009376d621c54186f103b1feb2c2c944"
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/609fffaf525fad1c95888fa83a32657d320589fc.tar.gz?rev=609fffaf525fad1c95888fa83a32657d320589fc"
       },
       "original": {
         "type": "tarball",
@@ -514,11 +514,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1766568576,
-        "narHash": "sha256-4XMfEw0ugVIzYOOVZ17ctikK1zjoP6UJ/r7/A1buxn4=",
+        "lastModified": 1769894065,
+        "narHash": "sha256-u8hioiUsIxUsjHhgA59ADaYWKNf5PcFAlY6/T0G1JtE=",
         "owner": "lordgrimmauld",
         "repo": "run0-sudo-shim",
-        "rev": "63684c217162b94ce15fed68d579e1109ed2753b",
+        "rev": "8b2946a8c150766648ec89d5df780822b888775e",
         "type": "github"
       },
       "original": {
