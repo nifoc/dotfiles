@@ -40,7 +40,7 @@
 
         customDNS = {
           mapping = {
-            "fritz.box" = "10.0.0.14";
+            "fritz.box" = "10.0.200.2";
           };
         };
 
