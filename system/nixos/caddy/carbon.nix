@@ -18,6 +18,12 @@ lib.mkIf (config.networking.hostName == "carbon") {
           respond "I'm a teapot" 418
         '';
       };
+
+      "*.daniel.xxx" = {
+        extraConfig = ''
+          respond "I'm a teapot" 418
+        '';
+      };
     };
 
     globalConfig = ''

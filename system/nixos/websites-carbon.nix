@@ -130,7 +130,6 @@ in
         '';
       };
 
-      # blog.kempkens.io
       "blog.kempkens.io" = {
         extraConfig = ''
           encode
@@ -157,7 +156,26 @@ in
         '';
       };
 
-      # nifoc.pw
+      "daniel.xxx" = {
+        extraConfig = ''
+          encode
+
+          header Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+          redir https://blog.kempkens.io{uri} permanent
+        '';
+      };
+
+      "www.daniel.xxx" = {
+        extraConfig = ''
+          encode
+
+          header Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+          redir https://blog.kempkens.io{uri} permanent
+        '';
+      };
+
       "*.nifoc.pw" = {
         extraConfig = ''
           encode
