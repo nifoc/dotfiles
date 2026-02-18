@@ -8,7 +8,7 @@ let
   system-krypton = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQooOFh2618Y7sXwYE640ftsdmEr6O87jUVKw/VogtY";
   system-mediaserver = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlB0cL5CtTOyARWSE2yUsNU4JHUPmr71710mZHzsmbX";
   system-argon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPP9ygczyi6g8abvj1I0eAj7N2Rli9UMlkC8VT6SnWLU";
-  system-neon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5Ht4KaRUvuGFmYLznTkVSnn6isjrcVplz1kKWkrnRQ";
+  system-neon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICFy2n77SjBh2WTPGUSasbJDP3Ar6csnldqau3u7Rf9e";
   syetsm-adsb-antenna = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBkjUSiku9spAlFkZ1T1IvyToE/yF1HUAjDxxH1dKKAv";
 
   tanker = [
@@ -265,13 +265,15 @@ in
 
   "agenix/hosts/neon/tailscale/authkey.age".publicKeys = neon;
 
-  "agenix/hosts/neon/controld/config.age".publicKeys = neon;
-
   "agenix/hosts/neon/forgejo-actions/token.age".publicKeys = neon;
 
   "agenix/hosts/neon/mosquitto/passwordWeewxProxy.age".publicKeys = neon;
 
   "agenix/hosts/neon/mosquitto/passwordHomeAssistant.age".publicKeys = neon;
+
+  "agenix/hosts/neon/msmtp/password.age".publicKeys = neon;
+
+  "agenix/hosts/neon/ntfy/token-hardware.age".publicKeys = neon;
 
   "agenix/hosts/neon/deye-mqtt/config.age".publicKeys = neon;
 

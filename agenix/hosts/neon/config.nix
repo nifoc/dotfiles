@@ -27,17 +27,14 @@
       file = ./tailscale/authkey.age;
     };
 
-    controld-config = {
-      file = ./controld/config.age;
-      path = "/var/lib/controld/ctrld.toml";
+    msmtp-password = {
+      file = ./msmtp/password.age;
+      mode = "444";
     };
 
-    # z2m-secrets = {
-    #   file = ./z2m/secrets.age;
-    #   path = "/var/lib/zigbee2mqtt/secrets.yaml";
-    #   owner = "zigbee2mqtt";
-    #   group = "zigbee2mqtt";
-    #   symlink = false;
-    # };
+    ntfy-token-hardware = {
+      file = ./ntfy/token-hardware.age;
+      mode = "444";
+    };
   };
 }

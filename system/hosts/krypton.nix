@@ -50,6 +50,8 @@ in
       }
     ))
 
+    ../nixos/cwa.nix
+
     ../nixos/ddg.nix
 
     (import ../nixos/immich (args // { host = "localhost"; }))
@@ -93,6 +95,7 @@ in
           ports = [
             4000
             4001
+            8083
             9999
           ];
 

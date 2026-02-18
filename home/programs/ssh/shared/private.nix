@@ -141,5 +141,13 @@
       identityFile = "~/.ssh/LAN.pub";
       identitiesOnly = true;
     };
+
+    "neon-unlock" = {
+      hostname = "10.0.0.7";
+      port = 2222;
+      user = "root";
+      identityFile = "~/.ssh/LAN.pub";
+      identitiesOnly = true;
+    };
   };
 }

@@ -6,8 +6,8 @@ in
 {
   imports = [
     ../../hardware/hosts/carbon.nix
-    ../nixos/zfs.nix
     ../../agenix/hosts/carbon/config.nix
+    ../nixos/zfs.nix
     ../shared/show-update-changelog.nix
     ../nixos/sudo.nix
     ../nixos/ssh.nix

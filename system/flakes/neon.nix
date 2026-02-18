@@ -1,6 +1,6 @@
 {
   nixpkgs,
-  nixos-hardware,
+  disko,
   home-manager,
   agenix,
   quadlet-nix,
@@ -43,7 +43,7 @@ in
         };
       }
 
-      nixos-hardware.nixosModules.raspberry-pi-4
+      disko.nixosModules.disko
 
       home-manager.nixosModules.home-manager
       {

@@ -48,7 +48,6 @@
               keylocation = "prompt";
             };
             mountpoint = "/";
-
           };
           "root/nix" = {
             type = "zfs_fs";

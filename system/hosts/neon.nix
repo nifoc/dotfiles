@@ -7,13 +7,14 @@ in
   imports = [
     ../../hardware/hosts/neon.nix
     ../../agenix/hosts/neon/config.nix
+    ../nixos/zfs.nix
     ../shared/show-update-changelog.nix
     ../nixos/raspberry.nix
-    ../nixos/argononed.nix
     ../nixos/sudo.nix
     ../nixos/ssh.nix
     ../nixos/eternal-terminal.nix
     ../nixos/wezterm-headless.nix
+    ../nixos/msmtp.nix
 
     ../nixos/git.nix
 
@@ -31,7 +32,7 @@ in
             "10.0.0.7:53"
             "10.0.51.7:53"
             "10.0.200.7:53"
-            "100.126.68.56:53"
+            "100.87.30.25:53"
           ];
 
           http = [ "127.0.0.1:8053" ];
@@ -44,13 +45,9 @@ in
       }
     ))
 
-    (import ../nixos/immich/machine-learning.nix (args // { host = "100.126.68.56"; }))
-
-    ../nixos/otbr.nix
-
     ../nixos/monitoring/prometheus_exporters.nix
 
-    ../nixos/rtl_433.nix
+    #../nixos/rtl_433.nix
 
     ../nixos/smartd.nix
 
@@ -102,16 +99,12 @@ in
   };
 
   boot = {
-    loader = {
-      grub.enable = false;
-      generic-extlinux-compatible.enable = true;
-    };
-
     tmp.cleanOnBoot = true;
   };
 
   networking = {
     hostName = "neon";
+    hostId = "0105164f";
     useNetworkd = true;
   };
 
@@ -183,10 +176,16 @@ in
     ];
   };
 
-  services.journald.extraConfig = ''
-    SystemMaxUse=512M
-    MaxRetentionSec=30day
-  '';
+  services = {
+    udev.extraRules = ''
+      ATTR{address}=="d8:3a:dd:e0:d5:50", NAME="end0"
+    '';
+
+    journald.extraConfig = ''
+      SystemMaxUse=512M
+      MaxRetentionSec=21day
+    '';
+  };
 
   documentation = {
     nixos.enable = false;

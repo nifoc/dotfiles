@@ -161,6 +161,8 @@
           connectionCooldown = "10s";
         };
 
+        queryLog.type = "none";
+
         prometheus.enable = true;
 
         ede.enable = true;

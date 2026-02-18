@@ -198,7 +198,7 @@
           neon = import ./system/flakes/neon.nix {
             inherit (inputs)
               nixpkgs
-              nixos-hardware
+              disko
               home-manager
               agenix
               quadlet-nix
