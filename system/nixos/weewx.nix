@@ -146,8 +146,8 @@ in
 
     caddy.virtualHosts."http://wetter.kempkens.io:7781" = {
       listenAddresses = [
-        "100.88.88.45"
-        "[fd7a:115c:a1e0::cb01:582d]"
+        "100.116.103.122"
+        "[fd7a:115c:a1e0::6a3a:677a]"
       ];
 
       extraConfig = ''

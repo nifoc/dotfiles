@@ -125,10 +125,18 @@
     };
 
     "argon" = {
-      hostname = "argon.ts.kempkens.network";
+      hostname = "10.0.0.5";
       port = 22;
       user = "daniel";
       forwardAgent = true;
+      identityFile = "~/.ssh/LAN.pub";
+      identitiesOnly = true;
+    };
+
+    "argon-unlock" = {
+      hostname = "10.0.0.5";
+      port = 2222;
+      user = "root";
       identityFile = "~/.ssh/LAN.pub";
       identitiesOnly = true;
     };

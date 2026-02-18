@@ -1,6 +1,6 @@
 {
   nixpkgs,
-  nixos-hardware,
+  disko,
   home-manager,
   agenix,
   lix-overlay,
@@ -42,7 +42,7 @@ in
         };
       }
 
-      nixos-hardware.nixosModules.raspberry-pi-4
+      disko.nixosModules.disko
 
       home-manager.nixosModules.home-manager
       {

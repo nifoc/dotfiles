@@ -15,11 +15,11 @@
         import robots-txt-generic
 
         handle /mqtt {
-          reverse_proxy http://100.88.88.45:${toString (7780 + 1)}
+          reverse_proxy http://100.116.103.122:${toString (7780 + 1)}
         }
 
         handle {
-          reverse_proxy h2c://100.88.88.45:${toString (7780 + 1)}
+          reverse_proxy h2c://100.116.103.122:${toString (7780 + 1)}
         }
       '';
     };

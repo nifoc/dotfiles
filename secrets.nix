@@ -7,7 +7,7 @@ let
   system-boron = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEH0G+fjmO4IOULTWFWtRf8Wh5BxeGukub8qoRFd5zvA";
   system-krypton = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQooOFh2618Y7sXwYE640ftsdmEr6O87jUVKw/VogtY";
   system-mediaserver = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlB0cL5CtTOyARWSE2yUsNU4JHUPmr71710mZHzsmbX";
-  system-argon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPP9ygczyi6g8abvj1I0eAj7N2Rli9UMlkC8VT6SnWLU";
+  system-argon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBsnqQa0PwyVEOb2WWiSI/AFQv99anRhjaW1RxT/+Qz3";
   system-neon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICFy2n77SjBh2WTPGUSasbJDP3Ar6csnldqau3u7Rf9e";
   syetsm-adsb-antenna = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBkjUSiku9spAlFkZ1T1IvyToE/yF1HUAjDxxH1dKKAv";
 
@@ -245,6 +245,10 @@ in
   "agenix/hosts/argon/mosquitto/passwordWeewx.age".publicKeys = argon;
   "agenix/hosts/argon/mosquitto/passwordWeewxProxy.age".publicKeys = argon;
   "agenix/hosts/argon/mosquitto/passwordHomeAssistant.age".publicKeys = argon;
+
+  "agenix/hosts/argon/msmtp/password.age".publicKeys = argon;
+
+  "agenix/hosts/argon/ntfy/token-hardware.age".publicKeys = argon;
 
   "agenix/hosts/argon/restic/password.age".publicKeys = argon;
   "agenix/hosts/argon/restic/ssh-private-key.age".publicKeys = argon;

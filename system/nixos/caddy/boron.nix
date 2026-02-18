@@ -41,7 +41,7 @@ lib.mkIf (config.networking.hostName == "boron") {
 
     postgresql = {
       authentication = ''
-        host caddy_storage caddy_storage 100.88.88.45/32 md5
+        host caddy_storage caddy_storage 100.116.103.122/32 md5
         host caddy_storage caddy_storage 100.90.7.38/32 md5
         host caddy_storage caddy_storage 100.97.247.57/32 md5
         host caddy_storage caddy_storage 100.83.191.69/32 md5

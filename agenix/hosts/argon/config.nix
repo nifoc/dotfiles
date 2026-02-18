@@ -54,6 +54,16 @@
       group = "mosquitto";
     };
 
+    msmtp-password = {
+      file = ./msmtp/password.age;
+      mode = "444";
+    };
+
+    ntfy-token-hardware = {
+      file = ./ntfy/token-hardware.age;
+      mode = "444";
+    };
+
     restic-password = {
       file = ./restic/password.age;
     };
