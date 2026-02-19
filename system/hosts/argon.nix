@@ -45,7 +45,7 @@ in
       }
     ))
 
-    ../nixos/dante/argon.nix
+    ../nixos/dante.nix
 
     ../nixos/monitoring/prometheus_exporters.nix
 

@@ -1,10 +1,11 @@
+{ lib, ... }:
+
 {
   services.dante = {
     enable = true;
 
     config = ''
-      internal: 100.116.103.122 port = 1080
-      internal: fd7a:115c:a1e0::6a3a:677a port = 1080
+      internal: tailscale0 port = 1080
       external: end0
 
       clientmethod: none
@@ -28,6 +29,11 @@
               log: error # connect disconnect iooperation
       }
     '';
+  };
+
+  systemd.services.dante = {
+    requires = lib.mkAfter [ "tailscale-wait-up.service" ];
+    after = lib.mkAfter [ "tailscale-wait-up.service" ];
   };
 
   networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 1080 ];

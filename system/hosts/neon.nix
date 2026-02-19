@@ -32,7 +32,7 @@ in
             "10.0.0.7:53"
             "10.0.51.7:53"
             "10.0.200.7:53"
-            "100.87.30.25:53"
+            "100.93.222.15:53"
           ];
 
           http = [ "127.0.0.1:8053" ];
@@ -45,9 +45,11 @@ in
       }
     ))
 
+    ../nixos/dante.nix
+
     ../nixos/monitoring/prometheus_exporters.nix
 
-    #../nixos/rtl_433.nix
+    ../nixos/rtl_433.nix
 
     ../nixos/smartd.nix
 
