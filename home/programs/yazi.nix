@@ -7,6 +7,8 @@ in
   programs.yazi = {
     enable = true;
 
+    shellWrapperName = "y";
+
     settings = {
       flavor = {
         use = "dracula";
