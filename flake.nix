@@ -184,9 +184,8 @@
           };
 
           argon = import ./system/flakes/argon.nix {
-            nixpkgs = inputs.nixpkgs-argon;
-
             inherit (inputs)
+              nixpkgs
               disko
               home-manager
               agenix

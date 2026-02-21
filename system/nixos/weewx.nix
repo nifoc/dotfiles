@@ -11,25 +11,18 @@ in
 {
   # weewx
 
-  systemd.services.weewx =
-    let
-      mounts = [
-        "var-lib-weewx\\x2dweather-weewx\\x2ddata.mount"
-      ];
-    in
-    {
+  systemd = {
+    services.weewx = {
       description = "WeeWX";
       requires = [
         "time-sync.target"
         "mosquitto.service"
       ];
-      bindsTo = mounts;
       after = [
         "network-online.target"
         "time-sync.target"
         "mosquitto.service"
-      ]
-      ++ mounts;
+      ];
       wants = [ "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
 
@@ -83,19 +76,31 @@ in
       };
     };
 
-  systemd.tmpfiles.rules = [
-    "d ${home} 0755 weewx weewx"
-    "d ${home}/data 0755 weewx weewx"
-    "d ${home}/data/db 0750 weewx weewx"
-    "d ${home}/data/html 0755 weewx weewx"
-    "d ${home}/data/html/wdc 0755 weewx weewx"
-    "d ${home}/overlay 750 weewx weewx"
-    "d ${home}/overlay/upper 750 weewx weewx"
-    "d ${home}/overlay/upper/skins 750 weewx weewx"
-    "d ${home}/overlay/upper/skins/weewx-wdc 750 weewx weewx"
-    "d ${home}/overlay/work 750 weewx weewx"
-    "d ${home}/weewx-data 750 weewx weewx"
-  ];
+    tmpfiles.rules = [
+      "d ${home} 0755 weewx weewx"
+      "d ${home}/data 0755 weewx weewx"
+      "d ${home}/data/db 0750 weewx weewx"
+      "d ${home}/data/html 0755 weewx weewx"
+      "d ${home}/data/html/wdc 0755 weewx weewx"
+      "d ${home}/overlay 750 weewx weewx"
+      "d ${home}/overlay/upper 750 weewx weewx"
+      "d ${home}/overlay/upper/skins 750 weewx weewx"
+      "d ${home}/overlay/upper/skins/weewx-wdc 750 weewx weewx"
+      "d ${home}/overlay/work 750 weewx weewx"
+      "d ${home}/weewx-data 750 weewx weewx"
+    ];
+
+    mounts = [
+      {
+        what = "overlay";
+        where = "${home}/weewx-data";
+        type = "overlay";
+        options = "lowerdir=${pkg}/home/weewx-data,upperdir=${home}/overlay/upper,workdir=${home}/overlay/work";
+        before = [ "weewx.service" ];
+        wantedBy = [ "weewx.service" ];
+      }
+    ];
+  };
 
   users.users.weewx = {
     group = "weewx";
@@ -106,17 +111,6 @@ in
 
   users.groups.weewx = {
     gid = 421;
-  };
-
-  fileSystems.weewx-data = {
-    fsType = "overlay";
-    mountPoint = "${home}/weewx-data";
-
-    overlay = {
-      lowerdir = [ "${pkg}/home/weewx-data" ];
-      upperdir = "${home}/overlay/upper";
-      workdir = "${home}/overlay/work";
-    };
   };
 
   # Dependencies
