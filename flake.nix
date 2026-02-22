@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-argon.url = "github:nixos/nixpkgs?rev=e3cb16bccd9facebae3ba29c6a76a4cc1b73462a";
 
     # Tools
 
