@@ -11,6 +11,9 @@ in
       settings = {
         analytics.reporting_enabled = false;
 
+        # Use the old default for now
+        security.secret_key = "SW2YcwTIb9zpOOhoPsMm";
+
         server = {
           root_url = "https://${fqdn}";
           domain = fqdn;
