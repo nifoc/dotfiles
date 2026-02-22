@@ -1,10 +1,14 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  ...
+}:
 
 {
   services = {
     postgresql = {
       enable = true;
-      package = pkgs.postgresql_16_jit;
+      package = pkgs.postgresql_18_jit;
       enableJIT = true;
 
       enableTCPIP = true;
@@ -45,7 +49,15 @@
   environment.systemPackages = [
     (
       let
-        newPostgres = pkgs.postgresql_16_jit;
+        newPostgres = pkgs.postgresql_18_jit;
+        # newPostgres = pkgs.postgresql_18_jit.withPackages (
+        #   ps: with ps; [
+        #     pgroonga
+        #     pgvector
+        #     vectorchord
+        #   ]
+        # );
+        # pg_upgrade: --new-options "-c shared_preload_libraries='vchord.so'" \
       in
       pkgs.writeScriptBin "upgrade-pg-cluster" ''
         set -eux
@@ -57,11 +69,11 @@
         export NEWBIN="${newPostgres}/bin"
 
         export OLDDATA="${config.services.postgresql.dataDir}"
-        export OLDBIN="${config.services.postgresql.package}/bin"
+        export OLDBIN="${config.services.postgresql.finalPackage}/bin"
 
         install -d -m 0700 -o postgres -g postgres "$NEWDATA"
         cd "$NEWDATA"
-        sudo -u postgres $NEWBIN/initdb -D "$NEWDATA"
+        sudo -u postgres $NEWBIN/initdb --no-data-checksums -D "$NEWDATA"
 
         sudo -u postgres $NEWBIN/pg_upgrade \
           --old-datadir "$OLDDATA" --new-datadir "$NEWDATA" \
