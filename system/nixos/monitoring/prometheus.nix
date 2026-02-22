@@ -60,6 +60,7 @@
                 "boron.ts.kempkens.network:${port}"
                 "carbon.ts.kempkens.network:${port}"
                 "krypton.ts.kempkens.network:${port}"
+                "neon.ts.kempkens.network:${port}"
               ];
             }
           ];
