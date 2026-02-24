@@ -61,7 +61,7 @@ in
       ++ optionals isDarwin [
         # LSP
         dockerfile-language-server
-        #elixir-expert
+        elixir-expert
         #elixir-ls
         lua-language-server
         marksman
