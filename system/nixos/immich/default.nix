@@ -80,5 +80,7 @@ in
         '';
       };
     };
+
+    restic.backups.secondary.paths = [ config.services.immich.mediaLocation ];
   };
 }

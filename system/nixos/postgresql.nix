@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }:
 
@@ -40,7 +41,13 @@
       compressionLevel = 7;
     };
 
-    restic.backups.remote.paths = [ config.services.postgresqlBackup.location ];
+    restic.backups = lib.mkMerge [
+      { remote.paths = [ config.services.postgresqlBackup.location ]; }
+
+      (lib.mkIf (builtins.hasAttr "restic-password-two" config.age.secrets) {
+        secondary.paths = [ config.services.postgresqlBackup.location ];
+      })
+    ];
   };
 
   networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 5432 ];

@@ -67,6 +67,10 @@
       file = ./restic/password.age;
     };
 
+    restic-password-two = {
+      file = ./restic/password-two.age;
+    };
+
     restic-ssh-private-key = {
       file = ./restic/ssh-private-key.age;
     };

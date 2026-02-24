@@ -189,6 +189,7 @@ in
   "agenix/hosts/krypton/recyclarr/config.age".publicKeys = krypton;
 
   "agenix/hosts/krypton/restic/password.age".publicKeys = krypton;
+  "agenix/hosts/krypton/restic/password-two.age".publicKeys = krypton;
   "agenix/hosts/krypton/restic/ssh-private-key.age".publicKeys = krypton;
 
   "agenix/hosts/krypton/speedtest-tracker/environment.age".publicKeys = krypton;
