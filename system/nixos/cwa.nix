@@ -1,13 +1,4 @@
-{
-  pkgs,
-  #lib,
-  #config,
-  ...
-}:
-
 let
-  #inherit (config.virtualisation.quadlet) containers;
-
   fqdn = "cwa.internal.kempkens.network";
   internalIP = "192.168.42.6";
   internalPort = 8083;
@@ -58,48 +49,6 @@ in
       "d /var/lib/cwa 0755 media_user user_media"
       "d /var/lib/cwa/config 0755 media_user user_media"
     ];
-
-    # services = {
-    #   fanficfare-update = {
-    #     description = "FanFicFare Update";
-    #     startAt = "*-*-* 02,08,14,20:00:00";
-    #     restartIfChanged = false;
-    #
-    #     bindsTo = [ "wg-${netns}.service" ];
-    #     after = lib.mkAfter [ "wg-${netns}.service" ];
-    #
-    #     environment = {
-    #       HOME = "/home/daniel";
-    #     };
-    #
-    #     serviceConfig = {
-    #       Type = "oneshot";
-    #       User = "daniel";
-    #       Group = "user_media";
-    #       ExecStart = "${lib.getExe config.users.users.daniel.shell} /home/daniel/.zsh/server_functions/fanficfare-update";
-    #
-    #       NetworkNamespacePath = "/var/run/netns/${netns}";
-    #       BindReadOnlyPaths = [
-    #         "/etc/netns/${netns}/resolv.conf:/etc/resolv.conf:norbind"
-    #         "/etc/netns/${netns}/nsswitch.conf:/etc/nsswitch.conf:norbind"
-    #         "/etc/netns/${netns}/nscd-kill:/run/nscd:norbind"
-    #       ];
-    #
-    #       DevicePolicy = "closed";
-    #       LockPersonality = true;
-    #       ProtectControlGroups = true;
-    #       ProtectKernelModules = true;
-    #       ProtectKernelTunables = true;
-    #       PrivateDevices = true;
-    #       PrivateTmp = true;
-    #       RestrictNamespaces = true;
-    #     };
-    #
-    #     unitConfig = {
-    #       ConditionDirectoryNotEmpty = requiredPaths;
-    #     };
-    #   };
-    # };
   };
 
   services.caddy = {
@@ -119,8 +68,4 @@ in
       '';
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    fanficfare
-  ];
 }
