@@ -5,7 +5,7 @@
     disk = {
       root = {
         type = "disk";
-        device = "/dev/disk/by-id/ata-Intenso_SSD_Sata_III_2025122901802";
+        device = "/dev/disk/by-id/ata-ORICO_251113BH51200097";
         content = {
           type = "gpt";
           partitions = {

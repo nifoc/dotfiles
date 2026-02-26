@@ -19,9 +19,12 @@ build-local-machine target type=defaultLocalType:
 build-remote-machine target remoteBuild=defaultRemoteBuild type=defaultRemoteType:
     #!/bin/sh
     if [ "{{ remoteBuild }}" = "true" ]; then
+        user="$(nix eval --raw '.#deploy.nodes.{{ target }}.sshUser' 2> /dev/null)"
+        hostname="$(nix eval --raw '.#deploy.nodes.{{ target }}.hostname' 2> /dev/null)"
+        echo "Building on ${hostname} ..."
         nom build --fallback \
           --eval-store auto \
-          --store 'ssh-ng://root@{{ target }}' \
+          --store "ssh-ng://${user}@${hostname}" \
           '.#{{ type }}Configurations.{{ target }}.config.system.build.toplevel'
     else
         echo "Remote building is disabled"

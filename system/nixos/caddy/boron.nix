@@ -45,7 +45,7 @@ lib.mkIf (config.networking.hostName == "boron") {
         host caddy_storage caddy_storage 100.90.7.38/32 md5
         host caddy_storage caddy_storage 100.97.247.57/32 md5
         host caddy_storage caddy_storage 100.83.191.69/32 md5
-        host caddy_storage caddy_storage 100.93.222.15/32 md5
+        host caddy_storage caddy_storage 100.111.49.64/32 md5
       '';
     };
 

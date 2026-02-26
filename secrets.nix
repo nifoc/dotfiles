@@ -8,7 +8,7 @@ let
   system-krypton = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQooOFh2618Y7sXwYE640ftsdmEr6O87jUVKw/VogtY";
   system-mediaserver = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlB0cL5CtTOyARWSE2yUsNU4JHUPmr71710mZHzsmbX";
   system-argon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBsnqQa0PwyVEOb2WWiSI/AFQv99anRhjaW1RxT/+Qz3";
-  system-neon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAc1G5A42CSF1uyGQBAXz+/eLUEEgf0tJfCMxuYOvsF4";
+  system-neon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICNcsE77cjkwh/NjDYwHTLWtAtilIAbfI5xmffKAhPQo";
   syetsm-adsb-antenna = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBkjUSiku9spAlFkZ1T1IvyToE/yF1HUAjDxxH1dKKAv";
 
   tanker = [
