@@ -17,6 +17,11 @@ in
       passwordFile = config.age.secrets.restic-password.path;
       paths = [ ];
 
+      extraBackupArgs = [
+        "--cleanup-cache"
+        "--no-scan"
+      ];
+
       pruneOpts = [
         "--keep-daily 7"
         "--keep-weekly 2"

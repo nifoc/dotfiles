@@ -18,6 +18,11 @@ in
         passwordFile = config.age.secrets.restic-password.path;
         paths = [ ];
 
+        extraBackupArgs = [
+          "--cleanup-cache"
+          "--no-scan"
+        ];
+
         pruneOpts = [ "--keep-daily 5" ];
 
         user = "root";
@@ -40,6 +45,11 @@ in
 
         passwordFile = config.age.secrets.restic-password-two.path;
         paths = [ ];
+
+        extraBackupArgs = [
+          "--cleanup-cache"
+          "--no-scan"
+        ];
 
         pruneOpts = [
           "--keep-daily 7"
