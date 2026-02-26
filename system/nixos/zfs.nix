@@ -39,7 +39,7 @@
   };
 
   virtualisation = {
-    podman.extraPackages = [ pkgs.zfs ];
+    podman.extraPackages = [ config.boot.zfs.package ];
 
     containers.storage.settings.storage = {
       driver = "zfs";
