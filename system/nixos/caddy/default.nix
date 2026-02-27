@@ -19,11 +19,11 @@
 
     package = pkgs.caddy.withPlugins {
       plugins = [
-        "github.com/caddy-dns/desec@v0.0.0-20250422185948-3a2346e88559"
+        "github.com/caddy-dns/desec@v0.0.0-20260210205102-325e2faf7910"
         "github.com/yroc92/postgres-storage@v0.0.0-20230310195636-276797aefe40"
         "github.com/porech/caddy-maxmind-geolocation@v0.0.0-20250305164927-9066f91c9696"
       ];
-      hash = "sha256-r6mFTQycE5Ct8+cVGKJu6MCEyML7I4vO9pleGOnh4WQ=";
+      hash = "sha256-jqF4FcA7U+PFJi4Whx2Vh3pYS/xSx5kob1G7k+8vti0=";
     };
 
     environmentFile = config.age.secrets.caddy-environment.path;
