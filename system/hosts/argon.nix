@@ -208,7 +208,7 @@ in
     openFirewall = true;
 
     ups.primary = {
-      description = "APC Back-UPS BX - BX950U-GR";
+      description = "Eaton Ellipse PRO 650";
       driver = "usbhid-ups";
       port = "auto";
     };
