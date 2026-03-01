@@ -43,7 +43,10 @@ in
 
     postgresqlBackup.databases = [ "vaultwarden" ];
 
-    restic.backups.remote.paths = [ "/var/lib/bitwarden_rs" ];
+    restic.backups = {
+      remote.paths = [ "/var/lib/bitwarden_rs" ];
+      secondary.paths = [ "/var/lib/bitwarden_rs" ];
+    };
 
     caddy.virtualHosts."${fqdn}" = {
       extraConfig = ''
