@@ -298,6 +298,8 @@
 
           pre-commit = {
             settings = {
+              package = pkgs.prek;
+
               hooks = {
                 deadnix.enable = true;
                 shellcheck = {
