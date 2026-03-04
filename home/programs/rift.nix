@@ -47,52 +47,33 @@ let
         "Workspace 2"
       ];
 
-      app_rules = [
-        {
-          app_id = "com.apple.ScreenSharing";
+      app_rules =
+        let
+          floating = [
+            "com.apple.ScreenSharing"
+            "com.apple.systempreferences"
+            "com.bitwarden.desktop"
+            "com.colliderli.iina"
+            "com.haystacksoftware.Arq"
+            "com.kapeli.dash-setapp"
+            "com.macpaw.Gemini-setapp"
+            "com.noodlesoft.Hazel"
+            "net.pornel.ImageOptim"
+          ];
+
+          unmanaged = [
+            "com.jonny.supermona"
+            "com.tapbots.Ivory"
+          ];
+        in
+        (map (id: {
+          app_id = id;
           floating = true;
-        }
-        {
-          app_id = "com.apple.systempreferences";
-          floating = true;
-        }
-        {
-          app_id = "com.bitwarden.desktop";
-          floating = true;
-        }
-        {
-          app_id = "com.colliderli.iina";
-          floating = true;
-        }
-        {
-          app_id = "com.haystacksoftware.Arq";
-          floating = true;
-        }
-        {
-          app_id = "com.jonny.supermona";
-          floating = true;
-        }
-        {
-          app_id = "com.kapeli.dash-setapp";
-          floating = true;
-        }
-        {
-          app_id = "com.macpaw.Gemini-setapp";
-          floating = true;
-        }
-        {
-          app_id = "com.runningwithcrayons.Alfred";
+        }) floating)
+        ++ (map (id: {
+          app_id = id;
           manage = false;
-        }
-        {
-          app_id = "com.tapbots.Ivory";
-          floating = true;
-        }
-        {
-          app_id = "net.pornel.ImageOptim";
-          floating = true;
-        }
-      ];
+        }) unmanaged);
     };
 
     modifier_combinations = {
