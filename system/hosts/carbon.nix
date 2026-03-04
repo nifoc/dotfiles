@@ -146,10 +146,10 @@ in
       ];
     };
 
-    sleep.extraConfig = ''
-      AllowSuspend=no
-      AllowHibernation=no
-    '';
+    sleep.settings.Sleep = {
+      AllowSuspend = "no";
+      AllowHibernation = "no";
+    };
   };
 
   services = {
