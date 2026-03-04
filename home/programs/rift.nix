@@ -8,7 +8,7 @@ let
 
   settings = {
     settings = {
-      default_disable = true;
+      default_disable = false;
 
       animate = false;
       animation_duration = 0.3;
@@ -33,9 +33,20 @@ let
           vertical = 3;
         };
       };
+
+      ui = {
+        menu_bar.enabled = false;
+        stack_line.enabled = false;
+        mission_control.enabled = true;
+      };
     };
 
     virtual_workspaces = {
+      workspace_names = [
+        "Workspace 1"
+        "Workspace 2"
+      ];
+
       app_rules = [
         {
           app_id = "com.apple.ScreenSharing";
@@ -58,7 +69,7 @@ let
           floating = true;
         }
         {
-          app_id = "com.jonny.mona";
+          app_id = "com.jonny.supermona";
           floating = true;
         }
         {
@@ -92,6 +103,19 @@ let
     keys = {
       "mod + Z" = "toggle_space_activated";
 
+      "mod + H" = {
+        move_focus = "left";
+      };
+      "mod + J" = {
+        move_focus = "down";
+      };
+      "mod + K" = {
+        move_focus = "up";
+      };
+      "mod + L" = {
+        move_focus = "right";
+      };
+
       "hyper + H" = {
         move_node = "left";
       };
@@ -105,8 +129,34 @@ let
         move_node = "right";
       };
 
+      "hyper + W" = {
+        move_window_to_display = {
+          selector = "left";
+        };
+      };
+      "hyper + E" = {
+        move_window_to_display = {
+          selector = "right";
+        };
+      };
+
       "hyper + T" = "toggle_window_floating";
       "hyper + F" = "toggle_fullscreen";
+
+      "mod + M" = "dismiss_mission_control";
+      "hyper + M" = "show_mission_control_current";
+      "hyper + C" = "show_mission_control_all";
+
+      "mod + 1" = {
+        set_workspace_layout = {
+          mode = "bsp";
+        };
+      };
+      "mod + 2" = {
+        set_workspace_layout = {
+          mode = "traditional";
+        };
+      };
     };
   };
 in
