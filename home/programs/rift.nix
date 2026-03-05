@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   pkg = pkgs.rift;
@@ -6,7 +6,7 @@ let
 
   settingsFormat = pkgs.formats.toml { };
 
-  settings = {
+  settings = rec {
     settings = {
       default_disable = false;
 
@@ -41,17 +41,22 @@ let
       };
     };
 
-    virtual_workspaces = {
+    virtual_workspaces = rec {
+      enable = true;
+      default_workspace_count = builtins.length workspace_names;
+      auto_assign_windows = true;
+      preserve_focus_per_workspace = true;
+      workspace_auto_back_and_forth = false;
+      reapply_app_rules_on_title_change = false;
+
       workspace_names = [
-        "Workspace 1"
-        "Workspace 2"
+        "Main"
+        "Screen Share"
       ];
 
       app_rules =
         let
-          floating = [
-            "com.apple.ScreenSharing"
-            "com.apple.systempreferences"
+          floating_ids = [
             "com.bitwarden.desktop"
             "com.colliderli.iina"
             "com.haystacksoftware.Arq"
@@ -61,7 +66,8 @@ let
             "net.pornel.ImageOptim"
           ];
 
-          unmanaged = [
+          unmanaged_ids = [
+            "com.apple.systempreferences"
             "com.jonny.supermona"
             "com.tapbots.Ivory"
           ];
@@ -69,11 +75,18 @@ let
         (map (id: {
           app_id = id;
           floating = true;
-        }) floating)
+        }) floating_ids)
         ++ (map (id: {
           app_id = id;
           manage = false;
-        }) unmanaged);
+        }) unmanaged_ids)
+        ++ [
+          {
+            app_id = "com.apple.ScreenSharing";
+            floating = true;
+            workspace = lib.lists.findFirstIndex (w: w == "Screen Share") 0 workspace_names;
+          }
+        ];
     };
 
     modifier_combinations = {
@@ -138,7 +151,17 @@ let
           mode = "traditional";
         };
       };
-    };
+    }
+    // (builtins.listToAttrs (
+      builtins.concatMap (i: [
+        {
+          name = "hyper + ${toString i}";
+          value = {
+            switch_to_workspace = i - 1;
+          };
+        }
+      ]) (lib.lists.range 1 (builtins.length virtual_workspaces.workspace_names))
+    ));
   };
 in
 {
