@@ -42,7 +42,7 @@ let
     };
 
     virtual_workspaces = rec {
-      enable = true;
+      enabled = true;
       default_workspace_count = builtins.length workspace_names;
       auto_assign_windows = true;
       preserve_focus_per_workspace = true;
@@ -51,6 +51,7 @@ let
 
       workspace_names = [
         "Main"
+        "Communication"
         "Screen Share"
       ];
 
@@ -71,6 +72,17 @@ let
             "com.jonny.supermona"
             "com.tapbots.Ivory"
           ];
+
+          communication_ids = [
+            "com.apple.mail"
+            "ch.protonmail.desktop"
+            "com.apple.MobileSMS"
+          ];
+
+          screen_share_ids = [
+            "com.apple.ScreenSharing"
+            "com.edovia.screens.5"
+          ];
         in
         (map (id: {
           app_id = id;
@@ -80,13 +92,15 @@ let
           app_id = id;
           manage = false;
         }) unmanaged_ids)
-        ++ [
-          {
-            app_id = "com.apple.ScreenSharing";
-            floating = true;
-            workspace = lib.lists.findFirstIndex (w: w == "Screen Share") 0 workspace_names;
-          }
-        ];
+        ++ (map (id: {
+          app_id = id;
+          workspace = lib.lists.findFirstIndex (w: w == "Communication") 0 workspace_names;
+        }) communication_ids)
+        ++ (map (id: {
+          app_id = id;
+          floating = true;
+          workspace = lib.lists.findFirstIndex (w: w == "Screen Share") 0 workspace_names;
+        }) screen_share_ids);
     };
 
     modifier_combinations = {
