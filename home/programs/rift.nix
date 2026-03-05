@@ -98,7 +98,6 @@ let
         }) communication_ids)
         ++ (map (id: {
           app_id = id;
-          floating = true;
           workspace = lib.lists.findFirstIndex (w: w == "Screen Share") 0 workspace_names;
         }) screen_share_ids);
     };
