@@ -52,7 +52,7 @@ in
 
     ../nixos/cwa.nix
 
-    ../nixos/ddg.nix
+    #../nixos/ddg.nix
 
     (import ../nixos/immich (args // { host = "localhost"; }))
 
@@ -291,10 +291,10 @@ in
       ];
     };
 
-    sleep.extraConfig = ''
-      AllowSuspend=no
-      AllowHibernation=no
-    '';
+    sleep.settings.Sleep = {
+      AllowSuspend = "no";
+      AllowHibernation = "no";
+    };
   };
 
   services = {
