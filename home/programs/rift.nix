@@ -13,6 +13,7 @@ let
 
   settings = rec {
     settings = {
+      hot_reload = false;
       default_disable = false;
 
       animate = false;
