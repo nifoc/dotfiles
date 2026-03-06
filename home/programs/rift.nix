@@ -105,7 +105,14 @@ let
         ++ (map (id: {
           app_id = id;
           workspace = lib.lists.findFirstIndex (w: w == "Screen Share") 0 workspace_names;
-        }) screen_share_ids);
+        }) screen_share_ids)
+        ++ [
+          {
+            app_id = "com.apple.finder";
+            title_substring = "Kopieren";
+            floating = true;
+          }
+        ];
     };
 
     modifier_combinations = {
@@ -182,17 +189,21 @@ let
       ]) (lib.lists.range 1 (builtins.length virtual_workspaces.workspace_names))
     ));
   };
+
+  settingsFile = settingsFormat.generate "config.toml" settings;
 in
 {
   home.packages = [ pkg ];
-
-  xdg.configFile."rift/config.toml".source = settingsFormat.generate "config.toml" settings;
 
   launchd.agents.rift = {
     enable = true;
     config = {
       Label = label;
-      ProgramArguments = [ "${pkg}/bin/rift" ];
+      ProgramArguments = [
+        "${pkg}/bin/rift"
+        "--config"
+        "${settingsFile}"
+      ];
 
       EnvironmentVariables = {
         PATH = "${config.home.profileDirectory}/bin";
