@@ -2,6 +2,8 @@ args@{ pkgs, config, ... }:
 
 let
   ssh-keys = import ../shared/ssh-keys.nix;
+
+  tailscaleIPv4 = "100.111.49.64";
 in
 {
   imports = [
@@ -32,7 +34,7 @@ in
             "10.0.0.7:53"
             "10.0.51.7:53"
             "10.0.200.7:53"
-            "100.111.49.64:53"
+            "${tailscaleIPv4}:53"
           ];
 
           http = [ "127.0.0.1:8053" ];
@@ -45,7 +47,14 @@ in
       }
     ))
 
-    ../nixos/dante.nix
+    (import ../nixos/microsocks.nix (
+      args
+      // {
+        listenIP = tailscaleIPv4;
+        listenInterface = "tailscale0";
+        outgoingIP = "10.0.0.7";
+      }
+    ))
 
     ../nixos/monitoring/prometheus_exporters.nix
 

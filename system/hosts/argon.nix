@@ -2,6 +2,8 @@ args@{ pkgs, config, ... }:
 
 let
   ssh-keys = import ../shared/ssh-keys.nix;
+
+  tailscaleIPv4 = "100.116.103.122";
 in
 {
   imports = [
@@ -32,7 +34,7 @@ in
             "10.0.0.5:53"
             "10.0.51.5:53"
             "10.0.200.5:53"
-            "100.116.103.122:53"
+            "${tailscaleIPv4}:53"
           ];
 
           http = [ "127.0.0.1:8053" ];
@@ -45,7 +47,14 @@ in
       }
     ))
 
-    ../nixos/dante.nix
+    (import ../nixos/microsocks.nix (
+      args
+      // {
+        listenIP = tailscaleIPv4;
+        listenInterface = "tailscale0";
+        outgoingIP = "10.0.0.5";
+      }
+    ))
 
     ../nixos/monitoring/prometheus_exporters.nix
 
@@ -202,29 +211,29 @@ in
     doc.enable = false;
   };
 
-  power.ups = {
-    enable = true;
-    mode = "standalone";
-    openFirewall = true;
-
-    ups.primary = {
-      description = "Eaton Ellipse PRO 650";
-      driver = "usbhid-ups";
-      port = "auto";
-    };
-
-    users.upsmon = {
-      passwordFile = config.age.secrets.ups-primary-password.path;
-      upsmon = "primary";
-    };
-
-    upsd.listen = [
-      { address = "127.0.0.1"; }
-      { address = "10.0.0.5"; }
-    ];
-
-    upsmon.monitor.primary.user = "upsmon";
-  };
+  # power.ups = {
+  #   enable = true;
+  #   mode = "standalone";
+  #   openFirewall = true;
+  #
+  #   ups.primary = {
+  #     description = "Eaton Ellipse PRO 650";
+  #     driver = "usbhid-ups";
+  #     port = "auto";
+  #   };
+  #
+  #   users.upsmon = {
+  #     passwordFile = config.age.secrets.ups-primary-password.path;
+  #     upsmon = "primary";
+  #   };
+  #
+  #   upsd.listen = [
+  #     { address = "127.0.0.1"; }
+  #     { address = "10.0.0.5"; }
+  #   ];
+  #
+  #   upsmon.monitor.primary.user = "upsmon";
+  # };
 
   programs = {
     zsh.enable = true;

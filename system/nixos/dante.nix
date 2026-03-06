@@ -1,11 +1,14 @@
 { lib, ... }:
 
+let
+  internalInterface = "tailscale0";
+in
 {
   services.dante = {
     enable = true;
 
     config = ''
-      internal: tailscale0 port = 1080
+      internal: ${internalInterface} port = 1080
       external: end0
 
       clientmethod: none
@@ -36,5 +39,5 @@
     after = lib.mkAfter [ "tailscale-wait-up.service" ];
   };
 
-  networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 1080 ];
+  networking.firewall.interfaces."${internalInterface}".allowedTCPPorts = [ 1080 ];
 }

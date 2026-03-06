@@ -1,11 +1,19 @@
-{ lib, ... }:
+{
+  lib,
+  listenIP,
+  listenInterface ? "tailscale0",
+  outgoingIP,
+  ...
+}:
 
 {
   services.microsocks = {
     enable = true;
 
-    ip = "100.116.103.122";
-    outgoingBindIp = "10.0.0.5";
+    ip = listenIP;
+    outgoingBindIp = outgoingIP;
+
+    disableLogging = true;
   };
 
   systemd.services.microsocks = {
@@ -13,5 +21,5 @@
     after = lib.mkAfter [ "tailscale-wait-up.service" ];
   };
 
-  networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 1080 ];
+  networking.firewall.interfaces."${listenInterface}".allowedTCPPorts = [ 1080 ];
 }
