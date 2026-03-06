@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 let
   pkg = pkgs.rift;
@@ -189,7 +194,7 @@ in
       ProgramArguments = [ "${pkg}/bin/rift" ];
 
       EnvironmentVariables = {
-        PATH = "${pkg}/bin";
+        PATH = "${config.home.profileDirectory}/bin";
         RUST_LOG = "error,warn,info";
       };
 
