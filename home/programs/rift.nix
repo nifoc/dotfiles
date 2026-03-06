@@ -9,8 +9,6 @@ let
   pkg = pkgs.rift;
   label = "com.acsandmann.rift";
 
-  settingsFormat = pkgs.formats.toml { };
-
   settings = rec {
     settings = {
       hot_reload = false;
@@ -63,7 +61,7 @@ let
 
       app_rules =
         let
-          floating_ids = [
+          floatingIDs = [
             "com.bitwarden.desktop"
             "com.colliderli.iina"
             "com.haystacksoftware.Arq"
@@ -73,19 +71,19 @@ let
             "net.pornel.ImageOptim"
           ];
 
-          unmanaged_ids = [
+          unmanagedIDs = [
             "com.apple.systempreferences"
             "com.jonny.supermona"
             "com.tapbots.Ivory"
           ];
 
-          communication_ids = [
+          communicationIDs = [
             "com.apple.mail"
             "ch.protonmail.desktop"
             "com.apple.MobileSMS"
           ];
 
-          screen_share_ids = [
+          screenShareIDs = [
             "com.apple.ScreenSharing"
             "com.edovia.screens.5"
           ];
@@ -93,19 +91,19 @@ let
         (map (id: {
           app_id = id;
           floating = true;
-        }) floating_ids)
+        }) floatingIDs)
         ++ (map (id: {
           app_id = id;
           manage = false;
-        }) unmanaged_ids)
+        }) unmanagedIDs)
         ++ (map (id: {
           app_id = id;
           workspace = lib.lists.findFirstIndex (w: w == "Communication") 0 workspace_names;
-        }) communication_ids)
+        }) communicationIDs)
         ++ (map (id: {
           app_id = id;
           workspace = lib.lists.findFirstIndex (w: w == "Screen Share") 0 workspace_names;
-        }) screen_share_ids)
+        }) screenShareIDs)
         ++ [
           {
             app_id = "com.apple.finder";
@@ -190,6 +188,7 @@ let
     ));
   };
 
+  settingsFormat = pkgs.formats.toml { };
   settingsFile = settingsFormat.generate "config.toml" settings;
 in
 {
