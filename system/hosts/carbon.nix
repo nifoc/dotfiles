@@ -18,6 +18,7 @@ in
     ../nixos/git.nix
 
     ../nixos/caddy
+    ../nixos/acme/carbon.nix
     ../nixos/postgresql.nix
 
     ../nixos/attic.nix
@@ -46,6 +47,8 @@ in
 
     ../nixos/monitoring/prometheus_exporters.nix
 
+    ../nixos/prosody
+
     ../nixos/restic/carbon.nix
 
     ../nixos/tailscale.nix
@@ -56,6 +59,7 @@ in
     ../nixos/websites-carbon.nix
 
     ../nixos/container.nix
+    ../nixos/quadlet.nix
   ];
 
   system.stateVersion = "22.11";

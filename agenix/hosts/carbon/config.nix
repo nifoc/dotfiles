@@ -24,11 +24,11 @@
       group = "users";
     };
 
-    # acme-credentials = {
-    #   file = ./acme/credentials.age;
-    #   owner = "acme";
-    #   group = "acme";
-    # };
+    acme-credentials = {
+      file = ./acme/credentials.age;
+      owner = "acme";
+      group = "acme";
+    };
 
     caddy-environment = {
       file = ../all/caddy/environment.age;
@@ -66,6 +66,10 @@
 
     mautrix-whatsapp = {
       file = ./mautrix/whatsapp.age;
+    };
+
+    prosody-environment = {
+      file = ./prosody/environment.age;
     };
 
     restic-password = {

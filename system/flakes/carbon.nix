@@ -2,6 +2,7 @@
   nixpkgs,
   home-manager,
   agenix,
+  quadlet-nix,
   disko,
   lix-overlay,
   nifoc-overlay,
@@ -54,6 +55,8 @@ in
       }
 
       agenix.nixosModules.default
+
+      quadlet-nix.nixosModules.quadlet
 
       run0-sudo-shim.nixosModules.default
 
