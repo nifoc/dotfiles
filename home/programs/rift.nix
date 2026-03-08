@@ -81,6 +81,7 @@ let
             "com.apple.mail"
             "ch.protonmail.desktop"
             "com.apple.MobileSMS"
+            "org.monal-im.prod.catalyst.monal"
           ];
 
           screenShareIDs = [
