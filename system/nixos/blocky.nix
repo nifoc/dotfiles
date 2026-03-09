@@ -137,11 +137,13 @@
           };
         };
 
-        dnssec.validate = false;
+        dnssec = {
+          validate = false;
+          cacheExpirationHours = 2;
+        };
 
         caching = {
           prefetching = true;
-          prefetchMaxItemsCount = 1000;
 
           exclude = [
             "/.*\.lan$/"
