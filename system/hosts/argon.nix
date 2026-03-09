@@ -211,29 +211,29 @@ in
     doc.enable = false;
   };
 
-  # power.ups = {
-  #   enable = true;
-  #   mode = "standalone";
-  #   openFirewall = true;
-  #
-  #   ups.primary = {
-  #     description = "Eaton Ellipse PRO 650";
-  #     driver = "usbhid-ups";
-  #     port = "auto";
-  #   };
-  #
-  #   users.upsmon = {
-  #     passwordFile = config.age.secrets.ups-primary-password.path;
-  #     upsmon = "primary";
-  #   };
-  #
-  #   upsd.listen = [
-  #     { address = "127.0.0.1"; }
-  #     { address = "10.0.0.5"; }
-  #   ];
-  #
-  #   upsmon.monitor.primary.user = "upsmon";
-  # };
+  power.ups = {
+    enable = true;
+    mode = "standalone";
+    openFirewall = true;
+
+    ups.primary = {
+      description = "CyberPower CP550EPFCLCD";
+      driver = "usbhid-ups";
+      port = "auto";
+    };
+
+    users.upsmon = {
+      passwordFile = config.age.secrets.ups-primary-password.path;
+      upsmon = "primary";
+    };
+
+    upsd.listen = [
+      { address = "127.0.0.1"; }
+      { address = "10.0.0.5"; }
+    ];
+
+    upsmon.monitor.primary.user = "upsmon";
+  };
 
   programs = {
     zsh.enable = true;
