@@ -1,6 +1,49 @@
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+
+let
+  domain = "burning.computer";
+in
+{
   imports = [
-    ./prosody.nix
-    ./slidgnal.nix
+    (import ./prosody.nix {
+      inherit
+        pkgs
+        config
+        lib
+        domain
+        ;
+    })
+
+    (import ./slidgnal.nix {
+      inherit
+        pkgs
+        config
+        lib
+        domain
+        ;
+    })
+
+    (import ./slidge-whatsapp.nix {
+      inherit
+        pkgs
+        config
+        lib
+        domain
+        ;
+    })
+
+    (import ./coturn.nix {
+      inherit
+        pkgs
+        config
+        lib
+        domain
+        ;
+    })
   ];
 }

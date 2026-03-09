@@ -34,6 +34,12 @@
       file = ../all/caddy/environment.age;
     };
 
+    coturn-static-auth = {
+      file = ./coturn/staticAuth.age;
+      owner = "turnserver";
+      group = "turnserver";
+    };
+
     geoipupdate-license = {
       file = ./geoipupdate/license.age;
     };

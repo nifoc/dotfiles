@@ -1,16 +1,16 @@
 { config, domain, ... }:
 
 {
-  virtualisation.quadlet.containers.slidgnal = {
+  virtualisation.quadlet.containers.slidge-whatsapp = {
     containerConfig = {
-      image = "codeberg.org/slidge/slidgnal:latest-arm64";
-      exec = "--jid signal.${domain} --secret $SLIDGNAL_SECRET";
+      image = "codeberg.org/slidge/slidge-whatsapp:latest-arm64";
+      exec = "--jid whatsapp.${domain} --secret $SLIDGE_WHATSAPP_SECRET";
       environments = {
         SLIDGE_MAM_MAX_DAYS = "3650";
       };
       environmentFiles = [ config.age.secrets.prosody-environment.path ];
       volumes = [
-        "/var/lib/slidge/slidgnal:/var/lib/slidge"
+        "/var/lib/slidge/whatsapp:/var/lib/slidge"
       ];
       networks = [ "host" ];
       labels = {
@@ -31,6 +31,6 @@
 
   systemd.tmpfiles.rules = [
     "d /var/lib/slidge 0750 root root"
-    "d /var/lib/slidge/slidgnal 0750 10000 10000"
+    "d /var/lib/slidge/whatsapp 0750 10000 10000"
   ];
 }
