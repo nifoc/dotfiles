@@ -23,7 +23,7 @@
         "github.com/yroc92/postgres-storage@v0.0.0-20230310195636-276797aefe40"
         "github.com/porech/caddy-maxmind-geolocation@v0.0.0-20250305164927-9066f91c9696"
       ];
-      hash = "sha256-jqF4FcA7U+PFJi4Whx2Vh3pYS/xSx5kob1G7k+8vti0=";
+      hash = "sha256-clitBV7Y4FoqvzlZ6ilCYb458WNGAf68cRDh+cch9zc=";
     };
 
     environmentFile = config.age.secrets.caddy-environment.path;
