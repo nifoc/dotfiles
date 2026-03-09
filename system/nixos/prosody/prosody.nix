@@ -19,16 +19,13 @@ in
       package = pkgs.prosody.override {
         withCommunityModules = [
           "csi_battery_saver"
+          "muc_notifications"
           "privilege"
           "sasl_ssdp"
           "sasl2"
           "sasl2_bind2"
           "sasl2_sm"
           "sasl2_fast"
-        ];
-
-        withOnlyInstalledCommunityModules = [
-          "muc_notifications"
         ];
 
         withExtraLuaPackages = l: [ l.luadbi-postgresql ];
