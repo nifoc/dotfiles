@@ -7,6 +7,8 @@ args@{
 
 let
   ssh-keys = import ../shared/ssh-keys.nix;
+
+  tailscaleIPv4 = "100.83.191.69";
 in
 {
   imports = [
@@ -30,23 +32,23 @@ in
 
     ../nixos/audiobookshelf.nix
 
-    (import ../nixos/blocky.nix (
+    (import ../nixos/knot-resolver.nix (
       args
       // {
-        blockyPorts = {
-          dns = [
-            "10.0.0.100:53"
-            "100.83.191.69:53"
-          ];
+        workers = 4;
+        extraLlisten = [
+          {
+            interface = [ "10.0.0.100" ];
+            kind = "dns";
+            freebind = false;
+          }
 
-          http = [ "127.0.0.1:8053" ];
-        };
-
-        valkeyInstance = {
-          bind = "10.0.0.100";
-          connect = "10.0.0.100";
-          port = 2653;
-        };
+          {
+            interface = [ tailscaleIPv4 ];
+            kind = "dns";
+            freebind = true;
+          }
+        ];
       }
     ))
 

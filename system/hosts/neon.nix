@@ -26,24 +26,34 @@ in
 
     ../nixos/chrony.nix
 
-    (import ../nixos/blocky.nix (
+    (import ../nixos/knot-resolver.nix (
       args
       // {
-        blockyPorts = {
-          dns = [
-            "10.0.0.7:53"
-            "10.0.51.7:53"
-            "10.0.200.7:53"
-            "${tailscaleIPv4}:53"
-          ];
+        extraLlisten = [
+          {
+            interface = [ "10.0.0.7" ];
+            kind = "dns";
+            freebind = false;
+          }
 
-          http = [ "127.0.0.1:8053" ];
-        };
+          {
+            interface = [ "10.0.51.7" ];
+            kind = "dns";
+            freebind = false;
+          }
 
-        valkeyInstance = {
-          connect = "10.0.0.100";
-          port = 2653;
-        };
+          {
+            interface = [ "10.0.200.7" ];
+            kind = "dns";
+            freebind = false;
+          }
+
+          {
+            interface = [ tailscaleIPv4 ];
+            kind = "dns";
+            freebind = true;
+          }
+        ];
       }
     ))
 
