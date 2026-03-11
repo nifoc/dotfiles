@@ -126,6 +126,8 @@ in
       ];
     };
 
+    postgresqlBackup.databases = [ "prosody" ];
+
     caddy.virtualHosts."upload.${domain}" = {
       useACMEHost = domain;
 
