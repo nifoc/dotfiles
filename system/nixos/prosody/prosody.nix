@@ -31,9 +31,6 @@ in
         withExtraLuaPackages = l: [ l.luadbi-postgresql ];
       };
 
-      modules = {
-        csi = false;
-      };
       extraModules = [ "turn_external" ];
 
       admins = [ "daniel@${domain}" ];
