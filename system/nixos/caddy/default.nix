@@ -22,8 +22,9 @@
         "github.com/caddy-dns/desec@v0.0.0-20260210205102-325e2faf7910"
         "github.com/yroc92/postgres-storage@v0.0.0-20230310195636-276797aefe40"
         "github.com/porech/caddy-maxmind-geolocation@v0.0.0-20250305164927-9066f91c9696"
+        "pkg.jsn.cam/caddy-defender@v0.10.0"
       ];
-      hash = "sha256-clitBV7Y4FoqvzlZ6ilCYb458WNGAf68cRDh+cch9zc=";
+      hash = "sha256-q7BvV3e2oBusC3HT9vT+00n6OAiXFQ9WaqX47SdpGH0=";
     };
 
     environmentFile = config.age.secrets.caddy-environment.path;

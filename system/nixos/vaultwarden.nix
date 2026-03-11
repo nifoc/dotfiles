@@ -50,6 +50,12 @@ in
 
     caddy.virtualHosts."${fqdn}" = {
       extraConfig = ''
+        defender custom {
+          ranges aliyun aws azurepubliccloud gcloud huawei linode oci vultr
+          message "no clouds pls"
+          status_code 403
+        }
+
         encode
 
         header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
@@ -62,15 +68,6 @@ in
           request_body {
             max_size 40MB
           }
-
-          # See: https://github.com/dani-garcia/vaultwarden/issues/6561
-          header /api/tasks {
-            Content-Type "application/json"
-          }
-
-          respond /api/tasks <<JSON
-            {"data":[],"object":"list"}
-            JSON 200
 
           reverse_proxy ${config.services.vaultwarden.config.ROCKET_ADDRESS}:${toString config.services.vaultwarden.config.ROCKET_PORT} {
             header_up X-Real-IP {remote_host}

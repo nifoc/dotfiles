@@ -58,6 +58,10 @@ in
 
     caddy.virtualHosts."${fqdn}" = {
       extraConfig = ''
+        defender drop {
+          ranges aliyun deepseek githubcopilot huawei mistral openai
+        }
+
         encode
 
         request_body {
