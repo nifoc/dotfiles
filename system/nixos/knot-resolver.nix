@@ -26,16 +26,6 @@
               kind = "dns";
               freebind = false;
             }
-
-            {
-              interface = [
-                "127.0.0.1"
-                "::1"
-              ];
-              port = 8053;
-              kind = "doh2";
-              freebind = false;
-            }
           ]
           ++ extraLlisten;
 
@@ -117,6 +107,15 @@
                   transport = "tls";
                   hostname = "dns3.digitalcourage.de";
                 }
+
+                {
+                  address = [
+                    "2001:67c:1401:2120::1"
+                    "217.197.91.153"
+                  ];
+                  transport = "tls";
+                  hostname = "dns.artikel10.org";
+                }
               ];
             }
           ]
@@ -125,6 +124,9 @@
         views = [
           {
             subnets = [
+              # Almost certainly always DOH
+              "::1"
+
               # Pallas
               "100.119.140.87"
               "fd7a:115c:a1e0::3801:8c5c"
@@ -192,6 +194,14 @@
       };
     };
 
+    doh-proxy-rust = {
+      enable = true;
+      flags = [
+        "--listen-address=127.0.0.1:8053"
+        "--server-address=::1:53"
+      ];
+    };
+
     caddy = {
       virtualHosts."dns.internal.kempkens.network" = {
         serverAliases = [ "dns-${config.networking.hostName}.internal.kempkens.network" ];
@@ -211,11 +221,7 @@
           }
 
           reverse_proxy @knot_doh 127.0.0.1:8053 {
-            transport http {
-              tls
-              tls_insecure_skip_verify
-              proxy_protocol v2
-            }
+            flush_interval -1
           }
 
           reverse_proxy @knot_metrics 127.0.0.1:8853
