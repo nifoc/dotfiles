@@ -25,8 +25,6 @@ in
 
     ../nixos/atuin-sync.nix
 
-    ../nixos/matrix
-
     ../nixos/fail2ban.nix
 
     ../nixos/fedifetcher.nix
