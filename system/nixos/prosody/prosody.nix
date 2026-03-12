@@ -81,6 +81,7 @@ in
 
       extraConfig = ''
         c2s_direct_tls_ports = { 5223 }
+        tls_profile = "modern"
 
         storage = "sql"
         sql = {
@@ -91,10 +92,14 @@ in
 
         archive_expires_after = "never"
 
-        turn_external_secret = Lua.os.getenv("TURN_SECRET")
+        turn_external_secret = ENV_TURN_SECRET
         turn_external_host = "${config.services.coturn.realm}"
         turn_external_port = ${toString config.services.coturn.listening-port}
         turn_external_tls_port = ${toString config.services.coturn.tls-listening-port}
+
+        unbound = {
+          trustfile = "${pkgs.dns-root-data}/root.ds";
+        }
 
         local _privileges = {
           roster = "both";
@@ -107,11 +112,11 @@ in
         }
 
         Component "signal.${domain}"
-          component_secret = Lua.os.getenv("SLIDGNAL_SECRET")
+          component_secret = ENV_SLIDGNAL_SECRET
           modules_enabled = {"privilege"}
 
         Component "whatsapp.${domain}"
-          component_secret = Lua.os.getenv("SLIDGE_WHATSAPP_SECRET")
+          component_secret = ENV_SLIDGE_WHATSAPP_SECRET
           modules_enabled = {"privilege"}
       '';
     };
