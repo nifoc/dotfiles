@@ -31,7 +31,10 @@ in
         withExtraLuaPackages = l: [ l.luadbi-postgresql ];
       };
 
-      extraModules = [ "turn_external" ];
+      extraModules = [
+        "presence_cache"
+        "turn_external"
+      ];
 
       admins = [ "daniel@${domain}" ];
       allowRegistration = false;
@@ -91,6 +94,9 @@ in
         }
 
         archive_expires_after = "never"
+
+        smacks_hibernation_time = 86400
+        smacks_max_queue_size = 1000
 
         turn_external_secret = ENV_TURN_SECRET
         turn_external_host = "${config.services.coturn.realm}"
