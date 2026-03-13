@@ -75,6 +75,7 @@ let
             "com.apple.systempreferences"
             "com.jonny.supermona"
             "com.tapbots.Ivory"
+            "me.damir.dropover-mac"
           ];
 
           communicationIDs = [
