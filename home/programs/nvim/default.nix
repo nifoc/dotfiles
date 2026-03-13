@@ -93,9 +93,6 @@ in
       '';
 
     plugins =
-      let
-        customPlugins = import ./plugins.nix { inherit pkgs lib; };
-      in
       with pkgs.vimPlugins;
       [
         # Utils
@@ -124,7 +121,7 @@ in
         }
 
         {
-          plugin = customPlugins.cutlass-nvim;
+          plugin = cutlass-nvim;
           config = builtins.readFile ../../config/nvim/plugins/cutlass.fnl;
           type = "fennel";
         }

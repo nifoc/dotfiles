@@ -19,7 +19,6 @@ jobs:
       - name: Update dependencies
         run: |
           nix flake update
-          env NIX_PATH=nixpkgs=$(nix flake metadata github:nixos/nixpkgs/nixos-unstable-small --json | jq -r .path) nix-shell ./home/programs/nvim/update-plugins.sh
       - name: Build lix
         run: |
           nix build '.#nixosConfigurations.boron.config.nix.package'
