@@ -156,6 +156,8 @@ in
 
   "agenix/hosts/boron/acme/credentials.age".publicKeys = boron;
 
+  "agenix/hosts/boron/geoipupdate/license.age".publicKeys = boron;
+
   "agenix/hosts/boron/msmtp/password.age".publicKeys = boron;
 
   "agenix/hosts/boron/ntfy/environment.age".publicKeys = boron;
@@ -168,6 +170,8 @@ in
   "agenix/hosts/boron/forgejo-actions/token.age".publicKeys = boron;
 
   "agenix/hosts/boron/miniflux/credentials.age".publicKeys = boron;
+
+  "agenix/hosts/boron/pocket-id/encryption-key.age".publicKeys = boron;
 
   "agenix/hosts/boron/restic/password.age".publicKeys = boron;
   "agenix/hosts/boron/restic/ssh-private-key.age".publicKeys = boron;

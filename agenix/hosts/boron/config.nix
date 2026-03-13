@@ -46,6 +46,10 @@
       file = ./forgejo-actions/token.age;
     };
 
+    geoipupdate-license = {
+      file = ./geoipupdate/license.age;
+    };
+
     miniflux-credentials = {
       file = ./miniflux/credentials.age;
     };
@@ -62,6 +66,10 @@
     ntfy-token-hardware = {
       file = ./ntfy/token-hardware.age;
       mode = "444";
+    };
+
+    pocket-id-encryption-key = {
+      file = ./pocket-id/encryption-key.age;
     };
 
     restic-password = {

@@ -36,13 +36,13 @@ in
         mailer = {
           ENABLED = true;
           PROTOCOL = "sendmail";
-          FROM = "forgejo@mg.kempkens.io";
+          FROM = "server@kempkens.io";
           SENDMAIL_PATH = "${pkgs.system-sendmail}/bin/sendmail";
         };
 
         session = {
           COOKIE_SECURE = true;
-          SAME_SITE = "strict";
+          SAME_SITE = "lax";
         };
 
         actions = {

@@ -40,6 +40,8 @@ in
 
     ../nixos/ntfy-sh.nix
 
+    ../nixos/pocket-id.nix
+
     ../nixos/restic/boron.nix
 
     ../nixos/tailscale.nix
