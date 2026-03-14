@@ -317,11 +317,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773367371,
-        "narHash": "sha256-tbmDl56O2kcGJgtkzDuTOr4QQ13ZHDVxIW8KNn2uY6I=",
-        "rev": "a68a3df4664de0ac9e2e5411fdd0371ab8e07832",
+        "lastModified": 1773453688,
+        "narHash": "sha256-ewmjDSqtEyom51f7AGs8m07vfyjzbxaLmhxWjNiHzJE=",
+        "rev": "bc444efe8c0b55c70989f497cd8d6189e123c7fa",
         "type": "tarball",
-        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/a68a3df4664de0ac9e2e5411fdd0371ab8e07832.tar.gz?rev=a68a3df4664de0ac9e2e5411fdd0371ab8e07832"
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/bc444efe8c0b55c70989f497cd8d6189e123c7fa.tar.gz?rev=bc444efe8c0b55c70989f497cd8d6189e123c7fa"
       },
       "original": {
         "type": "tarball",
