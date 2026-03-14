@@ -1,3 +1,5 @@
+{ config, ... }:
+
 {
   services =
     let
@@ -9,6 +11,8 @@
       gotosocial = {
         enable = true;
         setupPostgresqlDB = true;
+
+        environmentFile = config.age.secrets.gotosocial-environment.path;
 
         settings = {
           inherit host bind-address port;

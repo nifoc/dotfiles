@@ -44,6 +44,10 @@
       file = ./geoipupdate/license.age;
     };
 
+    gotosocial-environment = {
+      file = ./gotosocial/environment.age;
+    };
+
     tailscale-authkey = {
       file = ./tailscale/authkey.age;
     };
