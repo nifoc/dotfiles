@@ -112,6 +112,12 @@ let
             title_substring = "Kopieren";
             floating = true;
           }
+
+          {
+            app_id = "org.mozilla.librewolf";
+            title_substring = "Bitwarden";
+            floating = true;
+          }
         ];
     };
 
