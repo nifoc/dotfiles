@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 let
   inherit (config.virtualisation.quadlet) containers;
@@ -12,6 +12,8 @@ let
     "/dozer/media"
     "/dozer/MediaVault"
   ];
+
+  ips = import ../shared/ips.nix;
 in
 {
   virtualisation.quadlet.containers.sonarr = {
@@ -85,11 +87,16 @@ in
         }
 
         handle {
-          import tailscale-auth
+          import tinyauth
 
           reverse_proxy ${internalIP}:${internalPort}
         }
       '';
     };
+  };
+
+  virtualisation.quadlet.containers.tinyauth.containerConfig.environments = {
+    TINYAUTH_APPS_SONARR_CONFIG_DOMAIN = fqdn;
+    TINYAUTH_APPS_SONARR_IP_BYPASS = lib.strings.concatStringsSep "," ips.tailscale.daniels-iphone;
   };
 }

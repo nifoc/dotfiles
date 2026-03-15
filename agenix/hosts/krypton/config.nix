@@ -23,14 +23,6 @@
       file = ../all/caddy/environment.age;
     };
 
-    homepage-environment = {
-      file = ./homepage/environment.age;
-    };
-
-    linkwarden-environment = {
-      file = ./linkwarden/environment.age;
-    };
-
     msmtp-password = {
       file = ./msmtp/password.age;
       mode = "444";
@@ -81,6 +73,10 @@
 
     tailscale-authkey = {
       file = ./tailscale/authkey.age;
+    };
+
+    tinyauth-environment = {
+      file = ../all/tinyauth/environment.age;
     };
 
     tubearchivist-environment-ta = {

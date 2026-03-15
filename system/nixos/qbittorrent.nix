@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   fqdn = "qbittorrent.internal.kempkens.network";
@@ -8,6 +8,8 @@ let
   requiredPaths = [
     "/dozer/downloads"
   ];
+
+  ips = import ../shared/ips.nix;
 in
 {
   virtualisation.quadlet.containers.qbittorrent = {
@@ -67,10 +69,15 @@ in
 
         header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-        import tailscale-auth
+        import tinyauth
 
         reverse_proxy ${internalIP}:${internalPort}
       '';
     };
+  };
+
+  virtualisation.quadlet.containers.tinyauth.containerConfig.environments = {
+    TINYAUTH_APPS_QBITTORRENT_CONFIG_DOMAIN = fqdn;
+    TINYAUTH_APPS_QBITTORRENT_IP_BYPASS = lib.strings.concatStringsSep "," ips.tailscale.daniels-iphone;
   };
 }

@@ -21,11 +21,14 @@ in
         server = {
           host = internalIP;
           port = internalPort;
+          trusted_proxies = [ "127.0.0.1" ];
         };
 
         database = {
           source = "postgres://readeck@localhost/readeck?host=/run/postgresql";
         };
+
+        auth.forwarded.enabled = true;
       };
     };
 
@@ -46,7 +49,7 @@ in
 
         header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-        import tailscale-auth
+        import tinyauth
 
         reverse_proxy ${internalIP}:${toString internalPort}
       '';

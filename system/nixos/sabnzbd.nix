@@ -1,3 +1,5 @@
+{ lib, ... }:
+
 let
   fqdn = "sabnzbd.internal.kempkens.network";
   internalIP = "192.168.42.2";
@@ -6,6 +8,8 @@ let
   requiredPaths = [
     "/dozer/downloads"
   ];
+
+  ips = import ../shared/ips.nix;
 in
 {
   virtualisation.quadlet.containers.sabnzbd = {
@@ -62,10 +66,15 @@ in
 
         header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-        import tailscale-auth
+        import tinyauth
 
         reverse_proxy ${internalIP}:${internalPort}
       '';
     };
+  };
+
+  virtualisation.quadlet.containers.tinyauth.containerConfig.environments = {
+    TINYAUTH_APPS_SABNZBD_CONFIG_DOMAIN = fqdn;
+    TINYAUTH_APPS_SABNZBD_IP_BYPASS = lib.strings.concatStringsSep "," ips.tailscale.daniels-iphone;
   };
 }

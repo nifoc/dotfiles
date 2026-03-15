@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 let
   inherit (config.virtualisation.quadlet) containers;
@@ -11,6 +11,8 @@ let
     "/dozer/downloads"
     "/dozer/media"
   ];
+
+  ips = import ../shared/ips.nix;
 in
 {
   virtualisation.quadlet.containers.radarr = {
@@ -82,11 +84,16 @@ in
         }
 
         handle {
-          import tailscale-auth
+          import tinyauth
 
           reverse_proxy ${internalIP}:${internalPort}
         }
       '';
     };
+  };
+
+  virtualisation.quadlet.containers.tinyauth.containerConfig.environments = {
+    TINYAUTH_APPS_RADARR_CONFIG_DOMAIN = fqdn;
+    TINYAUTH_APPS_RADARR_IP_BYPASS = lib.strings.concatStringsSep "," ips.tailscale.daniels-iphone;
   };
 }

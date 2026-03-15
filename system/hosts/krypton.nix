@@ -27,6 +27,7 @@ in
 
     ../nixos/caddy
     ../nixos/postgresql.nix
+    ../nixos/tinyauth.nix
 
     ../nixos/attic.nix
 

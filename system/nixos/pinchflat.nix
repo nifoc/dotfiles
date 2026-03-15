@@ -32,7 +32,7 @@ in
 
         header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-        import tailscale-auth
+        import tinyauth
 
         reverse_proxy ${internalIP}:${toString config.services.pinchflat.port}
       '';
