@@ -67,8 +67,9 @@
       }
 
       {
-        job_name = "blocky";
+        job_name = "knot-resolver";
         scheme = "https";
+        metrics_path = "/metrics/prometheus";
         static_configs = [
           {
             targets = [
