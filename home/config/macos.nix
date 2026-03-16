@@ -22,5 +22,9 @@
       FXPreferredViewStyle = "Nlsv";
       _FXSortFoldersFirst = true;
     };
+
+    "com.apple.desktopservices" = {
+      DSDontWriteNetworkStores = true;
+    };
   };
 }
