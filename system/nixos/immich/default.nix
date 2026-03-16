@@ -56,9 +56,6 @@ in
       database = {
         enable = true;
         createDB = true;
-
-        enableVectorChord = true;
-        enableVectors = false;
       };
     };
 

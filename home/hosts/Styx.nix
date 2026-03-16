@@ -31,8 +31,6 @@
 
     ../programs/jq.nix
 
-    ../programs/firefox.nix
-
     ../programs/podman.nix
 
     ../programs/scripts.nix
