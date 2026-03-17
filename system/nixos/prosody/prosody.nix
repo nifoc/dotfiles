@@ -11,6 +11,8 @@ let
     cert = "/var/lib/prosody/xmpp-fullchain.pem";
     key = "/var/lib/prosody/xmpp-key.pem";
   };
+
+  ntfyDomain = "ntfy.${domain}";
 in
 {
   services = {
@@ -47,16 +49,24 @@ in
         }
       '';
 
-      virtualHosts."${domain}" = {
-        enabled = true;
-        inherit domain ssl;
+      virtualHosts = {
+        main = {
+          enabled = true;
+          inherit domain ssl;
 
-        extraConfig = ''
-          privileged_entities = {
-            ["signal.${domain}"] = _privileges,
-            ["whatsapp.${domain}"] = _privileges,
-          }
-        '';
+          extraConfig = ''
+            privileged_entities = {
+              ["signal.${domain}"] = _privileges,
+              ["whatsapp.${domain}"] = _privileges,
+            }
+          '';
+        };
+
+        ntfy = {
+          enabled = true;
+          domain = ntfyDomain;
+          inherit ssl;
+        };
       };
 
       muc = [
@@ -74,11 +84,13 @@ in
         domain = "upload.${domain}";
         http_external_url = "https://upload.${domain}";
         access = [
+          domain
+          ntfyDomain
           "signal.${domain}"
           "whatsapp.${domain}"
         ];
 
-        expires_after = "never";
+        expires_after = "1 week";
         size_limit = 64 * 1024 * 1024;
       };
 
@@ -93,7 +105,8 @@ in
           username = "prosody";
         }
 
-        archive_expires_after = "never"
+        default_archive_policy = true
+        archive_expires_after = "1w"
 
         smacks_hibernation_time = 86400
         smacks_max_queue_size = 1000
