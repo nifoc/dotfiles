@@ -30,6 +30,8 @@ in
           "sasl2_fast"
         ];
 
+        withOnlyInstalledCommunityModules = [ "rest" ];
+
         withExtraLuaPackages = l: [ l.luadbi-postgresql ];
       };
 
@@ -66,6 +68,10 @@ in
           enabled = true;
           domain = ntfyDomain;
           inherit ssl;
+
+          extraConfig = ''
+            modules_enabled = {"rest"}
+          '';
         };
       };
 
@@ -152,22 +158,47 @@ in
 
     postgresqlBackup.databases = [ "prosody" ];
 
-    caddy.virtualHosts."upload.${domain}" = {
-      useACMEHost = domain;
+    caddy.virtualHosts = {
+      "upload.${domain}" = {
+        useACMEHost = domain;
 
-      extraConfig = ''
-        encode
+        extraConfig = ''
+          encode
 
-        request_body {
-          max_size ${toString config.services.prosody.httpFileShare.size_limit}
-        }
+          request_body {
+            max_size ${toString config.services.prosody.httpFileShare.size_limit}
+          }
 
-        header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
+          header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-        reverse_proxy 127.0.0.1:5280 {
-          flush_interval -1
-        }
-      '';
+          reverse_proxy 127.0.0.1:5280 {
+            flush_interval -1
+          }
+        '';
+      };
+
+      "ntfy.${domain}" = {
+        useACMEHost = domain;
+
+        extraConfig = ''
+          encode
+
+          request_body {
+            max_size 1MB
+          }
+
+          header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+          respond / "uwu ~" 200
+
+          @mod_rest {
+            path /rest
+            path /rest/*
+          }
+
+          reverse_proxy @mod_rest 127.0.0.1:5280
+        '';
+      };
     };
   };
 
