@@ -11,7 +11,7 @@
 
     autodetect = true;
 
-    defaults.monitored = "-a -o on -s S/../.././02";
+    defaults.monitored = "-a -o on -s S/../../(1|4)/02";
 
     notifications = {
       mail = {
