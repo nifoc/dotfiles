@@ -61,6 +61,7 @@
       glab
       glow
       hexyl
+      hydra-check
       hyperfine
       imagemagick
       immich-cli
