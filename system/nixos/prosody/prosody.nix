@@ -20,6 +20,7 @@ in
       enable = true;
       package = pkgs.prosody.override {
         withCommunityModules = [
+          "cloud_notify_encrypted"
           "csi_battery_saver"
           "muc_notifications"
           "privilege"
@@ -32,7 +33,11 @@ in
 
         withOnlyInstalledCommunityModules = [ "rest" ];
 
-        withExtraLuaPackages = l: [ l.luadbi-postgresql ];
+        withExtraLuaPackages = l: [
+          l.luadbi-postgresql
+          l.luaevent
+          l.luaossl
+        ];
       };
 
       extraModules = [
@@ -101,6 +106,8 @@ in
       };
 
       extraConfig = ''
+        network_backend = "event"
+
         c2s_direct_tls_ports = { 5223 }
         tls_profile = "modern"
 
@@ -171,6 +178,8 @@ in
 
           header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
+          import robots-txt-generic
+
           reverse_proxy 127.0.0.1:5280 {
             flush_interval -1
           }
@@ -188,6 +197,9 @@ in
           }
 
           header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+          import geoblock-common
+          import robots-txt-generic
 
           respond / "uwu ~" 200
 
