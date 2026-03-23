@@ -11,18 +11,19 @@
     ];
 
     colors = {
-      fg = "-1";
-      "fg+" = "-1";
-      bg = "-1";
-      "bg+" = "-1";
-      hl = "#5fff87";
-      "hl+" = "#ffaf5f";
+      fg = "#f8f8f2";
+      "fg+" = "#f8f8f2";
+      bg = "#282a36";
+      "bg+" = "#44475a";
+      hl = "#bd93f9";
+      "hl+" = "#bd93f9";
 
-      info = "#af87ff";
-      prompt = "#5fff87";
-      pointer = "#ff87d7";
-      marker = "#ff87d7";
-      spinner = "#ff87d7";
+      info = "#ffb86c";
+      prompt = "#50fa7b";
+      pointer = "#ff79c6";
+      marker = "#ff79c6";
+      spinner = "#ffb86c";
+      header = "#6272a4";
     };
 
     enableBashIntegration = false;

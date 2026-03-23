@@ -23,8 +23,6 @@ in
 
     ../nixos/attic.nix
 
-    ../nixos/atuin-sync.nix
-
     ../nixos/fail2ban.nix
 
     ../nixos/fedifetcher.nix

@@ -3,9 +3,10 @@
 {
   imports = [
     ../programs/zsh
-    ../programs/atuin.nix
-    ../programs/starship.nix
     ../programs/direnv.nix
+    ../programs/fzf.nix
+    ../programs/starship.nix
+    ../programs/zoxide.nix
 
     ../programs/git.nix
 

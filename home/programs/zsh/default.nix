@@ -10,6 +10,8 @@ let
   inherit (pkgs.stdenv) isDarwin;
   inherit (lib) mkOrder optionals;
   inherit (lib.attrsets) optionalAttrs;
+
+  ips = import ../../../system/shared/ips.nix;
 in
 {
   programs = {
@@ -57,8 +59,8 @@ in
           src = fetchFromGitHub {
             owner = "nifoc";
             repo = "zsh-histdb-fzf";
-            rev = "a9c80d90cecbb26d047e0aa4cd115eef4f18f958";
-            hash = "sha256-+ryE1/S9N4re2bu1ksaKRSWFKzo+0K4EHbkAP07saUw=";
+            rev = "ac66b0d3dad336f83be30778ec8c011e9d6f4759";
+            hash = "sha256-11zkokWDBFr9g0gyWaQF4w6y/1fN1DpMvwGnKFxn3nE=";
           };
         }
 
@@ -193,6 +195,7 @@ in
               AUTO_NOTIFY_THRESHOLD=20
 
               HISTORY_IGNORE="(base64decode)"
+              HISTDB_FZF_FORCE_DATE_FORMAT="non-us"
               HISTDB_FZF_DEFAULT_MODE="3"
               source ${./scripts/zsh-histdb-tabulation.zsh}
               source ${./scripts/zsh-histdb-autosuggestions.zsh}
@@ -203,6 +206,7 @@ in
             ''
               bindkey '^R' histdb-fzf-widget
               bindkey '^[[A' histdb-fzf-widget
+              bindkey '^[OA' histdb-fzf-widget
 
               # Custom Functions
               () {
@@ -254,6 +258,11 @@ in
 
               export LESS="--quit-if-one-screen --ignore-case --RAW-CONTROL-CHARS"
 
+              if [[ "$SSH_CLIENT" = "${builtins.elemAt ips.tailscale.daniels-iphone 0}"* ]] ||
+                 [[ "$SSH_CLIENT" = "${builtins.elemAt ips.tailscale.daniels-iphone 1}"* ]]; then
+                _zsh_autosuggest_disable
+              fi
+
               if [[ "$WEZTERM_EXECUTABLE" = *"wezterm-mux-server" ]]; then
                 export NIFOC_SSH_CONNECTION=1
               fi
@@ -264,13 +273,17 @@ in
     };
 
     lesspipe.enable = true;
+    bat.enable = true;
   };
 
-  home.file.".zsh/user_functions" = {
-    source = ./functions;
-    recursive = true;
-  };
+  home = {
+    packages = with pkgs; [
+      sqlite
+    ];
 
-  # Plugin dependencies
-  programs.bat.enable = true;
+    file.".zsh/user_functions" = {
+      source = ./functions;
+      recursive = true;
+    };
+  };
 }

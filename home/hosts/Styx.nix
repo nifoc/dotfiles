@@ -6,7 +6,6 @@
     ../config/fonts
 
     ../programs/zsh
-    ../programs/atuin.nix
     ../programs/fzf.nix
     ../programs/starship.nix
     ../programs/zoxide.nix

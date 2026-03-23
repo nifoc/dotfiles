@@ -3,7 +3,9 @@
 {
   imports = [
     ../programs/zsh
+    ../programs/fzf.nix
     ../programs/starship.nix
+    ../programs/zoxide.nix
 
     ../programs/git.nix
 

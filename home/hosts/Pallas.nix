@@ -75,7 +75,6 @@
       q
       ripgrep
       socat
-      sqlite
       ssh-audit
       testssl
       trippy
