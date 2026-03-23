@@ -308,6 +308,7 @@
                   excludes = [
                     "\\.envrc"
                     "system/nixos/monit/scripts/"
+                    "home/programs/zsh/scripts/"
                   ];
                 };
                 # statix.enable = true;

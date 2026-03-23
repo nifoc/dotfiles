@@ -6,6 +6,10 @@
     fileWidgetCommand = "fd --type file --hidden --no-ignore";
     changeDirWidgetCommand = "fd --type directory --hidden --no-ignore";
 
+    defaultOptions = [
+      "--height 40%"
+    ];
+
     colors = {
       fg = "-1";
       "fg+" = "-1";

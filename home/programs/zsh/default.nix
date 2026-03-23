@@ -30,15 +30,46 @@ in
         ];
       };
 
+      history = {
+        save = 0;
+        size = 0;
+        share = false;
+      };
+
       plugins = [
+        # https://github.com/paulreimer/zsh-histdb
+        {
+          name = "zsh-histdb";
+          file = "sqlite-history.zsh";
+          src = fetchFromGitHub {
+            owner = "paulreimer";
+            repo = "zsh-histdb";
+            rev = "99cd4faf2ca5b5c6cf7b7f562e241f39d1f03baf";
+            hash = "sha256-8CGtPdvcQ0htkAlUJoquOigZ/96b070XG1/jhWq9MaM=";
+          };
+        }
+
+        # https://github.com/paulreimer/zsh-histdb-fzf
+        # https://github.com/nifoc/zsh-histdb-fzf
+        {
+          name = "zsh-histdb-fzf";
+          file = "fzf-histdb.zsh";
+          src = fetchFromGitHub {
+            owner = "nifoc";
+            repo = "zsh-histdb-fzf";
+            rev = "a9c80d90cecbb26d047e0aa4cd115eef4f18f958";
+            hash = "sha256-+ryE1/S9N4re2bu1ksaKRSWFKzo+0K4EHbkAP07saUw=";
+          };
+        }
+
         {
           # https://github.com/Aloxaf/fzf-tab
           name = "fzf-tab";
           src = fetchFromGitHub {
             owner = "Aloxaf";
             repo = "fzf-tab";
-            tag = "v1.2.0";
-            hash = "sha256-q26XVS/LcyZPRqDNwKKA9exgBByE0muyuNb0Bbar2lY=";
+            tag = "v1.3.0";
+            hash = "sha256-8atbysoOyCBW2OYKmdc91x9V/Mk3eyg3hvzvhJpQ32w=";
           };
         }
 
@@ -48,8 +79,8 @@ in
           src = fetchFromGitHub {
             owner = "Freed-Wu";
             repo = "fzf-tab-source";
-            rev = "a06c2cf1f9b4f1582cb7536ce06f12ba02696ea6";
-            hash = "sha256-0k6x4AhO8ULqanA+1bTNLhMGVz2A3K7LXQ/MgSLuQkc=";
+            rev = "5463698036f5e23ef275b4b55c42551879ebfab4";
+            hash = "sha256-ar025RTlDFWEnE9Ql8WBz4tiBmz1B2tsZiRI2/mVCDI=";
           };
         }
 
@@ -116,8 +147,8 @@ in
           src = fetchFromGitHub {
             owner = "trystan2k";
             repo = "zsh-tab-title";
-            tag = "v3.1.0";
-            hash = "sha256-YvAN8c2++WRJYGblstZKWCWrCl0byXQqFryTA35/Ao0=";
+            tag = "v3.4.0";
+            hash = "sha256-EbgHIH1EeaoES+w14kVynomUrmyOahFnxMgzrI1mOig=";
           };
         }
       ]
@@ -128,8 +159,8 @@ in
           src = fetchFromGitHub {
             owner = "MichaelAquilina";
             repo = "zsh-auto-notify";
-            tag = "0.11.0";
-            hash = "sha256-8r5RsyldJIzlWr9+G8lrkHvJ8KxTVO859M//wDnYOUY=";
+            tag = "0.11.1";
+            hash = "sha256-1+HD4rerEu0uu4hWtMORBeAJJgIgXv65McnqOpaSIV8=";
           };
         }
       ];
@@ -160,11 +191,19 @@ in
               zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
               AUTO_NOTIFY_THRESHOLD=20
+
+              HISTORY_IGNORE="(base64decode)"
+              HISTDB_FZF_DEFAULT_MODE="3"
+              source ${./scripts/zsh-histdb-tabulation.zsh}
+              source ${./scripts/zsh-histdb-autosuggestions.zsh}
             ''
           )
 
           (mkOrder 1501 # sh
             ''
+              bindkey '^R' histdb-fzf-widget
+              bindkey '^[[A' histdb-fzf-widget
+
               # Custom Functions
               () {
                 local user_functions="$HOME/.zsh/user_functions"
@@ -195,7 +234,7 @@ in
               bindkey '^[[1;3D' backward-word # Alt+Left
 
               # Plugins
-              ZSH_AUTOSUGGEST_STRATEGY=(completion)
+              ZSH_AUTOSUGGEST_STRATEGY=(histdb_top completion)
               ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
               ZSH_AUTOSUGGEST_USE_ASYNC=1
 

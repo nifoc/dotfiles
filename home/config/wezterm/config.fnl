@@ -60,7 +60,10 @@
       (where t (t:find "^et%s"))
       {: title :icon " " :color colors.et :ssh-domain true}
       (where t (t:find "^just%s")) {: title :icon " " :color "#C87D57"}
-      (where t (t:find :^ytdl)) {: title :icon " " :color "#FF0000"}
+      (where t (t:find :^ytdl_ig))
+      {: title :icon " " :color "#FB2179" :ignore-activity true}
+      (where t (t:find :^ytdl))
+      {: title :icon " " :color "#FF0000" :ignore-activity true}
       (where t (t:find "^instagram%-"))
       {: title :icon " " :color "#FB2179" :ignore-activity true}
       (where t (t:find "^gallery%-dl%s")) {:title (t:gsub "^gallery%-dl%s(.*)"
@@ -276,6 +279,7 @@
    ;; Scrollback
    :scrollback_lines 5000
    ;; Other
+   :skip_close_confirmation_for_processes_named [:bash :sh :zsh :fish :sqlite3]
    :front_end :WebGpu
    :max_fps 120
    :check_for_updates false})

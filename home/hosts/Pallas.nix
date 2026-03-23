@@ -6,7 +6,6 @@
     ../config/fonts
 
     ../programs/zsh
-    ../programs/atuin.nix
     ../programs/direnv.nix
     ../programs/fzf.nix
     ../programs/starship.nix
@@ -76,6 +75,7 @@
       q
       ripgrep
       socat
+      sqlite
       ssh-audit
       testssl
       trippy
