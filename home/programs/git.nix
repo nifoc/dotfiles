@@ -22,6 +22,10 @@ in
       enable = true;
       lfs.enable = true;
 
+      signing = {
+        format = "ssh";
+      };
+
       settings = {
         user = {
           name = "Daniel Kempkens";
