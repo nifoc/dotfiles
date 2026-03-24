@@ -40,8 +40,10 @@ deploy-local-machine target type=defaultLocalType: _git-pull (build-local-machin
 # Deploy to a remote machine
 [group('deploy')]
 deploy-remote-machine target remoteBuild=defaultRemoteBuild type=defaultRemoteType: _git-pull (build-remote-machine target remoteBuild type)
+    #!/bin/sh
+    hostname="$(nix eval --raw '.#deploy.nodes.{{ target }}.hostname' 2> /dev/null)"
     deploy --skip-checks '.#{{ target }}'
-    ssh -t '{{ target }}' 'attic push nifoc-systems /run/current-system'
+    ssh -t "${hostname}" 'attic push nifoc-systems /run/current-system'
 
 _git-pull:
     -git pull

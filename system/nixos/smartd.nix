@@ -5,6 +5,29 @@
   ...
 }:
 
+let
+  disks = {
+    krypton = [
+      "ata-Samsung_SSD_870_EVO_1TB_S75CNX0Y204686N"
+      "ata-Samsung_SSD_870_EVO_1TB_S75CNX0Y204574J"
+      "ata-ST10000NE0008-2JM101_ZPW0MSB4"
+      "ata-ST10000NE0008-2JM101_ZPW0N01M"
+      "ata-ST14000NE0008-2RX103_ZTM0CFC2"
+      "ata-ST14000NE0008-2RX103_ZTM0HSKH"
+      "ata-ST16000NE000-2RW103_ZL2PXPP3"
+      "ata-ST16000NE000-2RW103_ZL2PZ6XX"
+      "ata-ST6000VN001-2BB186_ZCT2ZWZC"
+      "ata-ST10000NT001-3LY101_WP027C6E"
+      "ata-WDC_WD100EFAX-68LHPN0_7PKTUMNC"
+      "ata-WDC_WD100EFAX-68LHPN0_JEKD2W3N"
+    ];
+
+    xenon = [
+      "nvme-YMTC_PC41Q-1TB-B_YMA61T0RA252920LTC"
+      "ata-ST4000VX016-3CV104_WW69ENJA"
+    ];
+  };
+in
 {
   services.smartd = {
     enable = true;
@@ -34,25 +57,9 @@
 
     path = with pkgs; [ smartmontools ];
 
-    script =
-      lib.strings.concatMapStringsSep "\n"
-        (disk: ''
-          smartctl -s on "/dev/disk/by-id/${disk}" || true
-        '')
-        [
-          "ata-Samsung_SSD_870_EVO_1TB_S75CNX0Y204686N"
-          "ata-Samsung_SSD_870_EVO_1TB_S75CNX0Y204574J"
-          "ata-ST10000NE0008-2JM101_ZPW0MSB4"
-          "ata-ST10000NE0008-2JM101_ZPW0N01M"
-          "ata-ST14000NE0008-2RX103_ZTM0CFC2"
-          "ata-ST14000NE0008-2RX103_ZTM0HSKH"
-          "ata-ST16000NE000-2RW103_ZL2PXPP3"
-          "ata-ST16000NE000-2RW103_ZL2PZ6XX"
-          "ata-ST6000VN001-2BB186_ZCT2ZWZC"
-          "ata-ST10000NT001-3LY101_WP027C6E"
-          "ata-WDC_WD100EFAX-68LHPN0_7PKTUMNC"
-          "ata-WDC_WD100EFAX-68LHPN0_JEKD2W3N"
-        ];
+    script = lib.strings.concatMapStringsSep "\n" (disk: ''
+      smartctl -s on "/dev/disk/by-id/${disk}" || true
+    '') disks."${config.networking.hostName}";
 
     serviceConfig = {
       Type = "oneshot";

@@ -12,6 +12,7 @@
     ./carbon.nix
     ./krypton.nix
     ./neon.nix
+    ./xenon.nix
   ];
 
   services.caddy = {

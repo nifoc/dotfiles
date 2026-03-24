@@ -6,6 +6,7 @@ let
   system-carbon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEvF4zibLcXxlp4Eorc/6C30yeFItLNT2iAvGnNEscnu";
   system-boron = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEH0G+fjmO4IOULTWFWtRf8Wh5BxeGukub8qoRFd5zvA";
   system-krypton = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQooOFh2618Y7sXwYE640ftsdmEr6O87jUVKw/VogtY";
+  system-xenon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH1DZhnlOpFLveEiF3SD6A9sbFEl+T2uvrpM566kqItv";
   system-mediaserver = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlB0cL5CtTOyARWSE2yUsNU4JHUPmr71710mZHzsmbX";
   system-argon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBsnqQa0PwyVEOb2WWiSI/AFQv99anRhjaW1RxT/+Qz3";
   system-neon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICNcsE77cjkwh/NjDYwHTLWtAtilIAbfI5xmffKAhPQo";
@@ -30,6 +31,10 @@ let
     user-daniel-Pallas
     system-krypton
   ];
+  xenon = [
+    user-daniel-Pallas
+    system-xenon
+  ];
   mediaserver = [
     user-daniel-Styx
     user-daniel-Pallas
@@ -53,11 +58,10 @@ let
   all-systems = [
     user-daniel-Styx
     user-daniel-Pallas
-    system-tanker
     system-carbon
     system-boron
     system-krypton
-    system-mediaserver
+    system-xenon
     system-argon
     system-neon
     syetsm-adsb-antenna
@@ -70,7 +74,9 @@ in
   "agenix/hosts/all/nix/forgejo_runner_netrc.age".publicKeys = all-systems;
   "agenix/hosts/all/attic/config.age".publicKeys = all-systems;
   "agenix/hosts/all/caddy/environment.age".publicKeys = all-systems;
+  "agenix/hosts/all/msmtp/password.age".publicKeys = all-systems;
   "agenix/hosts/all/tinyauth/environment.age".publicKeys = all-systems;
+  "agenix/hosts/all/user/danielPassword.age".publicKeys = all-systems;
 
   # tanker
   "agenix/hosts/tanker/user/danielPassword.age".publicKeys = tanker;
@@ -218,6 +224,9 @@ in
   "agenix/hosts/krypton/wireguard/config-dl.age".publicKeys = krypton;
   "agenix/hosts/krypton/wireguard/config-sc.age".publicKeys = krypton;
   "agenix/hosts/krypton/wireguard/config-ch.age".publicKeys = krypton;
+
+  # xenon
+  "agenix/hosts/xenon/tailscale/authkey.age".publicKeys = xenon;
 
   # mediaserver
   "agenix/hosts/mediaserver/user/danielPassword.age".publicKeys = mediaserver;

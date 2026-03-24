@@ -183,6 +183,21 @@
             inherit lix-overlay;
           };
 
+          xenon = import ./system/flakes/xenon.nix {
+            inherit (inputs)
+              nixpkgs
+              disko
+              home-manager
+              agenix
+              quadlet-nix
+              direnv-instant
+              nifoc-overlay
+              run0-sudo-shim
+              ;
+
+            inherit lix-overlay;
+          };
+
           argon = import ./system/flakes/argon.nix {
             inherit (inputs)
               nixpkgs
@@ -233,6 +248,7 @@
             carbon = carbon.system;
             boron = boron.system;
             krypton = krypton.system;
+            xenon = xenon.system;
             argon = argon.system;
             neon = neon.system;
             adsb-antenna = adsb-antenna.system;
@@ -259,6 +275,7 @@
               carbon = mkDeployNixOsConfig carbon;
               boron = mkDeployNixOsConfig boron;
               krypton = mkDeployNixOsConfig krypton;
+              xenon = mkDeployNixOsConfig xenon;
               argon = mkDeployNixOsConfig argon;
               neon = mkDeployNixOsConfig neon;
               adsb-antenna = mkDeployNixOsConfig adsb-antenna;

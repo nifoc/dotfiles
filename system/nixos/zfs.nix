@@ -31,10 +31,6 @@
       ZED_EMAIL_ADDR = [ "daniel@kempkens.io" ];
       ZED_EMAIL_PROG = "${lib.getExe pkgs.msmtp}";
       ZED_EMAIL_OPTS = "@ADDRESS@";
-
-      ZED_NTFY_URL = "https://ntfy.kempkens.network";
-      ZED_NTFY_TOPIC = "hardware";
-      ZED_NTFY_ACCESS_TOKEN = "$(${pkgs.coreutils}/bin/cat ${config.age.secrets.ntfy-token-hardware.path})";
     };
   };
 
