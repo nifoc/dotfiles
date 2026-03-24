@@ -26,6 +26,10 @@ let
       "nvme-YMTC_PC41Q-1TB-B_YMA61T0RA252920LTC"
       "ata-ST4000VX016-3CV104_WW69ENJA"
     ];
+
+    argon = [ "ata-ORICO_251113BH51201906" ];
+
+    neon = [ "ata-ORICO_251113BH51200097" ];
   };
 in
 {
