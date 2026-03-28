@@ -226,6 +226,8 @@ in
   "agenix/hosts/krypton/wireguard/config-ch.age".publicKeys = krypton;
 
   # xenon
+  "agenix/hosts/xenon/frigate/environment.age".publicKeys = xenon;
+
   "agenix/hosts/xenon/tailscale/authkey.age".publicKeys = xenon;
 
   # mediaserver

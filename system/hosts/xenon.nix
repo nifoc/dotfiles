@@ -23,9 +23,14 @@ in
 
     ../nixos/git.nix
 
-    ../nixos/caddy
-
     ../nixos/attic.nix
+
+    ../nixos/caddy
+    ../nixos/tinyauth.nix
+
+    ../nixos/chrony.nix
+
+    ../nixos/frigate.nix
 
     #../nixos/restic/xenon.nix
 
@@ -102,9 +107,22 @@ in
     network = rec {
       enable = true;
 
+      netdevs = {
+        "20-vlan50" = {
+          netdevConfig = {
+            Kind = "vlan";
+            Name = "vlan50";
+          };
+          vlanConfig.Id = 50;
+        };
+      };
+
       networks = {
         "10-lan" = {
           matchConfig.Name = "eth0";
+          vlan = [
+            "vlan50"
+          ];
           networkConfig = {
             DHCP = "yes";
             IPv6AcceptRA = true;
@@ -116,6 +134,16 @@ in
             "10.0.0.5"
             "10.0.0.7"
           ];
+        };
+
+        "20-security" = {
+          matchConfig.Name = "vlan50";
+          networkConfig = {
+            DHCP = "no";
+            IPv6AcceptRA = false;
+          };
+          address = [ "10.0.50.101/24" ];
+          linkConfig.RequiredForOnline = "routable";
         };
       };
 

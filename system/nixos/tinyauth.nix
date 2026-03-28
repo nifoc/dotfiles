@@ -46,6 +46,7 @@ in
             Remote-User
             Remote-Name
             Remote-Email
+            Remote-Groups
           }
         }
       }

@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   modulesPath,
   ...
@@ -67,12 +68,16 @@
       };
     };
 
+    kernelParams = [ "i915.enable_guc=3" ];
+
     kernelModules = [
       "coretemp"
       "kvm-intel"
       "tcp_bbr"
       "tls"
     ];
+
+    devShmSize = "80%";
 
     kernel.sysctl = {
       "net.core.default_qdisc" = "fq";
@@ -101,7 +106,20 @@
   hardware = {
     enableRedistributableFirmware = true;
     cpu.intel.updateMicrocode = true;
+
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+        vpl-gpu-rt
+        intel-compute-runtime
+      ];
+    };
   };
 
-  powerManagement.cpuFreqGovernor = lib.mkForce "schedutil";
+  environment.variables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  };
+
+  powerManagement.cpuFreqGovernor = lib.mkForce "performance";
 }

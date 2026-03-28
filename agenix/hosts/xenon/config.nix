@@ -28,8 +28,16 @@
       file = ../all/caddy/environment.age;
     };
 
+    frigate-environment = {
+      file = ./frigate/environment.age;
+    };
+
     tailscale-authkey = {
       file = ./tailscale/authkey.age;
+    };
+
+    tinyauth-environment = {
+      file = ../all/tinyauth/environment.age;
     };
   };
 }
