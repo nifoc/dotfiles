@@ -13,6 +13,10 @@ lib.mkIf (config.networking.hostName == "xenon") {
     };
 
     globalConfig = ''
+      servers {
+        protocols h1 h2
+      }
+
       default_sni default-${config.networking.hostName}.internal.kempkens.network
     '';
   };

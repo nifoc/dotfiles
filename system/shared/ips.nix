@@ -1,4 +1,10 @@
 {
+  lan = {
+    gerdas-iphone = [ "10.0.0.202" ];
+
+    udos-iphone = [ "10.0.0.201" ];
+  };
+
   tailscale = {
     daniels-iphone = [
       "100.90.174.92"

@@ -10,6 +10,8 @@ let
   fqdnLocal = "frigate-local.internal.kempkens.network";
   internalIP = "127.0.0.1";
   internalPort = 8080;
+  webrtcRangeStart = 50000;
+  webrtcRangeEnd = 50500;
 
   frigateEnvRefs =
     url:
@@ -76,6 +78,7 @@ in
           eingang = {
             enabled = true;
             type = "generic";
+            webui_url = "http://10.0.50.13";
 
             ffmpeg = {
               inputs = [
@@ -112,7 +115,20 @@ in
               mask = [
                 # Date & Time
                 "0,0.039,0.17,0.039,0.171,0,0,0"
+                # House
+                "0.276,1,0,1,0,0.033,0.165,0.033,0.168,0,0.298,0,0.392,0.28,0.202,0.455"
+                # Gutter
+                "1,0.043,0.367,0.225,0.291,0,1,0"
               ];
+            };
+
+            zones = {
+              eingang_weg = {
+                friendly_name = "Eingang Weg";
+                coordinates = "0.25,0.687,0.354,0.598,0.59,1,0.324,1";
+                inertia = 3;
+                objects = [ "person" ];
+              };
             };
 
             objects = {
@@ -122,7 +138,6 @@ in
                 "dog"
                 "cat"
                 "horse"
-                "bird"
                 "car"
                 "motorcycle"
                 "bicycle"
@@ -143,14 +158,20 @@ in
               enabled = true;
               listen = [
                 "bark"
+                "meow"
                 "scream"
                 "speech"
                 "yell"
                 "crying"
+                "car_passing_by"
+                "motorcycle"
                 "fire_alarm"
                 "ambulance"
                 "police_car"
               ];
+              filters.car_passing_by = {
+                threshold = 0.5;
+              };
             };
 
             lpr.enabled = true;
@@ -172,6 +193,7 @@ in
           garage = {
             enabled = true;
             type = "generic";
+            webui_url = "http://10.0.50.12";
 
             ffmpeg = {
               inputs = [
@@ -222,6 +244,7 @@ in
               enabled = true;
               listen = [
                 "bark"
+                "meow"
                 "scream"
                 "speech"
                 "yell"
@@ -249,11 +272,100 @@ in
               continuous.days = 0;
               alerts.retain = {
                 days = 7;
-                mode = "motion";
+                mode = "active_objects";
               };
               detections.retain = {
                 days = 7;
-                mode = "motion";
+                mode = "active_objects";
+              };
+            };
+          };
+
+          garten = {
+            enabled = true;
+            type = "generic";
+            webui_url = "http://10.0.50.14";
+
+            ffmpeg = {
+              inputs = [
+                {
+                  path = "rtsp://127.0.0.1:8554/garten";
+                  input_args = "preset-rtsp-restream";
+                  roles = [ "record" ];
+                }
+
+                {
+                  path = "rtsp://127.0.0.1:8554/garten_sub";
+                  input_args = "preset-rtsp-restream";
+                  roles = [
+                    "detect"
+                    "audio"
+                  ];
+                }
+              ];
+
+              output_args = {
+                record = "preset-record-ubiquiti";
+              };
+            };
+
+            detect = {
+              enabled = true;
+              fps = 5;
+            };
+
+            objects = {
+              track = [
+                "person"
+                "face"
+                "dog"
+                "cat"
+              ];
+              filters.person = {
+                min_score = 0.8;
+                threshold = 0.75;
+              };
+            };
+
+            audio = {
+              enabled = true;
+              listen = [
+                "bark"
+                "meow"
+                "scream"
+                "speech"
+                "yell"
+                "crying"
+                "fire_alarm"
+                "ambulance"
+                "police_car"
+              ];
+            };
+
+            motion = {
+              threshold = 60;
+              contour_area = 50;
+
+              mask = [
+                # Date & Time
+                "0.001,0.035,0.158,0.035,0.158,0,0,0"
+                # Tree
+                "0.227,0.995,0.194,0.032,0,0.03,0,1"
+              ];
+            };
+
+            lpr.enabled = false;
+
+            record = {
+              enabled = true;
+              continuous.days = 3;
+              alerts.retain = {
+                days = 7;
+                mode = "all";
+              };
+              detections.retain = {
+                days = 7;
+                mode = "all";
               };
             };
           };
@@ -283,7 +395,7 @@ in
             };
 
             detect = {
-              enabled = false;
+              enabled = true;
               fps = 5;
             };
 
@@ -313,7 +425,7 @@ in
             lpr.enabled = false;
 
             record = {
-              enabled = false;
+              enabled = true;
               continuous.days = 0;
               alerts.retain = {
                 days = 7;
@@ -329,6 +441,7 @@ in
           schuppen = {
             enabled = true;
             type = "generic";
+            webui_url = "http://10.0.50.11";
 
             ffmpeg = {
               inputs = [
@@ -385,6 +498,7 @@ in
               enabled = true;
               listen = [
                 "bark"
+                "meow"
                 "scream"
                 "speech"
                 "yell"
@@ -412,11 +526,11 @@ in
               continuous.days = 0;
               alerts.retain = {
                 days = 7;
-                mode = "motion";
+                mode = "all";
               };
               detections.retain = {
                 days = 7;
-                mode = "motion";
+                mode = "all";
               };
             };
           };
@@ -470,7 +584,6 @@ in
                 "dog"
                 "cat"
                 "horse"
-                "bird"
                 "car"
                 "motorcycle"
                 "bicycle"
@@ -490,6 +603,7 @@ in
               enabled = true;
               listen = [
                 "bark"
+                "meow"
                 "scream"
                 "speech"
                 "yell"
@@ -519,6 +633,7 @@ in
           waschkeller = {
             enabled = true;
             type = "generic";
+            webui_url = "http://10.0.50.10";
 
             ffmpeg = {
               inputs = [
@@ -586,11 +701,11 @@ in
               continuous.days = 0;
               alerts.retain = {
                 days = 7;
-                mode = "motion";
+                mode = "active_objects";
               };
               detections.retain = {
                 days = 7;
-                mode = "motion";
+                mode = "active_objects";
               };
             };
           };
@@ -610,15 +725,12 @@ in
 
         face_recognition = {
           enabled = true;
-          model_size = "large";
+          model_size = "small";
         };
 
         lpr = {
           enabled = true;
-          device = "GPU";
         };
-
-        classification.bird.enabled = true;
 
         timestamp_style = {
           format = "%d.%m.%Y %H:%M:%S";
@@ -640,13 +752,17 @@ in
 
       settings = {
         streams = {
-          # Garage
+          # Eingang
           eingang = "rtsp://10.0.50.13:554/s0";
           eingang_sub = "rtsp://10.0.50.13:554/s2";
 
           # Garage
           garage = "rtsp://10.0.50.12:554/s0";
           garage_sub = "rtsp://10.0.50.12:554/s2";
+
+          # Garten
+          garten = "rtsp://10.0.50.14:554/s0";
+          garten_sub = "rtsp://10.0.50.14:554/s2";
 
           # Ofen
           ofen = "rtspx://10.0.0.1:7441/\${FRIGATE_CAMERA_OFEN_STREAM_MAIN}";
@@ -675,6 +791,11 @@ in
           candidates = [
             "${fqdn}:8555"
           ];
+
+          filters.udp_ports = [
+            webrtcRangeStart
+            webrtcRangeEnd
+          ];
         };
       };
     };
@@ -682,23 +803,17 @@ in
     caddy = {
       virtualHosts."${fqdn}" = {
         extraConfig = ''
-          encode
-
           header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
           import tinyauth
 
-          reverse_proxy ${internalIP}:${toString internalPort} {
-            flush_interval -1
-          }
+          reverse_proxy ${internalIP}:${toString internalPort}
         '';
       };
 
       virtualHosts."${fqdnLocal}:5000" = {
         listenAddresses = [ "10.0.0.101" ];
         extraConfig = ''
-          encode
-
           reverse_proxy 127.0.0.1:5000
         '';
       };
@@ -731,31 +846,41 @@ in
   networking.firewall = {
     extraCommands = ''
       iptables -A INPUT -p tcp -s 10.0.0.230 --dport 5000 -j ACCEPT -i eth0
-
-      iptables -A INPUT -p tcp -s 10.0.0.230 --dport 8554 -j ACCEPT -i eth0
-      iptables -A INPUT -p udp -s 10.0.0.230 --dport 8554 -j ACCEPT -i eth0
-
-      iptables -A INPUT -p tcp -s 10.0.0.230 --dport 8555 -j ACCEPT -i eth0
-      iptables -A INPUT -p udp -s 10.0.0.230 --dport 8555 -j ACCEPT -i eth0
     '';
 
-    interfaces."tailscale0" = {
-      allowedTCPPorts = [
-        8554
-        8555
-      ];
-      allowedUDPPorts = [
-        8554
-        8555
-      ];
-    };
+    interfaces =
+      let
+        sharedRules = {
+          allowedTCPPorts = [
+            8554
+            8555
+          ];
+          allowedUDPPorts = [
+            8554
+            8555
+          ];
+          allowedUDPPortRanges = [
+            {
+              from = webrtcRangeStart;
+              to = webrtcRangeEnd;
+            }
+          ];
+        };
+      in
+      {
+        "eth0" = sharedRules;
+        "tailscale0" = sharedRules;
+      };
   };
 
   virtualisation.quadlet.containers.tinyauth.containerConfig.environments = {
     TINYAUTH_AUTH_SESSIONEXPIRY = "604800";
     TINYAUTH_APPS_FRIGATE_CONFIG_DOMAIN = fqdn;
     TINYAUTH_APPS_FRIGATE_IP_BYPASS = lib.strings.concatStringsSep "," (
-      ips.tailscale.gerdas-iphone ++ ips.tailscale.udos-iphone ++ ips.tailscale.daniels-iphone
+      ips.tailscale.gerdas-iphone
+      ++ ips.tailscale.udos-iphone
+      ++ ips.lan.gerdas-iphone
+      ++ ips.lan.udos-iphone
     );
   };
 
