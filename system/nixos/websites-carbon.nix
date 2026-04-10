@@ -9,8 +9,8 @@ let
       domain = "git.kempkens.io";
       owner = "daniel";
       repo = "kempkens.io";
-      rev = "5d6c4d73e4aa4da9b0fe091ee372e2b61269346b";
-      hash = "sha256-QoaTTEa7KhrAagG7tI2iGxZJyu1aFhmGdRyBWrsVh9M=";
+      rev = "e21fbd1661df35740aab6280ad460314f3c03ae2";
+      hash = "sha256-3hh/SV/OMaRz45ap5VxUv1MDkd1OtMPlJB3Iz4uEqv8=";
       fetchSubmodules = true;
     };
 
@@ -41,8 +41,8 @@ let
       domain = "git.kempkens.io";
       owner = "daniel";
       repo = "blog.kempkens.io";
-      rev = "b8f044d5d0f075b23cf04333014bed673710c229";
-      hash = "sha256-5D3BMtTOtoAA/SlzUpeLjq+ux5zVvR4n4GXBEFcq20c=";
+      rev = "629375ee2649e7f4934daabf13b50d0a211dea1d";
+      hash = "sha256-Ez4YoBZVKq2rj/Oi6VNmiSamsSEULorzAkJFoIPZBio=";
       fetchSubmodules = true;
     };
 

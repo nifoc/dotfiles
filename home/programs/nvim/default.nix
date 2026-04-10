@@ -51,7 +51,7 @@ in
         # Tools
         checkstyle
         deadnix
-        nodePackages.eslint_d
+        eslint_d
         hadolint
         luajitPackages.fennel
         nixfmt
@@ -65,9 +65,9 @@ in
         #elixir-ls
         lua-language-server
         marksman
-        nodePackages.typescript-language-server
-        nodePackages.vscode-langservers-extracted
-        nodePackages.yaml-language-server
+        typescript-language-server
+        vscode-langservers-extracted
+        yaml-language-server
 
         # Tools
         curl
