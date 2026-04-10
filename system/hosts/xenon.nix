@@ -32,6 +32,8 @@ in
 
     ../nixos/frigate.nix
 
+    ../nixos/monitoring/prometheus_exporters.nix
+
     #../nixos/restic/xenon.nix
 
     ../nixos/smartd.nix

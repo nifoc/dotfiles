@@ -1,5 +1,6 @@
 {
   nixpkgs,
+  nixpkgs-master,
   disko,
   home-manager,
   agenix,
@@ -13,10 +14,15 @@
 let
   default-system = "x86_64-linux";
 
+  overlay-master = _: _: {
+    master = import nixpkgs-master { system = default-system; };
+  };
+
   nixpkgsConfig = {
     overlays = [
       lix-overlay
       nifoc-overlay.overlay
+      overlay-master
     ];
 
     config = {

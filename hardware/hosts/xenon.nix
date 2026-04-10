@@ -77,6 +77,10 @@
       "tls"
     ];
 
+    blacklistedKernelModules = [
+      "mt7921e"
+    ];
+
     devShmSize = "80%";
 
     kernel.sysctl = {

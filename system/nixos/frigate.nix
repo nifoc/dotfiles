@@ -13,6 +13,8 @@ let
   webrtcRangeStart = 50000;
   webrtcRangeEnd = 50500;
 
+  ffmpegPkg = pkgs.ffmpeg_7-headless;
+
   frigateEnvRefs =
     url:
     if builtins.typeOf url == "list" then
@@ -26,6 +28,8 @@ in
   services = {
     frigate = {
       enable = true;
+
+      package = pkgs.master.frigate;
 
       hostname = fqdn;
       vaapiDriver = "iHD";
@@ -75,6 +79,117 @@ in
         };
 
         cameras = {
+          einfahrt = {
+            enabled = true;
+            type = "generic";
+            webui_url = "http://10.0.50.16";
+
+            ffmpeg = {
+              inputs = [
+                {
+                  path = "rtsp://127.0.0.1:8554/einfahrt";
+                  input_args = "preset-rtsp-restream";
+                  roles = [ "record" ];
+                }
+
+                {
+                  path = "rtsp://127.0.0.1:8554/einfahrt_sub";
+                  input_args = "preset-rtsp-restream";
+                  roles = [
+                    "detect"
+                    "audio"
+                  ];
+                }
+              ];
+
+              output_args = {
+                record = "preset-record-ubiquiti";
+              };
+            };
+
+            detect = {
+              enabled = true;
+              fps = 8;
+            };
+
+            motion = {
+              threshold = 60;
+              contour_area = 40;
+
+              mask = [
+                # Date & Time
+                "0,0.039,0.17,0.039,0.171,0,0,0"
+                # Bushes
+                #"0.003,0.248,0.328,0.074,0.704,0.028,0.704,0,0.172,0,0.171,0.043,0,0.043"
+                # House
+                #"0.938,0.01,0.861,0.524,0.684,1,1,1,1,0"
+              ];
+            };
+
+            objects = {
+              track = [
+                "person"
+                "face"
+                "dog"
+                "cat"
+                "horse"
+                "car"
+                "motorcycle"
+                "bicycle"
+                "license_plate"
+                "amazon"
+                "ups"
+                "dhl"
+                "gls"
+                "dpd"
+              ];
+              filters.person = {
+                min_score = 0.8;
+                threshold = 0.75;
+              };
+            };
+
+            audio = {
+              enabled = true;
+              min_volume = 200;
+              listen = [
+                "bark"
+                "meow"
+                "scream"
+                "speech"
+                "yell"
+                "crying"
+                "car"
+                "vehicle"
+                "truck"
+                "motorcycle"
+                "motor_vehicle"
+                "car_passing_by"
+                "traffic_noise"
+                "idling"
+                "accelerating"
+                "fire_alarm"
+                "ambulance"
+                "police_car"
+              ];
+            };
+
+            lpr.enabled = true;
+
+            record = {
+              enabled = true;
+              continuous.days = 3;
+              alerts.retain = {
+                days = 7;
+                mode = "all";
+              };
+              detections.retain = {
+                days = 7;
+                mode = "all";
+              };
+            };
+          };
+
           eingang = {
             enabled = true;
             type = "generic";
@@ -105,7 +220,7 @@ in
 
             detect = {
               enabled = true;
-              fps = 5;
+              fps = 8;
             };
 
             motion = {
@@ -156,6 +271,7 @@ in
 
             audio = {
               enabled = true;
+              min_volume = 200;
               listen = [
                 "bark"
                 "meow"
@@ -163,15 +279,19 @@ in
                 "speech"
                 "yell"
                 "crying"
-                "car_passing_by"
+                "car"
+                "vehicle"
+                "truck"
                 "motorcycle"
+                "motor_vehicle"
+                "car_passing_by"
+                "traffic_noise"
+                "idling"
+                "accelerating"
                 "fire_alarm"
                 "ambulance"
                 "police_car"
               ];
-              filters.car_passing_by = {
-                threshold = 0.5;
-              };
             };
 
             lpr.enabled = true;
@@ -186,6 +306,74 @@ in
               detections.retain = {
                 days = 7;
                 mode = "all";
+              };
+            };
+          };
+
+          flur_unten_a = {
+            enabled = true;
+            type = "generic";
+
+            ffmpeg = {
+              inputs = [
+                {
+                  path = "rtsp://127.0.0.1:8554/flur_unten_a";
+                  input_args = "preset-rtsp-restream";
+                  roles = [ "record" ];
+                }
+
+                {
+                  path = "rtsp://127.0.0.1:8554/flur_unten_a_sub";
+                  input_args = "preset-rtsp-restream";
+                  roles = [ "detect" ];
+                }
+              ];
+
+              output_args = {
+                record = "preset-record-generic";
+              };
+            };
+
+            detect = {
+              enabled = true;
+              fps = 5;
+            };
+
+            objects = {
+              track = [
+                "person"
+                "face"
+              ];
+              filters.person = {
+                min_score = 0.8;
+                threshold = 0.75;
+              };
+            };
+
+            motion = {
+              threshold = 60;
+              contour_area = 50;
+
+              mask = [
+                # Date & Time, Fan
+                "0,0.05,0.355,0.046,0.354,0,0.001,0.001"
+                # Fire
+                "0.649,0.434,0.65,0.548,0.732,0.55,0.732,0.434"
+              ];
+            };
+
+            lpr.enabled = false;
+
+            record = {
+              enabled = true;
+              continuous.days = 0;
+              alerts.retain = {
+                days = 7;
+                mode = "motion";
+              };
+              detections.retain = {
+                days = 7;
+                mode = "motion";
               };
             };
           };
@@ -370,27 +558,130 @@ in
             };
           };
 
-          ofen = {
+          hof = {
+            enabled = true;
+            type = "generic";
+            webui_url = "http://10.0.50.15";
+
+            ffmpeg = {
+              inputs = [
+                {
+                  path = "rtsp://127.0.0.1:8554/hof";
+                  input_args = "preset-rtsp-restream";
+                  roles = [ "record" ];
+                }
+
+                {
+                  path = "rtsp://127.0.0.1:8554/hof_sub";
+                  input_args = "preset-rtsp-restream";
+                  roles = [
+                    "detect"
+                    "audio"
+                  ];
+                }
+              ];
+
+              output_args = {
+                record = "preset-record-ubiquiti";
+              };
+            };
+
+            detect = {
+              enabled = true;
+              fps = 5;
+            };
+
+            motion = {
+              threshold = 60;
+              contour_area = 40;
+
+              mask = [
+                # Date & Time
+                "0,0.039,0.17,0.039,0.171,0,0,0"
+                # House
+                "0,1,0.154,1,0.047,0.578,0.07,0.558,0.095,0.46,0.096,0.404,0,0.028"
+              ];
+            };
+
+            objects = {
+              track = [
+                "person"
+                "face"
+                "dog"
+                "cat"
+                "car"
+                "motorcycle"
+                "bicycle"
+                "license_plate"
+              ];
+              filters.person = {
+                min_score = 0.8;
+                threshold = 0.75;
+              };
+            };
+
+            audio = {
+              enabled = true;
+              min_volume = 200;
+              listen = [
+                "bark"
+                "meow"
+                "scream"
+                "speech"
+                "yell"
+                "crying"
+                "car"
+                "vehicle"
+                "truck"
+                "motorcycle"
+                "motor_vehicle"
+                "car_passing_by"
+                "traffic_noise"
+                "idling"
+                "accelerating"
+                "fire_alarm"
+                "ambulance"
+                "police_car"
+              ];
+            };
+
+            lpr.enabled = true;
+
+            record = {
+              enabled = true;
+              continuous.days = 3;
+              alerts.retain = {
+                days = 7;
+                mode = "all";
+              };
+              detections.retain = {
+                days = 7;
+                mode = "all";
+              };
+            };
+          };
+
+          keller_a = {
             enabled = true;
             type = "generic";
 
             ffmpeg = {
               inputs = [
                 {
-                  path = "rtsp://127.0.0.1:8554/ofen";
+                  path = "rtsp://127.0.0.1:8554/keller_a";
                   input_args = "preset-rtsp-restream";
                   roles = [ "record" ];
                 }
 
                 {
-                  path = "rtsp://127.0.0.1:8554/ofen_sub";
+                  path = "rtsp://127.0.0.1:8554/keller_a_sub";
                   input_args = "preset-rtsp-restream";
                   roles = [ "detect" ];
                 }
               ];
 
               output_args = {
-                record = "preset-record-ubiquiti";
+                record = "preset-record-generic";
               };
             };
 
@@ -415,10 +706,8 @@ in
               contour_area = 50;
 
               mask = [
-                # Date & Time, Fan
-                "0,0.07,0.394,0.069,0.394,0,0.001,0.001"
-                # Fire
-                "0.527,0.544,0.535,0.637,0.593,0.634,0.593,0.544"
+                # Date & Time
+                "0,0.044,0.22,0.046,0.218,0,0,0"
               ];
             };
 
@@ -426,7 +715,7 @@ in
 
             record = {
               enabled = true;
-              continuous.days = 0;
+              continuous.days = 2;
               alerts.retain = {
                 days = 7;
                 mode = "motion";
@@ -732,9 +1021,33 @@ in
           enabled = true;
         };
 
+        classification = {
+          custom = {
+            Fireplace = {
+              enabled = true;
+              name = "Fireplace";
+              threshold = 0.8;
+              state_config = {
+                motion = false;
+                interval = 300;
+                cameras = {
+                  flur_unten_a.crop = [
+                    0.6466577925651917
+                    0.43038371725880964
+                    0.7357943904720786
+                    0.5888487802043864
+                  ];
+                };
+              };
+            };
+          };
+        };
+
         timestamp_style = {
           format = "%d.%m.%Y %H:%M:%S";
         };
+
+        ffmpeg.path = ffmpegPkg;
 
         go2rtc =
           let
@@ -751,44 +1064,57 @@ in
       enable = true;
 
       settings = {
-        streams = {
-          # Eingang
-          eingang = "rtsp://10.0.50.13:554/s0";
-          eingang_sub = "rtsp://10.0.50.13:554/s2";
+        ffmpeg.bin = lib.getExe ffmpegPkg;
 
-          # Garage
-          garage = "rtsp://10.0.50.12:554/s0";
-          garage_sub = "rtsp://10.0.50.12:554/s2";
+        streams =
+          let
+            dahuaMainStream = "cam/realmonitor?channel=1&subtype=0";
+            dahuaSubStream = "cam/realmonitor?channel=1&subtype=1";
+          in
+          {
+            # Einfahrt
+            einfahrt = "rtsp://10.0.50.16:554/s0";
+            einfahrt_sub = "rtsp://10.0.50.16:554/s2";
 
-          # Garten
-          garten = "rtsp://10.0.50.14:554/s0";
-          garten_sub = "rtsp://10.0.50.14:554/s2";
+            # Eingang
+            eingang = "rtsp://10.0.50.13:554/s0";
+            eingang_sub = "rtsp://10.0.50.13:554/s2";
 
-          # Ofen
-          ofen = "rtspx://10.0.0.1:7441/\${FRIGATE_CAMERA_OFEN_STREAM_MAIN}";
-          ofen_sub = [
-            "rtspx://10.0.0.1:7441/\${FRIGATE_CAMERA_OFEN_STREAM_SUB}"
-            "ffmpeg:ofen_sub#video=h264#hardware=vaapi#fps=5"
-          ];
+            # Flur Unten
+            flur_unten_a = "ffmpeg:rtsp://admin:\${FRIGATE_CAMERA_FLUR_UNTEN_PASSWORD}@10.0.50.61:554/${dahuaMainStream}";
+            flur_unten_a_sub = "ffmpeg:rtsp://admin:\${FRIGATE_CAMERA_FLUR_UNTEN_PASSWORD}@10.0.50.61:554/${dahuaSubStream}";
 
-          # Schuppen
-          schuppen = "rtsp://10.0.50.11:554/s0";
-          schuppen_sub = "rtsp://10.0.50.11:554/s2";
+            # Garage
+            garage = "rtsp://10.0.50.12:554/s0";
+            garage_sub = "rtsp://10.0.50.12:554/s2";
 
-          # Terrasse
-          terrasse = "rtspx://10.0.0.1:7441/\${FRIGATE_CAMERA_TERRASSE_STREAM_MAIN}";
-          terrasse_sub = [
-            "rtspx://10.0.0.1:7441/\${FRIGATE_CAMERA_TERRASSE_STREAM_SUB}"
-            "ffmpeg:terrasse_sub#video=h264#audio=copy#hardware=vaapi#fps=5"
-          ];
+            # Garten
+            garten = "rtsp://10.0.50.14:554/s0";
+            garten_sub = "rtsp://10.0.50.14:554/s2";
 
-          # Waschkeller
-          waschkeller = "rtsp://10.0.50.10:554/s0";
-          waschkeller_sub = "rtsp://10.0.50.10:554/s2";
-        };
+            # Hof
+            hof = "rtsp://10.0.50.15:554/s0";
+            hof_sub = "rtsp://10.0.50.15:554/s2";
+
+            # Keller
+            keller_a = "ffmpeg:rtsp://admin:\${FRIGATE_CAMERA_KELLER_PASSWORD}@10.0.50.60:554/${dahuaMainStream}";
+            keller_a_sub = "ffmpeg:rtsp://admin:\${FRIGATE_CAMERA_KELLER_PASSWORD}@10.0.50.60:554/${dahuaSubStream}";
+
+            # Schuppen
+            schuppen = "rtsp://10.0.50.11:554/s0";
+            schuppen_sub = "rtsp://10.0.50.11:554/s2";
+
+            # Terrasse
+            terrasse = "rtspx://10.0.0.1:7441/\${FRIGATE_CAMERA_TERRASSE_STREAM_MAIN}";
+            terrasse_sub = "ffmpeg:terrasse#video=h264#audio=aac#width=1280#height=720#hardware=vaapi#raw=-fpsmax 5";
+
+            # Waschkeller
+            waschkeller = "rtsp://10.0.50.10:554/s0";
+            waschkeller_sub = "rtsp://10.0.50.10:554/s2";
+          };
 
         webrtc = {
-          candidates = [
+          candidates = (builtins.map (ip: ip + ":8555") (ips.lan.xenon ++ ips.tailscale.xenon)) ++ [
             "${fqdn}:8555"
           ];
 
@@ -812,7 +1138,7 @@ in
       };
 
       virtualHosts."${fqdnLocal}:5000" = {
-        listenAddresses = [ "10.0.0.101" ];
+        listenAddresses = ips.lan.xenon;
         extraConfig = ''
           reverse_proxy 127.0.0.1:5000
         '';
@@ -852,6 +1178,7 @@ in
       let
         sharedRules = {
           allowedTCPPorts = [
+            1984
             8554
             8555
           ];
