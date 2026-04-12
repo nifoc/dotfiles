@@ -56,7 +56,7 @@
   (set o.mousemodel :popup_setpos)
   (set o.mousemoveevent true)
   (set o.cmdheight 1)
-  ;(set o.showcmdloc :statusline)
+  (let [ui2 (require :vim._core.ui2)] (ui2.enable))
   ;; Backups
   (set o.backup false)
   (set o.swapfile false)

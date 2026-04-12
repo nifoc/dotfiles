@@ -25,7 +25,7 @@
                      :group augroup
                      :desc "Automatic LSP setup"})
   ;; Servers
-  (vim.lsp.set_log_level :OFF)
+  (vim.lsp.log.set_level vim.log.levels.ERROR)
   (vim.lsp.config "*" {:root_markers [:.git]})
   (vim.lsp.enable [:bashls
                    :cssls
