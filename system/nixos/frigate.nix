@@ -29,7 +29,7 @@ in
     frigate = {
       enable = true;
 
-      package = pkgs.master.frigate;
+      # package = pkgs.master.frigate;
 
       hostname = fqdn;
       vaapiDriver = "iHD";

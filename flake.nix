@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    # nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     # Tools
 
@@ -187,7 +187,7 @@
           xenon = import ./system/flakes/xenon.nix {
             inherit (inputs)
               nixpkgs
-              nixpkgs-master
+              # nixpkgs-master
               disko
               home-manager
               agenix

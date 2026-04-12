@@ -383,22 +383,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-master": {
-      "locked": {
-        "lastModified": 1775965191,
-        "narHash": "sha256-IstKRuQWDRlRq5c/PV8TFH0QUW+up+tqvATB35e7KAo=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "6c2e599e636dd65c4c2f0a018ef88e222ace690f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "quadlet-nix": {
       "locked": {
         "lastModified": 1770606362,
@@ -430,7 +414,6 @@
         "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-master": "nixpkgs-master",
         "quadlet-nix": "quadlet-nix",
         "run0-sudo-shim": "run0-sudo-shim",
         "treefmt-nix": "treefmt-nix_2"
