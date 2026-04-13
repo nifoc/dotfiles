@@ -321,12 +321,14 @@
         :hl {:fg colors.black :bg colors.orange}
         1 mod.space
         2 {:condition #(buffer-variable-exists? :nifoc_lsp_enabled)
-           :provider " "
-           :on_click {:name :heirline_buffer_options_lsp
-                      :callback #(deferred_cmd {:cmd :LspInfo} 200)}}
+           :provider " "}
         3 {:condition #(formatting.active?) :provider "󰉼 "}
-        4 {:condition #vim.wo.spell :provider "󰓆"}
-        5 {:provider (fn [self]
+        4 {:condition #(let [buffer (vim.api.nvim_get_current_buf)]
+                         (= (type (. vim.treesitter.highlighter.active buffer))
+                            :table))
+           :provider " "}
+        5 {:condition #vim.wo.spell :provider "󰓆"}
+        6 {:provider (fn [self]
                        (let [f vim.bo.fileformat]
                          (.. (. self :format f) " ")))}})
   ;; Position
