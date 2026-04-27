@@ -131,11 +131,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777069906,
-        "narHash": "sha256-lh+usprVtB0Pf0vcClR00Hpn4F7DNd6bUod5hjEPq7I=",
+        "lastModified": 1777214510,
+        "narHash": "sha256-89vPm7kX4vetFFxFfk30HHwbRUFVj1PWSwMKyEvcWUQ=",
         "owner": "elixir-lang",
         "repo": "expert",
-        "rev": "50481db272ceb9db72406abb9457041e52f38626",
+        "rev": "9bc521d694db52feb85c5830e93a4c15cdc271a4",
         "type": "github"
       },
       "original": {
@@ -261,11 +261,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777151655,
-        "narHash": "sha256-Th3a5OZyEy4kCoyLfefnt+2dwRIrFQqYgMsayF9qzFw=",
+        "lastModified": 1777258755,
+        "narHash": "sha256-EC07KwADRE2LdIk7vEDyAaD3I0ZUq24T9jQF9L0iEPk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6f59831b23d03bbf4fbd13ad167ae25da294cc14",
+        "rev": "7f8bbc93d63401e41368d6ddc46a4f631610fa90",
         "type": "github"
       },
       "original": {
@@ -299,11 +299,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777082480,
-        "narHash": "sha256-ZYqc08FWKnG5zJOM5f2tZ/+3O3WmFybF9vYw9KAVdA4=",
-        "rev": "22102cb6ffbb880e8585a3244939603a7905dba4",
+        "lastModified": 1777255361,
+        "narHash": "sha256-mbcxKqbzMvBrP6Z16iTvtKr+uD5Z9733gkIqYgpnhIE=",
+        "rev": "328fbbcab2efa52ba4b2465f5dac20c43e0c8079",
         "type": "tarball",
-        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/22102cb6ffbb880e8585a3244939603a7905dba4.tar.gz?rev=22102cb6ffbb880e8585a3244939603a7905dba4"
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/328fbbcab2efa52ba4b2465f5dac20c43e0c8079.tar.gz?rev=328fbbcab2efa52ba4b2465f5dac20c43e0c8079"
       },
       "original": {
         "type": "tarball",
