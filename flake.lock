@@ -131,11 +131,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777996629,
-        "narHash": "sha256-4rqsqGWK3fK9M0EQ7lLtW8TaQ5ASvmSrlniH5qCqgns=",
+        "lastModified": 1778102254,
+        "narHash": "sha256-1sndmnJQdmszKo5OV7ISk/xKmpNtX6l/dc3o/sJpy7w=",
         "owner": "elixir-lang",
         "repo": "expert",
-        "rev": "0cebb7861dd4d45f0dd4111884ff2c577e100118",
+        "rev": "822e35eb272c59319e1fb1dfd2a612c0d2e4d151",
         "type": "github"
       },
       "original": {
@@ -261,11 +261,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778009629,
-        "narHash": "sha256-nUoQtf4Zq7DRYJrfv904hjrxjAlWVP6a1pNNFKx3FCg=",
+        "lastModified": 1778110974,
+        "narHash": "sha256-7V7bW5uZSdKPRmemMQUulXRffnlnjRj5N/HGHOsOda8=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "00ed86e58bb6979a7921859fd1615d19382eac5c",
+        "rev": "75fac363324f18d2b83a30fd916e509d2a02fb0e",
         "type": "github"
       },
       "original": {
@@ -385,11 +385,11 @@
     },
     "quadlet-nix": {
       "locked": {
-        "lastModified": 1770606362,
-        "narHash": "sha256-6pOOPOQr4rtgShBtkLkSDTql5rRqcUgTRz8O+axK2eM=",
+        "lastModified": 1778106878,
+        "narHash": "sha256-teDyx9pNOkWTLdoX0FQQ0rvk9QPmryKt638eqXBO9Os=",
         "owner": "SEIAROTg",
         "repo": "quadlet-nix",
-        "rev": "f4ae60350ea6015b6560cbd0e1f11f7e195c993d",
+        "rev": "5e70168272312c0f0d915a37336d95af758146b6",
         "type": "github"
       },
       "original": {
