@@ -87,11 +87,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778230731,
-        "narHash": "sha256-tykBskRc+EULK0Bxtf0JyPUBh2bOHCTS/7wufPUZnEA=",
+        "lastModified": 1778743018,
+        "narHash": "sha256-zYwJ8IDrxPDWwQLrtlsX84Mxb9H9g6zKWvk9B4SVWHA=",
         "owner": "Mic92",
         "repo": "direnv-instant",
-        "rev": "485b181f277bdaa2a9eeeed4932e63782f9c5d47",
+        "rev": "bbbb19b50ec860dafaf2c87833ee05fa6cbe7a1d",
         "type": "github"
       },
       "original": {
@@ -131,11 +131,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778577966,
-        "narHash": "sha256-E/422wW9i7GUJ/3Exv6AkGxh3dAhI73pFxzU8w7scus=",
+        "lastModified": 1778767353,
+        "narHash": "sha256-mR/mF7Icogf42juUiCGzCWDO7aQt4mRoCm+cJyTDt+g=",
         "owner": "elixir-lang",
         "repo": "expert",
-        "rev": "e19117d5165d1e480675a9809698e2661a8332f0",
+        "rev": "cff38036bf225173d033d1a4e7981a86fbb6b1af",
         "type": "github"
       },
       "original": {
@@ -261,11 +261,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778728372,
-        "narHash": "sha256-8pArLaovyMHR9VHa6eVk4e5vgvDS+Dg9J8pxPBjAE18=",
+        "lastModified": 1778805320,
+        "narHash": "sha256-nGFJ01m2CTBKD4ABtcY4vLhHrRN91LKr/pn41PcU78A=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "f04b141d1a0d6d7d62aa9678aef602dfb61e8bb1",
+        "rev": "9846abe15e7d0d36b8acbd4d05f2b87461744c92",
         "type": "github"
       },
       "original": {
