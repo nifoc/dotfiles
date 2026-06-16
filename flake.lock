@@ -131,11 +131,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781102296,
-        "narHash": "sha256-kdr/EXsIf+kBlVJjHSGcku818SgDduVa97K10o83R8Q=",
+        "lastModified": 1781552857,
+        "narHash": "sha256-g8xntZdIOuz47pHk2cUd2Hz5171aj94ffLEKLwwdrSE=",
         "owner": "elixir-lang",
         "repo": "expert",
-        "rev": "ce5bb5805ee162d16c111251a0d92ca2242a0dad",
+        "rev": "03a56b541a10dd3985921cdf14e86280e82254cb",
         "type": "github"
       },
       "original": {
@@ -261,11 +261,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781365335,
-        "narHash": "sha256-zqDBhXMzfbdlO7F2bGHe7MOtB3xngd/+4ieMHDC+ZXo=",
+        "lastModified": 1781557312,
+        "narHash": "sha256-QOIRYSUFSq7L5mY3dZymaVhcnne3tPgoR9riB0WocjA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5b6f5733726a1b2ccafb5dec6ac4ca7299fad66c",
+        "rev": "c03e4752899e55705dfa63979abd885c582a5c48",
         "type": "github"
       },
       "original": {
@@ -299,11 +299,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781402497,
-        "narHash": "sha256-wJJvNm0TZwTOmRDUTiM5oz9uRFYIbCpysgyl57IqQ4U=",
-        "rev": "0e319038a4af8de3d8bce3193b01c18dd3d54d63",
+        "lastModified": 1781575301,
+        "narHash": "sha256-lFh1tbP3gwKBJzCy+kY85twlGE9EmWGzjGpq9gcYEAA=",
+        "rev": "a0f6b7af87aa676e09e59169876708bab4fa91c6",
         "type": "tarball",
-        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/0e319038a4af8de3d8bce3193b01c18dd3d54d63.tar.gz?rev=0e319038a4af8de3d8bce3193b01c18dd3d54d63"
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/a0f6b7af87aa676e09e59169876708bab4fa91c6.tar.gz?rev=a0f6b7af87aa676e09e59169876708bab4fa91c6"
       },
       "original": {
         "type": "tarball",
@@ -444,11 +444,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1781110520,
-        "narHash": "sha256-QkDoEBgcWh/eKX8jxctMNEy08Sf8kpxXFhWbsygTWz8=",
+        "lastModified": 1781524338,
+        "narHash": "sha256-K+nghy9uAIJQ6Ox9hc3U+utiPJMwskwhPorJ7y7ZZow=",
         "owner": "lordgrimmauld",
         "repo": "run0-sudo-shim",
-        "rev": "9eb571a3fa3a3ad441822838580b78d40d87f37d",
+        "rev": "6e397eebae4c7f3acb8eca080d1c56be5be19e44",
         "type": "github"
       },
       "original": {
