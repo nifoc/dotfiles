@@ -220,11 +220,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778507602,
-        "narHash": "sha256-kTwur1wV+01SdqskVMSo6JMEpg71ps3HpbFY2GsflKs=",
+        "lastModified": 1781733627,
+        "narHash": "sha256-U3yTuGBnmXvXoQI3qkpfEDsn9RovQPAjN7ndRco+3u0=",
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "rev": "61ab0e80d9c7ab14c256b5b453d8b3fb0189ba0a",
+        "rev": "3bbec39bc90eadfa031e6f3b77272f3f60803e39",
         "type": "github"
       },
       "original": {
@@ -261,11 +261,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781667738,
-        "narHash": "sha256-OxrwHpsWf+QGbos1LMDGAcv7sjBGshcw/43th6waeYI=",
+        "lastModified": 1781751568,
+        "narHash": "sha256-hZAbXoNA4nCSaIJJLGl/EdErFtlnAS06jEp4oO7Qp6s=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "7664e05e2413d5e2b8c54a884eb8ea0f8a504fc2",
+        "rev": "5bcff43156c0eebe68759338b7879c8e1b2e2bd0",
         "type": "github"
       },
       "original": {
@@ -299,11 +299,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781661732,
-        "narHash": "sha256-/q0q2RCMdq1YS9z1dVWgTZUXfT8GpPpFNYVvstwJ7EU=",
-        "rev": "4896ed4d9db863bf41f736f8cfe3e6efc21d23f8",
+        "lastModified": 1781723979,
+        "narHash": "sha256-yflLVANSyELab/FVwsH7O+4K+Sxs5OSRXCXVxOKo4i8=",
+        "rev": "431adc70e35330f6dbb2355d9f21e175b1b3bca9",
         "type": "tarball",
-        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/4896ed4d9db863bf41f736f8cfe3e6efc21d23f8.tar.gz?rev=4896ed4d9db863bf41f736f8cfe3e6efc21d23f8"
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/431adc70e35330f6dbb2355d9f21e175b1b3bca9.tar.gz?rev=431adc70e35330f6dbb2355d9f21e175b1b3bca9"
       },
       "original": {
         "type": "tarball",
@@ -317,11 +317,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781242433,
-        "narHash": "sha256-bchLZZ3sRn740zyvD2icZSnNoTaanN0nw7l6fjVXO+E=",
+        "lastModified": 1781715441,
+        "narHash": "sha256-yyui90BUxu+A/NjUBO2RV9ubrC0lc/ECzuy2aWGnNEA=",
         "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "aabb2037edfc0f210723b72cd5f528aab5dd3f0b",
+        "rev": "ee9c7b96c90bbb23620544201e26de92858b9ce3",
         "type": "github"
       },
       "original": {
