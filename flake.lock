@@ -131,11 +131,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782405292,
-        "narHash": "sha256-owk/p5D89W6efArBp7gzyGK68kA42uqhj5lSzE4tu7s=",
+        "lastModified": 1782470177,
+        "narHash": "sha256-Rx1kAL5smQsiCdfnNt6U+JTKyIR6kemr2jYh85LhKEU=",
         "owner": "elixir-lang",
         "repo": "expert",
-        "rev": "de9e092d1c9a97a3ce18a28a42084a5ca7d7b580",
+        "rev": "63dc1f31807d4a87b7d8ae842f1e942dacfe839f",
         "type": "github"
       },
       "original": {
@@ -261,11 +261,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782423922,
-        "narHash": "sha256-qPNd6lUohHP5gcJhqQ7rLV87RwIx0xYR2A4Frb9Zjc4=",
+        "lastModified": 1782522538,
+        "narHash": "sha256-CvOaUvJ+mXlxU3m2cPWKcOAhtKETsPUYhq+Xa5ewBp4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5d320ab301cfaaca7d32514f13815d19d109f5f4",
+        "rev": "8d8a6cc50ddc60748791a14ee1163c865ec57635",
         "type": "github"
       },
       "original": {
@@ -299,11 +299,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781723979,
-        "narHash": "sha256-yflLVANSyELab/FVwsH7O+4K+Sxs5OSRXCXVxOKo4i8=",
-        "rev": "431adc70e35330f6dbb2355d9f21e175b1b3bca9",
+        "lastModified": 1782525709,
+        "narHash": "sha256-Kd9uRvWYByMt37hyfXbYG4WOwOoEDc27DBZsPEDOVL0=",
+        "rev": "8dc963f75d94a2171cea9ffcb54d3e3737a27b49",
         "type": "tarball",
-        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/431adc70e35330f6dbb2355d9f21e175b1b3bca9.tar.gz?rev=431adc70e35330f6dbb2355d9f21e175b1b3bca9"
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/8dc963f75d94a2171cea9ffcb54d3e3737a27b49.tar.gz?rev=8dc963f75d94a2171cea9ffcb54d3e3737a27b49"
       },
       "original": {
         "type": "tarball",
@@ -385,11 +385,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1781577229,
-        "narHash": "sha256-lrp67w8AulE9Ks53n27I45ADSzbOCn4H+CNW1Ck8B+8=",
+        "lastModified": 1782467914,
+        "narHash": "sha256-pGvFkM8N0xEkIIXDe5YYfbEAvHrk4IxBrjB/x8OomhE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "567a49d1913ce81ac6e9582e3553dd90a955875f",
+        "rev": "e73de5be04e0eff4190a1432b946d469c794e7b4",
         "type": "github"
       },
       "original": {
