@@ -131,11 +131,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782470177,
-        "narHash": "sha256-Rx1kAL5smQsiCdfnNt6U+JTKyIR6kemr2jYh85LhKEU=",
+        "lastModified": 1782746965,
+        "narHash": "sha256-J+xAUSsMKs4K/UlnFWdv64mp8R8x4ed3KI/HPXLeqf0=",
         "owner": "elixir-lang",
         "repo": "expert",
-        "rev": "63dc1f31807d4a87b7d8ae842f1e942dacfe839f",
+        "rev": "f48ed4557b9e2133bf794cb9a9a529814dcd99bc",
         "type": "github"
       },
       "original": {
@@ -261,11 +261,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782702263,
-        "narHash": "sha256-8/MG4Su7PhnynrmsVO61IeAfrK7GuUEu+E+gwbhy1QQ=",
+        "lastModified": 1782749631,
+        "narHash": "sha256-slFTUgDy0KTPA4LBAmC/9SngDq8GCPdX+ZR0yQHHN1E=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "789a35fbdeb3c46b260096daa0b321c11be527ea",
+        "rev": "5d72a29fc36ac21adae6ae35568fe5ee6700850f",
         "type": "github"
       },
       "original": {
@@ -444,11 +444,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1781524338,
-        "narHash": "sha256-K+nghy9uAIJQ6Ox9hc3U+utiPJMwskwhPorJ7y7ZZow=",
+        "lastModified": 1782763081,
+        "narHash": "sha256-+x/T8bAtfbgh1RflujUsYF4lOhHwtiWdf7wpZGVDVu4=",
         "owner": "lordgrimmauld",
         "repo": "run0-sudo-shim",
-        "rev": "6e397eebae4c7f3acb8eca080d1c56be5be19e44",
+        "rev": "7da214c44ea00c95455542b8029aec8de5871601",
         "type": "github"
       },
       "original": {
