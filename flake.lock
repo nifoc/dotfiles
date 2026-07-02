@@ -131,11 +131,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782835250,
-        "narHash": "sha256-LowhEZWk9MxWQxnbNkbzzpOjGMWSOEtaJI3i94Zac1A=",
+        "lastModified": 1782930989,
+        "narHash": "sha256-bEb/KveHyPJtAGrqs9gWtRPgTa+ejmsIeLqOJhMX2MI=",
         "owner": "elixir-lang",
         "repo": "expert",
-        "rev": "aefdcaaca6cae1d5cee98b83254acfdf4d7b5726",
+        "rev": "3f637c174bfb949cfe53604680e4da533c4c2b8a",
         "type": "github"
       },
       "original": {
@@ -183,11 +183,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778716662,
-        "narHash": "sha256-m1Yf0wZ8j1OHjTc2UwHwyQRSnNeSgLJOd7q5Y45hzi4=",
+        "lastModified": 1782949081,
+        "narHash": "sha256-vp6Y/Grm98ESt6ceOkWiHWyZRDV3J1RID4w+6NWK9yA=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "f7c1a2d347e4c52d5fb8d10cb4d94b5884e546fb",
+        "rev": "17c9d6cdfc60c64f4ee8d306f9bc0b4ccb51481e",
         "type": "github"
       },
       "original": {
@@ -214,43 +214,21 @@
     "git-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
-        "gitignore": "gitignore",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1781733627,
-        "narHash": "sha256-U3yTuGBnmXvXoQI3qkpfEDsn9RovQPAjN7ndRco+3u0=",
+        "lastModified": 1782908218,
+        "narHash": "sha256-wLMOrPgVyeF3XmP+qfYcLqnVdTxikdcSvbIY7rA9jTA=",
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "rev": "3bbec39bc90eadfa031e6f3b77272f3f60803e39",
+        "rev": "9f7e99119ece7705299595299f3b031f39356de1",
         "type": "github"
       },
       "original": {
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "type": "github"
-      }
-    },
-    "gitignore": {
-      "inputs": {
-        "nixpkgs": [
-          "git-hooks",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1709087332,
-        "narHash": "sha256-HG2cCnktfHsKV0s4XW83gU3F57gaTljL9KNSuG6bnQs=",
-        "owner": "hercules-ci",
-        "repo": "gitignore.nix",
-        "rev": "637db329424fd7e46cf4185293b9cc8c88c95394",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "gitignore.nix",
         "type": "github"
       }
     },
@@ -261,11 +239,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782839684,
-        "narHash": "sha256-vzs4SBgPsK4aNzlJR2PpFwtARazXMOxZonQnDz0YHxk=",
+        "lastModified": 1782964450,
+        "narHash": "sha256-2rwNd77TzZ4sDDvMam0IXFXN5IfC35mifoeKS0uAc/4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2a37d71bbe69e1522ddabf03a4cea0374958bdbe",
+        "rev": "ebc87daabc8d3f595e9a8b67107eaaa8115ad582",
         "type": "github"
       },
       "original": {
@@ -299,11 +277,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782871308,
-        "narHash": "sha256-4TfF6a1MAM7mwSlJx7ymRtn14u0F0wHpbkLFVzSxFi0=",
-        "rev": "c6df1fae29b9359923ca0bad8d8092335c59dea0",
+        "lastModified": 1782957696,
+        "narHash": "sha256-UltKQeum4P6CQnM5+NCciZK7BAjPHtaeioOxI6ewqJA=",
+        "rev": "043eaf8317b24084b044a3222c07aa495bbccfdb",
         "type": "tarball",
-        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/c6df1fae29b9359923ca0bad8d8092335c59dea0.tar.gz?rev=c6df1fae29b9359923ca0bad8d8092335c59dea0"
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/043eaf8317b24084b044a3222c07aa495bbccfdb.tar.gz?rev=043eaf8317b24084b044a3222c07aa495bbccfdb"
       },
       "original": {
         "type": "tarball",
@@ -444,11 +422,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1782848123,
-        "narHash": "sha256-Jg6SJ5sLq5vdDfBI/IY/fwmdFAOu9Gu/bE8H7F/+Jzo=",
+        "lastModified": 1782890834,
+        "narHash": "sha256-J/I7VPXpOwNtEk9H+lbZVT+xJYBsSKgnMlwzlVIJSWk=",
         "owner": "lordgrimmauld",
         "repo": "run0-sudo-shim",
-        "rev": "a27c715cb85308d9815a6ac2e94f97b227074ad5",
+        "rev": "9fa985ddb9dc7f4d66aa7bfc3bc3188e4aa1d727",
         "type": "github"
       },
       "original": {
