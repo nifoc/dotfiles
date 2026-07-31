@@ -61,11 +61,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1785116464,
-        "narHash": "sha256-O5bnHIzOkp2SQl0eCqKIqKzjgy2u0GXirTKSUdwER4Q=",
+        "lastModified": 1785448994,
+        "narHash": "sha256-pD8rBn57pNLOnWCz07D2HLzVE/DUFuuh0bzdEhc/dkw=",
         "owner": "serokell",
         "repo": "deploy-rs",
-        "rev": "4f4179edae9a9dd31339284c8334072e3a110528",
+        "rev": "145da05e26235784581a31ba83beb9949b24da84",
         "type": "github"
       },
       "original": {
@@ -87,11 +87,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785135633,
-        "narHash": "sha256-DaFlHHYwY8pL1cMWghHu/5smyRC7sn/O5oOLhBZwOAA=",
+        "lastModified": 1785395241,
+        "narHash": "sha256-33LyV3D5zCpFXeh6L7QBe+Syb2zWPfeEFgaJb9E8ucU=",
         "owner": "Mic92",
         "repo": "direnv-instant",
-        "rev": "d5c7ab564ab694be1d9952a05b5538d483cc2d1d",
+        "rev": "c4231a4244dde9b85fa6ee39535f28f525596cd3",
         "type": "github"
       },
       "original": {
@@ -131,11 +131,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785249546,
-        "narHash": "sha256-n6ghqpTEM5ByXxkeNA2hbzIFFa2mXkE2rd19ffEFOVQ=",
+        "lastModified": 1785447407,
+        "narHash": "sha256-+7lwhImjOahjHgU7zLtYfhmBFrtA1dATKCLk/jOfFtA=",
         "owner": "elixir-lang",
         "repo": "expert",
-        "rev": "77a6e7401b83ab39f0542605e098d96451e9c63f",
+        "rev": "39746de290c865bd02d0763ba5baf988c510e892",
         "type": "github"
       },
       "original": {
@@ -239,11 +239,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785306346,
-        "narHash": "sha256-DScBkW0fOgpGPK2trNoX3ryLTlaC14+gglFo/BhGJ4g=",
+        "lastModified": 1785469032,
+        "narHash": "sha256-aB6tgXxSFT48X0Jc/v5opHUVo/B9sOoojUE6uZ7ymsc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e705714e918c3b11affcdd15db2cbe3a070420a0",
+        "rev": "6d25edfbd109bd6c0bb950a2fb6c37141795e3f1",
         "type": "github"
       },
       "original": {
@@ -277,11 +277,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785377010,
-        "narHash": "sha256-9de8BHowwNcCQv7Q2ELCeK1NqmyD64EFum+hD3HzN5E=",
-        "rev": "5bb53d557438541a6be3b51f33bc6e88409428d7",
+        "lastModified": 1785463359,
+        "narHash": "sha256-GjPSVIQpejDumCqO1t4a2pwiYNTaaRriYldumVsaJko=",
+        "rev": "2e233d2bdee13a70f7211ab0343dd6fa2541613f",
         "type": "tarball",
-        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/5bb53d557438541a6be3b51f33bc6e88409428d7.tar.gz?rev=5bb53d557438541a6be3b51f33bc6e88409428d7"
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/2e233d2bdee13a70f7211ab0343dd6fa2541613f.tar.gz?rev=2e233d2bdee13a70f7211ab0343dd6fa2541613f"
       },
       "original": {
         "type": "tarball",
@@ -295,11 +295,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1784500460,
-        "narHash": "sha256-UvORnAxTRHax7RG74W8Z2t4GvIkX6AjJ5kk0QlwZomo=",
+        "lastModified": 1785389976,
+        "narHash": "sha256-0tLW8Ff5yt8AH97jw4ZpFJ0OCJ122zIlgWGDmOfU/VU=",
         "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "57a3171f94705599a2499248ca5758d5eb47c0e0",
+        "rev": "15abb8c98f336cd8bd840d71059adebabe60bf04",
         "type": "github"
       },
       "original": {
