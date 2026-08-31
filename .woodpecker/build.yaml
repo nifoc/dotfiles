@@ -20,4 +20,4 @@ steps:
   - name: build
     image: bash
     commands:
-      - nix-fast-build --eval-workers 2
+      - nix-fast-build --eval-workers 2 --no-nom --no-fold
