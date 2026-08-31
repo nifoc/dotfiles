@@ -3,12 +3,7 @@
 {
   den.aspects.webserver = {
     nixos =
-      {
-        pkgs,
-        config,
-        lib,
-        ...
-      }:
+      { config, lib, ... }:
       let
         cfg = den.aspects.${config.networking.hostName}.meta;
         inherit (cfg.firewall) trustedInterfaces;

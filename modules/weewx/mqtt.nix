@@ -22,19 +22,19 @@
 
         age.secrets = {
           weewx-mqtt-password-weewx = {
-            file = ../../agenix/weewx/mqtt/password-weewx.nix;
+            file = ../../agenix/weewx/mqtt/password-weewx.age;
             owner = "mosquitto";
             group = "mosquitto";
           };
 
           weewx-mqtt-password-weewx-proxy = {
-            file = ../../agenix/weewx/mqtt/password-weewx-proxy.nix;
+            file = ../../agenix/weewx/mqtt/password-weewx-proxy.age;
             owner = "mosquitto";
             group = "mosquitto";
           };
 
           weewx-mqtt-password-home-assistant = {
-            file = ../../agenix/weewx/mqtt/password-home-assistant.nix;
+            file = ../../agenix/weewx/mqtt/password-home-assistant.age;
             owner = "mosquitto";
             group = "mosquitto";
           };

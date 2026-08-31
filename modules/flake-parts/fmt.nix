@@ -29,7 +29,11 @@
           just.enable = true;
           nixfmt.enable = true;
           shfmt.enable = true;
-          yamlfmt.enable = true;
+
+          yamlfmt = {
+            enable = true;
+            excludes = [ "secret/**/*.yaml" ];
+          };
         };
       };
 

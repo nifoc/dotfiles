@@ -44,6 +44,7 @@
           libjxl
           mtr
           nix-tree
+          lixPackageSets.latest.nix-fast-build
           lixPackageSets.latest.nix-update
           lixPackageSets.latest.nurl
           parallel

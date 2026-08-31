@@ -1,0 +1,23 @@
+when:
+  - event: push
+    branch: master
+  - event: manual
+matrix:
+  arch:
+    - amd64
+    - arm64
+labels:
+  type: nix
+  arch: ${arch}
+clone:
+  git:
+    image: bash
+    settings:
+      recursive: true
+      submodule_override:
+        private: https://git.kempkens.io/daniel/dotfiles-private.git
+steps:
+  - name: build
+    image: bash
+    commands:
+      - nix-fast-build --eval-workers 2
