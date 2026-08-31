@@ -239,11 +239,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787797243,
-        "narHash": "sha256-8+Q7NOB7RPajRjA4pbCDLzqH+MTjnG9x6LUPLfL2joA=",
+        "lastModified": 1788146656,
+        "narHash": "sha256-XmJmvk9rytTb7dCotO/aqR+YysB8HOqnprlOdv+LAF4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "99c9ec63390f1d8c14d95d9e8b17cc29cfbd4e11",
+        "rev": "82c265faf4e3161d6015db07c9b0f1ee36a9029b",
         "type": "github"
       },
       "original": {
@@ -277,11 +277,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788055322,
-        "narHash": "sha256-DOge8IX/nsQkU+Pup3ZBV0wH6mjHioWW6i9+pviC1j4=",
-        "rev": "90ca69c0d20d0b8b6db3993042b1bee3202a06fe",
+        "lastModified": 1788141751,
+        "narHash": "sha256-TWiCyrdglbsuFAlZFJMrNPXJe7I611q+mCgA2LXcraw=",
+        "rev": "aa0d351f64e25710b754165011f8ae3c05fa1ee1",
         "type": "tarball",
-        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/90ca69c0d20d0b8b6db3993042b1bee3202a06fe.tar.gz?rev=90ca69c0d20d0b8b6db3993042b1bee3202a06fe"
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/aa0d351f64e25710b754165011f8ae3c05fa1ee1.tar.gz?rev=aa0d351f64e25710b754165011f8ae3c05fa1ee1"
       },
       "original": {
         "type": "tarball",
@@ -363,11 +363,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1787900134,
-        "narHash": "sha256-VYXO0XZlgj06dxJZRhrD3WoSsvq/c7+/Akyoa22pefw=",
+        "lastModified": 1788039129,
+        "narHash": "sha256-pa4Q0qErvCvzCaaUph7Sm37RhR4xvPrYI8Lgz6k85+A=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "83199d0d373dd3ac2b9a1996b1d0263f76ab7a4c",
+        "rev": "d2f67949798825fe853f7c5d0492b8bf016d3f88",
         "type": "github"
       },
       "original": {
