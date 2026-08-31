@@ -13,5 +13,16 @@ steps:
   - name: update
     image: ghcr.io/lix-project/lix:latest
     commands:
-      - echo 'experimental-features = nix-command flakes' >> /etc/nix/nix.conf
+      - echo 'experimental-features = nix-command flakes flake-self-attrs' >> /etc/nix/nix.conf
       - nix run '.#write-flake'
+  - name: push
+    image: docker.io/appleboy/drone-git-push
+    settings:
+      branch: master
+      remote: ssh://forgejo@git.kempkens.io/daniel/dotfiles.git
+      commit: true
+      commit_message: "chore(deps): update flake"
+      author_name: Actions Bot
+      author_email: daniel+actions-bot@kempkens.io
+      ssh_key:
+        from_secret: push_ssh_key
