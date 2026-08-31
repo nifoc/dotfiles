@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ den, inputs, ... }:
 
 {
   flake-file.inputs = {
@@ -6,6 +6,10 @@
   };
 
   den.aspects.woodpecker.provides.agent = {
+    includes = with den.aspects; [
+      podman
+    ];
+
     nixos =
       { pkgs, config, ... }:
       let
@@ -28,6 +32,22 @@
         };
 
         services.woodpecker-agents.agents = {
+          podman = {
+            enable = true;
+
+            environment = {
+              WOODPECKER_SERVER = woodpeckerServer;
+              WOODPECKER_GRPC_SECURE = "true";
+              WOODPECKER_BACKEND = "docker";
+              WOODPECKER_AGENT_LABELS = "type=podman,arch=${archLabel}";
+              DOCKER_HOST = "unix:///run/podman/podman.sock";
+            };
+
+            extraGroups = [ "podman" ];
+
+            environmentFile = [ config.age.secrets.woodpecker-agent-environment.path ];
+          };
+
           nix = {
             enable = true;
 

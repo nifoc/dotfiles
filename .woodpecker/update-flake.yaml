@@ -1,15 +1,8 @@
 when:
-  - event: push
-    branch: master
   - event: manual
-matrix:
-  arch:
-    - amd64
-    - arm64
-labels:
-  type: nix
-  arch: ${arch}
 clone:
+  labels:
+    type: nix
   git:
     image: bash
     settings:
@@ -17,7 +10,9 @@ clone:
       submodule_override:
         private: https://git.kempkens.io/daniel/dotfiles-private.git
 steps:
-  - name: build
+  - name: update
     image: bash
     commands:
-      - nix-fast-build --no-nom
+      - nix run '.#write-flake'
+    labels:
+      type: nix
