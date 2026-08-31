@@ -1,7 +1,6 @@
 when:
   - event: push
     branch: master
-  - event: manual
 matrix:
   arch:
     - amd64
@@ -20,4 +19,4 @@ steps:
   - name: build
     image: bash
     commands:
-      - nix-fast-build --eval-workers 1 --no-nom
+      - nix-fast-build --eval-workers 1 --max-jobs 1 --no-nom
