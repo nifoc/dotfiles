@@ -13,4 +13,5 @@ steps:
   - name: update
     image: ghcr.io/lix-project/lix:latest
     commands:
+      - echo 'experimental-features = nix-command flakes' >> /etc/nix/nix.conf
       - nix run '.#write-flake'
