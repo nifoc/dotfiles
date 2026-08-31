@@ -1,0 +1,111 @@
+{ den, inputs, ... }:
+
+{
+  flake-file.inputs = {
+    quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
+  };
+
+  den.aspects.media-downloader = {
+    includes = with den.aspects; [
+      podman
+    ];
+
+    nixos =
+      { config, lib, ... }:
+      let
+        inherit (den.aspects.base.meta.networking) ips;
+
+        inherit (config.virtualisation.quadlet) containers;
+
+        fqdn = "sonarr.internal.kempkens.network";
+
+        requiredPaths = [
+          "/dozer/downloads"
+          "/dozer/media"
+          "/dozer/MediaVault"
+        ];
+      in
+      {
+        imports = [ inputs.quadlet-nix.nixosModules.quadlet ];
+
+        virtualisation.quadlet.containers.sonarr = {
+          autoStart = false;
+
+          containerConfig = {
+            image = "lscr.io/linuxserver/sonarr:develop";
+            environments = {
+              PUID = "2001";
+              PGID = "2001";
+              TZ = "Etc/UTC";
+              SONARR__AUTH__TRUSTCGNATIPADDRESSES = "true";
+            };
+            volumes = [
+              "/var/lib/sonarr/.config/NzbDrone:/config"
+              "/dozer/downloads:/mnt/downloads"
+              "/dozer/media/TV Shows:/mnt/media/TV Shows"
+              "/dozer/media/Documentaries:/mnt/media/Documentaries"
+              "/dozer/MediaVault/Anime:/mnt/media/Anime"
+            ];
+            labels = {
+              "com.centurylinklabs.watchtower.enable" = "true";
+              "io.containers.autoupdate" = "registry";
+            };
+          };
+
+          unitConfig = {
+            Requires = [ containers.prowlarr.ref ];
+            After = [ containers.prowlarr.ref ];
+
+            ConditionDirectoryNotEmpty = requiredPaths;
+          };
+        };
+
+        systemd = {
+          paths.sonarr = {
+            wantedBy = [ "multi-user.target" ];
+
+            pathConfig = {
+              PathModified = "/root/zfs-dozer-mount-common";
+            };
+          };
+
+          tmpfiles.rules = [
+            "d /var/lib/sonarr 0755 media_user user_media"
+          ];
+        };
+
+        services.caddy = {
+          virtualHosts."${fqdn}" = {
+            extraConfig = ''
+              encode
+
+              request_body {
+                max_size 32MB
+              }
+
+              header >Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+              @autobrr {
+                client_ip 192.168.42.10
+              }
+
+              handle @autobrr {
+                reverse_proxy 192.168.42.2:8989
+              }
+
+              handle {
+                import tinyauth
+
+                reverse_proxy 192.168.42.2:8989
+              }
+            '';
+          };
+        };
+
+        virtualisation.quadlet.containers.tinyauth.containerConfig.environments = {
+          TINYAUTH_APPS_SONARR_CONFIG_DOMAIN = fqdn;
+          TINYAUTH_APPS_SONARR_IP_BYPASS = lib.strings.concatStringsSep "," ips.tailscale.daniels-iphone;
+        };
+      };
+  };
+}

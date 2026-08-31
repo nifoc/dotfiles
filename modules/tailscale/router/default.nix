@@ -1,0 +1,19 @@
+{ den, ... }:
+
+{
+  den.aspects.tailscale.provides.router = {
+    includes = with den.aspects; [
+      tailscale
+    ];
+
+    nixos = {
+      services.tailscale = {
+        useRoutingFeatures = "server";
+
+        extraUpFlags = [
+          "--advertise-routes=10.0.0.0/24,10.0.50.0/24,10.0.51.0/24,10.0.100.0/24,10.0.200.0/24"
+        ];
+      };
+    };
+  };
+}

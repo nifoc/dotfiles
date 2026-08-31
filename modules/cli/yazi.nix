@@ -1,0 +1,28 @@
+{
+  den.aspects.cli = {
+    homeManager =
+      { pkgs, ... }:
+      {
+        programs.yazi = {
+          enable = true;
+
+          shellWrapperName = "y";
+
+          settings = {
+            flavor = {
+              use = "dracula";
+            };
+          };
+
+          flavors = {
+            dracula = pkgs.fetchFromGitHub {
+              owner = "dracula";
+              repo = "yazi";
+              rev = "99b60fd76df4cce2778c7e6c611bfd733cf73866";
+              hash = "sha256-dFhBT9s/54jDP6ZpRkakbS5khUesk0xEtv+xtPrqHVo=";
+            };
+          };
+        };
+      };
+  };
+}

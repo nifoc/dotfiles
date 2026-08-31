@@ -1,0 +1,26 @@
+file="$1"
+
+xattr -d com.apple.metadata:kMDItemWhereFroms "$file" 2>/dev/null
+xattr -d com.apple.metadata:kMDItemComment "$file" 2>/dev/null
+
+case "$file" in
+*.jpg)
+  ;&
+*.jpeg)
+  ;&
+*.png)
+  exiftool -all= -overwrite_original_in_place "$file"
+  ;;
+*.mp4)
+  tmp_file="${file}_out.mp4"
+  ffmpeg -i "$file" -map_metadata -1 -map_chapters -1 -dn -movflags +faststart -c:v copy -c:a copy "$tmp_file"
+  rm "$file"
+  mv "$tmp_file" "$file"
+  ;;
+*)
+  echo "Unsupported file extension"
+  exit 1
+  ;;
+esac
+
+# vim: ft=sh

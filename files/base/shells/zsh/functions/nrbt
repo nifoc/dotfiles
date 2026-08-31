@@ -1,0 +1,5 @@
+other_hostname="$1"
+
+nrsw "$other_hostname" "y"
+
+# vim: ft=sh

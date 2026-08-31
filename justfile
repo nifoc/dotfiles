@@ -30,7 +30,7 @@ build-remote-machine target remoteBuild=defaultRemoteBuild type=defaultRemoteTyp
         echo "Remote building is disabled"
     fi
 
-# Deploy to a local machine
+# Deploy to the local machine
 [group('deploy')]
 deploy-local-machine target type=defaultLocalType: _git-pull (build-local-machine target type)
     sudo {{ type }}-rebuild switch --fallback --flake ".#{{ target }}"
@@ -44,6 +44,19 @@ deploy-remote-machine target remoteBuild=defaultRemoteBuild type=defaultRemoteTy
     hostname="$(nix eval --raw '.#deploy.nodes.{{ target }}.hostname' 2> /dev/null)"
     deploy --skip-checks '.#{{ target }}'
     ssh -t "${hostname}" 'attic push nifoc-systems /run/current-system'
+
+# Deploy to the local machine, but activate after a reboot
+[group('deploy')]
+deploy-boot-local-machine target type=defaultLocalType: _git-pull (build-local-machine target type)
+    sudo {{ type }}-rebuild boot --fallback --flake ".#{{ target }}"
+    find ./.direnv -maxdepth 1 -name 'flake-profile-*' -type l -exec attic push nifoc-systems {} \;
+
+# Deploy to a remote machine, but activate after a reboot
+[group('deploy')]
+deploy-boot-remote-machine target remoteBuild=defaultRemoteBuild type=defaultRemoteType: _git-pull (build-remote-machine target remoteBuild type)
+    #!/bin/sh
+    hostname="$(nix eval --raw '.#deploy.nodes.{{ target }}.hostname' 2> /dev/null)"
+    deploy --skip-checks --boot '.#{{ target }}'
 
 _git-pull:
     -git pull
