@@ -1,4 +1,4 @@
 [submodule "private"]
 	path = private
-	url = ssh://forgejo@git.kempkens.io/daniel/dotfiles-private.git
+	url = https://git.kempkens.io/daniel/dotfiles-private.git
 	branch = master

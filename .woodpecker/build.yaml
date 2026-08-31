@@ -9,12 +9,6 @@ matrix:
 labels:
   type: nix
   arch: ${arch}
-clone:
-  git:
-    settings:
-      recursive: true
-      submodule_override:
-        private: https://git.kempkens.io/daniel/dotfiles-private.git
 steps:
   - name: build
     image: bash
