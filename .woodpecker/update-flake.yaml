@@ -25,6 +25,6 @@ steps:
       author_name: Actions Bot
       author_email: daniel+actions-bot@kempkens.io
       username:
-        from_secret: git_push_user
+        from_secret: git_username
       password:
-        from_secret: git_push_password
+        from_secret: git_password
