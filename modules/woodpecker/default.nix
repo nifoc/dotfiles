@@ -41,7 +41,7 @@
               WOODPECKER_FORGEJO = "true";
               WOODPECKER_FORGEJO_URL = "https://git.kempkens.io";
               WOODPECKER_AUTHENTICATE_PUBLIC_REPOS = "true";
-              WOODPECKER_PLUGINS_TRUSTED_CLONE = "docker.io/woodpeckerci/plugin-git,quay.io/woodpeckerci/plugin-git,docker.io/appleboy/drone-git-push,bash";
+              WOODPECKER_PLUGINS_TRUSTED_CLONE = "docker.io/woodpeckerci/plugin-git,quay.io/woodpeckerci/plugin-git,bash";
 
               WOODPECKER_ENABLE_SWAGGER = "false";
               WOODPECKER_DISABLE_USER_AGENT_REGISTRATION = "true";
