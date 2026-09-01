@@ -1,4 +1,6 @@
 when:
+  - event: cron
+    cron: update_flake
   - event: manual
 labels:
   type: podman

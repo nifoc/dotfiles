@@ -4,20 +4,14 @@ on:
     branches: ['master']
     paths:
       - 'flake.lock'
-      - 'home/programs/nvim/plugins.nix'
       - '.github/workflows/build.yml'
 jobs:
   build-apple-system:
     runs-on: macos-14
     steps:
-      - uses: actions/checkout@v4
-      - uses: samueldr/lix-gha-installer-action@latest
-      - uses: ryanccn/attic-action@v0
+      - uses: actions/checkout@v5
+      - uses: NixOS/nix-installer-action@main
+      - uses: Mic92/niks3-action@v1
         with:
-          endpoint: ${{ secrets.ATTIC_ENDPOINT }}
-          cache: ${{ secrets.ATTIC_CACHE }}
-          token: ${{ secrets.ATTIC_TOKEN }}
-      - name: Build Pallas
-        run: nix build '.#darwinConfigurations.Pallas.config.system.build.toplevel'
-      - name: Build Styx
-        run: nix build '.#darwinConfigurations.Styx.config.system.build.toplevel'
+          server-url: https://niks3-cache.kempkens.network
+      - run: nix run 'nixpkgs#nix-fast-build' -- --skip-cached
