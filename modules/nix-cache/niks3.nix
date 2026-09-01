@@ -9,6 +9,9 @@
   den.aspects.nix-cache = {
     nixos =
       { config, ... }:
+      let
+        fqdn = "niks3-cache.kempkens.network";
+      in
       {
         imports = [
           inputs.agenix.nixosModules.default
@@ -62,13 +65,26 @@
             maxNarSize = "2G";
             priority = 45;
 
+            cacheUrl = "https://${fqdn}";
+
             readProxy = {
               enable = true;
               redirectTTL = "15m";
             };
+
+            oidc.providers = {
+              github = {
+                issuer = "https://token.actions.githubusercontent.com";
+                audience = "https://${fqdn}";
+                boundClaims = {
+                  repository_owner = [ "nifoc" ];
+                  ref = [ "refs/heads/master" ];
+                };
+              };
+            };
           };
 
-          caddy.virtualHosts."niks3-cache.kempkens.network" = {
+          caddy.virtualHosts."${fqdn}" = {
             extraConfig = ''
               request_body {
                 max_size 2GB
