@@ -14,5 +14,5 @@ jobs:
       - uses: Mic92/niks3-action@v1
         with:
           server-url: https://niks3-cache.kempkens.network
-      - run: rm -rf ./private ./.gitmodules && mkdir ./private
+      - run: rm -rf ./private ./.gitmodules && mkdir -p ./private/modules
       - run: nix run 'nixpkgs#nix-fast-build' -- --skip-cached
