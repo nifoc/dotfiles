@@ -16,5 +16,5 @@ jobs:
           server-url: https://niks3-cache.kempkens.network
       - name: Prepare Build
         run: rm -rf private .gitmodules .git/modules/private && sed -i .bak1 '/self.submodules = true;/d' flake.nix && sed -i .bak2 '/.\/private\/modules/d' flake.nix
-      - name: Build
-        run: nix run 'nixpkgs#nix-fast-build' -- --skip-cached
+      - name: Build Pallas
+        run: nix build '.#darwinConfigurations.Pallas.config.system.build.toplevel'
