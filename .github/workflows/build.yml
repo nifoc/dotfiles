@@ -10,7 +10,10 @@ jobs:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v5
-      - uses: NixOS/nix-installer-action@main
+      - uses: canidae-solutions/lix-quick-install-action@v5
+        with:
+          lix_conf: |
+            experimental-features = nix-command flakes flake-self-attrs
       - uses: Mic92/niks3-action@v1
         with:
           server-url: https://niks3-cache.kempkens.network
