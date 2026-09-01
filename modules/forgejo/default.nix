@@ -1,4 +1,4 @@
-{ den, inputs, ... }:
+{ inputs, ... }:
 
 {
   flake-file.inputs = {
@@ -6,10 +6,6 @@
   };
 
   den.aspects.forgejo = {
-    includes = with den.aspects; [
-      forgejo._.runner
-    ];
-
     nixos =
       { pkgs, ... }:
       let
@@ -72,7 +68,7 @@
               };
 
               actions = {
-                ENABLED = true;
+                ENABLED = false;
               };
 
               other = {

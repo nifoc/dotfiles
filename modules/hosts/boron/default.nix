@@ -14,7 +14,6 @@
         database-server
         dns-resolver
         esphome
-        forgejo._.runner
         home-proxy
         mail-security
         miniflux
