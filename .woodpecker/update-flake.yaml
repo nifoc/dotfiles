@@ -19,10 +19,12 @@ steps:
     image: docker.io/appleboy/drone-git-push
     settings:
       branch: master
-      remote: ssh://forgejo@git.kempkens.io/daniel/dotfiles.git
+      remote: https://git.kempkens.io/daniel/dotfiles.git
       commit: true
       commit_message: "chore(deps): update flake"
       author_name: Actions Bot
       author_email: daniel+actions-bot@kempkens.io
-      ssh_key:
-        from_secret: push_ssh_key
+      username:
+        from_secret: git_push_user
+      password:
+        from_secret: git_push_password
