@@ -8,6 +8,8 @@ on:
 jobs:
   build-apple-system:
     runs-on: macos-14
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v5
       - uses: canidae-solutions/lix-quick-install-action@v5
