@@ -20,6 +20,7 @@
         socks-server
         tailscale._.router
         temper
+        unifi-os-server
         ups
         webserver
         weewx
@@ -55,6 +56,12 @@
 
         iot = {
           name = "vlan51";
+          ipv4 = "10.0.51.5";
+        };
+
+        mgmt = {
+          name = "vlan100";
+          ip4 = "10.0.100.5";
         };
 
         tailscale = {
