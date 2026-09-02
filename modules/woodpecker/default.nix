@@ -44,6 +44,7 @@
               WOODPECKER_PLUGINS_TRUSTED_CLONE = "docker.io/woodpeckerci/plugin-git,quay.io/woodpeckerci/plugin-git,bash";
 
               WOODPECKER_ENABLE_SWAGGER = "false";
+              WOODPECKER_DISABLE_VERSION_CHECK = "true";
               WOODPECKER_DISABLE_USER_AGENT_REGISTRATION = "true";
             };
             environmentFile = [ config.age.secrets.woodpecker-environment.path ];
