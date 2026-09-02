@@ -89,5 +89,9 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    unifi-os-server = {
+      url = "github:rcambrj/unifi-os-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }

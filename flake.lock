@@ -27,6 +27,28 @@
         "type": "github"
       }
     },
+    "blueprint": {
+      "inputs": {
+        "nixpkgs": [
+          "unifi-os-server",
+          "nixpkgs"
+        ],
+        "systems": "systems_3"
+      },
+      "locked": {
+        "lastModified": 1776249299,
+        "narHash": "sha256-Dt9t1TGRmJFc0xVYhttNBD6QsAgHOHCArqGa0AyjrJY=",
+        "owner": "numtide",
+        "repo": "blueprint",
+        "rev": "56131e8628f173d24a27f6d27c0215eff57e40dd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "blueprint",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -389,11 +411,11 @@
     },
     "nixos-unstable-small": {
       "locked": {
-        "lastModified": 1788295599,
-        "narHash": "sha256-LzWTr/Qb+1RLpGTkoGL9tkWJsNEJf/i6u801S9cxP1A=",
-        "rev": "0c692bd6492361600287031610dd5747ffaba349",
+        "lastModified": 1788329703,
+        "narHash": "sha256-Ws/5S8DHVo/VBf6xqbxApvegzFD+7yXVerHXX7901YQ=",
+        "rev": "090e478bd64824e2122328df47a7efb74fdaf0c1",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable-small/nixos-26.11pre1065942.0c692bd64923/nixexprs.tar.xz?lastModified=1788295599&rev=0c692bd6492361600287031610dd5747ffaba349"
+        "url": "https://releases.nixos.org/nixos/unstable-small/nixos-26.11pre1066132.090e478bd648/nixexprs.tar.xz?lastModified=1788329703&rev=090e478bd64824e2122328df47a7efb74fdaf0c1"
       },
       "original": {
         "type": "tarball",
@@ -450,7 +472,8 @@
         "nixpkgs": "nixpkgs",
         "quadlet-nix": "quadlet-nix",
         "run0-sudo-shim": "run0-sudo-shim",
-        "treefmt-nix": "treefmt-nix"
+        "treefmt-nix": "treefmt-nix",
+        "unifi-os-server": "unifi-os-server"
       }
     },
     "run0-sudo-shim": {
@@ -507,6 +530,21 @@
         "type": "github"
       }
     },
+    "systems_3": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
@@ -524,6 +562,27 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "unifi-os-server": {
+      "inputs": {
+        "blueprint": "blueprint",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1787900773,
+        "narHash": "sha256-l2FU0QB024+aLFoZHQEhJ83BHl6T3uMGMwCLXhqJg/8=",
+        "owner": "rcambrj",
+        "repo": "unifi-os-server",
+        "rev": "dc8476f4a1a07474096782bd74db2d2810bbabd8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rcambrj",
+        "repo": "unifi-os-server",
         "type": "github"
       }
     },

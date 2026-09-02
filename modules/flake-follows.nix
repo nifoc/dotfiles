@@ -42,5 +42,9 @@
     treefmt-nix.inputs = {
       nixpkgs.follows = "nixpkgs";
     };
+
+    unifi-os-server.inputs = {
+      nixpkgs.follows = "nixpkgs";
+    };
   };
 }
