@@ -61,7 +61,7 @@
 
         mgmt = {
           name = "vlan100";
-          ip4 = "10.0.100.5";
+          ipv4 = "10.0.100.5";
         };
 
         tailscale = {
