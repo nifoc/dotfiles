@@ -113,4 +113,5 @@ in
   "agenix/xmpp-server/acme/credentials.age".publicKeys = carbon;
   "agenix/xmpp-server/coturn/static-auth.age".publicKeys = carbon;
   "agenix/xmpp-server/prosody/environment.age".publicKeys = carbon;
+  "agenix/yubikey/u2f_keys.age".publicKeys = [ user-daniel-Pallas ];
 }

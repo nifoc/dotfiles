@@ -10,11 +10,12 @@
         remote-builder._.client
 
         cli
-        desktop._.macos
-        fonts
-        editors
-        development
         bitwarden._.macos
+        desktop._.macos
+        development
+        editors
+        fonts
+        yubikey
 
         private-device
       ];
