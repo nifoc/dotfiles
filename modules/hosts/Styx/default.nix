@@ -10,9 +10,9 @@
 
         cli
         desktop._.macos
-        fonts
-        editors
         development
+        editors
+        fonts
         onepassword._.macos
 
         work-device
