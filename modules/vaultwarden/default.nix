@@ -43,7 +43,7 @@
         services = {
           vaultwarden = {
             enable = true;
-            package = pkgs.veryUnstable.vaultwarden;
+            # package = pkgs.veryUnstable.vaultwarden;
             dbBackend = "postgresql";
 
             environmentFile = config.age.secrets.vaultwarden-config.path;
