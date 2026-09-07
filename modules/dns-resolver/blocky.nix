@@ -65,7 +65,7 @@
                 };
               in
               {
-                mapping = lib.optionals localAccess localMapping;
+                mapping = lib.optionalAttrs localAccess localMapping;
               };
 
             blocking = {
