@@ -1,10 +1,12 @@
 {
   den.aspects.base = {
     nixos = {
-      services.journald.extraConfig = ''
-        SystemMaxUse=512M
-        MaxRetentionSec=21day
-      '';
+      services.journald.settings = {
+        Journal = {
+          SystemMaxUse = "512M";
+          MaxRetentionSec = "21day";
+        };
+      };
     };
   };
 }
