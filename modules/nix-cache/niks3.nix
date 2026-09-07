@@ -82,6 +82,11 @@
                 };
               };
             };
+
+            gc = {
+              enable = true;
+              olderThan = "168h";
+            };
           };
 
           caddy.virtualHosts."${fqdn}" = {
