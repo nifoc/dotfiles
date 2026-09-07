@@ -2,7 +2,7 @@
   den.aspects.gallium.nixos = {
     networking.hostId = "dc0bfe0a";
 
-    systemd.network = rec {
+    systemd.network = {
       networks = {
         "10-wan" = {
           matchConfig.Name = "eth0";
@@ -28,10 +28,6 @@
           linkConfig.RequiredForOnline = "routable";
         };
       };
-
-      wait-online.extraArgs = [
-        "--interface=${networks."10-wan".matchConfig.Name}"
-      ];
     };
   };
 }
