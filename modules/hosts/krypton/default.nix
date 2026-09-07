@@ -77,11 +77,12 @@
       };
 
       networking = {
-        default = {
+        default = rec {
           name = "eth0";
           altName = "enp1s0f0np0";
           mac = "40:a6:b7:c1:7d:38";
           ipv4 = "10.0.0.100";
+          ipv6ll = "fe80::42a6:b7ff:fec1:7d38%${name}";
         };
 
         dtag = {

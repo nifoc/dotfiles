@@ -51,9 +51,20 @@
           ipv4 = "10.0.0.7";
         };
 
+        iot = {
+          name = "vlan51";
+          ipv4 = "10.0.51.7";
+        };
+
+        dtag = {
+          name = "vlan200";
+          ipv4 = "10.0.200.7";
+        };
+
         tailscale = {
           name = "tailscale0";
           ipv4 = "100.111.49.64";
+          ipv6 = "d7a:115c:a1e0::f23a:3140";
         };
       };
 

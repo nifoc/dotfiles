@@ -64,6 +64,11 @@
           ipv4 = "10.0.100.5";
         };
 
+        dtag = {
+          name = "vlan200";
+          ipv4 = "10.0.200.5";
+        };
+
         tailscale = {
           name = "tailscale0";
           ipv4 = "100.116.103.122";
