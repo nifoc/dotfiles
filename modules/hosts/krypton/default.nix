@@ -30,6 +30,7 @@
         prometheus
         readeck
         redis-server
+        remote-backups._.router
         restic
         smb-server
         tailscale._.exit-node

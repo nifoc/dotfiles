@@ -82,6 +82,7 @@ in
   "agenix/pinchflat/config.age".publicKeys = krypton;
   "agenix/podman/config.age".publicKeys = all-systems;
   "agenix/readeck/environment.age".publicKeys = krypton;
+  "agenix/remote-backups/router/environment.age".publicKeys = krypton;
   "agenix/remote-builder/client/id_nix_remote_builder.age".publicKeys = all-systems;
   "agenix/restic/argon/remote-password.age".publicKeys = argon;
   "agenix/restic/argon/remote-ssh-private-key.age".publicKeys = argon;
