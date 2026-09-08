@@ -80,6 +80,12 @@
                   "https://big.oisd.nl/domainswild"
                   "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro.txt"
                 ];
+
+                iot = [
+                  "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/native.lgwebos.txt"
+                  "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/native.samsung.txt"
+                  "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/dyndns.txt"
+                ];
               };
 
               clientGroupsBlock = {
@@ -103,6 +109,11 @@
                 daniels-iphone = [
                   "basic"
                   "expert"
+                ];
+
+                "10.0.51.0/24" = [
+                  "basic"
+                  "iot"
                 ];
               };
 
