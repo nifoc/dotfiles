@@ -19,9 +19,7 @@
         };
 
       veryUnstableOverlay = final: _prev: {
-        veryUnstable = import inputs.nixos-unstable-small {
-          system = final.system;
-        };
+        veryUnstable = import inputs.nixos-unstable-small { inherit (final) system; };
       };
     in
     {
@@ -104,20 +102,7 @@
         };
 
       darwin =
-        {
-          pkgs,
-          config,
-          lib,
-          inputs',
-          ...
-        }:
-        let
-          # Workaround since socket path isn't overridden
-          niksHookPackage = inputs'.niks3.packages.niks3-hook;
-          niksPostBuildHookScript = pkgs.writeShellScript "niks3-post-build-hook" ''
-            exec ${lib.getExe' niksHookPackage "niks3-hook"} send --socket ${config.services.niks3-auto-upload.socketPath} "$@"
-          '';
-        in
+        { pkgs, config, ... }:
         {
           imports = [
             inputs.agenix.darwinModules.default
@@ -181,8 +166,6 @@
               warn-dirty = false;
               tarball-ttl = 60 * 60 * 24;
               netrc-file = "/etc/nix/netrc";
-
-              post-build-hook = lib.mkForce (toString niksPostBuildHookScript);
             };
 
             # optimise and/or gc cause issues with syspolicyd
