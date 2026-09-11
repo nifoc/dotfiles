@@ -43,6 +43,7 @@
             remoteBuild = true;
             autoRollback = false;
             magicRollback = false;
+            activationTimeout = 300;
             confirmTimeout = 300;
 
             profiles.system = {
