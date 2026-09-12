@@ -202,11 +202,11 @@
     },
     "flake-file": {
       "locked": {
-        "lastModified": 1788209062,
-        "narHash": "sha256-j4yjVCCguq6s/SIZ2eh2Ll5Z9cJh7VOkIIFNo2PXRd0=",
+        "lastModified": 1789150028,
+        "narHash": "sha256-o/o3n8+HAzFOFH83SuGW/w5J6glHtV+r8v+gJbMeoXM=",
         "owner": "denful",
         "repo": "flake-file",
-        "rev": "c460df7fe65ac759989daad04f303fb427406e56",
+        "rev": "eccac77d2c2567efb6f368330930f3d55af8668a",
         "type": "github"
       },
       "original": {
@@ -278,11 +278,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789071706,
-        "narHash": "sha256-S+oyh2YSP9V5bSjWbbK0N7GxdxxMwgBfUOtUdVcAWc4=",
+        "lastModified": 1789178892,
+        "narHash": "sha256-9IcxPm9wfRIQqnVbChGNRF6PzfTRLp7iqTzKszCv5zU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "150f9ce4ddd41544ea42eb9d6043a75bd615fa24",
+        "rev": "cd0e747f6af26cf4a699ce4b6dc1910dbe8af9a7",
         "type": "github"
       },
       "original": {
@@ -411,11 +411,11 @@
     },
     "nixos-unstable-small": {
       "locked": {
-        "lastModified": 1789066991,
-        "narHash": "sha256-pWcetjZrVB80DvTmsmkN99kcuoKUUayXZjs8taRsRvQ=",
-        "rev": "bd9326274b99a087d554057e76312fe93be8bfbb",
+        "lastModified": 1789149629,
+        "narHash": "sha256-tSsHrrX3FPaoQguUTU45HW5vw5daiNxrSBQBEmeCivw=",
+        "rev": "eaad089433ca2bb662274377d33df3d0e51ef28b",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable-small/nixos-26.11pre1071055.bd9326274b99/nixexprs.tar.xz?lastModified=1789066991&rev=bd9326274b99a087d554057e76312fe93be8bfbb"
+        "url": "https://releases.nixos.org/nixos/unstable-small/nixos-26.11pre1072397.eaad089433ca/nixexprs.tar.xz?lastModified=1789149629&rev=eaad089433ca2bb662274377d33df3d0e51ef28b"
       },
       "original": {
         "type": "tarball",
@@ -573,11 +573,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788497500,
-        "narHash": "sha256-1C4SBUyf/oldyOmRU509f9L9vjOCTJcOOhbBzLDRm2Q=",
+        "lastModified": 1789117972,
+        "narHash": "sha256-AkUZEm9Ohm8zOz06M5Og0MmyDBQR05Xw52SWWWFHj4A=",
         "owner": "rcambrj",
         "repo": "unifi-os-server",
-        "rev": "2c7d58b87b7031230e437d763b2a3d716fafdb7a",
+        "rev": "0e4e98dca4540ba63663d495181f1baeac9185e6",
         "type": "github"
       },
       "original": {
