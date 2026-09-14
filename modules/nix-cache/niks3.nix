@@ -69,7 +69,7 @@
 
             readProxy = {
               enable = true;
-              redirectTTL = "15m";
+              redirectTTL = "60m";
             };
 
             oidc.providers = {
