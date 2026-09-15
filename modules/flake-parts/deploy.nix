@@ -38,7 +38,7 @@
         {
           name = hostname;
           value = {
-            inherit hostname;
+            hostname = "${hostname}-deploy";
             sshUser = "root";
             remoteBuild = true;
             autoRollback = false;

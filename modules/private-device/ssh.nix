@@ -14,6 +14,15 @@
                 IdentitiesOnly = true;
               };
 
+              "Host ${name}-deploy" = {
+                Hostname = "${name}.ts.kempkens.network";
+                Port = 22;
+                User = "root";
+                ForwardAgent = true;
+                IdentityFile = "~/.ssh/LAN.pub";
+                IdentitiesOnly = true;
+              };
+
               "Host ${name}-unlock" = {
                 Hostname = localIP;
                 Port = 2222;
@@ -38,6 +47,14 @@
                 Hostname = "${name}.ts.kempkens.network";
                 Port = 22;
                 User = "daniel";
+                IdentityFile = "~/.ssh/Hetzner.pub";
+                IdentitiesOnly = true;
+              };
+
+              "Host ${name}-deploy" = {
+                Hostname = "${name}.ts.kempkens.network";
+                Port = 22;
+                User = "root";
                 IdentityFile = "~/.ssh/Hetzner.pub";
                 IdentitiesOnly = true;
               };
