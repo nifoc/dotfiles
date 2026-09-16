@@ -124,7 +124,7 @@
                 }
 
                 {
-                  app_id = "org.mozilla.librewolf";
+                  app_id = "net.librewolf.librewolf";
                   title_substring = "Bitwarden";
                   floating = true;
                 }
