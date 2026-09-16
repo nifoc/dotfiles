@@ -53,6 +53,18 @@
             IPv6AcceptRA = false;
           };
           address = [ "10.0.200.7/24" ];
+          routes = [
+            {
+              Gateway = "10.0.200.1";
+              Table = 200;
+            }
+          ];
+          routingPolicyRules = [
+            {
+              From = "10.0.200.0/24";
+              Table = 200;
+            }
+          ];
           linkConfig.RequiredForOnline = "routable";
         };
       };
