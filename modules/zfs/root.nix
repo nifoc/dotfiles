@@ -43,6 +43,9 @@
                 options = {
                   mountpoint = "/nix";
                   atime = "off";
+                  "com.sun:auto-snapshot:daily" = "false";
+                  "com.sun:auto-snapshot:weekly" = "false";
+                  "com.sun:auto-snapshot:monthly" = "false";
                 };
                 mountpoint = "/nix";
               };
