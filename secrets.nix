@@ -57,7 +57,6 @@ let
   ];
 in
 {
-  "agenix/base/attic/config.age".publicKeys = all-systems;
   "agenix/base/msmtp/password.age".publicKeys = all-systems;
   "agenix/base/nix/netrc.age".publicKeys = all-systems;
   "agenix/forgejo/runner/nix-netrc.age".publicKeys = all-systems;
@@ -73,7 +72,6 @@ in
   "agenix/netns/wireguard/krypton/dl-config.age".publicKeys = krypton;
   "agenix/netns/wireguard/krypton/sc-config.age".publicKeys = krypton;
   "agenix/netns/wireguard/neon/hi-config.age".publicKeys = neon;
-  "agenix/nix-cache/environment.age".publicKeys = boron;
   "agenix/nix-cache/niks3-access-key.age".publicKeys = boron;
   "agenix/nix-cache/niks3-api-token.age".publicKeys = all-systems;
   "agenix/nix-cache/niks3-secret-key.age".publicKeys = boron;

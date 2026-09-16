@@ -3,89 +3,91 @@
 {
   flake-file.inputs = {
     agenix.url = "github:ryantm/agenix";
-    disko.url = "github:nix-community/disko";
+    niks3.url = "github:Mic92/niks3";
   };
 
   den.aspects.nix-cache = {
     nixos =
-      { pkgs, config, ... }:
+      { config, ... }:
       let
-        fqdn = "nix-cache.kempkens.network";
+        fqdn = "niks3-cache.kempkens.network";
       in
       {
         imports = [
           inputs.agenix.nixosModules.default
-          inputs.disko.nixosModules.disko
+          inputs.niks3.nixosModules.niks3
         ];
 
         age.secrets = {
-          nix-cache-environment = {
-            file = ../../agenix/nix-cache/environment.age;
+          nix-cache-niks3-access-key = {
+            file = ../../agenix/nix-cache/niks3-access-key.age;
+            owner = "niks3";
+            group = "niks3";
+          };
+
+          nix-cache-niks3-secret-key = {
+            file = ../../agenix/nix-cache/niks3-secret-key.age;
+            owner = "niks3";
+            group = "niks3";
+          };
+
+          nix-cache-niks3-api-token = {
+            file = ../../agenix/nix-cache/niks3-api-token.age;
+            owner = "niks3";
+            group = "niks3";
+          };
+
+          nix-cache-niks3-sign-key = {
+            file = ../../agenix/nix-cache/niks3-sign-key.age;
+            owner = "niks3";
+            group = "niks3";
           };
         };
-
-        disko.devices.zpool.zroot.datasets = {
-          "root/services/atticd-storage" = {
-            type = "zfs_fs";
-            options = {
-              mountpoint = "/var/lib/atticd-storage";
-              recordsize = "256k";
-              atime = "off";
-            };
-            mountpoint = "/var/lib/atticd-storage";
-          };
-        };
-
-        environment.systemPackages = with pkgs; [
-          attic-client
-        ];
 
         services = {
-          atticd = {
+          niks3 = {
             enable = true;
 
-            environmentFile = config.age.secrets.nix-cache-environment.path;
+            s3 = {
+              endpoint = "s3.de.io.cloud.ovh.net";
+              bucket = "nifoc-niks3-cache";
+              region = "de";
+              accessKeyFile = config.age.secrets.nix-cache-niks3-access-key.path;
+              secretKeyFile = config.age.secrets.nix-cache-niks3-secret-key.path;
+            };
 
-            settings = {
-              listen = "127.0.0.1:8081";
-              database.url = "postgresql:///atticd?host=/run/postgresql&user=atticd";
+            apiTokenFile = config.age.secrets.nix-cache-niks3-api-token.path;
 
-              allowed-hosts = [ "${fqdn}" ];
-              api-endpoint = "https://${fqdn}/";
+            signKeyFiles = [
+              config.age.secrets.nix-cache-niks3-sign-key.path
+            ];
 
-              storage = {
-                type = "local";
-                path = "/var/lib/atticd-storage";
-              };
+            maxNarSize = "2G";
+            priority = 45;
 
-              chunking = {
-                nar-size-threshold = 64 * 1024; # 64 KiB
-                min-size = 16 * 1024; # 16 KiB
-                avg-size = 64 * 1024; # 64 KiB
-                max-size = 256 * 1024; # 256 KiB
-              };
+            cacheUrl = "https://${fqdn}";
 
-              garbage-collection = {
-                interval = "24 hours";
-                default-retention-period = "2 weeks";
+            readProxy = {
+              enable = true;
+              redirectTTL = "60m";
+            };
+
+            oidc.providers = {
+              github = {
+                issuer = "https://token.actions.githubusercontent.com";
+                audience = "https://${fqdn}";
+                boundClaims = {
+                  repository_owner = [ "nifoc" ];
+                  ref = [ "refs/heads/master" ];
+                };
               };
             };
+
+            gc = {
+              enable = true;
+              olderThan = "168h";
+            };
           };
-
-          postgresql = {
-            ensureDatabases = [ "atticd" ];
-
-            ensureUsers = [
-              {
-                name = "atticd";
-                ensureDBOwnership = true;
-              }
-            ];
-          };
-        };
-
-        systemd.services.atticd.serviceConfig = {
-          Restart = "on-failure";
         };
       };
   };
