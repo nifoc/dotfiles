@@ -124,6 +124,12 @@
                 }
 
                 {
+                  app_id = "com.apple.finder";
+                  title_substring = "Infos zu: ";
+                  floating = true;
+                }
+
+                {
                   app_id = "net.librewolf.librewolf";
                   title_substring = "Bitwarden";
                   floating = true;
