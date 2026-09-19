@@ -9,6 +9,8 @@
         dnsInterfaces = (cfg.dns-resolver.interfaces or [ ]);
         trustedInterfaces = cfg.firewall.trustedInterfaces;
         localAccess = (cfg.dns-resolver.localAccess or true);
+
+        deviceIps = den.aspects.base.meta.networking.ips;
       in
       {
         services.blocky = {
@@ -150,11 +152,7 @@
                   "fd7a:115c:a1e0::401:507f"
                 ];
 
-                daniels-iphone = [
-                  "10.0.0.203"
-                  "100.90.174.92"
-                  "fd7a:115c:a1e0::2a01:ae5c"
-                ];
+                daniels-iphone = deviceIps.lan.daniels-iphone ++ deviceIps.tailscale.daniels-iphone;
               };
             };
 
