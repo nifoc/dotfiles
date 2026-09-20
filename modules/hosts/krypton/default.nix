@@ -37,6 +37,7 @@
         ups
         webdav-server
         webserver._.tinyauth
+        ytptube
 
         root
         media_user
@@ -210,7 +211,7 @@
               ];
             };
             services = [ "pinchflat" ];
-            quadlets = [ ];
+            quadlets = [ "ytptube" ];
           }
         ];
       };
