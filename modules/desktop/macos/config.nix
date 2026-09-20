@@ -26,7 +26,7 @@
         };
 
         "com.apple.desktopservices" = {
-          DSDontWriteNetworkStores = true;
+          DSDontWriteNetworkStores = false;
         };
       };
     };
