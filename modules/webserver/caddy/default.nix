@@ -134,6 +134,10 @@
         systemd.services.caddy = lib.mkIf config.services.tailscale.enable {
           requires = lib.mkAfter [ "tailscale-wait-up.service" ];
           after = lib.mkAfter [ "tailscale-wait-up.service" ];
+
+          serviceConfig = {
+            TimeoutStartSec = 240;
+          };
         };
 
         networking.firewall.interfaces =
