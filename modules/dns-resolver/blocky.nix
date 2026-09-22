@@ -73,20 +73,20 @@
             blocking = {
               denylists = {
                 basic = [
-                  "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif.mini.txt"
+                  "https://hagezi-mirror.dnsbunker.org/wildcard/tif.mini.txt"
                   "https://malware-filter.gitlab.io/malware-filter/urlhaus-filter-wildcard-online.txt"
-                  "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/fake.txt"
+                  "https://hagezi-mirror.dnsbunker.org/wildcard/fake.txt"
                 ];
 
                 expert = [
                   "https://big.oisd.nl/domainswild"
-                  "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro.txt"
+                  "https://hagezi-mirror.dnsbunker.org/wildcard/pro.txt"
                 ];
 
                 iot = [
-                  "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/native.lgwebos.txt"
-                  "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/native.samsung.txt"
-                  "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/dyndns.txt"
+                  "https://hagezi-mirror.dnsbunker.org/wildcard/native.lgwebos.txt"
+                  "https://hagezi-mirror.dnsbunker.org/wildcard/native.samsung.txt"
+                  "https://hagezi-mirror.dnsbunker.org/wildcard/dyndns.txt"
                 ];
               };
 
