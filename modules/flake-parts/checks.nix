@@ -2,7 +2,13 @@
 
 {
   perSystem =
-    { lib, system, ... }:
+    {
+      pkgs,
+      lib,
+      system,
+      inputs',
+      ...
+    }:
     {
       checks =
         let
@@ -32,6 +38,11 @@
             )
           );
         in
-        nixMachines;
+        nixMachines
+        // {
+          deploy-rs = pkgs.runCommand "test-deploy-rs" { } ''
+            ${inputs'.deploy-rs.packages.default}/bin/deploy --help > $out
+          '';
+        };
     };
 }
