@@ -17,7 +17,7 @@
     { pkgs, inputs', ... }:
     {
       make-shells.default.packages = with pkgs; [
-        deploy-rs
+        inputs'.deploy-rs.packages.default
         just
         nix-output-monitor
         (octodns.withProviders (_: [
