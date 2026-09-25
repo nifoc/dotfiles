@@ -199,6 +199,14 @@
                 mode = "traditional";
               };
             };
+
+            "hyper + R" = {
+              exec = [
+                (lib.getExe pkgs.zsh)
+                "-c"
+                "killall rift"
+              ];
+            };
           }
           // (builtins.listToAttrs (
             builtins.concatMap (i: [
