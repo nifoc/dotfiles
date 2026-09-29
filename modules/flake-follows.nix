@@ -2,8 +2,6 @@
   flake-file.inputs = {
     agenix.inputs = {
       nixpkgs.follows = "nixpkgs";
-      home-manager.follows = "home-manager";
-      darwin.follows = "darwin";
     };
 
     deploy-rs.inputs = {
