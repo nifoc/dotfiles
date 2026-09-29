@@ -14,7 +14,7 @@
         dns-resolver
         ntp
         prometheus._.exporters
-        tailscale
+        tailscale._.peer-relay
 
         root
         virtual-machine._.amd64-efi
