@@ -86,6 +86,7 @@
                   "com.jonny.supermona"
                   "com.tapbots.Ivory"
                   "me.damir.dropover-mac"
+                  "eu.exelban.Stats"
                 ];
 
                 communicationIDs = [
