@@ -55,7 +55,6 @@
             package = pkgs.lixPackageSets.latest.lix;
 
             channel.enable = false;
-            nixPath = [ "nixpkgs=${pkgs.path}" ];
 
             settings = {
               experimental-features = [
@@ -63,6 +62,8 @@
                 "flakes"
                 "flake-self-attrs"
               ];
+
+              nix-path = [ "nixpkgs=${pkgs.path}" ];
 
               log-lines = 50;
               auto-optimise-store = true;
