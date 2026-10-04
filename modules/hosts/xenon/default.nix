@@ -15,6 +15,7 @@
         ntp._.server
         podman
         prometheus._.exporters
+        restic
         tailscale._.exit-node
         webserver._.tinyauth
 
@@ -78,6 +79,13 @@
           "ata-ST4000VX016-3CV104_WW69ENJA"
           "nvme-INTENSO_SSD_1642605001004064"
         ];
+      };
+
+      restic = {
+        remote = {
+          user = "u345${toString (103 + 100)}-sub7";
+          host = "u345${toString (103 + 100)}-sub7.your-storagebox.de";
+        };
       };
 
       zram = {

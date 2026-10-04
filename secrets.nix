@@ -92,6 +92,8 @@ in
   "agenix/restic/krypton/remote-password.age".publicKeys = krypton;
   "agenix/restic/krypton/remote-ssh-private-key.age".publicKeys = krypton;
   "agenix/restic/krypton/secondary-password.age".publicKeys = krypton;
+  "agenix/restic/xenon/remote-password.age".publicKeys = xenon;
+  "agenix/restic/xenon/remote-ssh-private-key.age".publicKeys = xenon;
   "agenix/tailscale/authkey.age".publicKeys = all-systems;
   "agenix/unpackerr/config.age".publicKeys = krypton;
   "agenix/ups/argon/primary-password.age".publicKeys = argon;
