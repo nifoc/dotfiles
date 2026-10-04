@@ -14,8 +14,6 @@
 
         fqdn = "frigate.internal.kempkens.network";
         fqdnLocal = "frigate-local.internal.kempkens.network";
-        internalIP = "127.0.0.1";
-        internalPort = 8080;
       in
       {
         imports = [ inputs.quadlet-nix.nixosModules.quadlet ];
@@ -27,7 +25,7 @@
 
               import tinyauth
 
-              reverse_proxy ${internalIP}:${toString internalPort}
+              reverse_proxy 127.0.0.1:8971
             '';
           };
 
