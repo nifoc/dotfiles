@@ -45,12 +45,12 @@
 
           package = pkgs.caddy.withPlugins {
             plugins = [
-              "github.com/caddy-dns/desec@v0.0.0-20260210205102-325e2faf7910"
+              "github.com/caddy-dns/desec@v0.0.0-20260823104132-2b5f3e5f5585"
               "github.com/yroc92/postgres-storage@v0.0.0-20230310195636-276797aefe40"
               "github.com/porech/caddy-maxmind-geolocation@v0.0.0-20250305164927-9066f91c9696"
-              "pkg.jsn.cam/caddy-defender@v0.10.0"
+              "pkg.jsn.cam/caddy-defender@v0.10.1"
             ];
-            hash = "sha256-dMun9UkhS6iO2aCJ5dJYbM0RCKrwkk7Y4qi+KcG0JFs=";
+            hash = "sha256-gjTYDwr3Fr4Ei0W+e3eBAfU/ra2gU+OseecDaPY3c6s=";
           };
 
           environmentFile = config.age.secrets.webserver-caddy-environment.path;
