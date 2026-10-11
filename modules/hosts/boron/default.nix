@@ -24,7 +24,7 @@
         prometheus._.exporters
         remote-builder
         restic
-        tailscale
+        tailscale._.peer-relay
         webserver._.storage
         woodpecker._.agent
 
