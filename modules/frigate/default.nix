@@ -39,7 +39,7 @@
 
         virtualisation.quadlet.containers.frigate = {
           containerConfig = {
-            image = "ghcr.io/blakeblackshear/frigate:0.18.0";
+            image = "ghcr.io/blakeblackshear/frigate:0.18.1";
             environments = {
               TZ = "Europe/Berlin";
             };
