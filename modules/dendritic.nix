@@ -10,7 +10,7 @@
 
     den.url = "github:denful/den";
 
-    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+    nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
 
     home-manager = {
       url = "github:nix-community/home-manager";
