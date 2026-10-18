@@ -4,10 +4,11 @@
   };
 
   perSystem =
-    { inputs', ... }:
+    { pkgs, inputs', ... }:
     {
       packages = {
         deploy-rs = inputs'.deploy-rs.packages.default;
+        lix = pkgs.lixPackageSets.latest.lix;
       };
     };
 }

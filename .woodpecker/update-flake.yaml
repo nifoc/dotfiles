@@ -17,6 +17,10 @@ steps:
     commands:
       - echo 'experimental-features = nix-command flakes flake-self-attrs' >> /etc/nix/nix.conf
       - nix run '.#write-flake'
+  - name: check
+    image: ghcr.io/lix-project/lix:latest
+    commands:
+      - nix build '.#lix'
   - name: push
     image: docker.io/appleboy/drone-git-push
     settings:

@@ -71,7 +71,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-unstable-small.url = "https://channels.nixos.org/nixos-unstable-small/nixexprs.tar.xz";
-    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+    nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
     quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
     run0-sudo-shim = {
       url = "github:lordgrimmauld/run0-sudo-shim";
