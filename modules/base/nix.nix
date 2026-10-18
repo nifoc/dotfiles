@@ -144,7 +144,7 @@
               ];
 
               log-lines = 50;
-              sandbox = "relaxed";
+              # sandbox = "relaxed";
               keep-derivations = true;
               keep-outputs = true;
               fallback = true;
