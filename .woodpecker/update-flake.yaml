@@ -12,12 +12,11 @@ clone:
       submodule_override:
         private: https://git.kempkens.io/daniel/dotfiles-private.git
 steps:
-  - name: update & check
+  - name: update
     image: ghcr.io/lix-project/lix:latest
     commands:
       - echo 'experimental-features = nix-command flakes flake-self-attrs' >> /etc/nix/nix.conf
       - nix run '.#write-flake'
-      - nix build '.#lix'
   - name: push
     image: docker.io/appleboy/drone-git-push
     settings:
