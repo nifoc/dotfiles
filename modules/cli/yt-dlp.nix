@@ -3,13 +3,19 @@
     homeManager =
       { pkgs, config, ... }:
       let
-        ffmpeg = pkgs.ffmpeg;
+        inherit (pkgs) ffmpeg;
       in
       {
         programs = {
           yt-dlp = {
             enable = true;
-            package = pkgs.yt-dlp.override { ffmpeg-headless = ffmpeg; };
+            package = (pkgs.yt-dlp.override { ffmpeg-headless = ffmpeg; }).overrideAttrs (
+              _: prev: {
+                patches = (prev.patches or [ ]) ++ [
+                  ../../patches/cli/yt-dlp/instagram-story-extraction.patch
+                ];
+              }
+            );
 
             settings = {
               format = "'bestvideo+bestaudio/best'";
