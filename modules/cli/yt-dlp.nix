@@ -40,7 +40,6 @@
           zsh.shellAliases = {
             ytdl = "yt-dlp --config-location \"$HOME/.config/yt-dlp/config\"";
             ytdl_mp4 = "ytdl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]'";
-            ytdl_ig = "ytdl -f 'bestvideo*+bestaudio/best' -S 'proto,ext:mp4:m4a,res,br' --proxy socks5://argon.ts.kempkens.network:1080 --cookies \"$HOME/Downloads/cookies.txt\" --sleep-interval 10 --no-playlist";
             yti = "ytdl -F";
           };
         };
