@@ -66,10 +66,6 @@
         treefmt-nix.follows = "treefmt-nix";
       };
     };
-    nix-auto-follow = {
-      url = "github:fzakaria/nix-auto-follow";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixos-unstable-small.url = "https://channels.nixos.org/nixos-unstable-small/nixexprs.tar.xz";
     nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
     quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
