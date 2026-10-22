@@ -23,7 +23,7 @@
 
         virtualisation.quadlet.containers.reolinkproxy = {
           containerConfig = {
-            image = "ghcr.io/shareed2k/reolinkproxy:v0.2.6";
+            image = "ghcr.io/shareed2k/reolinkproxy:v0.2.7";
             environments = {
               REOLINK_SERVER_RTSP_ADDRESS = "127.0.0.1:10554";
               REOLINK_SERVER_RTP_ADDRESS = "127.0.0.1:10000";
