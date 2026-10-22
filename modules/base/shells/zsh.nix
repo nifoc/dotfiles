@@ -248,6 +248,10 @@
                       autoload ''${=$(cd "$server_functions" && echo *)}
                     fi
                   }
+
+                  # Custom Completions
+                  compdef ytdl_ig=yt-dlp
+                  compdef wssh=ssh
                 ''
               )
             ]);

@@ -1,5 +1,6 @@
 cookie_file="$HOME/.config/yt-dlp/cookies.txt"
 
+echo "" >"$cookie_file"
 nvim "$cookie_file"
 
 ytdl -f 'bestvideo*+bestaudio/best' \
@@ -9,3 +10,5 @@ ytdl -f 'bestvideo*+bestaudio/best' \
      --sleep-interval 10 \
      --no-playlist \
      "$@"
+
+# vim: ft=sh
