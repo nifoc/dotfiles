@@ -17,8 +17,6 @@
       {
         boot.initrd = {
           systemd = {
-            enable = true;
-
             network = {
               networks = {
                 "${networkConfig.altName}" = {
