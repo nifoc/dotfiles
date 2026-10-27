@@ -48,6 +48,8 @@
 
     includes = [
       den.provides.hostname
+
+      (den.batteries.insecure [ "pinchflat-2025.9.26" ])
     ];
 
     meta = {
