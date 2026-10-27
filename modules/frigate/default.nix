@@ -74,6 +74,12 @@
                 8554
                 8555
               ];
+              allowedUDPPortRanges = [
+                {
+                  from = 50000;
+                  to = 50500;
+                }
+              ];
             };
           in
           {
