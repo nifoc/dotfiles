@@ -69,11 +69,10 @@
             app_rules =
               let
                 floatingIDs = [
+                  "com.apple.Music"
                   "com.bitwarden.desktop"
                   "com.colliderli.iina"
                   "com.haystacksoftware.Arq"
-                  "com.kapeli.dash-setapp"
-                  "com.macpaw.Gemini-setapp"
                   "com.noodlesoft.Hazel"
                   "net.pornel.ImageOptim"
                   "no.mifi.losslesscut-mac"
