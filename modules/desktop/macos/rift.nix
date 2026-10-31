@@ -83,6 +83,7 @@
                   "com.apple.Photos"
                   "com.apple.systempreferences"
                   "com.jonny.supermona"
+                  "com.soapboxsoftware.indigo"
                   "com.tapbots.Ivory"
                   "me.damir.dropover-mac"
                   "eu.exelban.Stats"
