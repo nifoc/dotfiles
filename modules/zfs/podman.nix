@@ -24,11 +24,17 @@
         virtualisation = {
           podman.extraPackages = [ config.boot.zfs.package ];
 
-          containers.storage.settings.storage = {
-            driver = "zfs";
-            graphroot = "/var/lib/containers/storage";
-            runroot = "/run/containers/storage";
-            options.zfs.fsname = "zroot/root/services/podman";
+          containers.storage = {
+            rootful.settings.storage = {
+              driver = "zfs";
+              graphroot = "/var/lib/containers/storage";
+              runroot = "/run/containers/storage";
+              options.zfs.fsname = "zroot/root/services/podman";
+            };
+
+            rootless.settings.storage = {
+              driver = "null";
+            };
           };
         };
       };
