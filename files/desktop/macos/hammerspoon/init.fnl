@@ -2,8 +2,8 @@
       hostname (hs.host.localizedName)
       home (os.getenv :HOME)
       config-dir (.. home :/.config/hammerspoon/)
-      _ipc (require :hs.ipc)
-      programs (require :programs)]
+      _http (require :hs.http)
+      _ipc (require :hs.ipc)]
   ;; Hot-reload configuration
   (: (hs.pathwatcher.new config-dir hs.reload) :start)
   ;; Caffeine
@@ -12,10 +12,10 @@
 
   (fn switch-monitor-input [connected]
     (let [input (if connected :USB-C "Display Port")
-          command (.. programs.mosquitto_pub " -h 10.0.0.230" " -m '" input
-                      "' -t hadata/macos/daniels_monitor" " -u mqtt_bridge"
-                      " -P verySecurePassword")]
-      (hs.execute command false)))
+          url "https://homeassistant.internal.kempkens.network/api/webhook/daniels-monitor-change-source"
+          data (.. "{\"source\":\"" input "\"}")
+          headers {:content-type :application/json}]
+      (hs.http.put url data headers)))
 
   (when (= hostname :Pallas)
     (hs.spoons.use :USBDeviceActions

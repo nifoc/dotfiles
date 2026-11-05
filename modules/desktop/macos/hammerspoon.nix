@@ -6,43 +6,29 @@
         targets.darwin.defaults."org.hammerspoon.Hammerspoon".MJConfigFile =
           "~/.config/hammerspoon/init.lua";
 
-        xdg.configFile."hammerspoon" =
-          let
-            programs = # lua
+        xdg.configFile."hammerspoon" = {
+          source =
+            pkgs.runCommand "hammerspoon-fennel-files"
+              {
+                nativeBuildInputs = with pkgs; [ lua54Packages.fennel ];
+              }
               ''
-                local M = {
-                  mosquitto_pub = \"${pkgs.mosquitto}/bin/mosquitto_pub\",
-                }
+                mkdir -p $out
 
-                return M
+                config_store_path="${../../../files/desktop/macos/hammerspoon}"
+                fennel="fennel --use-bit-lib --compile"
+
+                echo "Using fennel command: $fennel"
+
+                # Change PWD to config directory
+                cd "$config_store_path"
+
+                # Config
+                echo "Compiling init.fnl ..."
+                $fennel "$config_store_path/init.fnl" > "$out/init.lua"
               '';
-          in
-          {
-            source =
-              pkgs.runCommand "hammerspoon-fennel-files"
-                {
-                  nativeBuildInputs = with pkgs; [ lua54Packages.fennel ];
-                }
-                ''
-                  mkdir -p $out
-
-                  config_store_path="${../../../files/desktop/macos/hammerspoon}"
-                  fennel="fennel --use-bit-lib --compile"
-
-                  echo "Using fennel command: $fennel"
-
-                  # Change PWD to config directory
-                  cd "$config_store_path"
-
-                  echo "Writing programs.lua ..."
-                  echo "${programs}" > "$out/programs.lua"
-
-                  # Config
-                  echo "Compiling init.fnl ..."
-                  $fennel "$config_store_path/init.fnl" > "$out/init.lua"
-                '';
-            recursive = true;
-          };
+          recursive = true;
+        };
 
         home = {
           file =
