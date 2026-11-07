@@ -13,7 +13,7 @@
         ...
       }:
       let
-        inherit (pkgs.stdenv) isDarwin;
+        inherit (pkgs.stdenv.hostPlatform) isDarwin;
         inherit (lib) optionals;
 
         user-bin-directory = "${config.home.homeDirectory}/.bin";

@@ -35,7 +35,7 @@
           excludeShellChecks = [ "SC1090" ];
         };
 
-        pinentry = if pkgs.stdenv.isDarwin then pkgs.pinentry_mac else pkgs.pinentry-tty;
+        pinentry = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.pinentry_mac else pkgs.pinentry-tty;
       in
       {
         programs.rbw = {

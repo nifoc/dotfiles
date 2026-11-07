@@ -14,7 +14,7 @@
         ...
       }:
       let
-        inherit (pkgs.stdenv) isDarwin;
+        inherit (pkgs.stdenv.hostPlatform) isDarwin;
         inherit (lib) optionals;
       in
       {

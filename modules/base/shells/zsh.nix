@@ -16,7 +16,7 @@
       { pkgs, lib, ... }:
       let
         inherit (pkgs) fetchFromGitHub;
-        inherit (pkgs.stdenv) isDarwin;
+        inherit (pkgs.stdenv.hostPlatform) isDarwin;
         inherit (lib) mkOrder optionals;
         inherit (lib.attrsets) optionalAttrs;
       in
