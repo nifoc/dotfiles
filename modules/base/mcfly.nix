@@ -19,7 +19,10 @@
               '';
         };
 
-        home.sessionVariables.MCFLY_RESULTS_SORT = "LAST_RUN";
+        home.sessionVariables = {
+          MCFLY_RESULTS_SORT = "LAST_RUN";
+          MCFLY_FZF_NO_STRICT_ORDERING = "1";
+        };
       };
   };
 }
