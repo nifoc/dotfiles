@@ -71,39 +71,35 @@
             enable = true;
             openFirewall = false;
           };
+        };
 
-          avahi = {
-            enable = true;
-            openFirewall = false;
-            allowInterfaces = [ networkConfig.default.name ];
+        networking.firewall.interfaces =
+          let
+            allowedUDPPorts = [
+              # Samba
+              137
+              138
+              # WSDD
+              3702
+            ];
 
-            publish = {
-              enable = true;
-              userServices = true;
+            allowedTCPPorts = [
+              # Samba
+              139
+              445
+              # WSDD
+              5357
+            ];
+          in
+          {
+            "${networkConfig.default.name}" = {
+              inherit allowedUDPPorts allowedTCPPorts;
             };
 
-            nssmdns4 = true;
+            "${networkConfig.tailscale.name}" = {
+              inherit allowedUDPPorts allowedTCPPorts;
+            };
           };
-        };
-
-        networking.firewall.interfaces."${networkConfig.default.name}" = {
-          allowedUDPPorts = [
-            # Samba
-            137
-            138
-            # WSDD
-            3702
-            # Avahi
-            5353
-          ];
-          allowedTCPPorts = [
-            # Samba
-            139
-            445
-            # WSDD
-            5357
-          ];
-        };
       };
   };
 }
