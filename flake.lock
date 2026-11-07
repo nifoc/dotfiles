@@ -64,11 +64,11 @@
     },
     "den": {
       "locked": {
-        "lastModified": 1793924417,
-        "narHash": "sha256-ut7iiD2h2mbtWJaku3wJcQkLmZa7rmzOa6LyWPj9U2s=",
+        "lastModified": 1793993828,
+        "narHash": "sha256-jLoWzLEGOBMxg2z0x2hKgPOtcFwQ/S1weV6WRnj4Bpw=",
         "owner": "denful",
         "repo": "den",
-        "rev": "2f1ae4aa27e756684d1fb5ebc1d25267727bd305",
+        "rev": "bf2504f9f2e8621fee091335132ab3ae698cf808",
         "type": "github"
       },
       "original": {
@@ -271,11 +271,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793757180,
-        "narHash": "sha256-gyV7AtCwLnOImcrfSETP4J3Ie96bz19DY47B7m7Y3HM=",
+        "lastModified": 1793979366,
+        "narHash": "sha256-7OoWDsYO9teiPxl0QdlS5lYE20Pue8/5mpscSL32FUA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b787c48e2ec57a9d098f5c2721882a3bc1e16f97",
+        "rev": "2c0c1f01521469cf0271180c453c79782d53c2f6",
         "type": "github"
       },
       "original": {
@@ -348,11 +348,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793693699,
-        "narHash": "sha256-rJLLSdzk33iyKVIhG0UuCKjI6RGWMSTZD6qhuVIbbqg=",
+        "lastModified": 1793954153,
+        "narHash": "sha256-KQNyR2fDRzJy8o6cJkxvgqmTrPswuFDDiZ2PZQynl7Q=",
         "owner": "Mic92",
         "repo": "niks3",
-        "rev": "2ae7fce37ce1c8d9029ba0a180bb67606baf151e",
+        "rev": "1d40c4a0730ad3d19bec74058606bf6b5c72daf7",
         "type": "github"
       },
       "original": {
@@ -384,11 +384,11 @@
     },
     "nixos-unstable-small": {
       "locked": {
-        "lastModified": 1793868652,
-        "narHash": "sha256-9zGJg9JtFpg1z06WYTrJax5H1mbjs5RxSmDOXDgPBFE=",
-        "rev": "9bb2612fd2b5838e8895f694bdedc46ba1ad844a",
+        "lastModified": 1793989132,
+        "narHash": "sha256-j3pTJXuAUL6Ri1GM4LebAG8eME+W8lXrM86HQn+7waE=",
+        "rev": "0dea955d867a80bdea211f4e5d8db5222d945613",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable-small/nixos-26.11pre1108938.9bb2612fd2b5/nixexprs.tar.xz?lastModified=1793868652&rev=9bb2612fd2b5838e8895f694bdedc46ba1ad844a"
+        "url": "https://releases.nixos.org/nixos/unstable-small/nixos-26.11pre1109870.0dea955d867a/nixexprs.tar.xz?lastModified=1793989132&rev=0dea955d867a80bdea211f4e5d8db5222d945613"
       },
       "original": {
         "type": "tarball",
