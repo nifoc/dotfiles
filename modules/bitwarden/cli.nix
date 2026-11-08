@@ -22,7 +22,6 @@
             fi
             shift
 
-            rbw sync
             source <(rbw get "$name" | awk '{print "export " $0}')
             rbw stop-agent
 
