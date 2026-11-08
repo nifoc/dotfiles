@@ -1,14 +1,9 @@
-cookie_file="$HOME/.config/yt-dlp/cookies.txt"
-
-echo "" >"$cookie_file"
-nvim "$cookie_file"
-
 ytdl -f 'bestvideo*+bestaudio/best' \
-     -S 'proto,ext:mp4:m4a,res,br' \
-     --proxy socks5://argon.ts.kempkens.network:1080 \
-     --cookies "$cookie_file" \
-     --sleep-interval 10 \
-     --no-playlist \
-     "$@"
+  -S 'proto,ext:mp4:m4a,res,br' \
+  --proxy socks5://argon.ts.kempkens.network:1080 \
+  --cookies-from-browser "firefox:${HOME}/Library/Application Support/librewolf" \
+  --sleep-interval 10 \
+  --no-playlist \
+  "$@"
 
 # vim: ft=sh
