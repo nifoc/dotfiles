@@ -7,7 +7,7 @@ on:
       - '.github/workflows/build.yml'
 jobs:
   build-apple-system:
-    runs-on: macos-14
+    runs-on: macos-latest
     permissions:
       id-token: write
     steps:
