@@ -68,10 +68,9 @@
         }
       ];
 
-      user = {
-        includes = [ den._.mutual-provider ];
-        classes = lib.mkDefault [ "homeManager" ];
-      };
+      host.includes = [ den.batteries.user-aspects ];
+
+      user.classes = lib.mkDefault [ "homeManager" ];
     };
   };
 }
