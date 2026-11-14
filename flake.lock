@@ -64,11 +64,11 @@
     },
     "den": {
       "locked": {
-        "lastModified": 1794523728,
-        "narHash": "sha256-e/XUQZ+T/6YYej8UEQFYVbLKXz2RPLutUn8L/UksSR4=",
+        "lastModified": 1794601813,
+        "narHash": "sha256-DM6BxRr3nR2DjkLQetoi3LGlOIIj0lSV2+1LFyImFYE=",
         "owner": "denful",
         "repo": "den",
-        "rev": "cbe76f223bd02a48e7611e157b33036f38425131",
+        "rev": "9bdfbc2123a96c1a96ffd2e76241d321741e0dc8",
         "type": "github"
       },
       "original": {
@@ -327,11 +327,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794535471,
-        "narHash": "sha256-T8INJTvsOwVNyc1PHrEBdG7XJdqv8Hbuj9JR+cFPAME=",
-        "rev": "7499cd5f6d9c5b177bc8188fc4042d278ed85853",
+        "lastModified": 1794621773,
+        "narHash": "sha256-Q5kVwHGx3ng3mEMAchU0AlsrloDPjqa7KIR+zy0FcwA=",
+        "rev": "4990019d8194adfc641bde262a2915f8434a7b3a",
         "type": "tarball",
-        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/7499cd5f6d9c5b177bc8188fc4042d278ed85853.tar.gz?rev=7499cd5f6d9c5b177bc8188fc4042d278ed85853"
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/4990019d8194adfc641bde262a2915f8434a7b3a.tar.gz?rev=4990019d8194adfc641bde262a2915f8434a7b3a"
       },
       "original": {
         "type": "tarball",
@@ -348,11 +348,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794484118,
-        "narHash": "sha256-yChquUsnIzRAsFg8fti4jw/4WxUc4xTJfs0BrZfcTHE=",
+        "lastModified": 1794502518,
+        "narHash": "sha256-Hp+e8SAw8LyzsHLX4VZSmaORw2htvnVyDwWinx5CCe8=",
         "owner": "Mic92",
         "repo": "niks3",
-        "rev": "7fb409f485e91cce1fd0105e022a2f26a7a4fcd0",
+        "rev": "73468ec9fbfc8d4e5457400cd8fd0cc4ff7270c8",
         "type": "github"
       },
       "original": {
@@ -384,11 +384,11 @@
     },
     "nixos-unstable-small": {
       "locked": {
-        "lastModified": 1794493573,
-        "narHash": "sha256-bTpKv+dMNZ+J9Be4WRsBUAjZiRBBUUZnyW3ffm2nuTU=",
-        "rev": "3fe6b2e95f7304e16d6637199c6ae3b4382cbf89",
+        "lastModified": 1794580336,
+        "narHash": "sha256-J3Jyeo240OyIbvqDuGSOYaXMOBGMBRnSFBMT9cvuNb0=",
+        "rev": "ac9af266ee64ddb2eafeb4b250cac6a88147b43a",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable-small/nixos-26.11pre1118956.3fe6b2e95f73/nixexprs.tar.xz?lastModified=1794493573&rev=3fe6b2e95f7304e16d6637199c6ae3b4382cbf89"
+        "url": "https://releases.nixos.org/nixos/unstable-small/nixos-26.11pre1119847.ac9af266ee64/nixexprs.tar.xz?lastModified=1794580336&rev=ac9af266ee64ddb2eafeb4b250cac6a88147b43a"
       },
       "original": {
         "type": "tarball",
