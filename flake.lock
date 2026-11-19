@@ -327,11 +327,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794967428,
-        "narHash": "sha256-3WWQekAHqqTriOnTmhfFnyb+Kk4RtKFsuYaSGYv6CjM=",
-        "rev": "67b5f32d58d34ffbd9c64f33eec66dd278969d0e",
+        "lastModified": 1795053871,
+        "narHash": "sha256-vyXGylMhyRU0kl8tCFEKJY1FbDG0396NmUMaXk16+kU=",
+        "rev": "bad73220d9a310c1b3dc796cdfee134b5397fa8a",
         "type": "tarball",
-        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/67b5f32d58d34ffbd9c64f33eec66dd278969d0e.tar.gz?rev=67b5f32d58d34ffbd9c64f33eec66dd278969d0e"
+        "url": "https://git.kempkens.io/api/v1/repos/daniel/nix-overlay/archive/bad73220d9a310c1b3dc796cdfee134b5397fa8a.tar.gz?rev=bad73220d9a310c1b3dc796cdfee134b5397fa8a"
       },
       "original": {
         "type": "tarball",
@@ -348,11 +348,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794957650,
-        "narHash": "sha256-A/4r2N9iPGGHATjAt6gZlQ/NiHImycfOuMMNOsVZPYQ=",
+        "lastModified": 1795003076,
+        "narHash": "sha256-XHaWPk6eakP2otu3o7mAQ2ARlHM7qIV3ppyhj9fyxRA=",
         "owner": "Mic92",
         "repo": "niks3",
-        "rev": "d4440a59d38e1b857570fcbcb8171852dbcee634",
+        "rev": "38c867bd99e3a569915eb9aec6ce8fc408c74c3c",
         "type": "github"
       },
       "original": {
@@ -384,11 +384,11 @@
     },
     "nixos-unstable-small": {
       "locked": {
-        "lastModified": 1794918904,
-        "narHash": "sha256-Hz0COptPYpsbAHCQyw4Z49aLf2Fw6SRIgNGO1yyfnso=",
-        "rev": "d760a9ce1a77a68b65e906a21acb5b0999eda199",
+        "lastModified": 1795043757,
+        "narHash": "sha256-vODZc0AuHrJDbqwkuHUmnpeAcak8D9BehAhyvbvvxD8=",
+        "rev": "6997fe1478e91880b6daf346ffdb49d718cf875b",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable-small/nixos-26.11pre1123087.d760a9ce1a77/nixexprs.tar.xz?lastModified=1794918904&rev=d760a9ce1a77a68b65e906a21acb5b0999eda199"
+        "url": "https://releases.nixos.org/nixos/unstable-small/nixos-26.11pre1124299.6997fe1478e9/nixexprs.tar.xz?lastModified=1795043757&rev=6997fe1478e91880b6daf346ffdb49d718cf875b"
       },
       "original": {
         "type": "tarball",
@@ -509,11 +509,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791885023,
-        "narHash": "sha256-C3alQ2MEt0zVrUSho5NUDo3jmhbff72++bfwoqT9Omo=",
+        "lastModified": 1795017206,
+        "narHash": "sha256-WSBJcYjPRxGetDNxVzKnRPs1TQasQQlAC25W/S4W6YE=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "0d6d739a833ba9a9c93034862e4a7b061a062a1c",
+        "rev": "0ba5d67225c3f5c88eb134e1a665a379bfd3bea9",
         "type": "github"
       },
       "original": {
