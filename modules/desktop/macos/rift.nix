@@ -74,6 +74,7 @@
                   "com.colliderli.iina"
                   "com.haystacksoftware.Arq"
                   "com.noodlesoft.Hazel"
+                  "com.runningwithcrayons.Alfred-Preferences"
                   "net.pornel.ImageOptim"
                   "no.mifi.losslesscut-mac"
                 ];
@@ -83,6 +84,7 @@
                   "com.apple.Photos"
                   "com.apple.systempreferences"
                   "com.jonny.supermona"
+                  "com.runningwithcrayons.Alfred"
                   "com.soapboxsoftware.indigo"
                   "com.tapbots.Ivory"
                   "me.damir.dropover-mac"
