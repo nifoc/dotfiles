@@ -13,8 +13,8 @@
               # profile
               "virtio_balloon"
               "virtio_console"
-              "virtio_rng"
               "virtio_gpu"
+              "virtio_rng"
             ];
 
             availableKernelModules = [

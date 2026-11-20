@@ -120,7 +120,8 @@
             // (lan "xenon" "10.0.0.101")
             // (vps "boron" "138.199.219.102")
             // (vps "carbon" "49.12.228.29")
-            // (vps "gallium" "51.89.118.129");
+            // (vps "gallium" "51.89.118.129")
+            // (vps "silicon" "152.53.33.175");
           };
 
         home.packages = with pkgs; [ netcat ];

@@ -14,10 +14,10 @@
     nixos =
       { config, ... }:
       let
-        cfg = den.aspects.${config.networking.hostName}.meta;
-        networkConfig = cfg.networking;
-
         stateDir = "/var/lib/unifi-os-server";
+
+        networkConfig = den.aspects.${config.networking.hostName}.meta.networking;
+        unifiCfg = config.services.unifi-os-server;
       in
       {
         imports = [
@@ -39,9 +39,14 @@
         services.unifi-os-server = {
           enable = true;
           inherit stateDir;
-          uosSystemIP = networkConfig.mgmt.ipv4;
-          openFirewallUiPort = true;
-          openFirewallServicePorts = true;
+          uosSystemIP = "10.0.100.5";
+          openFirewallUiPort = false;
+          openFirewallServicePorts = false;
+        };
+
+        networking.firewall.interfaces."${networkConfig.tailscale.name}" = {
+          allowedTCPPorts = [ unifiCfg.ports.ui ] ++ unifiCfg.serviceTCPPorts;
+          allowedUDPPorts = unifiCfg.serviceUDPPorts;
         };
       };
   };

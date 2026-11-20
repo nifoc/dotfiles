@@ -41,6 +41,10 @@
     meta = {
       primaryUser = "daniel";
 
+      boot = {
+        kernelParams = [ "console=tty" ];
+      };
+
       zfs = {
         ashift = "12";
       };

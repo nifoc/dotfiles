@@ -7,11 +7,11 @@
     ];
 
     nixos = {
-      services.tailscale = {
-        extraUpFlags = [
-          "--relay-server-port=40000"
-        ];
-      };
+      # services.tailscale = {
+      #   extraUpFlags = [
+      #     "--relay-server-port=40000"
+      #   ];
+      # };
     };
   };
 }

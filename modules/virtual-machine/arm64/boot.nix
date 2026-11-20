@@ -6,15 +6,20 @@
       virtual-machine
     ];
 
-    nixos = {
-      boot = {
-        loader = {
-          systemd-boot.enable = true;
-          efi.canTouchEfiVariables = true;
-        };
+    nixos =
+      { config, ... }:
+      let
+        cfg = den.aspects.${config.networking.hostName}.meta;
+      in
+      {
+        boot = {
+          loader = {
+            systemd-boot.enable = true;
+            efi.canTouchEfiVariables = true;
+          };
 
-        kernelParams = [ "console=tty" ];
+          inherit (cfg.boot) kernelParams;
+        };
       };
-    };
   };
 }

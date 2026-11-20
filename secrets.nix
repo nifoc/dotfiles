@@ -5,6 +5,7 @@ let
   system-carbon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEvF4zibLcXxlp4Eorc/6C30yeFItLNT2iAvGnNEscnu";
   system-boron = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEH0G+fjmO4IOULTWFWtRf8Wh5BxeGukub8qoRFd5zvA";
   system-gallium = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHf93XbuF6M0GsyBmUhJjJdClAcXfiSnkoDxYhfxEj8X";
+  system-silicon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPT7ZR4JjmSJPs6tartY8E6nlRWkTgjBDFVNCmq1XGEz";
   system-krypton = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQooOFh2618Y7sXwYE640ftsdmEr6O87jUVKw/VogtY";
   system-xenon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH1DZhnlOpFLveEiF3SD6A9sbFEl+T2uvrpM566kqItv";
   system-argon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBsnqQa0PwyVEOb2WWiSI/AFQv99anRhjaW1RxT/+Qz3";
@@ -19,10 +20,10 @@ let
     user-daniel-Pallas
     system-boron
   ];
-  # gallium = [
-  #   user-daniel-Pallas
-  #   system-gallium
-  # ];
+  silicon = [
+    user-daniel-Pallas
+    system-silicon
+  ];
   krypton = [
     user-daniel-Pallas
     system-krypton
@@ -49,6 +50,7 @@ let
     system-carbon
     system-boron
     system-gallium
+    system-silicon
     system-krypton
     system-xenon
     system-argon
@@ -92,6 +94,8 @@ in
   "agenix/restic/krypton/remote-password.age".publicKeys = krypton;
   "agenix/restic/krypton/remote-ssh-private-key.age".publicKeys = krypton;
   "agenix/restic/krypton/secondary-password.age".publicKeys = krypton;
+  "agenix/restic/silicon/remote-password.age".publicKeys = silicon;
+  "agenix/restic/silicon/remote-ssh-private-key.age".publicKeys = silicon;
   "agenix/restic/xenon/remote-password.age".publicKeys = xenon;
   "agenix/restic/xenon/remote-ssh-private-key.age".publicKeys = xenon;
   "agenix/tailscale/authkey.age".publicKeys = all-systems;

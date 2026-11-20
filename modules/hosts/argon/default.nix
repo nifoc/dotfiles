@@ -20,7 +20,7 @@
         socks-server
         tailscale._.router
         temper
-        unifi-os-server
+        unifi-os-proxy
         ups
         webserver
         weewx

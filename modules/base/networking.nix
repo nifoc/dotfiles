@@ -15,6 +15,11 @@
 
         tailscale = {
           # Servers
+          silicon = [
+            "100.71.168.103"
+            "fd7a:115c:a1e0::df2b:a868"
+          ];
+
           xenon = [
             "100.124.128.35"
             "fd7a:115c:a1e0::4e34:8023"

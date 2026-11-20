@@ -17,6 +17,7 @@
               "argon"
               "carbon"
               "neon"
+              "silicon"
             ];
 
             x86_64-linux = [

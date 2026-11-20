@@ -22,6 +22,7 @@
                 "${networkConfig.altName}" = {
                   matchConfig.Name = networkConfig.altName;
                   networkConfig.DHCP = "ipv4";
+                  linkConfig.RequiredForOnline = "routable";
                 };
               };
             };
