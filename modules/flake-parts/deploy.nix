@@ -19,7 +19,7 @@
       make-shells.default.packages = with pkgs; [
         inputs'.deploy-rs.packages.default
         just
-        nix-output-monitor
+        rom
         (octodns.withProviders (_: [
           octodns-providers.bind
           inputs'.nifoc-overlay.packages.octodns-desec

@@ -12,7 +12,7 @@ fmt:
 # Build a local machine
 [group('build')]
 build-local-machine target type=defaultLocalType:
-    nom build --fallback ".#{{ type }}Configurations.{{ target }}.config.system.build.toplevel"
+    rom build ".#{{ type }}Configurations.{{ target }}.config.system.build.toplevel" -- --fallback
 
 # Build a remote machine
 [group('build')]
@@ -22,10 +22,11 @@ build-remote-machine target remoteBuild=defaultRemoteBuild type=defaultRemoteTyp
         user="$(nix eval --raw '.#deploy.nodes.{{ target }}.sshUser' 2> /dev/null)"
         hostname="$(nix eval --raw '.#deploy.nodes.{{ target }}.hostname' 2> /dev/null)"
         echo "Building on ${hostname} ..."
-        nom build --fallback \
+        rom build \
+          '.#{{ type }}Configurations.{{ target }}.config.system.build.toplevel' -- \
+          --fallback \
           --eval-store auto \
-          --store "ssh-ng://${user}@${hostname}" \
-          '.#{{ type }}Configurations.{{ target }}.config.system.build.toplevel'
+          --store "ssh-ng://${user}@${hostname}"
     else
         echo "Remote building is disabled"
     fi
