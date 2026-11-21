@@ -54,6 +54,35 @@
             rtcsync
           '';
         };
+
+        systemd.services.ntp-adjusted-chrony = {
+          description = "Wait until chrony has adjusted the clock on non-RTC systems";
+
+          after = [ "chronyd.service" ];
+          requires = [ "chronyd.service" ];
+          before = [
+            "time-sync.target"
+            "shutdown.target"
+          ];
+          wants = [ "time-sync.target" ];
+          wantedBy = [ "sysinit.target" ];
+
+          serviceConfig = {
+            Type = "oneshot";
+            RemainAfterExit = true;
+
+            ExecStart =
+              if hasRTC then
+                (lib.getExe' pkgs.coreutils "true")
+              else
+                "${lib.getExe' pkgs.chrony "chronyc"} waitsync 12 0 0 5";
+            TimeoutStartSec = 90;
+
+            ProtectHome = "yes";
+            ProtectSystem = "full";
+            PrivateTmp = "yes";
+          };
+        };
       };
   };
 }
