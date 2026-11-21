@@ -25,6 +25,8 @@
           MAILADDR daniel@kempkens.io
         '';
       };
+
+      services.bootvine.enable = true;
     };
   };
 }
