@@ -11,13 +11,14 @@
             domain = "git.kempkens.io";
             owner = "daniel";
             repo = "kempkens.io";
-            rev = "e21fbd1661df35740aab6280ad460314f3c03ae2";
-            hash = "sha256-3hh/SV/OMaRz45ap5VxUv1MDkd1OtMPlJB3Iz4uEqv8=";
+            rev = "0ea179158246c23c5106f5f6efc71ec3ab938bb7";
+            hash = "sha256-0ffOc6+cgqbB4unVZIl2Jwrh0Hzp0Js0ouKiHab8+t4=";
             fetchSubmodules = true;
           };
 
           nativeBuildInputs = with pkgs; [
             brotli
+            dart-sass
             hugo
           ];
 
