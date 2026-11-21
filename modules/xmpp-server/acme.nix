@@ -34,7 +34,6 @@
             dnsProvider = "desec";
             environmentFile = config.age.secrets.xmpp-server-acme-credentials.path;
             dnsResolver = "ns1.desec.io:53";
-            dnsPropagationCheck = true;
           };
 
           certs = {
