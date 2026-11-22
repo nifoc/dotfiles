@@ -21,8 +21,8 @@
         };
 
         systemd.services.microsocks = lib.mkIf config.services.tailscale.enable {
-          requires = lib.mkAfter [ "tailscale-wait-up.service" ];
-          after = lib.mkAfter [ "tailscale-wait-up.service" ];
+          requires = lib.mkAfter [ "tailscale-online.target" ];
+          after = lib.mkAfter [ "tailscale-online.target" ];
         };
 
         networking.firewall.interfaces = builtins.listToAttrs (

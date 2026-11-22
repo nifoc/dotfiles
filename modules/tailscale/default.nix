@@ -30,31 +30,6 @@
             "--accept-dns=false"
           ];
         };
-
-        systemd.services.tailscale-wait-up = {
-          after = [
-            "tailscaled.service"
-            "tailscaled-autoconnect.service"
-          ];
-          wants = [ "tailscaled.service" ];
-          wantedBy = [ "multi-user.target" ];
-
-          path = with pkgs; [
-            coreutils
-            tailscale
-          ];
-
-          script = ''
-            until tailscale status --peers=false; do
-              sleep 1
-            done
-          '';
-
-          serviceConfig = {
-            Type = "oneshot";
-            TimeoutSec = 120;
-          };
-        };
       };
   };
 }
