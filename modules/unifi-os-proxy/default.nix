@@ -13,11 +13,6 @@
       {
         services.caddy = {
           virtualHosts."unifi.internal.kempkens.network" = {
-            listenAddresses = [
-              networkConfig.tailscale.ipv4
-              "[${networkConfig.tailscale.ipv6}]"
-            ];
-
             extraConfig = ''
               encode
 

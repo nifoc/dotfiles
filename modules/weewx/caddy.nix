@@ -9,11 +9,6 @@
       in
       {
         services.caddy.virtualHosts."http://wetter.kempkens.io:7781" = {
-          listenAddresses = [
-            networkConfig.tailscale.ipv4
-            "[${networkConfig.tailscale.ipv6}]"
-          ];
-
           extraConfig = ''
             encode
 

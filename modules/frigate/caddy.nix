@@ -30,7 +30,6 @@
           };
 
           virtualHosts."${fqdnLocal}:5000" = {
-            listenAddresses = [ networkConfig.default.ipv4 ];
             extraConfig = ''
               reverse_proxy 127.0.0.1:5000
             '';
