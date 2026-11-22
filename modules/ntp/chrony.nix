@@ -56,7 +56,7 @@
         };
 
         systemd.services.ntp-adjusted-chrony = {
-          description = "Wait until chrony has adjusted the clock on non-RTC systems";
+          description = "chronyc waitsync";
 
           after = [ "chronyd.service" ];
           requires = [ "chronyd.service" ];
