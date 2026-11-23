@@ -19,4 +19,4 @@ steps:
   - name: build
     image: bash
     commands:
-      - nix-fast-build --eval-workers 1 --max-jobs 1 --no-nom
+      - nix-fast-build --skip-cached --eval-workers 1 --max-jobs 1 --no-nom
