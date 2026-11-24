@@ -6,7 +6,7 @@
       networks = {
         "10-wan" = {
           matchConfig.Name = "eth0";
-          DHCP = "yes";
+          DHCP = "no";
           address = [
             "77.90.42.205/32"
             "2a06:de00:401:924c::1/128"
