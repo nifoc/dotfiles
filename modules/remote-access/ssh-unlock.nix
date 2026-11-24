@@ -8,6 +8,8 @@
         cfg = den.aspects.${config.networking.hostName}.meta;
 
         networkConfig = cfg.networking.default;
+        networkd = config.systemd.network.networks;
+        networkdKey = if (builtins.hasAttr "10-wan" networkd) then "10-wan" else "10-lan";
 
         inherit (den.aspects.${cfg.primaryUser}.meta) sshKeys;
         authorizedKeys = builtins.map (
@@ -19,10 +21,8 @@
           systemd = {
             network = {
               networks = {
-                "${networkConfig.altName}" = {
+                ${networkdKey} = networkd.${networkdKey} // {
                   matchConfig.Name = networkConfig.altName;
-                  networkConfig.DHCP = "ipv4";
-                  linkConfig.RequiredForOnline = "routable";
                 };
               };
             };
