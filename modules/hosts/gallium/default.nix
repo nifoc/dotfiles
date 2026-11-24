@@ -39,16 +39,16 @@
       networking = {
         default = {
           name = "eth0";
-          altName = "enp0s3";
-          mac = "fa:16:3e:67:eb:a4";
-          ipv4 = "51.89.118.129";
-          ipv6 = "2001:41d0:701:1000::3ee7";
+          altName = "enp6s18";
+          mac = "bc:24:11:f5:ce:e9";
+          ipv4 = "77.90.42.205";
+          ipv6 = "2a06:de00:401:924c::1";
         };
 
         tailscale = {
           name = "tailscale0";
-          ipv4 = "100.87.42.122";
-          ipv6 = "fd7a:115c:a1e0::9134:2a7b";
+          ipv4 = "100.80.92.119";
+          ipv6 = "fd7a:115c:a1e0::662b:5c78";
         };
       };
 

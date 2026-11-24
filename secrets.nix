@@ -4,7 +4,7 @@ let
 
   system-carbon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEvF4zibLcXxlp4Eorc/6C30yeFItLNT2iAvGnNEscnu";
   system-boron = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEH0G+fjmO4IOULTWFWtRf8Wh5BxeGukub8qoRFd5zvA";
-  system-gallium = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHf93XbuF6M0GsyBmUhJjJdClAcXfiSnkoDxYhfxEj8X";
+  system-gallium = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPGlsMLoAKuFm/LfBiy/Y8NOZZ0nkYdUJZVicczDD1Tm";
   system-silicon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPT7ZR4JjmSJPs6tartY8E6nlRWkTgjBDFVNCmq1XGEz";
   system-krypton = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQooOFh2618Y7sXwYE640ftsdmEr6O87jUVKw/VogtY";
   system-xenon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH1DZhnlOpFLveEiF3SD6A9sbFEl+T2uvrpM566kqItv";
