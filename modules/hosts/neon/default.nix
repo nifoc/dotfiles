@@ -11,7 +11,6 @@
         remote-access
 
         cli
-        dns-resolver
         hister
         netns._.wireguard
         ntp._.server

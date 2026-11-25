@@ -26,6 +26,11 @@
           ];
 
           # Devices
+          pallas = [
+            "100.119.140.87"
+            "fd7a:115c:a1e0::3801:8c5c"
+          ];
+
           daniels-iphone = [
             "100.74.151.110"
             "fd7a:115c:a1e0::8d2b:976f"

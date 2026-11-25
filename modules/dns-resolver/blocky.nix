@@ -8,7 +8,6 @@
         cfg = den.aspects.${config.networking.hostName}.meta;
         dnsInterfaces = (cfg.dns-resolver.interfaces or [ ]);
         trustedInterfaces = cfg.firewall.trustedInterfaces;
-        localAccess = (cfg.dns-resolver.localAccess or true);
 
         deviceIps = den.aspects.base.meta.networking.ips;
       in
@@ -48,27 +47,6 @@
                 "fritz.box" = "10.0.200.2";
               };
             };
-
-            conditional =
-              let
-                localMapping = {
-                  "lan" = "10.0.0.1:53053";
-                  "lansecurity" = "10.0.0.1:53053";
-                  "laniot" = "10.0.0.1:53053";
-                  "languest" = "10.0.0.1:53053";
-                  "lanmgmt" = "10.0.0.1:53053";
-                  "landtag" = "10.0.0.1:53053";
-                  "0.0.10.in-addr.arpa" = "10.0.0.1:53053";
-                  "50.0.10.in-addr.arpa" = "10.0.0.1:53053";
-                  "51.0.10.in-addr.arpa" = "10.0.0.1:53053";
-                  "99.0.10.in-addr.arpa" = "10.0.0.1:53053";
-                  "100.0.10.in-addr.arpa" = "10.0.0.1:53053";
-                  "200.0.10.in-addr.arpa" = "10.0.0.1:53053";
-                };
-              in
-              {
-                mapping = lib.optionalAttrs localAccess localMapping;
-              };
 
             blocking = {
               denylists = {
@@ -112,11 +90,6 @@
                   "basic"
                   "expert"
                 ];
-
-                "10.0.51.0/24" = [
-                  "basic"
-                  "iot"
-                ];
               };
 
               blockType = "nxDomain";
@@ -137,22 +110,13 @@
             };
 
             clientLookup = {
-              upstream = "10.0.0.1:53053";
-
               clients = {
-                pallas = [
-                  "10.0.0.204"
-                  "fe80::1820:1dde:ec26:66d0"
-                  "100.119.140.87"
-                  "fd7a:115c:a1e0::3801:8c5c"
-                ];
+                inherit (deviceIps.tailscale) daniels-iphone pallas;
 
                 styx = [
                   "100.90.80.127"
                   "fd7a:115c:a1e0::401:507f"
                 ];
-
-                daniels-iphone = deviceIps.lan.daniels-iphone ++ deviceIps.tailscale.daniels-iphone;
               };
             };
 
